@@ -1,24 +1,30 @@
 <template>
-  <div id="street-view-container">
-    <div id="street-view">
-      <Maps @selectLocation="calcurateDistance" />
+  <div>
+    <HeaderGame :distance="distance" />
+    <div id="street-view-container">
+      <div id="street-view">
+        <Maps
+          :randomLatLng="randomLatLng" 
+          @selectLocation="calcurateDistance" />
+      </div>
     </div>
-    <span>{{ distance }} m</span>
   </div>
 </template>
 
 <script>
+  import HeaderGame from '@/components/HeaderGame'
   import Maps from '@/components/Maps'
 
   export default {
     components: {
+      HeaderGame,
       Maps,
     },
     data() {
       return {
-        latLng: null,
+        randomLatLng: null,
         selectedLatLng: null,
-        distance: null,
+        distance: 0,
       }
     },
     methods: {
@@ -43,7 +49,7 @@
           })
 
           // Save the location's latitude and longitude
-          this.latLng = data.location.latLng
+          this.randomLatLng = data.location.latLng
         } else {
           var service = new google.maps.StreetViewService()
           service.getPanorama({location: this.getRandomLatLng()}, this.checkStreetView)
@@ -51,7 +57,7 @@
       },
       calcurateDistance(selectedLatLng) {
         this.selectedLatLng = selectedLatLng
-        this.distance = google.maps.geometry.spherical.computeDistanceBetween(this.latLng, this.selectedLatLng)
+        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
       },
     },
     mounted() {
