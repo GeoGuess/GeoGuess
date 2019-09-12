@@ -17,7 +17,8 @@
         <div>
           <button 
             class="button" 
-            id="single-player-button">Single Player</button>        
+            id="single-player-button"
+            @click="$router.push('street-view')">Single Player</button>        
         </div>
         <div>
           <button 
@@ -32,15 +33,17 @@
       id="button-container"
       align="center">
       <v-col>
-      <button 
-        class="button" 
-        id="single-player-button">Single Player</button>
+        <button 
+          class="button" 
+          id="single-player-button" 
+          @click="$router.push('street-view')"
+          >Single Player</button>
       </v-col>
       <v-col>
-      <button 
-        class="button" 
-        id="with-friends-button">With Friends</button>
-      <div class="flex-grow-1"></div>
+        <button 
+          class="button" 
+          id="with-friends-button">With Friends</button>
+        <div class="flex-grow-1"></div>
       </v-col>
     </v-row>
 
