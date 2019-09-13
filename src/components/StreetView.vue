@@ -42,6 +42,15 @@
       }
     },
     methods: {
+      loadStreetView() {
+        var service = new google.maps.StreetViewService()
+        service.getPanorama({
+          location: this.getRandomLatLng(),
+          preference: 'nearest',
+          radius: 100000,
+          source: 'outdoor',
+        }, this.checkStreetView)
+      },
       getRandomLatLng() {
         // Generate a random latitude and longitude
         var lat = (Math.random() * 170) - 85
@@ -65,13 +74,7 @@
           // Save the location's latitude and longitude
           this.randomLatLng = data.location.latLng
         } else {
-          var service = new google.maps.StreetViewService()
-          service.getPanorama({
-            location: this.getRandomLatLng(),
-            preference: 'nearest',
-            radius: 100000,
-            source: 'outdoor',
-          }, this.checkStreetView)
+          this.loadStreetView()
         }
       },
       calcurateDistance(selectedLatLng) {
@@ -81,25 +84,19 @@
         this.overlay = true
       },
       goToNextRound() {
-        // reset
+        // Reset
         this.selectedLatLng = null
         this.randomLatLng = null
         this.overlay = false
 
-        // replace streetview with new one
-        var service = new google.maps.StreetViewService()
-        service.getPanorama({
-          location: this.getRandomLatLng(),
-          preference: 'nearest',
-          radius: 100000,
-          source: 'outdoor',
-        }, this.checkStreetView)
+        // Replace streetview with new one
+        this.loadStreetView()
 
-        // update the round
+        // Update the round
         this.round += 1
       },
       playAgain() {
-        // reset
+        // Reset
         this.selectedLatLng = null
         this.randomLatLng = null
         this.distance = null
@@ -108,25 +105,13 @@
         this.overlay = false
 
         // Load streetview
-        var service = new google.maps.StreetViewService()
-        service.getPanorama({
-          location: this.getRandomLatLng(),
-          preference: 'nearest',
-          radius: 100000,
-          source: 'outdoor',
-        }, this.checkStreetView)
+        this.loadStreetView()
       }
     },
     mounted() {
       // Generate the first streetview and check if it's valid
       const that = this
-      var service = new google.maps.StreetViewService()
-      service.getPanorama({
-        location: that.getRandomLatLng(),
-        preference: 'nearest',
-        radius: 100000,
-        source: 'outdoor',
-      }, that.checkStreetView)
+      that.loadStreetView()
     },
   }
 </script>

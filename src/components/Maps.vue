@@ -57,18 +57,10 @@
     methods: {
       selectLocation() {
         // Show the polyline
-        this.polyline = new google.maps.Polyline({
-          path: [this.selectedLatLng, this.randomLatLng],
-          strokeColor: '#FF0000',  
-        })
-        this.polyline.setMap(this.map)
+        this.showPolyline()
 
         // Put the marker on the random location
-        var randomMarker = new google.maps.Marker({
-          position: this.randomLatLng,
-          map: this.map,
-        })
-        this.markers.push(randomMarker)
+        this.putMarker(this.randomLatLng)
 
         // Clear the event
         google.maps.event.clearListeners(this.map, 'click')
@@ -82,16 +74,33 @@
 
         this.$emit('selectLocation', this.selectedLatLng)
       },
-      goToNextRound() {
-        // reset
-        this.isClicked = false
-        this.isSelected = false
-        this.selectedLatLng = null
-        this.polyline.setMap(null)
-
+      putMarker(position) {
+        var marker = new google.maps.Marker({
+          position: position,
+          map: this.map,
+        })
+        this.markers.push(marker)
+      },
+      removeMarkers() {
         for (var i = 0; i < this.markers.length; i++) {
           this.markers[i].setMap(null)
-        }
+        }        
+      },
+      showPolyline() {
+        this.polyline = new google.maps.Polyline({
+          path: [this.selectedLatLng, this.randomLatLng],
+          strokeColor: '#FF0000',  
+        })
+        this.polyline.setMap(this.map)
+      },
+      goToNextRound() {
+        // Reset
+        this.selectedLatLng = null
+        this.polyline.setMap(null)
+        this.isClicked = false
+        this.isSelected = false
+
+        this.removeMarkers()
 
         // Set the opacity of the map again
         this.mouseOutMap()
@@ -112,9 +121,7 @@
         this.dialogSummary = false
 
         // Remove markers
-        for (var i = 0; i < this.markers.length; i++) {
-          this.markers[i].setMap(null)
-        }
+        this.removeMarkers()
 
         this.$emit('playAgain')
       },
@@ -132,21 +139,15 @@
     },
     watch: {
       randomLatLng: function(newVal, oldVal) {
-        // enable click event when a random streetview is set
+        // Enable click event when a random streetview is set
         if (newVal != null) {
           const that = this
           that.map.addListener('click', function(e) {
-            // Clear the previous marker when clicking the map 
-            for (var i = 0; i < that.markers.length; i++) {
-              that.markers[i].setMap(null)
-            }
+            // Clear the previous marker when clicking the map
+            that.removeMarkers()
 
             // Show the new marker
-            var marker = new google.maps.Marker({
-              position: e.latLng,
-              map: that.map,
-            })
-            that.markers.push(marker)
+            that.putMarker(e.latLng)
 
             // Save latLng
             that.selectedLatLng = e.latLng
