@@ -36,14 +36,12 @@
         <button 
           class="button" 
           id="single-player-button" 
-          @click="$router.push('street-view')"
-          >Single Player</button>
+          @click="$router.push('street-view')">Single Player</button>
       </v-col>
       <v-col>
         <button 
           class="button" 
           id="with-friends-button">With Friends</button>
-        <div class="flex-grow-1"></div>
       </v-col>
     </v-row>
 
@@ -91,7 +89,7 @@
 
 <script>
   export default {
-    
+
   }
 </script>
 
@@ -117,7 +115,7 @@
   }
 
   #button-container {
-    padding-top: 9%;
+    padding: 9% 10% 0 10%;
   }
 
   .button {
@@ -136,10 +134,12 @@
     margin: 0 7%;
   }
 
-  @media (max-width: 750px) {
-    #button-container {
+  #single-player-button {
+    background-color: #F44336;
+  }
 
-    }
+  #with-friends-button {
+    background-color: #00E676;
   }
 
   @media (max-width: 450px) {
@@ -166,13 +166,5 @@
       margin: 5% 0;
       width: 80%;      
     }
-  }
-
-  #single-player-button {
-    background-color: #F44336;
-  }
-
-  #with-friends-button {
-    background-color: #00E676;
   }
 </style>

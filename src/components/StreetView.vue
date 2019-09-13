@@ -1,13 +1,24 @@
 <template>
-  <div>
-    <HeaderGame :distance="distance" />
+  <div id="game-page">
+    <HeaderGame 
+      :distance="distance"
+      :score="score"
+      :round="round" />
     <div id="street-view-container">
       <div id="street-view">
-        <Maps
-          :randomLatLng="randomLatLng" 
-          @selectLocation="calcurateDistance" />
       </div>
+      <Maps
+        :randomLatLng="randomLatLng"
+        :round="round"
+        :score="score"
+        @selectLocation="calcurateDistance"
+        @goToNextRound="goToNextRound"
+        @playAgain="playAgain" />
     </div>
+    <v-overlay 
+      :value="overlay"
+      opacity="0.8" 
+      z-index="2"/>
   </div>
 </template>
 
@@ -24,7 +35,10 @@
       return {
         randomLatLng: null,
         selectedLatLng: null,
-        distance: 0,
+        distance: null,
+        score: 0,
+        round: 1,
+        overlay: false,
       }
     },
     methods: {
@@ -52,36 +66,91 @@
           this.randomLatLng = data.location.latLng
         } else {
           var service = new google.maps.StreetViewService()
-          service.getPanorama({location: this.getRandomLatLng()}, this.checkStreetView)
+          service.getPanorama({
+            location: this.getRandomLatLng(),
+            preference: 'nearest',
+            radius: 100000,
+            source: 'outdoor',
+          }, this.checkStreetView)
         }
       },
       calcurateDistance(selectedLatLng) {
         this.selectedLatLng = selectedLatLng
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
+        this.score += this.distance
+        this.overlay = true
       },
+      goToNextRound() {
+        // reset
+        this.selectedLatLng = null
+        this.randomLatLng = null
+        this.overlay = false
+
+        // replace streetview with new one
+        var service = new google.maps.StreetViewService()
+        service.getPanorama({
+          location: this.getRandomLatLng(),
+          preference: 'nearest',
+          radius: 100000,
+          source: 'outdoor',
+        }, this.checkStreetView)
+
+        // update the round
+        this.round += 1
+      },
+      playAgain() {
+        // reset
+        this.selectedLatLng = null
+        this.randomLatLng = null
+        this.distance = null
+        this.score = 0
+        this.round = 1
+        this.overlay = false
+
+        // Load streetview
+        var service = new google.maps.StreetViewService()
+        service.getPanorama({
+          location: this.getRandomLatLng(),
+          preference: 'nearest',
+          radius: 100000,
+          source: 'outdoor',
+        }, this.checkStreetView)
+      }
     },
     mounted() {
       // Generate the first streetview and check if it's valid
       const that = this
-      var panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'))
       var service = new google.maps.StreetViewService()
-      service.getPanorama({location: that.getRandomLatLng()}, that.checkStreetView)
+      service.getPanorama({
+        location: that.getRandomLatLng(),
+        preference: 'nearest',
+        radius: 100000,
+        source: 'outdoor',
+      }, that.checkStreetView)
     },
   }
 </script>
 
 <style scoped>
+  #game-page {
+    position: relative;
+    height: 85%; 
+    width: 100%; 
+    top: 0; 
+    left: 0;
+  }
+
   #street-view-container {
+    position: absolute;
     height: 100%; 
     width: 100%; 
     top: 0; 
     left: 0; 
-    position: fixed;
   }
 
   #street-view {
     position: relative;
-    min-height: 85%;
+    min-height: 100%;
     width: 100%;
   }
 </style>
