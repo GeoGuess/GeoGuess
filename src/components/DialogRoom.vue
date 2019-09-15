@@ -195,7 +195,7 @@
 
             } else {
               // Put other player's tentative name
-              room.child('player_name/Player' + that.playerNumber).set('player' + that.playerNumber, function(error) {
+              that.room.child('player_name/Player' + that.playerNumber).set('player' + that.playerNumber, function(error) {
                 if (error) {
 
                 } else {
@@ -234,12 +234,19 @@
         })
       },
       setPlayerName() {
+        const that = this
         this.room.child('player_name/Player' + this.playerNumber).set(this.playerName, function(error) {
           if (error) {
 
           } else {
             // Start the game
-
+            that.$router.push({
+              name: 'with-friends',
+              params: { 
+                roomName: that.roomName, 
+                playerNumber: that.playerNumber, 
+              }
+            })
           }
         })
       },
@@ -247,7 +254,13 @@
         // Remove the room
         this.dialogRoom = false
         if (this.room != null) {
-          this.room.remove()
+          if (this.playerNumber == 1) {
+            // Remove the entire node if the player is the first player
+            this.room.remove()
+          } else {
+            // Remove only the player's name node if the player isn't the first player
+            this.room.child('player_name/Player' + this.playerNumber).remove()
+          }
         }
       }
     }

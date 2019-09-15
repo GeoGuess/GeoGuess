@@ -110,8 +110,7 @@
     },
     mounted() {
       // Generate the first streetview and check if it's valid
-      const that = this
-      that.loadStreetView()
+      this.loadStreetView()
     },
   }
 </script>

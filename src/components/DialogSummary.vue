@@ -68,7 +68,7 @@
   }
 
   #dialog-summary-card {
-    background-image: linear-gradient(#1A237E, #000000);
+    background-image: linear-gradient(#FFF59D, #FFD600);
   }
 
   #card-text {
@@ -77,7 +77,7 @@
 
   #summary-text {
     font-size: 50px;
-    color: white;
+    color: #1A237E;
   }
 
   #button-container {

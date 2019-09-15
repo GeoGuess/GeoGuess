@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from '@/components/Home'
 import StreetView from '@/components/StreetView'
+import StreetViewWithFriends from '@/components/StreetViewWithFriends'
 
 Vue.use(Router)
 
@@ -18,6 +19,12 @@ export default new Router ({
       path: '/street-view',
       name: 'street-view',
       component: StreetView,
+    },
+    {
+      path: '/street-view/with-friends',
+      name: 'with-friends',
+      component: StreetViewWithFriends,
+      props: true,
     },
   ],
 })
