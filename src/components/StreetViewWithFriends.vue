@@ -3,6 +3,14 @@
     <div id="street-view-container">
       <div id="street-view">
       </div>
+      <MapsWithFriends
+        :roomName="roomName"
+        :playerNumber="playerNumber"
+        :isReady="isReady"
+        :round="round"
+        :score="score"
+        @selectLocation="calcurateDistance"
+        @goToNextRound="goToNextRound" />
     </div>
   </div>
 </template>
@@ -11,11 +19,16 @@
   import firebase from 'firebase/app'
   import 'firebase/database'
 
+  import MapsWithFriends from '@/components/MapsWithFriends'
+
   export default {
     props: [
       'roomName',
       'playerNumber',
     ],
+    components: {
+      MapsWithFriends,
+    },
     data() {
       return {
         randomLatLng: null,
@@ -25,6 +38,7 @@
         score: 0,
         round: 1,
         room: null,
+        isReady: false,
       }
     },
     methods: {
@@ -83,6 +97,33 @@
           this.loadStreetView()
         }
       },
+      calcurateDistance(selectedLatLng) {
+        this.selectedLatLng = selectedLatLng
+        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
+        this.score += this.distance
+
+        /* Issue: Mobile app executes the part that refers to the distance in the firebase faster than
+        the web app executes the part that stores the distance into firebase
+        so the distance always shows 0 */
+        this.room.child('round' + this.round + '/Player' + this.playerNumber).set(this.distance)
+
+        // Update the score stored into firebase
+        this.room.child('final_score/Player' + this.playerNumber).set(this.score)
+      },
+      goToNextRound() {
+        this.selectedLatLng = null
+        this.randomLatLng = null
+
+        this.round += 1
+
+        if (this.playerNumber == 1) {
+          this.loadStreetView()
+        } else {
+          /** Issue: Other players are supposed to load the street views here
+          but can't get a value in the firebase unless setting a listener */
+        }
+
+      },
       exitGame() {
         // Force the players to exit the game
       },
@@ -115,6 +156,8 @@
 
           // Enable guess button when every players are put into the current round's node
           if (snapshot.child('round' + that.round).numChildren() == snapshot.child('size').val()) {
+
+            that.isReady = true
 
             // Countdown timer starts
           }

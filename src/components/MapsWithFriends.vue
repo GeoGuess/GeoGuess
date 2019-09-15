@@ -1,71 +1,81 @@
 <template>
   <div>
-    <div 
+    <div
       id="map"
-      @mouseover="mouseOverMap" 
+      @mouseover="mouseOverMap"
       @mouseleave="mouseOutMap">
     </div>
     <button
       id="guess-button"
-      :disabled="randomLatLng == null || isClicked == true"
-      v-if="isClicked == false"
+      :disabled="isClicked == true || isReady == false"
+      v-if="isNextButtonVisible == false"
       @click="selectLocation"
       >GUESS
     </button>
     <button
       id="next-button"
-      v-if="isClicked == true && round < 5"
+      :disabled="!isNextButtonEnabled"
+      v-if="isNextButtonVisible == true"
       @click="goToNextRound"
       >NEXT ROUND
     </button>
-    <button
-      id="summary-button"
-      v-if="isClicked == true && round >= 5"
-      @click="viewSummary"
-      >VIEW SUMMARY
-    </button>
-    <DialogSummary 
-      :dialogSummary="dialogSummary"
-      :score="score"
-      @playAgain="playAgain" />
   </div>
 </template>
 
 <script>
-  import DialogSummary from '@/components/DialogSummary'
+  /** To do:
+  * Put markers and draw polylines
+  * Show the summary
+  */
+  import firebase from 'firebase/app'
+  import 'firebase/database'
 
   export default {
     props: [
-      "randomLatLng",
-      "round",
-      "score",
+      'roomName',
+      'playerNumber',
+      'isReady',
+      'round',
+      'score',
     ],
-    components: {
-      DialogSummary,
-    },
     data() {
       return {
         markers: [],
         map: null,
-        polyline: null,
+        room: null,
         selectedLatLng: null,
         isClicked: false,
         isSelected: false,
-        dialogSummary: false,
+        isNextStreetViewReady: false,
+        isNextButtonVisible: false,
+      }
+    },
+    computed: {
+      isNextButtonEnabled() {
+        if (this.playerNumber == 1) {
+          return true
+        } else {
+          if (this.isNextStreetViewReady == true) {
+            return true
+          } else {
+            return false
+          }
+        }
       }
     },
     methods: {
       selectLocation() {
-        // Show the polyline
-        this.showPolyline()
-
-        // Put the marker on the random location
-        this.putMarker(this.randomLatLng)
+        // Save the selected location into database
+        // So that it uses for putting the markers and polylines
+        this.room.child('guesses/Player' + this.playerNumber).set({
+            latitude: this.selectedLatLng.lat(),
+            longitude:this.selectedLatLng.lng()
+        })
 
         // Clear the event
         google.maps.event.clearListeners(this.map, 'click')
 
-        // Disable guess button and opacity of the map
+        // Diable guess button and opacity of the map
         this.isClicked = true
         this.isSelected = true
 
@@ -86,44 +96,18 @@
           this.markers[i].setMap(null)
         }        
       },
-      showPolyline() {
-        this.polyline = new google.maps.Polyline({
-          path: [this.selectedLatLng, this.randomLatLng],
-          strokeColor: '#FF0000',  
-        })
-        this.polyline.setMap(this.map)
-      },
       goToNextRound() {
         // Reset
         this.selectedLatLng = null
-        this.polyline.setMap(null)
         this.isClicked = false
         this.isSelected = false
 
         this.removeMarkers()
 
-        // Set the opacity of the map again
         this.mouseOutMap()
 
-        // Replace the streetview with new one
+        // Replace the streetview with the next one
         this.$emit('goToNextRound')
-      },
-      viewSummary() {
-        // Show dialog
-        this.dialogSummary = true
-      },
-      playAgain() {
-        // Reset
-        this.selectedLatLng = null
-        this.polyline.setMap(null)
-        this.isClicked = false
-        this.isSelected = false
-        this.dialogSummary = false
-
-        // Remove markers
-        this.removeMarkers()
-
-        this.$emit('playAgain')
       },
       mouseOverMap() {
         // Focus on map
@@ -135,12 +119,12 @@
         if (this.isSelected == false) {
           document.getElementById('map').style.opacity = 0.7
         }
-      }
+      },
     },
     watch: {
-      randomLatLng: function(newVal, oldVal) {
-        // Enable click event when a random streetview is set
-        if (newVal != null) {
+      isReady: function(newVal, oldVal) {
+        // Enable click event when everyone is ready
+        if (newVal == true) {
           const that = this
           that.map.addListener('click', function(e) {
             // Clear the previous marker when clicking the map
@@ -162,7 +146,37 @@
           scrollwheel: false,
           fullscreenControl: false,
           mapTypeControl: false,
-          streetViewControl: false,
+          streetViewControl: false,        
+      })
+
+      const that = this
+      this.room = firebase.database().ref(this.roomName)
+      this.room.on('value', function(snapshot) {
+        // Check if the room is already removed
+        if (snapshot.hasChild('Active')) {
+
+          // Allow players to move on to the next round when every players guess locations
+          if (snapshot.child('guesses').numChildren() == snapshot.child('size').val()) {
+
+            // Put markers and draw polylines on the map
+
+            // Remove guess node every time the round is done
+            that.room.child('guesses').remove()
+
+            if (that.round >= 5) {
+              // Show summary button
+
+            } else {
+              // Show next button
+              that.isNextButtonVisible = true
+            }
+          }
+
+          // Allow other players to move on to the next round when the next street view is set
+          if (snapshot.child('street_views').numChildren() == that.round + 1) {
+            that.isNextStreetViewReady = true
+          }
+        }
       })
     },
   }
@@ -216,5 +230,5 @@
       height: 200px; 
       width: 300px;
     }
-  }
+  }  
 </style>
