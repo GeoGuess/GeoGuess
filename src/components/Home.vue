@@ -21,9 +21,7 @@
             @click="$router.push('street-view')">Single Player</button>        
         </div>
         <div>
-          <button 
-            class="button" 
-            id="with-friends-button">With Friends</button>        
+          <DialogRoom />     
         </div>
       </div>
     </div>
@@ -39,9 +37,7 @@
           @click="$router.push('street-view')">Single Player</button>
       </v-col>
       <v-col>
-        <button 
-          class="button" 
-          id="with-friends-button">With Friends</button>
+        <DialogRoom />
       </v-col>
     </v-row>
 
@@ -91,8 +87,12 @@
   import firebase from 'firebase/app'
   import 'firebase/database'
 
-  export default {
+  import DialogRoom from '@/components/DialogRoom'
 
+  export default {
+    components: {
+      DialogRoom,
+    }
   }
 </script>
 
@@ -139,10 +139,6 @@
 
   #single-player-button {
     background-color: #F44336;
-  }
-
-  #with-friends-button {
-    background-color: #00E676;
   }
 
   @media (max-width: 450px) {
