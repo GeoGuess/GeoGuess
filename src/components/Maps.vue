@@ -7,7 +7,7 @@
     </div>
     <button
       id="guess-button"
-      :disabled="randomLatLng == null || isClicked == true"
+      :disabled="selectedLatLng == null || isClicked == true"
       v-if="isClicked == false"
       @click="selectLocation"
       >GUESS
@@ -21,7 +21,7 @@
     <button
       id="summary-button"
       v-if="isClicked == true && round >= 5"
-      @click="viewSummary"
+      @click="dialogSummary = true"
       >VIEW SUMMARY
     </button>
     <DialogSummary 
@@ -57,7 +57,7 @@
     methods: {
       selectLocation() {
         // Show the polyline
-        this.showPolyline()
+        this.drawPolyline()
 
         // Put the marker on the random location
         this.putMarker(this.randomLatLng)
@@ -86,7 +86,7 @@
           this.markers[i].setMap(null)
         }        
       },
-      showPolyline() {
+      drawPolyline() {
         this.polyline = new google.maps.Polyline({
           path: [this.selectedLatLng, this.randomLatLng],
           strokeColor: '#FF0000',  
@@ -107,10 +107,6 @@
 
         // Replace the streetview with new one
         this.$emit('goToNextRound')
-      },
-      viewSummary() {
-        // Show dialog
-        this.dialogSummary = true
       },
       playAgain() {
         // Reset

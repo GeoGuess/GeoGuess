@@ -1,9 +1,14 @@
 <template>
   <div id="game-page">
+    <HeaderGame
+      :distance="distance"
+      :score="score"
+      :round="round" />
     <div id="street-view-container">
       <div id="street-view">
       </div>
       <MapsWithFriends
+        :randomLatLng="randomLatLng"
         :roomName="roomName"
         :playerNumber="playerNumber"
         :isReady="isReady"
@@ -19,6 +24,7 @@
   import firebase from 'firebase/app'
   import 'firebase/database'
 
+  import HeaderGame from '@/components/HeaderGame'
   import MapsWithFriends from '@/components/MapsWithFriends'
 
   export default {
@@ -27,6 +33,7 @@
       'playerNumber',
     ],
     components: {
+      HeaderGame,
       MapsWithFriends,
     },
     data() {
@@ -113,14 +120,19 @@
       goToNextRound() {
         this.selectedLatLng = null
         this.randomLatLng = null
-
+        this.isReady = false  // Turn off the flag so the click event can be added in the next round
         this.round += 1
 
         if (this.playerNumber == 1) {
           this.loadStreetView()
         } else {
-          /** Issue: Other players are supposed to load the street views here
-          but can't get a value in the firebase unless setting a listener */
+          const that = this
+          this.room.child('street_views/round' + this.round).on('value', function(snapshot) {
+            that.randomLat = snapshot.child('latitude').val()
+            that.randomLng = snapshot.child('longitude').val()
+
+            that.loadDecidedStreetView()
+          })
         }
 
       },

@@ -7,8 +7,8 @@
     </div>
     <button
       id="guess-button"
-      :disabled="isClicked == true || isReady == false"
-      v-if="isNextButtonVisible == false"
+      :disabled="selectedLatLng == null ||isClicked == true || isReady == false"
+      v-if="isNextButtonVisible == false && isSummaryButtonVisible == false"
       @click="selectLocation"
       >GUESS
     </button>
@@ -19,28 +19,41 @@
       @click="goToNextRound"
       >NEXT ROUND
     </button>
+    <button
+      id="summary-button"
+      v-if="isSummaryButtonVisible == true"
+      @click="dialogSummary = true"
+      >VIEW SUMMARY
+    </button>
+    <DialogSummaryWithFriends
+      :dialogSummary="dialogSummary"
+      :summaryTexts="summaryTexts" />
   </div>
 </template>
 
 <script>
-  /** To do:
-  * Put markers and draw polylines
-  * Show the summary
-  */
   import firebase from 'firebase/app'
   import 'firebase/database'
 
+  import DialogSummaryWithFriends from '@/components/DialogSummaryWithFriends'
+
   export default {
     props: [
+      'randomLatLng',
       'roomName',
       'playerNumber',
       'isReady',
       'round',
       'score',
     ],
+    components: {
+      DialogSummaryWithFriends,
+    },
     data() {
       return {
         markers: [],
+        polylines: [],
+        summaryTexts: [],
         map: null,
         room: null,
         selectedLatLng: null,
@@ -48,6 +61,8 @@
         isSelected: false,
         isNextStreetViewReady: false,
         isNextButtonVisible: false,
+        isSummaryButtonVisible: false,
+        dialogSummary: false,
       }
     },
     computed: {
@@ -96,13 +111,29 @@
           this.markers[i].setMap(null)
         }        
       },
+      drawPolyline(selectedLatLng) {
+        var polyline = new google.maps.Polyline({
+          path: [selectedLatLng, this.randomLatLng],
+          strokeColor: '#FF0000',
+        })
+        polyline.setMap(this.map)
+        this.polylines.push(polyline)
+      },
+      removePolylines() {
+        for (var i = 0; i < this.polylines.length; i++) {
+          this.polylines[i].setMap(null)
+        }
+      },
       goToNextRound() {
         // Reset
         this.selectedLatLng = null
         this.isClicked = false
         this.isSelected = false
+        this.isNextStreetViewReady = false
+        this.isNextButtonVisible = false
 
         this.removeMarkers()
+        this.removePolylines()
 
         this.mouseOutMap()
 
@@ -159,12 +190,31 @@
           if (snapshot.child('guesses').numChildren() == snapshot.child('size').val()) {
 
             // Put markers and draw polylines on the map
+            snapshot.child('guesses').forEach(function(childSnapshot) {
+              var lat = childSnapshot.child('latitude').val()
+              var lng = childSnapshot.child('longitude').val()
+              var latLng = new google.maps.LatLng({lat: lat, lng: lng});
+
+              that.drawPolyline(latLng)
+              that.putMarker(latLng)
+            })
+            that.putMarker(that.randomLatLng)
 
             // Remove guess node every time the round is done
             that.room.child('guesses').remove()
 
             if (that.round >= 5) {
               // Show summary button
+              snapshot.child('final_score').forEach(function(childSnapshot) {
+                var playerName = snapshot.child('player_name').child(childSnapshot.key).val()
+                var finalScore = childSnapshot.val()
+                that.summaryTexts.push({
+                  playerName: playerName,
+                  finalScore: finalScore,
+                })
+              })
+
+              that.isSummaryButtonVisible = true
 
             } else {
               // Show next button
