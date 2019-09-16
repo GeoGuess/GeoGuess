@@ -40,46 +40,6 @@
         <DialogRoom />
       </v-col>
     </v-row>
-
-    <v-footer
-      id="footer"
-      height="200"
-      padless
-      fixed
-      color="transparent">
-      <v-row>
-        <div class="flex-grow-1"></div>
-        <v-btn 
-          icon
-          class="share-button">
-          <v-icon 
-            :size="$viewport.width > 450 ? 90 : 60" 
-            color="white">mdi-facebook-box</v-icon>
-        </v-btn>
-        <v-btn 
-          icon
-          class="share-button">
-          <v-icon 
-            :size="$viewport.width > 450 ? 90 : 60" 
-            color="white">mdi-twitter-box</v-icon>
-        </v-btn>
-        <v-btn 
-          icon
-          class="share-button">
-          <v-icon 
-            :size="$viewport.width > 450 ? 90 : 60" 
-            color="white">mdi-instagram</v-icon>
-        </v-btn>
-        <v-btn 
-          icon
-          class="share-button">
-          <v-icon 
-            :size="$viewport.width > 450 ? 90 : 60" 
-            color="white">mdi-discord</v-icon>
-        </v-btn>
-        <div class="flex-grow-1"></div>
-      </v-row>
-    </v-footer>
   </div>
 </template>
 
@@ -131,10 +91,6 @@
     text-align: center;
     padding: 10px 100px;
     width: 400px;
-  }
-
-  .share-button {
-    margin: 0 7%;
   }
 
   #single-player-button {
