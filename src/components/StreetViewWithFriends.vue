@@ -15,8 +15,13 @@
         :round="round"
         :score="score"
         @selectLocation="calcurateDistance"
+        @showResult="showResult"
         @goToNextRound="goToNextRound" />
     </div>
+    <v-overlay 
+      :value="overlay"
+      opacity="0.8" 
+      z-index="2"/>
   </div>
 </template>
 
@@ -44,6 +49,7 @@
         distance: null,
         score: 0,
         round: 1,
+        overlay: false,
         room: null,
         isReady: false,
       }
@@ -117,10 +123,18 @@
         // Update the score stored into firebase
         this.room.child('final_score/Player' + this.playerNumber).set(this.score)
       },
+      showResult() {
+        // Every players guessed locations and show the result
+        this.overlay = true
+      },
       goToNextRound() {
+        // Reset
         this.selectedLatLng = null
         this.randomLatLng = null
+        this.overlay = false
         this.isReady = false  // Turn off the flag so the click event can be added in the next round
+
+        // Update the round
         this.round += 1
 
         if (this.playerNumber == 1) {

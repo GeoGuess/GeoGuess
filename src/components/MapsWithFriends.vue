@@ -54,6 +54,13 @@
         markers: [],
         polylines: [],
         summaryTexts: [],
+        strokeColors: [
+          '#F44336',
+          '#76FF03',
+          '#FFEB3B',
+          '#FF4081',
+          '#18FFFF',
+        ],
         map: null,
         room: null,
         selectedLatLng: null,
@@ -111,10 +118,10 @@
           this.markers[i].setMap(null)
         }        
       },
-      drawPolyline(selectedLatLng) {
+      drawPolyline(selectedLatLng, i) {
         var polyline = new google.maps.Polyline({
           path: [selectedLatLng, this.randomLatLng],
-          strokeColor: '#FF0000',
+          strokeColor: this.strokeColors[i],
         })
         polyline.setMap(this.map)
         this.polylines.push(polyline)
@@ -188,15 +195,18 @@
 
           // Allow players to move on to the next round when every players guess locations
           if (snapshot.child('guesses').numChildren() == snapshot.child('size').val()) {
+            that.$emit('showResult')
 
             // Put markers and draw polylines on the map
+            var i = 0
             snapshot.child('guesses').forEach(function(childSnapshot) {
               var lat = childSnapshot.child('latitude').val()
               var lng = childSnapshot.child('longitude').val()
               var latLng = new google.maps.LatLng({lat: lat, lng: lng});
 
-              that.drawPolyline(latLng)
+              that.drawPolyline(latLng, i)
               that.putMarker(latLng)
+              i++
             })
             that.putMarker(that.randomLatLng)
 

@@ -89,11 +89,11 @@
         this.randomLatLng = null
         this.overlay = false
 
-        // Replace streetview with new one
-        this.loadStreetView()
-
         // Update the round
         this.round += 1
+
+        // Replace streetview with new one
+        this.loadStreetView()
       },
       playAgain() {
         // Reset
