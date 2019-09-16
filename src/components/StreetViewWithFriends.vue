@@ -115,9 +115,7 @@
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
         this.score += this.distance
 
-        /* Issue: Mobile app executes the part that refers to the distance in the firebase faster than
-        the web app executes the part that stores the distance into firebase
-        so the distance always shows 0 */
+        // Save the distance into firebase
         this.room.child('round' + this.round + '/Player' + this.playerNumber).set(this.distance)
 
         // Update the score stored into firebase

@@ -87,6 +87,8 @@
     },
     methods: {
       selectLocation() {
+        this.$emit('selectLocation', this.selectedLatLng)
+
         // Save the selected location into database
         // So that it uses for putting the markers and polylines
         this.room.child('guesses/Player' + this.playerNumber).set({
@@ -103,8 +105,6 @@
 
         // Focus on the map
         this.mouseOverMap()
-
-        this.$emit('selectLocation', this.selectedLatLng)
       },
       putMarker(position) {
         var marker = new google.maps.Marker({
