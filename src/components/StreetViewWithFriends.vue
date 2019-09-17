@@ -158,9 +158,10 @@
       exitGame() {
         // Disable the listener and force the players to exit the game
         this.dialogTitle = 'Redirect to Home Page...'
-        this.dialogText = 'One of the other players exit the game. Redirect to home page after 5 seconds...'
+        this.dialogText = "You are forced to exit the game. Redirect to home page after 5 seconds..."
         this.dialogMessage = true
         this.room.off()
+        this.room.remove()
         const that = this
         setTimeout(function() {
           that.$router.push({ name: 'home' })
@@ -173,6 +174,11 @@
       }
 
       const that = this
+
+      // Set a room name if it's null to detect when the user refresh the page
+      if (this.roomName == null) {
+        this.roomName = 'thisIsFakeName'
+      }
       this.room = firebase.database().ref(this.roomName)
       this.room.child('Active').set(true)
       this.room.on('value', function(snapshot) {
@@ -206,6 +212,20 @@
           that.exitGame()
         }
       })
+
+      window.addEventListener('popstate', function(event) {
+        // Remove the room when the player pressed the back button on browser
+        that.room.child('Active').remove()
+      })
+
+      window.addEventListener('beforeunload', function(event) {
+        that.room.child('Active').remove()
+      })
+
+      // Force to exit the game if it's still the name that is set programmatically
+      if (this.roomName == 'thisIsFakeName') {
+        that.room.child('Active').remove()
+      }
     }
   }
 </script>
