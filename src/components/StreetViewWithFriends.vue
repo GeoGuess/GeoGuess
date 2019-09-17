@@ -1,7 +1,7 @@
 <template>
   <div id="game-page">
     <HeaderGame
-      :score="score"
+      :score="scoreHeader"
       :round="round" />
     <div id="street-view-container">
       <div id="street-view">
@@ -21,15 +21,21 @@
       :value="overlay"
       opacity="0.8" 
       z-index="2"/>
+    <DialogMessage 
+      :dialogMessage="dialogMessage"
+      :dialogTitle="dialogTitle"
+      :dialogText="dialogText" />
   </div>
 </template>
 
 <script>
+  // Force to exit the game when one of the other player exit the game
   import firebase from 'firebase/app'
   import 'firebase/database'
 
   import HeaderGame from '@/components/HeaderGame'
   import MapsWithFriends from '@/components/MapsWithFriends'
+  import DialogMessage from '@/components/DialogMessage'
 
   export default {
     props: [
@@ -39,6 +45,7 @@
     components: {
       HeaderGame,
       MapsWithFriends,
+      DialogMessage,
     },
     data() {
       return {
@@ -46,10 +53,14 @@
         randomLat: null,
         randomLng: null,
         score: 0,
+        scoreHeader: 0,
         round: 1,
         overlay: false,
         room: null,
         isReady: false,
+        dialogMessage: false,
+        dialogTitle: '',
+        dialogText: '',
       }
     },
     methods: {
@@ -109,13 +120,17 @@
         }
       },
       updateScore(distance) {
+        // Update the score and save it into firebase
         this.score += distance
-
-        // Update the score stored into firebase
         this.room.child('final_score/Player' + this.playerNumber).set(this.score)
+
+        // Wait for other players to guess locations
+        this.dialogTitle = 'Waiting for other players...'
+        this.dialogMessage = true
       },
       showResult() {
-        // Enable overlay when every players guess locations
+        this.scoreHeader = this.score  // Update the score on header after every players guess locations
+        this.dialogMessage = false
         this.overlay = true
       },
       goToNextRound() {
@@ -141,7 +156,15 @@
 
       },
       exitGame() {
-        // Force the players to exit the game
+        // Disable the listener and force the players to exit the game
+        this.dialogTitle = 'Redirect to Home Page...'
+        this.dialogText = 'One of the other players exit the game. Redirect to home page after 5 seconds...'
+        this.dialogMessage = true
+        this.room.off()
+        const that = this
+        setTimeout(function() {
+          that.$router.push({ name: 'home' })
+        }, 5000)
       },
     },
     mounted() {
