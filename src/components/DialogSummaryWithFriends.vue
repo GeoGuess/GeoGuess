@@ -39,7 +39,23 @@
     props: [
       'dialogSummary',
       'summaryTexts',
+      'score',
     ],
+    methods: {
+      updateRecord() {
+        var currentRecord = localStorage.getItem('record')
+        if (currentRecord == null || this.score < currentRecord) {
+          localStorage.setItem('record', this.score)
+        }
+      },
+    },
+    watch: {
+      dialogSummary: function(newVal, oldVal) {
+        if (newVal == true) {
+          this.updateRecord()
+        }
+      }      
+    }
   } 
 </script>
 

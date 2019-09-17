@@ -27,7 +27,8 @@
     </button>
     <DialogSummaryWithFriends
       :dialogSummary="dialogSummary"
-      :summaryTexts="summaryTexts" />
+      :summaryTexts="summaryTexts"
+      :score="score" />
   </div>
 </template>
 

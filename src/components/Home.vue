@@ -11,35 +11,107 @@
           id="title" 
           src="../assets/title.png">
       </div>
-      <div 
-        v-if="$viewport.width < 450" 
-        id="button-container">
-        <div>
+      <div id="record-container">
+        <span id="record-text">
+          Record: <strong>{{ record }}</strong> km
+        </span>
+      </div>
+      <v-row 
+        id="button-container"
+        v-if="$viewport.width < 450">
+        <v-col cols="12">
           <button 
             class="button" 
             id="single-player-button"
-            @click="$router.push('street-view')">Single Player</button>        
-        </div>
-        <div>
-          <DialogRoom />     
-        </div>
-      </div>
+            @click="$router.push('street-view')">Single Player</button>
+        </v-col>
+        <v-col cols="12">
+            <DialogRoom />
+        </v-col>
+      </v-row>
     </div>
 
     <v-row  
       v-if="$viewport.width > 450" 
       id="button-container"
       align="center">
-      <v-col>
+      <v-col class="button-col">
         <button 
           class="button" 
           id="single-player-button" 
           @click="$router.push('street-view')">Single Player</button>
       </v-col>
-      <v-col>
+      <v-col class="button-col">
         <DialogRoom />
       </v-col>
     </v-row>
+
+    <v-footer
+      id="footer"
+      color="transparent">
+      <v-card
+        flat
+        tile
+        width="100%"
+        color="transparent">
+        <v-card-text class="text-center white--text">
+          <h1>ABOUT</h1>
+        </v-card-text>
+        <v-card-text class="white--text pt-0">
+          <v-container>
+            <span class="footer-text">
+              Free geoguess game. You can play multiplayer game with your friends. There is Android version as well.
+            </span>
+          </v-container>
+        </v-card-text>
+        <v-card-text>
+          <v-container>
+            <a href="http://bit.ly/geoguess_master">
+              <img src="../assets/google-play-badge.png" width="180">
+            </a>
+          </v-container>
+        </v-card-text>
+        <v-card-text class="text-center white--text">
+          <h1>LIMITATION</h1>
+        </v-card-text>
+        <v-card-text class="white--text pt-0">
+          <v-container>
+            <span class="footer-text">
+              Currently I set a quota per day so the cost can't be too expensive. If the map doesn't load suddenly, it means the quota has been exceeded on the day. It will reset at midnight Pacific Time.
+            </span>
+          </v-container>
+        </v-card-text>
+        <v-card-text class="text-center white--text">
+          <h1>CONTACT</h1>
+        </v-card-text>
+        <v-card-text class="white--text pt-0">
+          <v-container>
+            <span class="footer-text">
+              Feel free to give me a feedback. I would appreciate a bug report. Also I'm looking for sponsors to maintain this game and make this game unlimited.
+            </span>
+          </v-container>
+        </v-card-text>
+        <v-card-text class="text-center white--text pt-0">
+          <v-container>
+            <a 
+              href="mailto:creative.spider.hand@gmail.com" 
+              class="footer-text">
+              creative.spider.hand@gmail.com
+            </a>
+            <p class="footer-text">or</p>
+            <v-btn
+              color="white"
+              href="https://discord.gg/fPpUzgJ"
+              icon>
+              <v-icon size="48">mdi-discord</v-icon>
+            </v-btn>
+          </v-container>
+        </v-card-text>
+        <v-card-text class="text-right white--text">
+          © {{ new Date().getFullYear() }} <strong>Geoguess Master</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </div>
 </template>
 
@@ -52,6 +124,11 @@
   export default {
     components: {
       DialogRoom,
+    },
+    data() {
+      return {
+        record: localStorage.getItem('record')
+      }
     }
   }
 </script>
@@ -65,10 +142,6 @@
     background-image: linear-gradient(#1A237E, #000000)
   }
 
-  .align-center {
-    text-align: center; 
-  }
-
   #icon {
     height: 80px;
   }
@@ -77,8 +150,25 @@
     height: 80px;
   }
 
+  .align-center {
+    text-align: center; 
+  }
+
+  #record-container {
+    padding-top: 30px;
+  }
+
+  #record-text {
+    font-size: 36px;
+    color: white;
+  }
+
   #button-container {
-    padding: 9% 10% 0 10%;
+    padding: 5% 10% 0 10%;
+  }
+
+  .button-col {
+    padding: 20px 0;
   }
 
   .button {
@@ -97,6 +187,14 @@
     background-color: #F44336;
   }
 
+  #footer {
+    padding-top: 250px;
+  }
+
+  .footer-text {
+    font-size: 22px;
+  }
+
   @media (max-width: 450px) {
     #icon {
       height: 65px;
@@ -106,8 +204,16 @@
       height: 50px;
     }
 
+    #record-container {
+      padding-top: 20px;
+    }
+
+    #record-text {
+      font-size: 24px;
+    }
+
     #button-container {
-      padding-top: 25%;
+      padding: 18% 5% 0 5%;
     }
 
     .button {
@@ -120,6 +226,14 @@
       padding: 2% 15%;
       margin: 5% 0;
       width: 80%;      
+    }
+
+    #footer {
+      padding-top: 100px;
+    }
+
+    .footer-text {
+      font-size: 18px;
     }
   }
 </style>
