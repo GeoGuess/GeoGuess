@@ -11,9 +11,9 @@
           id="with-friends-button"
           v-on="on">With Friends</button>
       </template>
-      <v-card>
+      <v-card color="#FFF9C4">
         <v-card-title>
-          <span>{{ cardTitle }}</span>
+          <span id="card-title">{{ cardTitle }}</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -251,6 +251,10 @@
         })
       },
       cancel() {
+        // Reset
+        this.cardTitle = 'Type a room name'
+        this.roomName = ''
+
         // Remove the room
         this.dialogRoom = false
         if (this.room != null) {
@@ -282,6 +286,10 @@
 
   #with-friends-button {
     background-color: #00E676;
+  }
+
+  #card-title {
+    color: #424242;
   }
 
   @media (max-width: 450px) {

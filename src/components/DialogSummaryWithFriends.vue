@@ -2,8 +2,10 @@
   <div>
     <v-dialog
       v-model="dialogSummary"
-      fullscreen>
-      <v-card id="dialog-summary-card">
+      max-width="80%"
+      persistent
+      :fullscreen="$viewport.width < 450">
+      <v-card color="#FFF9C4">
         <v-card-text id="card-text">
           <v-row
             class="summary-text-container" 
@@ -58,10 +60,6 @@
     text-align: center;
   }
 
-  #dialog-summary-card {
-    background-image: linear-gradient(#FFF59D, #FFD600);
-  }
-
   #card-text {
     padding: 180px 10% 100px 10%;
   }
@@ -71,7 +69,7 @@
   }
 
   #summary-text {
-    font-size: 50px;
+    font-size: 36px;
     color: #1A237E;
   }
 

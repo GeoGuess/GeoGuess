@@ -49,6 +49,7 @@
         map: null,
         polyline: null,
         selectedLatLng: null,
+        distance: null,
         isClicked: false,
         isSelected: false,
         dialogSummary: false,
@@ -56,11 +57,17 @@
     },
     methods: {
       selectLocation() {
+        // Calculate the distance
+        this.calculateDistance()
+
         // Show the polyline
         this.drawPolyline()
 
         // Put the marker on the random location
         this.putMarker(this.randomLatLng)
+
+        // Set info window
+        this.setInfoWindow()
 
         // Clear the event
         google.maps.event.clearListeners(this.map, 'click')
@@ -71,8 +78,6 @@
 
         // Focus on the map
         this.mouseOverMap()
-
-        this.$emit('selectLocation', this.selectedLatLng)
       },
       putMarker(position) {
         var marker = new google.maps.Marker({
@@ -84,7 +89,18 @@
       removeMarkers() {
         for (var i = 0; i < this.markers.length; i++) {
           this.markers[i].setMap(null)
-        }        
+        }
+        this.markers = []
+      },
+      calculateDistance() {
+        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
+        this.$emit('calculateDistance', this.distance)
+      },
+      setInfoWindow() {
+        var infoWindow = new google.maps.InfoWindow({
+          content: '<b>' + this.distance + '</b> km away!'
+        })
+        infoWindow.open(this.map, this.markers[0])        
       },
       drawPolyline() {
         this.polyline = new google.maps.Polyline({

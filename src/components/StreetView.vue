@@ -1,7 +1,6 @@
 <template>
   <div id="game-page">
     <HeaderGame 
-      :distance="distance"
       :score="score"
       :round="round" />
     <div id="street-view-container">
@@ -11,7 +10,7 @@
         :randomLatLng="randomLatLng"
         :round="round"
         :score="score"
-        @selectLocation="calcurateDistance"
+        @calculateDistance="updateScore"
         @goToNextRound="goToNextRound"
         @playAgain="playAgain" />
     </div>
@@ -34,8 +33,6 @@
     data() {
       return {
         randomLatLng: null,
-        selectedLatLng: null,
-        distance: null,
         score: 0,
         round: 1,
         overlay: false,
@@ -77,15 +74,12 @@
           this.loadStreetView()
         }
       },
-      calcurateDistance(selectedLatLng) {
-        this.selectedLatLng = selectedLatLng
-        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
-        this.score += this.distance
+      updateScore(distance) {
+        this.score += distance
         this.overlay = true
       },
       goToNextRound() {
         // Reset
-        this.selectedLatLng = null
         this.randomLatLng = null
         this.overlay = false
 
@@ -97,7 +91,6 @@
       },
       playAgain() {
         // Reset
-        this.selectedLatLng = null
         this.randomLatLng = null
         this.distance = null
         this.score = 0

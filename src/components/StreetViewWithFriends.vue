@@ -1,7 +1,6 @@
 <template>
   <div id="game-page">
     <HeaderGame
-      :distance="distance"
       :score="score"
       :round="round" />
     <div id="street-view-container">
@@ -14,7 +13,7 @@
         :isReady="isReady"
         :round="round"
         :score="score"
-        @selectLocation="calcurateDistance"
+        @calculateDistance="updateScore"
         @showResult="showResult"
         @goToNextRound="goToNextRound" />
     </div>
@@ -46,7 +45,6 @@
         randomLatLng: null,
         randomLat: null,
         randomLng: null,
-        distance: null,
         score: 0,
         round: 1,
         overlay: false,
@@ -110,24 +108,18 @@
           this.loadStreetView()
         }
       },
-      calcurateDistance(selectedLatLng) {
-        this.selectedLatLng = selectedLatLng
-        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
-        this.score += this.distance
-
-        // Save the distance into firebase
-        this.room.child('round' + this.round + '/Player' + this.playerNumber).set(this.distance)
+      updateScore(distance) {
+        this.score += distance
 
         // Update the score stored into firebase
         this.room.child('final_score/Player' + this.playerNumber).set(this.score)
       },
       showResult() {
-        // Every players guessed locations and show the result
+        // Enable overlay when every players guess locations
         this.overlay = true
       },
       goToNextRound() {
         // Reset
-        this.selectedLatLng = null
         this.randomLatLng = null
         this.overlay = false
         this.isReady = false  // Turn off the flag so the click event can be added in the next round

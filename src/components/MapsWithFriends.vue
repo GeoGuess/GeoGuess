@@ -64,6 +64,7 @@
         map: null,
         room: null,
         selectedLatLng: null,
+        distance: null,
         isClicked: false,
         isSelected: false,
         isNextStreetViewReady: false,
@@ -87,7 +88,7 @@
     },
     methods: {
       selectLocation() {
-        this.$emit('selectLocation', this.selectedLatLng)
+        this.calculateDistance()
 
         // Save the selected location into database
         // So that it uses for putting the markers and polylines
@@ -116,7 +117,22 @@
       removeMarkers() {
         for (var i = 0; i < this.markers.length; i++) {
           this.markers[i].setMap(null)
-        }        
+        }
+        this.markers = []
+      },
+      calculateDistance() {
+        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
+
+        // Save the distance into firebase
+        this.room.child('round' + this.round + '/Player' + this.playerNumber).set(this.distance)
+
+        this.$emit('calculateDistance', this.distance)
+      },
+      setInfoWindow(playerName, distance) {
+        var infoWindow = new google.maps.InfoWindow({
+          content: '<b>' + playerName + '</b>' + ' is <b>' + distance + '</b> km away!'
+        })
+        infoWindow.open(this.map, this.markers[this.markers.length - 1])
       },
       drawPolyline(selectedLatLng, i) {
         var polyline = new google.maps.Polyline({
@@ -199,14 +215,20 @@
 
             // Put markers and draw polylines on the map
             var i = 0
+            var j = 1
             snapshot.child('guesses').forEach(function(childSnapshot) {
               var lat = childSnapshot.child('latitude').val()
               var lng = childSnapshot.child('longitude').val()
               var latLng = new google.maps.LatLng({lat: lat, lng: lng});
 
+              var playerName = snapshot.child('player_name').child(childSnapshot.key).val()
+              var distance = snapshot.child('round' + that.round + '/Player' + j).val()
+
               that.drawPolyline(latLng, i)
               that.putMarker(latLng)
+              that.setInfoWindow(playerName, distance)
               i++
+              j++
             })
             that.putMarker(that.randomLatLng)
 

@@ -23,7 +23,6 @@
 <script>
   export default {
     props: [
-      'distance',
       'score',
       'round',
     ],

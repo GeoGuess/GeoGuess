@@ -1,9 +1,11 @@
 <template>
   <div>
-    <v-dialog
-      v-model="dialogSummary"
-      fullscreen>
-      <v-card id="dialog-summary-card">
+    <v-dialog 
+      v-model="dialogSummary" 
+      max-width="80%" 
+      persistent
+      :fullscreen="$viewport.width < 450">
+      <v-card color="#FFF9C4">
         <v-card-text id="card-text">
           <v-row>
             <v-col>
@@ -13,7 +15,12 @@
             </v-col>
           </v-row>
           <v-row id="button-container">
-            <v-col>
+            <v-col 
+              cols="12" 
+              sm="12" 
+              md="12" 
+              lg="6" 
+              xl="6">
               <div class="align-center">
                 <button 
                   class="button" 
@@ -21,7 +28,12 @@
                   @click="$router.push('/')">EXIT</button>
               </div>
             </v-col>
-            <v-col>
+            <v-col 
+              cols="12" 
+              sm="12" 
+              md="12" 
+              lg="6" 
+              xl="6">
               <div class="align-center">
                 <button 
                   class="button" 
@@ -67,16 +79,12 @@
     text-align: center;
   }
 
-  #dialog-summary-card {
-    background-image: linear-gradient(#FFF59D, #FFD600);
-  }
-
   #card-text {
     padding: 180px 10% 100px 10%;
   }
 
   #summary-text {
-    font-size: 50px;
+    font-size: 36px;
     color: #1A237E;
   }
 
