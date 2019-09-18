@@ -22,6 +22,7 @@
                 cols="12"
                 v-if="cardTitle == 'Type a room name'">
                 <v-text-field 
+                  maxlength="10"
                   autofocus
                   :error-messages="errorMessage"
                   v-model="roomName"></v-text-field>
@@ -43,7 +44,9 @@
               <v-col 
                 cols="12"
                 v-if="cardTitle == 'Type a player name'">
-                <v-text-field v-model="playerName"></v-text-field>
+                <v-text-field 
+                  maxlength="10"
+                  v-model="playerName"></v-text-field>
               </v-col>
             </v-row>
           </v-container>

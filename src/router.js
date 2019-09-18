@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import StreetView from '@/components/StreetView'
 import StreetViewWithFriends from '@/components/StreetViewWithFriends'
+import PrivacyPolicy from '@/components/PrivacyPolicy'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router ({
       name: 'with-friends',
       component: StreetViewWithFriends,
       props: true,
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy-policy',
+      component: PrivacyPolicy,
     },
   ],
 })

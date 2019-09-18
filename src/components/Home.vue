@@ -77,7 +77,7 @@
         <v-card-text class="white--text pt-0">
           <v-container>
             <span class="footer-text">
-              Currently I set a quota per day so the cost can't be too expensive. If the map doesn't load suddenly, it means the quota has been exceeded on the day. It will reset at midnight Pacific Time.
+              Currently I set quotas per day so the cost to run this game can't be too expensive. If the map doesn't load suddenly, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time.
             </span>
           </v-container>
         </v-card-text>
@@ -107,8 +107,17 @@
             </v-btn>
           </v-container>
         </v-card-text>
-        <v-card-text class="text-right white--text">
-          © {{ new Date().getFullYear() }} <strong>Geoguess Master</strong>
+        <v-card-text class="text-center white--text">
+          <h1>SPONSORS</h1>
+        </v-card-text>
+        <v-card-text class="text-center white--text">
+          <span class="footer-text">Become a sponsor! Please contact me!</span>
+        </v-card-text>
+        <v-card-text class="text-right white--text pb-0">
+          <router-link to="/privacy-policy">Privacy Policy</router-link>
+        </v-card-text>
+        <v-card-text class="text-right white--text pt-0 pb-0">
+          <span>© {{ new Date().getFullYear() }} <strong>Spider Hand</strong></span>
         </v-card-text>
       </v-card>
     </v-footer>
