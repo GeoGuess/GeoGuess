@@ -43,6 +43,21 @@
             </v-col>
           </v-row>
         </v-card-text>
+        <v-card-text class="text-right">
+          <v-btn
+            target="_blank"
+            :href="'http://www.facebook.com/sharer.php?u=https://geoguess-master.netlify.com/&amp;t=I am ' + score + ' km away! How close can you guess?'" 
+            rel="nofollow"
+            icon>
+            <v-icon size="36">mdi-facebook-box</v-icon>
+          </v-btn>
+          <v-btn
+            target="_blank"
+            :href="'http://twitter.com/share?url=https://geoguess-master.netlify.com/&amp;text=I am ' + score +' km away! How close can you guess?'" 
+            icon>
+            <v-icon size="36">mdi-twitter-box</v-icon>
+          </v-btn>
+        </v-card-text>
       </v-card>
     </v-dialog>
   </div>
