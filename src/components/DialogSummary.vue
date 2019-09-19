@@ -108,7 +108,7 @@
   }
 
   #card-text {
-    padding: 180px 10% 100px 10%;
+    padding: 100px 10% 100px 10%;
   }
 
   #summary-text {

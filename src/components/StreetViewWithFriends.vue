@@ -102,6 +102,7 @@
             addressControl: false,
             fullscreenControl: false,
             motionTracking: false,
+            motionTrackingControl: false,
             showRoadLabels: false,
           })
           panorama.setPano(data.location.pano)

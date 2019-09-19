@@ -317,5 +317,17 @@
       height: 200px; 
       width: 300px;
     }
-  }  
+  }
+
+  @media (max-width: 450px) {
+    button {
+      bottom: -260px;
+    }
+
+    #map {
+      bottom: -210px;
+      height: 200px; 
+      width: 300px;
+    }
+  } 
 </style>

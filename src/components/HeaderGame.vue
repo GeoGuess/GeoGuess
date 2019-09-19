@@ -50,4 +50,10 @@
   .sub-text {
     color: #616161;
   }
+
+  @media (max-width: 450px) {
+    .main-text, .sub-text {
+      font-size: 14px;
+    }
+  }
 </style>

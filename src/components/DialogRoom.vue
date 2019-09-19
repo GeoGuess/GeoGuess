@@ -35,7 +35,11 @@
                   :items="roomSizeItems"></v-select>
               </v-col>
               <v-col 
-                cols="4"
+                cols="6"
+                sm="4"
+                md="4"
+                lg="4"
+                xl="4"
                 v-if="cardTitle == 'Set a time limitation'">
                 <v-select 
                   v-model="timeLimitation"
@@ -257,6 +261,7 @@
         // Reset
         this.cardTitle = 'Type a room name'
         this.roomName = ''
+        this.errorMessage = ''
 
         // Remove the room
         this.dialogRoom = false
