@@ -61,6 +61,8 @@
           panorama.setOptions({
             addressControl: false,
             fullscreenControl: false,
+            motionTracking: false,
+            showRoadLabels: false,
           })
           panorama.setPano(data.location.pano)
           panorama.setPov({

@@ -24,7 +24,7 @@
                 <button 
                   class="button" 
                   id="exit-button"
-                  @click="$router.push('/')">EXIT</button>
+                  @click="finishGame">EXIT</button>
               </div>
             </v-col>
           </v-row>
@@ -62,6 +62,9 @@
         if (currentRecord == null || this.score < currentRecord) {
           localStorage.setItem('record', this.score)
         }
+      },
+      finishGame() {
+        this.$emit('finishGame')
       },
     },
     watch: {

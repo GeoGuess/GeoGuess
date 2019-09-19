@@ -7,7 +7,7 @@
     </div>
     <button
       id="guess-button"
-      :disabled="selectedLatLng == null ||isClicked == true || isReady == false"
+      :disabled="selectedLatLng == null || isClicked == true || isReady == false"
       v-if="isNextButtonVisible == false && isSummaryButtonVisible == false"
       @click="selectLocation"
       >GUESS
@@ -15,6 +15,7 @@
     <button
       id="next-button"
       :disabled="!isNextButtonEnabled"
+      :style="{ backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C' }"
       v-if="isNextButtonVisible == true"
       @click="goToNextRound"
       >NEXT ROUND
@@ -28,7 +29,8 @@
     <DialogSummaryWithFriends
       :dialogSummary="dialogSummary"
       :summaryTexts="summaryTexts"
-      :score="score" />
+      :score="score"
+      @finishGame="finishGame" />
   </div>
 </template>
 
@@ -105,6 +107,9 @@
         this.isClicked = true
         this.isSelected = true
 
+        // Turn off the flag before the next button appears
+        this.isNextStreetViewReady = false
+
         // Focus on the map
         this.mouseOverMap()
       },
@@ -148,12 +153,24 @@
           this.polylines[i].setMap(null)
         }
       },
+      startNextRound() {
+        const that = this
+        this.map.addListener('click', function(e) {
+          // Clear the previous marker when clicking the map
+          that.removeMarkers()
+
+          // Show the new marker
+          that.putMarker(e.latLng)
+
+          // Save latLng
+          that.selectedLatLng = e.latLng
+        })   
+      },
       goToNextRound() {
         // Reset
         this.selectedLatLng = null
         this.isClicked = false
         this.isSelected = false
-        this.isNextStreetViewReady = false
         this.isNextButtonVisible = false
 
         this.removeMarkers()
@@ -163,6 +180,11 @@
 
         // Replace the streetview with the next one
         this.$emit('goToNextRound')
+      },
+      finishGame() {
+        this.dialogSummary = false
+        this.room.child('is_game_done/Player' + this.playerNumber).set(true)
+        this.$emit('finishGame')
       },
       mouseOverMap() {
         // Focus on map
@@ -175,24 +197,6 @@
           document.getElementById('map').style.opacity = 0.7
         }
       },
-    },
-    watch: {
-      isReady: function(newVal, oldVal) {
-        // Enable click event when everyone is ready
-        if (newVal == true) {
-          const that = this
-          that.map.addListener('click', function(e) {
-            // Clear the previous marker when clicking the map
-            that.removeMarkers()
-
-            // Show the new marker
-            that.putMarker(e.latLng)
-
-            // Save latLng
-            that.selectedLatLng = e.latLng
-          })          
-        }
-      }
     },
     mounted() {
       this.map = new google.maps.Map(document.getElementById('map'), {
@@ -300,7 +304,7 @@
     opacity: 1.0;
   }
 
-  #next-button, #summary-button {
+  #summary-button {
     background-color: #F44336;
   }
 

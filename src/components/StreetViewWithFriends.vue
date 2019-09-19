@@ -7,6 +7,7 @@
       <div id="street-view">
       </div>
       <MapsWithFriends
+        ref="map"
         :randomLatLng="randomLatLng"
         :roomName="roomName"
         :playerNumber="playerNumber"
@@ -15,7 +16,8 @@
         :score="score"
         @calculateDistance="updateScore"
         @showResult="showResult"
-        @goToNextRound="goToNextRound" />
+        @goToNextRound="goToNextRound"
+        @finishGame="finishGame" />
     </div>
     <v-overlay 
       :value="overlay"
@@ -58,8 +60,8 @@
         overlay: false,
         room: null,
         isReady: false,
-        dialogMessage: false,
-        dialogTitle: '',
+        dialogMessage: true,
+        dialogTitle: 'Waiting for other players...',
         dialogText: '',
       }
     },
@@ -99,6 +101,8 @@
           panorama.setOptions({
             addressControl: false,
             fullscreenControl: false,
+            motionTracking: false,
+            showRoadLabels: false,
           })
           panorama.setPano(data.location.pano)
           panorama.setPov({
@@ -138,6 +142,7 @@
         this.randomLatLng = null
         this.overlay = false
         this.isReady = false  // Turn off the flag so the click event can be added in the next round
+        this.dialogMessage = true  // Show the dialog while waiting for other players
 
         // Update the round
         this.round += 1
@@ -145,20 +150,16 @@
         if (this.playerNumber == 1) {
           this.loadStreetView()
         } else {
-          const that = this
-          this.room.child('street_views/round' + this.round).on('value', function(snapshot) {
-            that.randomLat = snapshot.child('latitude').val()
-            that.randomLng = snapshot.child('longitude').val()
-
-            that.loadDecidedStreetView()
-          })
+          // Trigger listener and load the next streetview
+          this.room.child('trigger/Player' + this.playerNumber).set(this.round)
+          this.$refs.map.startNextRound()
         }
 
       },
       exitGame() {
         // Disable the listener and force the players to exit the game
         this.dialogTitle = 'Redirect to Home Page...'
-        this.dialogText = "You are forced to exit the game. Redirect to home page after 5 seconds..."
+        this.dialogText = 'You are forced to exit the game. Redirect to home page after 5 seconds...'
         this.dialogMessage = true
         this.room.off()
         this.room.remove()
@@ -167,6 +168,12 @@
           that.$router.push({ name: 'home' })
         }, 5000)
       },
+      finishGame() {
+        // Open the dialog while waiting for other players to finsih the game
+        this.dialogTitle = 'Waiting for other players to finish the game...'
+        this.dialogText = ''
+        this.dialogMessage = true
+      }
     },
     mounted() {
       if (this.playerNumber == 1) {
@@ -202,9 +209,20 @@
           // Enable guess button when every players are put into the current round's node
           if (snapshot.child('round' + that.round).numChildren() == snapshot.child('size').val()) {
 
+            // Close the dialog when evryone is ready
+            if (that.isReady == false) {
+              that.dialogMessage = false
+            }
+
             that.isReady = true
+            that.$refs.map.startNextRound()
 
             // Countdown timer starts
+          }
+
+          // Delete the room when everyone finished the game
+          if (snapshot.child('is_game_done').numChildren() == snapshot.child('size').val()) {
+            that.room.child('Active').remove()
           }
 
         } else {
@@ -216,9 +234,11 @@
       window.addEventListener('popstate', function(event) {
         // Remove the room when the player pressed the back button on browser
         that.room.child('Active').remove()
+        that.room.off()
       })
 
       window.addEventListener('beforeunload', function(event) {
+        // Remove the room when the player refreshes the window
         that.room.child('Active').remove()
       })
 

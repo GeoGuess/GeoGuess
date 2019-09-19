@@ -60,7 +60,7 @@
         <v-card-text class="white--text pt-0">
           <v-container>
             <span class="footer-text">
-              Free geoguess game. You can play multiplayer game with your friends. There is Android version as well.
+              Free and lazy geoguess game. You can play multiplayer game with your friends. There is Android version as well.
             </span>
           </v-container>
         </v-card-text>
@@ -77,7 +77,7 @@
         <v-card-text class="white--text pt-0">
           <v-container>
             <span class="footer-text">
-              Currently I set quotas per day so the cost to run this game can't be too expensive. If the map doesn't load suddenly, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time.
+              Currently I set quotas per day so the cost to run this game can't get too high. If the map doesn't load, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time. Sorry for inconvenience.
             </span>
           </v-container>
         </v-card-text>
@@ -114,10 +114,10 @@
           <span class="footer-text">Become a sponsor! Please contact me!</span>
         </v-card-text>
         <v-card-text class="text-right white--text pb-0">
-          <router-link to="/privacy-policy">Privacy Policy</router-link>
-        </v-card-text>
-        <v-card-text class="text-right white--text pt-0 pb-0">
           <span>© {{ new Date().getFullYear() }} <strong>Spider Hand</strong></span>
+          <router-link 
+            to="/privacy-policy"
+            id="privacy-policy">Privacy</router-link>
         </v-card-text>
       </v-card>
     </v-footer>
@@ -202,6 +202,10 @@
 
   .footer-text {
     font-size: 22px;
+  }
+
+  #privacy-policy {
+    margin-left: 10px;
   }
 
   @media (max-width: 450px) {
