@@ -1,8 +1,10 @@
 <template>
   <div id="game-page">
     <HeaderGame
+      ref="header"
       :score="scoreHeader"
-      :round="round" />
+      :round="round"
+      :remainingTime="remainingTime" />
     <div id="street-view-container">
       <div id="street-view">
       </div>
@@ -57,6 +59,10 @@
         score: 0,
         scoreHeader: 0,
         round: 1,
+        timeLimitation: 0,
+        remainingTime: 0,
+        hasTimerStarted: false,
+        hasLocationSelected: false,
         overlay: false,
         room: null,
         isReady: false,
@@ -124,8 +130,23 @@
           this.loadStreetView()
         }
       },
+      startTimer() {
+        const that = this
+        if (!this.hasLocationSelected) {
+          if (this.remainingTime > 0) {
+            setTimeout(function() {
+              that.remainingTime -= 1
+              that.startTimer()
+            }, 1000)
+          } else {
+            // Set a random location if the player didn't select a location in time
+            this.$refs.map.selectRandomLocation(this.getRandomLatLng())
+          }
+        }
+      },
       updateScore(distance) {
         // Update the score and save it into firebase
+        this.hasLocationSelected = true
         this.score += distance
         this.room.child('final_score/Player' + this.playerNumber).set(this.score)
 
@@ -144,6 +165,8 @@
         this.overlay = false
         this.isReady = false  // Turn off the flag so the click event can be added in the next round
         this.dialogMessage = true  // Show the dialog while waiting for other players
+        this.hasTimerStarted = false
+        this.hasLocationSelected = false
 
         // Update the round
         this.round += 1
@@ -219,6 +242,15 @@
             that.$refs.map.startNextRound()
 
             // Countdown timer starts
+            that.timeLimitation = snapshot.child('time_limitation').val() * 60
+
+            if (that.timeLimitation != 0) {
+              if (!that.hasTimerStarted) {
+                that.remainingTime = that.timeLimitation
+                that.startTimer()
+                that.hasTimerStarted = true
+              }
+            }
           }
 
           // Delete the room when everyone finished the game

@@ -113,6 +113,13 @@
         // Focus on the map
         this.mouseOverMap()
       },
+      selectRandomLocation(randomLatLng) {
+        // set a random location if the player didn't select in time
+        this.selectedLatLng = randomLatLng
+        this.removeMarkers()
+        this.putMarker(this.selectedLatLng)
+        this.selectLocation()
+      },
       putMarker(position) {
         var marker = new google.maps.Marker({
           position: position,

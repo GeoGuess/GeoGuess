@@ -3,6 +3,12 @@
     <v-app-bar
       class="header-game" 
       color="grey darken-4">
+      <div 
+        id="countdown-timer"
+        v-if="remainingTime != null && remainingTime != 0"
+      >
+        <span id="countdown-text">{{ getCountdownText }}</span>
+      </div>
       <div class="flex-grow-1"></div>
       <div class="round-score-container">
         <span class="sub-text">ROUND: </span>
@@ -25,7 +31,17 @@
     props: [
       'score',
       'round',
+      'remainingTime',
     ],
+    computed: {
+      getCountdownText() {
+        var minutes = Math.floor(this.remainingTime / 60)
+        var seconds = this.remainingTime % 60
+        if (minutes < 10) { minutes = '0' + minutes }
+        if (seconds < 10) { seconds = '0' + seconds }
+        return minutes + ':' + seconds
+      },
+    },
   }
 </script>
 
@@ -43,7 +59,7 @@
     padding: 0 10px 0 40px;
   }
 
-  .main-text {
+  .main-text, #countdown-text {
     color: white;
   }
 
@@ -52,7 +68,7 @@
   }
 
   @media (max-width: 450px) {
-    .main-text, .sub-text {
+    .main-text, .sub-text, #countdown-text {
       font-size: 14px;
     }
   }
