@@ -171,7 +171,6 @@
       this.map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.869260, lng: -122.254811},
           zoom: 1,
-          scrollwheel: false,
           fullscreenControl: false,
           mapTypeControl: false,
           streetViewControl: false,
