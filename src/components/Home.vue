@@ -60,7 +60,8 @@
         <v-card-text class="white--text pt-0">
           <v-container>
             <span class="footer-text">
-              Free and lazy geoguess game. You can play multiplayer game with your friends. There is Android version as well.
+              Free and lazy geoguess game. Players compete how close the player can guess random locations in five rounds. You can share the score with other people via SNS like Facebook or Twitter. 
+              You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room capacity. Other players type the same room name as the first player created and the game will start. There is Android version as well.
             </span>
           </v-container>
         </v-card-text>
@@ -202,6 +203,7 @@
 
   .footer-text {
     font-size: 22px;
+    line-height: 1.7em;
   }
 
   #privacy-policy {
