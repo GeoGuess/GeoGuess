@@ -232,7 +232,7 @@
       mouseOutMap() {
         // Focus on map while the player selected a location
         // Otherwise set the opacity of the map
-        if (this.isSelected == false) {
+        if (this.isSelected == false && this.$viewport.width > 450) {
           document.getElementById('map').style.opacity = 0.7
         }
       },

@@ -159,11 +159,12 @@
         this.polyline.setMap(null)
         this.isGuessButtonClicked = false
         this.isSelected = false
-        this.isMakeGuessButtonClicked = false
         this.dialogSummary = false
 
         if (this.$viewport.width < 450) {
-          document.getElementById('map').style.transform = "translateY(300px)"
+          this.hideMap()
+        } else {
+          this.mouseOutMap()
         }
 
         // Remove markers
@@ -178,7 +179,7 @@
       mouseOutMap() {
         // Focus on map while the player selected a location
         // Otherwise set the opacity of the map
-        if (this.isSelected == false) {
+        if (this.isSelected == false && this.$viewport.width > 450) {
           document.getElementById('map').style.opacity = 0.7
         }
       }
