@@ -286,7 +286,7 @@
 <style scoped>
   #game-page {
     position: relative;
-    height: 85%; 
+    height: 100%; 
     width: 100%; 
     top: 0; 
     left: 0;
@@ -304,5 +304,12 @@
     position: relative;
     min-height: 100%;
     width: 100%;
-  }  
+  } 
+
+  @media (max-width: 450px) {
+    #game-page {
+      position: fixed;
+      height: 92%;
+    }
+  }
 </style>

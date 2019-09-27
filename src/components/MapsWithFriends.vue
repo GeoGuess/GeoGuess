@@ -5,10 +5,27 @@
       @mouseover="mouseOverMap"
       @mouseleave="mouseOutMap">
     </div>
+    <v-btn
+      id="hide-map-button"
+      v-if="$viewport.width < 450 && isGuessButtonClicked == false && isMakeGuessButtonClicked == true"
+      fab
+      x-small
+      color="red"
+      @click="hideMap"
+      >
+      <v-icon color="white">mdi-close</v-icon>
+    </v-btn>
+    <button
+      id="make-guess-button"
+      v-if="$viewport.width < 450 && isGuessButtonClicked == false && isMakeGuessButtonClicked == false"
+      @click="showMap"
+      >
+      MAKE GUESS
+    </button>
     <button
       id="guess-button"
-      :disabled="selectedLatLng == null || isClicked == true || isReady == false"
-      v-if="isNextButtonVisible == false && isSummaryButtonVisible == false"
+      :disabled="selectedLatLng == null || isGuessButtonClicked == true || isReady == false"
+      v-if="isNextButtonVisible == false && isSummaryButtonVisible == false && ($viewport.width > 450 || isMakeGuessButtonClicked == true)"
       @click="selectLocation"
       >GUESS
     </button>
@@ -68,7 +85,8 @@
         room: null,
         selectedLatLng: null,
         distance: null,
-        isClicked: false,
+        isGuessButtonClicked: false,
+        isMakeGuessButtonClicked: false,
         isSelected: false,
         isNextStreetViewReady: false,
         isNextButtonVisible: false,
@@ -90,6 +108,14 @@
       }
     },
     methods: {
+      showMap() {
+        document.getElementById('map').style.transform = "translateY(-300px)"
+        this.isMakeGuessButtonClicked = true
+      },
+      hideMap() {
+        document.getElementById('map').style.transform = "translateY(300px)"
+        this.isMakeGuessButtonClicked = false
+      },
       selectLocation() {
         this.calculateDistance()
 
@@ -104,7 +130,7 @@
         google.maps.event.clearListeners(this.map, 'click')
 
         // Diable guess button and opacity of the map
-        this.isClicked = true
+        this.isGuessButtonClicked = true
         this.isSelected = true
 
         // Turn off the flag before the next button appears
@@ -176,14 +202,20 @@
       goToNextRound() {
         // Reset
         this.selectedLatLng = null
-        this.isClicked = false
+        this.isGuessButtonClicked = false
         this.isSelected = false
         this.isNextButtonVisible = false
 
+        if (this.$viewport.width < 450) {
+          // Hide the map if the player is on mobile
+          this.hideMap()
+        } else {
+          // Set the opacity of the map again if the player is on pc
+          this.mouseOutMap()
+        }
+
         this.removeMarkers()
         this.removePolylines()
-
-        this.mouseOutMap()
 
         // Replace the streetview with the next one
         this.$emit('goToNextRound')
@@ -276,7 +308,7 @@
 </script>
 
 <style scoped>
-  button {
+  #make-guess-button, #guess-button, #next-button, #summary-button {
     position: absolute;
     bottom: 10px;
     left: 10px;
@@ -302,7 +334,7 @@
     width: 360px;
   }
 
-  #guess-button {
+  #make-guess-button, #guess-button {
     background-color: #212121;
   }
 
@@ -315,7 +347,7 @@
   }
 
   @media (max-width: 900px) {
-    button {
+    #make-guess-button, #guess-button, #next-button, #summary-button {
       width: 300px;
     }
 
@@ -326,14 +358,23 @@
   }
 
   @media (max-width: 450px) {
-    button {
-      bottom: -260px;
+    #make-guess-button, #guess-button, #next-button, #summary-button {
+      bottom: -50px;
     }
 
     #map {
-      bottom: -210px;
+      bottom: -280px;
       height: 200px; 
       width: 300px;
+      opacity: 1.0;
+      transition: transform 1s;
+    }
+
+    #hide-map-button {
+      position: absolute;
+      bottom: 210px;
+      left: 300px;
+      z-index: 3;
     }
   } 
 </style>

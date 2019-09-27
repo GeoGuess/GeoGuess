@@ -5,22 +5,37 @@
       @mouseover="mouseOverMap" 
       @mouseleave="mouseOutMap">
     </div>
+    <v-btn
+      id="hide-map-button"
+      v-if="$viewport.width < 450 && isGuessButtonClicked == false && isMakeGuessButtonClicked == true"
+      fab
+      x-small
+      color="red"
+      @click="hideMap">
+      <v-icon color="white">mdi-close</v-icon>
+    </v-btn>
+    <button
+      id="make-guess-button"
+      v-if="$viewport.width < 450 && isGuessButtonClicked == false && isMakeGuessButtonClicked == false"
+      @click="showMap">
+      MAKE GUESS
+    </button>
     <button
       id="guess-button"
-      :disabled="selectedLatLng == null || isClicked == true"
-      v-if="isClicked == false"
+      :disabled="selectedLatLng == null || isGuessButtonClicked == true"
+      v-if="isGuessButtonClicked == false && ($viewport.width > 450 || isMakeGuessButtonClicked == true)"
       @click="selectLocation"
       >GUESS
     </button>
     <button
       id="next-button"
-      v-if="isClicked == true && round < 5"
+      v-if="isGuessButtonClicked == true && round < 5"
       @click="goToNextRound"
       >NEXT ROUND
     </button>
     <button
       id="summary-button"
-      v-if="isClicked == true && round >= 5"
+      v-if="isGuessButtonClicked == true && round >= 5"
       @click="dialogSummary = true"
       >VIEW SUMMARY
     </button>
@@ -50,12 +65,21 @@
         polyline: null,
         selectedLatLng: null,
         distance: null,
-        isClicked: false,
+        isGuessButtonClicked: false,
+        isMakeGuessButtonClicked: false,
         isSelected: false,
         dialogSummary: false,
       }
     },
     methods: {
+      showMap() {
+        document.getElementById('map').style.transform = "translateY(-300px)"
+        this.isMakeGuessButtonClicked = true
+      },
+      hideMap() {
+        document.getElementById('map').style.transform = "translateY(300px)"
+        this.isMakeGuessButtonClicked = false
+      },
       selectLocation() {
         // Calculate the distance
         this.calculateDistance()
@@ -73,7 +97,7 @@
         google.maps.event.clearListeners(this.map, 'click')
 
         // Disable guess button and opacity of the map
-        this.isClicked = true
+        this.isGuessButtonClicked = true
         this.isSelected = true
 
         // Focus on the map
@@ -113,13 +137,18 @@
         // Reset
         this.selectedLatLng = null
         this.polyline.setMap(null)
-        this.isClicked = false
+        this.isGuessButtonClicked = false
         this.isSelected = false
 
-        this.removeMarkers()
+        if (this.$viewport.width < 450) {
+          // Hide the map if the player is on mobile
+          this.hideMap()
+        } else {
+          // Set the opacity of the map again if the player is on pc
+          this.mouseOutMap()
+        }
 
-        // Set the opacity of the map again
-        this.mouseOutMap()
+        this.removeMarkers()
 
         // Replace the streetview with new one
         this.$emit('goToNextRound')
@@ -128,9 +157,14 @@
         // Reset
         this.selectedLatLng = null
         this.polyline.setMap(null)
-        this.isClicked = false
+        this.isGuessButtonClicked = false
         this.isSelected = false
+        this.isMakeGuessButtonClicked = false
         this.dialogSummary = false
+
+        if (this.$viewport.width < 450) {
+          document.getElementById('map').style.transform = "translateY(300px)"
+        }
 
         // Remove markers
         this.removeMarkers()
@@ -180,7 +214,7 @@
 </script>
 
 <style scoped>
-  button {
+  #make-guess-button, #guess-button, #next-button, #summary-button {
     position: absolute;
     bottom: 10px;
     left: 10px;
@@ -206,7 +240,7 @@
     width: 360px;
   }
 
-  #guess-button {
+  #make-guess-button, #guess-button {
     background-color: #212121;
   }
 
@@ -219,7 +253,7 @@
   }
 
   @media (max-width: 900px) {
-    button {
+    #make-guess-button, #guess-button, #next-button, #summary-button {
       width: 300px;
     }
 
@@ -230,14 +264,23 @@
   }
 
   @media (max-width: 450px) {
-    button {
-      bottom: -260px;
+    #make-guess-button, #guess-button, #next-button, #summary-button {
+      bottom: -50px;
     }
 
     #map {
-      bottom: -210px;
+      bottom: -280px;
       height: 200px; 
       width: 300px;
+      opacity: 1.0;
+      transition: transform 1s;
+    }
+
+    #hide-map-button {
+      position: absolute;
+      bottom: 210px;
+      left: 300px;
+      z-index: 3;
     }
   }
 </style>
