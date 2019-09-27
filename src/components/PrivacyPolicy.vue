@@ -11,7 +11,7 @@
       <v-card-text class="white--text pt-0">
         <v-container>
           <span>
-            Spider Hand build Geoguess Master as free app. This app is provided by Spider Hand at no cost and is intended for use as it is.
+            Spider Hand build Geoguess Master as free web app. This app is provided by Spider Hand at no cost and is intended for use as it is.
             <br>
             This page is used to inform visitors regarding my policies with the collection, use, and disclosure of personal information if anyone decided to use this app.
             <br>
@@ -33,9 +33,7 @@
           </span>
 
           <ul> 
-          <li><a href="http://policies.google.com/privacy">Google Play Services</a></li>
-          <li><a href="http://support.google.com/admob/answer/6128543?hl=en">AdMob</a></li>
-          <li><a href="https://firebase.google.com/policies/analytics">Firebase Analytics</a></li>
+          <li><a href="https://firebase.google.com/policies/analytics">Google Analytics for Firebase</a></li>
           </ul>
         </v-container>
       </v-card-text>
@@ -90,7 +88,7 @@
       <v-card-text class="white--text pt-0">
         <v-container>
           <span>
-            This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services. 
+            This site may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services. 
           </span>
         </v-container>
       </v-card-text>
