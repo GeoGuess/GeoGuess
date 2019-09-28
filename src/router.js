@@ -17,6 +17,11 @@ export default new Router ({
       component: Home,
     },
     {
+      path: '/index.html',
+      name: 'home',
+      component: Home,
+    },
+    {
       path: '/street-view',
       name: 'street-view',
       component: StreetView,
