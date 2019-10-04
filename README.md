@@ -13,7 +13,9 @@ The first player creates a room and decide the room capacity.
 Other players type the same room name as the first player created and the game will start. 
 There is Android version as well. 
 
-[![play_store_badge](../master/src/assets/google-play-badge.png)](http://bit.ly/geoguess_master)
+<a href="http://bit.ly/geoguess_master">
+  <img src="../master/src/assets/google-play-badge.png" width="250" />
+</a>
 
 ### Features
 - Free game with no ads
