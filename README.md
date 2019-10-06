@@ -11,34 +11,65 @@ You can share the score with other people via SNS like Facebook or Twitter.
 You can play multiplayer game with your friends up to five friends. 
 The first player creates a room and decide the room capacity. 
 Other players type the same room name as the first player created and the game will start. 
-There is Android version as well. 
+There is Android version as well. (Android version was shut down.)
 
 <a href="http://bit.ly/geoguess_master">
   <img src="../master/src/assets/google-play-badge.png" width="250" />
 </a>
+
+### Build Setup
+You need to configure Google Maps Platform and Firebase to make game work. 
+See the instructions below. 
+
+- [Google Maps API](https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key). 
+- [Firebase](https://firebase.google.com/docs/database/web/start).  
+ 
+Once you get an API key and register the project with Firebase, create files named `.env.development.local` and `.env.production.local` inside this project to put environment variables. 
+The files should be like this. 
+
+`.env.production.local`
+```
+NODE_ENV=production
+VUE_APP_API_KEY=YOUR_GOOGLE_MAPS_API_KEY
+VUE_APP_FIREBASE_API_KEY=YOUR_FIREBASE_API_KEY
+VUE_APP_FIREBASE_PROJECT_ID=YOUR_FIREBASE_PROJECT_ID
+VUE_APP_FIREBASE_MESSAGING_SENDER_ID=YOUR_FIREBASE_MESSAGING_SENDER_ID
+VUE_APP_FIREBASE_APP_ID=YOUR_FIREBASE_APP_ID
+```
+
+`.env.development.local`
+```
+NODE_ENV=development
+...
+```
+
+Now you can run this game.  
+Download Node.js [here](https://nodejs.org/en/download/) if you don't have and make sure you can run `npm` from the terminal.
+
+```
+# install dependencies
+npm install
+
+# run locally
+npm run serve
+
+# build for production
+npm run build
+```
+
+You need to host this project as a static website to play multiplayer game with your friends. 
 
 ### Features
 - Free game with no ads
 - Multiplayer game
 - PWA and responsive design
 
-### Limitation
-Currently I set quotas per day so the cost to run this game can't get too high. 
-If the map doesn't load, it means the quotas has been exceeded on the day. 
-It will reset at midnight Pacific Time. 
-Sorry for inconvenience. 
-
-### Implementation
-- Google Maps API
-- Firebase Realtime Database
+### License
+Attribution-NonCommercial-ShareAlike 4.0 International
 
 ### Contact
-Feel free to give me a feedback. I would appreciate a bug report. 
-Also I'm looking for sponsors to maintain this game and make this game unlimited. 
+Feel free to give me feedback.  
 
 creative.spider.hand@gmail.com  
 or  
 [Discord](https://discord.gg/fPpUzgJ)
-
-### Sponsors
-Become a sponsor! Please contact me! 

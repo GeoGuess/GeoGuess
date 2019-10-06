@@ -61,7 +61,7 @@
           <v-container>
             <span class="footer-text">
               Free and lazy geoguess game with no ads. Players compete how close the player can guess random locations in five rounds. You can share the score with other people via SNS like Facebook or Twitter. 
-              You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room capacity. Other players type the same room name as the first player created and the game will start. There is Android version as well.
+              You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start. There is Android version as well. (Android version was shut down.)
             </span>
           </v-container>
         </v-card-text>
@@ -79,18 +79,14 @@
           <v-container>
             <span class="footer-text">
               Currently I set quotas per day so the cost to run this game can't get too high. If the map doesn't load, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time. Sorry for inconvenience.
+              <br>
+              <br>
+              Update: I made this website open source so everyone can host your own static website and play games unlimitedly! See more details <a href="https://github.com/spider-hand/Geoguess-Master-Web">here</a>.
             </span>
           </v-container>
         </v-card-text>
         <v-card-text class="text-center white--text">
           <h1>CONTACT</h1>
-        </v-card-text>
-        <v-card-text class="white--text pt-0">
-          <v-container>
-            <span class="footer-text">
-              Feel free to give me a feedback. I would appreciate a bug report. Also I'm looking for sponsors to maintain this game and make this game unlimited.
-            </span>
-          </v-container>
         </v-card-text>
         <v-card-text class="text-center white--text pt-0">
           <v-container>
@@ -107,12 +103,6 @@
               <v-icon size="48">mdi-discord</v-icon>
             </v-btn>
           </v-container>
-        </v-card-text>
-        <v-card-text class="text-center white--text">
-          <h1>SPONSORS</h1>
-        </v-card-text>
-        <v-card-text class="text-center white--text">
-          <span class="footer-text">Become a sponsor! Please contact me!</span>
         </v-card-text>
         <v-card-text class="text-right white--text pb-0">
           <span>© {{ new Date().getFullYear() }} <strong>Spider Hand</strong></span>
