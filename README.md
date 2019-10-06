@@ -9,7 +9,7 @@ Free and lazy geoguess game with no ads.
 Players compete how close the player can guess random locations in five rounds. 
 You can share the score with other people via SNS like Facebook or Twitter. 
 You can play multiplayer game with your friends up to five friends. 
-The first player creates a room and decide the room capacity. 
+The first player creates a room and decide the room size. 
 Other players type the same room name as the first player created and the game will start. 
 There is Android version as well. (Android version was shut down.)
 
@@ -21,8 +21,8 @@ There is Android version as well. (Android version was shut down.)
 You need to configure Google Maps Platform and Firebase to make game work. 
 See the instructions below. 
 
-- [Google Maps API](https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key). 
-- [Firebase](https://firebase.google.com/docs/database/web/start).  
+- [Google Maps API](https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key)  
+- [Firebase](https://firebase.google.com/docs/database/web/start)  
  
 Once you get an API key and register the project with Firebase, create files named `.env.development.local` and `.env.production.local` inside this project to put environment variables. 
 The files should be like this. 
@@ -57,7 +57,7 @@ npm run serve
 npm run build
 ```
 
-You need to host this project as a static website to play multiplayer game with your friends. 
+You need to host this project as a static website to play multiplayer game with your friends. I recommend using [Netlify](https://www.netlify.com/). You can just fork this project and deploy it from Netlify. Also you can manage environment variables on the Netlify console.
 
 ### Features
 - Free game with no ads
@@ -65,7 +65,7 @@ You need to host this project as a static website to play multiplayer game with 
 - PWA and responsive design
 
 ### License
-Attribution-NonCommercial-ShareAlike 4.0 International
+Licensed under [MIT License](https://github.com/spider-hand/Geoguess-Master-Web/blob/master/LICENSE)
 
 ### Contact
 Feel free to give me feedback.  
