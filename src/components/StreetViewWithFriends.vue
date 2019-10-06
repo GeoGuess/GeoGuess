@@ -121,7 +121,7 @@
           this.randomLatLng = data.location.latLng
 
           // Put the streetview's location into firebase
-          this.room.child('street_views/round' + this.round).set({
+          this.room.child('streetView/round' + this.round).set({
             latitude: this.randomLatLng.lat(),
             longitude:this.randomLatLng.lng()
           })
@@ -148,7 +148,7 @@
         // Update the score and save it into firebase
         this.hasLocationSelected = true
         this.score += distance
-        this.room.child('final_score/Player' + this.playerNumber).set(this.score)
+        this.room.child('finalScore/player' + this.playerNumber).set(this.score)
 
         // Wait for other players to guess locations
         this.dialogTitle = 'Waiting for other players...'
@@ -175,7 +175,7 @@
           this.loadStreetView()
         } else {
           // Trigger listener and load the next streetview
-          this.room.child('trigger/Player' + this.playerNumber).set(this.round)
+          this.room.child('trigger/player' + this.playerNumber).set(this.round)
           this.$refs.map.startNextRound()
         }
 
@@ -208,23 +208,23 @@
 
       // Set a room name if it's null to detect when the user refresh the page
       if (this.roomName == null) {
-        this.roomName = 'thisIsFakeName'
+        this.roomName = 'defaultRoomName'
       }
       this.room = firebase.database().ref(this.roomName)
-      this.room.child('Active').set(true)
+      this.room.child('active').set(true)
       this.room.on('value', function(snapshot) {
         // Check if the room is already removed
-        if (snapshot.hasChild('Active')) {
+        if (snapshot.hasChild('active')) {
 
           // Put the player into the current round node if the player is not put yet
-          if (!snapshot.child('round' + that.round).hasChild('Player' + that.playerNumber)) {
+          if (!snapshot.child('round' + that.round).hasChild('player' + that.playerNumber)) {
 
-            that.room.child('round' + that.round).child('Player' + that.playerNumber).set(0)
+            that.room.child('round' + that.round).child('player' + that.playerNumber).set(0)
 
             // Other players load the streetview the first player loaded earlier
             if (that.playerNumber != 1) {
-              that.randomLat = snapshot.child('street_views/round' + that.round + '/latitude').val()
-              that.randomLng = snapshot.child('street_views/round' + that.round + '/longitude').val()
+              that.randomLat = snapshot.child('streetView/round' + that.round + '/latitude').val()
+              that.randomLng = snapshot.child('streetView/round' + that.round + '/longitude').val()
 
               that.loadDecidedStreetView()
             }
@@ -242,7 +242,7 @@
             that.$refs.map.startNextRound()
 
             // Countdown timer starts
-            that.timeLimitation = snapshot.child('time_limitation').val() * 60
+            that.timeLimitation = snapshot.child('timeLimitation').val() * 60
 
             if (that.timeLimitation != 0) {
               if (!that.hasTimerStarted) {
@@ -254,8 +254,8 @@
           }
 
           // Delete the room when everyone finished the game
-          if (snapshot.child('is_game_done').numChildren() == snapshot.child('size').val()) {
-            that.room.child('Active').remove()
+          if (snapshot.child('isGameDone').numChildren() == snapshot.child('size').val()) {
+            that.room.child('active').remove()
           }
 
         } else {
@@ -266,18 +266,18 @@
 
       window.addEventListener('popstate', function(event) {
         // Remove the room when the player pressed the back button on browser
-        that.room.child('Active').remove()
+        that.room.child('active').remove()
         that.room.off()
       })
 
       window.addEventListener('beforeunload', function(event) {
         // Remove the room when the player refreshes the window
-        that.room.child('Active').remove()
+        that.room.child('active').remove()
       })
 
       // Force to exit the game if it's still the name that is set programmatically
-      if (this.roomName == 'thisIsFakeName') {
-        that.room.child('Active').remove()
+      if (this.roomName == 'defaultRoomName') {
+        that.room.child('active').remove()
       }
     }
   }

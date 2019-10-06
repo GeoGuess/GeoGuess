@@ -175,14 +175,14 @@
           const that = this
           this.room = firebase.database().ref(this.roomName)
           this.room.once('value', function(snapshot) {
-            var numberOfPlayers = snapshot.child('player_name').numChildren()
+            var numberOfPlayers = snapshot.child('playerName').numChildren()
             that.playerNumber = numberOfPlayers + 1
 
             if (numberOfPlayers == 0) {
               // Put the tentative player's name into the room node
               // So that other player can't enter as the first player while the player decide the name and room size
-              that.room.child('player_name').update({
-                Player1: 'player1'
+              that.room.child('playerName').update({
+                player1: 'player1'
               }, function(error) {
                 if (error) {
 
@@ -192,7 +192,7 @@
                 }
               })
 
-            } else if (!snapshot.hasChild('size') || !snapshot.hasChild('street_views')) {
+            } else if (!snapshot.hasChild('size') || !snapshot.hasChild('streetView')) {
               // Prevent other players from getting into the room earlier than the first player
               that.errorMessage = 'The first player is creating the room right now. Please wait and try again.'
 
@@ -202,7 +202,7 @@
 
             } else {
               // Put other player's tentative name
-              that.room.child('player_name/Player' + that.playerNumber).set('player' + that.playerNumber, function(error) {
+              that.room.child('playerName/player' + that.playerNumber).set('player' + that.playerNumber, function(error) {
                 if (error) {
 
                 } else {
@@ -231,7 +231,7 @@
       setTimeLimitation() {
         const that = this
         this.room.update({
-          time_limitation: this.timeLimitation
+          timeLimitation: this.timeLimitation
         }, function(error) {
           if (error) {
 
@@ -242,7 +242,7 @@
       },
       setPlayerName() {
         const that = this
-        this.room.child('player_name/Player' + this.playerNumber).set(this.playerName, function(error) {
+        this.room.child('playerName/player' + this.playerNumber).set(this.playerName, function(error) {
           if (error) {
 
           } else {
@@ -271,7 +271,7 @@
             this.room.remove()
           } else {
             // Remove only the player's name node if the player isn't the first player
-            this.room.child('player_name/Player' + this.playerNumber).remove()
+            this.room.child('playerName/player' + this.playerNumber).remove()
           }
         }
       }

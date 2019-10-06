@@ -121,7 +121,7 @@
 
         // Save the selected location into database
         // So that it uses for putting the markers and polylines
-        this.room.child('guesses/Player' + this.playerNumber).set({
+        this.room.child('guess/player' + this.playerNumber).set({
             latitude: this.selectedLatLng.lat(),
             longitude:this.selectedLatLng.lng()
         })
@@ -163,7 +163,7 @@
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
 
         // Save the distance into firebase
-        this.room.child('round' + this.round + '/Player' + this.playerNumber).set(this.distance)
+        this.room.child('round' + this.round + '/player' + this.playerNumber).set(this.distance)
 
         this.$emit('calculateDistance', this.distance)
       },
@@ -222,7 +222,7 @@
       },
       finishGame() {
         this.dialogSummary = false
-        this.room.child('is_game_done/Player' + this.playerNumber).set(true)
+        this.room.child('isGameDone/player' + this.playerNumber).set(true)
         this.$emit('finishGame')
       },
       mouseOverMap() {
@@ -250,22 +250,22 @@
       this.room = firebase.database().ref(this.roomName)
       this.room.on('value', function(snapshot) {
         // Check if the room is already removed
-        if (snapshot.hasChild('Active')) {
+        if (snapshot.hasChild('active')) {
 
           // Allow players to move on to the next round when every players guess locations
-          if (snapshot.child('guesses').numChildren() == snapshot.child('size').val()) {
+          if (snapshot.child('guess').numChildren() == snapshot.child('size').val()) {
             that.$emit('showResult')
 
             // Put markers and draw polylines on the map
             var i = 0
             var j = 1
-            snapshot.child('guesses').forEach(function(childSnapshot) {
+            snapshot.child('guess').forEach(function(childSnapshot) {
               var lat = childSnapshot.child('latitude').val()
               var lng = childSnapshot.child('longitude').val()
               var latLng = new google.maps.LatLng({lat: lat, lng: lng});
 
-              var playerName = snapshot.child('player_name').child(childSnapshot.key).val()
-              var distance = snapshot.child('round' + that.round + '/Player' + j).val()
+              var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
+              var distance = snapshot.child('round' + that.round + '/player' + j).val()
 
               that.drawPolyline(latLng, i)
               that.putMarker(latLng)
@@ -276,12 +276,12 @@
             that.putMarker(that.randomLatLng)
 
             // Remove guess node every time the round is done
-            that.room.child('guesses').remove()
+            that.room.child('guess').remove()
 
             if (that.round >= 5) {
               // Show summary button
-              snapshot.child('final_score').forEach(function(childSnapshot) {
-                var playerName = snapshot.child('player_name').child(childSnapshot.key).val()
+              snapshot.child('finalScore').forEach(function(childSnapshot) {
+                var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
                 var finalScore = childSnapshot.val()
                 that.summaryTexts.push({
                   playerName: playerName,
@@ -298,7 +298,7 @@
           }
 
           // Allow other players to move on to the next round when the next street view is set
-          if (snapshot.child('street_views').numChildren() == that.round + 1) {
+          if (snapshot.child('streetView').numChildren() == that.round + 1) {
             that.isNextStreetViewReady = true
           }
         }
