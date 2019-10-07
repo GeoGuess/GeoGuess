@@ -227,13 +227,17 @@
       },
       mouseOverMap() {
         // Focus on map
-        document.getElementById('map').style.opacity = 1.0
+        if (this.$viewport.width > 450) {
+          document.getElementById('map').style.opacity = 1.0
+          document.getElementById('map').style.transform = 'scale(1.25)'
+        }
       },
       mouseOutMap() {
         // Focus on map while the player selected a location
         // Otherwise set the opacity of the map
         if (this.isSelected == false && this.$viewport.width > 450) {
           document.getElementById('map').style.opacity = 0.7
+          document.getElementById('map').style.transform = 'scale(1.0)'
         }
       },
     },
@@ -320,8 +324,15 @@
     font-size: 16px;
     text-decoration: none;
     text-align: center;
-    padding: 10px 60px;
-    width: 360px;    
+    padding: 10px 60px; 
+  }
+
+  #make-guess-button, #guess-button {
+    width: 360px;
+  }
+
+  #next-button, #summary-button {
+    width: 450px;
   }
 
   #map {
@@ -332,6 +343,8 @@
     opacity: 0.7;
     height: 240px;
     width: 360px;
+    transform-origin: bottom left;
+    transition: transform 0.3s;
   }
 
   #make-guess-button, #guess-button {
@@ -347,8 +360,12 @@
   }
 
   @media (max-width: 900px) {
-    #make-guess-button, #guess-button, #next-button, #summary-button {
+    #make-guess-button, #guess-button {
       width: 300px;
+    }
+
+    #next-button, #summary-button {
+      width: 375px;
     }
 
     #map {
@@ -360,6 +377,10 @@
   @media (max-width: 450px) {
     #make-guess-button, #guess-button, #next-button, #summary-button {
       bottom: -50px;
+    }
+
+    #next-button, #summary-button {
+      width: 300px;
     }
 
     #map {
