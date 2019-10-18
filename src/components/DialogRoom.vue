@@ -172,42 +172,41 @@
         if (this.roomName == '') {
           this.errorMessage = 'Invalid name. Please try another.'
         } else {
-          const that = this
           this.room = firebase.database().ref(this.roomName)
-          this.room.once('value', function(snapshot) {
+          this.room.once('value', (snapshot) => {
             var numberOfPlayers = snapshot.child('playerName').numChildren()
-            that.playerNumber = numberOfPlayers + 1
+            this.playerNumber = numberOfPlayers + 1
 
             if (numberOfPlayers == 0) {
               // Put the tentative player's name into the room node
               // So that other player can't enter as the first player while the player decide the name and room size
-              that.room.child('playerName').update({
+              this.room.child('playerName').update({
                 player1: 'player1'
-              }, function(error) {
+              }, (error) => {
                 if (error) {
 
                 } else {
                   // Ask the first player to decide the room size
-                  that.cardTitle = 'Set a room size'
+                  this.cardTitle = 'Set a room size'
                 }
               })
 
             } else if (!snapshot.hasChild('size') || !snapshot.hasChild('streetView')) {
               // Prevent other players from getting into the room earlier than the first player
-              that.errorMessage = 'The first player is creating the room right now. Please wait and try again.'
+              this.errorMessage = 'The first player is creating the room right now. Please wait and try again.'
 
             } else if (numberOfPlayers >= snapshot.child('size').val()) {
               // In case the room is already full
-              that.errorMessage = 'This room is already full. Please try another.'
+              this.errorMessage = 'This room is already full. Please try another.'
 
             } else {
               // Put other player's tentative name
-              that.room.child('playerName/player' + that.playerNumber).set('player' + that.playerNumber, function(error) {
+              this.room.child('playerName/player' + this.playerNumber).set('player' + this.playerNumber, (error) => {
                 if (error) {
 
                 } else {
                   // Let the other players decide the player name
-                  that.cardTitle = 'Type a player name'
+                  this.cardTitle = 'Type a player name'
                 }
               })
             }
@@ -216,42 +215,39 @@
         }
       },
       setRoomSize() {
-        const that = this
         this.room.update({
           size: this.roomSize
-        }, function(error) {
+        }, (error) => {
           if (error) {
 
           } else {
             // Ask the first player to set time limitation
-            that.cardTitle = 'Set a time limitation'
+            this.cardTitle = 'Set a time limitation'
           }
         })
       },
       setTimeLimitation() {
-        const that = this
         this.room.update({
           timeLimitation: this.timeLimitation
-        }, function(error) {
+        }, (error) => {
           if (error) {
 
           } else {
-            that.cardTitle = 'Type a player name'
+            this.cardTitle = 'Type a player name'
           }
         })
       },
       setPlayerName() {
-        const that = this
-        this.room.child('playerName/player' + this.playerNumber).set(this.playerName, function(error) {
+        this.room.child('playerName/player' + this.playerNumber).set(this.playerName, (error) => {
           if (error) {
 
           } else {
             // Start the game
-            that.$router.push({
+            this.$router.push({
               name: 'with-friends',
               params: { 
-                roomName: that.roomName, 
-                playerNumber: that.playerNumber, 
+                roomName: this.roomName, 
+                playerNumber: this.playerNumber, 
               }
             })
           }

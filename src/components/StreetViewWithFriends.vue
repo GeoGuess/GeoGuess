@@ -33,7 +33,6 @@
 </template>
 
 <script>
-  // Force to exit the game when one of the other player exit the game
   import firebase from 'firebase/app'
   import 'firebase/database'
 
@@ -131,12 +130,11 @@
         }
       },
       startTimer() {
-        const that = this
         if (!this.hasLocationSelected) {
           if (this.remainingTime > 0) {
-            setTimeout(function() {
-              that.remainingTime -= 1
-              that.startTimer()
+            setTimeout(() => {
+              this.remainingTime -= 1
+              this.startTimer()
             }, 1000)
           } else {
             // Set a random location if the player didn't select a location in time
@@ -187,9 +185,9 @@
         this.dialogMessage = true
         this.room.off()
         this.room.remove()
-        const that = this
-        setTimeout(function() {
-          that.$router.push({ name: 'home' })
+        
+        setTimeout(() => {
+          this.$router.push({ name: 'home' })
         }, 5000)
       },
       finishGame() {
@@ -204,80 +202,78 @@
         this.loadStreetView()
       }
 
-      const that = this
-
       // Set a room name if it's null to detect when the user refresh the page
       if (this.roomName == null) {
         this.roomName = 'defaultRoomName'
       }
       this.room = firebase.database().ref(this.roomName)
       this.room.child('active').set(true)
-      this.room.on('value', function(snapshot) {
+      this.room.on('value', (snapshot) => {
         // Check if the room is already removed
         if (snapshot.hasChild('active')) {
 
           // Put the player into the current round node if the player is not put yet
-          if (!snapshot.child('round' + that.round).hasChild('player' + that.playerNumber)) {
+          if (!snapshot.child('round' + this.round).hasChild('player' + this.playerNumber)) {
 
-            that.room.child('round' + that.round).child('player' + that.playerNumber).set(0)
+            this.room.child('round' + this.round).child('player' + this.playerNumber).set(0)
 
             // Other players load the streetview the first player loaded earlier
-            if (that.playerNumber != 1) {
-              that.randomLat = snapshot.child('streetView/round' + that.round + '/latitude').val()
-              that.randomLng = snapshot.child('streetView/round' + that.round + '/longitude').val()
+            if (this.playerNumber != 1) {
+              this.randomLat = snapshot.child('streetView/round' + this.round + '/latitude').val()
+              this.randomLng = snapshot.child('streetView/round' + this.round + '/longitude').val()
 
-              that.loadDecidedStreetView()
+              this.loadDecidedStreetView()
             }
           }
 
           // Enable guess button when every players are put into the current round's node
-          if (snapshot.child('round' + that.round).numChildren() == snapshot.child('size').val()) {
+          if (snapshot.child('round' + this.round).numChildren() == snapshot.child('size').val()) {
 
             // Close the dialog when evryone is ready
-            if (that.isReady == false) {
-              that.dialogMessage = false
+            if (this.isReady == false) {
+              this.dialogMessage = false
             }
 
-            that.isReady = true
-            that.$refs.map.startNextRound()
+            this.isReady = true
+            this.$refs.map.startNextRound()
 
             // Countdown timer starts
-            that.timeLimitation = snapshot.child('timeLimitation').val() * 60
+            this.timeLimitation = snapshot.child('timeLimitation').val() * 60
 
-            if (that.timeLimitation != 0) {
-              if (!that.hasTimerStarted) {
-                that.remainingTime = that.timeLimitation
-                that.startTimer()
-                that.hasTimerStarted = true
+            if (this.timeLimitation != 0) {
+              if (!this.hasTimerStarted) {
+                this.remainingTime = this.timeLimitation
+                this.startTimer()
+                this.hasTimerStarted = true
               }
             }
           }
 
           // Delete the room when everyone finished the game
           if (snapshot.child('isGameDone').numChildren() == snapshot.child('size').val()) {
-            that.room.child('active').remove()
+            this.room.child('active').remove()
           }
 
         } else {
           // Force the players to exit the game when 'Active' is removed
-          that.exitGame()
+          this.exitGame()
         }
       })
 
-      window.addEventListener('popstate', function(event) {
+      window.addEventListener('popstate', (event) => {
         // Remove the room when the player pressed the back button on browser
-        that.room.child('active').remove()
-        that.room.off()
+        this.room.child('active').remove()
+        this.room.off()
       })
 
-      window.addEventListener('beforeunload', function(event) {
+      window.addEventListener('beforeunload', (event) => {
         // Remove the room when the player refreshes the window
-        that.room.child('active').remove()
+        this.room.child('active').remove()
       })
 
-      // Force to exit the game if it's still the name that is set programmatically
+      // Force to exit the game if it's still the name this is set programmatically
       if (this.roomName == 'defaultRoomName') {
-        that.room.child('active').remove()
+        this.room.child('active').remove()
       }
     }
   }

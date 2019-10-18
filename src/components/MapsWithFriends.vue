@@ -187,16 +187,15 @@
         }
       },
       startNextRound() {
-        const that = this
-        this.map.addListener('click', function(e) {
+        this.map.addListener('click', (e) => {
           // Clear the previous marker when clicking the map
-          that.removeMarkers()
+          this.removeMarkers()
 
           // Show the new marker
-          that.putMarker(e.latLng)
+          this.putMarker(e.latLng)
 
           // Save latLng
-          that.selectedLatLng = e.latLng
+          this.selectedLatLng = e.latLng
         })   
       },
       goToNextRound() {
@@ -250,60 +249,59 @@
           streetViewControl: false,        
       })
 
-      const that = this
       this.room = firebase.database().ref(this.roomName)
-      this.room.on('value', function(snapshot) {
+      this.room.on('value', (snapshot) => {
         // Check if the room is already removed
         if (snapshot.hasChild('active')) {
 
           // Allow players to move on to the next round when every players guess locations
           if (snapshot.child('guess').numChildren() == snapshot.child('size').val()) {
-            that.$emit('showResult')
+            this.$emit('showResult')
 
             // Put markers and draw polylines on the map
             var i = 0
             var j = 1
-            snapshot.child('guess').forEach(function(childSnapshot) {
+            snapshot.child('guess').forEach((childSnapshot) => {
               var lat = childSnapshot.child('latitude').val()
               var lng = childSnapshot.child('longitude').val()
               var latLng = new google.maps.LatLng({lat: lat, lng: lng});
 
               var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
-              var distance = snapshot.child('round' + that.round + '/player' + j).val()
+              var distance = snapshot.child('round' + this.round + '/player' + j).val()
 
-              that.drawPolyline(latLng, i)
-              that.putMarker(latLng)
-              that.setInfoWindow(playerName, distance)
+              this.drawPolyline(latLng, i)
+              this.putMarker(latLng)
+              this.setInfoWindow(playerName, distance)
               i++
               j++
             })
-            that.putMarker(that.randomLatLng)
+            this.putMarker(this.randomLatLng)
 
             // Remove guess node every time the round is done
-            that.room.child('guess').remove()
+            this.room.child('guess').remove()
 
-            if (that.round >= 5) {
+            if (this.round >= 5) {
               // Show summary button
-              snapshot.child('finalScore').forEach(function(childSnapshot) {
+              snapshot.child('finalScore').forEach((childSnapshot) => {
                 var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
                 var finalScore = childSnapshot.val()
-                that.summaryTexts.push({
+                this.summaryTexts.push({
                   playerName: playerName,
                   finalScore: finalScore,
                 })
               })
 
-              that.isSummaryButtonVisible = true
+              this.isSummaryButtonVisible = true
 
             } else {
               // Show next button
-              that.isNextButtonVisible = true
+              this.isNextButtonVisible = true
             }
           }
 
           // Allow other players to move on to the next round when the next street view is set
-          if (snapshot.child('streetView').numChildren() == that.round + 1) {
-            that.isNextStreetViewReady = true
+          if (snapshot.child('streetView').numChildren() == this.round + 1) {
+            this.isNextStreetViewReady = true
           }
         }
       })
