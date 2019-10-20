@@ -189,18 +189,19 @@
       }
     },
     watch: {
-      randomLatLng: (newVal, oldVal) => {
+      randomLatLng: function(newVal, oldVal) {
         // Enable click event when a random streetview is set
         if (newVal != null) {
-          this.map.addListener('click', (e) => {
+          const that = this
+          that.map.addListener('click', (e) => {
             // Clear the previous marker when clicking the map
-            this.removeMarkers()
+            that.removeMarkers()
 
             // Show the new marker
-            this.putMarker(e.latLng)
+            that.putMarker(e.latLng)
 
             // Save latLng
-            this.selectedLatLng = e.latLng
+            that.selectedLatLng = e.latLng
           })          
         }
       }
