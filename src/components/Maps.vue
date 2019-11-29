@@ -7,7 +7,7 @@
     </div>
     <v-btn
       id="hide-map-button"
-      v-if="$viewport.width < 450 && isGuessButtonClicked == false && isMakeGuessButtonClicked == true"
+      v-if="$viewport.width < 450 && !isGuessButtonClicked && isMakeGuessButtonClicked"
       fab
       x-small
       color="red"
@@ -16,26 +16,26 @@
     </v-btn>
     <button
       id="make-guess-button"
-      v-if="$viewport.width < 450 && isGuessButtonClicked == false && isMakeGuessButtonClicked == false"
+      v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
       @click="showMap">
       MAKE GUESS
     </button>
     <button
       id="guess-button"
-      :disabled="selectedLatLng == null || isGuessButtonClicked == true"
-      v-if="isGuessButtonClicked == false && ($viewport.width > 450 || isMakeGuessButtonClicked == true)"
+      :disabled="selectedLatLng == null || isGuessButtonClicked"
+      v-if="!isGuessButtonClicked && ($viewport.width > 450 || isMakeGuessButtonClicked)"
       @click="selectLocation"
       >GUESS
     </button>
     <button
       id="next-button"
-      v-if="isGuessButtonClicked == true && round < 5"
+      v-if="isGuessButtonClicked && round < 5"
       @click="goToNextRound"
       >NEXT ROUND
     </button>
     <button
       id="summary-button"
-      v-if="isGuessButtonClicked == true && round >= 5"
+      v-if="isGuessButtonClicked && round >= 5"
       @click="dialogSummary = true"
       >VIEW SUMMARY
     </button>

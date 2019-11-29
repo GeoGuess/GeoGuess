@@ -7,7 +7,7 @@
     </div>
     <v-btn
       id="hide-map-button"
-      v-if="$viewport.width < 450 && isGuessButtonClicked == false && isMakeGuessButtonClicked == true"
+      v-if="$viewport.width < 450 && !isGuessButtonClicked && isMakeGuessButtonClicked"
       fab
       x-small
       color="red"
@@ -17,15 +17,15 @@
     </v-btn>
     <button
       id="make-guess-button"
-      v-if="$viewport.width < 450 && isGuessButtonClicked == false && isMakeGuessButtonClicked == false"
+      v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
       @click="showMap"
       >
       MAKE GUESS
     </button>
     <button
       id="guess-button"
-      :disabled="selectedLatLng == null || isGuessButtonClicked == true || isReady == false"
-      v-if="isNextButtonVisible == false && isSummaryButtonVisible == false && ($viewport.width > 450 || isMakeGuessButtonClicked == true)"
+      :disabled="selectedLatLng == null || isGuessButtonClicked || !isReady"
+      v-if="!isNextButtonVisible && !isSummaryButtonVisible && ($viewport.width > 450 || isMakeGuessButtonClicked)"
       @click="selectLocation"
       >GUESS
     </button>
@@ -33,13 +33,13 @@
       id="next-button"
       :disabled="!isNextButtonEnabled"
       :style="{ backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C' }"
-      v-if="isNextButtonVisible == true"
+      v-if="isNextButtonVisible"
       @click="goToNextRound"
       >NEXT ROUND
     </button>
     <button
       id="summary-button"
-      v-if="isSummaryButtonVisible == true"
+      v-if="isSummaryButtonVisible"
       @click="dialogSummary = true"
       >VIEW SUMMARY
     </button>
