@@ -79,36 +79,62 @@
           <v-container>
             <span class="footer-text">
               Currently I set quotas per day so the cost to run this game can't get too high. If the map doesn't load, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time. Sorry for inconvenience.
-              <br>
-              <br>
-              Update: I made this website open source so everyone can host your own static website and play games unlimitedly! See more details <a href="https://github.com/spider-hand/Geoguess-Master-Web">here</a>.
+            </span>
+            <br>
+            <br>
+            <span class="footer-text">
+              This game is open source so you can build your own game server and play this game unlimitedly.
             </span>
           </v-container>
         </v-card-text>
-        <v-card-text class="text-center white--text">
-          <h1>CONTACT</h1>
-        </v-card-text>
-        <v-card-text class="text-center white--text pt-0">
-          <v-container>
-            <a 
-              href="mailto:creative.spider.hand@gmail.com" 
-              class="footer-text">
-              creative.spider.hand@gmail.com
-            </a>
-            <p class="footer-text">or</p>
-            <v-btn
-              color="white"
-              href="https://discord.gg/fPpUzgJ"
-              icon>
-              <v-icon size="48">mdi-discord</v-icon>
-            </v-btn>
+        <v-card-text class="white--text mt-8 pb-0">
+          <v-container v-if="$viewport.width > 450">
+            <v-row>
+              <span>© {{ new Date().getFullYear() }} <strong>Spider Hand</strong></span>
+              <router-link 
+                to="/privacy-policy"
+                id="privacy-policy">Privacy</router-link>
+              <v-spacer />
+              <v-btn
+                class="mx-2"
+                color="white"
+                href="https://discord.gg/fPpUzgJ"
+                icon>
+                <v-icon size="36">mdi-discord</v-icon>
+              </v-btn>
+              <v-btn
+                class="mx-2"
+                color="white"
+                href="https://github.com/spider-hand/Geoguess-Master-Web"
+                icon>
+                <v-icon size="36">mdi-github-circle</v-icon>
+              </v-btn>
+            </v-row>
           </v-container>
-        </v-card-text>
-        <v-card-text class="text-right white--text pb-0">
-          <span>© {{ new Date().getFullYear() }} <strong>Spider Hand</strong></span>
-          <router-link 
-            to="/privacy-policy"
-            id="privacy-policy">Privacy</router-link>
+          <v-container v-else>
+            <v-row>
+              <v-btn
+                class="mx-1"
+                color="white"
+                href="https://discord.gg/fPpUzgJ"
+                icon>
+                <v-icon size="30">mdi-discord</v-icon>
+              </v-btn>
+              <v-btn
+                class="mx-1"
+                color="white"
+                href="https://github.com/spider-hand/Geoguess-Master-Web"
+                icon>
+                <v-icon size="30">mdi-github-circle</v-icon>
+              </v-btn>
+            </v-row>
+            <v-row class="mt-2">
+              <span>© {{ new Date().getFullYear() }} <strong>Spider Hand</strong></span>
+              <router-link 
+                to="/privacy-policy"
+                id="privacy-policy">Privacy</router-link>
+            </v-row>            
+          </v-container>
         </v-card-text>
       </v-card>
     </v-footer>
