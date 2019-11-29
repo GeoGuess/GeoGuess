@@ -173,6 +173,11 @@
           this.errorMessage = 'Invalid name. Please try another.'
         } else {
           this.room = firebase.database().ref(this.roomName)
+
+          this.room.set({
+            createdAt: firebase.database.ServerValue.TIMESTAMP,
+          })
+
           this.room.once('value', (snapshot) => {
             var numberOfPlayers = snapshot.child('playerName').numChildren()
             this.playerNumber = numberOfPlayers + 1
