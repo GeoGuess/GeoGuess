@@ -174,10 +174,6 @@
         } else {
           this.room = firebase.database().ref(this.roomName)
 
-          this.room.set({
-            createdAt: firebase.database.ServerValue.TIMESTAMP,
-          })
-
           this.room.once('value', (snapshot) => {
             var numberOfPlayers = snapshot.child('playerName').numChildren()
             this.playerNumber = numberOfPlayers + 1
@@ -188,9 +184,11 @@
               this.room.child('playerName').update({
                 player1: 'player1'
               }, (error) => {
-                if (error) {
-
-                } else {
+                if (!error) {
+                  // Put the timestamp the room is created so the expired rooms can be removed by cloud function
+                  this.room.update({
+                    createdAt: firebase.database.ServerValue.TIMESTAMP,
+                  })
                   // Ask the first player to decide the room size
                   this.cardTitle = 'Set a room size'
                 }
@@ -207,9 +205,7 @@
             } else {
               // Put other player's tentative name
               this.room.child('playerName/player' + this.playerNumber).set('player' + this.playerNumber, (error) => {
-                if (error) {
-
-                } else {
+                if (!error) {
                   // Let the other players decide the player name
                   this.cardTitle = 'Type a player name'
                 }
@@ -223,9 +219,7 @@
         this.room.update({
           size: this.roomSize
         }, (error) => {
-          if (error) {
-
-          } else {
+          if (!error) {
             // Ask the first player to set time limitation
             this.cardTitle = 'Set a time limitation'
           }
@@ -235,18 +229,14 @@
         this.room.update({
           timeLimitation: this.timeLimitation
         }, (error) => {
-          if (error) {
-
-          } else {
+          if (!error) {
             this.cardTitle = 'Type a player name'
           }
         })
       },
       setPlayerName() {
         this.room.child('playerName/player' + this.playerNumber).set(this.playerName, (error) => {
-          if (error) {
-
-          } else {
+          if (!error) {
             // Start the game
             this.$router.push({
               name: 'with-friends',
