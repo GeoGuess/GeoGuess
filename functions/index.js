@@ -5,6 +5,7 @@ admin.initializeApp()
 
 exports.deleteExpiredRooms = functions.pubsub.schedule('every wednesday 00:00').onRun((context) => {
   var db = admin.database()
+  var promises = []
 
   // Delete all rooms 1 day passed since it was created
   db.ref('/').once('value', (snapshot) => {
@@ -15,11 +16,14 @@ exports.deleteExpiredRooms = functions.pubsub.schedule('every wednesday 00:00').
         var difference = currentDate - createdAt
 
         if (difference > 86400000) {
-          childSnapshot.ref.remove()
+          var promise = childSnapshot.ref.remove()
+          promises.push(promise)
         }
       } else {
-        childSnapshot.ref.remove()
+        var promise = childSnapshot.ref.remove()
+        promises.push(promise)
       }
   	})
+    return Promise.all(promises)
   })
 })
