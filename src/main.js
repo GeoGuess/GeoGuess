@@ -4,6 +4,7 @@ import vuetify from './plugins/vuetify'
 import router from './router'
 
 import firebase from 'firebase/app'
+import 'firebase/analytics'
 import 'firebase/database'
 import './registerServiceWorker'
 
@@ -35,6 +36,7 @@ var firebaseConfig = {
 }
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
+firebase.analytics()
 
 new Vue({
   vuetify,
