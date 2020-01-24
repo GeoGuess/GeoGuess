@@ -1,66 +1,50 @@
 <template>
-  <div>
-    <v-dialog 
-      v-model="dialogSummary" 
-      max-width="80%" 
-      persistent
-      :fullscreen="$viewport.width < 450">
-      <v-card color="#FFF9C4">
-        <v-card-text id="card-text">
-          <v-row>
-            <v-col>
-              <div class="align-center">
-                <span id="summary-text">You are <strong>{{ score }}</strong> km away!</span>
-              </div>
-            </v-col>
-          </v-row>
-          <v-row id="button-container">
-            <v-col 
-              cols="12" 
-              sm="12" 
-              md="12" 
-              lg="6" 
-              xl="6">
-              <div class="align-center">
-                <button 
-                  class="button" 
-                  id="exit-button"
-                  @click="$router.push('/')">EXIT</button>
-              </div>
-            </v-col>
-            <v-col 
-              cols="12" 
-              sm="12" 
-              md="12" 
-              lg="6" 
-              xl="6">
-              <div class="align-center">
-                <button 
-                  class="button" 
-                  id="play-again-button"
-                  @click="playAgain">PLAY AGAIN</button>
-              </div>
-            </v-col>
-          </v-row>
-        </v-card-text>
-        <v-card-text class="text-right">
+  <v-dialog 
+    v-model="dialogSummary" 
+    max-width="720" 
+    persistent
+    :fullscreen="$viewport.width < 450">
+    <v-card color="#061422">
+      <v-card-text id="card-text">
+        <v-row justify="center">
+          <span id="summary-text">You are <strong>{{ score }}</strong> km away!</span>
+        </v-row>
+        <v-row
+          class="mt-8"
+          justify="center">
           <v-btn
-            target="_blank"
-            :href="'http://www.facebook.com/sharer.php?u=https://geoguessmaster.com/&amp;t=I am ' + score + ' km away! How close can you guess?'" 
-            rel="nofollow"
-            icon>
-            <v-icon size="36">mdi-facebook-box</v-icon>
-          </v-btn>
-          <v-btn
-            target="_blank"
-            :href="'http://twitter.com/share?url=https://geoguessmaster.com/&amp;text=I am ' + score +' km away! How close can you guess?'" 
-            icon>
-            <v-icon size="36">mdi-twitter-box</v-icon>
-          </v-btn>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-  </div>
+            id="exit-button"
+            class="ml-4 mr-4"
+            dark
+            color="#FF5252"
+            @click="$router.push('/')">EXIT</v-btn>
+          <v-btn 
+            id="play-again-button"
+            class="ml-4 mr-4"
+            dark
+            color="#43B581"
+            @click="playAgain">PLAY AGAIN</v-btn>
+        </v-row>
+      </v-card-text>
+      <v-card-text class="text-right">
+        <v-btn
+          target="_blank"
+          :href="'http://www.facebook.com/sharer.php?u=https://geoguessmaster.com/&amp;t=I am ' + score + ' km away! How close can you guess?'" 
+          rel="nofollow"
+          icon
+          color="#FFFFFF">
+          <v-icon size="32">mdi-facebook-box</v-icon>
+        </v-btn>
+        <v-btn
+          target="_blank"
+          :href="'http://twitter.com/share?url=https://geoguessmaster.com/&amp;text=I am ' + score +' km away! How close can you guess?'" 
+          icon
+          color="#FFFFFF">
+          <v-icon size="32">mdi-twitter-box</v-icon>
+        </v-btn>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -91,58 +75,34 @@
 </script>
 
 <style scoped>
-  .button {
-    border: none;
-    border-radius: 40px;
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    padding: 21px 100px;
-    width: 400px;
-  }
-
-  .align-center {
-    text-align: center;
+  span {
+    font-family: Montsetrrat;
   }
 
   #card-text {
-    padding: 100px 10% 100px 10%;
+    padding: 80px 10% 80px 10%;
   }
 
   #summary-text {
-    font-size: 36px;
-    color: #1A237E;
+    font-size: 18px;
+    color: #FFFFFF;
+    opacity: 0.9;
   }
 
-  #button-container {
-    padding-top: 6%;
-  }
-
-  #exit-button {
-    background-color: #F44336;
-  }
-
-  #play-again-button {
-    background-color: #00E676;
+  #exit-button, #play-again-button {
+    height: 44px;
+    width: 210px;
+    border-radius: 40px;
   }
 
   @media (max-width: 450px) {
-    .button {
-      border: none;
-      border-radius: 40px;
-      color: white;
-      font-size: 20px;
-      text-decoration: none;
-      text-align: center;
-      padding: 4% 15%;
-      margin: 5% 0;
-      width: 90%;      
+    #exit-button, #play-again-button {
+      height: 36px;
     }
 
-    #summary-text {
-      font-size: 25px;
-    } 
+    #exit-button {
+      margin-top: 28px;
+      margin-bottom: 24px;
+    }
   }
 </style>

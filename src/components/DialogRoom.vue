@@ -1,76 +1,82 @@
 <template>
-  <div>
-    <v-dialog 
-      persistent
-      :fullscreen="$viewport.width < 450"
-      v-model="dialogRoom"
-      max-width="600">
-      <template v-slot:activator="{ on }">
-        <button 
-          class="button" 
-          id="with-friends-button"
-          v-on="on">With Friends</button>
-      </template>
-      <v-card color="#FFF9C4">
-        <v-card-title>
-          <span id="card-title">{{ cardTitle }}</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col 
-                cols="12"
-                v-if="cardTitle == 'Type a room name'">
-                <v-text-field 
-                  maxlength="10"
-                  autofocus
-                  :error-messages="errorMessage"
-                  v-model="roomName"></v-text-field>
-              </v-col>
-              <v-col 
-                cols="4"
-                v-if="cardTitle == 'Set a room size'">
-                <v-select 
-                  v-model="roomSize"
-                  :items="roomSizeItems"></v-select>
-              </v-col>
-              <v-col 
-                cols="6"
-                sm="4"
-                md="4"
-                lg="4"
-                xl="4"
-                v-if="cardTitle == 'Set a time limitation'">
-                <v-select 
-                  v-model="timeLimitation"
-                  :items="timeLimitationItems"></v-select>
-              </v-col>
-              <v-col 
-                cols="12"
-                v-if="cardTitle == 'Type a player name'">
-                <v-text-field 
-                  maxlength="10"
-                  v-model="playerName"></v-text-field>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card-text>
-        <v-card-actions>
-          <div class="flex-grow-1"></div>
-          <v-btn
-            class="white--text"
-            depressed
-            color="#F44336"
-            @click="clickNext">NEXT</v-btn>
-          <v-btn
-            class="white--text"
-            depressed
-            color="#00E676"
-            @click="cancel">CANCEL</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </div>
+  <v-dialog 
+    persistent
+    :fullscreen="$viewport.width < 450"
+    v-model="dialogRoom"
+    max-width="600">
+    <template v-slot:activator="{ on }">
+      <v-btn 
+        id="multi-player-button"
+        class="ml-8 mr-8"
+        dark
+        color="#43B581"
+        v-on="on">
+        With Friends
+      </v-btn>
+    </template>
+    <v-card color="#061422">
+      <v-card-title>
+        <span id="card-title">{{ cardTitle }}</span>
+      </v-card-title>
+      <v-card-text>
+        <v-container>
+          <v-row>
+            <v-col 
+              cols="12"
+              v-if="cardTitle == 'Type a room name'">
+              <v-text-field
+                dark
+                maxlength="10"
+                autofocus
+                :error-messages="errorMessage"
+                v-model="roomName"></v-text-field>
+            </v-col>
+            <v-col 
+              cols="4"
+              v-if="cardTitle == 'Set a room size'">
+              <v-select 
+                dark
+                v-model="roomSize"
+                :items="roomSizeItems"></v-select>
+            </v-col>
+            <v-col 
+              cols="6"
+              sm="4"
+              md="4"
+              lg="4"
+              xl="4"
+              v-if="cardTitle == 'Set a time limitation'">
+              <v-select
+                dark 
+                v-model="timeLimitation"
+                :items="timeLimitationItems"></v-select>
+            </v-col>
+            <v-col 
+              cols="12"
+              v-if="cardTitle == 'Type a player name'">
+              <v-text-field 
+                dark
+                maxlength="10"
+                v-model="playerName"></v-text-field>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-card-text>
+      <v-card-actions>
+        <div class="flex-grow-1"></div>
+        <v-btn
+          dark
+          depressed
+          color="#FF5252"
+          @click="clickNext">NEXT</v-btn>
+        <v-btn
+          dark
+          depressed
+          color="#43B581"
+          @click="cancel">CANCEL</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -271,37 +277,20 @@
 </script>
 
 <style scoped>
-  .button {
-    border: none;
-    border-radius: 40px;
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    padding: 10px 100px;
-    width: 400px;
+  span {
+    font-family: Montsetrrat;
   }
 
-  #with-friends-button {
-    background-color: #00E676;
+  #multi-player-button {
+    height: 44px;
+    width: 240px;
+    border-radius: 40px;
   }
 
   #card-title {
-    color: #424242;
-  }
-
-  @media (max-width: 450px) {
-    .button {
-      border: none;
-      border-radius: 40px;
-      color: white;
-      font-size: 20px;
-      text-decoration: none;
-      text-align: center;
-      padding: 2% 15%;
-      margin: 5% 0;
-      width: 80%;      
-    }
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    opacity: 0.9;
   }
 </style>
