@@ -6,11 +6,20 @@ import StreetView from '@/components/StreetView'
 import StreetViewWithFriends from '@/components/StreetViewWithFriends'
 import PrivacyPolicy from '@/components/PrivacyPolicy'
 
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(Router)
 
 export default new Router ({
   mode: 'history',
   routes: [
+    {
+      path: '*',
+      redirect: '/',
+    },
     {
       path: '/',
       name: 'home',
