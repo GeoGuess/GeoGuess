@@ -1,21 +1,16 @@
 # Geoguess Master
 
-![logo](../master/public/img/icons/android-chrome-192x192.png)
+![logo](../master/public/img/icons/android-icon-192x192.png)
 
 https://geoguessmaster.com/
 
 ### About
 Free and lazy geoguess game with no ads. 
 Players compete how close the player can guess random locations in five rounds. 
-You can share the score with other people via SNS like Facebook or Twitter. 
+You can share the score with other people via social media like Facebook or Twitter. 
 You can play multiplayer game with your friends up to five friends. 
 The first player creates a room and decide the room size. 
 Other players type the same room name as the first player created and the game will start. 
-There is Android version as well. (Android version was shut down.)
-
-<a href="http://bit.ly/geoguess_master">
-  <img src="../master/src/assets/google-play-badge.png" width="250" />
-</a>
 
 ### Build Setup
 You need to configure Google Maps Platform and Firebase to make game work. 
@@ -63,6 +58,9 @@ You need to host this project as a static website to play multiplayer game with 
 - Free game with no ads
 - Multiplayer game
 - PWA and responsive design
+
+### Contributors
+[Paulo Gomes](http://www.pauloxgomes.com/), UI design  
 
 ### License
 Licensed under [MIT License](https://github.com/spider-hand/Geoguess-Master-Web/blob/master/LICENSE)
