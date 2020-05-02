@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div 
+    <div
       id="map"
-      @mouseover="mouseOverMap" 
+      @mouseover="mouseOverMap"
       @mouseleave="mouseOutMap">
     </div>
     <v-btn
@@ -39,7 +39,7 @@
       @click="dialogSummary = true"
       >VIEW SUMMARY
     </button>
-    <DialogSummary 
+    <DialogSummary
       :dialogSummary="dialogSummary"
       :score="score"
       @playAgain="playAgain" />
@@ -124,12 +124,12 @@
         var infoWindow = new google.maps.InfoWindow({
           content: '<b>' + this.distance + '</b> km away!'
         })
-        infoWindow.open(this.map, this.markers[0])        
+        infoWindow.open(this.map, this.markers[0])
       },
       drawPolyline() {
         this.polyline = new google.maps.Polyline({
           path: [this.selectedLatLng, this.randomLatLng],
-          strokeColor: '#FF0000',  
+          strokeColor: '#FF0000',
         })
         this.polyline.setMap(this.map)
       },
@@ -176,7 +176,7 @@
         // Focus on map
         if (this.$viewport.width > 450) {
           document.getElementById('map').style.opacity = 1.0
-          document.getElementById('map').style.transform = 'scale(1.25)'
+          document.getElementById('map').style.transform = 'scale(1)'
         }
       },
       mouseOutMap() {
@@ -184,7 +184,7 @@
         // Otherwise set the opacity of the map
         if (this.isSelected == false && this.$viewport.width > 450) {
           document.getElementById('map').style.opacity = 0.7
-          document.getElementById('map').style.transform = 'scale(1.0)'
+          document.getElementById('map').style.transform = 'scale(0.75)'
         }
       }
     },
@@ -202,7 +202,7 @@
 
             // Save latLng
             that.selectedLatLng = e.latLng
-          })          
+          })
         }
       }
     },
@@ -231,7 +231,7 @@
     font-size: 16px;
     text-decoration: none;
     text-align: center;
-    padding: 10px 60px;   
+    padding: 10px 60px;
   }
 
   #make-guess-button, #guess-button {
@@ -248,9 +248,10 @@
     left: 10px;
     z-index: 3;
     opacity: 0.7;
-    height: 240px;
-    width: 360px;
+    height: 320px;
+    width: 480px;
     transform-origin: bottom left;
+    transform: scale(0.75);
     transition: transform 0.3s;
   }
 
@@ -276,8 +277,8 @@
     }
 
     #map {
-      height: 200px; 
-      width: 300px;
+      height: 265px;
+      width: 400px;
     }
   }
 
@@ -292,8 +293,6 @@
 
     #map {
       bottom: -280px;
-      height: 200px; 
-      width: 300px;
       opacity: 1.0;
       transition: transform 1s;
     }
