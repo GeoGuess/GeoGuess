@@ -294,6 +294,8 @@
     #map {
       bottom: -280px;
       opacity: 1.0;
+      height: 200px;
+      width: 300px;
       transition: transform 1s;
     }
 
