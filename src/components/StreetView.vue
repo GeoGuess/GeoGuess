@@ -24,7 +24,10 @@
 <script>
   import HeaderGame from '@/components/HeaderGame'
   import Maps from '@/components/Maps'
+  import Nantes from './Nantes.json'
+  import randomPointsOnPolygon from 'random-points-on-polygon'
 
+  import * as turf from '@turf/helpers'
   export default {
     components: {
       HeaderGame,
@@ -47,12 +50,16 @@
           radius: 100000,
           source: 'outdoor',
         }, this.checkStreetView)
+        
       },
       getRandomLatLng() {
+        
         // Generate a random latitude and longitude
         var lat = (Math.random() * 170) - 85
         var lng = (Math.random() * 360) - 180
-        return new google.maps.LatLng(lat, lng)
+        
+        let point = randomPointsOnPolygon(1, turf.feature(Nantes[0].geojson))[0]
+        return new google.maps.LatLng(point.geometry.coordinates[1], point.geometry.coordinates[0])
       },
       checkStreetView(data, status) {
         // Generate random streetview until the valid one is generated
