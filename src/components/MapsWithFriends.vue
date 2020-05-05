@@ -291,7 +291,7 @@
                 })
               })
 
-              this.summaryTexts.sort((a,b) => a.finalScore-b.finalScore)
+              this.summaryTexts.sort((a,b) => parseInt(a.finalScore)-parseInt(b.finalScore))
 
               this.isSummaryButtonVisible = true
 
