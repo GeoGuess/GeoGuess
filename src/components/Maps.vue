@@ -5,17 +5,20 @@
       @mouseleave="activeMap = false"
     >
     <div class="container-map_controls">
-      <v-btn fab x-small @click="size--" :disabled="size<2">
-          <v-icon dark>mdi-arrow-bottom-left</v-icon>
+      <div class="container-map_btns">
+        <v-btn fab x-small @click="size--" :disabled="size<2">
+            <v-icon dark>mdi-arrow-bottom-left</v-icon>
+          </v-btn>
+        
+        <v-btn fab x-small @click="size++" :disabled="size>3">
+            <v-icon dark >mdi-arrow-top-right</v-icon>
+          </v-btn>
+              
+        <v-btn fab x-small  @click="pinActive = !pinActive">
+          <v-icon dark >mdi-pin{{(pinActive)? '-off': ''}}</v-icon>
         </v-btn>
-      
-      <v-btn fab x-small @click="size++" :disabled="size>3">
-          <v-icon dark >mdi-arrow-top-right</v-icon>
-        </v-btn>
-            
-      <v-btn fab x-small  @click="pinActive = !pinActive">
-        <v-icon dark >mdi-pin{{(pinActive)? '-off': ''}}</v-icon>
-      </v-btn>
+      </div>
+    
     </div>
     <v-btn
       id="hide-map-button"
@@ -214,15 +217,15 @@
 
 <style scoped lang="scss">
   #container-map{
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    bottom: 80px;
+    bottom: 5px;
     left: 10px;
     z-index: 3;
     opacity: 0.7;
     width: var(--width);
     height: var(--height);
-    transform-origin: bottom left;
-    transition: transform 0.3s;
     z-index: 3;
     --aspect-ratio: 1.25;
     --inactive-width: 16vw;
@@ -233,6 +236,11 @@
     --width: var(--inactive-width);
     max-width: 100%;
     max-height: calc(100% - 150px);
+    #map{
+      width: 100%;
+      height: 100%;
+    }
+
     &.container-map--size-1{
       --active-width: 16vw;
     }
@@ -252,15 +260,20 @@
       }
     }
     .container-map_controls{
-      display: none;
-        float: right;
-        background-color: rgba(33,33,33);
+        display: none;
+        .container-map_btns{
+          background-color: rgba(33,33,33);
+          padding: 0.2rem;
+          border-top-left-radius: 5%;
+          border-top-right-radius: 5%;
+        }
         button {
           width: 1.5rem;
           height: 1.5rem;
           margin: 0 0.5rem;
         }
-        padding: 0.2rem;
+        display: flex;
+        flex-direction: row-reverse;
     }
   }
 
@@ -285,10 +298,6 @@
   }
 
 
-  #map{
-    width: 100%;
-    height: 100%;
-  }
 
 
   #make-guess-button, #guess-button {
@@ -321,7 +330,7 @@
       bottom: 0;
       width: 95%;
       &.container-map--active {
-        height: 50vh;
+        height: 30vh;
 
       }
     }
