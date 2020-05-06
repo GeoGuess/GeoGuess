@@ -24,7 +24,7 @@
 <script>
   import HeaderGame from '@/components/HeaderGame'
   import Maps from '@/components/Maps'
-  import Nantes from './Nantes.json'
+  
   import randomPointsOnPolygon from 'random-points-on-polygon'
   import axios from 'axios'
 
@@ -36,7 +36,7 @@
     props: ["place"],
     data() {
       return {
-        placeGeoJson: "",
+        placeGeoJson: null,
         randomLatLng: null,
         score: 0,
         round: 1,
@@ -45,15 +45,14 @@
     },
     methods: {
       getPlaceGeoJSON(place) {
-        axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(place)}?format=geojson&limit=1&polygon_geojson=1`)
-        .then((res) => {
-          console.log(res)
-          if(res && res.status === 200 && res.data.features.length > 0){
-            this.placeGeoJson = res.data.features[0];
+          axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(place)}?format=geojson&limit=1&polygon_geojson=1`)
+          .then((res) => {
+            if(res && res.status === 200 && res.data.features.length > 0){
+              this.placeGeoJson = res.data.features[0];
 
-            this.loadStreetView()
-          }
-        })
+              this.loadStreetView()
+            }
+          }).catch((e) => { console.err(e) })
       },
       loadStreetView() {
         var service = new google.maps.StreetViewService()
@@ -66,13 +65,16 @@
         
       },
       getRandomLatLng() {
-        
+        if(this.placeGeoJson != null){
+          let point = randomPointsOnPolygon(1, this.placeGeoJson)[0];
+          return new google.maps.LatLng(point.geometry.coordinates[1], point.geometry.coordinates[0]);
+        }
+          
         // Generate a random latitude and longitude
-        var lat = (Math.random() * 170) - 85
-        var lng = (Math.random() * 360) - 180
+        let lat = (Math.random() * 170) - 85;
+        let lng = (Math.random() * 360) - 180;
         
-        let point = randomPointsOnPolygon(1, this.placeGeoJson)[0]
-        return new google.maps.LatLng(point.geometry.coordinates[1], point.geometry.coordinates[0])
+        return new google.maps.LatLng(lat, lng);
       },
       checkStreetView(data, status) {
         // Generate random streetview until the valid one is generated
@@ -125,8 +127,11 @@
       }
     },
     mounted() {
-      
-      this.getPlaceGeoJSON(this.place);
+      if(this.place != undefined && this.place != ''){
+        this.getPlaceGeoJSON(this.place);
+      }else{
+        this.loadStreetView()
+      }
     },
   }
 </script>

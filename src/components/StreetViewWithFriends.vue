@@ -40,10 +40,14 @@
   import MapsWithFriends from '@/components/MapsWithFriends'
   import DialogMessage from '@/components/DialogMessage'
 
+  import randomPointsOnPolygon from 'random-points-on-polygon'
+  import axios from 'axios'
+  
   export default {
     props: [
       'roomName',
       'playerNumber',
+      'place'
     ],
     components: {
       HeaderGame,
@@ -68,9 +72,20 @@
         dialogMessage: true,
         dialogTitle: 'Waiting for other players...',
         dialogText: '',
+        placeGeoJson: null,
       }
     },
     methods: {
+      getPlaceGeoJSON(place) {
+          axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(place)}?format=geojson&limit=1&polygon_geojson=1`)
+          .then((res) => {
+            if(res && res.status === 200 && res.data.features.length > 0){
+              this.placeGeoJson = res.data.features[0];
+
+              this.loadStreetView()
+            }
+          }).catch((e) => { console.err(e) })
+      },
       loadStreetView() {
         var service = new google.maps.StreetViewService()
         service.getPanorama({
@@ -94,10 +109,16 @@
         }, this.checkStreetView)        
       },
       getRandomLatLng() {
+        if(this.placeGeoJson != null){
+          let point = randomPointsOnPolygon(1, this.placeGeoJson)[0];
+          return new google.maps.LatLng(point.geometry.coordinates[1], point.geometry.coordinates[0]);
+        }
+          
         // Generate a random latitude and longitude
-        var lat = (Math.random() * 170) - 85
-        var lng = (Math.random() * 360) - 180
-        return new google.maps.LatLng(lat, lng)
+        let lat = (Math.random() * 170) - 85;
+        let lng = (Math.random() * 360) - 180;
+        
+        return new google.maps.LatLng(lat, lng);
       },
       checkStreetView(data, status) {
         // Generate random streetview until the valid one is generated
@@ -199,7 +220,11 @@
     },
     mounted() {
       if (this.playerNumber == 1) {
-        this.loadStreetView()
+        if(this.place != undefined && this.place != ''){
+          this.getPlaceGeoJSON(this.place);
+        }else{
+          this.loadStreetView()
+        }
       }
 
       // Set a room name if it's null to detect when the user refresh the page

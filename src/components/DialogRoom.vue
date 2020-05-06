@@ -84,6 +84,7 @@
   import 'firebase/database'
 
   export default {
+    props:['place'],
     data() {
       return {
         dialogRoom: false,
@@ -248,7 +249,8 @@
               name: 'with-friends',
               params: { 
                 roomName: this.roomName, 
-                playerNumber: this.playerNumber, 
+                playerNumber: this.playerNumber,
+                place: this.place, 
               }
             })
           }

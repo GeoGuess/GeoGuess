@@ -20,12 +20,13 @@
           
           <v-flex xs12>
             
-                      <v-text-field
-                        dark
-                        maxlength="10"
-                        autofocus
-                        :error-messages="errorMessage"
-                        v-model="place"></v-text-field>
+            <v-text-field
+              class="search"
+              dark      
+              placeholder="Tape name of city, state, country, region"
+              autofocus
+              :error-messages="errorMessage"
+              v-model="place"></v-text-field>
           </v-flex>
           
           <v-spacer/>
@@ -35,10 +36,10 @@
               class="ml-8 mr-8"
               dark
               color="#FF5252"
-              @click="$router.push('street-view')">
+              @click="$router.push({name:'street-view', params: {place: place}})">
               Single Player
             </v-btn>
-            <DialogRoom />
+            <DialogRoom :place="place" />
           </v-flex>
         </v-layout>
       </v-container>
@@ -129,7 +130,8 @@
     },
     data() {
       return {
-        record: localStorage.getItem('record')
+        record: localStorage.getItem('record'),
+        place: ''
       }
     },  
     computed: {
@@ -169,6 +171,10 @@
 
   #copyright-text, #credit-text {
     color: #7D7D7D;
+  }
+  .search{
+    width: 50vw;
+    margin: auto;
   }
 
 </style>
