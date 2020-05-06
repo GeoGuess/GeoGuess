@@ -84,7 +84,7 @@
         isMakeGuessButtonClicked: false,
         isSelected: false,
         dialogSummary: false,
-        activeMap: true,
+        activeMap: false,
         size: 2,
         pinActive: false,
       }
@@ -234,10 +234,7 @@
     --height: var(--inactive-height);
     --width: var(--inactive-width);
     max-width: 100%;
-    max-height: calc(100% - 120px);
-    //  &.container-map--size-1{
-    //   --active-width: vw;
-    // }
+    max-height: calc(100% - 150px);
     &.container-map--size-1{
       --active-width: 16vw;
     }

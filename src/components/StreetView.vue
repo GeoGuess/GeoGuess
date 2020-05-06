@@ -2,12 +2,12 @@
   <div id="game-page">
     <div id="street-view-container">
       
-      <div id="street-view">
-      </div>
-      <div id="game-interface">
         <HeaderGame 
           :score="score"
           :round="round" />
+      <div id="game-interface">
+        <div id="street-view">
+        </div>
         <div id="game-interface--overlay">
         <Maps
           :randomLatLng="randomLatLng"
@@ -133,7 +133,6 @@
     left: 0; 
   }
   #game-interface{
-    z-index: 3;
     position: absolute;
     height: 100%; 
     width: 100%; 
@@ -142,7 +141,7 @@
   }
   #game-interface--overlay{
     
-    height: calc(100% - 64px); 
+    height: calc(100% - 90px); 
     width: 100%; 
   }
 
