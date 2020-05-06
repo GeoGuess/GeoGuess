@@ -1,9 +1,23 @@
 <template>
-  <div>
-    <div
-      id="map"
-      @mouseover="mouseOverMap"
-      @mouseleave="mouseOutMap">
+  <div id="container-map" 
+      :class="[(($viewport.width >= 450 && (activeMap|| pinActive)) || isMakeGuessButtonClicked) ? 'container-map--active': '', `container-map--size-${size}`]"
+      @mouseover="activeMap = true"
+      @mouseleave="activeMap = false"
+    >
+    <div class="container-map_controls">
+      <div class="container-map_btns">
+        <v-btn fab x-small @click="size--" :disabled="size<2">
+            <v-icon dark>mdi-arrow-bottom-left</v-icon>
+          </v-btn>
+
+        <v-btn fab x-small @click="size++" :disabled="size>3">
+            <v-icon dark >mdi-arrow-top-right</v-icon>
+          </v-btn>
+
+        <v-btn fab x-small  @click="pinActive = !pinActive">
+          <v-icon dark >mdi-pin{{(pinActive)? '-off': ''}}</v-icon>
+        </v-btn>
+      </div>
     </div>
     <v-btn
       id="hide-map-button"
@@ -15,6 +29,9 @@
       >
       <v-icon color="white">mdi-close</v-icon>
     </v-btn>
+        <div 
+      id="map">
+    </div>
     <button
       id="make-guess-button"
       v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
@@ -92,6 +109,9 @@
         isNextButtonVisible: false,
         isSummaryButtonVisible: false,
         dialogSummary: false,
+        activeMap: false,
+        size: 2,
+        pinActive: false,
       }
     },
     computed: {
@@ -109,11 +129,9 @@
     },
     methods: {
       showMap() {
-        document.getElementById('map').style.transform = "translateY(-300px)"
         this.isMakeGuessButtonClicked = true
       },
       hideMap() {
-        document.getElementById('map').style.transform = "translateY(300px)"
         this.isMakeGuessButtonClicked = false
       },
       selectLocation() {
@@ -136,8 +154,6 @@
         // Turn off the flag before the next button appears
         this.isNextStreetViewReady = false
 
-        // Focus on the map
-        this.mouseOverMap()
       },
       selectRandomLocation(randomLatLng) {
         // set a random location if the player didn't select in time
@@ -208,9 +224,6 @@
         if (this.$viewport.width < 450) {
           // Hide the map if the player is on mobile
           this.hideMap()
-        } else {
-          // Set the opacity of the map again if the player is on pc
-          this.mouseOutMap()
         }
 
         this.removeMarkers()
@@ -223,21 +236,6 @@
         this.dialogSummary = false
         this.room.child('isGameDone/player' + this.playerNumber).set(true)
         this.$emit('finishGame')
-      },
-      mouseOverMap() {
-        // Focus on map
-        if (this.$viewport.width > 450) {
-          document.getElementById('map').style.opacity = 1.0
-          document.getElementById('map').style.transform = 'scale(1.25)'
-        }
-      },
-      mouseOutMap() {
-        // Focus on map while the player selected a location
-        // Otherwise set the opacity of the map
-        if (this.isSelected == false && this.$viewport.width > 450) {
-          document.getElementById('map').style.opacity = 0.7
-          document.getElementById('map').style.transform = 'scale(1.0)'
-        }
       },
     },
     mounted() {
@@ -309,12 +307,70 @@
   }
 </script>
 
-<style scoped>
-  #make-guess-button, #guess-button, #next-button, #summary-button {
+<style scoped lang="scss">
+  #container-map{
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
     left: 10px;
     z-index: 3;
+    opacity: 0.7;
+    width: var(--width);
+    height: var(--height);
+    z-index: 3;
+    --aspect-ratio: 1.25;
+    --inactive-width: 16vw;
+    --active-width: 30vw;
+    --active-height: calc(var(--active-width)/var(--aspect-ratio));
+    --inactive-height: calc(var(--inactive-width)/var(--aspect-ratio));
+    --height: var(--inactive-height);
+    --width: var(--inactive-width);
+    max-width: 100%;
+    max-height: calc(100% - 150px);
+    #map{
+      width: 100%;
+      height: 100%;
+    }
+
+    &.container-map--size-1{
+      --active-width: 16vw;
+    }
+    &.container-map--size-3{
+      --active-width: 45vw;
+    }
+    &.container-map--size-4{
+      --active-width: 65vw;
+    }
+    &.container-map--active {
+      opacity: 1;
+      --width: var(--active-width);
+      --height: var(--active-height);
+      .container-map_controls{
+        display: flex;
+
+      }
+    }
+    .container-map_controls{
+        display: none;
+        .container-map_btns{
+          background-color: rgba(33,33,33);
+          padding: 0.2rem;
+          border-top-left-radius: 5%;
+          border-top-right-radius: 5%;
+        }
+        button {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: 0 0.5rem;
+        }
+        display: flex;
+        flex-direction: row-reverse;
+    }
+  }
+
+  
+  #make-guess-button, #guess-button, #next-button, #summary-button {
     border: none;
     border-radius: 5px;
     opacity: 0.8;
@@ -322,28 +378,19 @@
     font-size: 16px;
     text-decoration: none;
     text-align: center;
-    padding: 10px 60px; 
+    padding: 10px 0;   
   }
 
   #make-guess-button, #guess-button {
-    width: 360px;
+    width: 100%;
   }
 
   #next-button, #summary-button {
-    width: 450px;
+    width: 100%;
   }
 
-  #map {
-    position: absolute;
-    bottom: 60px;
-    left: 10px;
-    z-index: 3;
-    opacity: 0.7;
-    height: 240px;
-    width: 360px;
-    transform-origin: bottom left;
-    transition: transform 0.3s;
-  }
+
+
 
   #make-guess-button, #guess-button {
     background-color: #212121;
@@ -353,47 +400,42 @@
     opacity: 1.0;
   }
 
-  #summary-button {
+  #next-button, #summary-button {
     background-color: #F44336;
   }
 
-  @media (max-width: 900px) {
-    #make-guess-button, #guess-button {
-      width: 300px;
-    }
-
-    #next-button, #summary-button {
-      width: 375px;
-    }
-
-    #map {
-      height: 200px; 
-      width: 300px;
-    }
-  }
 
   @media (max-width: 450px) {
+    #container-map{
+        display: flex;
+        flex-direction: column;
+      #map{
+        display: none;
+      }
+      &.container-map--active #map{
+        display: block;
+      }
+      
+      &.container-map--active .container-map_controls{
+        display: none;
+      }
+      bottom: 0;
+      width: 95%;
+      &.container-map--active {
+        height: 30vh;
+
+      }
+    }
     #make-guess-button, #guess-button, #next-button, #summary-button {
-      bottom: -50px;
-    }
-
-    #next-button, #summary-button {
-      width: 300px;
-    }
-
-    #map {
-      bottom: -280px;
-      height: 200px; 
-      width: 300px;
-      opacity: 1.0;
-      transition: transform 1s;
+      bottom: 0;
+      width: 100%;
     }
 
     #hide-map-button {
       position: absolute;
-      bottom: 210px;
-      left: 300px;
-      z-index: 3;
+      top: 0;
+      right: 0;
+      z-index: 4;
     }
-  } 
+  }
 </style>

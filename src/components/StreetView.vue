@@ -139,11 +139,6 @@
     top: 0; 
     left: 0; 
   }
-  #game-interface--overlay{
-    
-    height: calc(100% - 90px); 
-    width: 100%; 
-  }
 
   #street-view {
     position: relative;
@@ -154,8 +149,10 @@
   @media (max-width: 450px) {
     #street-view {
       position: fixed;
-      min-height: 92%;
+      min-height: 100%;
       height: 92%;
     }
+
   }
+
 </style>

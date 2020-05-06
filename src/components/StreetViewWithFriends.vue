@@ -1,13 +1,18 @@
 <template>
   <div id="game-page">
-    <HeaderGame
-      ref="header"
-      :score="scoreHeader"
-      :round="round"
-      :remainingTime="remainingTime" />
     <div id="street-view-container">
-      <div id="street-view">
-      </div>
+      
+      <HeaderGame
+        ref="header"
+        :score="scoreHeader"
+        :round="round"
+        :remainingTime="remainingTime" />
+        
+      <div id="game-interface">
+        <div id="street-view">
+        </div>
+        
+        <div id="game-interface--overlay">
       <MapsWithFriends
         ref="map"
         :randomLatLng="randomLatLng"
@@ -20,6 +25,8 @@
         @showResult="showResult"
         @goToNextRound="goToNextRound"
         @finishGame="finishGame" />
+        </div>
+        </div>
     </div>
     <v-overlay 
       :value="overlay"
@@ -295,16 +302,24 @@
     top: 0; 
     left: 0; 
   }
+  #game-interface{
+    position: absolute;
+    height: 100%; 
+    width: 100%; 
+    top: 0; 
+    left: 0; 
+  }
 
   #street-view {
     position: relative;
     min-height: 100%;
     width: 100%;
-  } 
+  }
 
   @media (max-width: 450px) {
-    #game-page {
+    #street-view {
       position: fixed;
+      min-height: 92%;
       height: 92%;
     }
   }
