@@ -289,6 +289,8 @@
                 })
               })
 
+              this.summaryTexts.sort((a,b) => parseInt(a.finalScore)-parseInt(b.finalScore))
+
               this.isSummaryButtonVisible = true
 
             } else {
