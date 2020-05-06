@@ -1,6 +1,6 @@
 <template>
   <div id="container-map" 
-      :class="[(activeMap|| pinActive) ? 'container-map--active': '', `container-map--size-${size}`]"
+      :class="[(($viewport.width >= 450 && (activeMap|| pinActive)) || isMakeGuessButtonClicked) ? 'container-map--active': '', `container-map--size-${size}`]"
       @mouseover="activeMap = true"
       @mouseleave="activeMap = false"
     >
@@ -17,9 +17,6 @@
         <v-icon dark >mdi-pin{{(pinActive)? '-off': ''}}</v-icon>
       </v-btn>
     </div>
-    <div 
-      id="map">
-    </div>
     <v-btn
       id="hide-map-button"
       v-if="$viewport.width < 450 && !isGuessButtonClicked && isMakeGuessButtonClicked"
@@ -29,6 +26,9 @@
       @click="hideMap">
       <v-icon color="white">mdi-close</v-icon>
     </v-btn>
+    <div 
+      id="map">
+    </div>
     <button
       id="make-guess-button"
       v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
@@ -91,11 +91,9 @@
     },
     methods: {
       showMap() {
-        document.getElementById('map').style.transform = "translateY(-300px)"
         this.isMakeGuessButtonClicked = true
       },
       hideMap() {
-        document.getElementById('map').style.transform = "translateY(300px)"
         this.isMakeGuessButtonClicked = false
       },
       selectLocation() {
@@ -275,7 +273,7 @@
     font-size: 16px;
     text-decoration: none;
     text-align: center;
-    padding: 10px 60px;   
+    padding: 10px 0;   
   }
 
   #make-guess-button, #guess-button {
@@ -307,15 +305,36 @@
 
 
   @media (max-width: 450px) {
+    #container-map{
+        display: flex;
+        flex-direction: column;
+      #map{
+        display: none;
+      }
+      &.container-map--active #map{
+        display: block;
+      }
+      
+      &.container-map--active .container-map_controls{
+        display: none;
+      }
+      bottom: 0;
+      width: 95%;
+      &.container-map--active {
+        height: 50vh;
+
+      }
+    }
     #make-guess-button, #guess-button, #next-button, #summary-button {
-      bottom: -50px;
+      bottom: 0;
+      width: 100%;
     }
 
     #hide-map-button {
       position: absolute;
-      bottom: 210px;
-      left: 300px;
-      z-index: 3;
+      top: 0;
+      right: 0;
+      z-index: 4;
     }
   }
 </style>

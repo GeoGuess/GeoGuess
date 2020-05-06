@@ -152,8 +152,9 @@
   }
 
   @media (max-width: 450px) {
-    #game-page {
+    #street-view {
       position: fixed;
+      min-height: 92%;
       height: 92%;
     }
   }
