@@ -1,18 +1,23 @@
 <template>
   <div id="game-page">
-    <HeaderGame 
-      :score="score"
-      :round="round" />
     <div id="street-view-container">
+      
       <div id="street-view">
       </div>
-      <Maps
-        :randomLatLng="randomLatLng"
-        :round="round"
-        :score="score"
-        @calculateDistance="updateScore"
-        @goToNextRound="goToNextRound"
-        @playAgain="playAgain" />
+      <div id="game-interface">
+        <HeaderGame 
+          :score="score"
+          :round="round" />
+        <div id="game-interface--overlay">
+        <Maps
+          :randomLatLng="randomLatLng"
+          :round="round"
+          :score="score"
+          @calculateDistance="updateScore"
+          @goToNextRound="goToNextRound"
+          @playAgain="playAgain" />
+        </div>
+      </div>
     </div>
     <v-overlay 
       :value="overlay"
@@ -126,6 +131,19 @@
     width: 100%; 
     top: 0; 
     left: 0; 
+  }
+  #game-interface{
+    z-index: 3;
+    position: absolute;
+    height: 100%; 
+    width: 100%; 
+    top: 0; 
+    left: 0; 
+  }
+  #game-interface--overlay{
+    
+    height: calc(100% - 64px); 
+    width: 100%; 
   }
 
   #street-view {

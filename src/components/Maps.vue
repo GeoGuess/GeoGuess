@@ -1,9 +1,24 @@
 <template>
-  <div>
+  <div id="container-map" 
+      :class="[(activeMap|| pinActive) ? 'container-map--active': '', `container-map--size-${size}`]"
+      @mouseover="activeMap = true"
+      @mouseleave="activeMap = false"
+    >
+    <div class="container-map_controls">
+      <v-btn fab x-small @click="size--" :disabled="size<2">
+          <v-icon dark>mdi-arrow-bottom-left</v-icon>
+        </v-btn>
+      
+      <v-btn fab x-small @click="size++" :disabled="size>3">
+          <v-icon dark >mdi-arrow-top-right</v-icon>
+        </v-btn>
+            
+      <v-btn fab x-small  @click="pinActive = !pinActive">
+        <v-icon dark >mdi-pin{{(pinActive)? '-off': ''}}</v-icon>
+      </v-btn>
+    </div>
     <div 
-      id="map"
-      @mouseover="mouseOverMap" 
-      @mouseleave="mouseOutMap">
+      id="map">
     </div>
     <v-btn
       id="hide-map-button"
@@ -69,6 +84,9 @@
         isMakeGuessButtonClicked: false,
         isSelected: false,
         dialogSummary: false,
+        activeMap: true,
+        size: 2,
+        pinActive: false,
       }
     },
     methods: {
@@ -99,9 +117,6 @@
         // Disable guess button and opacity of the map
         this.isGuessButtonClicked = true
         this.isSelected = true
-
-        // Focus on the map
-        this.mouseOverMap()
       },
       putMarker(position) {
         var marker = new google.maps.Marker({
@@ -143,9 +158,6 @@
         if (this.$viewport.width < 450) {
           // Hide the map if the player is on mobile
           this.hideMap()
-        } else {
-          // Set the opacity of the map again if the player is on pc
-          this.mouseOutMap()
         }
 
         this.removeMarkers()
@@ -172,21 +184,6 @@
 
         this.$emit('playAgain')
       },
-      mouseOverMap() {
-        // Focus on map
-        if (this.$viewport.width > 450) {
-          document.getElementById('map').style.opacity = 1.0
-          document.getElementById('map').style.transform = 'scale(1.25)'
-        }
-      },
-      mouseOutMap() {
-        // Focus on map while the player selected a location
-        // Otherwise set the opacity of the map
-        if (this.isSelected == false && this.$viewport.width > 450) {
-          document.getElementById('map').style.opacity = 0.7
-          document.getElementById('map').style.transform = 'scale(1.0)'
-        }
-      }
     },
     watch: {
       randomLatLng: function(newVal, oldVal) {
@@ -196,7 +193,6 @@
           that.map.addListener('click', (e) => {
             // Clear the previous marker when clicking the map
             that.removeMarkers()
-
             // Show the new marker
             that.putMarker(e.latLng)
 
@@ -218,12 +214,63 @@
   }
 </script>
 
-<style scoped>
-  #make-guess-button, #guess-button, #next-button, #summary-button {
+<style scoped lang="scss">
+  #container-map{
     position: absolute;
-    bottom: 10px;
+    bottom: 80px;
     left: 10px;
     z-index: 3;
+    opacity: 0.7;
+    width: var(--width);
+    height: var(--height);
+    transform-origin: bottom left;
+    transition: transform 0.3s;
+    z-index: 3;
+    --aspect-ratio: 1.25;
+    --inactive-width: 16vw;
+    --active-width: 30vw;
+    --active-height: calc(var(--active-width)/var(--aspect-ratio));
+    --inactive-height: calc(var(--inactive-width)/var(--aspect-ratio));
+    --height: var(--inactive-height);
+    --width: var(--inactive-width);
+    max-width: 100%;
+    max-height: calc(100% - 120px);
+    //  &.container-map--size-1{
+    //   --active-width: vw;
+    // }
+    &.container-map--size-1{
+      --active-width: 16vw;
+    }
+    &.container-map--size-3{
+      --active-width: 45vw;
+    }
+    &.container-map--size-4{
+      --active-width: 65vw;
+    }
+    &.container-map--active {
+      opacity: 1;
+      --width: var(--active-width);
+      --height: var(--active-height);
+      .container-map_controls{
+        display: flex;
+
+      }
+    }
+    .container-map_controls{
+      display: none;
+        float: right;
+        background-color: rgba(33,33,33);
+        button {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: 0 0.5rem;
+        }
+        padding: 0.2rem;
+    }
+  }
+
+  
+  #make-guess-button, #guess-button, #next-button, #summary-button {
     border: none;
     border-radius: 5px;
     opacity: 0.8;
@@ -235,24 +282,19 @@
   }
 
   #make-guess-button, #guess-button {
-    width: 360px;
+    width: 100%;
   }
 
   #next-button, #summary-button {
-    width: 450px;
+    width: 100%;
   }
 
-  #map {
-    position: absolute;
-    bottom: 60px;
-    left: 10px;
-    z-index: 3;
-    opacity: 0.7;
-    height: 240px;
-    width: 360px;
-    transform-origin: bottom left;
-    transition: transform 0.3s;
+
+  #map{
+    width: 100%;
+    height: 100%;
   }
+
 
   #make-guess-button, #guess-button {
     background-color: #212121;
@@ -266,36 +308,10 @@
     background-color: #F44336;
   }
 
-  @media (max-width: 900px) {
-    #make-guess-button, #guess-button {
-      width: 300px;
-    }
-
-    #next-button, #summary-button {
-      width: 375px;
-    }
-
-    #map {
-      height: 200px; 
-      width: 300px;
-    }
-  }
 
   @media (max-width: 450px) {
     #make-guess-button, #guess-button, #next-button, #summary-button {
       bottom: -50px;
-    }
-
-    #next-button, #summary-button {
-      width: 300px;
-    }
-
-    #map {
-      bottom: -280px;
-      height: 200px; 
-      width: 300px;
-      opacity: 1.0;
-      transition: transform 1s;
     }
 
     #hide-map-button {
