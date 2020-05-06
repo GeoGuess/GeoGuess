@@ -34,6 +34,7 @@ export default new Router ({
       path: '/street-view',
       name: 'street-view',
       component: StreetView,
+      props: true,
     },
     {
       path: '/street-view/with-friends',

@@ -1,58 +1,66 @@
 <template>
   <div>
     <div id="section-top">
+      
       <v-img
         id="image-earth"
-        src="../assets/earth.jpg" />
+        height="640"
+        class="white--text"
+        src="../assets/earth.jpg"
+        gradient="to right, rgba(5, 11, 31, .7), rgba(5, 11, 31, .7)"  >
       <Header />
-      <v-container fluid>
-        <v-row
-          id="row-record"
-          justify="center">
-          <span id="record">Record: {{ record }} km</span>
-        </v-row>
-        <v-row
-          id="row-buttons" 
-          justify="center">
-          <v-btn 
-            id="single-player-button"
-            class="ml-8 mr-8"
-            dark
-            color="#FF5252"
-            @click="$router.push('street-view')">
-            Single Player
-          </v-btn>
-          <DialogRoom />
-        </v-row>
+      <v-container  fill-height>
+      <v-container grid-list-md text-center align-center>
+        <v-layout row wrap >
+          <v-spacer/>
+          <v-flex 
+            xs12>
+            <h2>Record: {{ record }} km</h2>
+          </v-flex>
+          
+          <v-flex xs12>
+            
+                      <v-text-field
+                        dark
+                        maxlength="10"
+                        autofocus
+                        :error-messages="errorMessage"
+                        v-model="place"></v-text-field>
+          </v-flex>
+          
+          <v-spacer/>
+          <v-flex>
+            <v-btn 
+              id="single-player-button"
+              class="ml-8 mr-8"
+              dark
+              color="#FF5252"
+              @click="$router.push('street-view')">
+              Single Player
+            </v-btn>
+            <DialogRoom />
+          </v-flex>
+        </v-layout>
       </v-container>
-    </div>
-    <div id="section-about">
-      <v-container>
-        <v-row justify="center">
-          <h3 class="section-header">ABOUT</h3>
-        </v-row>
-        <v-row justify="center">
-          <span class="section-description">
-            Geoguess Master is a free and lazy geoguess game with no ads. Players compete how close the player can guess random locations in five rounds. You can share the score with other people via social media like Facebook or Twitter. You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start. 
-          </span>
-        </v-row>
       </v-container>
+      </v-img>
     </div>
-    <div id="section-limitation">
-      <v-container fluid>
-        <v-row justify="center">
-          <h3 class="section-header">LIMITATION</h3>
-        </v-row>
-        <v-row justify="center">
-          <span class="section-description">
-            Currently I set quotas per day so the cost to run this game can't get too high. If the map doesn't load, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time. Sorry for inconvenience. This game is open source so you can build your own game server and play this game unlimitedly.
-          </span>
-        </v-row>
-      </v-container>
-    </div>
+    
+    <v-container class="section" id="section-about"> 
+      <h3 class="section-header">ABOUT</h3>
+      <p class="section-description">
+        Geoguess Master is a free and lazy geoguess game with no ads. Players compete how close the player can guess random locations in five rounds. You can share the score with other people via social media like Facebook or Twitter. You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start. 
+      </p>
+    </v-container>
+    <v-container  class="section" id="section-limitation">
+      <h3 class="section-header">LIMITATION</h3>
+      <p class="section-description">
+        Currently I set quotas per day so the cost to run this game can't get too high. If the map doesn't load, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time. Sorry for inconvenience. This game is open source so you can build your own game server and play this game unlimitedly.
+      </p>
+    </v-container>
+    
     <v-footer
       id="footer"
-      absolute
       color="#061422"
       height="210">
       <v-container>
@@ -103,7 +111,7 @@
           </v-btn>
         </v-row>
       </v-container>
-    </v-footer>
+    </v-footer>  
   </div>
 </template>
 
@@ -123,143 +131,44 @@
       return {
         record: localStorage.getItem('record')
       }
-    }
+    },  
+    computed: {
+      minHeight () {
+        const height = this.$vuetify.breakpoint.mdAndUp ? '100vh' : '50vh'
+
+        return `calc(${height} - ${this.$vuetify.application.top}px)`
+      },
+    },
+    
   }
 </script>
 
 <style scoped>
   span, .section-header {
-    font-family: Montsetrrat;
+    font-family: montserrat;
+  }
+  #single-player-button {
+    border-radius: 40px;
   }
 
-  #section-top {
-    position: absolute;
-    width: 100%;
-    height: 640px;
-    left: 0px;
-    top: 0px;
-    background: linear-gradient(#071D3E, #06121D);
+  .section{
+    padding: 5% 0;
   }
-
-  #image-earth {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.4;
-  }
-
-  #row-record {
-    position: absolute;
-    width: 100%;
-    top: 200px;
-  }
-
   #record {
     font-size: 26px;
     font-weight: 700;
     color: #FFFFFF;
   }
-
-  #row-buttons {
-    position: absolute;
-    width: 100%;
-    top: 300px;
+  .section-header{
+    text-align: center;
   }
-
-  #single-player-button {
-    height: 44px;
-    width: 240px;
-    border-radius: 40px;
-  }
-
-  #section-about {
-    position: absolute;
-    width: 100%;
-    height: 430px;
-    left: 0px;
-    top: 640px;
-    background: #FAFAFA;
-  }
-
-  #section-limitation {
-    position: absolute;
-    width: 100%;
-    height: 430px;
-    left: 0px;
-    top: 1070px;
-    background: #F4F4F4;
-  }
-
-  .section-header {
-    position: absolute;
-    top: 94px;
-    color: #52575C;
-  }
-
-  .section-description {
-    position: absolute;
-    top: 148px;
+ .section-description, .section-header{
     padding: 0 18%;
     color: #777777;
   }
 
   #copyright-text, #credit-text {
-    font-size: 12px;
     color: #7D7D7D;
   }
 
-  #privacy-policy {
-    font-size: 12px;
-  }
-
-  #footer {
-    top: 1500px;
-    bottom: 0px;
-  }
-
-  @media (max-width: 450px) {
-    #section-top {
-      height: 480px;
-    }
-
-    #row-record {
-      top: 120px;
-    }
-
-    #record {
-      font-size: 18px;
-    }
-
-    #row-buttons {
-      top: 200px;
-    }
-
-    #single-player-button {
-      height: 42px;
-      margin-bottom: 24px;
-    }
-
-    #section-about {
-      top: 480px;
-      height: 480px;
-    }
-
-    #section-limitation {
-      top: 960px;
-      height: 480px;
-    }
-
-    .section-header {
-      top: 48px;
-    }
-
-    .section-description {
-      top: 96px;
-      padding: 0 12%;
-    }
-
-    #footer {
-      top: 1440px;
-    }
-  }
 </style>

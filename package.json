@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@turf/helpers": "^6.1.4",
+    "axios": "^0.19.2",
     "core-js": "^2.6.5",
     "firebase": "^7.6.2",
     "firebase-admin": "^8.8.0",

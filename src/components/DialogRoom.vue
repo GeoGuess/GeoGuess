@@ -276,7 +276,7 @@
   }
 </script>
 
-<style scoped>
+<style>
   span {
     font-family: Montsetrrat;
   }

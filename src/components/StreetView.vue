@@ -26,15 +26,17 @@
   import Maps from '@/components/Maps'
   import Nantes from './Nantes.json'
   import randomPointsOnPolygon from 'random-points-on-polygon'
+  import axios from 'axios'
 
-  import * as turf from '@turf/helpers'
   export default {
     components: {
       HeaderGame,
       Maps,
     },
+    props: ["place"],
     data() {
       return {
+        placeGeoJson: "",
         randomLatLng: null,
         score: 0,
         round: 1,
@@ -42,6 +44,17 @@
       }
     },
     methods: {
+      getPlaceGeoJSON(place) {
+        axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(place)}?format=geojson&limit=1&polygon_geojson=1`)
+        .then((res) => {
+          console.log(res)
+          if(res && res.status === 200 && res.data.features.length > 0){
+            this.placeGeoJson = res.data.features[0];
+
+            this.loadStreetView()
+          }
+        })
+      },
       loadStreetView() {
         var service = new google.maps.StreetViewService()
         service.getPanorama({
@@ -58,7 +71,7 @@
         var lat = (Math.random() * 170) - 85
         var lng = (Math.random() * 360) - 180
         
-        let point = randomPointsOnPolygon(1, turf.feature(Nantes[0].geojson))[0]
+        let point = randomPointsOnPolygon(1, this.placeGeoJson)[0]
         return new google.maps.LatLng(point.geometry.coordinates[1], point.geometry.coordinates[0])
       },
       checkStreetView(data, status) {
@@ -112,8 +125,8 @@
       }
     },
     mounted() {
-      // Generate the first streetview and check if it's valid
-      this.loadStreetView()
+      
+      this.getPlaceGeoJSON(this.place);
     },
   }
 </script>
