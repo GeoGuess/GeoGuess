@@ -21,6 +21,7 @@
         :isReady="isReady"
         :round="round"
         :score="score"
+        @resetLocation="resetLocation"
         @calculateDistance="updateScore"
         @showResult="showResult"
         @goToNextRound="goToNextRound"
@@ -135,6 +136,15 @@
         } else {
           this.loadStreetView()
         }
+      },
+      resetLocation(){
+        var service = new google.maps.StreetViewService()
+        service.getPanorama({
+          location: this.randomLatLng,
+          preference: 'nearest',
+          radius: 100000,
+          source: 'outdoor',
+        }, this.checkStreetView)
       },
       startTimer() {
         if (!this.hasLocationSelected) {

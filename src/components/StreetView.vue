@@ -13,6 +13,7 @@
           :randomLatLng="randomLatLng"
           :round="round"
           :score="score"
+          @resetLocation="resetLocation"
           @calculateDistance="updateScore"
           @goToNextRound="goToNextRound"
           @playAgain="playAgain" />
@@ -81,6 +82,15 @@
         } else {
           this.loadStreetView()
         }
+      },
+      resetLocation(){
+        var service = new google.maps.StreetViewService()
+        service.getPanorama({
+          location: this.randomLatLng,
+          preference: 'nearest',
+          radius: 100000,
+          source: 'outdoor',
+        }, this.checkStreetView)
       },
       updateScore(distance) {
         this.score += distance

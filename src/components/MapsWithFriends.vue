@@ -39,13 +39,21 @@
       >
       MAKE GUESS
     </button>
-    <button
-      id="guess-button"
-      :disabled="selectedLatLng == null || isGuessButtonClicked || !isReady"
-      v-if="!isNextButtonVisible && !isSummaryButtonVisible && ($viewport.width > 450 || isMakeGuessButtonClicked)"
-      @click="selectLocation"
-      >GUESS
-    </button>
+    <div>
+      <button
+        id="reset-button"
+        v-if="!isGuessButtonClicked && ($viewport.width > 450 || isMakeGuessButtonClicked)"
+        @click="resetLocation"
+        >RESET
+      </button>
+      <button
+        id="guess-button"
+        :disabled="selectedLatLng == null || isGuessButtonClicked || !isReady"
+        v-if="!isNextButtonVisible && !isSummaryButtonVisible && ($viewport.width > 450 || isMakeGuessButtonClicked)"
+        @click="selectLocation"
+        >GUESS
+      </button>
+    </div>
     <button
       id="next-button"
       :disabled="!isNextButtonEnabled"
@@ -161,6 +169,9 @@
         this.removeMarkers()
         this.putMarker(this.selectedLatLng)
         this.selectLocation()
+      },
+      resetLocation(){
+        this.$emit('resetLocation')
       },
       putMarker(position) {
         var marker = new google.maps.Marker({
@@ -372,7 +383,7 @@
   }
 
   
-  #make-guess-button, #guess-button, #next-button, #summary-button {
+  #make-guess-button, #guess-button, #next-button, #summary-button, #reset-button {
     border: none;
     border-radius: 5px;
     opacity: 0.8;
@@ -384,21 +395,23 @@
   }
 
   #make-guess-button, #guess-button {
-    width: 100%;
+    width: 75%;
+  }
+
+  #reset-button {
+    width: 25%;
+    background-color: #ff5e5e;
   }
 
   #next-button, #summary-button {
     width: 100%;
   }
 
-
-
-
   #make-guess-button, #guess-button {
     background-color: #212121;
   }
 
-  #guess-button:hover {
+  #guess-button:hover, #reset-button {
     opacity: 1.0;
   }
 
