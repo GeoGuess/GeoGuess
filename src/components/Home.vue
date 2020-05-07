@@ -25,7 +25,6 @@
               dark      
               placeholder="Enter city, state or country"
               autofocus
-              :error-messages="errorMessage"
               v-model="place"></v-text-field>
           </v-flex>
           
