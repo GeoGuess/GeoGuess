@@ -23,7 +23,7 @@
             <v-text-field
               class="search"
               dark      
-              placeholder="Tape name of city, state, country, region"
+              placeholder="Enter city, state or country"
               autofocus
               :error-messages="errorMessage"
               v-model="place"></v-text-field>
