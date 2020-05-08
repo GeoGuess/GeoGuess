@@ -24,7 +24,7 @@
         <span class="sub-text">SCORE: </span>
       </div>
       <div>
-        <span class="main-text">{{ score }} km away</span>
+        <span class="main-text">{{ score / 1000 }} km away</span>
       </div>
     </v-app-bar>
   </div>

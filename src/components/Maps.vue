@@ -144,12 +144,18 @@
         this.markers = []
       },
       calculateDistance() {
-        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
+        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng))
         this.$emit('calculateDistance', this.distance)
       },
       setInfoWindow() {
+        let dataToDisplay =''
+        if(this.distance < 1000){
+          dataToDisplay = '<b>' + this.distance + '</b> m away!'
+        }else{
+          dataToDisplay = '<b>' + this.distance / 1000  + '</b> km away!'
+        }
         var infoWindow = new google.maps.InfoWindow({
-          content: '<b>' + this.distance + '</b> km away!'
+          content: dataToDisplay
         })
         infoWindow.open(this.map, this.markers[0])        
       },

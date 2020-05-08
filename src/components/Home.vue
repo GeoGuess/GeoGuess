@@ -15,7 +15,7 @@
           <v-spacer/>
           <v-flex 
             xs12>
-            <h2>Record: {{ record }} km</h2>
+            <h2>Record: {{ record / 1000 }} km</h2>
           </v-flex>
           
           <v-flex xs12>
