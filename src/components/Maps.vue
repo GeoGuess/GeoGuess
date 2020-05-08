@@ -193,8 +193,6 @@
 
         if (this.$viewport.width < 450) {
           this.hideMap()
-        } else {
-          this.mouseOutMap()
         }
 
         // Remove markers
