@@ -24,6 +24,8 @@ window.addEventListener('resize', () => {
 	updateSizes(Vue.prototype.$viewport)
 })
 
+console.log(process.env)
+
 var firebaseConfig = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
   authDomain: process.env.VUE_APP_FIREBASE_PROJECT_ID + ".firebaseapp.com",
