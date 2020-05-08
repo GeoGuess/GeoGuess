@@ -94,7 +94,7 @@
         <v-row
           class="mt-8" 
           justify="center">
-          <span id="copyright-text">All rights reserved. Copyright © {{ new Date().getFullYear() }} <strong>Spider Hand</strong></span>
+          <span id="copyright-text">All rights reserved. Copyright © {{ new Date().getFullYear() }} <strong>Le bon michel</strong></span>
         </v-row>
         <v-row
           class="mt-1"
