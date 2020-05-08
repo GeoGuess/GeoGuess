@@ -105,7 +105,7 @@
             this.loadStreetView()
             this.cptNotFoundLocation++;
           }else{
-            if(!booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
+            if(this.placeGeoJson != null && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
               this.isVisibleDialog = true;
             }
             // Save the location's latitude and longitude
