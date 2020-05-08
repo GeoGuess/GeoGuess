@@ -5,9 +5,13 @@
       color="grey darken-4">
       <div 
         id="countdown-timer"
-        v-if="remainingTime != null && remainingTime != 0"
+        v-if="remainingTime != null && remainingTime != 0"        
       >
         <span id="countdown-text">{{ getCountdownText }}</span>
+      </div>   
+      <div class="round-score-container room-name" v-if="roomName">
+        <span class="sub-text">ROOM : </span>
+        <span class="main-text">{{roomName}}</span>
       </div>
       <div class="flex-grow-1"></div>
       <div class="round-score-container">
@@ -32,6 +36,7 @@
       'score',
       'round',
       'remainingTime',
+      'roomName'
     ],
     computed: {
       getCountdownText() {
@@ -70,6 +75,12 @@
   @media (max-width: 450px) {
     .main-text, .sub-text, #countdown-text {
       font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 555px) {
+    .room-name {
+      display: none;
     }
   }
 </style>

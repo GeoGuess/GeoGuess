@@ -4,6 +4,7 @@
       ref="header"
       :score="scoreHeader"
       :round="round"
+      :roomName="roomName"
       :remainingTime="remainingTime" />
     <div id="street-view-container">
       <div id="street-view">
