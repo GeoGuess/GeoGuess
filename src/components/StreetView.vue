@@ -24,6 +24,10 @@
       :value="overlay"
       opacity="0.8" 
       z-index="2"/>
+      
+    <v-alert type="warning" dismissible class="warning-alert" v-model="isVisibleDialog" tile>
+     <b>Nearby Position</b> : Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉
+    </v-alert>
   </div>
 </template>
 
@@ -33,6 +37,8 @@
   
   import randomPointsOnPolygon from 'random-points-on-polygon'
   import axios from 'axios'
+  import * as turfModel from '@turf/helpers'
+  import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
 
   export default {
     components: {
@@ -47,6 +53,8 @@
         score: 0,
         round: 1,
         overlay: false,
+        cptNotFoundLocation: 0,
+        isVisibleDialog: false,
       }
     },
     methods: {
@@ -98,9 +106,18 @@
             heading: 270,
             pitch: 0,
           })
-
-          // Save the location's latitude and longitude
-          this.randomLatLng = data.location.latLng
+          
+          if(this.placeGeoJson != null && this.cptNotFoundLocation < 3 && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)){
+            this.loadStreetView()
+            this.cptNotFoundLocation++;
+          }else{
+            if(!booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
+              this.isVisibleDialog = true;
+            }
+            // Save the location's latitude and longitude
+            this.randomLatLng = data.location.latLng
+            this.cptNotFoundLocation = 0;
+          }
         } else {
           this.loadStreetView()
         }
@@ -122,6 +139,7 @@
         // Reset
         this.randomLatLng = null
         this.overlay = false
+        this.isVisibleDialog = false
 
         // Update the round
         this.round += 1
@@ -179,6 +197,11 @@
     position: relative;
     min-height: 100%;
     width: 100%;
+  }
+
+  .warning-alert{
+    z-index: 1;
+    margin-top: 56px;
   }
 
   @media (max-width: 450px) {

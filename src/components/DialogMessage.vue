@@ -29,7 +29,8 @@
 
 <style scoped>
   span {
-    font-family: Montsetrrat;
+    font-family: montserrat;    
+    color: #888;
   }
 
   #card-title {
