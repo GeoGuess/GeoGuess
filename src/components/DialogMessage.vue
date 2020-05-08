@@ -13,6 +13,16 @@
           <span>{{ dialogText }}</span>
         </v-container>
       </v-card-text>
+      <v-card-actions v-if="closeBtn">
+        <v-spacer></v-spacer>
+        <v-btn
+          dark
+          depressed
+          color="#FF5252"          
+          @click="$emit('close')">
+          Close
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
@@ -23,13 +33,15 @@
       'dialogMessage',
       'dialogTitle',
       'dialogText',
+      'closeBtn',
     ]
   }
 </script>
 
 <style scoped>
   span {
-    font-family: Montsetrrat;
+    font-family: Montsetrrat;    
+    color: #888;
   }
 
   #card-title {

@@ -18,20 +18,31 @@
       :value="overlay"
       opacity="0.8" 
       z-index="2"/>
+      
+    <DialogMessage 
+      :closeBtn="true"
+      :dialogMessage="isVisibleDialog"
+      @close="isVisibleDialog = false"
+      dialogTitle="⚠ Warning - Nearby Position ⚠"
+      dialogText="Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉" />
   </div>
 </template>
 
 <script>
   import HeaderGame from '@/components/HeaderGame'
   import Maps from '@/components/Maps'
+  import DialogMessage from '@/components/DialogMessage'
   
   import randomPointsOnPolygon from 'random-points-on-polygon'
   import axios from 'axios'
+  import * as turfModel from '@turf/helpers'
+  import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
 
   export default {
     components: {
       HeaderGame,
       Maps,
+      DialogMessage,
     },
     props: ["place"],
     data() {
@@ -41,6 +52,8 @@
         score: 0,
         round: 1,
         overlay: false,
+        cpt: 0,
+        isVisibleDialog: false,
       }
     },
     methods: {
@@ -92,9 +105,18 @@
             heading: 270,
             pitch: 0,
           })
-
-          // Save the location's latitude and longitude
-          this.randomLatLng = data.location.latLng
+          
+          if(this.placeGeoJson != null && this.cpt < 3 && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)){
+            this.loadStreetView()
+            this.cpt++;
+          }else{
+            if(!booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
+              this.isVisibleDialog = true;
+            }
+            // Save the location's latitude and longitude
+            this.randomLatLng = data.location.latLng
+            this.cpt = 0;
+          }
         } else {
           this.loadStreetView()
         }

@@ -20,13 +20,16 @@
           
           <v-flex xs12>
             
-            <v-text-field
+            <v-combobox
               class="search"
-              dark      
-              placeholder="Enter city, state or country"
+              :items="items"
+              :search-input.sync="search"
+              :loading="isLoading"
               autofocus
-              :error-messages="errorMessage"
-              v-model="place"></v-text-field>
+              placeholder="Enter city, state or country"
+              dark
+              v-model="place"
+              />
           </v-flex>
           
           <v-spacer/>
@@ -122,6 +125,7 @@
 
   import Header from '@/components/Header'
   import DialogRoom from '@/components/DialogRoom'
+  import axios from 'axios'
 
   export default {
     components: {
@@ -131,7 +135,10 @@
     data() {
       return {
         record: localStorage.getItem('record'),
-        place: ''
+        place: '',
+        entries: [],
+        isLoading: false,
+        search: '',
       }
     },  
     computed: {
@@ -139,6 +146,29 @@
         const height = this.$vuetify.breakpoint.mdAndUp ? '100vh' : '50vh'
 
         return `calc(${height} - ${this.$vuetify.application.top}px)`
+      },
+      items () {
+          return this.entries.map(entry => entry.display_name)
+      },
+    },
+    watch: {
+      search (val) {
+
+        // Items have already been requested
+        if (this.isLoading) return
+
+        this.isLoading = true
+        // Lazily load input items
+        axios.get(`https://nominatim.openstreetmap.org/search/${encodeURI(val)}?format=json`)
+          .then(res => {
+            if(res.status === 200 && res.data){
+              this.entries = res.data.filter((node ) => node.osm_type === 'relation');
+            }
+          })
+          .catch(err => {
+            console.log(err)
+          })
+          .finally(() => (this.isLoading = false))
       },
     },
     
