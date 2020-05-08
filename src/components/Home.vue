@@ -100,8 +100,7 @@
           class="mt-1"
           justify="center">
           <span id="credit-text">
-            Photo by <a href="https://unsplash.com/@nasa">NASA</a> on <a href="https://unsplash.com/">Unsplash</a>, 
-            Design by <a href="http://www.pauloxgomes.com/">Paulo Gomes</a>
+            <small>VERSION : {{version}}</small>
           </span>
         </v-row>
         <v-row
@@ -113,6 +112,10 @@
             @click="$router.push('privacy-policy')">
             <span id="privacy-policy">Privacy Policy</span>
           </v-btn>
+        </v-row>
+        <v-row
+          class="mt-3"
+          justify="center">
         </v-row>
       </v-container>
     </v-footer>  
@@ -139,6 +142,7 @@
         entries: [],
         isLoading: false,
         search: '',
+        version: process.env.VUE_APP_VERSION
       }
     },  
     computed: {
