@@ -15,7 +15,7 @@
             <v-icon 
               v-if="index == 0 || index == 1 || index == 2"
               :color="index == 0 ? '#FAA61A': (index == 1 ? '#EEEEEE' : '#F4511E')">mdi-crown</v-icon>
-            <strong>{{ text.playerName }}</strong> is <strong>{{ text.finalScore }}</strong> km away!
+            <strong>{{ text.playerName }}</strong> is <strong>{{ text.finalScore / 1000 }}</strong> km away!
           </span>
         </v-row>
         <v-row justify="center">
@@ -30,7 +30,7 @@
       <v-card-text class="text-right">
         <v-btn
           target="_blank"
-          :href="'http://www.facebook.com/sharer.php?u=https://geoguessmaster.com/&amp;t=I am ' + score + ' km away! How close can you guess?'" 
+          :href="'http://www.facebook.com/sharer.php?u=https://geoguessmaster.com/&amp;t=I am ' + score / 1000 + ' km away! How close can you guess?'" 
           rel="nofollow"
           icon
           color="#FFFFFF">
@@ -38,7 +38,7 @@
         </v-btn>
         <v-btn
           target="_blank"
-          :href="'http://twitter.com/share?url=https://geoguessmaster.com/&amp;text=I am ' + score +' km away! How close can you guess?'" 
+          :href="'http://twitter.com/share?url=https://geoguessmaster.com/&amp;text=I am ' + score / 1000 +' km away! How close can you guess?'" 
           icon
           color="#FFFFFF">
           <v-icon size="32">mdi-twitter-box</v-icon>

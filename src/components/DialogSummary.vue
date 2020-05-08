@@ -7,7 +7,7 @@
     <v-card color="#061422">
       <v-card-text id="card-text">
         <v-row justify="center">
-          <span id="summary-text">You are <strong>{{ score }}</strong> km away!</span>
+          <span id="summary-text">You are <strong>{{ score / 1000 }}</strong> km away!</span>
         </v-row>
         <v-row
           class="mt-8"
@@ -29,7 +29,7 @@
       <v-card-text class="text-right">
         <v-btn
           target="_blank"
-          :href="'http://www.facebook.com/sharer.php?u=https://geoguessmaster.com/&amp;t=I am ' + score + ' km away! How close can you guess?'" 
+          :href="'http://www.facebook.com/sharer.php?u=https://geoguessmaster.com/&amp;t=I am ' + score / 1000 + ' km away! How close can you guess?'" 
           rel="nofollow"
           icon
           color="#FFFFFF">
@@ -37,7 +37,7 @@
         </v-btn>
         <v-btn
           target="_blank"
-          :href="'http://twitter.com/share?url=https://geoguessmaster.com/&amp;text=I am ' + score +' km away! How close can you guess?'" 
+          :href="'http://twitter.com/share?url=https://geoguessmaster.com/&amp;text=I am ' + score / 1000 +' km away! How close can you guess?'" 
           icon
           color="#FFFFFF">
           <v-icon size="32">mdi-twitter-box</v-icon>

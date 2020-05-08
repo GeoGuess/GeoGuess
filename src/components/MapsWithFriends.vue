@@ -187,7 +187,7 @@
         this.markers = []
       },
       calculateDistance() {
-        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng) / 1000)
+        this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng))
 
         // Save the distance into firebase
         this.room.child('round' + this.round + '/player' + this.playerNumber).set(this.distance)
@@ -195,8 +195,14 @@
         this.$emit('calculateDistance', this.distance)
       },
       setInfoWindow(playerName, distance) {
+        let dataToDisplay =''
+        if(distance < 1000){
+          dataToDisplay = '<b>' + playerName + '</b>' + ' is <b>' + distance + '</b> m away!'
+        }else{
+          dataToDisplay = '<b>' + playerName + '</b>' + ' is <b>' + distance / 1000  + '</b> km away!'
+        }
         var infoWindow = new google.maps.InfoWindow({
-          content: '<b>' + playerName + '</b>' + ' is <b>' + distance + '</b> km away!'
+          content: dataToDisplay
         })
         infoWindow.open(this.map, this.markers[this.markers.length - 1])
       },
@@ -277,7 +283,6 @@
 
               var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
               var distance = snapshot.child('round' + this.round + '/player' + j).val()
-
               this.drawPolyline(latLng, i)
               this.putMarker(latLng)
               this.setInfoWindow(playerName, distance)
