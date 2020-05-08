@@ -29,6 +29,9 @@
       :dialogMessage="dialogMessage"
       :dialogTitle="dialogTitle"
       :dialogText="dialogText" />
+    <v-alert type="warning" dismissible class="warning-alert" v-if="isVisibleDialog" tile>
+     <b>Nearby Position</b> : Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉
+    </v-alert>
   </div>
 </template>
 
@@ -42,6 +45,8 @@
 
   import randomPointsOnPolygon from 'random-points-on-polygon'
   import axios from 'axios'
+  import * as turfModel from '@turf/helpers'
+  import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
   
   export default {
     props: [
@@ -73,6 +78,8 @@
         dialogTitle: 'Waiting for other players...',
         dialogText: '',
         placeGeoJson: null,
+        cptNotFoundLocation: 0,
+        isVisibleDialog: false,
       }
     },
     methods: {
@@ -136,15 +143,26 @@
             heading: 270,
             pitch: 0,
           })
+                    
+          if(this.placeGeoJson != null && this.cptNotFoundLocation < 3 && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)){
+            this.loadStreetView()
+            this.cptNotFoundLocation++; 
+          }else{
+             // If 3 times Street View does not find location in the polygon placeGeo print warning message
+            if(this.placeGeoJson != null && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
+              this.isVisibleDialog = true;
+            }
+            // Save the location's latitude and longitude
+            this.randomLatLng = data.location.latLng
+            this.cptNotFoundLocation = 0;
+            // Put the streetview's location into firebase
+            this.room.child('streetView/round' + this.round).set({
+              latitude: this.randomLatLng.lat(),
+              longitude:this.randomLatLng.lng(),
+              warning: this.isVisibleDialog
+            })
+          }
 
-          // Save the location's latitude and longitude
-          this.randomLatLng = data.location.latLng
-
-          // Put the streetview's location into firebase
-          this.room.child('streetView/round' + this.round).set({
-            latitude: this.randomLatLng.lat(),
-            longitude:this.randomLatLng.lng()
-          })
 
         } else {
           this.loadStreetView()
@@ -186,6 +204,7 @@
         this.dialogMessage = true  // Show the dialog while waiting for other players
         this.hasTimerStarted = false
         this.hasLocationSelected = false
+        this.isVisibleDialog =false
 
         // Update the round
         this.round += 1
@@ -246,6 +265,7 @@
             if (this.playerNumber != 1) {
               this.randomLat = snapshot.child('streetView/round' + this.round + '/latitude').val()
               this.randomLng = snapshot.child('streetView/round' + this.round + '/longitude').val()
+              this.isVisibleDialog = snapshot.child('streetView/round' + this.round + '/warning').val()
 
               this.loadDecidedStreetView()
             }
@@ -326,6 +346,10 @@
     min-height: 100%;
     width: 100%;
   } 
+
+  .warning-alert{
+    z-index: 1;
+  }
 
   @media (max-width: 450px) {
     #game-page {

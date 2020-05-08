@@ -19,19 +19,15 @@
       opacity="0.8" 
       z-index="2"/>
       
-    <DialogMessage 
-      :closeBtn="true"
-      :dialogMessage="isVisibleDialog"
-      @close="isVisibleDialog = false"
-      dialogTitle="⚠ Warning - Nearby Position ⚠"
-      dialogText="Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉" />
+    <v-alert type="warning" dismissible class="warning-alert" v-model="isVisibleDialog" tile>
+     <b>Nearby Position</b> : Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉
+    </v-alert>
   </div>
 </template>
 
 <script>
   import HeaderGame from '@/components/HeaderGame'
   import Maps from '@/components/Maps'
-  import DialogMessage from '@/components/DialogMessage'
   
   import randomPointsOnPolygon from 'random-points-on-polygon'
   import axios from 'axios'
@@ -42,7 +38,6 @@
     components: {
       HeaderGame,
       Maps,
-      DialogMessage,
     },
     props: ["place"],
     data() {
@@ -52,7 +47,7 @@
         score: 0,
         round: 1,
         overlay: false,
-        cpt: 0,
+        cptNotFoundLocation: 0,
         isVisibleDialog: false,
       }
     },
@@ -106,16 +101,16 @@
             pitch: 0,
           })
           
-          if(this.placeGeoJson != null && this.cpt < 3 && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)){
+          if(this.placeGeoJson != null && this.cptNotFoundLocation < 3 && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)){
             this.loadStreetView()
-            this.cpt++;
+            this.cptNotFoundLocation++;
           }else{
             if(!booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
               this.isVisibleDialog = true;
             }
             // Save the location's latitude and longitude
             this.randomLatLng = data.location.latLng
-            this.cpt = 0;
+            this.cptNotFoundLocation = 0;
           }
         } else {
           this.loadStreetView()
@@ -129,6 +124,7 @@
         // Reset
         this.randomLatLng = null
         this.overlay = false
+        this.isVisibleDialog = false
 
         // Update the round
         this.round += 1
@@ -179,6 +175,10 @@
     position: relative;
     min-height: 100%;
     width: 100%;
+  }
+
+  .warning-alert{
+    z-index: 1;
   }
 
   @media (max-width: 450px) {

@@ -78,7 +78,7 @@
 
 <style scoped>
   span {
-    font-family: Montsetrrat;
+    font-family: montserrat;
   }
 
   #exit-button {

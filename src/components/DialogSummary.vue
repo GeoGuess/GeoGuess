@@ -76,7 +76,7 @@
 
 <style scoped>
   span {
-    font-family: Montsetrrat;
+    font-family: montserrat;
   }
 
   #card-text {

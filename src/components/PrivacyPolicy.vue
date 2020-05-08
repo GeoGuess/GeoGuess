@@ -72,7 +72,7 @@
 
 <style scoped>
   span, .section-header {
-    font-family: Montsetrrat;
+    font-family: montserrat;
   }
 
   #page {
@@ -80,7 +80,7 @@
   }
 
   .section-header {
-    font-family: Montsetrrat;
+    font-family: montserrat;
     color: #52575C;
     margin-top: 32px;
   }

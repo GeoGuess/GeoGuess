@@ -280,7 +280,7 @@
 
 <style>
   span {
-    font-family: Montsetrrat;
+    font-family: montserrat;
   }
 
   #multi-player-button {
