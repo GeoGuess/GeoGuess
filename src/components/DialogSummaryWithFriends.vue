@@ -15,7 +15,7 @@
             <v-icon 
               v-if="index == 0 || index == 1 || index == 2"
               :color="index == 0 ? '#FAA61A': (index == 1 ? '#EEEEEE' : '#F4511E')">mdi-crown</v-icon>
-            <strong>{{ text.playerName }}</strong> is <strong>{{ Number(text.finalScore) / 1000 }}</strong> km away!
+            <strong>{{ text.playerName }}</strong> is <strong>{{ text.finalScore / 1000 }}</strong> km away!
           </span>
         </v-row>
         <v-row justify="center">

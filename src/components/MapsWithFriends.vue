@@ -196,10 +196,10 @@
       },
       setInfoWindow(playerName, distance) {
         let dataToDisplay =''
-        if(this.distance < 1000){
-          dataToDisplay = '<b>' + playerName + '</b>' + ' is <b>' + this.distance + '</b> m away!'
+        if(distance < 1000){
+          dataToDisplay = '<b>' + playerName + '</b>' + ' is <b>' + distance + '</b> m away!'
         }else{
-          dataToDisplay = '<b>' + playerName + '</b>' + ' is <b>' + this.distance / 1000  + '</b> km away!'
+          dataToDisplay = '<b>' + playerName + '</b>' + ' is <b>' + distance / 1000  + '</b> km away!'
         }
         var infoWindow = new google.maps.InfoWindow({
           content: dataToDisplay
@@ -283,7 +283,6 @@
 
               var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
               var distance = snapshot.child('round' + this.round + '/player' + j).val()
-
               this.drawPolyline(latLng, i)
               this.putMarker(latLng)
               this.setInfoWindow(playerName, distance)
