@@ -119,6 +119,21 @@
         </v-row>
       </v-container>
     </v-footer>  
+    
+         <v-alert
+            class="alert-update"
+            type="info"
+            elevation="3"
+            prominent
+            v-if="enableUpdate"
+          >
+            <v-row align="center">
+              <v-col class="grow">A new version is available. Click on the button to obtain it.</v-col>
+              <v-col class="shrink">
+                <v-btn @click="update">Update</v-btn>
+              </v-col>
+            </v-row>
+          </v-alert>
   </div>
 </template>
 
@@ -142,7 +157,8 @@
         entries: [],
         isLoading: false,
         search: '',
-        version: process.env.VUE_APP_VERSION
+        version: process.env.VUE_APP_VERSION,
+        enableUpdate: process.env.VUE_APP_NEED_UPDATE
       }
     },  
     computed: {
@@ -154,6 +170,11 @@
       items () {
           return this.entries.map(entry => entry.display_name)
       },
+    },
+    methods:{
+      update(){
+        window.location.reload()
+      }
     },
     watch: {
       search (val) {
@@ -210,5 +231,11 @@
     width: 50vw;
     margin: auto;
   }
+.alert-update{
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  width:90% ;
+}
 
 </style>
