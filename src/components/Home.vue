@@ -51,7 +51,9 @@
     </div>
     
     <v-container class="section" id="section-about"> 
-      <div style="width:50%;margin: 0 auto; height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/d2jjuAZzDSVLZ5kI" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+        <v-row justify="center">
+      <img src="https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/source.gif"/>
+        </v-row>
     </v-container>
     <v-container  class="section" id="section-limitation">
       <h3 class="section-header">LIMITATION</h3>
