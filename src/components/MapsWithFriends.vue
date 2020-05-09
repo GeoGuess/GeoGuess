@@ -164,10 +164,12 @@
 
       },
       selectRandomLocation(randomLatLng) {
-        // set a random location if the player didn't select in time
-        this.selectedLatLng = randomLatLng
-        this.removeMarkers()
-        this.putMarker(this.selectedLatLng)
+        if(this.selectedLatLng == null){
+          // set a random location if the player didn't select in time
+          this.selectedLatLng = randomLatLng
+          this.removeMarkers()
+          this.putMarker(this.selectedLatLng)
+        }
         this.selectLocation()
       },
       resetLocation(){
