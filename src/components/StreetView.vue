@@ -39,6 +39,8 @@
   import axios from 'axios'
   import * as turfModel from '@turf/helpers'
   import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
+  import biggestCities from '../data/biggestCities.json'
+  import getRandomInt from '../utils/functions'
 
   export default {
     components: {
@@ -55,6 +57,7 @@
         overlay: false,
         cptNotFoundLocation: 0,
         isVisibleDialog: false,
+        mode: 1
       }
     },
     methods: {
@@ -144,6 +147,12 @@
         // Update the round
         this.round += 1
 
+        
+        if (this.mode ==1){
+          let city = biggestCities[getRandomInt(biggestCities.length)];
+          this.getPlaceGeoJSON(city.City+','+city.Country);
+        }
+
         // Replace streetview with new one
         this.loadStreetView()
       },
@@ -155,12 +164,20 @@
         this.round = 1
         this.overlay = false
 
+        if (this.mode ==1){
+          let city = biggestCities[getRandomInt(biggestCities.length)];
+          this.getPlaceGeoJSON(city.City+','+city.Country);
+        }
+
         // Load streetview
         this.loadStreetView()
       }
     },
     mounted() {
-      if(this.place != undefined && this.place != ''){
+      if (this.mode ==1){
+        let city = biggestCities[getRandomInt(biggestCities.length)];
+        this.getPlaceGeoJSON(city.City+','+city.Country);
+      }else if(this.place != undefined && this.place != ''){
         this.getPlaceGeoJSON(this.place);
       }else{
         this.loadStreetView()
