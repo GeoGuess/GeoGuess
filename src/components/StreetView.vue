@@ -45,10 +45,9 @@
       HeaderGame,
       Maps,
     },
-    props: ["place"],
+    props: ["placeGeoJson"],
     data() {
       return {
-        placeGeoJson: null,
         randomLatLng: null,
         score: 0,
         round: 1,
@@ -58,16 +57,6 @@
       }
     },
     methods: {
-      getPlaceGeoJSON(place) {
-          axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(place)}?format=geojson&limit=1&polygon_geojson=1`)
-          .then((res) => {
-            if(res && res.status === 200 && res.data.features.length > 0){
-              this.placeGeoJson = res.data.features[0];
-
-              this.loadStreetView()
-            }
-          }).catch((e) => { console.err(e) })
-      },
       loadStreetView() {
         var service = new google.maps.StreetViewService()
         service.getPanorama({
@@ -160,11 +149,7 @@
       }
     },
     mounted() {
-      if(this.place != undefined && this.place != ''){
-        this.getPlaceGeoJSON(this.place);
-      }else{
-        this.loadStreetView()
-      }
+      this.loadStreetView()
     },
   }
 </script>

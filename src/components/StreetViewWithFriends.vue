@@ -61,7 +61,7 @@
     props: [
       'roomName',
       'playerNumber',
-      'place'
+      'placeGeoJson'
     ],
     components: {
       HeaderGame,
@@ -86,22 +86,11 @@
         dialogMessage: true,
         dialogTitle: 'Waiting for other players...',
         dialogText: '',
-        placeGeoJson: null,
         cptNotFoundLocation: 0,
         isVisibleDialog: false,
       }
     },
     methods: {
-      getPlaceGeoJSON(place) {
-          axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(place)}?format=geojson&limit=1&polygon_geojson=1`)
-          .then((res) => {
-            if(res && res.status === 200 && res.data.features.length > 0){
-              this.placeGeoJson = res.data.features[0];
-
-              this.loadStreetView()
-            }
-          }).catch((e) => { console.err(e) })
-      },
       loadStreetView() {
         var service = new google.maps.StreetViewService()
         service.getPanorama({
@@ -257,11 +246,7 @@
     },
     mounted() {
       if (this.playerNumber == 1) {
-        if(this.place != undefined && this.place != ''){
-          this.getPlaceGeoJSON(this.place);
-        }else{
-          this.loadStreetView()
-        }
+        this.loadStreetView()
       }
 
       // Set a room name if it's null to detect when the user refresh the page
