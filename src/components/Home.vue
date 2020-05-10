@@ -20,16 +20,46 @@
           
           <v-flex xs12>
             
-            <v-combobox
-              class="search"
-              :items="items"
-              :search-input.sync="search"
-              :loading="isLoading"
-              autofocus
-              placeholder="Enter city, state or country"
-              dark
-              v-model="place"
-              />
+            <v-row justify="space-around"
+                  class="search">
+                <v-combobox
+                  :items="items"
+                  :search-input.sync="search"
+                  :loading="isLoading"
+                  autofocus
+                  placeholder="Enter city, state or country"
+                  dark
+                  v-model="place"
+                  >
+                </v-combobox>
+                  
+                <v-btn 
+                  icon
+                  class="btn-customs"
+                  color="#FFFFFF"
+                  @click="dialogCustom = !dialogCustom">
+                  <v-icon>mdi-settings</v-icon>
+                </v-btn>
+                <v-dialog v-model="dialogCustom">
+                  <v-card class="dialog-customs" color="#061422">
+                    <v-card-title>
+                      Paste GeoJSON
+                    </v-card-title>
+                    <v-card-text>
+                      <v-textarea dark v-model="geoJson" placeholder="{...}">
+                      </v-textarea>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-btn
+                        dark
+                        @click="dialogCustom = !dialogCustom">
+                        OK
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+            </v-row>
+                  
           </v-flex>
           
           <v-spacer/>
@@ -39,10 +69,10 @@
               class="ml-8 mr-8"
               dark
               color="#FF5252"
-              @click="$router.push({name:'street-view', params: {place: place}})">
+              @click="startSinglePlayer">
               Single Player
             </v-btn>
-            <DialogRoom :place="place" />
+            <DialogRoom :place="place" :geoJson="placeGeoJson" />
           </v-flex>
         </v-layout>
       </v-container>
@@ -139,9 +169,38 @@
         entries: [],
         isLoading: false,
         search: '',
+        dialogCustom: false,
+        geoJson: '',
       }
     },  
     computed: {
+      placeGeoJson(){
+        if(this.geoJson == ''){
+          return null;
+        }
+        let obj = JSON.parse(this.geoJson);
+        if(obj.type === "FeatureCollection"){
+          if(obj.features.length == 1){
+            return obj.features[0]
+          }else{
+            return {
+            "type": "Feature",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": obj.features.map((f) => {
+                  if(f.geometry.type ==  "Polygon"){
+                    return f.geometry.coordinates;
+                  }else{
+                    return [];
+                  }
+
+                })
+             }
+            };
+          }
+        }
+        return obj;
+      },
       minHeight () {
         const height = this.$vuetify.breakpoint.mdAndUp ? '100vh' : '50vh'
 
@@ -171,6 +230,23 @@
           .finally(() => (this.isLoading = false))
       },
     },
+    methods: {
+      startSinglePlayer() {
+        if( this.geoJson !=  ''){    
+              this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson}});
+        }
+        else if(this.place == ''){
+          this.$router.push({name:'street-view'});
+        }else{
+          axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(this.place)}?format=geojson&limit=1&polygon_geojson=1`)
+          .then((res) => {
+            if(res && res.status === 200 && res.data.features.length > 0){
+              this.$router.push({name:'street-view', params: {placeGeoJson: res.data.features[0]}});
+            }
+          }).catch((e) => { console.err(e) })
+        }
+      }
+    }
     
   }
 </script>
@@ -206,5 +282,7 @@
     width: 50vw;
     margin: auto;
   }
-
+  .dialog-customs {
+    color: #FFFFFF;
+  }
 </style>
