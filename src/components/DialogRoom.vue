@@ -183,7 +183,7 @@
           this.setRoomSize()
         } else if (this.cardTitle == 'Set a time limitation') {
           
-          if (this.playerNumber == 1 && this.place !=  '' && this.geoJson ==  '') {
+          if (this.playerNumber == 1 && this.place !=  '' && !this.geoJson) {
             this.getPlaceGeoJSON(this.place)
           }else{
             if( this.geoJson !=  ''){
