@@ -239,7 +239,7 @@
         if( this.geoJson !=  ''){    
               this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson}});
         }
-        else if(this.place == ''){
+        else if(this.place == null || this.place == ''){
           this.$router.push({name:'street-view'});
         }else{
           axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(this.place)}?format=geojson&limit=1&polygon_geojson=1`)
