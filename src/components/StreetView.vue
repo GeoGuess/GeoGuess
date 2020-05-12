@@ -84,13 +84,15 @@
         }
       },
       resetLocation(){
-        var service = new google.maps.StreetViewService()
-        service.getPanorama({
-          location: this.randomLatLng,
-          preference: 'nearest',
-          radius: 100000,
-          source: 'outdoor',
-        }, this.checkStreetView)
+        var panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'))
+        panorama.setOptions({
+            addressControl: false,
+            fullscreenControl: false,
+            motionTracking: false,
+            motionTrackingControl: false,
+            showRoadLabels: false,
+        })
+        panorama.setPosition(this.randomLatLng)
       },
       updateScore(distance) {
         this.score += distance
