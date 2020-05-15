@@ -29,7 +29,7 @@
   import HeaderGame from '@/components/HeaderGame'
   import Maps from '@/components/Maps'
   
-  import randomPointsOnPolygon from 'random-points-on-polygon'
+  import randomPositionInPolygon from 'random-position-in-polygon'
   import axios from 'axios'
   import * as turfModel from '@turf/helpers'
   import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
@@ -63,8 +63,8 @@
       },
       getRandomLatLng() {
         if(this.placeGeoJson != null){
-          let point = randomPointsOnPolygon(1, this.placeGeoJson)[0];
-          return new google.maps.LatLng(point.geometry.coordinates[1], point.geometry.coordinates[0]);
+          let position = randomPositionInPolygon(this.placeGeoJson);
+          return new google.maps.LatLng(position[1], position[0]);
         }
           
         // Generate a random latitude and longitude
