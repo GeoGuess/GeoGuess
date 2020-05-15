@@ -27,9 +27,13 @@
                   :search-input.sync="search"
                   :loading="isLoading"
                   autofocus
-                  placeholder="Enter city, state or country"
+                  :placeholder="(placeGeoJson !==null) ? 'Custom geoJson file has been loaded': 'Enter city, state or country'"
                   dark
                   v-model="place"
+                  :disabled="placeGeoJson !==null"
+                  :persistent-hint="placeGeoJson !==null"
+                  :outlined="placeGeoJson !==null"
+                  :background-color="(placeGeoJson !==null)? 'rgba(5, 11, 31, 0.7)': ''"
                   >
                 </v-combobox>
                   
@@ -43,10 +47,10 @@
                 <v-dialog v-model="dialogCustom">
                   <v-card class="dialog-customs" color="#061422">
                     <v-card-title>
-                      Paste GeoJSON
+                      <p>Paste GeoJSON <small> (<a target="_blank" href="https://tomscholz.github.io/geojson-editor/">Open Editor</a>)</small></p>
                     </v-card-title>
                     <v-card-text>
-                      <v-textarea dark v-model="geoJson" placeholder="{...}">
+                      <v-textarea :error="errorGeoJson" :success="placeGeoJson !==null" dark v-model="geoJson" :placeholder="placeholderGeoJson" rows="20">
                       </v-textarea>
                     </v-card-text>
                     <v-card-actions>
@@ -175,6 +179,8 @@
         version: process.env.VUE_APP_VERSION,
         dialogCustom: false,
         geoJson: '',
+        placeholderGeoJson: geoJsonExample,
+        errorGeoJson: false
       }
     },  
     computed: {
@@ -182,28 +188,37 @@
         if(this.geoJson == ''){
           return null;
         }
-        let obj = JSON.parse(this.geoJson);
-        if(obj.type === "FeatureCollection"){
-          if(obj.features.length == 1){
-            return obj.features[0]
-          }else{
-            return {
-            "type": "Feature",
-            "geometry": {
-                "type": "MultiPolygon",
-                "coordinates": obj.features.map((f) => {
-                  if(f.geometry.type ==  "Polygon"){
-                    return f.geometry.coordinates;
-                  }else{
-                    return [];
-                  }
+        try{
+          let obj = JSON.parse(this.geoJson);
+          this.place= '';
+          if(obj.type === "FeatureCollection"){
+            if(obj.features.length == 1){
+              this.errorGeoJson = false;
+              return obj.features[0]
+            }else{
+              this.errorGeoJson = false;
+              return {
+              "type": "Feature",
+              "geometry": {
+                  "type": "MultiPolygon",
+                  "coordinates": obj.features.map((f) => {
+                    if(f.geometry.type ==  "Polygon"){
+                      return f.geometry.coordinates;
+                    }else{
+                      return [];
+                    }
 
-                })
-             }
-            };
+                  })
+              }
+              };
+            }
           }
+          this.errorGeoJson = false;
+          return obj; 
+        }catch(e){
+          this.errorGeoJson = true
         }
-        return obj;
+        return null;
       },
       minHeight () {
         const height = this.$vuetify.breakpoint.mdAndUp ? '100vh' : '50vh'
@@ -253,6 +268,31 @@
     }
     
   }
+    const geoJsonExample = `{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [0, 0.0], [10.0, 0.0], [10, 20],
+               [0.0, 20], [0, 0.0] ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [0, 0.0], [10.0, 0.0], [10, 20],
+               [0.0, 20], [0, 0.0] ]]
+      }
+    }
+   ]
+}`
 </script>
 
 <style scoped>
