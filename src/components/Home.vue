@@ -27,9 +27,13 @@
                   :search-input.sync="search"
                   :loading="isLoading"
                   autofocus
-                  placeholder="Enter city, state or country"
+                  :placeholder="(placeGeoJson !==null) ? 'Custom geoJson file has been loaded': 'Enter city, state or country'"
                   dark
                   v-model="place"
+                  :disabled="placeGeoJson !==null"
+                  :persistent-hint="placeGeoJson !==null"
+                  :outlined="placeGeoJson !==null"
+                  :background-color="(placeGeoJson !==null)? 'rgba(5, 11, 31, 0.7)': ''"
                   >
                 </v-combobox>
                   
@@ -182,6 +186,7 @@
         }
         try{
           let obj = JSON.parse(this.geoJson);
+          this.place= '';
           if(obj.type === "FeatureCollection"){
             if(obj.features.length == 1){
               this.errorGeoJson = false;
