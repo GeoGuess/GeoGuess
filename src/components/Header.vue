@@ -7,7 +7,7 @@
       <v-img src="../assets/logo.png" width="45" />
     </div>
     <span id="title">
-      Geoguess Master
+      Geoguess 2
     </span>
     <div class="flex-grow-1"></div>
     <v-btn 

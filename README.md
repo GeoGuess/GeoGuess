@@ -2,7 +2,7 @@
 
 ![logo](../master/public/img/icons/android-icon-192x192.png)
 
-https://geoguessmaster.com/
+https://geoguess2.netlify.app/
 
 ### About
 Free and lazy geoguess game with no ads. 
@@ -59,6 +59,7 @@ You need to host this project as a static website to play multiplayer game with 
 - Free game with no ads
 - Multiplayer game
 - PWA and responsive design
+- CustomMap with geojson
 
 ### Contributors
 [Paulo Gomes](http://www.pauloxgomes.com/), UI design  
@@ -69,6 +70,6 @@ Licensed under [MIT License](https://github.com/spider-hand/Geoguess-Master-Web/
 ### Contact
 Feel free to give me feedback.  
 
-creative.spider.hand@gmail.com  
+https://twitter.com/BilelJegham
 or  
 [Discord](https://discord.gg/fPpUzgJ)

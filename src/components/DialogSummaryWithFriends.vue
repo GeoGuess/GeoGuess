@@ -30,7 +30,7 @@
       <v-card-text class="text-right">
         <v-btn
           target="_blank"
-          :href="'http://www.facebook.com/sharer.php?u=https://geoguessmaster.com/&amp;t=I am ' + score / 1000 + ' km away! How close can you guess?'" 
+          :href="'http://www.facebook.com/sharer.php?u='+process.env.URL+'&amp;t=I am ' + score / 1000 + ' km away! How close can you guess?'" 
           rel="nofollow"
           icon
           color="#FFFFFF">
@@ -38,7 +38,7 @@
         </v-btn>
         <v-btn
           target="_blank"
-          :href="'http://twitter.com/share?url=https://geoguessmaster.com/&amp;text=I am ' + score / 1000 +' km away! How close can you guess?'" 
+          :href="'http://twitter.com/share?url='+process.env.URL+'&amp;text=I am ' + score / 1000 +' km away! How close can you guess?'" 
           icon
           color="#FFFFFF">
           <v-icon size="32">mdi-twitter-box</v-icon>
