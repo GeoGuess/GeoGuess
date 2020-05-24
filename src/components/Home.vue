@@ -88,7 +88,7 @@
        <h3 class="section-header">ABOUT</h3>
       <p class="section-description">
           Geoguess 2 is a free and lazy geoguess game with no ads. Players compete how close the player can guess random locations in five rounds. You can share the score with other people via social media like Facebook or Twitter. You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start. 
-          <br/>This game was fork from <a href="https://geoguessmaster.com/">GeoGuess Master</a>.
+          <br/>This game was forked from <a href="https://geoguessmaster.com/">GeoGuess Master</a>.
       </p>
     </v-container>
 
