@@ -175,8 +175,9 @@
       resetLocation(){
         this.$emit('resetLocation')
       },
-      putMarker(position) {
+      putMarker(position, info) {
         var marker = new google.maps.Marker({
+          ...info,
           position: position,
           map: this.map,
         })
@@ -286,12 +287,21 @@
               var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
               var distance = snapshot.child('round' + this.round + '/player' + j).val()
               this.drawPolyline(latLng, i)
-              this.putMarker(latLng)
+              const colorMaker = ["#CF0404", "#04cf04", "#0404cf", "#cf6a04", "#cf046a", "#04cfcf"]
+              this.putMarker(latLng, {
+                label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
+                icon: {
+                  strokeColor: colorMaker[i%colorMaker.length]
+               },
+              })
               this.setInfoWindow(playerName, distance)
               i++
               j++
             })
-            this.putMarker(this.randomLatLng)
+            
+            this.putMarker(this.randomLatLng, {
+              icon: window.location.origin+'/img/icons/favicon-16x16.png'
+            })
 
             // Remove guess node every time the round is done
             this.room.child('guess').remove()
