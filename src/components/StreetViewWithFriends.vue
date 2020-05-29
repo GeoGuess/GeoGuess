@@ -88,6 +88,7 @@
         dialogText: '',
         cptNotFoundLocation: 0,
         isVisibleDialog: false,
+        panorama: null,
       }
     },
     methods: {
@@ -128,16 +129,15 @@
       checkStreetView(data, status) {
         // Generate random streetview until the valid one is generated
         if (status == 'OK') {
-          var panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'))
-          panorama.setOptions({
+          this.panorama.setOptions({
             addressControl: false,
             fullscreenControl: false,
             motionTracking: false,
             motionTrackingControl: false,
             showRoadLabels: false,
           })
-          panorama.setPano(data.location.pano)
-          panorama.setPov({
+          this.panorama.setPano(data.location.pano)
+          this.panorama.setPov({
             heading: 270,
             pitch: 0,
           })
@@ -167,15 +167,14 @@
         }
       },
       resetLocation(){
-        var panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'))
-        panorama.setOptions({
+        this.panorama.setOptions({
             addressControl: false,
             fullscreenControl: false,
             motionTracking: false,
             motionTrackingControl: false,
             showRoadLabels: false,
         })
-        panorama.setPosition(this.randomLatLng)
+        this.panorama.setPosition(this.randomLatLng)
       },
       startTimer() {
         if (!this.hasLocationSelected) {
@@ -247,6 +246,8 @@
       }
     },
     mounted() {
+      
+      this.panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'))
       if (this.playerNumber == 1) {
         this.loadStreetView()
       }
@@ -329,7 +330,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   #game-page {
     position: relative;
     height: 100%; 
@@ -351,6 +352,14 @@
     width: 100%; 
     top: 0; 
     left: 0; 
+    #game-interface--overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+    }
   }
 
   #street-view {
@@ -363,7 +372,6 @@
     z-index: 1;
     margin-top: 56px;
   }
-
   @media (max-width: 450px) {
     #street-view {
       position: fixed;

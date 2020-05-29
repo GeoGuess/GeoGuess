@@ -1,6 +1,6 @@
 <template>
   <div id="container-map" 
-      :class="[(($viewport.width >= 450 && (activeMap|| pinActive)) || isMakeGuessButtonClicked) ? 'container-map--active': '', `container-map--size-${size}`]"
+      :class="[(($viewport.width >= 450 && (activeMap|| pinActive)) || isMakeGuessButtonClicked) ? 'container-map--active': '', (printMapFull) ? 'container-map--full': '', `container-map--size-${size}`]"
       @mouseover="activeMap = true"
       @mouseleave="activeMap = false"
     >
@@ -120,6 +120,7 @@
         activeMap: false,
         size: 2,
         pinActive: false,
+        printMapFull: false,
       }
     },
     computed: {
@@ -212,7 +213,7 @@
       drawPolyline(selectedLatLng, i) {
         var polyline = new google.maps.Polyline({
           path: [selectedLatLng, this.randomLatLng],
-          strokeColor: this.strokeColors[i],
+          strokeColor: this.strokeColors[i%this.strokeColors.length],
         })
         polyline.setMap(this.map)
         this.polylines.push(polyline)
@@ -246,6 +247,7 @@
           this.hideMap()
         }
 
+        this.printMapFull = false;
         this.removeMarkers()
         this.removePolylines()
 
@@ -287,12 +289,8 @@
               var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
               var distance = snapshot.child('round' + this.round + '/player' + j).val()
               this.drawPolyline(latLng, i)
-              const colorMaker = ["#CF0404", "#04cf04", "#0404cf", "#cf6a04", "#cf046a", "#04cfcf"]
               this.putMarker(latLng, {
                 label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
-                icon: {
-                  strokeColor: colorMaker[i%colorMaker.length]
-               },
               })
               this.setInfoWindow(playerName, distance)
               i++
@@ -302,7 +300,8 @@
             this.putMarker(this.randomLatLng, {
               icon: window.location.origin+'/img/icons/favicon-16x16.png'
             })
-
+            
+            this.printMapFull = true;
             // Remove guess node every time the round is done
             this.room.child('guess').remove()
 
@@ -381,6 +380,17 @@
 
       }
     }
+    &.container-map--full{
+      opacity: 1;
+      --active-width: 65vw;
+      --inactive-width: 65vw;
+      position: relative;
+      margin: auto; 
+      .container-map_controls{
+        display: none;
+      }
+    }
+
     .container-map_controls{
         display: none;
         .container-map_btns{
