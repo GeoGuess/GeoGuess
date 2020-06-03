@@ -270,7 +270,7 @@
     methods: {
       startSinglePlayer() {
         if( this.geoJson !=  ''){    
-              this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson}});
+          this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson}});
         }
         else if(this.place == null || this.place == ''){
           this.$router.push({name:'street-view'});

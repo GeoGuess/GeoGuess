@@ -1,6 +1,6 @@
 <template>
   <div id="container-map" 
-      :class="[(($viewport.width >= 450 && (activeMap|| pinActive)) || isMakeGuessButtonClicked) ? 'container-map--active': '', `container-map--size-${size}`]"
+      :class="[(($viewport.width >= 450 && (activeMap|| pinActive)) || isMakeGuessButtonClicked) ? 'container-map--active': '', (printMapFull) ? 'container-map--full': '', `container-map--size-${size}`]"
       @mouseover="activeMap = true"
       @mouseleave="activeMap = false"
     >
@@ -9,16 +9,15 @@
         <v-btn fab x-small @click="size--" :disabled="size<2">
             <v-icon dark>mdi-arrow-bottom-left</v-icon>
           </v-btn>
-        
+
         <v-btn fab x-small @click="size++" :disabled="size>3">
             <v-icon dark >mdi-arrow-top-right</v-icon>
           </v-btn>
-              
+
         <v-btn fab x-small  @click="pinActive = !pinActive">
           <v-icon dark >mdi-pin{{(pinActive)? '-off': ''}}</v-icon>
         </v-btn>
       </div>
-    
     </div>
     <v-btn
       id="hide-map-button"
@@ -26,60 +25,82 @@
       fab
       x-small
       color="red"
-      @click="hideMap">
+      @click="hideMap"
+      >
       <v-icon color="white">mdi-close</v-icon>
     </v-btn>
-    <div 
+        <div 
       id="map">
     </div>
     <button
       id="make-guess-button"
       v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
-      @click="showMap">
+      @click="showMap"
+      >
       MAKE GUESS
     </button>
     <div>
       <button
         id="reset-button"
-        v-if="!isGuessButtonClicked && ($viewport.width > 450 || isMakeGuessButtonClicked)"
+        :disabled="isGuessButtonClicked || (!!this.room && !isReady)"
+        v-if="!isNextButtonVisible && !isSummaryButtonVisible && !isExitButtonVisible && ($viewport.width > 450 || isMakeGuessButtonClicked)"
         @click="resetLocation"
         >RESET
       </button>
       <button
         id="guess-button"
-        :disabled="selectedLatLng == null || isGuessButtonClicked"
-        v-if="!isGuessButtonClicked && ($viewport.width > 450 || isMakeGuessButtonClicked)"
+        :disabled="selectedLatLng == null || isGuessButtonClicked || (!!this.room && !isReady)"
+        v-if="!isNextButtonVisible && !isSummaryButtonVisible && !isExitButtonVisible && ($viewport.width > 450 || isMakeGuessButtonClicked)"
         @click="selectLocation"
         >GUESS
       </button>
     </div>
     <button
       id="next-button"
-      v-if="isGuessButtonClicked && round < 5"
+      :disabled="!isNextButtonEnabled"
+      :style="{ backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C' }"
+      v-if="isNextButtonVisible"
       @click="goToNextRound"
       >NEXT ROUND
     </button>
     <button
       id="summary-button"
-      v-if="isGuessButtonClicked && round >= 5"
+      v-if="isSummaryButtonVisible"
       @click="dialogSummary = true"
       >VIEW SUMMARY
     </button>
-    <DialogSummary 
+    
+    <button
+      id="summary-button"
+      v-if="isExitButtonVisible"
+      @click="finishGame"
+      >EXIT
+    </button>
+
+    <DialogSummary
       :dialogSummary="dialogSummary"
+      :summaryTexts="summaryTexts"
       :score="score"
-      @playAgain="playAgain" />
+      :multiplayer="!!this.room"
+      @viewDetails="viewDetails"
+      @finishGame="finishGame" />
   </div>
 </template>
 
 <script>
+  import firebase from 'firebase/app'
+  import 'firebase/database'
+
   import DialogSummary from '@/components/DialogSummary'
 
   export default {
     props: [
-      "randomLatLng",
-      "round",
-      "score",
+      'randomLatLng',
+      'roomName',
+      'playerNumber',
+      'isReady',
+      'round',
+      'score',
     ],
     components: {
       DialogSummary,
@@ -87,17 +108,44 @@
     data() {
       return {
         markers: [],
+        polylines: [],
+        summaryTexts: [],
+        strokeColors: [
+          '#F44336',
+          '#76FF03',
+          '#FFEB3B',
+          '#FF4081',
+          '#18FFFF',
+        ],
         map: null,
-        polyline: null,
+        room: null,
         selectedLatLng: null,
         distance: null,
         isGuessButtonClicked: false,
         isMakeGuessButtonClicked: false,
         isSelected: false,
+        isNextStreetViewReady: false,
+        isNextButtonVisible: false,
+        isSummaryButtonVisible: false,
         dialogSummary: false,
         activeMap: false,
         size: 2,
         pinActive: false,
+        printMapFull: false,
+        isExitButtonVisible: false,
+      }
+    },
+    computed: {
+      isNextButtonEnabled() {
+        if (this.playerNumber == 1 || !this.room) {
+          return true
+        } else {
+          if (this.isNextStreetViewReady == true) {
+            return true
+          } else {
+            return false
+          }
+        }
       }
     },
     methods: {
@@ -108,30 +156,57 @@
         this.isMakeGuessButtonClicked = false
       },
       selectLocation() {
-        // Calculate the distance
         this.calculateDistance()
-
-        // Show the polyline
-        this.drawPolyline()
-
-        // Put the marker on the random location
-        this.putMarker(this.randomLatLng)
-
-        // Set info window
-        this.setInfoWindow()
-
+        if(this.room){
+          // Save the selected location into database
+          // So that it uses for putting the markers and polylines
+          this.room.child('guess/player' + this.playerNumber).set({
+              latitude: this.selectedLatLng.lat(),
+              longitude:this.selectedLatLng.lng()
+          })
+        }else{    
+          // Put the marker on the random location
+          this.putMarker(this.randomLatLng,  {
+            icon: window.location.origin+'/img/icons/favicon-16x16.png'
+          })
+          // Show the polyline
+          this.drawPolyline(this.selectedLatLng, 1) 
+          
+          this.setInfoWindow()
+          this.printMapFull = true;  
+          if(this.round >= 5){
+            this.isSummaryButtonVisible = true;
+          }else{
+            this.isNextButtonVisible = true;
+          }
+          this.$emit('showResult')
+        }
         // Clear the event
         google.maps.event.clearListeners(this.map, 'click')
 
-        // Disable guess button and opacity of the map
+        // Diable guess button and opacity of the map
         this.isGuessButtonClicked = true
         this.isSelected = true
+
+        // Turn off the flag before the next button appears
+        this.isNextStreetViewReady = false
+
+      },
+      selectRandomLocation(randomLatLng) {
+        if(this.selectedLatLng == null){
+          // set a random location if the player didn't select in time
+          this.selectedLatLng = randomLatLng
+          this.removeMarkers()
+          this.putMarker(this.selectedLatLng)
+        }
+        this.selectLocation()
       },
       resetLocation(){
         this.$emit('resetLocation')
       },
-      putMarker(position) {
+      putMarker(position, info) {
         var marker = new google.maps.Marker({
+          ...info,
           position: position,
           map: this.map,
         })
@@ -145,43 +220,56 @@
       },
       calculateDistance() {
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng))
+        // Save the distance into firebase
+        if(this.room){          
+          this.room.child('round' + this.round + '/player' + this.playerNumber).set({
+            latitude: this.selectedLatLng.lat(),
+            longitude:this.selectedLatLng.lng(),
+            distance: this.distance
+          })
+        }
+
         this.$emit('calculateDistance', this.distance)
       },
-      setInfoWindow() {
+      setInfoWindow(playerName = null, distance = this.distance) {
         let dataToDisplay =''
-        if(this.distance < 1000){
-          dataToDisplay = '<b>' + this.distance + '</b> m away!'
+        if(playerName !== null)
+          dataToDisplay+= '<b>' + playerName + '</b>' + ' is ';
+
+        if(distance < 1000){
+          dataToDisplay += '<b>' + distance + '</b> m away!';
         }else{
-          dataToDisplay = '<b>' + this.distance / 1000  + '</b> km away!'
+          dataToDisplay += '<b>' + distance / 1000  + '</b> km away!';
         }
         var infoWindow = new google.maps.InfoWindow({
           content: dataToDisplay
         })
-        infoWindow.open(this.map, this.markers[0])        
+        infoWindow.open(this.map, this.markers[(playerName) ? this.markers.length - 1: 0])
       },
-      drawPolyline() {
-        this.polyline = new google.maps.Polyline({
-          path: [this.selectedLatLng, this.randomLatLng],
-          strokeColor: '#FF0000',  
+      drawPolyline(selectedLatLng, i, randomLatLng= this.randomLatLng) {
+        var polyline = new google.maps.Polyline({
+          path: [selectedLatLng, randomLatLng],
+          strokeColor: this.strokeColors[i%this.strokeColors.length],
         })
-        this.polyline.setMap(this.map)
+        polyline.setMap(this.map)
+        this.polylines.push(polyline)
       },
-      goToNextRound() {
-        // Reset
-        this.selectedLatLng = null
-        this.polyline.setMap(null)
-        this.isGuessButtonClicked = false
-        this.isSelected = false
-
-        if (this.$viewport.width < 450) {
-          // Hide the map if the player is on mobile
-          this.hideMap()
+      removePolylines() {
+        for (var i = 0; i < this.polylines.length; i++) {
+          this.polylines[i].setMap(null)
         }
+      },
+      startNextRound() {
+        this.map.addListener('click', (e) => {
+          // Clear the previous marker when clicking the map
+          this.removeMarkers()
 
-        this.removeMarkers()
+          // Show the new marker
+          this.putMarker(e.latLng)
 
-        // Replace the streetview with new one
-        this.$emit('goToNextRound')
+          // Save latLng
+          this.selectedLatLng = e.latLng
+        })   
       },
       playAgain() {
         // Reset
@@ -200,22 +288,69 @@
 
         this.$emit('playAgain')
       },
-    },
-    watch: {
-      randomLatLng: function(newVal, oldVal) {
-        // Enable click event when a random streetview is set
-        if (newVal != null) {
-          const that = this
-          that.map.addListener('click', (e) => {
-            // Clear the previous marker when clicking the map
-            that.removeMarkers()
-            // Show the new marker
-            that.putMarker(e.latLng)
+      goToNextRound() {
+        // Reset
+        this.selectedLatLng = null
+        this.isGuessButtonClicked = false
+        this.isSelected = false
+        this.isNextButtonVisible = false
 
-            // Save latLng
-            that.selectedLatLng = e.latLng
-          })          
+        if (this.$viewport.width < 450) {
+          // Hide the map if the player is on mobile
+          this.hideMap()
         }
+
+        this.printMapFull = false;
+        this.removeMarkers()
+        this.removePolylines()
+
+        // Replace the streetview with the next one
+        this.$emit('goToNextRound')
+      },
+      finishGame() {
+        this.isExitButtonVisible = true
+        this.dialogSummary = false
+        if(this.room)
+          this.room.child('isGameDone/player' + this.playerNumber).set(true)
+        this.$emit('finishGame')
+      },
+      viewDetails(){
+        this.isSummaryButtonVisible = false
+        this.dialogSummary = false
+        this.isExitButtonVisible = true
+        
+        this.room.on('value', (snapshot) => {
+          // Check if the room is already removed
+          if (snapshot.hasChild('active')) {
+            snapshot.child('streetView').forEach((round) => {
+                  
+              let lat = round.child('latitude').val();
+              let lng = round.child('longitude').val();
+              let latLng = new google.maps.LatLng({lat: lat, lng: lng});
+              this.putMarker(latLng, {        
+                icon: window.location.origin+'/img/icons/favicon-16x16.png'
+              })
+              let i =0;
+              snapshot.child('playerName').forEach((player) => {
+                    
+                let playerName = player.val()
+                let latitudeG = snapshot.child(round.key + '/'+player.key+'/latitude').val()
+                let longitudeG = snapshot.child(round.key + '/'+player.key+'/longitude').val()
+                let distance = snapshot.child(round.key + '/' +player.key+'/distance').val()
+        
+                let latLngG = new google.maps.LatLng({lat: latitudeG, lng: longitudeG});
+                this.drawPolyline(latLngG, i, latLng)
+                this.putMarker(latLngG, {
+                  label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
+                })
+                this.setInfoWindow(playerName, distance)
+                    
+                i++
+              });
+
+            });
+          }
+        })
       }
     },
     mounted() {
@@ -224,8 +359,73 @@
           zoom: 1,
           fullscreenControl: false,
           mapTypeControl: false,
-          streetViewControl: false,
+          streetViewControl: false,        
       })
+      if(this.roomName){
+        this.room = firebase.database().ref(this.roomName)
+        this.room.on('value', (snapshot) => {
+          // Check if the room is already removed
+          if (snapshot.hasChild('active')) {
+
+            // Allow players to move on to the next round when every players guess locations
+            if (snapshot.child('guess').numChildren() == snapshot.child('size').val()) {
+              this.$emit('showResult')
+
+              // Put markers and draw polylines on the map
+              var i = 0
+              var j = 1
+              snapshot.child('guess').forEach((childSnapshot) => {
+                var lat = childSnapshot.child('latitude').val()
+                var lng = childSnapshot.child('longitude').val()
+                var latLng = new google.maps.LatLng({lat: lat, lng: lng});
+
+                var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
+                var distance = snapshot.child('round' + this.round + '/player' + j+'/distance').val()
+                this.drawPolyline(latLng, i)
+                this.putMarker(latLng, {
+                  label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
+                })
+                this.setInfoWindow(playerName, distance)
+                i++
+                j++
+              })
+              
+              this.putMarker(this.randomLatLng, {
+                icon: window.location.origin+'/img/icons/favicon-16x16.png'
+              })
+              
+              this.printMapFull = true;
+              // Remove guess node every time the round is done
+              this.room.child('guess').remove()
+
+              if (this.round >= 5) {
+                // Show summary button
+                snapshot.child('finalScore').forEach((childSnapshot) => {
+                  var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
+                  var finalScore = childSnapshot.val()
+                  this.summaryTexts.push({
+                    playerName: playerName,
+                    finalScore: finalScore,
+                  })
+                })
+
+                this.summaryTexts.sort((a,b) => parseInt(a.finalScore)-parseInt(b.finalScore))
+
+                this.isSummaryButtonVisible = true
+
+              } else {
+                // Show next button
+                this.isNextButtonVisible = true
+              }
+            }
+
+            // Allow other players to move on to the next round when the next street view is set
+            if (snapshot.child('streetView').numChildren() == this.round + 1) {
+              this.isNextStreetViewReady = true
+            }
+          }
+        })
+      }
     },
   }
 </script>
@@ -274,6 +474,17 @@
 
       }
     }
+    &.container-map--full{
+      opacity: 1;
+      --active-width: 65vw;
+      --inactive-width: 65vw;
+      position: relative;
+      margin: auto; 
+      .container-map_controls{
+        display: none;
+      }
+    }
+
     .container-map_controls{
         display: none;
         .container-map_btns{
@@ -320,10 +531,11 @@
   #make-guess-button, #guess-button {
     background-color: #212121;
   }
-  
+
   #guess-button:hover, #reset-button {
     opacity: 1.0;
   }
+
   #next-button, #summary-button {
     background-color: #F44336;
   }

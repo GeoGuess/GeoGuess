@@ -307,6 +307,7 @@
                 roomName: this.roomName, 
                 playerNumber: this.playerNumber,
                 placeGeoJson: this.placeGeoJson, 
+                multiplayer: true,
               }
             })
           }

@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 import Home from '@/components/Home'
 import StreetView from '@/components/StreetView'
-import StreetViewWithFriends from '@/components/StreetViewWithFriends'
 import PrivacyPolicy from '@/components/PrivacyPolicy'
 
 const originalPush = Router.prototype.push
@@ -34,13 +33,19 @@ export default new Router ({
       path: '/street-view',
       name: 'street-view',
       component: StreetView,
-      props: true,
+      props:  (route) => ({
+        multiplayer: false,
+        ...route.params
+      })
     },
     {
       path: '/street-view/with-friends',
       name: 'with-friends',
-      component: StreetViewWithFriends,
-      props: true,
+      component: StreetView,
+      props:  (route) => ({
+        multiplayer: true,
+        ...route.params
+      })
     },
     {
       path: '/privacy-policy',
