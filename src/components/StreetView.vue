@@ -74,6 +74,10 @@
       'multiplayer': {
         default: false,
         type: Boolean
+      },
+      'time': {
+        default: 0,
+        type: Number
       }
     },
     components: {
@@ -193,15 +197,15 @@
         this.panorama.setPosition(this.randomLatLng)
       },
       startTimer() {
-        if (!this.hasLocationSelected) {
-          if (this.remainingTime > 0) {
-            setTimeout(() => {
-              this.remainingTime -= 1
-              this.startTimer()
-            }, 1000)
-          } else {
+        if (this.remainingTime > 0) {
+          setTimeout(() => {
+            this.remainingTime -= 1
+            this.startTimer()
+          }, 1000)
+        } else {    
+          if (!this.hasLocationSelected) {
             // Set a random location if the player didn't select a location in time
-            this.$refs.map.selectRandomLocation(this.getRandomLatLng())
+            this.$refs.map.selectRandomLocation(this.getRandomLatLng()) 
           }
         }
       },
@@ -241,6 +245,13 @@
 
         if (this.playerNumber == 1 || !this.multiplayer) {
           this.loadStreetView()
+          if (!this.multiplayer && this.timeLimitation != 0) {
+            if (!this.hasTimerStarted) {
+              this.remainingTime = this.timeLimitation
+              this.startTimer()
+              this.hasTimerStarted = true
+            }
+          }
         } else {
           // Trigger listener and load the next streetview
           this.room.child('trigger/player' + this.playerNumber).set(this.round)
@@ -277,9 +288,18 @@
         this.loadStreetView()
       }
       
-        console.log()
       if(!this.multiplayer){
         this.$refs.map.startNextRound()
+        this.timeLimitation = this.time*60
+        
+        if (this.timeLimitation != 0) {
+          if (!this.hasTimerStarted) {
+            this.remainingTime = this.timeLimitation
+            this.startTimer()
+            this.hasTimerStarted = true
+          }
+        }
+        
       }else{
         // Set a room name if it's null to detect when the user refresh the page
         if (this.roomName == null) {

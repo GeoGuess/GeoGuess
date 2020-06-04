@@ -68,14 +68,56 @@
           
           <v-spacer/>
           <v-flex>
-            <v-btn 
-              id="single-player-button"
-              class="ml-8 mr-8"
-              dark
-              color="#FF5252"
-              @click="startSinglePlayer">
-              Single Player
-            </v-btn>
+          <v-dialog 
+            persistent
+            :fullscreen="$viewport.width < 450"
+            max-width="600"
+             v-model="dialog">
+            <template v-slot:activator="{ on }">
+
+              <v-btn 
+                id="single-player-button"
+                class="ml-8 mr-8"
+                dark
+                color="#FF5252"
+                v-on="on">
+                Single Player
+              </v-btn>
+            </template>
+            <v-card color="#061422">
+              <v-card-title>
+                <span id="card-title">Set a time limitation</span>
+              </v-card-title>
+              
+              <v-card-text>
+                        <v-col 
+              cols="6"
+              sm="4"
+              md="4"
+              lg="4"
+              xl="4">
+              <v-select
+                dark 
+                v-model="time"
+                :items="timeLimitationItems"></v-select>
+            </v-col>
+            </v-card-text>
+            <v-card-actions>
+              <div class="flex-grow-1"></div>
+              <v-btn
+                dark
+                depressed
+                color="#FF5252"
+                @click="dialog=false">CANCEL</v-btn>
+              <v-btn
+                dark
+                depressed
+                color="#43B581"
+                @click="startSinglePlayer">NEXT</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+              
             <DialogRoom :place="place" :geoJson="placeGeoJson" />
           </v-flex>
         </v-layout>
@@ -191,6 +233,7 @@
       return {
         record: localStorage.getItem('record'),
         place: '',
+        dialog: false,
         entries: [],
         isLoading: false,
         search: '',
@@ -198,7 +241,54 @@
         dialogCustom: false,
         geoJson: '',
         placeholderGeoJson: geoJsonExample,
-        errorGeoJson: false
+        errorGeoJson: false,
+        time: 0,
+        timeLimitationItems: [
+          {
+            text: 'Infinite',
+            value: 0,
+          },
+          {
+            text: '1',
+            value: 1,
+          },
+          {
+            text: '2',
+            value: 2,
+          },
+          {
+            text: '3',
+            value: 3,
+          },
+          {
+            text: '4',
+            value: 4,
+          },
+          {
+            text: '5',
+            value: 5,
+          }, 
+          {
+            text: '6',
+            value: 6,
+          },
+          {
+            text: '7',
+            value: 7,
+          },
+          {
+            text: '8',
+            value: 8,
+          },
+          {
+            text: '9',
+            value: 9,
+          },
+          {
+            text: '10',
+            value: 10,
+          },          
+        ],
       }
     },  
     computed: {
@@ -270,15 +360,15 @@
     methods: {
       startSinglePlayer() {
         if( this.geoJson !=  ''){    
-          this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson}});
+          this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson, time :this.time}});
         }
         else if(this.place == null || this.place == ''){
-          this.$router.push({name:'street-view'});
+          this.$router.push({name:'street-view',  params: {time :this.time}});
         }else{
           axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(this.place)}?format=geojson&limit=1&polygon_geojson=1`)
           .then((res) => {
             if(res && res.status === 200 && res.data.features.length > 0){
-              this.$router.push({name:'street-view', params: {placeGeoJson: res.data.features[0]}});
+              this.$router.push({name:'street-view', params: {placeGeoJson: res.data.features[0], time :this.time}});
             }
           }).catch((e) => { console.err(e) })
         }
