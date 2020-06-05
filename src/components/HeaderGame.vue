@@ -5,7 +5,7 @@
       color="grey darken-4">
       <div 
         id="countdown-timer"
-        v-if="remainingTime != null && remainingTime != 0"        
+        v-if="remainingTime != null && remainingTime > 0"        
       >
         <span id="countdown-text">{{ getCountdownText }}</span>
       </div>   

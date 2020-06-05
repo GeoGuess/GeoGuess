@@ -74,6 +74,10 @@
       'multiplayer': {
         default: false,
         type: Boolean
+      },
+      'time': {
+        default: 0,
+        type: Number
       }
     },
     components: {
@@ -102,6 +106,7 @@
         cptNotFoundLocation: 0,
         isVisibleDialog: false,
         panorama: null,
+        timerInProgress: true,
       }
     },
     methods: {
@@ -192,22 +197,28 @@
         })
         this.panorama.setPosition(this.randomLatLng)
       },
-      startTimer() {
-        if (!this.hasLocationSelected) {
+      startTimer(round = this.round) {
+        if(round === this.round){
           if (this.remainingTime > 0) {
             setTimeout(() => {
               this.remainingTime -= 1
-              this.startTimer()
+              this.startTimer(round)
             }, 1000)
-          } else {
-            // Set a random location if the player didn't select a location in time
-            this.$refs.map.selectRandomLocation(this.getRandomLatLng())
+          } else {    
+            this.timerInProgress = false
+            if (!this.hasLocationSelected) {
+              // Set a random location if the player didn't select a location in time
+              this.$refs.map.selectRandomLocation(this.getRandomLatLng()) 
+            }
           }
         }
       },
       updateScore(distance) {
         // Update the score and save it into firebase
         this.hasLocationSelected = true
+        if(!this.multiplayer){
+          this.remainingTime = 0;
+        }
         this.score += distance
         
         if(this.multiplayer){
@@ -220,6 +231,7 @@
       },
       showResult() {
         this.scoreHeader = this.score  // Update the score on header after every players guess locations
+        this.remainingTime = 0;
         this.dialogMessage = false
         this.overlay = true
       },
@@ -241,6 +253,10 @@
 
         if (this.playerNumber == 1 || !this.multiplayer) {
           this.loadStreetView()
+          if (!this.multiplayer && this.timeLimitation != 0) {
+            this.remainingTime = this.timeLimitation
+            this.startTimer()
+          }
         } else {
           // Trigger listener and load the next streetview
           this.room.child('trigger/player' + this.playerNumber).set(this.round)
@@ -277,9 +293,18 @@
         this.loadStreetView()
       }
       
-        console.log()
       if(!this.multiplayer){
         this.$refs.map.startNextRound()
+        this.timeLimitation = this.time*60
+        
+        if (this.timeLimitation != 0) {
+          if (!this.hasTimerStarted) {
+            this.remainingTime = this.timeLimitation
+            this.startTimer()
+            this.hasTimerStarted = true
+          }
+        }
+        
       }else{
         // Set a room name if it's null to detect when the user refresh the page
         if (this.roomName == null) {
