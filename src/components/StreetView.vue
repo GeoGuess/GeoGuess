@@ -106,6 +106,7 @@
         cptNotFoundLocation: 0,
         isVisibleDialog: false,
         panorama: null,
+        timerInProgress: true,
       }
     },
     methods: {
@@ -196,22 +197,28 @@
         })
         this.panorama.setPosition(this.randomLatLng)
       },
-      startTimer() {
-        if (this.remainingTime > 0) {
-          setTimeout(() => {
-            this.remainingTime -= 1
-            this.startTimer()
-          }, 1000)
-        } else {    
-          if (!this.hasLocationSelected) {
-            // Set a random location if the player didn't select a location in time
-            this.$refs.map.selectRandomLocation(this.getRandomLatLng()) 
+      startTimer(round = this.round) {
+        if(round === this.round){
+          if (this.remainingTime > 0) {
+            setTimeout(() => {
+              this.remainingTime -= 1
+              this.startTimer(round)
+            }, 1000)
+          } else {    
+            this.timerInProgress = false
+            if (!this.hasLocationSelected) {
+              // Set a random location if the player didn't select a location in time
+              this.$refs.map.selectRandomLocation(this.getRandomLatLng()) 
+            }
           }
         }
       },
       updateScore(distance) {
         // Update the score and save it into firebase
         this.hasLocationSelected = true
+        if(!this.multiplayer){
+          this.remainingTime = 0;
+        }
         this.score += distance
         
         if(this.multiplayer){
@@ -224,6 +231,7 @@
       },
       showResult() {
         this.scoreHeader = this.score  // Update the score on header after every players guess locations
+        this.remainingTime = 0;
         this.dialogMessage = false
         this.overlay = true
       },
@@ -246,11 +254,8 @@
         if (this.playerNumber == 1 || !this.multiplayer) {
           this.loadStreetView()
           if (!this.multiplayer && this.timeLimitation != 0) {
-            if (!this.hasTimerStarted) {
-              this.remainingTime = this.timeLimitation
-              this.startTimer()
-              this.hasTimerStarted = true
-            }
+            this.remainingTime = this.timeLimitation
+            this.startTimer()
           }
         } else {
           // Trigger listener and load the next streetview
