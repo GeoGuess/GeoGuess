@@ -38,6 +38,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 firebase.analytics()
 
+console.info("Version : "+process.env.VUE_APP_VERSION)
 new Vue({
   vuetify,
   router,

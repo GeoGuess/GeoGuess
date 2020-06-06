@@ -190,13 +190,6 @@
           <span id="copyright-text">under <a href="https://raw.githubusercontent.com/spider-hand/Geoguess-Master-Web/master/LICENSE">MIT license</a></span>
         </v-row>
         <v-row
-          class="mt-1"
-          justify="center">
-          <span id="credit-text">
-            <small>VERSION : {{version}}</small>
-          </span>
-        </v-row>
-        <v-row
           class="mt-3"
           justify="center">
           <v-btn
@@ -334,7 +327,7 @@
         return `calc(${height} - ${this.$vuetify.application.top}px)`
       },
       items () {
-          return this.entries.map(entry => entry.display_name)
+          return this.entries.map(entry => entry.properties.name)
       },
     },
     watch: {
@@ -345,10 +338,10 @@
 
         this.isLoading = true
         // Lazily load input items
-        axios.get(`https://nominatim.openstreetmap.org/search/${encodeURI(val)}?format=json`)
+        axios.get(`http://photon.komoot.de/api/?q=${encodeURI(val)}`)
           .then(res => {
-            if(res.status === 200 && res.data){
-              this.entries = res.data.filter((node ) => node.osm_type === 'relation');
+            if(res.status === 200 && res.data && res.data.features){
+              this.entries = res.data.features.filter((node ) => node.properties.osm_type === 'R');
             }
           })
           .catch(err => {
@@ -436,5 +429,15 @@
   }
   .dialog-customs {
     color: #FFFFFF;
+  }
+  
+  @media (max-width: 450px) {
+    .search{
+      width: 90vw;
+      margin: auto;
+    }
+    #single-player-button {
+      border-radius: 40px;
+    }
   }
 </style>

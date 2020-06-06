@@ -486,7 +486,6 @@
     }
 
     .container-map_controls{
-        display: none;
         .container-map_btns{
           background-color: rgba(33,33,33);
           padding: 0.2rem;
@@ -545,6 +544,9 @@
     #container-map{
         display: flex;
         flex-direction: column;
+            .container-map_controls{
+        display: none;
+            }
       #map{
         display: none;
       }
@@ -562,10 +564,13 @@
 
       }
     }
-    #make-guess-button, #guess-button, #next-button, #summary-button {
+    #make-guess-button, #next-button, #summary-button {
       bottom: 0;
       width: 100%;
     }
+     #guess-button{
+       width: 75%;
+     }
 
     #hide-map-button {
       position: absolute;
