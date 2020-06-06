@@ -342,7 +342,6 @@
   }
 
   #multi-player-button {
-    height: 44px;
     width: 240px;
     border-radius: 40px;
   }
