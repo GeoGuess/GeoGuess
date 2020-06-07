@@ -1,6 +1,6 @@
 <template>
   <v-app-bar
-    v-if="$viewport.width > 450" 
+    v-if="$viewport.width > 480" 
     color="transparent"
     flat>
     <div>

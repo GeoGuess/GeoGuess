@@ -334,11 +334,11 @@
       search (val) {
 
         // Items have already been requested
-        if (this.isLoading) return
+        if (!val) return
 
         this.isLoading = true
         // Lazily load input items
-        axios.get(`http://photon.komoot.de/api/?q=${encodeURI(val)}`)
+        axios.get(`https://photon.komoot.de/api/?q=${encodeURI(val)}`)
           .then(res => {
             if(res.status === 200 && res.data && res.data.features){
               this.entries = res.data.features.filter((node ) => node.properties.osm_type === 'R');
@@ -431,13 +431,13 @@
     color: #FFFFFF;
   }
   
-  @media (max-width: 450px) {
+  @media (max-width: 550px) {
     .search{
       width: 90vw;
       margin: auto;
     }
     #single-player-button {
-      border-radius: 40px;
+      margin-bottom: 10px;
     }
   }
 </style>
