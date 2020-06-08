@@ -50,7 +50,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .header-game {
     z-index: 3;
     opacity: 0.8;
@@ -71,10 +71,16 @@
   .sub-text {
     color: #616161;
   }
-
   @media (max-width: 450px) {
     .main-text, .sub-text, #countdown-text {
       font-size: 14px;
+    }
+    
+    .round-score-container {
+      padding: 0 5%;
+      .sub-text{
+        display: none;
+      }
     }
   }
   

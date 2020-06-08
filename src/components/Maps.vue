@@ -29,7 +29,7 @@
       >
       <v-icon color="white">mdi-close</v-icon>
     </v-btn>
-        <div 
+    <div 
       id="map">
     </div>
     <button
@@ -542,18 +542,18 @@
 
   @media (max-width: 450px) {
     #container-map{
-        display: flex;
-        flex-direction: column;
-            .container-map_controls{
+      display: flex;
+      flex-direction: column;
+      .container-map_controls{
         display: none;
-            }
+      }
       #map{
         display: none;
       }
       &.container-map--active #map{
         display: block;
       }
-      
+
       &.container-map--active .container-map_controls{
         display: none;
       }
@@ -561,7 +561,14 @@
       width: 95%;
       &.container-map--active {
         height: 30vh;
-
+      }
+      &.container-map--full{
+        position: absolute;
+        --width: 100%;
+        height: calc(100% - 64px);
+        bottom: 0;
+        margin: 0;
+        max-height: 100%;
       }
     }
     #make-guess-button, #next-button, #summary-button {
