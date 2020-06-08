@@ -539,6 +539,18 @@
     background-color: #F44336;
   }
 
+  @media (max-width: 750px) {
+    
+    #container-map{
+      --inactive-width: 25vw;
+      
+      &.container-map--size-1{
+        --active-width: 25vw;
+      }
+    }
+    
+
+  }
 
   @media (max-width: 450px) {
     #container-map{
