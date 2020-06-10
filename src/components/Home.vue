@@ -1,5 +1,8 @@
 <template>
   <div>
+                <v-dialog v-model="a" >
+    <History :history="history"/>
+                </v-dialog>
     <div id="section-top">
       
       <v-img
@@ -212,6 +215,7 @@
 <script>
   import firebase from 'firebase/app'
   import 'firebase/database'
+  import History from '@/components/History'
 
   import Header from '@/components/Header'
   import DialogRoom from '@/components/DialogRoom'
@@ -221,10 +225,13 @@
     components: {
       Header,
       DialogRoom,
+      History,
     },
     data() {
       return {
+        a: true,
         record: localStorage.getItem('record'),
+        history: (localStorage.getItem('history')) ? JSON.parse(localStorage.getItem('history')) : [],
         place: '',
         dialog: false,
         entries: [],

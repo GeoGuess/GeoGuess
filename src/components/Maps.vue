@@ -70,17 +70,28 @@
       >VIEW SUMMARY
     </button>
     
-    <button
-      id="summary-button"
-      v-if="isExitButtonVisible"
-      @click="finishGame"
-      >EXIT
-    </button>
-
+    <div>
+      <button
+        id="summary-button"
+        v-bind:class="{ 'w-50': !this.room}"
+        v-if="isExitButtonVisible"
+        @click="finishGame"
+        >EXIT
+      </button>
+            
+      <button
+        v-if="isExitButtonVisible && !this.room"
+        id="play-again-button"
+        class="w-50"
+        @click="playAgain">PLAY AGAIN
+      </button>
+    </div>
+            
     <DialogSummary
       :dialogSummary="dialogSummary"
       :summaryTexts="summaryTexts"
       :score="score"
+      :game="game"
       :multiplayer="!!this.room"
       @viewDetails="viewDetails"
       @finishGame="finishGame" />
@@ -101,6 +112,7 @@
       'isReady',
       'round',
       'score',
+      'timeLimitation'
     ],
     components: {
       DialogSummary,
@@ -133,6 +145,12 @@
         pinActive: false,
         printMapFull: false,
         isExitButtonVisible: false,
+        game: {
+          multiplayer: !!this.room,
+          date: new Date(),
+          timeLimitation: this.timeLimitation,
+          rounds:[]
+        },
       }
     },
     computed: {
@@ -149,6 +167,9 @@
       }
     },
     methods: {
+      playAgain() {
+        window.location.reload()
+      },
       showMap() {
         this.isMakeGuessButtonClicked = true
       },
@@ -157,6 +178,8 @@
       },
       selectLocation() {
         this.calculateDistance()
+
+        
         if(this.room){
           // Save the selected location into database
           // So that it uses for putting the markers and polylines
@@ -228,10 +251,15 @@
             distance: this.distance
           })
         }
+        this.game.rounds.push({
+          guess: this.selectedLatLng,
+          position: this.randomLatLng,
+          distance: this.distance
+        })
 
         this.$emit('calculateDistance', this.distance)
       },
-      setInfoWindow(playerName = null, distance = this.distance) {
+      setInfoWindow(playerName = null, distance = this.distance, endGame= false) {
         let dataToDisplay =''
         if(playerName !== null)
           dataToDisplay+= '<b>' + playerName + '</b>' + ' is ';
@@ -244,9 +272,9 @@
         var infoWindow = new google.maps.InfoWindow({
           content: dataToDisplay
         })
-        infoWindow.open(this.map, this.markers[(playerName) ? this.markers.length - 1: 0])
+        infoWindow.open(this.map, this.markers[(playerName || endGame) ? this.markers.length - 1: 0])
       },
-      drawPolyline(selectedLatLng, i, randomLatLng= this.randomLatLng) {
+      drawPolyline(selectedLatLng, i=0, randomLatLng= this.randomLatLng) {
         var polyline = new google.maps.Polyline({
           path: [selectedLatLng, randomLatLng],
           strokeColor: this.strokeColors[i%this.strokeColors.length],
@@ -270,23 +298,6 @@
           // Save latLng
           this.selectedLatLng = e.latLng
         })   
-      },
-      playAgain() {
-        // Reset
-        this.selectedLatLng = null
-        this.polyline.setMap(null)
-        this.isGuessButtonClicked = false
-        this.isSelected = false
-        this.dialogSummary = false
-
-        if (this.$viewport.width < 450) {
-          this.hideMap()
-        }
-
-        // Remove markers
-        this.removeMarkers()
-
-        this.$emit('playAgain')
       },
       goToNextRound() {
         // Reset
@@ -318,39 +329,51 @@
         this.isSummaryButtonVisible = false
         this.dialogSummary = false
         this.isExitButtonVisible = true
-        
-        this.room.on('value', (snapshot) => {
-          // Check if the room is already removed
-          if (snapshot.hasChild('active')) {
-            snapshot.child('streetView').forEach((round) => {
-                  
-              let lat = round.child('latitude').val();
-              let lng = round.child('longitude').val();
-              let latLng = new google.maps.LatLng({lat: lat, lng: lng});
-              this.putMarker(latLng, {        
-                icon: window.location.origin+'/img/icons/favicon-16x16.png'
-              })
-              let i =0;
-              snapshot.child('playerName').forEach((player) => {
-                    
-                let playerName = player.val()
-                let latitudeG = snapshot.child(round.key + '/'+player.key+'/latitude').val()
-                let longitudeG = snapshot.child(round.key + '/'+player.key+'/longitude').val()
-                let distance = snapshot.child(round.key + '/' +player.key+'/distance').val()
-        
-                let latLngG = new google.maps.LatLng({lat: latitudeG, lng: longitudeG});
-                this.drawPolyline(latLngG, i, latLng)
-                this.putMarker(latLngG, {
-                  label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
-                })
-                this.setInfoWindow(playerName, distance)
-                    
-                i++
-              });
+        if(!this.room){
+          this.game.rounds.forEach(({guess, position, distance})=> {
+            this.putMarker(position, {        
+              icon: window.location.origin+'/img/icons/favicon-16x16.png'
+            })
+            this.drawPolyline(guess,0,position )
+            this.putMarker(guess)
+            this.setInfoWindow(null, distance, true)
+          })
 
-            });
-          }
-        })
+        }
+        else {
+          this.room.on('value', (snapshot) => {
+            // Check if the room is already removed
+            if (snapshot.hasChild('active')) {
+              snapshot.child('streetView').forEach((round) => {
+                    
+                let lat = round.child('latitude').val();
+                let lng = round.child('longitude').val();
+                let latLng = new google.maps.LatLng({lat: lat, lng: lng});
+                this.putMarker(latLng, {        
+                  icon: window.location.origin+'/img/icons/favicon-16x16.png'
+                })
+                let i =0;
+                snapshot.child('playerName').forEach((player) => {
+                      
+                  let playerName = player.val()
+                  let latitudeG = snapshot.child(round.key + '/'+player.key+'/latitude').val()
+                  let longitudeG = snapshot.child(round.key + '/'+player.key+'/longitude').val()
+                  let distance = snapshot.child(round.key + '/' +player.key+'/distance').val()
+          
+                  let latLngG = new google.maps.LatLng({lat: latitudeG, lng: longitudeG});
+                  this.drawPolyline(latLngG, i, latLng)
+                  this.putMarker(latLngG, {
+                    label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
+                  })
+                  this.setInfoWindow(playerName, distance)
+                      
+                  i++
+                });
+
+              });
+            }
+          })
+        }
       }
     },
     mounted() {
@@ -503,7 +526,7 @@
   }
 
   
-  #make-guess-button, #guess-button, #next-button, #summary-button, #reset-button {
+  #make-guess-button, #guess-button, #next-button, #summary-button, #reset-button, #play-again-button {
     border: none;
     border-radius: 5px;
     opacity: 0.8;
@@ -523,16 +546,22 @@
     background-color: #ff5e5e;
   }
 
-  #next-button, #summary-button {
+  #next-button, #summary-button:not(.w-50) {
     width: 100%;
   }
-
+  button.w-50{
+    width: 50%;
+  }
   #make-guess-button, #guess-button {
     background-color: #212121;
   }
 
   #guess-button:hover, #reset-button {
     opacity: 1.0;
+  }
+
+  #play-again-button{
+    background-color: #43B581;
   }
 
   #next-button, #summary-button {
