@@ -22,6 +22,7 @@
         :isReady="isReady"
         :round="round"
         :score="score"
+        :timeLimitation="timeLimitation"
         @resetLocation="resetLocation"
         @calculateDistance="updateScore"
         @showResult="showResult"

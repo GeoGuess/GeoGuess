@@ -7,7 +7,13 @@ import firebase from 'firebase/app'
 import 'firebase/analytics'
 import 'firebase/database'
 import './registerServiceWorker'
-
+import * as VueGoogleMaps from 'vue2-google-maps'
+ 
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_API_KEY,
+  }
+})
 Vue.config.productionTip = false
 
 const updateSizes = (obj = {}) => {

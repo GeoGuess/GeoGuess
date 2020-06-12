@@ -25,24 +25,8 @@
         </v-row>
         <v-row 
           class="mt-8" justify="center">
-          <v-btn
-            v-if="!multiplayer"
-            class="ml-4 mr-4"
-            id="exit-button"
-            dark
-            color="#FF5252"
-            @click="finishGame">EXIT</v-btn>
-            
+
           <v-btn 
-            v-if="!multiplayer"
-            id="play-again-button"
-            class="ml-4 mr-4"
-            dark
-            color="#43B581"
-            @click="playAgain">PLAY AGAIN</v-btn>
-            
-          <v-btn 
-            v-if="multiplayer"
             id="play-again-button"
             class="mt-8"
             dark
@@ -78,6 +62,7 @@
       'summaryTexts',
       'score',
       'multiplayer',
+      'game'
     ],
     data(){
       return {
@@ -90,12 +75,22 @@
         if (currentRecord == null || this.score < currentRecord) {
           localStorage.setItem('record', this.score)
         }
+        let history = localStorage.getItem('history')
+        if (history == null) {
+          history = []
+        }else{
+          history = JSON.parse(history)
+        }
+        history.push({
+          ...this.game,
+          score: this.score
+        })
+        
+        localStorage.setItem('history', JSON.stringify(history))
+        
       },
       finishGame() {
         this.$emit('finishGame')
-      },
-      playAgain() {
-        window.location.reload()
       },
     },
     watch: {
