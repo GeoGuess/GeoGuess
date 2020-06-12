@@ -22,29 +22,61 @@
                 map-type-id="terrain"
                 :style="'width:'+($viewport.width-100)+'px ; height: 400px'"
                 >
-                <GmapMarker
-                    :key="'g'+index"
-                    v-for="(m, index) in item.rounds"
-                    :position="m.guess"
-                />
-                <GmapMarker        
-                    :icon="icon"
-                    :key="'p'+index"
-                    v-for="(m, index) in item.rounds"
-                    :position="m.position"
-                />
-                
-                <GmapInfoWindow
-                    :key="'i'+index"
-                    v-for="(m, index) in item.rounds"
-                    :options="{position: m.guess}">        
-                    <p><b>{{m.distance / 1000 }} </b> km away!</p>
-                </GmapInfoWindow>
-                <GmapPolyline 
-                    :key="'l'+index"
-                    v-for="(m, index) in item.rounds"
-                    :path="[m.position, m.guess]"
-                />
+                <div v-if="!item.multiplayer">
+                    <div 
+                    :key="index"
+                    v-for="(r, index) in item.rounds">
+                        <GmapMarker
+                            :position="r.guess"
+                        />
+                        <GmapInfoWindow
+                            :options="infoOptions"
+                            :position="r.guess">        
+                            <p><b>{{r.distance / 1000 }} </b> km away!</p>
+                        </GmapInfoWindow>
+                        <GmapPolyline 
+                            :path="[r.position, r.guess]"
+                        />
+                        <GmapMarker        
+                            :icon="icon"
+                            :position="r.position"
+                        />
+                        
+                    </div>
+                </div>
+                <div v-else>
+                    <div 
+                    :key="indexR"
+                    v-for="(r, indexR) in item.rounds">
+                    
+                        <div 
+                        :key="indexR+''+indexP"                        
+                        v-for="(player, indexP) in Object.keys(r.players)">
+                        
+                            <GmapMarker
+                                :label="(player && player.length > 0) ? player[0].toUpperCase() : undefined"
+                                :position="r.players[player].guess"
+                            />
+                            <GmapInfoWindow
+                                :options="infoOptions"
+                                :position="r.players[player].guess">       
+                                <p><b>{{player}}</b> is <b>{{r.players[player].distance / 1000 }} </b> km away!</p>
+                            </GmapInfoWindow>
+                            <GmapPolyline 
+                                :path="[r.position, r.players[player].guess]"
+                                :options="{                                    
+                                    strokeColor: strokeColors[indexP%strokeColors.length],
+                                }"
+                            />
+                        </div>
+                        <GmapMarker        
+                            :icon="icon"
+                            :position="r.position"
+                        />
+                        
+                    </div>
+
+                </div>                
             </GmapMap>
         </td>
     </template>
@@ -56,7 +88,20 @@ export default {
     name:"History",
     props:["history"],
     data(){
-        return {
+        return {                
+            infoOptions: {
+                pixelOffset: {
+                    width: 0,
+                    height: -42
+                }
+            },      
+            strokeColors: [
+                '#F44336',
+                '#76FF03',
+                '#FFEB3B',
+                '#FF4081',
+                '#18FFFF',
+            ],
             icon: window.location.origin+'/img/icons/favicon-16x16.png',
             headers: [
                 {

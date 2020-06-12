@@ -146,7 +146,7 @@
         printMapFull: false,
         isExitButtonVisible: false,
         game: {
-          multiplayer: !!this.room,
+          multiplayer: !!this.roomName,
           date: new Date(),
           timeLimitation: this.timeLimitation,
           rounds:[]
@@ -250,12 +250,13 @@
             longitude:this.selectedLatLng.lng(),
             distance: this.distance
           })
+        }else{
+          this.game.rounds.push({
+            guess: this.selectedLatLng,
+            position: this.randomLatLng,
+            distance: this.distance
+          })
         }
-        this.game.rounds.push({
-          guess: this.selectedLatLng,
-          position: this.randomLatLng,
-          distance: this.distance
-        })
 
         this.$emit('calculateDistance', this.distance)
       },
@@ -326,6 +327,8 @@
         this.$emit('finishGame')
       },
       viewDetails(){
+        this.removeMarkers()
+        this.removePolylines()
         this.isSummaryButtonVisible = false
         this.dialogSummary = false
         this.isExitButtonVisible = true
@@ -334,7 +337,7 @@
             this.putMarker(position, {        
               icon: window.location.origin+'/img/icons/favicon-16x16.png'
             })
-            this.drawPolyline(guess,0,position )
+            this.drawPolyline(guess,0,position)
             this.putMarker(guess)
             this.setInfoWindow(null, distance, true)
           })
@@ -359,7 +362,6 @@
                   let latitudeG = snapshot.child(round.key + '/'+player.key+'/latitude').val()
                   let longitudeG = snapshot.child(round.key + '/'+player.key+'/longitude').val()
                   let distance = snapshot.child(round.key + '/' +player.key+'/distance').val()
-          
                   let latLngG = new google.maps.LatLng({lat: latitudeG, lng: longitudeG});
                   this.drawPolyline(latLngG, i, latLng)
                   this.putMarker(latLngG, {
@@ -397,6 +399,7 @@
               // Put markers and draw polylines on the map
               var i = 0
               var j = 1
+              const players = {}
               snapshot.child('guess').forEach((childSnapshot) => {
                 var lat = childSnapshot.child('latitude').val()
                 var lng = childSnapshot.child('longitude').val()
@@ -404,6 +407,10 @@
 
                 var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
                 var distance = snapshot.child('round' + this.round + '/player' + j+'/distance').val()
+                players[playerName] = {
+                  guess: latLng,
+                  distance,                    
+                }
                 this.drawPolyline(latLng, i)
                 this.putMarker(latLng, {
                   label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
@@ -411,8 +418,12 @@
                 this.setInfoWindow(playerName, distance)
                 i++
                 j++
+              })     
+
+              this.game.rounds.push({
+                position: this.randomLatLng,
+                players,
               })
-              
               this.putMarker(this.randomLatLng, {
                 icon: window.location.origin+'/img/icons/favicon-16x16.png'
               })

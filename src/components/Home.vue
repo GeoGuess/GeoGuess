@@ -1,8 +1,8 @@
 <template>
   <div>
-                <v-dialog v-model="a" >
-    <History :history="history"/>
-                </v-dialog>
+    <v-dialog v-model="historyDialog" >
+      <History :history="history"/>
+    </v-dialog>
     <div id="section-top">
       
       <v-img
@@ -93,7 +93,7 @@
               </v-card-title>
               
               <v-card-text>
-                        <v-col 
+              <v-col 
               cols="6"
               sm="4"
               md="4"
@@ -123,6 +123,15 @@
               
             <DialogRoom :place="place" :geoJson="placeGeoJson" />
           </v-flex>
+          
+          <v-flex xs12>
+              <v-btn
+                dark
+                text
+                @click="historyDialog = true">HISTORY</v-btn>
+            
+          </v-flex>
+          
         </v-layout>
       </v-container>
       </v-container>
@@ -229,7 +238,7 @@
     },
     data() {
       return {
-        a: true,
+        historyDialog: false,
         record: localStorage.getItem('record'),
         history: (localStorage.getItem('history')) ? JSON.parse(localStorage.getItem('history')) : [],
         place: '',
