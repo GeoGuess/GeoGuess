@@ -330,7 +330,7 @@
   }
 
   #next-button, #summary-button {
-    width: 450px;
+    width: 480px;
   }
 
   #map {
