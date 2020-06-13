@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/components/Home'
-import StreetView from '@/components/StreetView'
-import StreetViewWithFriends from '@/components/StreetViewWithFriends'
-import PrivacyPolicy from '@/components/PrivacyPolicy'
+import Home from '@/pages/Home'
+import StreetView from '@/pages/StreetView'
+import StreetViewWithFriends from '@/pages/StreetViewWithFriends'
+import PrivacyPolicy from '@/pages/PrivacyPolicy'
 
 const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {

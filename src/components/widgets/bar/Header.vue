@@ -4,7 +4,7 @@
     color="transparent"
     flat>
     <div>
-      <v-img src="../assets/logo.png" width="45" />
+      <v-img src="@/assets/logo.png" width="45" />
     </div>
     <span id="title">
       Geoguess Master

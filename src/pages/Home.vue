@@ -111,8 +111,8 @@
   import firebase from 'firebase/app'
   import 'firebase/database'
 
-  import Header from '@/components/Header'
-  import DialogRoom from '@/components/DialogRoom'
+  import Header from '@/components/widgets/bar/Header'
+  import DialogRoom from '@/components/widgets/dialog/DialogRoom'
 
   export default {
     components: {

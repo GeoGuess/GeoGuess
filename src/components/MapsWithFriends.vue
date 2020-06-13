@@ -55,7 +55,7 @@
   import firebase from 'firebase/app'
   import 'firebase/database'
 
-  import DialogSummaryWithFriends from '@/components/DialogSummaryWithFriends'
+  import DialogSummaryWithFriends from '@/components/widgets/dialog/DialogSummaryWithFriends'
 
   export default {
     props: [

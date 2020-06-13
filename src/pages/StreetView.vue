@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import HeaderGame from '@/components/HeaderGame'
+  import HeaderGame from '@/components/widgets/bar/HeaderGame'
   import Maps from '@/components/Maps'
 
   export default {

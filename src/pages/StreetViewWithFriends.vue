@@ -36,9 +36,9 @@
   import firebase from 'firebase/app'
   import 'firebase/database'
 
-  import HeaderGame from '@/components/HeaderGame'
+  import HeaderGame from '@/components/widgets/bar/HeaderGame'
   import MapsWithFriends from '@/components/MapsWithFriends'
-  import DialogMessage from '@/components/DialogMessage'
+  import DialogMessage from '@/components/widgets/dialog/DialogMessage'
 
   export default {
     props: [

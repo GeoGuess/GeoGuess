@@ -29,10 +29,10 @@
   import firebase from 'firebase/app'
   import 'firebase/database'
 
-  import CardRoomName from '@/components/CardRoomName'
-  import CardRoomSize from '@/components/CardRoomSize'
-  import CardRoomTime from '@/components/CardRoomTime'
-  import CardRoomPlayerName from '@/components/CardRoomPlayerName'
+  import CardRoomName from '@/components/widgets/card/CardRoomName'
+  import CardRoomSize from '@/components/widgets/card/CardRoomSize'
+  import CardRoomTime from '@/components/widgets/card/CardRoomTime'
+  import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName'
 
   export default {
     data() {

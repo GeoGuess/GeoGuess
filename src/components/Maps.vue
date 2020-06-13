@@ -47,7 +47,7 @@
 </template>
 
 <script>
-  import DialogSummary from '@/components/DialogSummary'
+  import DialogSummary from '@/components/widgets/dialog/DialogSummary'
 
   export default {
     props: [
