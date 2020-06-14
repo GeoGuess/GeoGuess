@@ -364,7 +364,7 @@
     }
 
     #next-button, #summary-button {
-      width: 375px;
+      width: 400px;
     }
 
     #map {
