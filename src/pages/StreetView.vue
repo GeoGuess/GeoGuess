@@ -5,6 +5,27 @@
       :round="round" />
     <div id="street-view-container">
       <div id="street-view">
+        <v-btn 
+          id="reset-button"
+          icon
+          color="#FFFFFF"
+          @click="resetLocation">
+          <v-icon size="36">mdi-flag</v-icon>
+        </v-btn>
+        <v-btn 
+          id="zoom-in-button"
+          icon
+          color="#FFFFFF"
+          @click="zoomIn">
+          <v-icon size="36">mdi-plus</v-icon>
+        </v-btn>
+        <v-btn 
+          id="zoom-out-button"
+          icon
+          color="#FFFFFF"
+          @click="zoomOut">
+          <v-icon size="36">mdi-minus</v-icon>
+        </v-btn>
       </div>
       <Maps
         :randomLatLng="randomLatLng"
@@ -33,6 +54,7 @@
     data() {
       return {
         randomLatLng: null,
+        panorama: null,
         score: 0,
         round: 1,
         overlay: false,
@@ -57,16 +79,17 @@
       checkStreetView(data, status) {
         // Generate random streetview until the valid one is generated
         if (status == 'OK') {
-          var panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'))
-          panorama.setOptions({
+          this.panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'))
+          this.panorama.setOptions({
+            zoomControl: false,
             addressControl: false,
             fullscreenControl: false,
             motionTracking: false,
             motionTrackingControl: false,
             showRoadLabels: false,
           })
-          panorama.setPano(data.location.pano)
-          panorama.setPov({
+          this.panorama.setPano(data.location.pano)
+          this.panorama.setPov({
             heading: 270,
             pitch: 0,
           })
@@ -102,7 +125,20 @@
 
         // Load streetview
         this.loadStreetView()
-      }
+      },
+      resetLocation() {
+        this.panorama.setPosition(this.randomLatLng)
+      },
+      zoomIn() {
+        var currentLevel = this.panorama.getZoom()
+        currentLevel++
+        this.panorama.setZoom(currentLevel)
+      },
+      zoomOut() {
+        var currentLevel = this.panorama.getZoom()
+        currentLevel--
+        this.panorama.setZoom(currentLevel)
+      },
     },
     mounted() {
       // Generate the first streetview and check if it's valid
@@ -134,10 +170,42 @@
     width: 100%;
   }
 
+  #reset-button, #zoom-in-button, #zoom-out-button {
+    position: absolute;
+    z-index: 2;
+    background-color: #212121;
+    opacity: 0.8;
+    right: 12px;
+  }
+
+  #reset-button {
+    bottom: 200px;
+  }
+
+  #zoom-in-button {
+    bottom: 150px;
+  }
+
+  #zoom-out-button {
+    bottom: 100px;
+  }
+
   @media (max-width: 450px) {
     #game-page {
       position: fixed;
       height: 92%;
+    }
+
+    #reset-button {
+      bottom: 120px;
+    }
+
+    #zoom-in-button {
+      bottom: 70px;
+    }
+
+    #zoom-out-button {
+      bottom: 20px;
     }
   }
 </style>
