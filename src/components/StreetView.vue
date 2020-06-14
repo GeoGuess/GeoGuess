@@ -327,8 +327,9 @@
                 this.randomLat = snapshot.child('streetView/round' + this.round + '/latitude').val()
                 this.randomLng = snapshot.child('streetView/round' + this.round + '/longitude').val()
                 this.isVisibleDialog = snapshot.child('streetView/round' + this.round + '/warning').val()
-
-                this.loadDecidedStreetView()
+                this.randomLatLng = new google.maps.LatLng(this.randomLat, this.randomLng);
+                this.resetLocation();
+                //this.loadDecidedStreetView()
               }
             }
 
