@@ -148,7 +148,6 @@
         game: {
           multiplayer: !!this.roomName,
           date: new Date(),
-          timeLimitation: this.timeLimitation,
           rounds:[]
         },
       }
@@ -386,6 +385,8 @@
           mapTypeControl: false,
           streetViewControl: false,        
       })
+      
+      this.game.timeLimitation = this.timeLimitation;
       if(this.roomName){
         this.room = firebase.database().ref(this.roomName)
         this.room.on('value', (snapshot) => {
