@@ -94,7 +94,7 @@
         score: 0,
         scoreHeader: 0,
         round: 1,
-        timeLimitation: 0,
+        timeLimitation: this.time*60,
         remainingTime: 0,
         hasTimerStarted: false,
         hasLocationSelected: false,
@@ -296,7 +296,6 @@
       
       if(!this.multiplayer){
         this.$refs.map.startNextRound()
-        this.timeLimitation = this.time*60
         
         if (this.timeLimitation != 0) {
           if (!this.hasTimerStarted) {
