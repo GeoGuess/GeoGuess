@@ -120,19 +120,6 @@
           source: 'outdoor',
         }, this.checkStreetView)
       },
-      loadDecidedStreetView() {
-        // Other players load the decided streetview the first player loaded
-        var service = new google.maps.StreetViewService()
-        service.getPanorama({
-          location: {
-            lat: this.randomLat,
-            lng: this.randomLng,
-          },
-          preference: 'nearest',
-          radius: 100000,
-          source: 'outdoor',
-        }, this.checkStreetView)        
-      },
       getRandomLatLng() {
         if(this.placeGeoJson != null){
           let position = randomPositionInPolygon(this.placeGeoJson);
@@ -329,7 +316,6 @@
                 this.isVisibleDialog = snapshot.child('streetView/round' + this.round + '/warning').val()
                 this.randomLatLng = new google.maps.LatLng(this.randomLat, this.randomLng);
                 this.resetLocation();
-                //this.loadDecidedStreetView()
               }
             }
 
