@@ -133,7 +133,7 @@ export default {
                 ...g,
                 dateString: new Date(g.date).toLocaleString(),
                 mode: g.multiplayer ? "With Friends": "Single Player",
-                time: g.timeLimitation===0 ? "Infinite": g.timeLimitation
+                time: g.timeLimitation===0 ? "Infinite": g.timeLimitation/60
             }))
         }
     }

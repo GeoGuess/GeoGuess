@@ -395,6 +395,8 @@
 
             // Allow players to move on to the next round when every players guess locations
             if (snapshot.child('guess').numChildren() == snapshot.child('size').val()) {
+              
+              this.game.timeLimitation = this.timeLimitation;
               this.$emit('showResult')
 
               // Put markers and draw polylines on the map
