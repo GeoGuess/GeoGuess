@@ -131,6 +131,7 @@ export default {
         items(){
             return this.history.map((g) => ({
                 ...g,
+                score: g.score/1000,
                 dateString: new Date(g.date).toLocaleString(),
                 mode: g.multiplayer ? "With Friends": "Single Player",
                 time: g.timeLimitation===0 ? "Infinite": g.timeLimitation
