@@ -148,7 +148,6 @@
         game: {
           multiplayer: !!this.roomName,
           date: new Date(),
-          timeLimitation: this.timeLimitation,
           rounds:[]
         },
       }
@@ -386,6 +385,8 @@
           mapTypeControl: false,
           streetViewControl: false,        
       })
+      
+      this.game.timeLimitation = this.timeLimitation;
       if(this.roomName){
         this.room = firebase.database().ref(this.roomName)
         this.room.on('value', (snapshot) => {
@@ -394,6 +395,8 @@
 
             // Allow players to move on to the next round when every players guess locations
             if (snapshot.child('guess').numChildren() == snapshot.child('size').val()) {
+              
+              this.game.timeLimitation = this.timeLimitation;
               this.$emit('showResult')
 
               // Put markers and draw polylines on the map
