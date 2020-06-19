@@ -9,7 +9,7 @@
         <v-row 
           v-if="!multiplayer"
           justify="center">
-          <span id="summary-text">You are <strong>{{ score / 1000 }}</strong> km away!</span>
+          <span id="summary-text">You are <strong>{{ score / 1000 }}</strong> km away! Your score is <strong>{{ points }}</strong> points!</span>
         </v-row>
         <v-row
           class="mt-3"
@@ -20,7 +20,7 @@
             <v-icon 
               v-if="index == 0 || index == 1 || index == 2"
               :color="index == 0 ? '#FAA61A': (index == 1 ? '#EEEEEE' : '#F4511E')">mdi-crown</v-icon>
-            <strong>{{ text.playerName }}</strong> is <strong>{{ text.finalScore / 1000 }}</strong> km away!
+            <strong>{{ text.playerName }}</strong> score is <strong>{{ text.finalPoints }}</strong> ! (<strong>{{ text.finalScore / 1000 }}</strong> km away)
           </span>
         </v-row>
         <v-row 
@@ -61,6 +61,7 @@
       'dialogSummary',
       'summaryTexts',
       'score',
+      'points',
       'multiplayer',
       'game'
     ],
@@ -71,6 +72,7 @@
     },
     methods: {
       updateRecord() {
+
         var currentRecord = localStorage.getItem('record')
         if (currentRecord == null || this.score < currentRecord) {
           localStorage.setItem('record', this.score)
@@ -83,7 +85,8 @@
         }
         history.push({
           ...this.game,
-          score: this.score
+          score: this.score,
+          points: this.points
         })
         
         localStorage.setItem('history', JSON.stringify(history))

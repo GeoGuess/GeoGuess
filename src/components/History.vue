@@ -101,6 +101,7 @@ export default {
                 '#FFEB3B',
                 '#FF4081',
                 '#18FFFF',
+                '#18FFFF',
             ],
             icon: window.location.origin+'/img/icons/favicon-16x16.png',
             headers: [
@@ -119,8 +120,12 @@ export default {
                 {
                     text: "Score",
                     value: 'score',
-                },  
-                { 
+                },
+                {
+                    text: "Points",
+                    value: 'points',
+                },
+                {
                     text: '', 
                     value: 'data-table-expand' 
                 },
@@ -132,6 +137,7 @@ export default {
             return this.history.map((g) => ({
                 ...g,
                 score: g.score/1000,
+                points: g.points,
                 dateString: new Date(g.date).toLocaleString(),
                 mode: g.multiplayer ? "With Friends": "Single Player",
                 time: g.timeLimitation===0 ? "Infinite": g.timeLimitation/60
