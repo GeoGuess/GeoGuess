@@ -2,7 +2,7 @@
    <v-dialog :value="this.visibility" @input="$emit('changeVisibility')">
       <v-card class="dialog-customs" color="#061422">
          <v-card-title>
-            <p>Paste GeoJSON <small> (<a target="_blank" href="https://tomscholz.github.io/geojson-editor/">Open Editor</a>)</small></p>
+            <p>Paste GeoJSON <small> (<a target="_blank" href="https://tomscholz.github.io/geojson-editor/">Open Editor 1</a>, <a target="_blank" href="https://geojson.io/">Open Editor 2</a>)</small></p>
          </v-card-title>
          <v-card-text>
             <v-radio-group v-model="type" row dark>
@@ -12,7 +12,7 @@
             </v-radio-group>
             <v-file-input
                v-if="type==='file'"
-               label="GeoJson File"
+               label="Select GeoJSON file"
                v-model="file"
                prepend-icon="mdi-map"
                dark
@@ -23,9 +23,11 @@
             </v-textarea>
          </v-card-text>
          <v-card-actions>
+            <div class="flex-grow-1"></div>
             <v-btn
                dark
-               @click="dialogCustom = !dialogCustom">
+               color="#43B581"
+               @click="$emit('changeVisibility')">
                OK
             </v-btn>
          </v-card-actions>
@@ -35,6 +37,7 @@
 
 <script>
 import {validURL} from '@/utils'
+import axios from 'axios'
 
 export default {
     name:'DialogCustomMap',

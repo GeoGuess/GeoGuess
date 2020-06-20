@@ -82,10 +82,12 @@
               md="4"
               lg="4"
               xl="4">
-              <v-select
+              <v-autocomplete
+                autofocus
                 dark 
                 v-model="time"
-                :items="timeLimitationItems"></v-select>
+                v-on:keyup.enter="startSinglePlayer"
+                :items="timeLimitationItems"></v-autocomplete>
             </v-col>
             </v-card-text>
             <v-card-actions>

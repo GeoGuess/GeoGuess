@@ -14,7 +14,8 @@
         With Friends
       </v-btn>
     </template>
-    <v-card color="#061422">
+    <v-card color="#061422"  
+                v-on:keyup.enter="clickNext">
       <v-card-title>
         <span id="card-title">{{ cardTitle }}</span>
       </v-card-title>
@@ -29,15 +30,16 @@
                 maxlength="10"
                 autofocus
                 :error-messages="errorMessage"
-                v-model="roomName"></v-text-field>
+                v-model="roomName" ></v-text-field>
             </v-col>
             <v-col 
               cols="4"
               v-if="cardTitle == 'Set a room size'">
-              <v-select 
+              <v-autocomplete
                 dark
-                v-model="roomSize"
-                :items="roomSizeItems"></v-select>
+                v-model="roomSize"               
+                :items="roomSizeItems"
+                autofocus></v-autocomplete>
             </v-col>
             <v-col 
               cols="6"
@@ -46,10 +48,11 @@
               lg="4"
               xl="4"
               v-if="cardTitle == 'Set a time limitation'">
-              <v-select
+              <v-autocomplete
                 dark 
                 v-model="timeLimitation"
-                :items="timeLimitationItems"></v-select>
+                :items="timeLimitationItems"
+                autofocus></v-autocomplete>
             </v-col>
             <v-col 
               cols="12"
@@ -57,6 +60,7 @@
               <v-text-field 
                 dark
                 maxlength="10"
+                autofocus
                 v-model="playerName"></v-text-field>
             </v-col>
           </v-row>
