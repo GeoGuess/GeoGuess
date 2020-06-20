@@ -357,7 +357,7 @@
             })
             this.drawPolyline(guess,0,position)
             this.putMarker(guess)
-            this.setInfoWindow(null, distance, points)
+            this.setInfoWindow(null, distance, points, true)
           })
 
         }
