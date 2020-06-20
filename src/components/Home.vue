@@ -47,24 +47,7 @@
                   @click="dialogCustom = !dialogCustom">
                   <v-icon>mdi-settings</v-icon>
                 </v-btn>
-                <v-dialog v-model="dialogCustom">
-                  <v-card class="dialog-customs" color="#061422">
-                    <v-card-title>
-                      <p>Paste GeoJSON <small> (<a target="_blank" href="https://tomscholz.github.io/geojson-editor/">Open Editor</a>)</small></p>
-                    </v-card-title>
-                    <v-card-text>
-                      <v-textarea :error="errorGeoJson" :success="placeGeoJson !==null" dark v-model="geoJson" :placeholder="placeholderGeoJson" rows="20">
-                      </v-textarea>
-                    </v-card-text>
-                    <v-card-actions>
-                      <v-btn
-                        dark
-                        @click="dialogCustom = !dialogCustom">
-                        OK
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-dialog>
+                <DialogCustomMap :visibility="dialogCustom" @changeVisibility="dialogCustom = !dialogCustom" v-model="geoJson" :validGeoJson="placeGeoJson !==null"/>
             </v-row>
                   
           </v-flex>
@@ -224,17 +207,20 @@
 <script>
   import firebase from 'firebase/app'
   import 'firebase/database'
+  import axios from 'axios'
+
   import History from '@/components/History'
+  import DialogCustomMap from '@/components/DialogCustomMap'
 
   import Header from '@/components/Header'
   import DialogRoom from '@/components/DialogRoom'
-  import axios from 'axios'
 
   export default {
     components: {
       Header,
       DialogRoom,
       History,
+      DialogCustomMap,
     },
     data() {
       return {
@@ -249,8 +235,6 @@
         version: process.env.VUE_APP_VERSION,
         dialogCustom: false,
         geoJson: '',
-        placeholderGeoJson: geoJsonExample,
-        errorGeoJson: false,
         time: 0,
         timeLimitationItems: [
           {
@@ -347,6 +331,7 @@
       },
     },
     watch: {
+      
       search (val) {
 
         // Items have already been requested
@@ -385,31 +370,6 @@
     }
     
   }
-    const geoJsonExample = `{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[
-          [0, 0.0], [10.0, 0.0], [10, 20],
-               [0.0, 20], [0, 0.0] ]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[
-          [0, 0.0], [10.0, 0.0], [10, 20],
-               [0.0, 20], [0, 0.0] ]]
-      }
-    }
-   ]
-}`
 </script>
 
 <style scoped>
@@ -442,9 +402,6 @@
   .search{
     width: 50vw;
     margin: auto;
-  }
-  .dialog-customs {
-    color: #FFFFFF;
   }
   
   @media (max-width: 550px) {
