@@ -115,6 +115,7 @@
       'score',
       'points',
       'timeLimitation',
+      'difficulty',
     ],
     components: {
       DialogSummary,
@@ -135,9 +136,6 @@
         room: null,
         selectedLatLng: null,
         distance: null,
-
-        points: null,
-
         isGuessButtonClicked: false,
         isMakeGuessButtonClicked: false,
         isSelected: false,
@@ -248,7 +246,22 @@
       calculateDistance() {
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng))
 
-        this.points = Math.floor((5000+5) * Math.exp(-(0.0005*this.distance/1000)))
+        console.log("calcule : "+this.difficulty)
+
+        switch (this.difficulty) {
+          case 0 :
+            this.points = Math.floor((5000+5) * Math.exp(-(0.0005*this.distance/1000)))
+            break
+
+          case 1 :
+            this.points = Math.floor((5000+5) * Math.exp(-(0.005*this.distance/1000)))
+            break
+
+          case 2 :
+            this.points = Math.floor((5000+5) * Math.exp(-(0.05*this.distance/1000)))
+            break
+        }
+
 
         if (this.points > 5000) {
           this.points=5000;
@@ -407,6 +420,8 @@
       })
       
       this.game.timeLimitation = this.timeLimitation;
+      this.game.difficulty = this.difficulty;
+
       if(this.roomName){
         this.room = firebase.database().ref(this.roomName)
         this.room.on('value', (snapshot) => {
@@ -417,6 +432,7 @@
             if (snapshot.child('guess').numChildren() == snapshot.child('size').val()) {
               
               this.game.timeLimitation = this.timeLimitation;
+
               this.$emit('showResult')
 
               // Put markers and draw polylines on the map

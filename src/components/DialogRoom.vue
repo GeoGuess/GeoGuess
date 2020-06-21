@@ -54,10 +54,23 @@
                 :items="timeLimitationItems"
                 autofocus></v-autocomplete>
             </v-col>
-            <v-col 
+            <v-col
+                    cols="6"
+                    sm="4"
+                    md="4"
+                    lg="4"
+                    xl="4"
+                    v-if="cardTitle == 'Set a difficulty level'">
+              <v-autocomplete
+                      dark
+                      v-model="difficulty"
+                      :items="difficultyItems"
+                      autofocus></v-autocomplete>
+            </v-col>
+            <v-col
               cols="12"
               v-if="cardTitle == 'Type a player name'">
-              <v-text-field 
+              <v-text-field
                 dark
                 maxlength="10"
                 autofocus
@@ -120,39 +133,39 @@
           {
             text: '6',
             value: 6,
-          },   
+          },
           {
             text: '7',
             value: 7,
-          },    
+          },
           {
             text: '8',
             value: 8,
-          },         
+          },
           {
             text: '9',
             value: 9,
-          },         
+          },
           {
             text: '10',
             value: 10,
-          },             
+          },
           {
             text: '11',
             value: 11,
-          },             
+          },
           {
             text: '12',
             value: 12,
-          },              
+          },
           {
             text: '13',
             value: 13,
-          },              
+          },
           {
             text: '14',
             value: 14,
-          },          
+          },
         ],
         timeLimitation: 0,
         timeLimitationItems: [
@@ -179,7 +192,7 @@
           {
             text: '5',
             value: 5,
-          }, 
+          },
           {
             text: '6',
             value: 6,
@@ -199,7 +212,22 @@
           {
             text: '10',
             value: 10,
-          },          
+          },
+        ],
+        difficulty: 0,
+        difficultyItems: [
+          {
+            text: 'easy (world)',
+            value: 0,
+          },
+          {
+            text: 'medium (country)',
+            value: 1,
+          },
+          {
+            text: 'hard (city)',
+            value: 2,
+          },
         ],
         playerName: '',
       }
@@ -222,7 +250,7 @@
         else if (this.cardTitle == 'Set a room size') {
           this.setRoomSize()
         } else if (this.cardTitle == 'Set a time limitation') {
-          
+
           if (this.playerNumber == 1 && this.place !=  null && this.place !=  '' && !this.geoJson) {
             this.getPlaceGeoJSON(this.place)
           }else{
@@ -231,6 +259,8 @@
             }
             this.setTimeLimitation()
           }
+        } else if (this.cardTitle == 'Set a difficulty level') {
+          this.setDifficulty()
         } else if (this.cardTitle == 'Type a player name') {
           this.setPlayerName()
         }
@@ -295,6 +325,15 @@
       setTimeLimitation() {
         this.room.update({
           timeLimitation: this.timeLimitation
+        }, (error) => {
+          if (!error) {
+            this.cardTitle = 'Set a difficulty level'
+          }
+        })
+      },
+      setDifficulty() {
+        this.room.update({
+          difficulty: this.difficulty
         }, (error) => {
           if (!error) {
             this.cardTitle = 'Type a player name'
