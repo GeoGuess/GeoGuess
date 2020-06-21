@@ -5,6 +5,7 @@
       <HeaderGame
         ref="header"
         :score="scoreHeader"
+        :points="pointsHeader"
         :round="round"
         :roomName="roomName"
         :remainingTime="remainingTime" />
@@ -22,6 +23,7 @@
         :isReady="isReady"
         :round="round"
         :score="score"
+        :points="points"
         :timeLimitation="timeLimitation"
         @resetLocation="resetLocation"
         @calculateDistance="updateScore"
@@ -93,6 +95,8 @@
         randomLng: null,
         score: 0,
         scoreHeader: 0,
+        points: 0,
+        pointsHeader: 0,
         round: 1,
         timeLimitation: this.time*60,
         remainingTime: 0,
@@ -201,16 +205,18 @@
           }
         }
       },
-      updateScore(distance) {
+      updateScore(distance, points) {
         // Update the score and save it into firebase
         this.hasLocationSelected = true
         if(!this.multiplayer){
           this.remainingTime = 0;
         }
         this.score += distance
-        
+        this.points += points
+
         if(this.multiplayer){
           this.room.child('finalScore/player' + this.playerNumber).set(this.score)
+          this.room.child('finalPoints/player' + this.playerNumber).set(this.points)
 
           // Wait for other players to guess locations
           this.dialogTitle = 'Waiting for other players...'
@@ -219,6 +225,7 @@
       },
       showResult() {
         this.scoreHeader = this.score  // Update the score on header after every players guess locations
+        this.pointsHeader = this.points
         this.remainingTime = 0;
         this.dialogMessage = false
         this.overlay = true

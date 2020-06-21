@@ -26,6 +26,12 @@
       <div>
         <span class="main-text">{{ score / 1000 }} km away</span>
       </div>
+      <div class="round-points-container">
+        <span class="sub-text">POINTS: </span>
+      </div>
+      <div>
+        <span class="main-text">{{ points }}</span>
+      </div>
     </v-app-bar>
   </div>
 </template>
@@ -34,6 +40,7 @@
   export default {
     props: [
       'score',
+      'points',
       'round',
       'remainingTime',
       'roomName'
@@ -64,6 +71,10 @@
     padding: 0 10px 0 40px;
   }
 
+  .round-points-container {
+    padding: 0 10px 0 40px;
+  }
+
   .main-text, #countdown-text {
     color: white;
   }
@@ -77,6 +88,13 @@
     }
     
     .round-score-container {
+      padding: 0 5%;
+      .sub-text{
+        display: none;
+      }
+    }
+
+    .round-points-container {
       padding: 0 5%;
       .sub-text{
         display: none;
