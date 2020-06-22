@@ -32,7 +32,7 @@
                         <GmapInfoWindow
                             :options="infoOptions"
                             :position="r.guess">        
-                            <p><b>{{r.distance / 1000 }} </b> km away!</p>
+                            <p><b>{{r.distance / 1000 }} </b> km away! You won <b>{{ r.points }}</b> points!</p>
                         </GmapInfoWindow>
                         <GmapPolyline 
                             :path="[r.position, r.guess]"
@@ -60,7 +60,7 @@
                             <GmapInfoWindow
                                 :options="infoOptions"
                                 :position="r.players[player].guess">       
-                                <p><b>{{player}}</b> is <b>{{r.players[player].distance / 1000 }} </b> km away!</p>
+                                <p><b>{{player}}</b> is <b>{{r.players[player].distance / 1000 }} </b> km away! You won <b>{{ r.players[player].points }}</b> points!</p>
                             </GmapInfoWindow>
                             <GmapPolyline 
                                 :path="[r.position, r.players[player].guess]"
