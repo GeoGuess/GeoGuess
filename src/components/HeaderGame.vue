@@ -21,7 +21,7 @@
         <span class="main-text">{{ round }} / 5</span>
       </div>
       <div class="round-score-container">
-        <span class="sub-text">SCORE: </span>
+        <span class="sub-text">DISTANCE: </span>
       </div>
       <div>
         <span class="main-text">{{ score / 1000 }} km away</span>

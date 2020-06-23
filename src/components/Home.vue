@@ -72,7 +72,7 @@
             </template>
             <v-card color="#061422">
               <v-card-title>
-                <span id="card-title">Set a time limitation</span>
+                <span id="card-title">Set a time limitation and a difficulty</span>
               </v-card-title>
               
               <v-card-text>
@@ -89,6 +89,19 @@
                 v-on:keyup.enter="startSinglePlayer"
                 :items="timeLimitationItems"></v-autocomplete>
             </v-col>
+                <v-col
+                        cols="6"
+                        sm="4"
+                        md="4"
+                        lg="4"
+                        xl="4">
+                  <v-autocomplete
+                          autofocus
+                          dark
+                          v-model="difficulty"
+                          v-on:keyup.enter="startSinglePlayer"
+                          :items="difficultyItems"></v-autocomplete>
+                </v-col>
             </v-card-text>
             <v-card-actions>
               <div class="flex-grow-1"></div>
@@ -104,34 +117,35 @@
                 @click="startSinglePlayer">NEXT</v-btn>
             </v-card-actions>
           </v-card>
+
         </v-dialog>
-              
+
             <DialogRoom :place="place" :geoJson="placeGeoJson" />
           </v-flex>
-          
+
           <v-flex xs12>
               <v-btn
                 dark
                 text
                 @click="historyDialog = true">HISTORY</v-btn>
-            
+
           </v-flex>
-          
+
         </v-layout>
       </v-container>
       </v-container>
       </v-img>
     </div>
-    
-    <v-container class="section" id="section-about"> 
+
+    <v-container class="section" id="section-about">
        <h3 class="section-header">ABOUT</h3>
       <p class="section-description">
-          Geoguess 2 is a free and lazy geoguess game with no ads. Players compete how close the player can guess random locations in five rounds. You can share the score with other people via social media like Facebook or Twitter. You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start. 
+          Geoguess 2 is a free and lazy geoguess game with no ads. Players compete how close the player can guess random locations in five rounds. You can share the score with other people via social media like Facebook or Twitter. You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start.
           <br/>This game was forked from <a href="https://geoguessmaster.com/">GeoGuess Master</a>.
       </p>
     </v-container>
 
-    <v-container class="section" id="section-CustomsMap"> 
+    <v-container class="section" id="section-CustomsMap">
        <h3 class="section-header">CUSTOMS MAP</h3>
       <p class="section-description">
         You can limit random locations to city, state, or country with the search bar. <br/>In the multiplayer, the first player fixes the location.
@@ -139,7 +153,7 @@
         Furthermore, you can make your customs map with <a href="https://geojson.org/">GeoJson</a> file.
         Insert the content of the GeoJson map with the button : <v-icon>mdi-settings</v-icon>.
         <br/>
-        Customs Maps : 
+        Customs Maps :
         <ul>
           <li><a href="https://gist.github.com/BilelJegham/7f855024440c67d65f24536c9215719e">Biggest cities world</a></li>
           <li><a href="https://gist.github.com/BilelJegham/b6a0faa627aac3b7f5bc677523c4c7eb">Hard Map</a></li>
@@ -152,7 +166,7 @@
         Currently I set quotas per day so the cost to run this game can't get too high. If the map doesn't load, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time. Sorry for inconvenience. This game is open source so you can build your own game server and play this game unlimitedly.
       </p>
     </v-container>
-    
+
     <v-footer
       id="footer"
       color="#061422"
@@ -160,20 +174,20 @@
       <v-container>
         <v-row justify="center">
           <v-btn
-            class="ml-4 mr-4" 
+            class="ml-4 mr-4"
             icon
             color="#FFFFFF"
             href="https://github.com/BilelJegham/Geoguess-2">
             <v-icon size="30">mdi-github-circle</v-icon>
           </v-btn>
-          <v-btn 
+          <v-btn
             class="ml-4 mr-4"
             icon
             color="#FFFFFF"
             href="https://discord.gg/fPpUzgJ">
             <v-icon size="30">mdi-discord</v-icon>
           </v-btn>
-          <v-btn 
+          <v-btn
             class="ml-4 mr-4"
             icon
             color="#FFFFFF"
@@ -182,7 +196,7 @@
           </v-btn>
         </v-row>
         <v-row
-          class="mt-8" 
+          class="mt-8"
           justify="center">
           <span id="copyright-text">under <a href="https://raw.githubusercontent.com/spider-hand/Geoguess-Master-Web/master/LICENSE">MIT license</a></span>
         </v-row>
@@ -201,7 +215,7 @@
           justify="center">
         </v-row>
       </v-container>
-    </v-footer> 
+    </v-footer>
   </div>
 </template>
 
@@ -262,7 +276,7 @@
           {
             text: '5',
             value: 5,
-          }, 
+          },
           {
             text: '6',
             value: 6,
@@ -282,7 +296,22 @@
           {
             text: '10',
             value: 10,
-          },          
+          },
+        ],
+        difficulty: 0,
+        difficultyItems: [
+          {
+            text: 'easy (world)',
+            value: 0,
+          },
+          {
+            text: 'medium (country)',
+            value: 1,
+          },
+          {
+            text: 'hard (city)',
+            value: 2,
+          },
         ],
       }
     },  
@@ -356,15 +385,15 @@
     methods: {
       startSinglePlayer() {
         if( this.geoJson !=  ''){    
-          this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson, time :this.time}});
+          this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson, time :this.time, difficulty: this.difficulty}});
         }
         else if(this.place == null || this.place == ''){
-          this.$router.push({name:'street-view',  params: {time :this.time}});
+          this.$router.push({name:'street-view',  params: {time :this.time, difficulty: this.difficulty}});
         }else{
           axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(this.place)}?format=geojson&limit=1&polygon_geojson=1`)
           .then((res) => {
             if(res && res.status === 200 && res.data.features.length > 0){
-              this.$router.push({name:'street-view', params: {placeGeoJson: res.data.features[0], time :this.time}});
+              this.$router.push({name:'street-view', params: {placeGeoJson: res.data.features[0], time :this.time, difficulty: this.difficulty}});
             }
           }).catch((e) => { console.err(e) })
         }

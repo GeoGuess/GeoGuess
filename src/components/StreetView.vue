@@ -24,6 +24,7 @@
         :round="round"
         :score="score"
         :points="points"
+        :difficulty="difficulty"
         :timeLimitation="timeLimitation"
         @resetLocation="resetLocation"
         @calculateDistance="updateScore"
@@ -81,6 +82,10 @@
       'time': {
         default: 0,
         type: Number
+      },
+      'difficulty': {
+        default: 0,
+        type: Number
       }
     },
     components: {
@@ -125,6 +130,7 @@
         }, this.checkStreetView)
       },
       getRandomLatLng() {
+
         if(this.placeGeoJson != null){
           let position = randomPositionInPolygon(this.placeGeoJson);
           return new google.maps.LatLng(position[1], position[0]);
@@ -338,6 +344,7 @@
 
               // Countdown timer starts
               this.timeLimitation = snapshot.child('timeLimitation').val() * 60
+              this.difficulty = snapshot.child('difficulty').val()
 
               if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
