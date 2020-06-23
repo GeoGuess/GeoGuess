@@ -118,7 +118,7 @@ export default {
                     value: 'time',
                 },
                 {
-                    text: "Score",
+                    text: "Distance",
                     value: 'score',
                 },
                 {
