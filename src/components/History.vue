@@ -32,7 +32,7 @@
                         <GmapInfoWindow
                             :options="infoOptions"
                             :position="r.guess">        
-                            <p><b>{{r.distance / 1000 }} </b> km away!</p>
+                            <p><b>{{r.distance / 1000 }} </b> km away! You won <b>{{ r.points }}</b> points!</p>
                         </GmapInfoWindow>
                         <GmapPolyline 
                             :path="[r.position, r.guess]"
@@ -60,7 +60,7 @@
                             <GmapInfoWindow
                                 :options="infoOptions"
                                 :position="r.players[player].guess">       
-                                <p><b>{{player}}</b> is <b>{{r.players[player].distance / 1000 }} </b> km away!</p>
+                                <p><b>{{player}}</b> is <b>{{r.players[player].distance / 1000 }} </b> km away! You won <b>{{ r.players[player].points }}</b> points!</p>
                             </GmapInfoWindow>
                             <GmapPolyline 
                                 :path="[r.position, r.players[player].guess]"
@@ -101,6 +101,7 @@ export default {
                 '#FFEB3B',
                 '#FF4081',
                 '#18FFFF',
+                '#18FFFF',
             ],
             icon: window.location.origin+'/img/icons/favicon-16x16.png',
             headers: [
@@ -117,10 +118,14 @@ export default {
                     value: 'time',
                 },
                 {
-                    text: "Score",
+                    text: "Distance",
                     value: 'score',
-                },  
-                { 
+                },
+                {
+                    text: "Points",
+                    value: 'points',
+                },
+                {
                     text: '', 
                     value: 'data-table-expand' 
                 },
@@ -132,6 +137,7 @@ export default {
             return this.history.map((g) => ({
                 ...g,
                 score: g.score/1000,
+                points: g.points,
                 dateString: new Date(g.date).toLocaleString(),
                 mode: g.multiplayer ? "With Friends": "Single Player",
                 time: g.timeLimitation===0 ? "Infinite": g.timeLimitation/60

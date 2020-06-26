@@ -91,6 +91,7 @@
       :dialogSummary="dialogSummary"
       :summaryTexts="summaryTexts"
       :score="score"
+      :points="points"
       :game="game"
       :multiplayer="!!this.room"
       @viewDetails="viewDetails"
@@ -112,7 +113,9 @@
       'isReady',
       'round',
       'score',
-      'timeLimitation'
+      'points',
+      'timeLimitation',
+      'difficulty',
     ],
     components: {
       DialogSummary,
@@ -242,24 +245,50 @@
       },
       calculateDistance() {
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng))
+
+        console.log("calcule : "+this.difficulty)
+
+        switch (this.difficulty) {
+          case 0 :
+            this.points = Math.floor((5000+5) * Math.exp(-(0.0005*this.distance/1000)))
+            break
+
+          case 1 :
+            this.points = Math.floor((5000+5) * Math.exp(-(0.005*this.distance/1000)))
+            break
+
+          case 2 :
+            this.points = Math.floor((5000+5) * Math.exp(-(0.05*this.distance/1000)))
+            break
+        }
+
+
+        if (this.points > 5000) {
+          this.points=5000;
+        } else if (this.points < 0) {
+          this.points = 0;
+        }
+
         // Save the distance into firebase
         if(this.room){          
           this.room.child('round' + this.round + '/player' + this.playerNumber).set({
             latitude: this.selectedLatLng.lat(),
             longitude:this.selectedLatLng.lng(),
-            distance: this.distance
+            distance: this.distance,
+            points: this.points
           })
         }else{
           this.game.rounds.push({
             guess: this.selectedLatLng,
             position: this.randomLatLng,
-            distance: this.distance
+            distance: this.distance,
+            points: this.points
           })
         }
 
-        this.$emit('calculateDistance', this.distance)
+        this.$emit('calculateDistance', this.distance, this.points)
       },
-      setInfoWindow(playerName = null, distance = this.distance, endGame= false) {
+      setInfoWindow(playerName = null, distance = this.distance, points = this.points, endGame= false) {
         let dataToDisplay =''
         if(playerName !== null)
           dataToDisplay+= '<b>' + playerName + '</b>' + ' is ';
@@ -269,6 +298,9 @@
         }else{
           dataToDisplay += '<b>' + distance / 1000  + '</b> km away!';
         }
+
+        dataToDisplay += ' You won <b>' + points + '</b> points!';
+
         var infoWindow = new google.maps.InfoWindow({
           content: dataToDisplay
         })
@@ -332,13 +364,13 @@
         this.dialogSummary = false
         this.isExitButtonVisible = true
         if(!this.room){
-          this.game.rounds.forEach(({guess, position, distance})=> {
+          this.game.rounds.forEach(({guess, position, distance, points})=> {
             this.putMarker(position, {        
               icon: window.location.origin+'/img/icons/favicon-16x16.png'
             })
             this.drawPolyline(guess,0,position)
             this.putMarker(guess)
-            this.setInfoWindow(null, distance, true)
+            this.setInfoWindow(null, distance, points, true)
           })
 
         }
@@ -361,12 +393,13 @@
                   let latitudeG = snapshot.child(round.key + '/'+player.key+'/latitude').val()
                   let longitudeG = snapshot.child(round.key + '/'+player.key+'/longitude').val()
                   let distance = snapshot.child(round.key + '/' +player.key+'/distance').val()
+                  let points = snapshot.child(round.key + '/' +player.key+'/points').val()
                   let latLngG = new google.maps.LatLng({lat: latitudeG, lng: longitudeG});
                   this.drawPolyline(latLngG, i, latLng)
                   this.putMarker(latLngG, {
                     label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
                   })
-                  this.setInfoWindow(playerName, distance)
+                  this.setInfoWindow(playerName, distance, points)
                       
                   i++
                 });
@@ -387,6 +420,8 @@
       })
       
       this.game.timeLimitation = this.timeLimitation;
+      this.game.difficulty = this.difficulty;
+
       if(this.roomName){
         this.room = firebase.database().ref(this.roomName)
         this.room.on('value', (snapshot) => {
@@ -397,6 +432,7 @@
             if (snapshot.child('guess').numChildren() == snapshot.child('size').val()) {
               
               this.game.timeLimitation = this.timeLimitation;
+
               this.$emit('showResult')
 
               // Put markers and draw polylines on the map
@@ -410,15 +446,17 @@
 
                 var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
                 var distance = snapshot.child('round' + this.round + '/player' + j+'/distance').val()
+                var points = snapshot.child('round' + this.round + '/player' + j+'/points').val()
                 players[playerName] = {
                   guess: latLng,
-                  distance,                    
+                  distance,
+                  points,
                 }
                 this.drawPolyline(latLng, i)
                 this.putMarker(latLng, {
                   label: (playerName && playerName.length > 0) ? playerName[0].toUpperCase() : '',
                 })
-                this.setInfoWindow(playerName, distance)
+                this.setInfoWindow(playerName, distance, points)
                 i++
                 j++
               })     
@@ -437,16 +475,18 @@
 
               if (this.round >= 5) {
                 // Show summary button
-                snapshot.child('finalScore').forEach((childSnapshot) => {
+                snapshot.child('finalPoints').forEach((childSnapshot) => {
                   var playerName = snapshot.child('playerName').child(childSnapshot.key).val()
-                  var finalScore = childSnapshot.val()
+                  var finalScore = snapshot.child('finalScore').child(childSnapshot.key).val()
+                  var finalPoints = childSnapshot.val()
                   this.summaryTexts.push({
                     playerName: playerName,
                     finalScore: finalScore,
+                    finalPoints: finalPoints
                   })
                 })
 
-                this.summaryTexts.sort((a,b) => parseInt(a.finalScore)-parseInt(b.finalScore))
+                this.summaryTexts.sort((a,b) => parseInt(b.finalPoints)-parseInt(a.finalPoints))
 
                 this.isSummaryButtonVisible = true
 
