@@ -294,28 +294,28 @@
         try{
           let obj = JSON.parse(this.geoJson);
           this.place= '';
-          if(obj.type === "FeatureCollection"){
-            if(obj.features.length == 1){
-              this.errorGeoJson = false;
-              return obj.features[0]
-            }else{
-              this.errorGeoJson = false;
-              return {
-              "type": "Feature",
-              "geometry": {
-                  "type": "MultiPolygon",
-                  "coordinates": obj.features.map((f) => {
-                    if(f.geometry.type ==  "Polygon"){
-                      return f.geometry.coordinates;
-                    }else{
-                      return [];
-                    }
+          // if(obj.type === "FeatureCollection"){
+          //   if(obj.features.length == 1){
+          //     this.errorGeoJson = false;
+          //     return obj.features[0]
+          //   }else{
+          //     this.errorGeoJson = false;
+          //     return {
+          //     "type": "Feature",
+          //     "geometry": {
+          //         "type": "MultiPolygon",
+          //         "coordinates": obj.features.map((f) => {
+          //           if(f.geometry.type ==  "Polygon"){
+          //             return f.geometry.coordinates;
+          //           }else{
+          //             return [];
+          //           }
 
-                  })
-              }
-              };
-            }
-          }
+          //         })
+          //     }
+          //     };
+          //   }
+          // }
           this.errorGeoJson = false;
           return obj; 
         }catch(e){

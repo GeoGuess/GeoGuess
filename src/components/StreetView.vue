@@ -56,7 +56,7 @@
   import randomPositionInPolygon from 'random-position-in-polygon'
   import axios from 'axios'
   import * as turfModel from '@turf/helpers'
-  import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
+  import {isInGeoJSON} from '../utils'
   
   export default {
     props:{
@@ -122,7 +122,22 @@
       },
       getRandomLatLng() {
         if(this.placeGeoJson != null){
-          let position = randomPositionInPolygon(this.placeGeoJson);
+          let position;
+          if(this.placeGeoJson.type === "FeatureCollection"){ 
+            let randInt = (Math.floor(Math.random() * (this.placeGeoJson.features.length)));
+
+            const feature = this.placeGeoJson.features[randInt];
+            if(feature.geometry.type === "Point"){
+              position = feature.geometry.coordinates;
+            }else {
+              position = randomPositionInPolygon(feature);
+            }
+
+          } else{
+            position = randomPositionInPolygon(this.placeGeoJson);
+          }
+
+
           return new google.maps.LatLng(position[1], position[0]);
         }
           
@@ -148,12 +163,12 @@
             pitch: 0,
           })
                     
-          if(this.placeGeoJson != null && this.cptNotFoundLocation < 3 && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)){
+          if(this.placeGeoJson != null && this.cptNotFoundLocation < 5 && !isInGeoJSON(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson) ){
             this.loadStreetView()
             this.cptNotFoundLocation++; 
           }else{
              // If 3 times Street View does not find location in the polygon placeGeo print warning message
-            if(this.placeGeoJson != null && !booleanPointInPolygon(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
+            if(this.placeGeoJson != null && !isInGeoJSON(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
               this.isVisibleDialog = true;
             }
             // Save the location's latitude and longitude

@@ -1,3 +1,10 @@
+
+import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
+import booleanEqual from '@turf/boolean-equal'
+/**
+ * check in valid format url
+ * @param {string} str 
+ */
 export function validURL(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
@@ -6,4 +13,20 @@ export function validURL(str) {
       '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
     return !!pattern.test(str);
+}
+
+/**
+ * Search if point is in GeoJSON
+ * @param {Point>} point 
+ * @param {FeatureCollection} geoJSON 
+ */
+export function isInGeoJSON(point, geoJSON){
+  return geoJSON.features.some((feature) => {
+    if(feature.geometry.type === "Point"){
+      return booleanEqual(feature, point);
+    }else {      
+      return booleanPointInPolygon(point, feature)
+    }
+  });
+  
 }
