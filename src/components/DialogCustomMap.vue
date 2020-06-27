@@ -161,18 +161,25 @@ export default {
 
       },
       type(t){
-        if(t === 'edit'){
           this.$refs.mapRef.$mapPromise.then((map) => {
-            map.data.setControls(['Point', 'Polygon']);
-            map.data.setStyle({
+            if(t === 'edit'){
+              map.data.setControls(['Point', 'Polygon']);
+              map.data.setStyle({
                 editable: true,
                 draggable: true,
-            });
-            map.data.addListener('addfeature', this.onChangeMap);
-            map.data.addListener('removefeature', this.onChangeMap);
-            map.data.addListener('setgeometry', this.onChangeMap);
+              });
+              map.data.addListener('addfeature', this.onChangeMap);
+              map.data.addListener('removefeature', this.onChangeMap);
+              map.data.addListener('setgeometry', this.onChangeMap);
+            }else{
+              map.data.setControls(null);
+              map.data.setStyle({});
+              
+              map.data.removeEventListener('addfeature', this.onChangeMap);
+              map.data.removeEventListener('removefeature', this.onChangeMap);
+              map.data.removeEventListener('setgeometry', this.onChangeMap);
+            }
           })
-        }
       }
     }
 }
