@@ -2,24 +2,28 @@
    <v-dialog :value="this.visibility" @input="$emit('changeVisibility')">
       <v-card class="dialog-customs" color="#061422">
          <v-card-title>
-            <p>Custom Map <small> (<a target="_blank" href="https://tomscholz.github.io/geojson-editor/">Open Editor 1</a>, <a target="_blank" href="https://geojson.io/">Open Editor 2</a>)</small></p>
+            <p>Custom Map</p>
          </v-card-title>
          <v-card-text>
             <v-row no-gutters>
-              <v-col md="5">
+              <v-col md="5" class="mr-6">
+                <v-alert type="error" v-if="value && !validGeoJson" transition="out-in" >
+                  Invalid GeoJSON
+                </v-alert>
+              
                 <GmapMap
                     :center="{lat:10, lng:10}"
                     :zoom="1"
                     ref="mapRef"
                     map-type-id="terrain"
-                    style="width: 680px; height: 500px"
+                    style="width: 100%; height: 500px"
                     :options="{
                       gestureHandling: 'greedy'
                     }"
                   >
                 </GmapMap>
-              
               </v-col>
+              
               <v-col>
                 <v-radio-group v-model="type" row dark>
                   <v-radio label="Text" value="text"></v-radio>
@@ -36,7 +40,7 @@
                   ></v-file-input>
                 <v-text-field
                   v-else-if="type==='url'" placeholder='https://gist.github.com/...' label="Url" type="text" v-model="url" :rules="rulesUrl" dark/>
-                <v-textarea v-else :error="errorGeoJson" :success="validGeoJson" dark :value="value" v-on:input="onChangeTextArea" :placeholder="placeholderGeoJson" rows="20">
+                <v-textarea v-else :error="value !== '' && !validGeoJson" :success="validGeoJson" dark :value="value" v-on:input="onChangeTextArea" :placeholder="placeholderGeoJson" rows="25" filled clearable>
                 </v-textarea>
               </v-col>
             </v-row>
@@ -64,7 +68,6 @@ export default {
     data(){
         return {
             placeholderGeoJson: geoJsonExample,
-            errorGeoJson: false,
             rulesUrl: [
             value => validURL(value),
             ],

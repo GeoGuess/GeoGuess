@@ -322,35 +322,22 @@
         }
         try{
           let obj = JSON.parse(this.geoJson);
-          this.place= '';
-          // if(obj.type === "FeatureCollection"){
-          //   if(obj.features.length == 1){
-          //     this.errorGeoJson = false;
-          //     return obj.features[0]
-          //   }else{
-          //     this.errorGeoJson = false;
-          //     return {
-          //     "type": "Feature",
-          //     "geometry": {
-          //         "type": "MultiPolygon",
-          //         "coordinates": obj.features.map((f) => {
-          //           if(f.geometry.type ==  "Polygon"){
-          //             return f.geometry.coordinates;
-          //           }else{
-          //             return [];
-          //           }
+          if(obj.type === "FeatureCollection" && obj.features){
+            obj.features.map((f)=>{
+              if(!["Point", "Polygon", "MultiPolygon"].includes(f.geometry.type)){
+                throw new Error("Error Format")
+              }
+            })
+            this.place= '';
+            return obj; 
 
-          //         })
-          //     }
-          //     };
-          //   }
-          // }
-          this.errorGeoJson = false;
-          return obj; 
+          }else{
+            
+            throw new Error("Error Format")
+          }
         }catch(e){
-          this.errorGeoJson = true
+          return null;
         }
-        return null;
       },
       minHeight () {
         const height = this.$vuetify.breakpoint.mdAndUp ? '100vh' : '50vh'
