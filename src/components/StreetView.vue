@@ -173,7 +173,7 @@
             pitch: 0,
           })
                     
-          if(this.placeGeoJson != null && this.cptNotFoundLocation < 5 && !isInGeoJSON(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson) ){
+          if(this.placeGeoJson != null && this.cptNotFoundLocation < 3 && !isInGeoJSON(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson) ){
             this.loadStreetView()
             this.cptNotFoundLocation++; 
           }else{
