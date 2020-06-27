@@ -2,25 +2,44 @@
    <v-dialog :value="this.visibility" @input="$emit('changeVisibility')">
       <v-card class="dialog-customs" color="#061422">
          <v-card-title>
-            <p>Paste GeoJSON <small> (<a target="_blank" href="https://tomscholz.github.io/geojson-editor/">Open Editor 1</a>, <a target="_blank" href="https://geojson.io/">Open Editor 2</a>)</small></p>
+            <p>Custom Map <small> (<a target="_blank" href="https://tomscholz.github.io/geojson-editor/">Open Editor 1</a>, <a target="_blank" href="https://geojson.io/">Open Editor 2</a>)</small></p>
          </v-card-title>
          <v-card-text>
-            <v-radio-group v-model="type" row dark>
-               <v-radio label="Text" value="text"></v-radio>
-               <v-radio label="Url"  value="url"></v-radio>
-               <v-radio label="File" value="file"></v-radio>
-            </v-radio-group>
-            <v-file-input
-               v-if="type==='file'"
-               label="Select GeoJSON file"
-               v-model="file"
-               prepend-icon="mdi-map"
-               dark
-               ></v-file-input>
-            <v-text-field
-               v-else-if="type==='url'" placeholder='https://gist.github.com/...' label="Url" type="text" v-model="url" :rules="rulesUrl" dark/>
-            <v-textarea v-else :error="errorGeoJson" :success="validGeoJson" dark :value="value" v-on:input="onChangeTextArea" :placeholder="placeholderGeoJson" rows="20">
-            </v-textarea>
+            <v-row no-gutters>
+              <v-col md="5">
+                <GmapMap
+                    :center="{lat:10, lng:10}"
+                    :zoom="1"
+                    ref="mapRef"
+                    map-type-id="terrain"
+                    style="width: 680px; height: 500px"
+                    :options="{
+                      gestureHandling: 'greedy'
+                    }"
+                  >
+                </GmapMap>
+              
+              </v-col>
+              <v-col>
+                <v-radio-group v-model="type" row dark>
+                  <v-radio label="Text" value="text"></v-radio>
+                  <v-radio label="Url"  value="url"></v-radio>
+                  <v-radio label="File" value="file"></v-radio>
+                  <v-radio label="Edit Map" value="edit"></v-radio>
+                </v-radio-group>
+                <v-file-input
+                  v-if="type==='file'"
+                  label="Select GeoJSON file"
+                  v-model="file"
+                  prepend-icon="mdi-map"
+                  dark
+                  ></v-file-input>
+                <v-text-field
+                  v-else-if="type==='url'" placeholder='https://gist.github.com/...' label="Url" type="text" v-model="url" :rules="rulesUrl" dark/>
+                <v-textarea v-else :error="errorGeoJson" :success="validGeoJson" dark :value="value" v-on:input="onChangeTextArea" :placeholder="placeholderGeoJson" rows="20">
+                </v-textarea>
+              </v-col>
+            </v-row>
          </v-card-text>
          <v-card-actions>
             <div class="flex-grow-1"></div>
@@ -52,14 +71,50 @@ export default {
             type: 'text',
             file: null,
             url: '',
+            initMap: false,
         }
     },
     methods: {
         onChangeTextArea(e){
             this.$emit('input',e)
+        },
+        
+        onChangeMap(){
+          this.editMap = true
+          this.$refs.mapRef.$mapPromise.then((map) => {
+            map.data.toGeoJson((geoJson) =>  this.$emit('input',JSON.stringify(geoJson, null, 2)));
+          });
         }
     },
+    updated(){
+      if(!this.initMap){
+        this.$nextTick(() => {
+          this.$refs.mapRef.$mapPromise.then((map) => {
+              let data = new google.maps.Data({
+                map: map,
+              });
+              if(this.value)
+                data.addGeoJson(JSON.parse(this.value))
+              map.data.setMap(null);
+              map.data = data;
+              this.initMap = true;
+          });
+        });
+      }
+    },
     watch: {
+      value(v){
+        if(this.type !== 'edit'){
+          this.$refs.mapRef.$mapPromise.then((map) => {
+            let data = new google.maps.Data({
+              map: map,
+            });
+            data.addGeoJson(JSON.parse(v))
+            map.data.setMap(null);
+            map.data = data;
+          })
+        }
+      },
       file(file){
         
         if(typeof file === 'object' && file.text){
@@ -88,7 +143,7 @@ export default {
           .then( res => {
             if(res.status === 200 && res.data){
               if(typeof res.data === 'object'){
-                this.$emit('input', JSON.stringify(res.data))
+                this.$emit('input', JSON.stringify(res.data, null, 2))
               }else{
                 this.$emit('input', res.data)
               }
@@ -102,6 +157,20 @@ export default {
         }
 
       },
+      type(t){
+        if(t === 'edit'){
+          this.$refs.mapRef.$mapPromise.then((map) => {
+            map.data.setControls(['Point', 'Polygon']);
+            map.data.setStyle({
+                editable: true,
+                draggable: true,
+            });
+            map.data.addListener('addfeature', this.onChangeMap);
+            map.data.addListener('removefeature', this.onChangeMap);
+            map.data.addListener('setgeometry', this.onChangeMap);
+          })
+        }
+      }
     }
 }
 

@@ -17,6 +17,7 @@
                 :center="{lat:0, lng:0}"
                 :options="{
                     mapTypeControl: false,
+                   gestureHandling: 'greedy'
                 }"
                 :zoom="0"
                 map-type-id="terrain"

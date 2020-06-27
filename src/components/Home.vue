@@ -45,7 +45,7 @@
                   class="btn-customs"
                   color="#FFFFFF"
                   @click="dialogCustom = !dialogCustom">
-                  <v-icon>mdi-settings</v-icon>
+                  <v-icon medium>mdi-map-plus</v-icon>
                 </v-btn>
                 <DialogCustomMap :visibility="dialogCustom" @changeVisibility="dialogCustom = !dialogCustom" v-model="geoJson" :validGeoJson="placeGeoJson !==null"/>
             </v-row>
@@ -151,7 +151,7 @@
         You can limit random locations to city, state, or country with the search bar. <br/>In the multiplayer, the first player fixes the location.
         <br/><br/>
         Furthermore, you can make your customs map with <a href="https://geojson.org/">GeoJson</a> file.
-        Insert the content of the GeoJson map with the button : <v-icon>mdi-settings</v-icon>.
+        Insert the content of the GeoJson map with the button : <v-icon>mdi-map-plus</v-icon>.
         <br/>
         Customs Maps :
         <ul>
