@@ -75,6 +75,7 @@ export default {
             file: null,
             url: '',
             initMap: false,
+            editMap: false,
         }
     },
     methods: {
@@ -107,15 +108,28 @@ export default {
     },
     watch: {
       value(v){
-        if(this.type !== 'edit'){
+        if(!this.editMap){
           this.$refs.mapRef.$mapPromise.then((map) => {
             let data = new google.maps.Data({
               map: map,
+              style: map.data.getStyle(),
+              controls: map.data.getControls(),
             });
-            data.addGeoJson(JSON.parse(v))
+            try{
+              data.addGeoJson(JSON.parse(v))
+            }catch(e){
+            }
+            
+            if(this.type === 'edit'){
+              data.addListener('addfeature', this.onChangeMap);
+              data.addListener('removefeature', this.onChangeMap);
+              data.addListener('setgeometry', this.onChangeMap);
+            }
             map.data.setMap(null);
             map.data = data;
           })
+        }else{          
+          this.editMap = false;
         }
       },
       file(file){

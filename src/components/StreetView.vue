@@ -125,7 +125,7 @@
         service.getPanorama({
           location: this.getRandomLatLng(),
           preference: 'nearest',
-          radius: 100000,
+          radius: (this.placeGeoJson != null) ? 50 :  100000,
           source: 'outdoor',
         }, this.checkStreetView)
       },

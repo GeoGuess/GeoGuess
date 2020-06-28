@@ -3,7 +3,7 @@ const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 admin.initializeApp()
 
-exports.deleteExpiredRooms = functions.pubsub.schedule('every wednesday 00:00').onRun((context) => {
+exports.deleteExpiredRooms = functions.https.onRequest(async (req, res) => {
   var db = admin.database()
 
   // Delete all rooms 1 day passed since it was created

@@ -1,6 +1,6 @@
 
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
-import booleanEqual from '@turf/boolean-equal'
+import distance from '@turf/distance'
 /**
  * check in valid format url
  * @param {string} str 
@@ -23,7 +23,7 @@ export function validURL(str) {
 export function isInGeoJSON(point, geoJSON){
   return geoJSON.features.some((feature) => {
     if(feature.geometry.type === "Point"){
-      return booleanEqual(feature, point);
+      return distance(feature, point, {units: 'kilometers'}) < 0.05;
     }else {      
       return booleanPointInPolygon(point, feature)
     }
