@@ -52,50 +52,50 @@
         </v-btn>
       </v-row>
       <v-row v-if="$viewport.width < 450">
-      	<v-col cols="6">
-	      	<v-select
-	      		:items="languages"
-	      		:label="getCurrentLanguage"
-	      		solo
-	      		@change="switchLanguage">
-	      	</v-select>
-      	</v-col>
+        <v-col cols="6">
+          <v-select
+            :items="languages"
+            :label="getCurrentLanguage"
+            solo
+            @change="switchLanguage">
+          </v-select>
+        </v-col>
       </v-row>
     </v-container>
   </v-footer>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				languages: [
-					{
-						text: 'English',
-						value: 'en',
-					},
-					{
-						text: '日本語',
-						value: 'ja',
-					}
-				],
-			}
-		},
-		computed: {
-			getCurrentLanguage() {
-				return this.languages.find(language => language.value == this.$i18n.locale).text
-			},
-		},
-		methods: {
-			switchLanguage(language) {
-				this.$i18n.locale = language
-				this.saveLanguage(language)
-			},
+  export default {
+    data() {
+      return {
+        languages: [
+          {
+            text: 'English',
+            value: 'en',
+          },
+          {
+            text: '日本語',
+            value: 'ja',
+          }
+        ],
+      }
+    },
+    computed: {
+      getCurrentLanguage() {
+        return this.languages.find(language => language.value == this.$i18n.locale).text
+      },
+    },
+    methods: {
+      switchLanguage(language) {
+        this.$i18n.locale = language
+        this.saveLanguage(language)
+      },
       saveLanguage(language) {
         localStorage.setItem('language', language)
       },
-		},
-	}
+    },
+  }
 </script>
 
 <style scoped>
@@ -120,6 +120,6 @@
   @media (max-width: 450px) {
     #footer {
       top: 1440px;
-    }  	
+    }   
   }
 </style>
