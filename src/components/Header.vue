@@ -110,9 +110,6 @@
 </script>
 
 <style scoped>
-  span {
-    font-family: montserrat;
-  }
 
   #title {
     color: #FFFFFF;

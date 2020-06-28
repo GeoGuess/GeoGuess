@@ -43,7 +43,7 @@
       :dialogTitle="dialogTitle"
       :dialogText="dialogText" />
     <v-alert type="warning" dismissible class="warning-alert" v-if="isVisibleDialog" tile>
-     <b>Nearby Position</b> : Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉
+     <b>{{$t('StreetView.nearby.title')}}</b> : {{$t('StreetView.nearby.message')}}
     </v-alert>
   </div>
 </template>
@@ -111,7 +111,7 @@
         room: null,
         isReady: false,
         dialogMessage: this.multiplayer,
-        dialogTitle: 'Waiting for other players...',
+        dialogTitle: this.$t('StreetView.waitForOtherPlayers'),
         dialogText: '',
         cptNotFoundLocation: 0,
         isVisibleDialog: false,
@@ -240,7 +240,7 @@
           this.room.child('finalPoints/player' + this.playerNumber).set(this.points)
 
           // Wait for other players to guess locations
-          this.dialogTitle = 'Waiting for other players...'
+          this.dialogTitle = this.$t('StreetView.waitForOtherPlayers')
           this.dialogMessage = true
         }
       },
@@ -282,8 +282,8 @@
       },
       exitGame() {
         // Disable the listener and force the players to exit the game
-        this.dialogTitle = 'Redirect to Home Page...'
-        this.dialogText = 'You are forced to exit the game. Redirect to home page after 5 seconds...'
+        this.dialogTitle = this.$t('StreetView.redirectToHomePage');
+        this.dialogText = this.$t('StreetView.exitGame');
         this.dialogMessage = true
         this.room.off()
         this.room.remove()
@@ -297,7 +297,7 @@
           this.$router.push('/')
         }else{
           // Open the dialog while waiting for other players to finsih the game
-          this.dialogTitle = 'Waiting for other players to finish the game...'
+          this.dialogTitle = this.$t('StreetView.waitForOtherPlayersToFinish');
           this.dialogText = ''
           this.dialogMessage = true
         }

@@ -45,7 +45,7 @@
         :disabled="isGuessButtonClicked || (!!this.room && !isReady)"
         v-if="!isNextButtonVisible && !isSummaryButtonVisible && !isExitButtonVisible && ($viewport.width > 450 || isMakeGuessButtonClicked)"
         @click="resetLocation"
-        >RESET
+        >{{ $t('Maps.reset') }}
       </button>
       <button
         id="guess-button"
@@ -76,14 +76,14 @@
         v-bind:class="{ 'w-50': !this.room}"
         v-if="isExitButtonVisible"
         @click="finishGame"
-        >EXIT
+        >{{ $t('Maps.exit') }}
       </button>
             
       <button
         v-if="isExitButtonVisible && !this.room"
         id="play-again-button"
         class="w-50"
-        @click="playAgain">PLAY AGAIN
+        @click="playAgain">{{ $t('Maps.playAgain') }}
       </button>
     </div>
             
@@ -291,15 +291,15 @@
       setInfoWindow(playerName = null, distance = this.distance, points = this.points, endGame= false) {
         let dataToDisplay =''
         if(playerName !== null)
-          dataToDisplay+= '<b>' + playerName + '</b>' + ' is ';
+          dataToDisplay+= '<b>' + playerName + '</b>' + ' : <br/>';
 
         if(distance < 1000){
-          dataToDisplay += '<b>' + distance + '</b> m away!';
+          dataToDisplay += '<b>'+this.$t('Maps.infoWindow.Distance')+' : </b>' + distance + ' m';
         }else{
-          dataToDisplay += '<b>' + distance / 1000  + '</b> km away!';
+          dataToDisplay += '<b>'+this.$t('Maps.infoWindow.Distance')+' : </b>' + distance / 1000  + ' km';
         }
 
-        dataToDisplay += ' You won <b>' + points + '</b> points!';
+        dataToDisplay += '<br/><b>'+this.$t('Maps.infoWindow.Points')+' : </b>' + points;
 
         var infoWindow = new google.maps.InfoWindow({
           content: dataToDisplay

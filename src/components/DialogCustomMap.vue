@@ -2,13 +2,13 @@
    <v-dialog :value="this.visibility" @input="$emit('changeVisibility')">
       <v-card class="dialog-customs" color="#061422">
          <v-card-title>
-            <p>Custom Map</p>
+            <p>{{$t('DialogCustomMap.title')}}</p>
          </v-card-title>
          <v-card-text>
             <v-row no-gutters>
               <v-col md="5" class="mr-6">
                 <v-alert type="error" v-if="value && !validGeoJson" transition="out-in" >
-                  Invalid GeoJSON
+                  {{$t('DialogCustomMap.invalid')}}
                 </v-alert>
               
                 <GmapMap
@@ -26,14 +26,14 @@
               
               <v-col>
                 <v-radio-group v-model="type" row dark>
-                  <v-radio label="Text" value="text"></v-radio>
-                  <v-radio label="Url"  value="url"></v-radio>
-                  <v-radio label="File" value="file"></v-radio>
-                  <v-radio label="Edit Map" value="edit"></v-radio>
+                  <v-radio :label="$t('DialogCustomMap.text')" value="text"></v-radio>
+                  <v-radio :label="$t('DialogCustomMap.url')"  value="url"></v-radio>
+                  <v-radio :label="$t('DialogCustomMap.file')" value="file"></v-radio>
+                  <v-radio :label="$t('DialogCustomMap.edit')" value="edit"></v-radio>
                 </v-radio-group>
                 <v-file-input
                   v-if="type==='file'"
-                  label="Select GeoJSON file"
+                  :label="$t('DialogCustomMap.fileLabel')"
                   v-model="file"
                   prepend-icon="mdi-map"
                   dark

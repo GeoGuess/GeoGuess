@@ -10,7 +10,7 @@
         <span id="countdown-text">{{ getCountdownText }}</span>
       </div>   
       <div class="round-score-container room-name" v-if="roomName">
-        <span class="sub-text">ROOM : </span>
+        <span class="sub-text">{{ $t('HeaderGame.room') }} : </span>
         <span class="main-text">{{roomName}}</span>
       </div>
       <div class="flex-grow-1"></div>
@@ -21,13 +21,13 @@
         <span class="main-text">{{ round }} / 5</span>
       </div>
       <div class="round-score-container">
-        <span class="sub-text">{{ $t('HeaderGame.score') }}: </span>
+        <span class="sub-text">{{ $t('HeaderGame.distance') }}: </span>
       </div>
       <div>
-        <span class="main-text">{{ score / 1000 }} km away</span>
+        <span class="main-text">{{ $t('HeaderGame.kmaway', {value: (score / 1000)}) }}</span>
       </div>
       <div class="round-points-container">
-        <span class="sub-text">POINTS: </span>
+        <span class="sub-text">{{ $t('HeaderGame.score') }}: </span>
       </div>
       <div>
         <span class="main-text">{{ points }}</span>

@@ -1,7 +1,7 @@
 <template>
   <v-card>
    <v-card-title>
-      History
+      {{$t("History.title")}}
    </v-card-title>
     <v-data-table
     id="history-table"
@@ -33,7 +33,10 @@
                         <GmapInfoWindow
                             :options="infoOptions"
                             :position="r.guess">        
-                            <p><b>{{r.distance / 1000 }} </b> km away! You won <b>{{ r.points }}</b> points!</p>
+                            <p>
+                                <b>{{$t('Maps.infoWindow.Distance')}} : </b>{{r.distance / 1000 }} km
+                                <br/><b>{{$t('Maps.infoWindow.Points')}} : </b> {{r.points}}
+                            </p>
                         </GmapInfoWindow>
                         <GmapPolyline 
                             :path="[r.position, r.guess]"
@@ -60,8 +63,12 @@
                             />
                             <GmapInfoWindow
                                 :options="infoOptions"
-                                :position="r.players[player].guess">       
-                                <p><b>{{player}}</b> is <b>{{r.players[player].distance / 1000 }} </b> km away! You won <b>{{ r.players[player].points }}</b> points!</p>
+                                :position="r.players[player].guess">
+                                <p>
+                                    <b>{{player}}</b><br/>
+                                    <b>{{$t('Maps.infoWindow.Distance')}} : </b>{{r.players[player].distance / 1000 }} km
+                                    <br/><b>{{$t('Maps.infoWindow.Points')}} : </b> {{r.players[player].points}}
+                                </p>
                             </GmapInfoWindow>
                             <GmapPolyline 
                                 :path="[r.position, r.players[player].guess]"
@@ -107,23 +114,23 @@ export default {
             icon: window.location.origin+'/img/icons/favicon-16x16.png',
             headers: [
                 {
-                    text: "Date",
+                    text: this.$t('History.date'),
                     value: 'dateString',
                 },
                 {
-                    text: "Mode",
+                    text: this.$t('History.mode'),
                     value: 'mode',
                 },
                 {
-                    text: "Time",
+                    text: this.$t('History.time'),
                     value: 'time',
                 },
                 {
-                    text: "Distance",
+                    text: this.$t('History.distance'),
                     value: 'score',
                 },
                 {
-                    text: "Points",
+                    text: this.$t('History.points'),
                     value: 'points',
                 },
                 {
@@ -140,8 +147,8 @@ export default {
                 score: g.score/1000,
                 points: g.points,
                 dateString: new Date(g.date).toLocaleString(),
-                mode: g.multiplayer ? "With Friends": "Single Player",
-                time: g.timeLimitation===0 ? "Infinite": g.timeLimitation/60
+                mode: g.multiplayer ? this.$t('DialogRoom.withFriends'): this.$t('Home.singlePlayer'),
+                time: g.timeLimitation===0 ? this.$t('DialogRoom.withFriends'): g.timeLimitation/60
             }))
         }
     }

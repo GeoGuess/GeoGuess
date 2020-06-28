@@ -18,7 +18,7 @@
           <v-spacer/>
           <v-flex 
             xs12>
-            <h2>Record: {{ record / 1000 }} km</h2>
+            <h2>{{$t('Home.record')}}: {{ record / 1000 }} km</h2>
           </v-flex>
           
           <v-flex xs12>
@@ -30,7 +30,7 @@
                   :search-input.sync="search"
                   :loading="isLoading"
                   autofocus
-                  :placeholder="(placeGeoJson !==null) ? 'Custom geoJson file has been loaded': 'Enter city, state or country'"
+                  :placeholder="(placeGeoJson !==null) ? $t('Home.searchBar.customLoaded'): $t('Home.searchBar.enterCity')"
                   dark
                   v-model="place"
                   :disabled="placeGeoJson !==null"
@@ -67,12 +67,12 @@
                 dark
                 color="#FF5252"
                 v-on="on">
-                Single Player
+                {{$t('Home.singlePlayer')}}
               </v-btn>
             </template>
             <v-card color="#061422">
               <v-card-title>
-                <span id="card-title">Set a time limitation and a difficulty</span>
+                <span id="card-title">Set a time limitation and a difficulty{{$t('CardRoomTime.title')}}</span>
               </v-card-title>
               
               <v-card-text>
@@ -109,12 +109,12 @@
                 dark
                 depressed
                 color="#FF5252"
-                @click="dialog=false">CANCEL</v-btn>
+                @click="dialog=false">{{$t('CANCEL')}}</v-btn>
               <v-btn
                 dark
                 depressed
                 color="#43B581"
-                @click="startSinglePlayer">NEXT</v-btn>
+                @click="startSinglePlayer">{{$t('NEXT')}}</v-btn>
             </v-card-actions>
           </v-card>
 
@@ -127,7 +127,7 @@
               <v-btn
                 dark
                 text
-                @click="historyDialog = true">HISTORY</v-btn>
+                @click="historyDialog = true">{{$t('Home.historyBtn')}}</v-btn>
 
           </v-flex>
 
@@ -138,22 +138,23 @@
     </div>
 
     <v-container class="section" id="section-about">
-       <h3 class="section-header">ABOUT</h3>
+       <h3 class="section-header">{{$t('Home.about')}}</h3>
       <p class="section-description">
-          Geoguess 2 is a free and lazy geoguess game with no ads. Players compete how close the player can guess random locations in five rounds. You can share the score with other people via social media like Facebook or Twitter. You can play multiplayer game with your friends up to five friends. The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start.
-          <br/>This game was forked from <a href="https://geoguessmaster.com/">GeoGuess Master</a>.
+          {{$t('Home.aboutDescriptions.1')}} 
+          <br/>{{$t('Home.aboutDescriptions.2')}} <a href="https://geoguessmaster.com/">GeoGuess Master</a>.
       </p>
     </v-container>
 
     <v-container class="section" id="section-CustomsMap">
-       <h3 class="section-header">CUSTOMS MAP</h3>
+       <h3 class="section-header">{{$t('Home.customMap')}}</h3>
       <p class="section-description">
-        You can limit random locations to city, state, or country with the search bar. <br/>In the multiplayer, the first player fixes the location.
+        {{$t('Home.customMapDescriptions.1')}} 
+        <br/>{{$t('Home.customMapDescriptions.2')}} 
         <br/><br/>
-        Furthermore, you can make your customs map with <a href="https://geojson.org/">GeoJson</a> file.
-        Insert the content of the GeoJson map with the button : <v-icon>mdi-map-plus</v-icon>.
+        {{$t('Home.customMapDescriptions.3')}} <a href="https://geojson.org/">GeoJson</a> {{$t('Home.customMapDescriptions.4')}}
+        {{$t('Home.customMapDescriptions.5')}} <v-icon>mdi-map-plus</v-icon>.
         <br/>
-        Customs Maps :
+        {{$t('Home.customMapDescriptions.6')}}
         <ul>
           <li><a href="https://gist.github.com/BilelJegham/7f855024440c67d65f24536c9215719e">Biggest cities world</a></li>
           <li><a href="https://gist.github.com/BilelJegham/b6a0faa627aac3b7f5bc677523c4c7eb">Hard Map</a></li>
@@ -161,61 +162,13 @@
       </p>
     </v-container>
     <v-container  class="section" id="section-limitation">
-      <h3 class="section-header">LIMITATION</h3>
+      <h3 class="section-header">{{$t('Home.limitation')}}</h3>
       <p class="section-description">
-        Currently I set quotas per day so the cost to run this game can't get too high. If the map doesn't load, it means the quotas has been exceeded on the day. It will reset at midnight Pacific Time. Sorry for inconvenience. This game is open source so you can build your own game server and play this game unlimitedly.
+        {{$t('Home.limitationDescription')}}
       </p>
     </v-container>
 
-    <v-footer
-      id="footer"
-      color="#061422"
-      height="210">
-      <v-container>
-        <v-row justify="center">
-          <v-btn
-            class="ml-4 mr-4"
-            icon
-            color="#FFFFFF"
-            href="https://github.com/BilelJegham/Geoguess-2">
-            <v-icon size="30">mdi-github-circle</v-icon>
-          </v-btn>
-          <v-btn
-            class="ml-4 mr-4"
-            icon
-            color="#FFFFFF"
-            href="https://discord.gg/fPpUzgJ">
-            <v-icon size="30">mdi-discord</v-icon>
-          </v-btn>
-          <v-btn
-            class="ml-4 mr-4"
-            icon
-            color="#FFFFFF"
-            href="https://twitter.com/BilelJegham">
-            <v-icon size="30">mdi-twitter</v-icon>
-          </v-btn>
-        </v-row>
-        <v-row
-          class="mt-8"
-          justify="center">
-          <span id="copyright-text">under <a href="https://raw.githubusercontent.com/spider-hand/Geoguess-Master-Web/master/LICENSE">MIT license</a></span>
-        </v-row>
-        <v-row
-          class="mt-3"
-          justify="center">
-          <v-btn
-            text
-            color="#FFFFFF"
-            @click="$router.push('privacy-policy')">
-            <span id="privacy-policy">Privacy Policy</span>
-          </v-btn>
-        </v-row>
-        <v-row
-          class="mt-3"
-          justify="center">
-        </v-row>
-      </v-container>
-    </v-footer>
+    <Footer/>
   </div>
 </template>
 
@@ -228,9 +181,9 @@
   import History from '@/components/History'
   import DialogCustomMap from '@/components/DialogCustomMap'
 
-  import Header from '@/components/widgets/bar/Header'
-  import DialogRoom from '@/components/widgets/dialog/DialogRoom'
-  import Footer from '@/components/widgets/footer/Footer'
+  import Header from '@/components/Header'
+  import DialogRoom from '@/components/DialogRoom'
+  import Footer from '@/components/Footer'
 
   export default {
     components: {
@@ -238,6 +191,7 @@
       DialogRoom,
       History,
       DialogCustomMap,
+      Footer,
     },
     data() {
       return {
@@ -415,9 +369,6 @@
     color: #777777;
   }
 
-  #copyright-text, #credit-text {
-    color: #7D7D7D;
-  }
   .search{
     width: 50vw;
     margin: auto;
