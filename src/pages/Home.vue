@@ -228,8 +228,9 @@
   import History from '@/components/History'
   import DialogCustomMap from '@/components/DialogCustomMap'
 
-  import Header from '@/components/Header'
-  import DialogRoom from '@/components/DialogRoom'
+  import Header from '@/components/widgets/bar/Header'
+  import DialogRoom from '@/components/widgets/dialog/DialogRoom'
+  import Footer from '@/components/widgets/footer/Footer'
 
   export default {
     components: {

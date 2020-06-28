@@ -4,29 +4,47 @@
     color="transparent"
     flat>
     <div>
-      <v-img src="../assets/logo.png" width="45" />
+      <v-img src="@/assets/logo.png" width="45" />
     </div>
     <span id="title">
       Geoguess 2
     </span>
     <div class="flex-grow-1"></div>
+    <v-menu>
+      <template v-slot:activator="{ on }">
+        <v-btn 
+          text
+          color="#FFFFFF"
+          v-on="on">
+          <span>{{ $t('Header.language') }}</span>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(language, index) in languages"
+          :key="index"
+          @click="switchLanguage(language.value)">
+          <v-list-item-title>{{ language.text }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
     <v-btn 
       text
       color="#FFFFFF"
       href="#section-about">
-      <span>About</span>
+      <span>{{ $t('Header.about') }}</span>
     </v-btn>
     <v-btn
       text
       color="#FFFFFF"
       href="#section-limitation">
-      <span>Limitation</span>
+      <span>{{ $t('Header.limitation') }}</span>
     </v-btn>
     <v-btn
       text
       color="#FFFFFF"
       href="#footer">
-      <span>Contact</span>
+      <span>{{ $t('Header.contact') }}</span>
     </v-btn>
   </v-app-bar>
   <v-app-bar
@@ -45,17 +63,17 @@
         <v-list>
           <v-list-item href="#section-about">
             <v-list-item-content>
-              <v-list-item-title>ABOUT</v-list-item-title>
+              <v-list-item-title>{{ $t('Header.about') }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item href="#section-limitation">
             <v-list-item-content>
-              <v-list-item-title>LIMITATION</v-list-item-title>
+              <v-list-item-title>{{ $t('Header.limitation') }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item href="#footer">
             <v-list-item-content>
-              <v-list-item-title>CONTACT</v-list-item-title>
+              <v-list-item-title>{{ $t('Header.contact') }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -65,7 +83,29 @@
 
 <script>
   export default {
-
+    data() {
+      return {
+      languages: [
+          {
+            text: 'English',
+            value: 'en',
+          },
+          {
+            text: '日本語',
+            value: 'ja',
+          }
+        ],        
+      }
+    },
+    methods: {
+      switchLanguage(language) {
+        this.$i18n.locale = language
+        this.saveLanguage(language)
+      },
+      saveLanguage(language) {
+        localStorage.setItem('language', language)
+      },
+    }
   }
 </script>
 

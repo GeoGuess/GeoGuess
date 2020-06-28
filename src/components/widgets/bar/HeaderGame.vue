@@ -15,13 +15,13 @@
       </div>
       <div class="flex-grow-1"></div>
       <div class="round-score-container">
-        <span class="sub-text">ROUND: </span>
+        <span class="sub-text">{{ $t('HeaderGame.round') }}: </span>
       </div>
       <div>
         <span class="main-text">{{ round }} / 5</span>
       </div>
       <div class="round-score-container">
-        <span class="sub-text">DISTANCE: </span>
+        <span class="sub-text">{{ $t('HeaderGame.score') }}: </span>
       </div>
       <div>
         <span class="main-text">{{ score / 1000 }} km away</span>

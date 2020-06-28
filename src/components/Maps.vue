@@ -37,7 +37,7 @@
       v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
       @click="showMap"
       >
-      MAKE GUESS
+      {{ $t('Maps.makeGuess') }}
     </button>
     <div>
       <button
@@ -52,7 +52,7 @@
         :disabled="selectedLatLng == null || isGuessButtonClicked || (!!this.room && !isReady)"
         v-if="!isNextButtonVisible && !isSummaryButtonVisible && !isExitButtonVisible && ($viewport.width > 450 || isMakeGuessButtonClicked)"
         @click="selectLocation"
-        >GUESS
+        >{{ $t('Maps.guess') }}
       </button>
     </div>
     <button
@@ -61,13 +61,13 @@
       :style="{ backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C' }"
       v-if="isNextButtonVisible"
       @click="goToNextRound"
-      >NEXT ROUND
+      >{{ $t('Maps.nextRound') }}
     </button>
     <button
       id="summary-button"
       v-if="isSummaryButtonVisible"
       @click="dialogSummary = true"
-      >VIEW SUMMARY
+      >{{ $t('Maps.viewSummary') }}
     </button>
     
     <div>

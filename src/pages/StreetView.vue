@@ -449,5 +449,10 @@
       min-height: 92%;
       height: 92%;
     }
+
+    #reset-button {
+      bottom: 120px;
+    }
+
   }
 </style>

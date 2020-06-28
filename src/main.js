@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router'
+import i18n from './lang'
 
 import firebase from 'firebase/app'
 import 'firebase/analytics'
@@ -48,5 +49,6 @@ console.info("Version : "+process.env.VUE_APP_VERSION)
 new Vue({
   vuetify,
   router,
+  i18n,
   render: h => h(App)
 }).$mount('#app')

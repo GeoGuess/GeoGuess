@@ -18,6 +18,7 @@ See the instructions below.
 
 - [Google Maps API](https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key)  
 - [Firebase](https://firebase.google.com/docs/database/web/start)  
+- [Firebase Realtime Database](https://firebase.google.com/docs/database/web/start)
  
 Once you get an API key and register the project with Firebase, create files named `.env.development.local` and `.env.production.local` inside this project to put environment variables. 
 The files should be like this. 
