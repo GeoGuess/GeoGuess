@@ -19,15 +19,14 @@
       id="make-guess-button"
       v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
       @click="showMap"
-      >
-      MAKE GUESS
+      >{{ $t('MapsWithFriends.makeGuess') }}
     </button>
     <button
       id="guess-button"
       :disabled="selectedLatLng == null || isGuessButtonClicked || !isReady"
       v-if="!isNextButtonVisible && !isSummaryButtonVisible && ($viewport.width > 450 || isMakeGuessButtonClicked)"
       @click="selectLocation"
-      >GUESS
+      >{{ $t('MapsWithFriends.guess') }}
     </button>
     <button
       id="next-button"
@@ -35,13 +34,13 @@
       :style="{ backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C' }"
       v-if="isNextButtonVisible"
       @click="goToNextRound"
-      >NEXT ROUND
+      > {{ $t('MapsWithFriends.nextRound') }}
     </button>
     <button
       id="summary-button"
       v-if="isSummaryButtonVisible"
       @click="dialogSummary = true"
-      >VIEW SUMMARY
+      > {{ $t('MapsWithFriends.viewSummary') }}
     </button>
     <DialogSummaryWithFriends
       :dialogSummary="dialogSummary"

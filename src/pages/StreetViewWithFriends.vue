@@ -88,7 +88,7 @@
         room: null,
         isReady: false,
         dialogMessage: true,
-        dialogTitle: 'Waiting for other players...',
+        dialogTitle: this.$t('StreetViewWithFriends.waitForOtherPlayers'),
         dialogText: '',
       }
     },
@@ -172,7 +172,7 @@
         this.room.child('finalScore/player' + this.playerNumber).set(this.score)
 
         // Wait for other players to guess locations
-        this.dialogTitle = 'Waiting for other players...'
+        this.dialogTitle = this.$t('StreetViewWithFriends.waitForOtherPlayers')
         this.dialogMessage = true
       },
       showResult() {
@@ -203,8 +203,8 @@
       },
       exitGame() {
         // Disable the listener and force the players to exit the game
-        this.dialogTitle = 'Redirect to Home Page...'
-        this.dialogText = 'You are forced to exit the game. Redirect to home page after 5 seconds...'
+        this.dialogTitle = this.$t('StreetViewWithFriends.redirectToHomePage')
+        this.dialogText = this.$t('StreetViewWithFriends.exitGame')
         this.dialogMessage = true
         this.room.off()
         this.room.remove()
@@ -215,7 +215,7 @@
       },
       finishGame() {
         // Open the dialog while waiting for other players to finsih the game
-        this.dialogTitle = 'Waiting for other players to finish the game...'
+        this.dialogTitle = this.$t('StreetViewWithFriends.waitForOtherPlayersToFinish')
         this.dialogText = ''
         this.dialogMessage = true
       },

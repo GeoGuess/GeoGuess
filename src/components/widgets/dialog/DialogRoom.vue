@@ -11,7 +11,7 @@
         dark
         color="#43B581"
         v-on="on">
-        With Friends
+        {{ $t('DialogRoom.withFriends')}}
       </v-btn>
     </template>
     <component 
@@ -53,7 +53,7 @@
     methods: {
       searchRoom(roomName) {
         if (roomName == '') {
-          this.errorMessage = 'Invalid name. Please try another.'
+          this.errorMessage = this.$t('DialogRoom.invalidRoomName')
         } else {
           this.room = firebase.database().ref(roomName)
 
@@ -81,10 +81,10 @@
 
             } else if (!snapshot.hasChild('size') || !snapshot.hasChild('streetView')) {
               // Prevent other players from getting into the room earlier than the first player
-              this.errorMessage = 'The first player is creating the room right now. Please wait and try again.'
+              this.errorMessage = this.$t('DialogRoom.inProgress')
 
             } else if (numberOfPlayers >= snapshot.child('size').val()) {
-              this.errorMessage = 'This room is already full. Please try another.'
+              this.errorMessage = this.$t('DialogRoom.roomIsFull')
 
             } else {
               // Put other player's tentative name

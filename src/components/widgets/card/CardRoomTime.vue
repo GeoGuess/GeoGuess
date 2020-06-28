@@ -1,7 +1,7 @@
 <template>
   <v-card color="#061422">
     <v-card-title>
-      <span id="card-title">Set a time limitation.</span>
+      <span id="card-title">{{ $t('CardRoomTime.title') }}</span>
     </v-card-title>
     <v-card-text>
       <v-container>
@@ -26,12 +26,12 @@
         dark
         depressed
         color="#FF5252"
-        @click="setTimeLimitation">NEXT</v-btn>
+        @click="setTimeLimitation">{{ $t('CardRoomTime.next') }}</v-btn>
       <v-btn
         dark
         depressed
         color="#43B581"
-        @click="cancel">CANCEL</v-btn>
+        @click="cancel">{{ $t('CardRoomTime.cancel') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>

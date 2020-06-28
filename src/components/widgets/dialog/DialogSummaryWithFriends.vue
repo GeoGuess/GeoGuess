@@ -24,7 +24,7 @@
             id="exit-button"
             dark
             color="#FF5252"
-            @click="finishGame">EXIT</v-btn>
+            @click="finishGame">{{ $t('DialogSummaryWithFriends.exit') }}</v-btn>
         </v-row>
       </v-card-text>
       <v-card-text class="text-right">

@@ -17,13 +17,13 @@
             class="ml-4 mr-4"
             dark
             color="#FF5252"
-            @click="$router.push('/')">EXIT</v-btn>
+            @click="$router.push('/')">{{ $t('DialogSummary.exit') }}</v-btn>
           <v-btn 
             id="play-again-button"
             class="ml-4 mr-4"
             dark
             color="#43B581"
-            @click="playAgain">PLAY AGAIN</v-btn>
+            @click="playAgain">{{ $t('DialogSummary.playAgain') }}</v-btn>
         </v-row>
       </v-card-text>
       <v-card-text class="text-right">

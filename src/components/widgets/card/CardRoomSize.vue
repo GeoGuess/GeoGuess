@@ -1,7 +1,7 @@
 <template>
   <v-card color="#061422">
     <v-card-title>
-      <span id="card-title">Set a room size.</span>
+      <span id="card-title">{{ $t('CardRoomSize.title') }}</span>
     </v-card-title>
     <v-card-text>
       <v-container>
@@ -21,12 +21,12 @@
         dark
         depressed
         color="#FF5252"
-        @click="setRoomSize">NEXT</v-btn>
+        @click="setRoomSize">{{ $t('CardRoomSize.next') }}</v-btn>
       <v-btn
         dark
         depressed
         color="#43B581"
-        @click="cancel">CANCEL</v-btn>
+        @click="cancel">{{ $t('CardRoomSize.cancel') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>

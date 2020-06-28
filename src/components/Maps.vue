@@ -18,26 +18,26 @@
       id="make-guess-button"
       v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
       @click="showMap">
-      MAKE GUESS
+      {{ $t('Maps.makeGuess') }}
     </button>
     <button
       id="guess-button"
       :disabled="selectedLatLng == null || isGuessButtonClicked"
       v-if="!isGuessButtonClicked && ($viewport.width > 450 || isMakeGuessButtonClicked)"
       @click="selectLocation"
-      >GUESS
+      >{{ $t('Maps.guess') }}
     </button>
     <button
       id="next-button"
       v-if="isGuessButtonClicked && round < 5"
       @click="goToNextRound"
-      >NEXT ROUND
+      >{{ $t('Maps.nextRound') }}
     </button>
     <button
       id="summary-button"
       v-if="isGuessButtonClicked && round >= 5"
       @click="dialogSummary = true"
-      >VIEW SUMMARY
+      >{{ $t('Maps.viewSummary') }}
     </button>
     <DialogSummary
       :dialogSummary="dialogSummary"
