@@ -98,11 +98,7 @@
         if (this.playerNumber == 1) {
           return true
         } else {
-          if (this.isNextStreetViewReady == true) {
-            return true
-          } else {
-            return false
-          }
+          return this.isNextStreetViewReady == true
         }
       }
     },
