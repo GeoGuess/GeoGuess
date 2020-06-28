@@ -43,7 +43,7 @@
         timeLimitation: 0,
         timeLimitationItems: [
           {
-            text: 'Infinite',
+            text: this.$t('CardRoomTime.infinite'),
             value: 0,
           },
           {

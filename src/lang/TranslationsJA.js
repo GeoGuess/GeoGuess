@@ -60,6 +60,7 @@ export default {
 			title: '1ラウンドの制限時間を選択して下さい。',
 			next: '進む',
 			cancel: 'キャンセル',
+			infinite: '無制限',
 		},
 		DialogRoom: {
 			withFriends: '友達と遊ぶ',

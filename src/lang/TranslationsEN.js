@@ -62,6 +62,7 @@ export default {
 			title: 'Set a time limitation.',
 			next: 'NEXT',
 			cancel: 'CANCEL',
+			infinite: 'Infinite',
 		},
 		DialogRoom: {
 			withFriends: 'With Friends',
