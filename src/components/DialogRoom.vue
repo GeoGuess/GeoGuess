@@ -254,7 +254,7 @@
           if (this.playerNumber == 1 && this.place !=  null && this.place !=  '' && !this.geoJson) {
             this.getPlaceGeoJSON(this.place)
           }else{
-            if( this.geoJson !=  ''){
+            if( this.geoJson !=  '' &&  this.geoJson !=  null){
               this.placeGeoJson = this.geoJson;
             }
             this.setTimeLimitation()
