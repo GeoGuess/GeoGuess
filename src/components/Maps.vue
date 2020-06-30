@@ -136,6 +136,7 @@
         room: null,
         selectedLatLng: null,
         distance: null,
+        point: null,
         isGuessButtonClicked: false,
         isMakeGuessButtonClicked: false,
         isSelected: false,
@@ -245,28 +246,25 @@
       },
       calculateDistance() {
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng))
-
-        console.log("calcule : "+this.difficulty)
-
         switch (this.difficulty) {
           case 0 :
-            this.points = Math.floor((5000+5) * Math.exp(-(0.0005*this.distance/1000)))
+            this.point = Math.floor((5000+5) * Math.exp(-(0.0005*this.distance/1000)))
             break
 
           case 1 :
-            this.points = Math.floor((5000+5) * Math.exp(-(0.005*this.distance/1000)))
+            this.point = Math.floor((5000+5) * Math.exp(-(0.005*this.distance/1000)))
             break
 
           case 2 :
-            this.points = Math.floor((5000+5) * Math.exp(-(0.05*this.distance/1000)))
+            this.point = Math.floor((5000+5) * Math.exp(-(0.05*this.distance/1000)))
             break
         }
 
 
-        if (this.points > 5000) {
-          this.points=5000;
-        } else if (this.points < 0) {
-          this.points = 0;
+        if (this.point > 5000) {
+          this.point=5000;
+        } else if (this.point < 0) {
+          this.point = 0;
         }
 
         // Save the distance into firebase
@@ -275,20 +273,20 @@
             latitude: this.selectedLatLng.lat(),
             longitude:this.selectedLatLng.lng(),
             distance: this.distance,
-            points: this.points
+            points: this.point
           })
         }else{
           this.game.rounds.push({
             guess: this.selectedLatLng,
             position: this.randomLatLng,
             distance: this.distance,
-            points: this.points
+            points: this.point
           })
         }
 
-        this.$emit('calculateDistance', this.distance, this.points)
+        this.$emit('calculateDistance', this.distance, this.point)
       },
-      setInfoWindow(playerName = null, distance = this.distance, points = this.points, endGame= false) {
+      setInfoWindow(playerName = null, distance = this.distance, points = this.point, endGame= false) {
         let dataToDisplay =''
         if(playerName !== null)
           dataToDisplay+= '<b>' + playerName + '</b>' + ' is ';

@@ -121,24 +121,26 @@
     },
     methods: {
       loadStreetView() {
-        var service = new google.maps.StreetViewService()
+        const service = new google.maps.StreetViewService()
+        const {point, position} = this.getRandomLatLng() 
         service.getPanorama({
-          location: this.getRandomLatLng(),
+          location: position,
           preference: 'nearest',
-          radius: (this.placeGeoJson != null) ? 50 :  100000,
+          radius: (point) ? 50 :  100000,
           source: 'outdoor',
         }, this.checkStreetView)
       },
       getRandomLatLng() {
 
         if(this.placeGeoJson != null){
-          let position;
+          let position, point = false;
           if(this.placeGeoJson.type === "FeatureCollection"){ 
             let randInt = (Math.floor(Math.random() * (this.placeGeoJson.features.length)));
 
             const feature = this.placeGeoJson.features[randInt];
             if(feature.geometry.type === "Point"){
               position = feature.geometry.coordinates;
+              point= true;
             }else {
               position = randomPositionInPolygon(feature);
             }
@@ -147,17 +149,18 @@
             position = randomPositionInPolygon(this.placeGeoJson);
           }
 
-
-          return new google.maps.LatLng(position[1], position[0]);
+          return {point, position :new google.maps.LatLng(position[1], position[0])};
         }
           
         // Generate a random latitude and longitude
         let lat = (Math.random() * 170) - 85;
         let lng = (Math.random() * 360) - 180;
+
         
-        return new google.maps.LatLng(lat, lng);
+        return {point:false, position :new google.maps.LatLng(lat, lng)};
       },
       checkStreetView(data, status) {
+        
         // Generate random streetview until the valid one is generated
         if (status == 'OK') {
           this.panorama.setOptions({
@@ -172,13 +175,16 @@
             heading: 270,
             pitch: 0,
           })
-                    
-          if(this.placeGeoJson != null && this.cptNotFoundLocation < 3 && !isInGeoJSON(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson) ){
+          let isInGeoJSONResult;
+          if(this.placeGeoJson != null){
+            isInGeoJSONResult = isInGeoJSON(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson) 
+          }
+          if(this.placeGeoJson != null && this.cptNotFoundLocation < 3 && !isInGeoJSONResult){
             this.loadStreetView()
             this.cptNotFoundLocation++; 
           }else{
              // If 3 times Street View does not find location in the polygon placeGeo print warning message
-            if(this.placeGeoJson != null && !isInGeoJSON(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson)) {
+            if(this.placeGeoJson != null && !isInGeoJSONResult) {
               this.isVisibleDialog = true;
             }
             // Save the location's latitude and longitude
