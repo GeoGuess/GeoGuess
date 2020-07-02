@@ -32,9 +32,21 @@
   import CardRoomName from '@/components/widgets/card/CardRoomName'
   import CardRoomSize from '@/components/widgets/card/CardRoomSize'
   import CardRoomTime from '@/components/widgets/card/CardRoomTime'
+  import CardRoomDifficulty from '@/components/widgets/card/CardRoomDifficulty'
   import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName'
 
   export default {
+    props: {
+      'placeGeoJson': {
+          default: null,
+          type: object
+      }
+      'place': {
+          default: '',
+          type: string
+      }
+    }
+        
     data() {
       return {
         dialogRoom: false,
@@ -48,6 +60,7 @@
       'roomName': CardRoomName,
       'roomSize': CardRoomSize,
       'timeLimitation': CardRoomTime,
+      'difficulty': CardRoomDifficulty,
       'playerName': CardRoomPlayerName,
     },
     methods: {
@@ -112,6 +125,15 @@
           timeLimitation: timeLimitation
         }, (error) => {
           if (!error) {
+            this.currentComponent = 'difficulty'
+          }
+        })
+      },
+      setDifficulty(timeLimitation) {
+        this.room.update({
+          difficulty: difficulty
+        }, (error) => {
+          if (!error) {
             this.currentComponent = 'playerName'
           }
         })
@@ -124,7 +146,9 @@
               name: 'with-friends',
               params: { 
                 roomName: this.roomName, 
-                playerNumber: this.playerNumber, 
+                playerNumber: this.playerNumber,
+                placeGeoJson: this.placeGeoJson, 
+                multiplayer: true,
               }
             })
           }
@@ -153,10 +177,6 @@
 </script>
 
 <style scoped>
-  span {
-    font-family: Montsetrrat;
-  }
-
   #multi-player-button {
     height: 44px;
     width: 240px;
