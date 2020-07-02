@@ -12,7 +12,8 @@
               maxlength="10"
               autofocus
               :error-messages="errorMessage"
-              v-model="roomName"></v-text-field>
+              v-model="roomName"
+              v-on:keyup.enter="searchRoom"></v-text-field>
           </v-col>          
         </v-row>
       </v-container>
@@ -23,12 +24,12 @@
         dark
         depressed
         color="#FF5252"
-        @click="searchRoom">{{ $t('CardRoomName.next') }}</v-btn>
+        @click="cancel">{{ $t('cancel') }}</v-btn>
       <v-btn
         dark
         depressed
         color="#43B581"
-        @click="cancel">{{ $t('CardRoomName.cancel') }}</v-btn>
+        @click="searchRoom">{{ $t('next') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>

@@ -54,71 +54,8 @@
           
           <v-spacer/>
           <v-flex>
-          <v-dialog 
-            persistent
-            :fullscreen="$viewport.width < 450"
-            max-width="600"
-             v-model="dialog">
-            <template v-slot:activator="{ on }">
-
-              <v-btn 
-                id="single-player-button"
-                class="ml-8 mr-8"
-                dark
-                color="#FF5252"
-                v-on="on">
-                {{$t('Home.singlePlayer')}}
-              </v-btn>
-            </template>
-            <v-card color="#061422">
-              <v-card-title>
-                <span id="card-title">Set a time limitation and a difficulty{{$t('CardRoomTime.title')}}</span>
-              </v-card-title>
-              
-              <v-card-text>
-              <v-col 
-              cols="6"
-              sm="4"
-              md="4"
-              lg="4"
-              xl="4">
-              <v-autocomplete
-                autofocus
-                dark 
-                v-model="time"
-                v-on:keyup.enter="startSinglePlayer"
-                :items="timeLimitationItems"></v-autocomplete>
-            </v-col>
-                <v-col
-                        cols="6"
-                        sm="4"
-                        md="4"
-                        lg="4"
-                        xl="4">
-                  <v-autocomplete
-                          autofocus
-                          dark
-                          v-model="difficulty"
-                          v-on:keyup.enter="startSinglePlayer"
-                          :items="difficultyItems"></v-autocomplete>
-                </v-col>
-            </v-card-text>
-            <v-card-actions>
-              <div class="flex-grow-1"></div>
-              <v-btn
-                dark
-                depressed
-                color="#FF5252"
-                @click="dialog=false">{{$t('CANCEL')}}</v-btn>
-              <v-btn
-                dark
-                depressed
-                color="#43B581"
-                @click="startSinglePlayer">{{$t('NEXT')}}</v-btn>
-            </v-card-actions>
-          </v-card>
-
-        </v-dialog>
+          
+            <DialogRoom singlePlayer :place="place" :geoJson="placeGeoJson" />
 
             <DialogRoom :place="place" :geoJson="placeGeoJson" />
           </v-flex>
@@ -182,7 +119,7 @@
   import DialogCustomMap from '@/components/DialogCustomMap'
 
   import Header from '@/components/Header'
-  import DialogRoom from '@/components/DialogRoom'
+  import DialogRoom from '@/components/widgets/dialog/DialogRoom'
   import Footer from '@/components/Footer'
 
   export default {
@@ -323,25 +260,7 @@
           })
           .finally(() => (this.isLoading = false))
       },
-    },
-    methods: {
-      startSinglePlayer() {
-        if( this.geoJson !=  ''){    
-          this.$router.push({name:'street-view', params: {placeGeoJson:this.placeGeoJson, time :this.time, difficulty: this.difficulty}});
-        }
-        else if(this.place == null || this.place == ''){
-          this.$router.push({name:'street-view',  params: {time :this.time, difficulty: this.difficulty}});
-        }else{
-          axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(this.place)}?format=geojson&limit=1&polygon_geojson=1`)
-          .then((res) => {
-            if(res && res.status === 200 && res.data.features.length > 0){
-              this.$router.push({name:'street-view', params: {placeGeoJson: res.data.features[0], time :this.time, difficulty: this.difficulty}});
-            }
-          }).catch((e) => { console.err(e) })
-        }
-      }
-    }
-    
+    },    
   }
 </script>
 

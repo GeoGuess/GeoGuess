@@ -10,7 +10,9 @@
               <v-text-field 
                 dark
                 maxlength="10"
-                v-model="playerName"></v-text-field>
+                v-model="playerName"                
+                autofocus
+                v-on:keyup.enter="searchRoom"></v-text-field>
            </v-col>       
         </v-row>
       </v-container>
@@ -21,12 +23,12 @@
         dark
         depressed
         color="#FF5252"
-        @click="setPlayerName">{{ $t('CardRoomPlayerName.next') }}</v-btn>
+        @click="cancel">{{ $t('cancel') }}</v-btn>
       <v-btn
         dark
         depressed
         color="#43B581"
-        @click="cancel">{{ $t('CardRoomPlayerName.cancel') }}</v-btn>
+        @click="setPlayerName">{{ $t('next') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>

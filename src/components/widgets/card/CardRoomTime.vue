@@ -12,10 +12,12 @@
             md="4"
             lg="4"
             xl="4">
-            <v-select
+            <v-autocomplete
               dark 
               v-model="timeLimitation"
-              :items="timeLimitationItems"></v-select>
+              :items="timeLimitationItems"
+              autofocus
+              v-on:keyup.enter="searchRoom"></v-autocomplete>
           </v-col>          
         </v-row>
       </v-container>
@@ -26,12 +28,12 @@
         dark
         depressed
         color="#FF5252"
-        @click="setTimeLimitation">{{ $t('CardRoomTime.next') }}</v-btn>
+        @click="cancel">{{ $t('cancel') }}</v-btn>
       <v-btn
         dark
         depressed
         color="#43B581"
-        @click="cancel">{{ $t('CardRoomTime.cancel') }}</v-btn>
+        @click="setTimeLimitation">{{ $t('next') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>

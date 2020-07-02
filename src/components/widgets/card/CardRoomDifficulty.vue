@@ -1,7 +1,7 @@
 <template>
   <v-card color="#061422">
     <v-card-title>
-      <span id="card-title">{{ $t('CardRoomName.title') }}</span>
+      <span id="card-title">{{ $t('CardRoomDifficulty.title') }}</span>
     </v-card-title>
     <v-card-text>
       <v-container>
@@ -11,13 +11,13 @@
                     sm="4"
                     md="4"
                     lg="4"
-                    xl="4"
-                    v-if="cardTitle == 'Set a difficulty level'">
+                    xl="4">
               <v-autocomplete
                       dark
                       v-model="difficulty"
                       :items="difficultyItems"
-                      autofocus></v-autocomplete>
+                      autofocus
+                      v-on:keyup.enter="searchRoom"></v-autocomplete>
             </v-col></v-row>
       </v-container>
     </v-card-text>
@@ -27,12 +27,12 @@
         dark
         depressed
         color="#FF5252"
-        @click="searchRoom">{{ $t('CardRoomName.next') }}</v-btn>
+        @click="cancel">{{ $t('cancel') }}</v-btn>
       <v-btn
         dark
         depressed
         color="#43B581"
-        @click="cancel">{{ $t('CardRoomName.cancel') }}</v-btn>
+        @click="searchRoom">{{ $t('next') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -45,13 +45,27 @@
     ],
     data() {
       return {
-        roomName: '',
+        difficulty: 0,
+        difficultyItems: [
+          {
+            text: this.$t('easy'),
+            value: 0,
+          },
+          {
+            text: this.$t('medium'),
+            value: 1,
+          },
+          {
+            text: this.$t('hard'),
+            value: 2,
+          },
+        ],
       }
     },
     methods: {
       searchRoom() {
         // Pass room name to parent component
-        this.$emit('searchRoom', this.roomName)
+        this.$emit('setDifficulty', this.difficulty)
       },
       cancel() {
         this.$emit('cancel')

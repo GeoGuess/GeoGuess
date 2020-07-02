@@ -6,12 +6,11 @@
     max-width="600">
     <template v-slot:activator="{ on }">
       <v-btn 
-        id="multi-player-button"
-        class="ml-8 mr-8"
+        class="ml-8 mr-8 btn"
         dark
-        color="#43B581"
+        :color="(singlePlayer) ? '#FF5252' : '#43B581'"
         v-on="on">
-        {{ $t('DialogRoom.withFriends')}}
+        {{ (singlePlayer) ? $t('DialogRoom.singlePlayer') : $t('DialogRoom.withFriends')}}
       </v-btn>
     </template>
     <component 
@@ -21,6 +20,7 @@
       @setRoomSize="setRoomSize"
       @setTimeLimitation="setTimeLimitation"
       @setPlayerName="setPlayerName"
+      @setDifficulty="setDifficulty"
       @cancel="cancel" />
   </v-dialog>
 </template>
@@ -28,6 +28,7 @@
 <script>
   import firebase from 'firebase/app'
   import 'firebase/database'
+  import axios from 'axios'
 
   import CardRoomName from '@/components/widgets/card/CardRoomName'
   import CardRoomSize from '@/components/widgets/card/CardRoomSize'
@@ -37,23 +38,29 @@
 
   export default {
     props: {
-      'placeGeoJson': {
+      'geoJson': {
           default: null,
-          type: object
-      }
+          type: Object
+      },
       'place': {
           default: '',
-          type: string
+          type: String
+      },
+      'singlePlayer': {
+          default: false,
+          type: Boolean
       }
-    }
-        
+    },        
     data() {
       return {
+        placeGeoJson: null,
         dialogRoom: false,
         errorMessage: '',
         room: null,
         roomName: '',
-        currentComponent: 'roomName',
+        currentComponent: (this.singlePlayer) ? 'timeLimitation' :  'roomName',
+        timeLimitation: null,
+        difficulty: null
       }
     },
     components: {
@@ -64,6 +71,15 @@
       'playerName': CardRoomPlayerName,
     },
     methods: {
+      getPlaceGeoJSON(place) {
+        axios.get(`https://nominatim.openstreetmap.org/search/${encodeURIComponent(place)}?format=geojson&limit=1&polygon_geojson=1`)
+        .then((res) => {
+          if(res && res.status === 200 && res.data.features.length > 0){
+            this.placeGeoJson = res.data.features[0];
+          }
+          this.errorMessage = "No Found Location"
+        }).catch((e) => { console.err(e) })
+      },
       searchRoom(roomName) {
         if (roomName == '') {
           this.errorMessage = this.$t('DialogRoom.invalidRoomName')
@@ -121,22 +137,50 @@
         })
       },
       setTimeLimitation(timeLimitation) {
-        this.room.update({
-          timeLimitation: timeLimitation
-        }, (error) => {
-          if (!error) {
+        if (this.place !=  null && this.place !=  '' && !this.geoJson) {
+            this.getPlaceGeoJSON(this.place)
+        }else{
+          if( this.geoJson !=  ''){
+            this.placeGeoJson = this.geoJson;
+          }
+        }
+        if(this.singlePlayer){
+            this.timeLimitation= timeLimitation
             this.currentComponent = 'difficulty'
-          }
-        })
+
+        }else{
+          this.room.update({
+            timeLimitation: timeLimitation
+          }, (error) => {
+            if (!error) {
+              this.currentComponent = 'difficulty'
+            }
+          })
+        }
+         
       },
-      setDifficulty(timeLimitation) {
-        this.room.update({
-          difficulty: difficulty
-        }, (error) => {
-          if (!error) {
-            this.currentComponent = 'playerName'
-          }
-        })
+      setDifficulty(difficulty) {
+        if(this.singlePlayer){
+          this.difficulty= difficulty
+          this.$router.push({
+            name:'street-view',  
+            params: {
+              time :this.time,
+              difficulty: this.difficulty, 
+              placeGeoJson: this.placeGeoJson
+            }
+          });
+       
+
+        }else{
+          this.room.update({
+            difficulty: difficulty
+          }, (error) => {
+            if (!error) {
+              this.currentComponent = 'playerName'
+            }
+          })
+        }
       },
       setPlayerName(playerName) {
         this.room.child('playerName/player' + this.playerNumber).set(playerName, (error) => {
@@ -156,7 +200,7 @@
       },
       cancel() {
         // Reset
-        this.currentComponent = 'roomName'
+        this.currentComponent = (this.singlePlayer) ? 'timeLimitation' :  'roomName',
         this.roomName = ''
         this.errorMessage = ''
 
@@ -175,11 +219,8 @@
     }
   }
 </script>
-
 <style scoped>
-  #multi-player-button {
-    height: 44px;
-    width: 240px;
+  .btn {
     border-radius: 40px;
   }
 </style>

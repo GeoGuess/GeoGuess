@@ -7,10 +7,12 @@
       <v-container>
         <v-row>
           <v-col cols="4">
-            <v-select 
+            <v-autocomplete 
               dark
               v-model="roomSize"
-              :items="roomSizeItems"></v-select>
+              :items="roomSizeItems"              
+              autofocus
+              v-on:keyup.enter="searchRoom"></v-autocomplete>
           </v-col>        
         </v-row>
       </v-container>
@@ -21,12 +23,12 @@
         dark
         depressed
         color="#FF5252"
-        @click="setRoomSize">{{ $t('CardRoomSize.next') }}</v-btn>
+        @click="cancel">{{ $t('cancel') }}</v-btn>
       <v-btn
         dark
         depressed
         color="#43B581"
-        @click="cancel">{{ $t('CardRoomSize.cancel') }}</v-btn>
+        @click="setRoomSize">{{ $t('next') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -52,6 +54,38 @@
           {
             text: '5',
             value: 5,
+          },  
+          {
+            text: '5',
+            value: 5,
+          },  
+          {
+            text: '6',
+            value: 6,
+          },  
+          {
+            text: '7',
+            value: 7,
+          },  
+          {
+            text: '8',
+            value: 8,
+          },  
+          {
+            text: '9',
+            value: 9,
+          },  
+          {
+            text: '10',
+            value: 10,
+          },  
+          {
+            text: '11',
+            value: 11,
+          },  
+          {
+            text: '12',
+            value: 12,
           },          
         ],
       }
