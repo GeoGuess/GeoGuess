@@ -21,6 +21,13 @@ export function validURL(str) {
  * @param {FeatureCollection} geoJSON 
  */
 export function isInGeoJSON(point, geoJSON){
+  if(geoJSON.type === "Feature"){
+    if(geoJSON.geometry.type === "Point"){
+      return distance(geoJSON, point, {units: 'kilometers'}) < 0.05;
+    }else {      
+      return booleanPointInPolygon(point, geoJSON)
+    }
+  }
   return geoJSON.features.some((feature) => {
     if(feature.geometry.type === "Point"){
       return distance(feature, point, {units: 'kilometers'}) < 0.05;
