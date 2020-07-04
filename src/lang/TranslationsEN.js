@@ -5,7 +5,7 @@ export default {
           historyBtn: 'HISTORY',
           about: 'ABOUT',
           searchBar: {
-              customLoaded: 'Custom geoJson file has been loaded',
+              customLoaded: 'Custom map has been loaded',
               enterCity: 'Enter city, state or country',
           },
           aboutDescriptions: {
@@ -89,21 +89,11 @@ export default {
       },
 
       DialogRoom: {
-
           singlePlayer: 'Single Player',
           withFriends: 'With Friends',
-
-
-
           invalidRoomName: 'Invalid name. Please try another.',
           inProgress: 'The first player is creating the room right now. Please wait and try again.',
           roomIsFull: 'This room is already full. Please try another.',
-      },
-
-
-
-      Footer: {
-          privacyPolicy: 'Privacy Policy',
       },
 
       CardRoomName: {
@@ -125,5 +115,15 @@ export default {
           medium: 'medium (country)',
           hard: 'hard (city)',
       },
+      DialogSummary: {
+        summaryMsgSingle: 'You are <strong>{distance}</strong> km away! Your score is <strong>{points}</strong> points!',
+        summaryMsgMulti: '<strong>{playerName}</strong> score is <strong>{points}</strong> ! (<strong>{distance}</strong> kmaway)',
+        viewDetails: 'View details',
+      },
+      Footer: {
+        under: 'under',
+        privacyPolicy: 'Privacy Policy',
+    },
+
   }
 }

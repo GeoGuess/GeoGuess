@@ -147,8 +147,8 @@ export default {
                 score: g.score/1000,
                 points: g.points,
                 dateString: new Date(g.date).toLocaleString(),
-                mode: g.multiplayer ? this.$t('DialogRoom.withFriends'): this.$t('Home.singlePlayer'),
-                time: g.timeLimitation===0 ? this.$t('DialogRoom.withFriends'): g.timeLimitation/60
+                mode: g.multiplayer ? this.$t('DialogRoom.withFriends'): this.$t('DialogRoom.singlePlayer'),
+                time: g.timeLimitation===0 ? this.$t('CardRoomTime.infinite'): g.timeLimitation/60
             }))
         }
     }

@@ -215,6 +215,10 @@
             showRoadLabels: false,
         })
         this.panorama.setPosition(this.randomLatLng)
+        this.panorama.setPov({
+          heading: 270,
+          pitch: 0,
+        })
       },
       startTimer(round = this.round) {
         if(round === this.round){

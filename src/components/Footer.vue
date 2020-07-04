@@ -30,7 +30,7 @@
         <v-row
           class="mt-8"
           justify="center">
-          <span id="copyright-text">under <a href="https://raw.githubusercontent.com/spider-hand/Geoguess-Master-Web/master/LICENSE">MIT license</a></span>
+          <span id="copyright-text">{{ $t('Footer.under') }} <a href="https://raw.githubusercontent.com/spider-hand/Geoguess-Master-Web/master/LICENSE">MIT license</a></span>
         </v-row>
         <v-row
           class="mt-3"

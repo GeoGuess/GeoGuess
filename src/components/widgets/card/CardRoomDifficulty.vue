@@ -48,15 +48,15 @@
         difficulty: 0,
         difficultyItems: [
           {
-            text: this.$t('easy'),
+            text: this.$t('CardRoomDifficulty.easy'),
             value: 0,
           },
           {
-            text: this.$t('medium'),
+            text: this.$t('CardRoomDifficulty.medium'),
             value: 1,
           },
           {
-            text: this.$t('hard'),
+            text: this.$t('CardRoomDifficulty.hard'),
             value: 2,
           },
         ],

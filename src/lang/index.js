@@ -3,12 +3,13 @@ import VueI18n from 'vue-i18n'
 
 import en from './TranslationsEN'
 import ja from './TranslationsJA'
+import fr from './TranslationsFR'
 
 Vue.use(VueI18n)
 
-const translations = Object.assign(en, ja)
+const translations = Object.assign(en, ja, fr)
 
-var languages = ['en', 'ja',]
+var languages = ['en', 'ja', 'fr']
 
 function checkLanguage(language) {
   return navigator.language.split('-')[0] == language

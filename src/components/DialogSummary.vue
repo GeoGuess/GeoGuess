@@ -9,7 +9,7 @@
         <v-row 
           v-if="!multiplayer"
           justify="center">
-          <span id="summary-text">You are <strong>{{ score / 1000 }}</strong> km away! Your score is <strong>{{ points }}</strong> points!</span>
+          <span id="summary-text" v-html="$t('DialogSummary.summaryMsgSingle', {distance: score / 1000, points })" ></span>
         </v-row>
         <v-row
           class="mt-3"
@@ -20,7 +20,7 @@
             <v-icon 
               v-if="index == 0 || index == 1 || index == 2"
               :color="index == 0 ? '#FAA61A': (index == 1 ? '#EEEEEE' : '#F4511E')">mdi-crown</v-icon>
-            <strong>{{ text.playerName }}</strong> score is <strong>{{ text.finalPoints }}</strong> ! (<strong>{{ text.finalScore / 1000 }}</strong> km away)
+            <span v-html="$t('DialogSummary.summaryMsgMulti', {playerName: text.playerName, points: text.finalPoints, distance:  text.finalScore / 1000})"></span>
           </span>
         </v-row>
         <v-row 
@@ -31,7 +31,7 @@
             class="mt-8"
             dark
             color="#43B581"
-            @click="$emit('viewDetails')">View details</v-btn>
+            @click="$emit('viewDetails')">{{$t('DialogSummary.viewDetails')}}</v-btn>
         </v-row>
       </v-card-text>
       <v-card-text class="text-right">
@@ -107,11 +107,6 @@
 </script>
 
 <style scoped>
-  span {
-    font-family: montserrat;
-  }
-
-
   #exit-button, #play-again-button {
     height: 44px;
     width: 210px;
