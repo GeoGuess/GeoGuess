@@ -91,6 +91,7 @@
       :dialogSummary="dialogSummary"
       :summaryTexts="summaryTexts"
       :score="score"
+      :playerName="playerName"
       :points="points"
       :game="game"
       :multiplayer="!!this.room"
@@ -110,6 +111,7 @@
       'randomLatLng',
       'roomName',
       'playerNumber',
+      'playerName',
       'isReady',
       'round',
       'score',

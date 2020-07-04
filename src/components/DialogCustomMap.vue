@@ -93,16 +93,17 @@ export default {
     updated(){
       if(!this.initMap){
         this.$nextTick(() => {
-          this.$refs.mapRef.$mapPromise.then((map) => {
-              let data = new google.maps.Data({
-                map: map,
-              });
-              if(this.value)
-                data.addGeoJson(JSON.parse(this.value))
-              map.data.setMap(null);
-              map.data = data;
-              this.initMap = true;
-          });
+          if(this.$refs.mapRef)
+            this.$refs.mapRef.$mapPromise.then((map) => {
+                let data = new google.maps.Data({
+                  map: map,
+                });
+                if(this.value)
+                  data.addGeoJson(JSON.parse(this.value))
+                map.data.setMap(null);
+                map.data = data;
+                this.initMap = true;
+            });
         });
       }
     },

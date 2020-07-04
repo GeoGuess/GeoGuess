@@ -86,9 +86,10 @@ export default {
           distance: 'Distance',
           points: 'Points',
           rank: 'Classement',
+          search: 'Rechercher',
       },
       DialogRoom: {
-          singlePlayer: 'Solo',
+          singlePlayer: 'Mode Solo',
           withFriends: 'Avec des amis',
           invalidRoomName: 'Nom invalide. Veuillez en choisir un autre.',
           inProgress: 'Le premier joueur est en train de créer la salle. Veuillez patienter puis recommencer.',

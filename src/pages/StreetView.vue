@@ -20,6 +20,7 @@
         :randomLatLng="randomLatLng"
         :roomName="roomName"
         :playerNumber="playerNumber"
+        :playerName="playerName"
         :isReady="isReady"
         :round="round"
         :score="score"
@@ -70,6 +71,10 @@
       'playerNumber': {
         default: null,
         type: Number
+      },
+      'playerName': {
+        default: null,
+        type: String
       },
       'placeGeoJson': {
         default: null,

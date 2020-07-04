@@ -104,6 +104,7 @@
     methods: {
       switchLanguage(language) {
         this.$i18n.locale = language
+        this.$vuetify.lang.current = language
         this.saveLanguage(language)
       },
       saveLanguage(language) {

@@ -84,6 +84,7 @@ export default {
     //   distance: 'Distance',
     //   points: 'Points',
     //   rank: 'Rank',
+    //   search: 'Search',
     // },
     
     DialogRoom: {

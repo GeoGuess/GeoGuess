@@ -3,13 +3,25 @@
    <v-card-title>
       {{$t("History.title")}}
    </v-card-title>
+    <v-text-field
+        v-model="search"
+        :label="$t('History.search')"
+        append-icon="mdi-magnify"
+        single-line
+        hide-details
+    ></v-text-field>
     <v-data-table
+    
+      :search="search"
     id="history-table"
     :headers="headers"
     :items="items"
     show-expand
-    single-expand
+    single-expand    
+    :sort-by="['dateString']"
+    :sort-desc="[true]"
     item-key="date"
+    :customSort="customSort"
   >    
     <template v-slot:expanded-item="{ headers, item }">
         <td :colspan="headers.length">
@@ -96,7 +108,8 @@ export default {
     name:"History",
     props:["history"],
     data(){
-        return {                
+        return {            
+            search: '',           
             infoOptions: {
                 pixelOffset: {
                     width: 0,
@@ -122,8 +135,12 @@ export default {
                     value: 'mode',
                 },
                 {
+                    text: this.$t('History.rank'),
+                    value: 'rank',
+                },
+                {
                     text: this.$t('History.time'),
-                    value: 'time',
+                    value: 'timeString',
                 },
                 {
                     text: this.$t('History.distance'),
@@ -148,8 +165,40 @@ export default {
                 points: g.points,
                 dateString: new Date(g.date).toLocaleString(),
                 mode: g.multiplayer ? this.$t('DialogRoom.withFriends'): this.$t('DialogRoom.singlePlayer'),
-                time: g.timeLimitation===0 ? this.$t('CardRoomTime.infinite'): g.timeLimitation/60
+                timeString: g.timeLimitation===0 ? this.$t('CardRoomTime.infinite'): g.timeLimitation/60
             }))
+        }
+    },
+    methods:{
+        customSort(items, index, isDesc) {
+            if(index.length === 0 ){
+                return items;
+            }
+            return items.sort((a, b) => {
+                if (index.includes("dateString")) {
+                    if (!isDesc[0]) {
+                        return Date.parse(a.date) -Date.parse(b.date);
+                    } else {
+                        return Date.parse(b.date) -Date.parse(a.date);
+                    }
+                }else{
+                    if(index[0] === 'timeString')
+                        if (!isDesc[0]) {
+                            return a.time - b.time;
+                        } else {
+                            return b.time - a.time;
+                        }
+                    
+                    
+
+                    if (!isDesc[0]) {                        
+                        return a[index[0]] < b[index[0]] ? -1 : 1;
+                    } else {
+                        return b[index[0]] < a[index[0]] ? -1 : 1;
+                    }
+
+                }
+            });
         }
     }
 }

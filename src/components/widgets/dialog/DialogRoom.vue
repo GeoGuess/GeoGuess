@@ -190,6 +190,7 @@
               name: 'with-friends',
               params: { 
                 roomName: this.roomName, 
+                playerName,
                 playerNumber: this.playerNumber,
                 placeGeoJson: this.placeGeoJson, 
                 multiplayer: true,
@@ -222,5 +223,6 @@
 <style scoped>
   .btn {
     border-radius: 40px;
+    width: 12em;
   }
 </style>
