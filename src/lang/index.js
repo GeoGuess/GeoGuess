@@ -9,9 +9,9 @@ Vue.use(VueI18n)
 
 const translations = Object.assign(en, ja, fr)
 
-var languages = ['en', 'ja', 'fr']
+const languages = ['en', 'ja', 'fr']
 
-function checkLanguage(language) {
+export function checkLanguage(language) {
   return navigator.language.split('-')[0] == language
 }
 
