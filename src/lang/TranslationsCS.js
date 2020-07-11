@@ -1,5 +1,5 @@
 export default {
-  en: {
+  cs: {
       Home: {
           record: 'Rekord',
           historyBtn: 'HISTORIE',
@@ -9,7 +9,7 @@ export default {
               enterCity: 'Napiš název města, regionu nebo státu (anglicky)',
           },
           aboutDescriptions: {
-              1: 'Geoguess Master je jednoduchá geoguess hra zdarma a bez reklam. \
+              1: 'Geoguess 2 je jednoduchá geoguess hra zdarma a bez reklam. \
                   Hráči jsou umístěni na náhodné místo na světě a musí se pokusit podle svého okolí uhádnout, kde se nachází na mapě. \
                   Hra se skládá z pěti kol. \
                   Své skóre můžeš sdílet s ostatními na sociálních sítích Facebook a Twitter. \
@@ -35,7 +35,7 @@ export default {
       StreetView: {
           nearby: {
               title: 'Kousek vedle',
-              message: 'Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle ������',
+              message: 'Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle ������',
           },
           waitForOtherPlayers: 'Čekám na ostatní hráče...',
           redirectToHomePage: 'Přesměruji na úvodní stránku...',

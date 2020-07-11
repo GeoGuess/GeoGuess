@@ -89,7 +89,7 @@ export default {
           search: 'Rechercher',
       },
       DialogRoom: {
-          singlePlayer: 'Mode Solo',
+          singlePlayer: 'Un joueur',
           withFriends: 'Avec des amis',
           invalidRoomName: 'Nom invalide. Veuillez en choisir un autre.',
           inProgress: 'Le premier joueur est en train de créer la salle. Veuillez patienter puis recommencer.',

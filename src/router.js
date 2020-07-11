@@ -21,11 +21,7 @@ export default new Router ({
     },
     {
       path: '/',
-      name: 'home',
-      component: Home,
-    },
-    {
-      path: '/index.html',
+      alias: '/index.html',
       name: 'home',
       component: Home,
     },

@@ -95,6 +95,10 @@
             value: 'fr',
           },
           {
+            text: 'čeština',
+            value: 'cs',
+          },
+          {
             text: '日本語',
             value: 'ja',
           }

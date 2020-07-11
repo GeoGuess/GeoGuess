@@ -58,7 +58,6 @@
   import DialogMessage from '@/components/DialogMessage'
 
   import randomPositionInPolygon from 'random-position-in-polygon'
-  import axios from 'axios'
   import * as turfModel from '@turf/helpers'
   import {isInGeoJSON} from '../utils'
   
@@ -236,7 +235,7 @@
             this.timerInProgress = false
             if (!this.hasLocationSelected) {
               // Set a random location if the player didn't select a location in time
-              this.$refs.map.selectRandomLocation(this.getRandomLatLng()) 
+              this.$refs.map.selectRandomLocation(this.getRandomLatLng().position) 
             }
           }
         }
@@ -396,13 +395,13 @@
           }
         })
 
-        window.addEventListener('popstate', (event) => {
+        window.addEventListener('popstate', () => {
           // Remove the room when the player pressed the back button on browser
           this.room.child('active').remove()
           this.room.off()
         })
 
-        window.addEventListener('beforeunload', (event) => {
+        window.addEventListener('beforeunload', () => {
           // Remove the room when the player refreshes the window
           this.room.child('active').remove()
         })

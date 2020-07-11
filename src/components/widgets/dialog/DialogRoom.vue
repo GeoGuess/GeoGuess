@@ -78,7 +78,7 @@
             this.placeGeoJson = res.data.features[0];
           }
           this.errorMessage = "No Found Location"
-        }).catch((e) => { console.err(e) })
+        }).catch(() => { this.errorMessage = "No Found Location" })
       },
       searchRoom(roomName) {
         if (roomName == '') {
@@ -165,7 +165,7 @@
           this.$router.push({
             name:'street-view',  
             params: {
-              time :this.time,
+              time : this.timeLimitation,
               difficulty: this.difficulty, 
               placeGeoJson: this.placeGeoJson
             }
