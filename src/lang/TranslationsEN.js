@@ -37,7 +37,7 @@ export default {
               message: 'Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉',
           },
           waitForOtherPlayers: 'Waiting for other players...',
-          redirectToHomePage: 'Refirect to Home Page...',
+          redirectToHomePage: 'Redirect to Home Page...',
           exitGame: 'You are forced to exit the game. Redirect to home page after 5 seconds...',
           waitForOtherPlayersToFinish: 'Waiting for other players to finish the game...',
       },
