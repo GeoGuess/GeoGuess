@@ -248,7 +248,7 @@
       },
       calculateDistance() {
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng))
-        this.point = Math.round(5005*Math.exp(-((this.distance /1000)/this.difficulty)))
+        this.point = Math.round(5000*Math.exp(-((this.distance /1000)/this.difficulty)))
 
 
         if (this.point > 5000) {
