@@ -35,6 +35,10 @@
   import CardRoomTime from '@/components/widgets/card/CardRoomTime'
   import CardRoomDifficulty from '@/components/widgets/card/CardRoomDifficulty'
   import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName'
+  import {point} from '@turf/helpers'
+  import distance from '@turf/distance'
+  import bbox from '@turf/bbox'
+
 
   export default {
     props: {
@@ -76,9 +80,11 @@
         .then((res) => {
           if(res && res.status === 200 && res.data.features.length > 0){
             this.placeGeoJson = res.data.features[0];
+            this.setDifficulty();
           }
           this.errorMessage = "No Found Location"
-        }).catch(() => { this.errorMessage = "No Found Location" })
+        })
+        //.catch(() => { this.errorMessage = "No Found Location" })
       },
       searchRoom(roomName) {
         if (roomName == '') {
@@ -137,31 +143,31 @@
         })
       },
       setTimeLimitation(timeLimitation) {
+        this.timeLimitation = timeLimitation;
         if (this.place !=  null && this.place !=  '' && !this.geoJson) {
             this.getPlaceGeoJSON(this.place)
         }else{
           if( this.geoJson !=  ''){
             this.placeGeoJson = this.geoJson;
+            this.setDifficulty()
           }
-        }
-        if(this.singlePlayer){
-            this.timeLimitation= timeLimitation
-            this.currentComponent = 'difficulty'
-
-        }else{
-          this.room.update({
-            timeLimitation: timeLimitation
-          }, (error) => {
-            if (!error) {
-              this.currentComponent = 'difficulty'
-            }
-          })
-        }
+        }        
          
       },
-      setDifficulty(difficulty) {
+      setDifficulty() {
+        if(this.placeGeoJson){
+          const  bboxPlace = Object.values(bbox(this.placeGeoJson));
+          const from = point(bboxPlace.slice(0,2));
+          const to = point(bboxPlace.slice(2,4));
+
+          const distanceMax = distance(from, to);
+
+          this.difficulty= ((distanceMax**2)/200000)+50
+        }else{
+          this.difficulty= 2000;
+        }
+
         if(this.singlePlayer){
-          this.difficulty= difficulty
           this.$router.push({
             name:'street-view',  
             params: {
@@ -170,11 +176,11 @@
               placeGeoJson: this.placeGeoJson
             }
           });
-       
 
         }else{
           this.room.update({
-            difficulty: difficulty
+            timeLimitation: this.timeLimitation,
+            difficulty: this.difficulty
           }, (error) => {
             if (!error) {
               this.currentComponent = 'playerName'

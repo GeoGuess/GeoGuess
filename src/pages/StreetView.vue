@@ -25,7 +25,7 @@
         :round="round"
         :score="score"
         :points="points"
-        :difficulty="difficulty"
+        :difficulty="difficultyData"
         :timeLimitation="timeLimitation"
         @resetLocation="resetLocation"
         @calculateDistance="updateScore"
@@ -88,7 +88,7 @@
         type: Number
       },
       'difficulty': {
-        default: 0,
+        default: 2000,
         type: Number
       }
     },
@@ -121,6 +121,7 @@
         isVisibleDialog: false,
         panorama: null,
         timerInProgress: true,
+        difficultyData: this.difficulty
       }
     },
     methods: {
@@ -373,7 +374,7 @@
 
               // Countdown timer starts
               this.timeLimitation = snapshot.child('timeLimitation').val() * 60
-              this.difficulty = snapshot.child('difficulty').val()
+              this.difficultyData = snapshot.child('difficulty').val()
 
               if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
