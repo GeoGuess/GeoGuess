@@ -162,7 +162,7 @@
 
           const distanceMax = distance(from, to);
 
-          this.difficulty= ((distanceMax**2)/200000)+50
+          this.difficulty= distanceMax/10
         }else{
           this.difficulty= 2000;
         }
