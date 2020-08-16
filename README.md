@@ -1,10 +1,10 @@
 
 ![logo](../master/public/img/icons/android-icon-36x36.png)  Geoguess 2 
 ===   
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)   
 
 
 > Demo : https://geoguess2.netlify.app/
@@ -14,8 +14,14 @@ You can play multiplayer with your friends up to five friends. The first player 
 Cause of Google Map Api price, we aren't enabled to deploy server with unlimited access. But you can deploy your own game server and play this game unlimitedly and free.
 
 This game was forked from [GeoGuess Master Web](https://github.com/spider-hand/Geoguess-Master-Web).
-
-
+## Table of contents
+<!-- TOC -->
+- [🃏 Features](#-features)
+- [👏 Contributors](#-contributors)
+- [🚀 Deploy](#-deploy)
+- [📜 License](#-license)
+- [📞 Contact](#-contact)
+<!-- /TOC -->
 ## 🃏 Features
 - Multiplayer game
 - PWA and responsive design
@@ -48,7 +54,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 
-## 🚀 Getting Started
+## 🚀 Deploy
 
 You need to configure Google Maps Platform and Firebase to make game work. 
 See the instructions below. 
