@@ -107,7 +107,7 @@
         points: 0,
         pointsHeader: 0,
         round: 1,
-        timeLimitation: this.time*60,
+        timeLimitation: this.time,
         remainingTime: 0,
         hasTimerStarted: false,
         hasLocationSelected: false,
@@ -372,7 +372,7 @@
               this.$refs.map.startNextRound()
 
               // Countdown timer starts
-              this.timeLimitation = snapshot.child('timeLimitation').val() * 60
+              this.timeLimitation = snapshot.child('timeLimitation').val()
               this.difficulty = snapshot.child('difficulty').val()
 
               if (this.timeLimitation != 0) {
