@@ -7,7 +7,7 @@
         id="countdown-timer"
         v-if="remainingTime != null && remainingTime > 0"        
       >
-        <span id="countdown-text">{{ getCountdownText }}</span>
+        <span id="countdown-text">{{ countdownText }}</span>
       </div>   
       <div class="round-score-container room-name" v-if="roomName">
         <span class="sub-text">{{ $t('HeaderGame.room') }} : </span>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+  import {getCountdownText} from '@/utils'
   export default {
     props: [
       'score',
@@ -46,12 +47,8 @@
       'roomName'
     ],
     computed: {
-      getCountdownText() {
-        var minutes = Math.floor(this.remainingTime / 60)
-        var seconds = this.remainingTime % 60
-        if (minutes < 10) { minutes = '0' + minutes }
-        if (seconds < 10) { seconds = '0' + seconds }
-        return minutes + ':' + seconds
+      countdownText() {
+        return getCountdownText(this.remainingTime)
       },
     },
   }

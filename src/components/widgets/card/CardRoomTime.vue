@@ -6,19 +6,38 @@
     <v-card-text>
       <v-container>
         <v-row>
-          <v-col 
-            cols="6"
-            sm="4"
-            md="4"
-            lg="4"
-            xl="4">
-            <v-autocomplete
-              dark 
-              v-model="timeLimitation"
-              :items="timeLimitationItems"
-              autofocus
-              v-on:keyup.enter="searchRoom"></v-autocomplete>
-          </v-col>          
+          <v-slider
+            :value="timeLimitation"
+            class="align-center"
+            v-on:change="changeAll"
+            max="600"
+            min="0"
+            step="30"
+            hide-details
+            dark
+          >
+          </v-slider>
+        </v-row>
+        <v-row>
+          <div class="time-input" v-if="this.timeLimitation>0">
+            <v-text-field
+              :value="Math.floor(this.timeLimitation / 60)"
+              v-on:change="changeMinute"
+              dark
+              type="number"
+            ></v-text-field>
+            <p>:</p>
+
+            <v-text-field
+              :value="this.timeLimitation % 60"
+              v-on:change="changeSecond"
+              dark
+              type="number"
+            ></v-text-field>
+          </div>
+          <p v-else class="infinite--text">
+            {{$t('CardRoomTime.infinite')}}
+          </p>
         </v-row>
       </v-container>
     </v-card-text>
@@ -39,62 +58,31 @@
 </template>
 
 <script>
+  import {getCountdownText} from '@/utils'
   export default {
     data() {
       return {
         timeLimitation: 0,
-        timeLimitationItems: [
-          {
-            text: this.$t('CardRoomTime.infinite'),
-            value: 0,
-          },
-          {
-            text: '1',
-            value: 1,
-          },
-          {
-            text: '2',
-            value: 2,
-          },
-          {
-            text: '3',
-            value: 3,
-          },
-          {
-            text: '4',
-            value: 4,
-          },
-          {
-            text: '5',
-            value: 5,
-          }, 
-          {
-            text: '6',
-            value: 6,
-          },
-          {
-            text: '7',
-            value: 7,
-          },
-          {
-            text: '8',
-            value: 8,
-          },
-          {
-            text: '9',
-            value: 9,
-          },
-          {
-            text: '10',
-            value: 10,
-          },          
-        ],
       }
+    },
+    computed:{
+      getTextTime() {
+        return getCountdownText(this.timeLimitation)
+      },
     },
     methods: {
       setTimeLimitation() {
         // Pass time limitation to parent component
         this.$emit('setTimeLimitation', this.timeLimitation)
+      },
+      changeAll(time){ // click on the slider
+        this.timeLimitation = time
+      },
+      changeMinute(m){// Tape in input minute 
+        this.timeLimitation = this.timeLimitation %60 + (m*60) // Get number seconds and add minutes
+      },
+      changeSecond(s){ // Tape in input second
+        this.timeLimitation = Math.floor(this.timeLimitation / 60) + s// Get number minutes and add seconds
       },
       cancel() {
         this.$emit('cancel')
@@ -103,11 +91,29 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   #card-title {
     font-size: 16px;
     font-weight: 500;
     color: #FFFFFF;
     opacity: 0.9;
   } 
+  .time-input{
+    color: white;
+    display: flex;
+    margin: auto;
+    p{
+      line-height: 4;
+      margin: 0 1rem;
+    }
+    .v-input{
+      width: 10rem;
+    }
+  }
+  .infinite--text{
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+    width: 100%;
+  }
 </style>
