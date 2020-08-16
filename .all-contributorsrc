@@ -32,6 +32,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tululum",
+      "name": "tululum",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/67554090?v=4",
+      "profile": "https://github.com/tululum",
+      "contributions": [
+        "bug",
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
