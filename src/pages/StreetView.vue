@@ -167,18 +167,7 @@
         
         // Generate random streetview until the valid one is generated
         if (status == 'OK') {
-          this.panorama.setOptions({
-            addressControl: false,
-            fullscreenControl: false,
-            motionTracking: false,
-            motionTrackingControl: false,
-            showRoadLabels: false,
-          })
-          this.panorama.setPano(data.location.pano)
-          this.panorama.setPov({
-            heading: 270,
-            pitch: 0,
-          })
+          this.setPosition(data)
           let isInGeoJSONResult;
           if(this.placeGeoJson != null){
             isInGeoJSONResult = isInGeoJSON(turfModel.point([data.location.latLng.lng(), data.location.latLng.lat()]), this.placeGeoJson) 
@@ -211,19 +200,29 @@
         }
       },
       resetLocation(){
+        const service = new google.maps.StreetViewService()
+        service.getPanorama({
+          location: this.randomLatLng,
+          preference: 'nearest',
+          radius: 50,
+          source: 'outdoor',
+        }, this.setPosition)
+      },
+      setPosition(data){
         this.panorama.setOptions({
-            addressControl: false,
-            fullscreenControl: false,
-            motionTracking: false,
-            motionTrackingControl: false,
-            showRoadLabels: false,
+          addressControl: false,
+          fullscreenControl: false,
+          motionTracking: false,
+          motionTrackingControl: false,
+          showRoadLabels: false,
         })
-        this.panorama.setPosition(this.randomLatLng)
+        this.panorama.setPano(data.location.pano)
         this.panorama.setPov({
           heading: 270,
           pitch: 0,
         })
-      },
+
+      },      
       startTimer(round = this.round) {
         if(round === this.round){
           if (this.remainingTime > 0) {
