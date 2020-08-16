@@ -29,9 +29,20 @@
       >
       <v-icon color="white">mdi-close</v-icon>
     </v-btn>
-    <div 
-      id="map">
-    </div>
+    <GmapMap
+      :center="{lat:0, lng:0}"
+      :options="{
+        mapTypeControl: false,
+        gestureHandling: 'greedy',
+        fullscreenControl: false
+      }"
+      @click="handlerClickMap"
+      ref="mapRef"
+      :zoom="0"
+      map-type-id="terrain"
+      id="map"
+      >
+    </GmapMap>
     <button
       id="make-guess-button"
       v-if="$viewport.width < 450 && !isGuessButtonClicked && !isMakeGuessButtonClicked"
@@ -172,6 +183,18 @@
       }
     },
     methods: {
+      handlerClickMap(e){
+        if(!this.isGuessButtonClicked){
+           // Clear the previous marker when clicking the map
+          this.removeMarkers()
+
+          // Show the new marker
+          this.putMarker(e.latLng)
+
+          // Save latLng
+          this.selectedLatLng = e.latLng
+        }
+      },
       playAgain() {
         window.location.reload()
       },
@@ -209,8 +232,6 @@
           }
           this.$emit('showResult')
         }
-        // Clear the event
-        google.maps.event.clearListeners(this.map, 'click')
 
         // Diable guess button and opacity of the map
         this.isGuessButtonClicked = true
@@ -318,18 +339,6 @@
         for (var i = 0; i < this.polylines.length; i++) {
           this.polylines[i].setMap(null)
         }
-      },
-      startNextRound() {
-        this.map.addListener('click', (e) => {
-          // Clear the previous marker when clicking the map
-          this.removeMarkers()
-
-          // Show the new marker
-          this.putMarker(e.latLng)
-
-          // Save latLng
-          this.selectedLatLng = e.latLng
-        })   
       },
       goToNextRound() {
         // Reset
