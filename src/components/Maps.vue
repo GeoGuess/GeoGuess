@@ -248,13 +248,17 @@
       },
       calculateDistance() {
         this.distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(this.randomLatLng, this.selectedLatLng))
-        this.point = Math.round(5000*Math.exp(-((this.distance /1000)/this.difficulty)))
+        if(this.distance  < 50){
+          this.point = 5000;
+        }else{
+          this.point = Math.round(5000*Math.exp(-((this.distance /1000)/this.difficulty)))
 
 
-        if (this.point > 5000) {
-          this.point=5000;
-        } else if (this.point < 0) {
-          this.point = 0;
+          if (this.point > 5000) {
+            this.point=5000;
+          } else if (this.point < 0) {
+            this.point = 0;
+          }
         }
 
         // Save the distance into firebase
