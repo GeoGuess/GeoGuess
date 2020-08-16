@@ -90,7 +90,6 @@
           points: this.points,
           rank: (this.multiplayer) ? this.summaryTexts.findIndex((text) => text.playerName === this.playerName ) +1 : undefined,
         })
-        console.log(this.summaryTexts.findIndex((text) => text.playerName === this.playerName ) +1, this.summaryTexts, this.playerName)
         localStorage.setItem('history', JSON.stringify(history))
         
       },
