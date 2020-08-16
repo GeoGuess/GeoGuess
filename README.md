@@ -87,7 +87,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/BilelJegham"><img src="https://avatars3.githubusercontent.com/u/20130405?v=4" width="100px;" alt=""/><br /><sub><b>Bilel Jegham</b></sub></a><br /><a href="https://github.com/BilelJegham/Geoguess-2/commits?author=BilelJegham" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/BilelJegham"><img src="https://avatars3.githubusercontent.com/u/20130405?v=4" width="100px;" alt=""/><br /><sub><b>Bilel Jegham</b></sub></a><br /><a href="https://github.com/BilelJegham/Geoguess-2/commits?author=BilelJegham" title="Code">💻</a> <a href="#translation-BilelJegham" title="Translation">🌍</a></td>
   </tr>
 </table>
 
