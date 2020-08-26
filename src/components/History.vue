@@ -3,6 +3,29 @@
    <v-card-title>
       {{$t("History.title")}}
    </v-card-title>
+    <v-dialog
+      v-model="dialog"
+      max-width="500"
+    >
+
+      <v-card>
+        <v-text-field
+          v-model="url"
+          label="Url"
+          readonly
+        ></v-text-field>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="dialog = false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-text-field
         v-model="search"
         :label="$t('History.search')"
@@ -23,6 +46,15 @@
     item-key="date"
     :customSort="customSort"
   >    
+    <template v-slot:item.actions="{ item }">
+      <v-icon
+        small
+        class="mr-2"
+        @click="share(item)"
+      >
+        mdi-share
+      </v-icon>
+    </template>
     <template v-slot:expanded-item="{ headers, item }">
         <td :colspan="headers.length">
             <GmapMap
@@ -108,7 +140,9 @@ export default {
     name:"History",
     props:["history"],
     data(){
-        return {            
+        return {   
+            dialog: '',
+            url: '',         
             search: '',           
             infoOptions: {
                 pixelOffset: {
@@ -150,9 +184,14 @@ export default {
                     text: this.$t('History.points'),
                     value: 'points',
                 },
+                { 
+                    text: 'Actions',
+                    value: 'actions',
+                    sortable: false 
+                },
                 {
                     text: '', 
-                    value: 'data-table-expand' 
+                    value: 'data-table-expand',
                 },
             ]
         }
@@ -199,7 +238,13 @@ export default {
 
                 }
             });
-        }
+        },
+        share (item) {
+            console.log(item)
+            this.url = window.origin+'/p/'+btoa([temp1.difficulty, temp1.timeLimitation, temp1.rounds.map((r) => r.position.lat+'a'+r.position.lng)].flat().join('a'))
+            this.dialog = true
+        },
+
     }
 }
 </script>
