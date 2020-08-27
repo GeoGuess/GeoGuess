@@ -9,19 +9,26 @@
     >
 
       <v-card>
-        <v-text-field
-          v-model="url"
-          label="Url"
-          readonly
-        ></v-text-field>
+        <v-card-text>
+            <center>
+                <v-icon x-large> mdi-clipboard-check</v-icon>
+                <p>{{$t('urlCopied')}}</p>
+                <v-text-field
+                v-model="url"
+                readonly
+                ></v-text-field>
+            </center>
+        </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
+
           <v-btn
-            color="primary"
-            text
             @click="dialog = false"
+            dark
+            depressed
+            color="#43B581"
           >
-            I accept
+            {{$t('OK')}}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -46,7 +53,7 @@
     item-key="date"
     :customSort="customSort"
   >    
-    <template v-slot:item.actions="{ item }">
+    <template v-slot:[`item.actions`]="{ item }">
       <v-icon
         small
         class="mr-2"
@@ -240,8 +247,8 @@ export default {
             });
         },
         share (item) {
-            console.log(item)
-            this.url = window.origin+'/p/'+btoa([temp1.difficulty, temp1.timeLimitation, temp1.rounds.map((r) => r.position.lat+'a'+r.position.lng)].flat().join('a'))
+            this.url = window.origin+'/p/'+btoa([item.difficulty, item.timeLimitation, item.rounds.map((r) => r.position.lat+','+r.position.lng)].flat().join(','))
+            this.$copyText(this.url)
             this.dialog = true
         },
 

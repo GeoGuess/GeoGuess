@@ -125,6 +125,6 @@ export default {
         under: 'under',
         privacyPolicy: 'Privacy Policy',
     },
-
+    urlCopied: 'Url copied'
   }
 }

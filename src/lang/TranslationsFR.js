@@ -124,5 +124,6 @@ export default {
         under: 'sous',
         privacyPolicy: 'Politique de confidentialité',
       },
+      urlCopied: 'Url copiée'
   }
 }

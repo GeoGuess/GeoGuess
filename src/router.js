@@ -26,6 +26,11 @@ export default new Router ({
       component: Home,
     },
     {
+      path: '/p/:partyParams',
+      name: 'party',
+      component: Home,
+    },
+    {
       path: '/street-view',
       name: 'street-view',
       component: StreetView,
