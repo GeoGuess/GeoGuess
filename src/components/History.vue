@@ -247,7 +247,7 @@ export default {
             });
         },
         share (item) {
-            this.url = window.origin+'/p/'+btoa([item.difficulty, item.timeLimitation, item.rounds.map((r) => r.position.lat+','+r.position.lng)].flat().join(','))
+            this.url = window.origin+'/game/'+btoa([item.difficulty, item.timeLimitation, item.rounds.map((r) => r.position.lat+','+r.position.lng)].flat().join(','))
             this.$copyText(this.url)
             this.dialog = true
         },

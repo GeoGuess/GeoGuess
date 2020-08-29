@@ -26,7 +26,7 @@ export default new Router ({
       component: Home,
     },
     {
-      path: '/p/:partyParams',
+      path: '/game/:partyParams',
       name: 'party',
       component: Home,
     },
