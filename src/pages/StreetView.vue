@@ -120,7 +120,7 @@
         isReady: false,
         dialogMessage: this.multiplayer,
         dialogTitle: this.$t('StreetView.waitForOtherPlayers'),
-        dialogText: '',
+        dialogText: window.origin+'/room/'+this.roomName,
         cptNotFoundLocation: 0,
         isVisibleDialog: false,
         panorama: null,
@@ -379,6 +379,7 @@
               // Close the dialog when evryone is ready
               if (this.isReady == false) {
                 this.dialogMessage = false
+                this.dialogText = ""
               }
 
               this.isReady = true
