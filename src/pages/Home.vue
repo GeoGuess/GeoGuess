@@ -144,7 +144,26 @@
         dialogCustom: false,
         geoJson: '',
       }
-    },  
+    },
+    mounted() {
+      if(this.$route.params.partyParams){
+        const params = atob(this.$route.params.partyParams).split(',').map((val) => parseFloat(val));
+        console.log(params)
+        if(params.length === 12){
+          const difficulty = params[0];
+          const timeLimitation = params[1];
+          const rounds = [params.slice(2,4),params.slice(4,6),params.slice(6,8),params.slice(8,10),params.slice(10,12)];
+          this.$router.push({
+            name:'street-view',  
+            params: {
+              time : timeLimitation,
+              difficulty: difficulty, 
+              roundsPredefined: rounds
+            }
+          });
+        }
+      }
+    },
     computed: {
       placeGeoJson(){
         if(this.geoJson == ''){

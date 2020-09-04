@@ -26,6 +26,16 @@ export default new Router ({
       component: Home,
     },
     {
+      path: '/game/:partyParams',
+      name: 'party',
+      component: Home,
+    },
+    {
+      path: '/room/:roomName',
+      name: 'Room',
+      component: Home,
+    },
+    {
       path: '/street-view',
       name: 'street-view',
       component: StreetView,

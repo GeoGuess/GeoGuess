@@ -90,6 +90,10 @@
       'difficulty': {
         default: 2000,
         type: Number
+      },
+      'roundsPredefined': {
+        default: null,
+        type: Array
       }
     },
     components: {
@@ -116,7 +120,7 @@
         isReady: false,
         dialogMessage: this.multiplayer,
         dialogTitle: this.$t('StreetView.waitForOtherPlayers'),
-        dialogText: '',
+        dialogText: window.origin+'/room/'+this.roomName,
         cptNotFoundLocation: 0,
         isVisibleDialog: false,
         panorama: null,
@@ -127,7 +131,16 @@
     methods: {
       loadStreetView() {
         const service = new google.maps.StreetViewService()
-        const {point, position} = this.getRandomLatLng() 
+        let point, position;
+        if(this.roundsPredefined){
+          point = true;
+          const positions = this.roundsPredefined[this.round-1];
+          position = new google.maps.LatLng(positions[0], positions[1])
+        }else{
+          const randomPos = this.getRandomLatLng();
+          point = randomPos.point;
+          position = randomPos.position;
+        }
         service.getPanorama({
           location: position,
           preference: 'nearest',
@@ -366,6 +379,7 @@
               // Close the dialog when evryone is ready
               if (this.isReady == false) {
                 this.dialogMessage = false
+                this.dialogText = ""
               }
 
               this.isReady = true

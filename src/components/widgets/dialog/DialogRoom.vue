@@ -67,6 +67,12 @@
         difficulty: null
       }
     },
+    mounted() {
+      if(!this.singlePlayer && this.$route.params.roomName){
+        this.dialogRoom = true;
+        this.searchRoom(this.$route.params.roomName);
+      }
+    },
     components: {
       'roomName': CardRoomName,
       'roomSize': CardRoomSize,
