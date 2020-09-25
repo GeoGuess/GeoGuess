@@ -9,14 +9,14 @@
             class="ml-4 mr-4"
             icon
             color="#FFFFFF"
-            href="https://github.com/BilelJegham/Geoguess-2">
+            href="https://github.com/GeoGuess/Geoguess">
             <v-icon size="30">mdi-github-circle</v-icon>
           </v-btn>
           <v-btn
             class="ml-4 mr-4"
             icon
             color="#FFFFFF"
-            href="https://discord.gg/fPpUzgJ">
+            href="https://discord.gg/9GXm6RT">
             <v-icon size="30">mdi-discord</v-icon>
           </v-btn>
           <v-btn
