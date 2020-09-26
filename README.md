@@ -1,5 +1,5 @@
 
-![logo](../master/public/img/icons/android-icon-36x36.png)  Geoguess 2 
+![logo](../master/public/img/icons/android-icon-36x36.png)  Geoguess
 ===   
 
 ![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
