@@ -21,7 +21,8 @@
       "avatar_url": "https://avatars3.githubusercontent.com/u/19766429?v=4",
       "profile": "http://simonrousseau.me",
       "contributions": [
-        "code"
+        "code",
+        "design"
       ]
     },
     {
@@ -45,8 +46,8 @@
     }
   ],
   "contributorsPerLine": 7,
-  "projectName": "Geoguess-2",
-  "projectOwner": "BilelJegham",
+  "projectName": "Geoguess",
+  "projectOwner": "GeoGuess",
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true
