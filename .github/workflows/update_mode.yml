@@ -32,7 +32,7 @@ jobs:
           echo ${{ needs.checkTag.outputs.lastTag }}
           git config --local user.email "action@github.com"
           git config --local user.name "GeoGuess Updater"
-          git remote add main https://github.com/BilelJegham/RepoRelease
+          git remote add main https://github.com/GeoGuess/Geoguess
           git fetch --tags main
           git merge -X theirs --allow-unrelated-histories ${{ needs.checkTag.outputs.lastTag }}
       - name: GitHub Push
