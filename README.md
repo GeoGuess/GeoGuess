@@ -7,7 +7,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
-> Demo : https://geoguess2.netlify.app/
+> Demo : https://demo.geoguess.games
 
 Geoguess 2 is a free and lazy geoguess game. Players compete how close the player can guess random locations in five rounds. 
 You can play multiplayer with your friends up to five friends. The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.
@@ -101,9 +101,9 @@ You need to host this project as a static website to play multiplayer game with 
 
 
 ## 📜 License
-Licensed under [MIT License](https://github.com/spider-hand/Geoguess-Master-Web/blob/master/LICENSE)
+Licensed under [MIT License](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE)
 
 ## 📞 Contact
 Feel free to give us feedback.  
-[Issues](https://github.com/BilelJegham/Geoguess-2/issues) or 
-[Discord](https://discord.gg/fPpUzgJ)
+[Issues](https://github.com/GeoGuess/Geoguess/issues) or 
+[Discord](https://discord.gg/9GXm6RT)
