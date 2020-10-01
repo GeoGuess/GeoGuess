@@ -1,0 +1,80 @@
+<template>
+  <v-app-bar class="header" >
+    
+      <img class="header__logo" src="@/assets/geoguessLogo.png" />
+
+<div class="flex-grow-1"></div>
+    <v-menu>
+      <template v-slot:activator="{ on }">
+        <v-btn 
+          text
+          v-on="on">
+            <v-icon size="30">mdi-translate</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(language, index) in languages"
+          :key="index"
+          @click="switchLanguage(language.value)">
+          <v-list-item-title>{{ language.text }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+</v-app-bar>
+
+
+
+</template>
+<script>
+  export default {
+    data() {
+      return {
+      languages: [
+        {
+          text: "English",
+          value: "en",
+        },
+        {
+          text: "Français",
+          value: "fr",
+        },
+        {
+          text: "Deutsch",
+          value: "de",
+        },
+        {
+          text: "čeština",
+          value: "cs",
+        },
+        {
+          text: "日本語",
+          value: "ja",
+        },
+        ],        
+      }
+    },
+    methods: {
+      switchLanguage(language) {
+        this.$i18n.locale = language
+        this.$vuetify.lang.current = language
+        this.saveLanguage(language)
+      },
+      saveLanguage(language) {
+        localStorage.setItem('language', language)
+      },
+    }
+  }
+</script>
+<style lang="scss" scoped>
+.header{
+    height: 13rem;
+    background-color: #F1E9D6;
+    .header__logo{
+        height: 4rem;
+        width: auto
+
+    }
+
+}
+</style>

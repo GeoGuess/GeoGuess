@@ -1,5 +1,6 @@
 <template>
   <div>
+     <Header />
     <v-dialog v-model="historyDialog" >
       <History :history="history"/>
     </v-dialog>
@@ -11,7 +12,7 @@
         class="white--text"
         src="../assets/earth.jpg"
         gradient="to right, rgba(5, 11, 31, .7), rgba(5, 11, 31, .7)"  >
-      <Header />
+   
       <v-container  fill-height>
       <v-container grid-list-md text-center align-center>
         <v-layout row wrap >
@@ -74,36 +75,8 @@
       </v-img>
     </div>
 
-    <v-container class="section" id="section-about">
-       <h3 class="section-header">{{$t('Home.about')}}</h3>
-      <p class="section-description">
-          {{$t('Home.aboutDescriptions.1')}} 
-          <br/>{{$t('Home.aboutDescriptions.2')}} <a href="https://geoguessmaster.com/">GeoGuess Master</a>.
-      </p>
-    </v-container>
 
-    <v-container class="section" id="section-CustomsMap">
-       <h3 class="section-header">{{$t('Home.customMap')}}</h3>
-      <p class="section-description">
-        {{$t('Home.customMapDescriptions.1')}} 
-        <br/>{{$t('Home.customMapDescriptions.2')}} 
-        <br/><br/>
-        {{$t('Home.customMapDescriptions.3')}} <a href="https://geojson.org/">GeoJson</a> {{$t('Home.customMapDescriptions.4')}}
-        {{$t('Home.customMapDescriptions.5')}} <v-icon>mdi-map-plus</v-icon>.
-        <br/>
-        {{$t('Home.customMapDescriptions.6')}}
-        <ul>
-          <li><a href="https://gist.github.com/BilelJegham/7f855024440c67d65f24536c9215719e">Biggest cities world</a></li>
-          <li><a href="https://gist.github.com/BilelJegham/b6a0faa627aac3b7f5bc677523c4c7eb">Hard Map</a></li>
-        </ul>
-      </p>
-    </v-container>
-    <v-container  class="section" id="section-limitation">
-      <h3 class="section-header">{{$t('Home.limitation')}}</h3>
-      <p class="section-description">
-        {{$t('Home.limitationDescription')}}
-      </p>
-    </v-container>
+
 
     <Footer/>
   </div>
@@ -118,7 +91,7 @@
   import History from '@/components/History'
   import DialogCustomMap from '@/components/DialogCustomMap'
 
-  import Header from '@/components/Header'
+  import Header from '@/components/home/Header'
   import DialogRoom from '@/components/widgets/dialog/DialogRoom'
   import Footer from '@/components/Footer'
 
@@ -222,41 +195,5 @@
 </script>
 
 <style scoped>
-  span, .section-header {
-    font-family: montserrat;
-  }
-  #single-player-button {
-    border-radius: 40px;
-  }
 
-  .section{
-    padding: 2% 0;
-  }
-  #record {
-    font-size: 26px;
-    font-weight: 700;
-    color: #FFFFFF;
-  }
-  .section-header{
-    text-align: center;
-  }
- .section-description, .section-header{
-    padding: 0 18%;
-    color: #777777;
-  }
-
-  .search{
-    width: 50vw;
-    margin: auto;
-  }
-  
-  @media (max-width: 550px) {
-    .search{
-      width: 90vw;
-      margin: auto;
-    }
-    #single-player-button {
-      margin-bottom: 10px;
-    }
-  }
 </style>

@@ -8,14 +8,23 @@ import { checkLanguage } from '../lang';
 
 Vue.use(Vuetify);
 
-export default new Vuetify({  
+export default new Vuetify({
+  theme: {
+    themes: {
+      light: {
+        primary: '#468F69',
+        secondary: '#808F87',
+        accent: '#D0CABC'
+      }
+    }
+  },
   lang: {
     locales: { en, fr, ja },
-    current: localStorage.getItem('language') != null 
-    ? localStorage.getItem('language') 
-    : (['en', 'ja', 'fr'].some(checkLanguage) 
-      ? navigator.language.split('-')[0] 
-      : 'en')
+    current: localStorage.getItem('language') != null
+      ? localStorage.getItem('language')
+      : (['en', 'ja', 'fr'].some(checkLanguage)
+        ? navigator.language.split('-')[0]
+        : 'en')
   },
   icons: {
     iconfont: 'mdi',
