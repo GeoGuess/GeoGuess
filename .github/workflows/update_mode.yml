@@ -17,7 +17,7 @@ jobs:
       - id: vars
         shell: bash
         run: |
-          if ["$DISABLE_CI_UPDATE" != 'true']; then
+          if [ "$DISABLE_CI_UPDATE" != 'true' ] ; then
              echo ::set-output name=ALLOWED::'true'
           fi
     env:
