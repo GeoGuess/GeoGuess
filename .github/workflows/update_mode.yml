@@ -8,26 +8,10 @@ on:
  schedule:
   - cron: "0 2 * * *" 
 
-jobs:
-  checkUpdateAllowed:
-    runs-on: ubuntu-latest
-    outputs:
-      ALLOWED: ${{ steps.vars.outputs.test }}   
-    steps: 
-      - id: vars
-        shell: bash
-        run: |
-          if [ "$DISABLE_CI_UPDATE" != 'true' ] ; then
-             echo ::set-output name=ALLOWED::'true'
-          fi
-    env:
-     DISABLE_CI_UPDATE: ${{ secrets.DISABLE_CI_UPDATE }}
-  
-   
+jobs:   
   checkTag:  
     runs-on: ubuntu-latest
-    needs: checkUpdateAllowed
-    if:  ${{ needs.checkUpdateAllowed.outputs.ALLOWED }}
+    if:  ${{ !contains(github.repository, 'GeoGuess/Geoguess')}}
     outputs:
       lastTag: ${{ steps.lastTag.outputs.test }}
       tagActual: ${{ steps.tagActual.outputs.test }}
@@ -39,4 +23,5 @@ jobs:
      - id: tagActual
        run: |
         cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]'
+
 
