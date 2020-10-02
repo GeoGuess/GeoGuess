@@ -14,7 +14,8 @@ jobs:
     outputs:
       ALLOWED: ${{ steps.vars.outputs.test }}   
     steps: 
-      - id: vars 
+      - id: vars
+        shell: bash
         run: |
           if ["$DISABLE_CI_UPDATE" != 'true']; then
              echo ::set-output name=ALLOWED::'true'
@@ -25,6 +26,7 @@ jobs:
    
   checkTag:  
     runs-on: ubuntu-latest
+    needs: checkUpdateAllowed
     if:  ${{ needs.checkUpdateAllowed.outputs.ALLOWED }}
     outputs:
       lastTag: ${{ steps.lastTag.outputs.test }}
