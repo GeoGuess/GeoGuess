@@ -2,32 +2,42 @@ name: Update
 
 on:
  workflow_dispatch:
- push:
-  branches: 
-   - master
  schedule:
   - cron: "0 2 * * *" 
 
 jobs:   
   checkTag:  
     runs-on: ubuntu-latest
-    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}
+    if:  ${{ !contains(github.repository, 'GeoGuess/Geoguess')}}
     outputs:
+      lastTag: ${{ steps.lastTag.outputs.VERSION_LAST }}
       tagActual: ${{ steps.tagActual.outputs.TAG }}
     steps:
      - uses: actions/checkout@v2
+     - id: lastTag
+       run: |        
+        VERSION_LAST=$(curl "https://api.github.com/repos/GeoGuess/Geoguess/releases/latest" | grep -oP '(?<="tag_name": ")[^"]*')
+        echo ::set-output name=VERSION_LAST::${VERSION_LAST}
      - id: tagActual
-       run: |
-         VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
-         echo ::set-output name=TAG::${VERSION}
-         
+       run: | 
+        VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
+        echo ::set-output name=TAG::${VERSION}
 
   update:
     runs-on: ubuntu-latest
     needs: checkTag
-    if: ${{ contains(github.repository, 'GeoGuess/Geoguess')}} || ${{ needs.checkTag.outputs.lastTag }}  != ${{ needs.checkTag.outputs.tagActual }}
+    if: ${{ !contains(github.repository, 'GeoGuess/Geoguess')}} || ${{ needs.checkTag.outputs.lastTag }}  != ${{ needs.checkTag.outputs.tagActual }}
     steps:
       - uses: actions/checkout@v2
       - name: Test if new release
         run: |
-          echo ${{ needs.checkTag.outputs.tagActual }}
+          echo ${{ needs.checkTag.outputs.lastTag }}
+          git config --local user.email "action@github.com"
+          git config --local user.name "GeoGuess Updater"
+          git remote add main https://github.com/GeoGuess/Geoguess
+          git fetch --tags main
+          git merge -X theirs --allow-unrelated-histories ${{ needs.checkTag.outputs.lastTag }}
+      - name: GitHub Push
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
