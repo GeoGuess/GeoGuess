@@ -11,7 +11,7 @@ on:
 jobs:   
   checkTag:  
     runs-on: ubuntu-latest
-    if:  ${{ !contains(github.repository, 'GeoGuess/Geoguess')}}
+    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}
     outputs:
       lastTag: ${{ steps.lastTag.outputs.test }}
       tagActual: ${{ steps.tagActual.outputs.test }}
