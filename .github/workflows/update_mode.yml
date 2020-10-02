@@ -2,16 +2,18 @@ name: Update
 
 on:
  workflow_dispatch:
+ push:
+  branches: 
+   - master
  schedule:
   - cron: "0 2 * * *" 
-
 jobs:
   checkTag:  
-    if: ${{ secrets.DISABLE_CI_UPDATE }}  != 'true'
     runs-on: ubuntu-latest
     outputs:
       lastTag: ${{ steps.lastTag.outputs.test }}
       tagActual: ${{ steps.tagActual.outputs.test }}
+    if: ${{ secrets.DISABLE_CI_UPDATE }}  != 'true'
     steps:
      - uses: actions/checkout@v2
      - id: lastTag
