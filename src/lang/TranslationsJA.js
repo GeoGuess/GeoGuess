@@ -9,7 +9,7 @@ export default {
       //   enterCity: 'Enter city, state or country',
       // },
       aboutDescriptions: {
-        1: 'Geoguess 2 は無料で気軽に遊べる地図を使ったゲームです。\
+        1: 'Geoguess は無料で気軽に遊べる地図を使ったゲームです。\
         プレーヤーは5ラウンドでランダムに出された場所の正確な場所を推測して競います。\
         友達と遊ぶ時は最初に部屋を作る人が部屋の名前を決めて部屋を作り、他の人が部屋に入るだけで一緒に遊ぶことができます。',
         // 2:'This game was forked from '
@@ -86,9 +86,9 @@ export default {
     //   rank: 'Rank',
     //   search: 'Search',
     // },
-    
+
     DialogRoom: {
-      singlePlayer: '一人で遊ぶ',      
+      singlePlayer: '一人で遊ぶ',
       withFriends: '友達と遊ぶ',
       invalidRoomName: '無効な名前です。別の名前を入力して下さい。',
       inProgress: '最初のプレーヤーが部屋を作っています。再度試して下さい。',

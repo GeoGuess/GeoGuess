@@ -9,7 +9,7 @@
 
 > Demo : https://demo.geoguess.games
 
-Geoguess 2 is a free and lazy geoguess game. Players compete how close the player can guess random locations in five rounds. 
+Geoguess is a free and lazy geoguess game. Players compete how close the player can guess random locations in five rounds. 
 You can play multiplayer with your friends up to five friends. The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.
 Cause of Google Map Api price, we aren't enabled to deploy server with unlimited access. But you can deploy your own game server and play this game unlimitedly and free.
 

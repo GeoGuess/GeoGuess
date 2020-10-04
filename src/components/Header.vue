@@ -3,7 +3,7 @@
     <div>
       <v-img src="@/assets/logo.png" width="45" />
     </div>
-    <span id="title"> Geoguess 2 </span>
+    <span id="title"> Geoguess</span>
     <div class="flex-grow-1"></div>
     <v-menu>
       <template v-slot:activator="{ on }">
