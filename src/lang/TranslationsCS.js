@@ -15,32 +15,36 @@ export default {
                   Své skóre můžeš sdílet s ostatními na sociálních sítích Facebook a Twitter. \
                   Můžeš hrát sám, nebo s dalšími až pěti kamarády. \
                   Při hře více hráčů vytvoří jeden hráč místnost, do které se ostatní hráči připojí, aby mohli hrát spolu.',
-                2: 'Tato hra je fork '
+                2: 'Tato hra je fork ',
             },
             customMap: 'Vlastní mapy',
             customMapDescriptions: {
-                1: "Hru můžeš omezit na města, regiony nebo státy, aby jsi nemusel hrát po celém světě.",
-                2: "Ve hře více hráčů toto omezení zvolí první hráč.",
-                3: "Kromě toho můžeš definovat herní oblast pomocí souboru ve formátu ",
-                4: ".",
-                5: "Obsah souboru GeoJSON vlož pomocí tlačítka :",
-                6: "Na výběr je také z několika předpřipravených map : "
+                1: 'Hru můžeš omezit na města, regiony nebo státy, aby jsi nemusel hrát po celém světě.',
+                2: 'Ve hře více hráčů toto omezení zvolí první hráč.',
+                3: 'Kromě toho můžeš definovat herní oblast pomocí souboru ve formátu ',
+                4: '.',
+                5: 'Obsah souboru GeoJSON vlož pomocí tlačítka :',
+                6: 'Na výběr je také z několika předpřipravených map : ',
             },
             limitation: 'OMEZENÍ',
-            limitationDescription: "Tato hra má nastavená omezení počtu her za den, abych snížil náklady na provoz. \
+            limitationDescription:
+                'Tato hra má nastavená omezení počtu her za den, abych snížil náklady na provoz. \
             Pokud se mapa nenačítá, nebo se načte v režimu negativu (špatné barvy), znamená to, že dnešení limit her byl již naplněn. \
             Limit se resetuje o půlnoci amerického času (Pacific Time - tj. v 8 hodin ráno našeho zimního času, popř. 9 hodin ráno našeho letního času). Za tuto nepříjemnost se omlouvám. \
-            Hra je poskytována open source, takže je možné hostovat vlastní kopii a hrát bez jakýchkoliv denních omezení.",
+            Hra je poskytována open source, takže je možné hostovat vlastní kopii a hrát bez jakýchkoliv denních omezení.',
         },
         StreetView: {
             nearby: {
                 title: 'Kousek vedle',
-                message: 'Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle ������',
+                message:
+                    'Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle ������',
             },
             waitForOtherPlayers: 'Čekám na ostatní hráče...',
             redirectToHomePage: 'Přesměruji na úvodní stránku...',
-            exitGame: 'Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...',
-            waitForOtherPlayersToFinish: 'Počkej prosím, až ostatní hráči dokončí hru...',
+            exitGame:
+                'Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...',
+            waitForOtherPlayersToFinish:
+                'Počkej prosím, až ostatní hráči dokončí hru...',
         },
         Maps: {
             makeGuess: 'HÁDEJ POLOHU',
@@ -48,12 +52,12 @@ export default {
             nextRound: 'DALŠÍ KOLO',
             viewSummary: 'ZOBRAZ VÝSLEDKY',
             exit: 'UKONČIT',
-            'reset': 'RESET',
+            reset: 'RESET',
             playAgain: 'HREJ ZNOVU',
             infoWindow: {
-                'Distance': 'Vzdálenost',
-                'Points': 'Skóre',
-            }
+                Distance: 'Vzdálenost',
+                Points: 'Skóre',
+            },
         },
         Header: {
             language: 'Jazyk',
@@ -73,11 +77,11 @@ export default {
         DialogCustomMap: {
             title: 'Vlastní Mapa',
             invalid: 'Neplatný GeoJSON',
-            'text': 'Text',
+            text: 'Text',
             url: 'Url',
             file: 'Soubor',
             edit: 'Upravit Mapu',
-            'fileLabel': 'Zvol GeoJSON soubor'
+            fileLabel: 'Zvol GeoJSON soubor',
         },
         History: {
             title: 'Historie',
@@ -94,8 +98,10 @@ export default {
             singlePlayer: 'Hrát Sám',
             withFriends: 'Více Hráčů',
             invalidRoomName: 'Nevhodné jméno. Zkus se prosím pojmenovat jinak.',
-            inProgress: 'První hráč právě nastavuje hru. Vydrž prosím a za chvíli to zkus znovu.',
-            roomIsFull: 'Tato místnost je již plná. Zkus to prosím znovu později.',
+            inProgress:
+                'První hráč právě nastavuje hru. Vydrž prosím a za chvíli to zkus znovu.',
+            roomIsFull:
+                'Tato místnost je již plná. Zkus to prosím znovu později.',
         },
 
         CardRoomName: {
@@ -118,14 +124,15 @@ export default {
             hard: 'těžká (město)',
         },
         DialogSummary: {
-            summaryMsgSingle: 'Byl jsi <strong>{distance}</strong> km daleko! Obdržel jsi <strong>{points}</strong> bodů!',
-            summaryMsgMulti: '<strong>{playerName}</strong> skóroval(a) <strong>{points}</strong> bodů ! (<strong>{distance}</strong> km daleko)',
+            summaryMsgSingle:
+                'Byl jsi <strong>{distance}</strong> km daleko! Obdržel jsi <strong>{points}</strong> bodů!',
+            summaryMsgMulti:
+                '<strong>{playerName}</strong> skóroval(a) <strong>{points}</strong> bodů ! (<strong>{distance}</strong> km daleko)',
             viewDetails: 'Zobraz podrobnosti',
         },
         Footer: {
             under: 'licence:',
             privacyPolicy: 'Zásady ochrany osobních údajů (Anglicky)',
         },
-
-    }
-}
+    },
+};

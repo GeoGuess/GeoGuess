@@ -14,32 +14,36 @@ export default {
                 Sie können Ihre Punktzahl in sozialen Netzwerken wie Facebook und Twitter teilen.\
                 Sie können mit Ihren Freunden im Mehrspielermodus spielen.\
                 Der erste Spieler erstellt einen Raum und entscheidet über seine Größe. Nach der Erstellung können andere Spieler den Raum mit ihrem Namen und ihrem Spieler gemeinsam betreten.',
-                2: 'Dieses Spiel ist aus'
+                2: 'Dieses Spiel ist aus',
             },
             customMap: 'CARTE PERSONNALISÉE',
             customMapDescriptions: {
-                1: "Sie können die zufälligen Positionen über die Suchleiste auf eine Stadt, eine Region oder ein Land beschränken.",
-                2: "Im Mehrspielermodus legt der erste Spieler den Ort fest.",
-                3: "Außerdem können Sie mit Ihre eigenen Karten erstellen :",
-                4: "datei.",
-                5: "Fügen Sie den Inhalt der Datei mit der Schaltfläche ein:",
-                6: "Eine Auswahl an benutzerdefinierten Karten:"
+                1: 'Sie können die zufälligen Positionen über die Suchleiste auf eine Stadt, eine Region oder ein Land beschränken.',
+                2: 'Im Mehrspielermodus legt der erste Spieler den Ort fest.',
+                3: 'Außerdem können Sie mit Ihre eigenen Karten erstellen :',
+                4: 'datei.',
+                5: 'Fügen Sie den Inhalt der Datei mit der Schaltfläche ein:',
+                6: 'Eine Auswahl an benutzerdefinierten Karten:',
             },
             limitation: 'EINSCHRÄNKUNG',
-            limitationDescription: "Derzeit habe ich eine Quote pro Tag festgelegt, damit die Kosten des Spiels nicht hoch sind.\
+            limitationDescription:
+                'Derzeit habe ich eine Quote pro Tag festgelegt, damit die Kosten des Spiels nicht hoch sind.\
             Wenn die Karte nicht geladen wird, bedeutet dies, dass das Kontingent überschritten wurde.\
             Es wird um Mitternacht (pazifische Zeit) zurückgesetzt. Entschuldigung für die Unannehmlichkeiten.\
-            Das Spiel ist Open Source, so dass Sie Ihr eigenes Spiel erstellen können, um ohne Grenzen zu spielen.",
+            Das Spiel ist Open Source, so dass Sie Ihr eigenes Spiel erstellen können, um ohne Grenzen zu spielen.',
         },
         StreetView: {
             nearby: {
                 title: 'Position schließen',
-                message: 'Leider konnten wir am definierten Ort keine Stelle finden. Wir haben jedoch einen engen gefunden 😉',
+                message:
+                    'Leider konnten wir am definierten Ort keine Stelle finden. Wir haben jedoch einen engen gefunden 😉',
             },
             waitForOtherPlayers: 'Warten auf andere Spieler',
             redirectToHomePage: 'Weiterleitung zur Homepage ...',
-            exitGame: 'Sie müssen das Spiel beenden. Umleitung zur Startseite in 5 Sekunden ...',
-            waitForOtherPlayersToFinish: 'Warten auf andere Spieler, um das Spiel zu beenden ...',
+            exitGame:
+                'Sie müssen das Spiel beenden. Umleitung zur Startseite in 5 Sekunden ...',
+            waitForOtherPlayersToFinish:
+                'Warten auf andere Spieler, um das Spiel zu beenden ...',
         },
         Maps: {
             makeGuess: 'RATET MAL',
@@ -47,12 +51,12 @@ export default {
             nextRound: 'NÄCHSTE RUNDE',
             viewSummary: 'SIEHE ZUSAMMENFASSUNG',
             exit: 'VERLASSEN',
-            'reset': 'RESET.',
+            reset: 'RESET.',
             playAgain: 'WIEDERHOLUNG',
             infoWindow: {
-                'Distance': 'Entfernung',
-                'Points': 'Punkte',
-            }
+                Distance: 'Entfernung',
+                Points: 'Punkte',
+            },
         },
         Header: {
             language: 'Sprache',
@@ -72,11 +76,11 @@ export default {
         DialogCustomMap: {
             title: 'Personalisierte Karte',
             invalid: 'Ungültiger GeoJSON',
-            'text': 'Text',
+            text: 'Text',
             url: 'Verknüpfung',
             file: 'Datei',
             edit: 'Karte bearbeiten',
-            'fileLabel': 'Wählen Sie eine GeoJSON-Datei aus'
+            fileLabel: 'Wählen Sie eine GeoJSON-Datei aus',
         },
         History: {
             title: 'Historisch',
@@ -92,7 +96,8 @@ export default {
             singlePlayer: 'Ein Spieler',
             withFriends: 'Mit Freunden',
             invalidRoomName: 'Ungültiger Name. Bitte wählen Sie einen anderen.',
-            inProgress: 'Der erste Spieler erstellt den Raum. Bitte warten Sie und beginnen Sie erneut.',
+            inProgress:
+                'Der erste Spieler erstellt den Raum. Bitte warten Sie und beginnen Sie erneut.',
             roomIsFull: 'Der Raum ist schon voll. Versuche einen anderen.',
         },
 
@@ -116,14 +121,16 @@ export default {
             hard: 'Schwierig (Stadt)',
         },
         DialogSummary: {
-            summaryMsgSingle: 'Du bist bei<strong>{distance}</strong> km ! Dein Ergebnis ist<strong>{points}</strong> Punkte!',
-            summaryMsgMulti: '<strong>{playerName}</strong> erhält  <strong>{points}</strong> Punkte ! (<strong>{distance}</strong> km)',
+            summaryMsgSingle:
+                'Du bist bei<strong>{distance}</strong> km ! Dein Ergebnis ist<strong>{points}</strong> Punkte!',
+            summaryMsgMulti:
+                '<strong>{playerName}</strong> erhält  <strong>{points}</strong> Punkte ! (<strong>{distance}</strong> km)',
             viewDetails: 'Siehe die Details',
         },
         Footer: {
             under: 'unter',
             privacyPolicy: 'Datenschutz-Bestimmungen',
         },
-        urlCopied: 'URL kopiert'
-    }
-}
+        urlCopied: 'URL kopiert',
+    },
+};

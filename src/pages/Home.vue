@@ -111,152 +111,164 @@
 
 
 <script>
-  import firebase from 'firebase/app'
-  import 'firebase/database'
-  import axios from 'axios'
+import firebase from "firebase/app";
+import "firebase/database";
+import axios from "axios";
 
-  import History from '@/components/History'
-  import DialogCustomMap from '@/components/DialogCustomMap'
+import History from "@/components/History";
+import DialogCustomMap from "@/components/DialogCustomMap";
 
-  import Header from '@/components/Header'
-  import DialogRoom from '@/components/widgets/dialog/DialogRoom'
-  import Footer from '@/components/Footer'
+import Header from "@/components/Header";
+import DialogRoom from "@/components/widgets/dialog/DialogRoom";
+import Footer from "@/components/Footer";
 
-  export default {
-    components: {
-      Header,
-      DialogRoom,
-      History,
-      DialogCustomMap,
-      Footer,
-    },
-    data() {
-      return {
-        historyDialog: false,
-        record: localStorage.getItem('record'),
-        history: (localStorage.getItem('history')) ? JSON.parse(localStorage.getItem('history')) : [],
-        place: '',
-        dialog: false,
-        entries: [],
-        isLoading: false,
-        search: '',
-        version: process.env.VUE_APP_VERSION,
-        dialogCustom: false,
-        geoJson: '',
+export default {
+  components: {
+    Header,
+    DialogRoom,
+    History,
+    DialogCustomMap,
+    Footer,
+  },
+  data() {
+    return {
+      historyDialog: false,
+      record: localStorage.getItem("record"),
+      history: localStorage.getItem("history")
+        ? JSON.parse(localStorage.getItem("history"))
+        : [],
+      place: "",
+      dialog: false,
+      entries: [],
+      isLoading: false,
+      search: "",
+      version: process.env.VUE_APP_VERSION,
+      dialogCustom: false,
+      geoJson: "",
+    };
+  },
+  mounted() {
+    if (this.$route.params.partyParams) {
+      const params = atob(this.$route.params.partyParams)
+        .split(",")
+        .map((val) => parseFloat(val));
+      if (params.length === 12) {
+        const difficulty = params[0];
+        const timeLimitation = params[1];
+        const rounds = [
+          params.slice(2, 4),
+          params.slice(4, 6),
+          params.slice(6, 8),
+          params.slice(8, 10),
+          params.slice(10, 12),
+        ];
+        this.$router.push({
+          name: "street-view",
+          params: {
+            time: timeLimitation,
+            difficulty: difficulty,
+            roundsPredefined: rounds,
+          },
+        });
       }
-    },
-    mounted() {
-      if(this.$route.params.partyParams){
-        const params = atob(this.$route.params.partyParams).split(',').map((val) => parseFloat(val));
-        console.log(params)
-        if(params.length === 12){
-          const difficulty = params[0];
-          const timeLimitation = params[1];
-          const rounds = [params.slice(2,4),params.slice(4,6),params.slice(6,8),params.slice(8,10),params.slice(10,12)];
-          this.$router.push({
-            name:'street-view',  
-            params: {
-              time : timeLimitation,
-              difficulty: difficulty, 
-              roundsPredefined: rounds
+    }
+  },
+  computed: {
+    placeGeoJson() {
+      if (this.geoJson == "") {
+        return null;
+      }
+      try {
+        let obj = JSON.parse(this.geoJson);
+        if (obj.type === "FeatureCollection" && obj.features) {
+          obj.features.map((f) => {
+            if (
+              !["Point", "Polygon", "MultiPolygon"].includes(f.geometry.type)
+            ) {
+              throw new Error("Error Format");
             }
           });
+          this.place = "";
+          return obj;
+        } else {
+          throw new Error("Error Format");
         }
+      } catch (e) {
+        return null;
       }
     },
-    computed: {
-      placeGeoJson(){
-        if(this.geoJson == ''){
-          return null;
-        }
-        try{
-          let obj = JSON.parse(this.geoJson);
-          if(obj.type === "FeatureCollection" && obj.features){
-            obj.features.map((f)=>{
-              if(!["Point", "Polygon", "MultiPolygon"].includes(f.geometry.type)){
-                throw new Error("Error Format")
-              }
-            })
-            this.place= '';
-            return obj; 
+    minHeight() {
+      const height = this.$vuetify.breakpoint.mdAndUp ? "100vh" : "50vh";
 
-          }else{
-            
-            throw new Error("Error Format")
-          }
-        }catch(e){
-          return null;
-        }
-      },
-      minHeight () {
-        const height = this.$vuetify.breakpoint.mdAndUp ? '100vh' : '50vh'
-
-        return `calc(${height} - ${this.$vuetify.application.top}px)`
-      },
-      items () {
-          return this.entries.map(entry => entry.properties.name)
-      },
+      return `calc(${height} - ${this.$vuetify.application.top}px)`;
     },
-    watch: {
-      
-      search (val) {
+    items() {
+      return this.entries.map((entry) => entry.properties.name);
+    },
+  },
+  watch: {
+    search(val) {
+      // Items have already been requested
+      if (!val) return;
 
-        // Items have already been requested
-        if (!val) return
-
-        this.isLoading = true
-        // Lazily load input items
-        axios.get(`https://photon.komoot.de/api/?q=${encodeURI(val)}`)
-          .then(res => {
-            if(res.status === 200 && res.data && res.data.features){
-              this.entries = res.data.features.filter((node ) => node.properties.osm_type === 'R');
-            }
-          })
-          .catch(err => {
-            console.log(err)
-          })
-          .finally(() => (this.isLoading = false))
-      },
-    },    
-  }
+      this.isLoading = true;
+      // Lazily load input items
+      axios
+        .get(`https://photon.komoot.de/api/?q=${encodeURI(val)}`)
+        .then((res) => {
+          if (res.status === 200 && res.data && res.data.features) {
+            this.entries = res.data.features.filter(
+              (node) => node.properties.osm_type === "R"
+            );
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => (this.isLoading = false));
+    },
+  },
+};
 </script>
 
 <style scoped>
-  span, .section-header {
-    font-family: montserrat;
-  }
-  #single-player-button {
-    border-radius: 40px;
-  }
+span,
+.section-header {
+  font-family: montserrat;
+}
+#single-player-button {
+  border-radius: 40px;
+}
 
-  .section{
-    padding: 2% 0;
-  }
-  #record {
-    font-size: 26px;
-    font-weight: 700;
-    color: #FFFFFF;
-  }
-  .section-header{
-    text-align: center;
-  }
- .section-description, .section-header{
-    padding: 0 18%;
-    color: #777777;
-  }
+.section {
+  padding: 2% 0;
+}
+#record {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.section-header {
+  text-align: center;
+}
+.section-description,
+.section-header {
+  padding: 0 18%;
+  color: #777777;
+}
 
-  .search{
-    width: 50vw;
+.search {
+  width: 50vw;
+  margin: auto;
+}
+
+@media (max-width: 550px) {
+  .search {
+    width: 90vw;
     margin: auto;
   }
-  
-  @media (max-width: 550px) {
-    .search{
-      width: 90vw;
-      margin: auto;
-    }
-    #single-player-button {
-      margin-bottom: 10px;
-    }
+  #single-player-button {
+    margin-bottom: 10px;
   }
+}
 </style>
