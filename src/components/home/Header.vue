@@ -1,10 +1,15 @@
 <template>
-  <v-app-bar class="header" >
+  <v-app-bar class="header" height="100">
     
-      <img class="header__logo" src="@/assets/geoguessLogo.png" />
+    <img class="header__logo" src="@/assets/geoguessLogo.png" />
 
-<div class="flex-grow-1"></div>
+    <div class="flex-grow-1"></div>
+    
+      <v-btn
+        text
+        @click="historyDialog = true">{{$t('Home.historyBtn')}}</v-btn>
     <v-menu>
+      
       <template v-slot:activator="{ on }">
         <v-btn 
           text
@@ -21,38 +26,47 @@
         </v-list-item>
       </v-list>
     </v-menu>
-</v-app-bar>
-
-
+    
+    <v-dialog v-model="historyDialog" >
+      <History :history="history"/>
+    </v-dialog>
+  </v-app-bar>
 
 </template>
 <script>
+
+  import History from '@/components/History'
   export default {
+    components: {
+      History,
+    },
     data() {
       return {
-      languages: [
-        {
-          text: "English",
-          value: "en",
-        },
-        {
-          text: "Français",
-          value: "fr",
-        },
-        {
-          text: "Deutsch",
-          value: "de",
-        },
-        {
-          text: "čeština",
-          value: "cs",
-        },
-        {
-          text: "日本語",
-          value: "ja",
-        },
-        ],        
-      }
+        historyDialog: false,
+        history: (localStorage.getItem('history')) ? JSON.parse(localStorage.getItem('history')) : [],
+        languages: [
+          {
+            text: "English",
+            value: "en",
+          },
+          {
+            text: "Français",
+            value: "fr",
+          },
+          {
+            text: "Deutsch",
+            value: "de",
+          },
+          {
+            text: "čeština",
+            value: "cs",
+          },
+          {
+            text: "日本語",
+            value: "ja",
+          },
+          ],        
+        }
     },
     methods: {
       switchLanguage(language) {
@@ -67,14 +81,16 @@
   }
 </script>
 <style lang="scss" scoped>
-.header{
-    height: 13rem;
-    background-color: #F1E9D6;
-    .header__logo{
-        height: 4rem;
-        width: auto
-
+  .header{
+    padding: 0 5%;
+    background-color: #F1E9D6 !important;
+    .v-btn{
+      font-size: 1.5rem;
+      margin: 0 1.5rem;
     }
-
-}
+    .header__logo{
+        height: 6rem;
+        width: auto
+    }
+  }
 </style>

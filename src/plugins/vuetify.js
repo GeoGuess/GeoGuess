@@ -1,11 +1,12 @@
 import Vue from 'vue';
+
+import '../scss/variables.scss'
 import Vuetify from 'vuetify/lib';
 
 import fr from 'vuetify/es5/locale/fr'
 import en from 'vuetify/es5/locale/en'
 import ja from 'vuetify/es5/locale/ja'
 import { checkLanguage } from '../lang';
-
 Vue.use(Vuetify);
 
 export default new Vuetify({

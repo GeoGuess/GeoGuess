@@ -10,6 +10,7 @@ import 'firebase/database'
 import './registerServiceWorker'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import VueClipboard from 'vue-clipboard2'
+
 Vue.use(VueClipboard)
 Vue.use(VueGoogleMaps, {
   load: {

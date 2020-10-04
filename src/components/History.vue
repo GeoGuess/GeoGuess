@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="history">
    <v-card-title>
       {{$t("History.title")}}
    </v-card-title>
@@ -256,3 +256,21 @@ export default {
 }
 </script>
 
+<style lang="scss">    
+
+.v-card, .v-data-table{
+        
+        background-color: #F1E9D6 !important;
+    }
+.history{
+    .v-data-table  > .v-data-table__wrapper > table{
+        & > thead > tr > th{
+            font-size: 1.2rem;
+        }
+        & > tbody > tr > td {
+            font-size: 0.9rem;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    }
+}
+</style>

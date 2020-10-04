@@ -1,5 +1,7 @@
 <template>
   <div class="search-box">
+
+      <h2>{{$t('Home.record')}}: {{ record / 1000 }} km</h2>
       <div class="search-box__search-bar">
               <v-combobox
                   :items="items"
@@ -17,17 +19,19 @@
                   rounded
                   height="50"
                   full-width
+                  id="search-input"
               >
               </v-combobox>
 
-              <v-btn icon class="btn-customs" color="primary" @click="dialogCustom = !dialogCustom">
+              <v-btn icon class="btn-customs" color="primary" @click="dialogCustom = !dialogCustom" 
+                  height="50">
                   <v-icon>mdi-map-plus</v-icon>
               </v-btn>
  
       </div>
-             <DialogCustomMap :visibility="dialogCustom" @changeVisibility="dialogCustom = !dialogCustom" v-model="geoJson" :validGeoJson="placeGeoJson !==null" />
+             <DialogCustomMap :visibility="dialogCustom" @change-visibility="dialogCustom = !dialogCustom" v-model="geoJson" :validGeoJson="placeGeoJson !==null" />
 
-      <div>
+      <div class="search-box__btns">
           <DialogRoom singlePlayer :place="place" :geoJson="placeGeoJson" />
 
           <DialogRoom :place="place" :geoJson="placeGeoJson" />
@@ -45,6 +49,7 @@
     },
     data() {
       return {
+        record: localStorage.getItem('record'),
         place: '',
         dialog: false,
         entries: [],
@@ -68,7 +73,6 @@
                 throw new Error("Error Format")
               }
             })
-            this.place= '';
             return obj; 
 
           }else{
@@ -107,9 +111,24 @@
     },  
   }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .search-box{
+  h2{
+    text-align: center;
+  }
   .search-box__search-bar{
+    display: flex;
+    .btn-customs{
+    margin-top: 18px;
+    }
+  }
+  .v-input{
+    font-size: 1.5rem !important;
+  }
+  .search-box__btns{
+    display: flex;
+    justify-content: space-around;
+
     
 
   }

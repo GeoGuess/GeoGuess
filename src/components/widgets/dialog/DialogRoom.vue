@@ -6,9 +6,10 @@
     max-width="600">
     <template v-slot:activator="{ on }">
       <v-btn 
-        class="ml-8 mr-8 btn"
-        dark
-        :color="(singlePlayer) ? '#FF5252' : '#43B581'"
+        class="dialog-room__btn"
+        rounded
+        :color="(singlePlayer) ? 'primary' : 'secondary'"
+        large
         v-on="on">
         {{ (singlePlayer) ? $t('DialogRoom.singlePlayer') : $t('DialogRoom.withFriends')}}
       </v-btn>
@@ -233,8 +234,9 @@
   }
 </script>
 <style scoped>
-  .btn {
-    border-radius: 40px;
-    width: 12em;
+  .dialog-room__btn {
+    width: 40%;
+    padding: 0 5em;
+    font-size: 1.3rem;
   }
 </style>
