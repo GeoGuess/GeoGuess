@@ -66,6 +66,8 @@ import randomPositionInPolygon from 'random-position-in-polygon';
 import * as turfModel from '@turf/helpers';
 import { isInGeoJSON } from '../utils';
 
+const google = window.google;
+
 export default {
     props: {
         roomName: {

@@ -93,6 +93,8 @@
 import { validURL } from '@/utils';
 import axios from 'axios';
 
+const google = window.google;
+
 export default {
     name: 'DialogCustomMap',
     props: ['visibility', 'value', 'validGeoJson'],

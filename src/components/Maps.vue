@@ -144,6 +144,8 @@ import 'firebase/database';
 
 import DialogSummary from '@/components/DialogSummary';
 
+const google = window.google;
+
 export default {
     props: [
         'randomLatLng',
