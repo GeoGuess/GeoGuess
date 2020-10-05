@@ -1,35 +1,37 @@
-
-![logo](../master/public/img/icons/android-icon-36x36.png)  Geoguess
-===   
+![logo](../master/public/img/icons/android-icon-36x36.png) Geoguess
+===
 
 ![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > Demo : https://demo.geoguess.games
 
-Geoguess 2 is a free and lazy geoguess game. Players compete how close the player can guess random locations in five rounds. 
+Geoguess is a free and lazy geoguess game. Players compete how close the player can guess random locations in five rounds.
 You can play multiplayer with your friends up to five friends. The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.
 Cause of Google Map Api price, we aren't enabled to deploy server with unlimited access. But you can deploy your own game server and play this game unlimitedly and free.
 
 This game was forked from [GeoGuess Master Web](https://github.com/spider-hand/Geoguess-Master-Web).
+
 ## Table of contents
+
 <!-- TOC -->
-- [🃏 Features](#-features)
-- [👏 Contributors](#-contributors)
-- [🚀 Deploy](#-deploy)
-- [📜 License](#-license)
-- [📞 Contact](#-contact)
+
+-   [🃏 Features](#-features)
+-   [👏 Contributors](#-contributors)
+-   [🚀 Deploy](#-deploy)
+-   [📜 License](#-license)
+-   [📞 Contact](#-contact)
 <!-- /TOC -->
+
 ## 🃏 Features
-- Multiplayer game
-- PWA and responsive design
-- Custom Map (geojson)
-- History
-- Score
 
-
+-   Multiplayer game
+-   PWA and responsive design
+-   Custom Map (geojson)
+-   History
+-   Score
 
 ## 👏 Contributors
 
@@ -49,24 +51,25 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
-
 ## 🚀 Deploy
 
-You need to configure Google Maps Platform and Firebase to make game work. 
-See the instructions below. 
+You need to configure Google Maps Platform and Firebase to make game work.
+See the instructions below.
 
-- [Google Maps API](https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key)  
-- [Firebase](https://firebase.google.com/docs/database/web/start)  
-- [Firebase Realtime Database](https://firebase.google.com/docs/database/web/start)
- 
-Once you get an API key and register the project with Firebase, create files named `.env.development.local` and `.env.production.local` inside this project to put environment variables. 
-The files should be like this. 
+-   [Google Maps API](https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key)
+-   [Firebase](https://firebase.google.com/docs/database/web/start)
+-   [Firebase Realtime Database](https://firebase.google.com/docs/database/web/start)
+
+Once you get an API key and register the project with Firebase, create files named `.env.development.local` and `.env.production.local` inside this project to put environment variables.
+The files should be like this.
 
 `.env.production.local`
+
 ```
 NODE_ENV=production
 VUE_APP_API_KEY=YOUR_GOOGLE_MAPS_API_KEY
@@ -78,6 +81,7 @@ VUE_APP_FIREBASE_MEASUREMENT_ID=YOUR_FIREBASE_MEASUREMENT_ID
 ```
 
 `.env.development.local`
+
 ```
 NODE_ENV=development
 ...
@@ -99,11 +103,12 @@ npm run build
 
 You need to host this project as a static website to play multiplayer game with your friends. I recommend using [Netlify](https://www.netlify.com/). You can just fork this project and deploy it from Netlify. Also you can manage environment variables on the Netlify console.
 
-
 ## 📜 License
+
 Licensed under [MIT License](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE)
 
 ## 📞 Contact
+
 Feel free to give us feedback.  
-[Issues](https://github.com/GeoGuess/Geoguess/issues) or 
+[Issues](https://github.com/GeoGuess/Geoguess/issues) or
 [Discord](https://discord.gg/9GXm6RT)
