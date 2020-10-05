@@ -1,39 +1,31 @@
 <template>
-  <v-card color="#061422">
-    <v-card-title>
-      <span id="card-title">{{ $t('CardRoomDifficulty.title') }}</span>
-    </v-card-title>
-    <v-card-text>
-      <v-container>
-        <v-row>
-            <v-col
-                    cols="6"
-                    sm="4"
-                    md="4"
-                    lg="4"
-                    xl="4">
-              <v-autocomplete
-                      v-model="difficulty"
-                      :items="difficultyItems"
-                      autofocus
-                      v-on:keyup.enter="searchRoom"></v-autocomplete>
-            </v-col></v-row>
-      </v-container>
-    </v-card-text>
-    <v-card-actions>
-      <div class="flex-grow-1"></div>
-      <v-btn
-        dark
-        depressed
-        color="#FF5252"
-        @click="cancel">{{ $t('cancel') }}</v-btn>
-      <v-btn
-        dark
-        depressed
-        color="#43B581"
-        @click="searchRoom">{{ $t('next') }}</v-btn>
-    </v-card-actions>
-  </v-card>
+    <v-card>
+        <v-card-title>
+            <span id="card-title">{{ $t('CardRoomDifficulty.title') }}</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>
+                <v-row>
+                    <v-col cols="6" sm="4" md="4" lg="4" xl="4">
+                        <v-autocomplete
+                            v-model="difficulty"
+                            :items="difficultyItems"
+                            autofocus
+                            v-on:keyup.enter="searchRoom"
+                        ></v-autocomplete> </v-col
+                ></v-row>
+            </v-container>
+        </v-card-text>
+        <v-card-actions>
+            <div class="flex-grow-1"></div>
+            <v-btn dark depressed color="#FF5252" @click="cancel">{{
+                $t('cancel')
+            }}</v-btn>
+            <v-btn dark depressed color="#43B581" @click="searchRoom">{{
+                $t('next')
+            }}</v-btn>
+        </v-card-actions>
+    </v-card>
 </template>
 
 <script>

@@ -92,8 +92,8 @@ export default {
                     value: 'ja',
                 },
                 {
-                    text: "Español",
-                    value: "es",
+                    text: 'Español',
+                    value: 'es',
                 },
             ],
         };

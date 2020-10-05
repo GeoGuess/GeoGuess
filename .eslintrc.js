@@ -4,7 +4,11 @@ module.exports = {
         node: true,
         es6: true,
     },
-    extends: ['eslint:recommended', 'plugin:vue/essential'],
+    extends: [
+        'eslint:recommended',
+        'plugin:vue/essential',
+        'plugin:prettier/recommended',
+    ],
     globals: {
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
@@ -17,4 +21,15 @@ module.exports = {
     rules: {
         semi: ['error', 'always'],
     },
+    overrides: [
+        {
+            files: [
+                '**/__tests__/*.{j,t}s?(x)',
+                '**/tests/unit/**/*.spec.{j,t}s?(x)',
+            ],
+            env: {
+                jest: true,
+            },
+        },
+    ],
 };

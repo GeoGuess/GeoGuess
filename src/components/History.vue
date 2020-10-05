@@ -292,16 +292,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>    
-
-.v-card, .v-data-table{
-        
-        background-color: #F1E9D6 !important;
-    }
-.history{
+<style lang="scss" scoped>
+.v-card,
+.v-data-table {
+    background-color: #f1e9d6 !important;
+}
+.history {
     padding: 10px;
-    .v-data-table  > .v-data-table__wrapper > table{
-        & > thead > tr > th{
+    .v-data-table > .v-data-table__wrapper > table {
+        & > thead > tr > th {
             font-size: 1.2rem;
         }
         & > tbody > tr > td {

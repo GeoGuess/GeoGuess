@@ -1,60 +1,89 @@
 <template>
-   <v-dialog :value="this.visibility" @input="$emit('change-visibility')">
-      <v-card class="dialog-customs">
-         <v-card-title>
-            <p>{{$t('DialogCustomMap.title')}}</p>
-         </v-card-title>
-         <v-card-text>
-            <v-row no-gutters>
-              <v-col md="5" class="mr-6">
-                <v-alert type="error" v-if="value && !validGeoJson" transition="out-in" >
-                  {{$t('DialogCustomMap.invalid')}}
-                </v-alert>
-              
-                <GmapMap
-                    :center="{lat:10, lng:10}"
-                    :zoom="1"
-                    ref="mapRef"
-                    map-type-id="terrain"
-                    style="width: 100%; height: 500px"
-                    :options="{
-                      gestureHandling: 'greedy'
-                    }"
-                  >
-                </GmapMap>
-              </v-col>
-              
-              <v-col>
-                <v-radio-group v-model="type" row>
-                  <v-radio :label="$t('DialogCustomMap.text')" value="text"></v-radio>
-                  <v-radio :label="$t('DialogCustomMap.url')"  value="url"></v-radio>
-                  <v-radio :label="$t('DialogCustomMap.file')" value="file"></v-radio>
-                  <v-radio :label="$t('DialogCustomMap.edit')" value="edit"></v-radio>
-                </v-radio-group>
-                <v-file-input
-                  v-if="type==='file'"
-                  :label="$t('DialogCustomMap.fileLabel')"
-                  v-model="file"
-                  prepend-icon="mdi-map"
-                  ></v-file-input>
-                <v-text-field
-                  v-else-if="type==='url'" placeholder='https://gist.github.com/...' label="Url" type="text" v-model="url" :rules="rulesUrl"/>
-                <v-textarea v-else :error="value !== '' && !validGeoJson" :success="validGeoJson" :value="value" v-on:input="onChangeTextArea" :placeholder="placeholderGeoJson" rows="21" filled clearable>
-                </v-textarea>
-              </v-col>
-            </v-row>
-         </v-card-text>
-         <v-card-actions>
-            <div class="flex-grow-1"></div>
-            <v-btn
-              dark
-               color="#43B581"
-               @click="$emit('change-visibility')">
-               OK
-            </v-btn>
-         </v-card-actions>
-      </v-card>
-   </v-dialog>
+    <v-dialog :value="this.visibility" @input="$emit('change-visibility')">
+        <v-card class="dialog-customs">
+            <v-card-title>
+                <p>{{ $t('DialogCustomMap.title') }}</p>
+            </v-card-title>
+            <v-card-text>
+                <v-row no-gutters>
+                    <v-col md="5" class="mr-6">
+                        <v-alert
+                            type="error"
+                            v-if="value && !validGeoJson"
+                            transition="out-in"
+                        >
+                            {{ $t('DialogCustomMap.invalid') }}
+                        </v-alert>
+
+                        <GmapMap
+                            :center="{ lat: 10, lng: 10 }"
+                            :zoom="1"
+                            ref="mapRef"
+                            map-type-id="terrain"
+                            style="width: 100%; height: 500px"
+                            :options="{
+                                gestureHandling: 'greedy',
+                            }"
+                        >
+                        </GmapMap>
+                    </v-col>
+
+                    <v-col>
+                        <v-radio-group v-model="type" row>
+                            <v-radio
+                                :label="$t('DialogCustomMap.text')"
+                                value="text"
+                            ></v-radio>
+                            <v-radio
+                                :label="$t('DialogCustomMap.url')"
+                                value="url"
+                            ></v-radio>
+                            <v-radio
+                                :label="$t('DialogCustomMap.file')"
+                                value="file"
+                            ></v-radio>
+                            <v-radio
+                                :label="$t('DialogCustomMap.edit')"
+                                value="edit"
+                            ></v-radio>
+                        </v-radio-group>
+                        <v-file-input
+                            v-if="type === 'file'"
+                            :label="$t('DialogCustomMap.fileLabel')"
+                            v-model="file"
+                            prepend-icon="mdi-map"
+                        ></v-file-input>
+                        <v-text-field
+                            v-else-if="type === 'url'"
+                            placeholder="https://gist.github.com/..."
+                            label="Url"
+                            type="text"
+                            v-model="url"
+                            :rules="rulesUrl"
+                        />
+                        <v-textarea
+                            v-else
+                            :error="value !== '' && !validGeoJson"
+                            :success="validGeoJson"
+                            :value="value"
+                            v-on:input="onChangeTextArea"
+                            :placeholder="placeholderGeoJson"
+                            rows="21"
+                            filled
+                            clearable
+                        >
+                        </v-textarea>
+                    </v-col>
+                </v-row>
+            </v-card-text>
+            <v-card-actions>
+                <div class="flex-grow-1"></div>
+                <v-btn dark color="#43B581" @click="$emit('change-visibility')">
+                    OK
+                </v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script>
@@ -233,8 +262,7 @@ const geoJsonExample = `{
 }`;
 </script>
 <style lang="scss" scoped>
-
-  .dialog-customs {
-    background: #FFFAEC;
-  }
+.dialog-customs {
+    background: #fffaec;
+}
 </style>

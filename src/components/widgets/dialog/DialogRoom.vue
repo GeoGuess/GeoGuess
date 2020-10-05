@@ -1,29 +1,36 @@
 <template>
-  <v-dialog 
-    persistent
-    :fullscreen="$viewport.width < 450"
-    v-model="dialogRoom"
-    max-width="600">
-    <template v-slot:activator="{ on }">
-      <v-btn 
-        class="dialog-room__btn"
-        rounded
-        :color="(singlePlayer) ? 'primary' : 'secondary'"
-        large
-        v-on="on">
-        {{ (singlePlayer) ? $t('DialogRoom.singlePlayer') : $t('DialogRoom.withFriends')}}
-      </v-btn>
-    </template>
-    <component 
-      :is="currentComponent"
-      :errorMessage="errorMessage"
-      @searchRoom="searchRoom"
-      @setRoomSize="setRoomSize"
-      @setTimeLimitation="setTimeLimitation"
-      @setPlayerName="setPlayerName"
-      @setDifficulty="setDifficulty"
-      @cancel="cancel" />
-  </v-dialog>
+    <v-dialog
+        persistent
+        :fullscreen="$viewport.width < 450"
+        v-model="dialogRoom"
+        max-width="600"
+    >
+        <template v-slot:activator="{ on }">
+            <v-btn
+                class="dialog-room__btn"
+                rounded
+                :color="singlePlayer ? 'primary' : 'secondary'"
+                large
+                v-on="on"
+            >
+                {{
+                    singlePlayer
+                        ? $t('DialogRoom.singlePlayer')
+                        : $t('DialogRoom.withFriends')
+                }}
+            </v-btn>
+        </template>
+        <component
+            :is="currentComponent"
+            :errorMessage="errorMessage"
+            @searchRoom="searchRoom"
+            @setRoomSize="setRoomSize"
+            @setTimeLimitation="setTimeLimitation"
+            @setPlayerName="setPlayerName"
+            @setDifficulty="setDifficulty"
+            @cancel="cancel"
+        />
+    </v-dialog>
 </template>
 
 <script>
@@ -262,10 +269,9 @@ export default {
 };
 </script>
 <style scoped>
-  .dialog-room__btn {
+.dialog-room__btn {
     width: 40%;
     padding: 0 5em;
     font-size: 1.3rem;
-  }
-
+}
 </style>
