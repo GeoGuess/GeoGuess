@@ -91,10 +91,6 @@ export default {
                     text: '日本語',
                     value: 'ja',
                 },
-                {
-                    text: "Español",
-                    value: "es",
-                },
             ],
         };
     },
