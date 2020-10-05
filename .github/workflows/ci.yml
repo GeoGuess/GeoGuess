@@ -21,3 +21,24 @@ jobs:
     - run: npm ci
     - name: Linter
       run: npm run lint
+  build:
+    name: Build
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - run: npm ci
+    - name: Build
+      run: npm run build
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: build
+        # Directory containing files to upload
+        path: dist
