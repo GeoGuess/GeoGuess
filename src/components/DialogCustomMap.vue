@@ -1,5 +1,5 @@
 <template>
-    <v-dialog :value="this.visibility" @input="$emit('changeVisibility')">
+    <v-dialog :value="this.visibility" @input="$emit('change-visibility')">
         <v-card class="dialog-customs" color="#061422">
             <v-card-title>
                 <p>{{ $t('DialogCustomMap.title') }}</p>
@@ -81,7 +81,7 @@
             </v-card-text>
             <v-card-actions>
                 <div class="flex-grow-1"></div>
-                <v-btn dark color="#43B581" @click="$emit('changeVisibility')">
+                <v-btn dark color="#43B581" @click="$emit('change-visibility')">
                     OK
                 </v-btn>
             </v-card-actions>
@@ -150,7 +150,9 @@ export default {
                     });
                     try {
                         data.addGeoJson(JSON.parse(v));
-                    } catch (e) {}
+                    } catch (e) {
+                        throw e;
+                    }
 
                     if (this.type === 'edit') {
                         data.addListener('addfeature', this.onChangeMap);
@@ -175,7 +177,7 @@ export default {
             if (validURL(value)) {
                 // if gist url get raw
                 /* eslint-disable no-useless-escape */
-                if (RegExp('^(https?:\/\/)?gist\.github\.com\/').test(value)) {
+                if (RegExp('^(https?://)?gist.github.com/').test(value)) {
                     let urlSplit = value.split('/');
                     if (
                         urlSplit.length > 3 &&
@@ -202,6 +204,7 @@ export default {
                         }
                     })
                     .catch((err) => {
+                        // eslint-disable-next-line no-console
                         console.log(err);
                     });
             }

@@ -49,7 +49,9 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+// eslint-disable-next-line no-console
 console.info('Version : ' + process.env.VUE_APP_VERSION);
+
 new Vue({
     vuetify,
     router,

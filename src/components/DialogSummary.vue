@@ -53,7 +53,7 @@
                         class="mt-8"
                         dark
                         color="#43B581"
-                        @click="$emit('viewDetails')"
+                        @click="$emit('view-details')"
                         >{{ $t('DialogSummary.viewDetails') }}</v-btn
                     >
                 </v-row>

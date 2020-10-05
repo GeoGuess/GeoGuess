@@ -132,7 +132,7 @@
             :points="points"
             :game="game"
             :multiplayer="!!this.room"
-            @viewDetails="viewDetails"
+            @view-details="viewDetails"
             @finishGame="finishGame"
         />
     </div>
