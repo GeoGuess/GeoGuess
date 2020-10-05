@@ -29,14 +29,12 @@
 
 <style scoped>
   span {
-    font-family: montserrat;    
     color: #888;
   }
 
   #card-title {
     font-size: 16px;
     font-weight: 500;
-    color: #FFFFFF;
     opacity: 0.9;
   }  
 </style>

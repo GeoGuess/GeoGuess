@@ -14,7 +14,6 @@
             min="0"
             step="30"
             hide-details
-            dark
           >
           </v-slider>
         </v-row>
@@ -23,7 +22,6 @@
             <v-text-field
               :value="Math.floor(this.timeLimitation / 60)"
               v-on:change="changeMinute"
-              dark
               type="number"
             ></v-text-field>
             <p>:</p>
@@ -31,7 +29,6 @@
             <v-text-field
               :value="this.timeLimitation % 60"
               v-on:change="changeSecond"
-              dark
               type="number"
             ></v-text-field>
           </div>
@@ -95,11 +92,9 @@
   #card-title {
     font-size: 16px;
     font-weight: 500;
-    color: #FFFFFF;
     opacity: 0.9;
   } 
   .time-input{
-    color: white;
     display: flex;
     margin: auto;
     p{
@@ -111,7 +106,6 @@
     }
   }
   .infinite--text{
-    color: white;
     text-align: center;
     font-size: 1rem;
     width: 100%;

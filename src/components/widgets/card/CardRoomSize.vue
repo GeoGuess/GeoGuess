@@ -8,7 +8,6 @@
         <v-row>
           <v-col cols="4">
             <v-autocomplete 
-              dark
               v-model="roomSize"
               :items="roomSizeItems"              
               autofocus
@@ -106,7 +105,6 @@
   #card-title {
     font-size: 16px;
     font-weight: 500;
-    color: #FFFFFF;
     opacity: 0.9;
   } 
 </style>

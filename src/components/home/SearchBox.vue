@@ -119,7 +119,7 @@
   .search-box__search-bar{
     display: flex;
     .btn-customs{
-    margin-top: 18px;
+      margin-top: 18px;
     }
   }
   .v-input{
@@ -128,9 +128,30 @@
   .search-box__btns{
     display: flex;
     justify-content: space-around;
-
-    
-
   }
 }
+  @media (max-width: 380px) {
+    .search-box{
+      .v-input{
+        font-size: 1rem !important;
+      }
+    
+      .search-box__search-bar{
+        flex-direction: column;    
+        width: 100vw;   
+        margin: auto;     
+        .btn-customs{
+          margin: 2% auto;
+        }
+      }
+      .search-box__btns{
+        flex-direction: column;
+        .v-btn{
+
+          width: 80%;
+          margin: 2% auto;
+        }
+      }
+    }
+  }
 </style>

@@ -67,5 +67,11 @@ footer{
     }
   }
 }
+@media (max-width: 350px) {
+  .footer__logo .v-btn.ml-4{
+    margin-left: 0!important;
+    margin-right: 0!important;
+  }
+}
 
 </style>

@@ -8,7 +8,6 @@
         <v-row>
           <v-col cols="12">
               <v-text-field 
-                dark
                 maxlength="10"
                 v-model="playerName"                
                 autofocus
@@ -56,7 +55,6 @@
   #card-title {
     font-size: 16px;
     font-weight: 500;
-    color: #FFFFFF;
     opacity: 0.9;
   } 
 </style>

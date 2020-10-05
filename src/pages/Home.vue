@@ -96,10 +96,8 @@
  
 <style scoped lang="scss">
 .home-page{
-  
     background-color: #ded3af;
-    .home-page__main__container{
-      
+    .home-page__main__container{      
       font-size: 1.2rem;
       padding: 0;
       margin: 0;
@@ -107,12 +105,13 @@
       background: url("../assets/home/worldMap.png");
       background-size: cover;
       .home-page__main__layout{
-       height: calc(100vh - 150px);
+        height: calc(100vh - 150px);
         flex-wrap: nowrap;
         justify-items: end;
         .box{
           margin: auto;          
           width: 35vw;
+          min-width: 400px;
         }
   
         .home-page__main__content{
@@ -122,8 +121,9 @@
         .home-page__traveler-container{
           
           position: relative; 
-          height: 100%;
+          height: auto;
           width: 100%;
+          max-width: 50vw;
           .home-page__traveler-img{
             position: absolute;
             bottom: 0;
@@ -135,5 +135,15 @@
       }
     }
 
+}
+@media (max-width: 660px) {
+  .home-page{
+    background-color: #ded3af;
+    .home-page__main__container{   
+      .home-page__main__layout{
+        flex-direction: column-reverse;
+      }
+    }
+  }
 }
 </style>

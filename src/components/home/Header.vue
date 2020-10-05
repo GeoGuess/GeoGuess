@@ -1,37 +1,39 @@
 <template>
+<div>
   <v-app-bar class="header" height="100">
     
     <img class="header__logo" src="@/assets/geoguessLogo.png" />
 
     <div class="flex-grow-1"></div>
+
     
       <v-btn
         text
         @click="historyDialog = true">{{$t('Home.historyBtn')}}</v-btn>
-    <v-menu>
-      
-      <template v-slot:activator="{ on }">
-        <v-btn 
-          text
-          v-on="on">
-            <v-icon size="30">mdi-translate</v-icon>
-        </v-btn>
-      </template>
-      <v-list>
-        <v-list-item
-          v-for="(language, index) in languages"
-          :key="index"
-          @click="switchLanguage(language.value)">
-          <v-list-item-title>{{ language.text }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
+      <v-menu >
+        
+        <template v-slot:activator="{ on }">
+          <v-btn 
+            text
+            v-on="on">
+              <v-icon size="30">mdi-translate</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="(language, index) in languages"
+            :key="index"
+            @click="switchLanguage(language.value)">
+            <v-list-item-title>{{ language.text }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     
     <v-dialog v-model="historyDialog" >
       <History :history="history"/>
     </v-dialog>
   </v-app-bar>
-
+</div>
 </template>
 <script>
 
@@ -42,6 +44,7 @@
     },
     data() {
       return {
+        drawer: false,
         historyDialog: false,
         history: (localStorage.getItem('history')) ? JSON.parse(localStorage.getItem('history')) : [],
         languages: [
@@ -90,7 +93,15 @@
     }
     .header__logo{
         height: 6rem;
-        width: auto
+        width: auto;
+    }
+  }
+
+  @media (max-width: 660px) {
+    .header{
+      .header__logo{
+        display: none;
+      }
     }
   }
 </style>
