@@ -7,6 +7,7 @@ import ja from 'vuetify/es5/locale/ja'
 import cs from 'vuetify/es5/locale/cs'
 import de from 'vuetify/es5/locale/de'
 import es from 'vuetify/es5/locale/es'
+
 import { checkLanguage } from '../lang';
 
 Vue.use(Vuetify);

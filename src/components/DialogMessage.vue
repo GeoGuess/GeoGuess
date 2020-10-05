@@ -1,42 +1,39 @@
 <template>
-  <v-dialog 
-    v-model="dialogMessage"
-    max-width="600"
-    persistent
-    :fullscreen="$viewport.width < 450">
-    <v-card color="#061422">
-      <v-card-title>
-        <span id="card-title">{{ dialogTitle }}</span>
-      </v-card-title>
-      <v-card-text>
-        <v-container>
-          <span>{{ dialogText }}</span>
-        </v-container>
-      </v-card-text>
-    </v-card>
-  </v-dialog>
+    <v-dialog
+        v-model="dialogMessage"
+        max-width="600"
+        persistent
+        :fullscreen="$viewport.width < 450"
+    >
+        <v-card color="#061422">
+            <v-card-title>
+                <span id="card-title">{{ dialogTitle }}</span>
+            </v-card-title>
+            <v-card-text>
+                <v-container>
+                    <span>{{ dialogText }}</span>
+                </v-container>
+            </v-card-text>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script>
-  export default {
-    props: [
-      'dialogMessage',
-      'dialogTitle',
-      'dialogText',
-    ]
-  }
+export default {
+    props: ['dialogMessage', 'dialogTitle', 'dialogText'],
+};
 </script>
 
 <style scoped>
-  span {
-    font-family: montserrat;    
+span {
+    font-family: montserrat;
     color: #888;
-  }
+}
 
-  #card-title {
+#card-title {
     font-size: 16px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: #ffffff;
     opacity: 0.9;
-  }  
+}
 </style>
