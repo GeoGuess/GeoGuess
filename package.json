@@ -14,6 +14,7 @@
     "@turf/distance": "^6.0.1",
     "@turf/helpers": "^6.1.4",
     "axios": "^0.19.2",
+    "core-js": "^2.6.5",
     "firebase": "^7.22.0",
     "firebase-admin": "^8.13.0",
     "firebase-functions": "^3.11.0",
@@ -40,41 +41,12 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "react-is": "^16.13.1",
+    "prettier": "2.1.2",
     "sass": "^1.26.11",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-vuetify": "^0.6.3",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.6.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
-      }
-    ]
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
   },
   "browserslist": [
     "> 1%",

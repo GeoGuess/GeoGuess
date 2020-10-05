@@ -34,31 +34,29 @@
 </template>
 
 <script>
-  export default {
-    props: [
-      "errorMessage",
-    ],
+export default {
+    props: ['errorMessage'],
     data() {
-      return {
-        roomName: '',
-      }
+        return {
+            roomName: '',
+        };
     },
     methods: {
-      searchRoom() {
-        // Pass room name to parent component
-        this.$emit('searchRoom', this.roomName)
-      },
-      cancel() {
-        this.$emit('cancel')
-      }
-    }
-  }
+        searchRoom() {
+            // Pass room name to parent component
+            this.$emit('searchRoom', this.roomName);
+        },
+        cancel() {
+            this.$emit('cancel');
+        },
+    },
+};
 </script>
 
 <style scoped>
-  #card-title {
+#card-title {
     font-size: 16px;
     font-weight: 500;
     opacity: 0.9;
-  } 
+}
 </style>

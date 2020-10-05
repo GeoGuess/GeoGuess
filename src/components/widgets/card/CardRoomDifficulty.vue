@@ -36,47 +36,44 @@
   </v-card>
 </template>
 
-
 <script>
-  export default {
-    props: [
-      "errorMessage",
-    ],
+export default {
+    props: ['errorMessage'],
     data() {
-      return {
-        difficulty: 0,
-        difficultyItems: [
-          {
-            text: this.$t('CardRoomDifficulty.easy'),
-            value: 0,
-          },
-          {
-            text: this.$t('CardRoomDifficulty.medium'),
-            value: 1,
-          },
-          {
-            text: this.$t('CardRoomDifficulty.hard'),
-            value: 2,
-          },
-        ],
-      }
+        return {
+            difficulty: 0,
+            difficultyItems: [
+                {
+                    text: this.$t('CardRoomDifficulty.easy'),
+                    value: 0,
+                },
+                {
+                    text: this.$t('CardRoomDifficulty.medium'),
+                    value: 1,
+                },
+                {
+                    text: this.$t('CardRoomDifficulty.hard'),
+                    value: 2,
+                },
+            ],
+        };
     },
     methods: {
-      searchRoom() {
-        // Pass room name to parent component
-        this.$emit('setDifficulty', this.difficulty)
-      },
-      cancel() {
-        this.$emit('cancel')
-      }
-    }
-  }
+        searchRoom() {
+            // Pass room name to parent component
+            this.$emit('setDifficulty', this.difficulty);
+        },
+        cancel() {
+            this.$emit('cancel');
+        },
+    },
+};
 </script>
 
 <style scoped>
-  #card-title {
+#card-title {
     font-size: 16px;
     font-weight: 500;
     opacity: 0.9;
-  } 
+}
 </style>

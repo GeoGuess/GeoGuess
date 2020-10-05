@@ -31,7 +31,7 @@
             class="mt-8"
             dark
             color="#43B581"
-            @click="$emit('viewDetails')">{{$t('DialogSummary.viewDetails')}}</v-btn>
+            @click="$emit('view-details')">{{$t('DialogSummary.viewDetails')}}</v-btn>
         </v-row>
       </v-card-text>
       <v-card-text class="text-right">
@@ -54,81 +54,85 @@
 </template>
 
 <script>
-  export default {
+export default {
     props: [
-      'dialogSummary',
-      'summaryTexts',
-      'playerName',
-      'score',
-      'points',
-      'multiplayer',
-      'game'
+        'dialogSummary',
+        'summaryTexts',
+        'playerName',
+        'score',
+        'points',
+        'multiplayer',
+        'game',
     ],
-    data(){
-      return {
-        url: process.env.URL
-      }
+    data() {
+        return {
+            url: process.env.URL,
+        };
     },
     methods: {
-      updateRecord() {
-
-        var currentRecord = localStorage.getItem('record')
-        if (currentRecord == null || this.score < currentRecord) {
-          localStorage.setItem('record', this.score)
-        }
-        let history = localStorage.getItem('history')
-        if (history == null) {
-          history = []
-        }else{
-          history = JSON.parse(history)
-        }
-        history.push({
-          ...this.game,
-          score: this.score,
-          points: this.points,
-          rank: (this.multiplayer) ? this.summaryTexts.findIndex((text) => text.playerName === this.playerName ) +1 : undefined,
-        })
-        localStorage.setItem('history', JSON.stringify(history))
-        
-      },
-      finishGame() {
-        this.$emit('finishGame')
-      },
+        updateRecord() {
+            var currentRecord = localStorage.getItem('record');
+            if (currentRecord == null || this.score < currentRecord) {
+                localStorage.setItem('record', this.score);
+            }
+            let history = localStorage.getItem('history');
+            if (history == null) {
+                history = [];
+            } else {
+                history = JSON.parse(history);
+            }
+            history.push({
+                ...this.game,
+                score: this.score,
+                points: this.points,
+                rank: this.multiplayer
+                    ? this.summaryTexts.findIndex(
+                          (text) => text.playerName === this.playerName
+                      ) + 1
+                    : undefined,
+            });
+            localStorage.setItem('history', JSON.stringify(history));
+        },
+        finishGame() {
+            this.$emit('finishGame');
+        },
     },
     watch: {
-      dialogSummary: function(newVal) {
-        if (newVal == true) {
-          this.updateRecord()
-        }
-      }      
-    }
-  } 
+        dialogSummary: function (newVal) {
+            if (newVal == true) {
+                this.updateRecord();
+            }
+        },
+    },
+};
 </script>
 
 <style scoped>
-  #exit-button, #play-again-button {
+#exit-button,
+#play-again-button {
     height: 44px;
     width: 210px;
     border-radius: 40px;
-  }
+}
 
-  #card-text {
+#card-text {
     padding: 80px 10% 80px 10%;
-  }
+}
 
-  #summary-text {
+#summary-text {
     font-size: 18px;
     opacity: 0.9;
-  }
+}
 
-  @media (max-width: 450px) {
-    #exit-button, #play-again-button {
-      height: 36px;
+@media (max-width: 450px) {
+    #exit-button,
+    #play-again-button {
+        height: 36px;
     }
 
     #exit-button {
-      margin-top: 28px;
-      margin-bottom: 24px;
+        margin-top: 28px;
+        margin-bottom: 24px;
     }
-  }
+}
 </style>

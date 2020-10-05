@@ -17,14 +17,6 @@
                 <div class="box">
                   
                   <SearchBox/>
-
-                  <!-- <v-flex xs12>
-                      <v-btn
-                        dark
-                        text
-                        @click="historyDialog = true">{{$t('Home.historyBtn')}}</v-btn>
-
-                  </v-flex> -->
                 </div>
               </v-layout>
             </v-layout>
@@ -42,25 +34,18 @@
 <script>
 
 
-  import History from '@/components/History'
+  import History from '@/components/History';
 
-  import Header from '@/components/home/Header'
-  import SearchBox from '@/components/home/SearchBox'
-  import Footer from '@/components/home/Footer'
+  import Header from '@/components/home/Header';
+  import SearchBox from '@/components/home/SearchBox';
+  import Footer from '@/components/home/Footer';
 
-  export default {
+export default {
     components: {
       Header,
       History,
       Footer,
       SearchBox,
-    },
-    data() {
-      return {
-        historyDialog: false,
-        history: (localStorage.getItem('history')) ? JSON.parse(localStorage.getItem('history')) : [],
-        version: process.env.VUE_APP_VERSION,
-      }
     },
     mounted() {
       if(this.$route.params.partyParams){
@@ -78,18 +63,11 @@
               roundsPredefined: rounds
             }
           });
-        }
-      }
-    },
-    computed: {
-      minHeight () {
-        const height = this.$vuetify.breakpoint.mdAndUp ? '100vh' : '50vh'
-
-        return `calc(${height} - ${this.$vuetify.application.top}px)`
-      },
-    },
+        } 
+    }
      
   }
+};
 </script>
 
      

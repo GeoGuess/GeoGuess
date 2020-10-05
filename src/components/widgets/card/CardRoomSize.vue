@@ -33,78 +33,78 @@
 </template>
 
 <script>
-  export default {
+export default {
     data() {
-      return {
-        roomSize: 2,
-        roomSizeItems: [
-          {
-            text: '2',
-            value: 2,
-          },
-          {
-            text: '3',
-            value: 3,
-          },
-          {
-            text: '4',
-            value: 4,
-          },
-          {
-            text: '5',
-            value: 5,
-          },  
-          {
-            text: '5',
-            value: 5,
-          },  
-          {
-            text: '6',
-            value: 6,
-          },  
-          {
-            text: '7',
-            value: 7,
-          },  
-          {
-            text: '8',
-            value: 8,
-          },  
-          {
-            text: '9',
-            value: 9,
-          },  
-          {
-            text: '10',
-            value: 10,
-          },  
-          {
-            text: '11',
-            value: 11,
-          },  
-          {
-            text: '12',
-            value: 12,
-          },          
-        ],
-      }
+        return {
+            roomSize: 2,
+            roomSizeItems: [
+                {
+                    text: '2',
+                    value: 2,
+                },
+                {
+                    text: '3',
+                    value: 3,
+                },
+                {
+                    text: '4',
+                    value: 4,
+                },
+                {
+                    text: '5',
+                    value: 5,
+                },
+                {
+                    text: '5',
+                    value: 5,
+                },
+                {
+                    text: '6',
+                    value: 6,
+                },
+                {
+                    text: '7',
+                    value: 7,
+                },
+                {
+                    text: '8',
+                    value: 8,
+                },
+                {
+                    text: '9',
+                    value: 9,
+                },
+                {
+                    text: '10',
+                    value: 10,
+                },
+                {
+                    text: '11',
+                    value: 11,
+                },
+                {
+                    text: '12',
+                    value: 12,
+                },
+            ],
+        };
     },
     methods: {
-      setRoomSize() {
-        // Pass room size to parent component
-        this.$emit('setRoomSize', this.roomSize)
-      },
-      cancel() {
-        this.$emit('cancel')
-      }
-    }
-  }
+        setRoomSize() {
+            // Pass room size to parent component
+            this.$emit('setRoomSize', this.roomSize);
+        },
+        cancel() {
+            this.$emit('cancel');
+        },
+    },
+};
 </script>
 
 <style scoped>
-  #card-title {
+#card-title {
     font-size: 16px;
     font-weight: 500;
     opacity: 0.9;
-  } 
+}
 </style>
