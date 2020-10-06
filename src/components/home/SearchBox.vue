@@ -137,7 +137,7 @@ export default {
         }
     }
     .v-input {
-        font-size: 1.5rem !important;
+        font-size: 1.2rem !important;
     }
     .search-box__btns {
         display: flex;

@@ -1,16 +1,5 @@
-$body-font-family: 'Homenaje', sans-serif  !important;
-
 .v-application {
-    font-family: $body-font-family;
     .v-card {
-            
         background-color: #F1E9D6 !important;
-        *:not(.v-btn, .v-input){
-            
-            font-size: 1.1em !important;
-            
-        }
-        
     }
-
 }

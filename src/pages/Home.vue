@@ -78,7 +78,7 @@ export default {
         padding: 0;
         margin: 0;
         width: 100%;
-        background: url('../assets/home/worldMap.png');
+        background: url('../assets/home/world.svg');
         background-size: cover;
         .home-page__main__layout {
             height: calc(100vh - 150px);

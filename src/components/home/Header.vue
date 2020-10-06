@@ -91,7 +91,7 @@ export default {
     padding: 0 5%;
     background-color: #f1e9d6 !important;
     .v-btn {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         margin: 0 1.5rem;
     }
     .header__logo {

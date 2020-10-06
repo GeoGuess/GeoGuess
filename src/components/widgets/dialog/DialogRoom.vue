@@ -272,6 +272,6 @@ export default {
 .dialog-room__btn {
     width: 40%;
     padding: 0 5em;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 </style>

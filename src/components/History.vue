@@ -299,14 +299,5 @@ export default {
 }
 .history {
     padding: 10px;
-    .v-data-table > .v-data-table__wrapper > table {
-        & > thead > tr > th {
-            font-size: 1.2rem;
-        }
-        & > tbody > tr > td {
-            font-size: 0.9rem;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    }
 }
 </style>
