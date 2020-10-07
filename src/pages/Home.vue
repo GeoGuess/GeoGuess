@@ -10,7 +10,7 @@
                     <div class="home-page__traveler-container">
                         <img
                             class="home-page__traveler-img"
-                            src="../assets/home/michel.png"
+                            src="../assets/home/traveller.svg"
                         />
                     </div>
                     <v-layout row class="home-page__main__content">
