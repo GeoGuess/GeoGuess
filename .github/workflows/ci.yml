@@ -6,18 +6,25 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  linter:
-    name: Linter
-    runs-on: 'ubuntu-latest'
+  integration:
     if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [12]
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v1
     - uses: actions/cache@v1
       with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - run: npm ci
+        path: ~/.npm          
+        key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/package-lock.json')) }}
+    - name: Install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
     - name: Linter
       run: npm run lint
+    - name: Run unit tests
+      run: npm run test:unit
+    - name: Code coverage
+      uses: codecov/codecov-action@v1.0.12

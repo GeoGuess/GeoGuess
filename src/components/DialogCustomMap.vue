@@ -1,5 +1,9 @@
 <template>
-    <v-dialog :value="this.visibility" @input="$emit('change-visibility')">
+    <v-dialog
+        :value="this.visibility"
+        @input="$emit('change-visibility')"
+        scrollable
+    >
         <v-card class="dialog-customs">
             <v-card-title>
                 <p>{{ $t('DialogCustomMap.title') }}</p>
