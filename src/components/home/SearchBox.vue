@@ -104,6 +104,11 @@ export default {
     },
 
     watch: {
+        placeGeoJson(val) {
+            if (val !== null) {
+                this.place = '';
+            }
+        },
         search(val) {
             // Items have already been requested
             if (!val) return;
