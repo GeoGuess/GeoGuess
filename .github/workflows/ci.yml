@@ -45,5 +45,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: build
+        name: ${{ matrix.os }}-node-v${{ matrix.node }}-build
         path: dist
