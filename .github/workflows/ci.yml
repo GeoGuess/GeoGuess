@@ -43,7 +43,7 @@ jobs:
       run: npm run build
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v1
       with:
         name: ${{ matrix.os }}-node-v${{ matrix.node }}-build
         path: dist
