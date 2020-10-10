@@ -41,7 +41,7 @@ export default {
         SearchBox,
     },
     mounted() {
-        if (this.$route.params.partyParams) {
+        if (this.$route.params && this.$route.params.partyParams) {
             const params = atob(this.$route.params.partyParams)
                 .split(',')
                 .map((val) => parseFloat(val));

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home.vue test mounted 1`] = `
+<div class="home-page">
+  <header-stub></header-stub>
+  <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="none" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+    <history-stub></history-stub>
+  </v-dialog-stub>
+  <section class="home-page__main">
+    <v-container-stub tag="div" fluid="true" class="home-page__main__container">
+      <v-layout-stub tag="div" row="" class="home-page__main__layout">
+        <div class="home-page__traveler-container"><img src="../assets/home/traveller.svg" class="home-page__traveler-img"></div>
+        <v-layout-stub tag="div" row="" class="home-page__main__content">
+          <div class="box">
+            <searchbox-stub></searchbox-stub>
+          </div>
+        </v-layout-stub>
+      </v-layout-stub>
+    </v-container-stub>
+  </section>
+  <footer-stub></footer-stub>
+</div>
+`;
+
+exports[`Home.vue test mounted 2`] = `
+<div class="home-page">
+  <header-stub></header-stub>
+  <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="none" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+    <history-stub></history-stub>
+  </v-dialog-stub>
+  <section class="home-page__main">
+    <v-container-stub tag="div" fluid="true" class="home-page__main__container">
+      <v-layout-stub tag="div" row="" class="home-page__main__layout">
+        <div class="home-page__traveler-container"><img src="../assets/home/traveller.svg" class="home-page__traveler-img"></div>
+        <v-layout-stub tag="div" row="" class="home-page__main__content">
+          <div class="box">
+            <searchbox-stub></searchbox-stub>
+          </div>
+        </v-layout-stub>
+      </v-layout-stub>
+    </v-container-stub>
+  </section>
+  <footer-stub></footer-stub>
+</div>
+`;
