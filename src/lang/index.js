@@ -6,13 +6,12 @@ import ja from './TranslationsJA';
 import fr from './TranslationsFR';
 import cs from './TranslationsCS';
 import de from './TranslationsDE';
-import es from './TranslationsES';
 
 Vue.use(VueI18n);
 
-const translations = Object.assign(en, ja, fr, cs, de, es);
+const translations = Object.assign(en, ja, fr, cs, de);
 
-const languages = ['en', 'ja', 'fr', 'cs', 'de', 'es'];
+const languages = ['en', 'ja', 'fr', 'cs', 'de'];
 
 export function checkLanguage(language) {
     return navigator.language.split('-')[0] == language;
