@@ -1,5 +1,5 @@
 <template>
-    <v-card color="#061422">
+    <v-card>
         <v-card-title>
             <span id="card-title">{{ $t('CardRoomDifficulty.title') }}</span>
         </v-card-title>
@@ -8,7 +8,6 @@
                 <v-row>
                     <v-col cols="6" sm="4" md="4" lg="4" xl="4">
                         <v-autocomplete
-                            dark
                             v-model="difficulty"
                             :items="difficultyItems"
                             autofocus
@@ -67,7 +66,6 @@ export default {
 #card-title {
     font-size: 16px;
     font-weight: 500;
-    color: #ffffff;
     opacity: 0.9;
 }
 </style>

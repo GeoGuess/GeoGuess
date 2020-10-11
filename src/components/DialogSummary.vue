@@ -70,7 +70,6 @@
                     "
                     rel="nofollow"
                     icon
-                    color="#FFFFFF"
                 >
                     <v-icon size="32">mdi-facebook-box</v-icon>
                 </v-btn>
@@ -84,7 +83,6 @@
                         ' km away! How close can you guess?'
                     "
                     icon
-                    color="#FFFFFF"
                 >
                     <v-icon size="32">mdi-twitter-box</v-icon>
                 </v-btn>
@@ -161,7 +159,6 @@ export default {
 
 #summary-text {
     font-size: 18px;
-    color: #ffffff;
     opacity: 0.9;
 }
 

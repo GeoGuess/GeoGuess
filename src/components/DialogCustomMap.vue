@@ -1,6 +1,10 @@
 <template>
-    <v-dialog :value="this.visibility" @input="$emit('change-visibility')">
-        <v-card class="dialog-customs" color="#061422">
+    <v-dialog
+        :value="this.visibility"
+        @input="$emit('change-visibility')"
+        scrollable
+    >
+        <v-card class="dialog-customs">
             <v-card-title>
                 <p>{{ $t('DialogCustomMap.title') }}</p>
             </v-card-title>
@@ -29,7 +33,7 @@
                     </v-col>
 
                     <v-col>
-                        <v-radio-group v-model="type" row dark>
+                        <v-radio-group v-model="type" row>
                             <v-radio
                                 :label="$t('DialogCustomMap.text')"
                                 value="text"
@@ -52,7 +56,6 @@
                             :label="$t('DialogCustomMap.fileLabel')"
                             v-model="file"
                             prepend-icon="mdi-map"
-                            dark
                         ></v-file-input>
                         <v-text-field
                             v-else-if="type === 'url'"
@@ -61,17 +64,15 @@
                             type="text"
                             v-model="url"
                             :rules="rulesUrl"
-                            dark
                         />
                         <v-textarea
                             v-else
                             :error="value !== '' && !validGeoJson"
                             :success="validGeoJson"
-                            dark
                             :value="value"
                             v-on:input="onChangeTextArea"
                             :placeholder="placeholderGeoJson"
-                            rows="25"
+                            rows="21"
                             filled
                             clearable
                         >
@@ -250,9 +251,7 @@ const geoJsonExample = `{
       "properties": {},
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[
-          [0, 0.0], [10.0, 0.0], [10, 20],
-               [0.0, 20], [0, 0.0] ]]
+        "coordinates": [[ [0, 0.0], [10.0, 0.0], [10, 20], [0.0, 20], [0, 0.0] ]]
       }
     },
     {
@@ -260,9 +259,7 @@ const geoJsonExample = `{
       "properties": {},
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[
-          [0, 0.0], [10.0, 0.0], [10, 20],
-               [0.0, 20], [0, 0.0] ]]
+        "coordinates": [[ [0, 0.0], [10.0, 0.0], [10, 20], [0.0, 20], [0, 0.0] ]]
       }
     }
    ]
@@ -270,6 +267,6 @@ const geoJsonExample = `{
 </script>
 <style lang="scss" scoped>
 .dialog-customs {
-    color: #ffffff;
+    background: #fffaec;
 }
 </style>

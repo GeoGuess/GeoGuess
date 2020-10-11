@@ -1,5 +1,5 @@
 <template>
-    <v-card class="main-card">
+    <v-card class="history">
         <v-card-title>
             {{ $t('History.title') }}
         </v-card-title>
@@ -292,8 +292,12 @@ export default {
 };
 </script>
 
-<style scoped>
-.main-card {
+<style lang="scss" scoped>
+.v-card,
+.v-data-table {
+    background-color: #f1e9d6 !important;
+}
+.history {
     padding: 10px;
 }
 </style>

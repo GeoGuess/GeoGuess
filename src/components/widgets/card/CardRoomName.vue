@@ -1,5 +1,5 @@
 <template>
-    <v-card color="#061422">
+    <v-card>
         <v-card-title>
             <span id="card-title">{{ $t('CardRoomName.title') }}</span>
         </v-card-title>
@@ -8,7 +8,6 @@
                 <v-row>
                     <v-col cols="12">
                         <v-text-field
-                            dark
                             maxlength="10"
                             autofocus
                             :error-messages="errorMessage"
@@ -55,7 +54,6 @@ export default {
 #card-title {
     font-size: 16px;
     font-weight: 500;
-    color: #ffffff;
     opacity: 0.9;
 }
 </style>
