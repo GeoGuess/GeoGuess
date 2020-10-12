@@ -25,3 +25,6 @@ yarn-error.log*
 .netlify
 
 /coverage
+
+/tests/e2e/screenshots
+/tests/e2e/videos
