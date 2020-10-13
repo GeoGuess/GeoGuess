@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-16.04
+    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
+    name: E2E on Chrome
+    env:    env:
+      VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: cypress-io/github-action@v2
+        with:
+          record: true
+          start: npm run serve
+          wait-on: 'http://localhost:8080'
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
