@@ -15,11 +15,11 @@
                     </v-btn>
                     <v-menu>
                         <template v-slot:activator="{ on }">
-                            <v-btn text v-on="on">
+                            <v-btn text v-on="on" id="languageBtn">
                                 <v-icon size="30">mdi-translate</v-icon>
                             </v-btn>
                         </template>
-                        <v-list>
+                        <v-list id="menuLanguage">
                             <v-list-item
                                 v-for="(language, index) in languages"
                                 :key="index"
