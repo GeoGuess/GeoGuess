@@ -1,4 +1,4 @@
-name: CI
+name: CI e2e
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-16.04
     if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
     name: E2E on Chrome
-    env:    env:
+    env:
       VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
     steps:
       - uses: actions/checkout@v1
