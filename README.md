@@ -3,7 +3,6 @@
 
 ![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
-
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > Demo : https://demo.geoguess.games
@@ -43,7 +42,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/BilelJegham"><img src="https://avatars3.githubusercontent.com/u/20130405?v=4" width="100px;" alt=""/><br /><sub><b>Bilel Jegham</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=BilelJegham" title="Code">💻</a> <a href="#translation-BilelJegham" title="Translation">🌍</a></td>
-    <td align="center"><a href="http://simonrousseau.me"><img src="https://avatars3.githubusercontent.com/u/19766429?v=4" width="100px;" alt=""/><br /><sub><b>Simon</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=simonrousseau" title="Code">💻</a> <a href="#design-simonrousseau" title="Design">🎨</a></td>
+    <td align="center"><a href="http://simonrousseau.me"><img src="https://avatars3.githubusercontent.com/u/19766429?v=4" width="100px;" alt=""/><br /><sub><b>Simon</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=simonrousseau" title="Code">💻</a> <a href="#design-simonrousseau" title="Design">🎨</a> <a href="#translation-simonrousseau" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/dimfort"><img src="https://avatars3.githubusercontent.com/u/22171924?v=4" width="100px;" alt=""/><br /><sub><b>dim.fort</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=dimfort" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/tululum"><img src="https://avatars2.githubusercontent.com/u/67554090?v=4" width="100px;" alt=""/><br /><sub><b>tululum</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3Atululum" title="Bug reports">🐛</a> <a href="#translation-tululum" title="Translation">🌍</a></td>
   </tr>
@@ -51,7 +50,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
