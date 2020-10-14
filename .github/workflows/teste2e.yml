@@ -18,6 +18,10 @@ jobs:
     if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
     runs-on: ubuntu-16.04
     name: E2E on Chrome
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
     steps:
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
@@ -25,6 +29,7 @@ jobs:
           start: npm run serve
           wait-on: 'http://localhost:8080'
           record: true
+          parallel: true
           group: 'Actions chrome'
           browser: chrome
         env:
@@ -41,60 +46,3 @@ jobs:
         with:
           name: cypress-videos
           path: tests/e2e/videos
-          
-  cypress-firefox:
-    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
-    runs-on: ubuntu-16.04
-    name: E2E on Firefox
-    container:
-      image: cypress/browsers:node12.16.1-chrome80-ff73
-      options: --user 1001
-    steps:
-      - uses: actions/checkout@v1
-      - uses: cypress-io/github-action@v2
-        with:
-          start: npm run serve
-          wait-on: 'http://localhost:8080'
-          record: true
-          group: 'Actions Firefox'
-          browser: firefox
-        env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: tests/e2e/screenshots
-      # Test run video was always captured, so this action uses "always()" condition
-      - uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-videos
-          path: tests/e2e/videos
- 
-  cypress-edge:
-    runs-on: windows-latest
-    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
-    name: E2E on Edge
-    steps:
-      - uses: actions/checkout@v1
-      - uses: cypress-io/github-action@v2
-        with:
-          start: npm run serve
-          wait-on: 'http://localhost:8080'
-          record: true
-          group: 'Actions Edge'
-          browser: edge
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: tests/e2e/screenshots
-      - uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-videos
-          path: tests/e2e/videos  
