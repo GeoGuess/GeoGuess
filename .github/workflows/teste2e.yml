@@ -18,10 +18,6 @@ jobs:
     if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
     runs-on: ubuntu-16.04
     name: E2E on Chrome
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2]
     steps:
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
@@ -29,7 +25,6 @@ jobs:
           start: npm run serve
           wait-on: 'http://localhost:8080'
           record: true
-          parallel: true
           group: 'Actions chrome'
           browser: chrome
         env:
@@ -51,10 +46,6 @@ jobs:
     if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
     runs-on: ubuntu-16.04
     name: E2E on Firefox
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2]
     container:
       image: cypress/browsers:node12.16.1-chrome80-ff73
       options: --user 1001
@@ -65,7 +56,6 @@ jobs:
           start: npm run serve
           wait-on: 'http://localhost:8080'
           record: true
-          parallel: true
           group: 'Actions Firefox'
           browser: firefox
         env:
@@ -87,10 +77,6 @@ jobs:
     runs-on: windows-latest
     if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
     name: E2E on Edge
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2]
     steps:
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
@@ -98,7 +84,6 @@ jobs:
           start: npm run serve
           wait-on: 'http://localhost:8080'
           record: true
-          parallel: true
           group: 'Actions Edge'
           browser: edge
         env:
