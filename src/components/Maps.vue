@@ -14,15 +14,27 @@
     >
         <div class="container-map_controls">
             <div class="container-map_btns">
-                <v-btn fab x-small @click="size--" :disabled="size < 2">
+                <v-btn
+                    fab
+                    x-small
+                    @click="size--"
+                    :disabled="size < 2"
+                    id="btnDown"
+                >
                     <v-icon dark>mdi-arrow-bottom-left</v-icon>
                 </v-btn>
 
-                <v-btn fab x-small @click="size++" :disabled="size > 3">
+                <v-btn
+                    fab
+                    x-small
+                    @click="size++"
+                    :disabled="size > 3"
+                    id="btnUp"
+                >
                     <v-icon dark>mdi-arrow-top-right</v-icon>
                 </v-btn>
 
-                <v-btn fab x-small @click="pinActive = !pinActive">
+                <v-btn fab x-small @click="pinActive = !pinActive" id="btnPin">
                     <v-icon dark>mdi-pin{{ pinActive ? '-off' : '' }}</v-icon>
                 </v-btn>
             </div>

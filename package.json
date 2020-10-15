@@ -1,11 +1,13 @@
 {
   "name": "geoguess",
   "version": "0.1.0",
-  "license": "MIT",
+  "description": "GeoGuess is an open-source geography game with Google Map StreetView.",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test": "npm run lint && npm run test:unit && npm run test:e2e",
     "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -31,6 +33,7 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-e2e-cypress": "^4.5.7",
     "@vue/cli-plugin-eslint": "^3.12.1",
     "@vue/cli-plugin-pwa": "^3.12.1",
     "@vue/cli-plugin-unit-jest": "^4.5.6",
@@ -38,6 +41,7 @@
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "cypress": "^5.3.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -53,5 +57,22 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "keywords": [
+    "game",
+    "geography",
+    "educational-game",
+    "multiplayer-game",
+    "street-view"
+  ],  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeoGuess/GeoGuess.git"
+  },
+  "author": "Bilel Jegham and others",
+  "bugs": {
+    "url": "https://github.com/GeoGuess/Geoguess/issues"
+  },
+  "homepage": "hhttps://github.com/GeoGuess/Geoguess#readme",
+  "license": "MIT"
 }

@@ -1,0 +1,5 @@
+{
+  "pluginsFile": "tests/e2e/plugins/index.js",
+  "projectId": "2fcg4n",
+  "baseUrl": "http://localhost:8080/"
+}

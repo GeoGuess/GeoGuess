@@ -16,7 +16,7 @@
                 <span class="sub-text">{{ $t('HeaderGame.round') }}: </span>
             </div>
             <div>
-                <span class="main-text">{{ round }} / 5</span>
+                <span class="main-text" id="roundLabel">{{ round }} / 5</span>
             </div>
             <div class="round-score-container">
                 <span class="sub-text">{{ $t('HeaderGame.distance') }}: </span>

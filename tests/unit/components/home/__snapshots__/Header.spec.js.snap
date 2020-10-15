@@ -7,7 +7,7 @@ exports[`Header.vue open dialog about 1`] = `
       <div class="flex-grow-1"></div>
       <nav class="header__nav"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content">HISTORY</span></button>
         <div class="header__nav__btns"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="aboutBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-circle theme--light" style="font-size: 30px;"></i></span></button>
-          <div class="v-menu"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-translate theme--light" style="font-size: 30px;"></i></span></button>
+          <div class="v-menu"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="languageBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-translate theme--light" style="font-size: 30px;"></i></span></button>
             <!---->
           </div>
         </div>
@@ -30,7 +30,7 @@ exports[`Header.vue open dialog hist 1`] = `
       <div class="flex-grow-1"></div>
       <nav class="header__nav"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content">HISTORY</span></button>
         <div class="header__nav__btns"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="aboutBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-circle theme--light" style="font-size: 30px;"></i></span></button>
-          <div class="v-menu"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-translate theme--light" style="font-size: 30px;"></i></span></button>
+          <div class="v-menu"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="languageBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-translate theme--light" style="font-size: 30px;"></i></span></button>
             <!---->
           </div>
         </div>
@@ -57,7 +57,7 @@ exports[`Header.vue switchLanguage method 1`] = `
           <v-icon-stub size="30">mdi-help-circle</v-icon-stub>
         </v-btn-stub>
         <v-menu-stub opendelay="0" closedelay="0" contentclass="" maxwidth="auto" nudgebottom="0" nudgeleft="0" nudgeright="0" nudgetop="0" nudgewidth="0" openonclick="true" closeonclick="true" closeoncontentclick="true" maxheight="auto" origin="top left" transition="v-menu-transition">
-          <v-list-stub tag="div">
+          <v-list-stub tag="div" id="menuLanguage">
             <v-list-item-stub activeclass="" tag="div">
               <v-list-item-title-stub>English</v-list-item-title-stub>
             </v-list-item-stub>
