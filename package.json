@@ -1,6 +1,6 @@
 {
   "name": "geoguess",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "GeoGuess is an open-source geography game with Google Map StreetView.",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -64,7 +64,7 @@
     "educational-game",
     "multiplayer-game",
     "street-view"
-  ],  
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GeoGuess/GeoGuess.git"
