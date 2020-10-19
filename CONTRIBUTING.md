@@ -2,7 +2,7 @@ Contributing
 =====
 
 Welcome 👋 !
-I glad to see that you are interested in contributing to GeoGuess.
+We glad to see that you are interested in contributing to GeoGuess.
 
 Please note we have a [code of conduct](https://github.com/GeoGuess/Geoguess/blob/master/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
@@ -33,6 +33,8 @@ Download Node.js [here](https://nodejs.org/en/download/) if you don't have and m
 # install dependencies
 npm install
 
+# Run the project
+npm run serve
 
 # build for production
 npm run build
