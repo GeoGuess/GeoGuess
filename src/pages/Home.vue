@@ -21,6 +21,13 @@
                 </v-layout>
             </v-container>
         </section>
+        <section class="maps">
+            <v-row>
+                <v-col v-for="i in new Array(5)" v-bind:key="i">
+                    <MapCard name="France" @setGeoJSON="setGeoJSONFromUrl" />
+                </v-col>
+            </v-row>
+        </section>
 
         <Footer />
     </div>
@@ -32,13 +39,14 @@ import History from '@/components/History';
 import Header from '@/components/home/Header';
 import SearchBox from '@/components/home/SearchBox';
 import Footer from '@/components/home/Footer';
-
+import MapCard from '@/components/home/maps/MapCard';
 export default {
     components: {
         Header,
         History,
         Footer,
         SearchBox,
+        MapCard,
     },
     mounted() {
         if (this.$route.params && this.$route.params.partyParams) {
@@ -67,10 +75,19 @@ export default {
             }
         }
     },
+    methods: {
+        setGeoJSONFromUrl(url) {
+            // axios
+            return url;
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss">
+.maps {
+    padding: 5%;
+}
 .home-page {
     background-color: #ded3af;
     .home-page__main__container {
@@ -81,7 +98,7 @@ export default {
         background: url('../assets/home/world.svg');
         background-size: cover;
         .home-page__main__layout {
-            height: calc(100vh - 150px);
+            height: calc(100vh - 100px);
             flex-wrap: nowrap;
             justify-items: end;
             .box {

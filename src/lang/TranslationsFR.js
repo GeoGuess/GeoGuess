@@ -31,6 +31,7 @@ export default {
             Si la carte ne se charge pas, cela signifie que le quota a été dépassé.\
             Il est réinitialisé à minuit (heure du pacifique). Désolé pour le dérangement. \
             Le jeu est open source, ainsi il vous est possible de créer votre propre jeu pour y jouer sans limite.",
+            play: 'Jouer',
         },
         StreetView: {
             nearby: {

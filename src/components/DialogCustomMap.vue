@@ -91,8 +91,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import { validURL } from '@/utils';
-import axios from 'axios';
 
 const google = window.google;
 
@@ -110,7 +110,9 @@ export default {
             editMap: false,
         };
     },
+    computed: { ...mapGetters(['getGeoJSON']) },
     methods: {
+        ...mapActions(['loadGeoJsonFromUrl']),
         onChangeTextArea(e) {
             this.$emit('input', e);
         },
@@ -175,40 +177,7 @@ export default {
             }
         },
         url(value) {
-            if (validURL(value)) {
-                // if gist url get raw
-                /* eslint-disable no-useless-escape */
-                if (RegExp('^(https?://)?gist.github.com/').test(value)) {
-                    let urlSplit = value.split('/');
-                    if (
-                        urlSplit.length > 3 &&
-                        urlSplit[urlSplit.length - 1] !== 'raw'
-                    ) {
-                        urlSplit[urlSplit.length - 3] =
-                            'gist.githubusercontent.com';
-                        urlSplit.push('raw');
-                        value = urlSplit.join('/');
-                    }
-                }
-                axios
-                    .get(value)
-                    .then((res) => {
-                        if (res.status === 200 && res.data) {
-                            if (typeof res.data === 'object') {
-                                this.$emit(
-                                    'input',
-                                    JSON.stringify(res.data, null, 2)
-                                );
-                            } else {
-                                this.$emit('input', res.data);
-                            }
-                        }
-                    })
-                    .catch((err) => {
-                        // eslint-disable-next-line no-console
-                        console.log(err);
-                    });
-            }
+            this.loadGeoJsonFromUrl(value);
         },
         type(t) {
             this.$refs.mapRef.$mapPromise.then((map) => {
