@@ -4,11 +4,9 @@
             class="white--text align-end"
             height="140px"
             gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
-            :src="
-                imageUrl || `https://source.unsplash.com/300x140/?${this.name}`
-            "
+            :src="imageUrl || `https://source.unsplash.com/300x140/?${name}`"
         >
-            <v-card-title>France</v-card-title>
+            <v-card-title>{{ name }}</v-card-title>
         </v-img>
         <v-card-actions class="map-card__actions">
             <v-spacer></v-spacer>
