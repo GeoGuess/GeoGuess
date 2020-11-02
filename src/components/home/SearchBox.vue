@@ -54,6 +54,7 @@
 import axios from 'axios';
 import DialogCustomMap from '@/components/DialogCustomMap';
 import DialogRoom from '@/components/widgets/dialog/DialogRoom';
+import { mapGetters } from 'vuex';
 export default {
     components: {
         DialogRoom,
@@ -73,31 +74,7 @@ export default {
     },
 
     computed: {
-        placeGeoJson() {
-            if (this.geoJson == '') {
-                return null;
-            }
-            try {
-                let obj = JSON.parse(this.geoJson);
-                if (obj.type === 'FeatureCollection' && obj.features) {
-                    obj.features.map((f) => {
-                        if (
-                            !['Point', 'Polygon', 'MultiPolygon'].includes(
-                                f.geometry.type
-                            )
-                        ) {
-                            throw new Error('Error Format');
-                        }
-                    });
-                    return obj;
-                } else {
-                    throw new Error('Error Format');
-                }
-            } catch (e) {
-                return null;
-            }
-        },
-
+        ...mapGetters(['getGeoJSON']),
         items() {
             return this.entries.map((entry) => entry.properties.name);
         },

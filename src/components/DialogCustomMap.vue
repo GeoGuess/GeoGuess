@@ -98,7 +98,7 @@ const google = window.google;
 
 export default {
     name: 'DialogCustomMap',
-    props: ['visibility', 'value', 'validGeoJson'],
+    props: ['visibility', 'validGeoJson'],
     data() {
         return {
             placeholderGeoJson: geoJsonExample,

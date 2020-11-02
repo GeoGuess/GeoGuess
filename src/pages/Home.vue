@@ -1,9 +1,6 @@
 <template>
     <div class="home-page">
         <Header />
-        <v-dialog v-model="historyDialog">
-            <History :history="history" />
-        </v-dialog>
         <section class="home-page__main">
             <v-container class="home-page__main__container" fluid>
                 <v-layout row class="home-page__main__layout">
@@ -23,8 +20,8 @@
         </section>
         <section class="maps">
             <v-row>
-                <v-col v-for="i in this.getMaps" v-bind:key="i">
-                    <MapCard name="France" @setGeoJSON="setGeoJSONFromUrl" />
+                <v-col v-for="map in maps" v-bind:key="map">
+                    <MapCard :map="map" />
                 </v-col>
             </v-row>
         </section>
@@ -34,16 +31,14 @@
 </template>
 
 <script>
-import History from '@/components/History';
-
 import Header from '@/components/home/Header';
 import SearchBox from '@/components/home/SearchBox';
 import Footer from '@/components/home/Footer';
 import MapCard from '@/components/home/maps/MapCard';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
         Header,
-        History,
         Footer,
         SearchBox,
         MapCard,
@@ -76,14 +71,8 @@ export default {
         }
         this.getListMaps();
     },
-    computed: {...mapGetters(['getGeoJSON'])},
-    methods: {
-        ...mapActions(['getListMaps']),
-        setGeoJSONFromUrl(url) {
-            // axios
-            return url;
-        },
-    },
+    methods: { ...mapActions(['getListMaps']) },
+    computed: { ...mapGetters(['maps']) },
 };
 </script>
 
