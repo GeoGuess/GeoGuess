@@ -23,7 +23,7 @@
         </section>
         <section class="maps">
             <v-row>
-                <v-col v-for="i in new Array(5)" v-bind:key="i">
+                <v-col v-for="i in this.getMaps" v-bind:key="i">
                     <MapCard name="France" @setGeoJSON="setGeoJSONFromUrl" />
                 </v-col>
             </v-row>
@@ -74,8 +74,11 @@ export default {
                 });
             }
         }
+        this.getListMaps();
     },
+    computed: {...mapGetters(['getGeoJSON'])},
     methods: {
+        ...mapActions(['getListMaps']),
         setGeoJSONFromUrl(url) {
             // axios
             return url;
