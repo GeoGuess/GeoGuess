@@ -13,7 +13,7 @@
                     <v-col md="5" class="mr-6">
                         <v-alert
                             type="error"
-                            v-if="value && !validGeoJson"
+                            v-if="isValidGeoJson === false"
                             transition="out-in"
                         >
                             {{ $t('DialogCustomMap.invalid') }}
@@ -67,9 +67,9 @@
                         />
                         <v-textarea
                             v-else
-                            :error="value !== '' && !validGeoJson"
-                            :success="validGeoJson"
-                            :value="value"
+                            :error="isValidGeoJson !== null && !isValidGeoJson"
+                            :success="isValidGeoJson"
+                            :value="geoJsonString"
                             v-on:input="onChangeTextArea"
                             :placeholder="placeholderGeoJson"
                             rows="21"
@@ -98,7 +98,7 @@ const google = window.google;
 
 export default {
     name: 'DialogCustomMap',
-    props: ['visibility', 'validGeoJson'],
+    props: ['visibility'],
     data() {
         return {
             placeholderGeoJson: geoJsonExample,
@@ -110,19 +110,17 @@ export default {
             editMap: false,
         };
     },
-    computed: { ...mapGetters(['getGeoJSON']) },
+    computed: { ...mapGetters(['geoJsonString', 'isValidGeoJson', 'geoJson']) },
     methods: {
-        ...mapActions(['loadGeoJsonFromUrl']),
+        ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setGeoJsonString']),
         onChangeTextArea(e) {
-            this.$emit('input', e);
+            this.setGeoJsonString(e);
         },
 
         onChangeMap() {
             this.editMap = true;
             this.$refs.mapRef.$mapPromise.then((map) => {
-                map.data.toGeoJson((geoJson) =>
-                    this.$emit('input', JSON.stringify(geoJson, null, 2))
-                );
+                map.data.toGeoJson((geoJson) => this.setGeoJson(geoJson));
             });
         },
     },
@@ -134,7 +132,7 @@ export default {
                         let data = new google.maps.Data({
                             map: map,
                         });
-                        if (this.value) data.addGeoJson(JSON.parse(this.value));
+                        if (this.geoJson) data.addGeoJson(this.geoJson);
                         map.data.setMap(null);
                         map.data = data;
                         this.initMap = true;
@@ -143,7 +141,7 @@ export default {
         }
     },
     watch: {
-        value(v) {
+        geoJson(v) {
             if (!this.editMap) {
                 this.$refs.mapRef.$mapPromise.then((map) => {
                     let data = new google.maps.Data({
@@ -152,7 +150,7 @@ export default {
                         controls: map.data.getControls(),
                     });
                     try {
-                        data.addGeoJson(JSON.parse(v));
+                        data.addGeoJson(v);
                     } catch (e) {
                         throw e;
                     }
@@ -172,7 +170,7 @@ export default {
         file(file) {
             if (typeof file === 'object' && file.text) {
                 file.text().then((content) => {
-                    this.$emit('input', content);
+                    this.setGeoJsonString(content);
                 });
             }
         },

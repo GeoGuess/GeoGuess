@@ -8,15 +8,14 @@
                 :loading="isLoading"
                 autofocus
                 :placeholder="
-                    placeGeoJson !== null
+                    isValidGeoJson
                         ? $t('Home.searchBar.customLoaded')
                         : $t('Home.searchBar.enterCity')
                 "
                 v-model="place"
-                :disabled="placeGeoJson !== null"
-                :persistent-hint="placeGeoJson !== null"
-                :outlined="placeGeoJson !== null"
-                background-color="primary"
+                :disabled="isValidGeoJson"
+                :persistent-hint="isValidGeoJson"
+                :background-color="isValidGeoJson ? 'primary' : 'secondary'"
                 append-icon="mdi-magnify"
                 dark
                 rounded
@@ -39,14 +38,12 @@
         <DialogCustomMap
             :visibility="dialogCustom"
             @change-visibility="dialogCustom = !dialogCustom"
-            v-model="geoJson"
-            :validGeoJson="placeGeoJson !== null"
         />
 
         <div class="search-box__btns">
-            <DialogRoom singlePlayer :place="place" :geoJson="placeGeoJson" />
+            <DialogRoom singlePlayer :place="place" :geoJson="geoJson" />
 
-            <DialogRoom :place="place" :geoJson="placeGeoJson" />
+            <DialogRoom :place="place" :geoJson="geoJson" />
         </div>
     </div>
 </template>
@@ -69,12 +66,11 @@ export default {
             isLoading: false,
             search: '',
             dialogCustom: false,
-            geoJson: '',
         };
     },
 
     computed: {
-        ...mapGetters(['getGeoJSON']),
+        ...mapGetters(['isValidGeoJson', 'geoJson']),
         items() {
             return this.entries.map((entry) => entry.properties.name);
         },

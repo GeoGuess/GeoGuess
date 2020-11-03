@@ -76,7 +76,7 @@ export default {
         cancel: 'ANNULER',
         DialogCustomMap: {
             title: 'Carte personnalisée',
-            invalid: 'GeoJSON ivalide',
+            invalid: 'GeoJSON invalide',
             text: 'Texte',
             url: 'Lien',
             file: 'Fichier',

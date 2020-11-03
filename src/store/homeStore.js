@@ -17,15 +17,21 @@ export default {
     },
 
     getters: {
-        getGeoJSON(state) {
+        geoJsonString(state) {
+            if (!state.geojson) {
+                return '';
+            }
+            return JSON.stringify(state.geojson, null, 2);
+        },
+        geoJson(state) {
             return state.geojson;
         },
-        placeGeoJson(state) {
-            if (state.geoJson == '') {
+        isValidGeoJson(state) {
+            if (!state.geojson) {
                 return null;
             }
             try {
-                let obj = JSON.parse(state.geoJson);
+                let obj = state.geojson;
                 if (obj.type === 'FeatureCollection' && obj.features) {
                     obj.features.map((f) => {
                         if (
@@ -33,15 +39,15 @@ export default {
                                 f.geometry.type
                             )
                         ) {
-                            throw new Error('Error Format');
+                            return false;
                         }
                     });
-                    return obj;
+                    return true;
                 } else {
-                    throw new Error('Error Format');
+                    return false;
                 }
             } catch (e) {
-                return null;
+                return false;
             }
         },
         maps(state) {
@@ -70,9 +76,9 @@ export default {
                     .then((res) => {
                         if (res.status === 200 && res.data) {
                             if (typeof res.data === 'object') {
-                                return JSON.stringify(res.data, null, 2);
-                            } else {
                                 return res.data;
+                            } else {
+                                return JSON.parse(res.data);
                             }
                         }
                     })
@@ -83,6 +89,16 @@ export default {
 
                 commit(MutationTypes.HOME_SET_GEOJSON, geojson);
             }
+        },
+        setGeoJson({ commit }, geojson) {
+            commit(MutationTypes.HOME_SET_GEOJSON, geojson);
+        },
+        setGeoJsonString({ commit }, geojson) {
+            let obj = null;
+            if (geojson !== '') {
+                obj = JSON.parse(geojson);
+            }
+            commit(MutationTypes.HOME_SET_GEOJSON, obj);
         },
         async getListMaps({ commit }) {
             const maps = await axios
