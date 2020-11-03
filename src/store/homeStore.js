@@ -87,7 +87,7 @@ export default {
         async getListMaps({ commit }) {
             const maps = await axios
                 .get(
-                    process.env.LIST_MAPS_JSON_URL ||
+                    process.env.VUE_APP_LIST_MAPS_JSON_URL ||
                         'https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/maps.json'
                 )
                 .then((res) => res.data.maps);
