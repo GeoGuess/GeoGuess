@@ -1,4 +1,30 @@
-.v-application {
+
+html {
+    scroll-behavior: smooth;
+}
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #468F69  #ded3af;
+  }
+
+  
+*::-webkit-scrollbar-track
+{
+	background-color: #ded3af;
+}
+
+*::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #ded3af;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #468F69;
+}
+  .v-application {
     .v-card {
         background-color: #F1E9D6 !important;
     }

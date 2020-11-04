@@ -17,8 +17,11 @@
                     </v-layout>
                 </v-layout>
             </v-container>
+            <v-btn id="btnMaps" href="#maps" large fab color="secondary" dark>
+                <v-icon>mdi-arrow-down</v-icon>
+            </v-btn>
         </section>
-        <section class="maps">
+        <section id="maps">
             <v-row>
                 <v-col v-for="map in maps" v-bind:key="map">
                     <MapCard :map="map" />
@@ -77,47 +80,59 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.maps {
-    padding: 5%;
-}
 .home-page {
     background-color: #ded3af;
-    .home-page__main__container {
-        font-size: 1.2rem;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        background: url('../assets/home/world.svg');
-        background-size: cover;
-        .home-page__main__layout {
-            height: calc(100vh - 100px);
-            flex-wrap: nowrap;
-            justify-items: end;
-            .box {
-                margin: auto;
-                width: 35vw;
-                min-width: 400px;
-            }
+    .home-page__main {
+        position: relative;
 
-            .home-page__main__content {
-                min-width: 65%;
-            }
-            .home-page__traveler-container {
-                position: relative;
-                height: auto;
-                width: 100%;
-                max-width: 50vw;
-                .home-page__traveler-img {
-                    position: absolute;
-                    bottom: 0;
+        .home-page__main__container {
+            font-size: 1.2rem;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            background: url('../assets/home/world.svg');
+            background-size: cover;
+            .home-page__main__layout {
+                height: calc(100vh - 100px);
+                flex-wrap: nowrap;
+                justify-items: end;
+                .box {
+                    margin: 28vh auto;
+                    width: 35vw;
+                    min-width: 400px;
+                }
+
+                .home-page__main__content {
+                    min-width: 65%;
+                }
+                .home-page__traveler-container {
+                    position: relative;
+                    height: auto;
                     width: 100%;
-                    max-width: 772px;
-                    max-height: 814px;
+                    max-width: 50vw;
+                    .home-page__traveler-img {
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        max-width: 772px;
+                        max-height: 814px;
+                    }
                 }
             }
         }
+        #btnMaps {
+            position: absolute;
+            margin: auto;
+            bottom: 4rem;
+            left: 0;
+            right: 0;
+        }
+    }
+    #maps {
+        padding: 2% 5%;
     }
 }
+
 @media (max-width: 660px) {
     .home-page {
         background-color: #ded3af;
