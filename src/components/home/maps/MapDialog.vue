@@ -1,18 +1,11 @@
 <template>
     <v-dialog
         v-model="visible"
-        persistent
         max-width="500"
         :fullscreen="$viewport.width < 450"
     >
         <template v-slot:activator="{ on, attrs }">
-            <v-btn
-                v-bind="attrs"
-                v-on="on"
-                text
-                color="darkGreen"
-                v-on:click="() => loadGeoJsonFromUrl(this.map.url)"
-            >
+            <v-btn v-bind="attrs" v-on="on" text color="darkGreen">
                 {{ $t('Home.play') }}
             </v-btn>
         </template>
@@ -35,13 +28,17 @@
                 {{ this.map.description.en }}
             </v-card-text>
             <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="error" @click="visible = false">
+                <v-btn color="error" text @click="visible = false">
                     {{ $t('cancel') }}
                 </v-btn>
 
-                <v-btn color="#43B581" dark @click="setMap">
-                    {{ $t('Home.play') }}
+                <v-spacer></v-spacer>
+                <v-btn color="primary" @click="onClickSinglePlayer">
+                    {{ $t('DialogRoom.singlePlayer') }}
+                </v-btn>
+
+                <v-btn color="secondary" dark @click="onClickMultiPlayer">
+                    {{ $t('DialogRoom.withFriends') }}
                 </v-btn>
             </v-card-actions>
         </v-card>
@@ -58,10 +55,22 @@ export default {
         };
     },
     methods: {
-        ...mapActions(['loadGeoJsonFromUrl']),
+        ...mapActions([
+            'loadGeoJsonFromUrl',
+            'playSinglePlayer',
+            'playMultiPlayer',
+        ]),
         setMap() {
             this.loadGeoJsonFromUrl(this.map.url);
             this.visible = false;
+        },
+        onClickSinglePlayer() {
+            this.setMap();
+            this.playSinglePlayer();
+        },
+        onClickMultiPlayer() {
+            this.setMap();
+            this.playMultiPlayer();
         },
     },
 };

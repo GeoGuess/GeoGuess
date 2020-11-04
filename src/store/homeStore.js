@@ -6,6 +6,8 @@ export default {
     state: () => ({
         geojson: null,
         listMaps: [],
+        openDialogSinglePlayer: false,
+        openDialogMultiPlayer: false,
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
@@ -13,6 +15,12 @@ export default {
         },
         [MutationTypes.HOME_SET_LISTMAPS](state, listMaps) {
             state.listMaps = listMaps;
+        },
+        [MutationTypes.HOME_SET_SINGLEPLAYER](state, status) {
+            state.openDialogSinglePlayer = status;
+        },
+        [MutationTypes.HOME_SET_MULTIPLAYER](state, status) {
+            state.openDialogMultiPlayer = status;
         },
     },
 
@@ -109,6 +117,18 @@ export default {
                 .then((res) => res.data.maps);
 
             commit(MutationTypes.HOME_SET_LISTMAPS, maps);
+        },
+        playSinglePlayer({ commit }) {
+            commit(MutationTypes.HOME_SET_SINGLEPLAYER, true);
+        },
+        playMultiPlayer({ commit }) {
+            commit(MutationTypes.HOME_SET_MULTIPLAYER, true);
+        },
+        resetSinglePlayer({ commit }) {
+            commit(MutationTypes.HOME_SET_SINGLEPLAYER, false);
+        },
+        resetMultiPlayer({ commit }) {
+            commit(MutationTypes.HOME_SET_MULTIPLAYER, false);
         },
     },
 };

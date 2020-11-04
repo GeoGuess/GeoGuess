@@ -142,6 +142,9 @@ export default {
     },
     watch: {
         geoJson(v) {
+            if (!this.$refs.mapRef) {
+                return;
+            }
             if (!this.editMap) {
                 this.$refs.mapRef.$mapPromise.then((map) => {
                     let data = new google.maps.Data({
