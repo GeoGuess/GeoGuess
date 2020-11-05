@@ -23,7 +23,7 @@
         </section>
         <section id="maps">
             <v-row>
-                <v-col v-for="map in maps" v-bind:key="map">
+                <v-col v-for="(map, index) in maps" v-bind:key="index">
                     <MapCard :map="map" />
                 </v-col>
             </v-row>

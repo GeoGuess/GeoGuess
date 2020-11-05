@@ -15,17 +15,19 @@
                 height="230px"
                 gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
                 :src="
-                    map.imageUrl ||
-                    `https://source.unsplash.com/300x140/daily?${name}`
+                    mapLocate.imageUrl ||
+                    `https://source.unsplash.com/500x230/daily?${encodeURI(
+                        mapLocate.nameLocate
+                    )}`
                 "
             >
-                <v-card-title>{{ this.map.name.en }}</v-card-title>
+                <v-card-title>{{ mapLocate.nameLocate }}</v-card-title>
             </v-img>
             <v-card-subtitle class="pt-3 pb-2 font-italic">
-                {{ this.map.author }}
+                {{ mapLocate.author }}
             </v-card-subtitle>
             <v-card-text class="text--primary map-dialog__description">
-                {{ this.map.description.en }}
+                {{ mapLocate.descriptionLocate }}
             </v-card-text>
             <v-card-actions>
                 <v-btn color="error" text @click="visible = false">
@@ -48,7 +50,7 @@
 <script>
 import { mapActions } from 'vuex';
 export default {
-    props: ['map'],
+    props: ['mapLocate'],
     data() {
         return {
             visible: false,
@@ -61,7 +63,7 @@ export default {
             'playMultiPlayer',
         ]),
         setMap() {
-            this.loadGeoJsonFromUrl(this.map.url);
+            this.loadGeoJsonFromUrl(this.mapLocate.url);
             this.visible = false;
         },
         onClickSinglePlayer() {

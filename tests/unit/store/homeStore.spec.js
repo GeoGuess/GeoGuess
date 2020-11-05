@@ -39,7 +39,6 @@ jest.mock('axios', () => {
 });
 
 import axios from 'axios';
-import { codePointAt } from 'core-js/fn/string';
 import * as MutationTypes from '../../../src/store/mutation-types';
 const { default: homeStore } = require('../../../src/store/homeStore');
 

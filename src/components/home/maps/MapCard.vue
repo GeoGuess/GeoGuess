@@ -5,15 +5,17 @@
             height="140px"
             gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
             :src="
-                map.imageUrl ||
-                `https://source.unsplash.com/300x140/daily?${name}`
+                mapLocate.imageUrl ||
+                `https://source.unsplash.com/300x140/daily?${encodeURI(
+                    mapLocate.nameLocate
+                )}`
             "
         >
-            <v-card-title>{{ name }}</v-card-title>
+            <v-card-title>{{ mapLocate.nameLocate }}</v-card-title>
         </v-img>
         <v-card-actions class="map-card__actions">
             <v-spacer></v-spacer>
-            <MapDialog :map="map" />
+            <MapDialog :mapLocate="mapLocate" />
         </v-card-actions>
     </v-card>
 </template>
@@ -30,8 +32,12 @@ export default {
         map: Object,
     },
     computed: {
-        name() {
-            return this.map.name.en;
+        mapLocate() {
+            return {
+                ...this.map,
+                nameLocate: this.map.name[this.$i18n.locale],
+                descriptionLocate: this.map.description[this.$i18n.locale],
+            };
         },
     },
     methods: {
