@@ -37,6 +37,7 @@ jobs:
       run: npm run test:unit
 
     - name: Code coverage
+      if:  matrix.os == 'ubuntu-latest'
       uses: codecov/codecov-action@v1
 
     - name: Build
