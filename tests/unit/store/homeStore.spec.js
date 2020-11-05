@@ -153,6 +153,15 @@ describe('homeStore.js', () => {
         );
         expect(axios.get).toBeCalledWith('https://map.geojson');
 
+        await homeStore.actions.loadGeoJsonFromUrl(
+            { commit },
+            'https://gist.github.com/BilelJegham/7f855024440c67d65f24536c9215719e'
+        );
+
+        expect(axios.get).toBeCalledWith(
+            'https://gist.githubusercontent.com/BilelJegham/7f855024440c67d65f24536c9215719e/raw'
+        );
+
         expect(commit).toBeCalledWith(
             MutationTypes.HOME_SET_GEOJSON,
             expect.anything()

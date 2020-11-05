@@ -9,6 +9,15 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 
 export default function appInit(VueInstance) {
+    const updateSizes = (obj = {}) => {
+        obj.width = window.innerWidth;
+        obj.height = window.innerHeight;
+        return obj;
+    };
+
+    Object.defineProperty(Vue.prototype, '$viewport', {
+        value: Vue.observable(updateSizes()),
+    });
     Vue.use(VueI18n);
     Vue.use(Vuetify);
     Vue.use(Vuex);

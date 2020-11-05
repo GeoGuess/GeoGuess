@@ -77,7 +77,7 @@ export default {
     },
 
     watch: {
-        placeGeoJson(val) {
+        geoJson(val) {
             if (val !== null) {
                 this.place = '';
             }
