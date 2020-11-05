@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`homeStore.js isValidGeoJson true 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          1.4442469,
+          43.6044622,
+        ],
+        "type": "Point",
+      },
+      "type": "Feature",
+    },
+  ],
+  "type": "FeatureCollection",
+}
+`;
+
+exports[`homeStore.js isValidGeoJson true 2`] = `
+"{
+  \\"type\\": \\"FeatureCollection\\",
+  \\"features\\": [
+    {
+      \\"geometry\\": {
+        \\"coordinates\\": [
+          1.4442469,
+          43.6044622
+        ],
+        \\"type\\": \\"Point\\"
+      },
+      \\"type\\": \\"Feature\\"
+    }
+  ]
+}"
+`;
+
+exports[`homeStore.js mutations 1`] = `
+Object {
+  "geojson": Object {
+    "type": "Point",
+  },
+  "listMaps": Array [
+    Object {
+      "name": "Hello",
+    },
+  ],
+  "openDialogMultiPlayer": true,
+  "openDialogSinglePlayer": true,
+}
+`;

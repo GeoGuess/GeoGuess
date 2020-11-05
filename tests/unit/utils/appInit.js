@@ -6,10 +6,12 @@ import Router from 'vue-router';
 
 import en from 'vuetify/es5/locale/en';
 import VueRouter from 'vue-router';
+import Vuex from 'vuex';
 
 export default function appInit(VueInstance) {
     Vue.use(VueI18n);
     Vue.use(Vuetify);
+    Vue.use(Vuex);
 
     VueInstance.use(VueRouter);
     VueInstance.use(Vuetify);

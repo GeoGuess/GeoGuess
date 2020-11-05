@@ -47,7 +47,7 @@ export default {
                                 f.geometry.type
                             )
                         ) {
-                            return false;
+                            throw new Error('Not Point Polygon MultiPolygon');
                         }
                     });
                     return true;
