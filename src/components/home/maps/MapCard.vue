@@ -35,8 +35,11 @@ export default {
         mapLocate() {
             return {
                 ...this.map,
-                nameLocate: this.map.name[this.$i18n.locale],
-                descriptionLocate: this.map.description[this.$i18n.locale],
+                nameLocate:
+                    this.map.name[this.$i18n.locale] || this.map.name['en'],
+                descriptionLocate:
+                    this.map.description[this.$i18n.locale] ||
+                    this.map.description['en'],
             };
         },
     },
