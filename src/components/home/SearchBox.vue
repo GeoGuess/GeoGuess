@@ -49,7 +49,7 @@
 </template>
 <script>
 import axios from 'axios';
-import DialogCustomMap from '@/components/DialogCustomMap';
+import DialogCustomMap from '@/components/home/DialogCustomMap';
 import DialogRoom from '@/components/widgets/dialog/DialogRoom';
 import { mapGetters } from 'vuex';
 export default {

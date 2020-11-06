@@ -171,7 +171,7 @@ export default {
             }
         },
         file(file) {
-            if (typeof file === 'object' && file.text) {
+            if (typeof file === 'object' && !!file.text) {
                 file.text().then((content) => {
                     this.setGeoJsonString(content);
                 });
