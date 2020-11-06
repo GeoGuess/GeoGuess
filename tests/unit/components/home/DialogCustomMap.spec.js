@@ -4,7 +4,6 @@ import appInit from '../../utils/appInit';
 
 import Vuex from 'vuex';
 import homeStore from '../../../../src/store/homeStore';
-import { validURL } from '@/utils';
 
 const args = appInit(createLocalVue());
 describe('DialogCustomMap.vue', () => {
