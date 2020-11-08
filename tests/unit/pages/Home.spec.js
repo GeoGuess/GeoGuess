@@ -1,15 +1,34 @@
 import Home from '@/pages/Home.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../utils/appInit';
+import Vuex from 'vuex';
+import homeStore from '../../../src/store/homeStore';
 
 const args = appInit(createLocalVue());
 const $router = {
     push: jest.fn(),
 };
+
 describe('Home.vue', () => {
+    let store, actions;
+    beforeEach(() => {
+        actions = {
+            getListMaps: jest.fn(),
+        };
+        store = new Vuex.Store({
+            modules: {
+                homeStore: {
+                    state: homeStore.state,
+                    getters: homeStore.getters,
+                    actions,
+                },
+            },
+        });
+    });
     it('test mounted', () => {
         const wrapper = shallowMount(Home, {
-            args,
+            ...args,
+            store,
             mocks: {
                 $route: {
                     params: {},
@@ -18,6 +37,9 @@ describe('Home.vue', () => {
             },
         });
         expect($router.push).not.toBeCalled();
+
+        expect(actions.getListMaps).toBeCalled();
+
         expect(wrapper).toMatchSnapshot();
     });
     it('test mounted', () => {
@@ -25,6 +47,7 @@ describe('Home.vue', () => {
             'MjAwMCwzMDAsMzkuOTgyOTgxMzM0MTE0MDIsMjMuNjE4NDQ1MjIxOTg0OTgsNzAuMDAxNDM5OTEwOTEwNDUsMTkuNTYwMjI5NzM3Njk5MTcsNTguNDEyNzQ4MTQ2ODQ3MzIsNi45MTI3OTk3MzYzODg2NjYsNjIuMzQxODY2Njg2NDkxNTQsLTYuMjYxNDk1MTQyNDk0MjI2LDY3LjA5OTY2MzkwODQ4Mzc2LDE5LjUxMjI4NDk3NTUwODY0';
         const wrapper = shallowMount(Home, {
             args,
+            store,
             mocks: {
                 $route: {
                     params: {
@@ -48,6 +71,8 @@ describe('Home.vue', () => {
                 ],
             },
         });
+
+        expect(actions.getListMaps).toBeCalled();
 
         expect(wrapper).toMatchSnapshot();
     });

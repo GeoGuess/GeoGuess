@@ -23,12 +23,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/cache@v1
+      id: cache
       with:
         path: ~/.npm          
-        key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/package-lock.json')) }}
+        key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: npm ci
+      run: npm install
 
     - name: Linter
       run: npm run lint
@@ -37,6 +37,7 @@ jobs:
       run: npm run test:unit
 
     - name: Code coverage
+      if:  matrix.os == 'ubuntu-latest'
       uses: codecov/codecov-action@v1
 
     - name: Build

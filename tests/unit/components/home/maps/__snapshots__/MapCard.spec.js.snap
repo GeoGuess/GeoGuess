@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapDialog.vue open dialog hist 1`] = `
+<v-card-stub loaderheight="4" tag="div" width="300" rounded="lg">
+  <v-img-stub height="140px" gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)" options="[object Object]" position="center center" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=140" transition="fade-transition" class="white--text align-end">
+    <v-card-title-stub>Biggest City</v-card-title-stub>
+  </v-img-stub>
+  <v-card-actions-stub class="map-card__actions">
+    <v-spacer-stub></v-spacer-stub>
+    <mapdialog-stub maplocate="[object Object]"></mapdialog-stub>
+  </v-card-actions-stub>
+</v-card-stub>
+`;

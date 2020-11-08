@@ -43,6 +43,7 @@ import CardRoomSize from '@/components/widgets/card/CardRoomSize';
 import CardRoomTime from '@/components/widgets/card/CardRoomTime';
 import CardRoomDifficulty from '@/components/widgets/card/CardRoomDifficulty';
 import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
+import { mapState, mapActions } from 'vuex';
 import { point } from '@turf/helpers';
 import distance from '@turf/distance';
 import bbox from '@turf/bbox';
@@ -74,6 +75,28 @@ export default {
             difficulty: null,
         };
     },
+    computed: {
+        ...mapState({
+            openDialogSinglePlayer: (state) =>
+                state.homeStore.openDialogSinglePlayer,
+            openDialogMultiPlayer: (state) =>
+                state.homeStore.openDialogMultiPlayer,
+        }),
+    },
+    watch: {
+        openDialogSinglePlayer(val) {
+            if (this.singlePlayer && val) {
+                this.dialogRoom = true;
+                this.resetSinglePlayer();
+            }
+        },
+        openDialogMultiPlayer(val) {
+            if (!this.singlePlayer && val) {
+                this.dialogRoom = true;
+                this.resetMultiPlayer();
+            }
+        },
+    },
     mounted() {
         if (!this.singlePlayer && this.$route.params.roomName) {
             this.dialogRoom = true;
@@ -88,6 +111,7 @@ export default {
         playerName: CardRoomPlayerName,
     },
     methods: {
+        ...mapActions(['resetSinglePlayer', 'resetMultiPlayer']),
         getPlaceGeoJSON(place) {
             axios
                 .get(

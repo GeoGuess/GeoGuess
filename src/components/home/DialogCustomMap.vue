@@ -13,7 +13,7 @@
                     <v-col md="5" class="mr-6">
                         <v-alert
                             type="error"
-                            v-if="value && !validGeoJson"
+                            v-if="isValidGeoJson === false"
                             transition="out-in"
                         >
                             {{ $t('DialogCustomMap.invalid') }}
@@ -67,9 +67,9 @@
                         />
                         <v-textarea
                             v-else
-                            :error="value !== '' && !validGeoJson"
-                            :success="validGeoJson"
-                            :value="value"
+                            :error="isValidGeoJson !== null && !isValidGeoJson"
+                            :success="isValidGeoJson"
+                            :value="geoJsonString"
                             v-on:input="onChangeTextArea"
                             :placeholder="placeholderGeoJson"
                             rows="21"
@@ -91,14 +91,14 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import { validURL } from '@/utils';
-import axios from 'axios';
 
 const google = window.google;
 
 export default {
     name: 'DialogCustomMap',
-    props: ['visibility', 'value', 'validGeoJson'],
+    props: ['visibility'],
     data() {
         return {
             placeholderGeoJson: geoJsonExample,
@@ -110,17 +110,17 @@ export default {
             editMap: false,
         };
     },
+    computed: { ...mapGetters(['geoJsonString', 'isValidGeoJson', 'geoJson']) },
     methods: {
+        ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setGeoJsonString']),
         onChangeTextArea(e) {
-            this.$emit('input', e);
+            this.setGeoJsonString(e);
         },
 
         onChangeMap() {
             this.editMap = true;
             this.$refs.mapRef.$mapPromise.then((map) => {
-                map.data.toGeoJson((geoJson) =>
-                    this.$emit('input', JSON.stringify(geoJson, null, 2))
-                );
+                map.data.toGeoJson((geoJson) => this.setGeoJson(geoJson));
             });
         },
     },
@@ -132,7 +132,7 @@ export default {
                         let data = new google.maps.Data({
                             map: map,
                         });
-                        if (this.value) data.addGeoJson(JSON.parse(this.value));
+                        if (this.geoJson) data.addGeoJson(this.geoJson);
                         map.data.setMap(null);
                         map.data = data;
                         this.initMap = true;
@@ -141,7 +141,10 @@ export default {
         }
     },
     watch: {
-        value(v) {
+        geoJson(v) {
+            if (!this.$refs.mapRef) {
+                return;
+            }
             if (!this.editMap) {
                 this.$refs.mapRef.$mapPromise.then((map) => {
                     let data = new google.maps.Data({
@@ -150,7 +153,7 @@ export default {
                         controls: map.data.getControls(),
                     });
                     try {
-                        data.addGeoJson(JSON.parse(v));
+                        data.addGeoJson(v);
                     } catch (e) {
                         throw e;
                     }
@@ -168,47 +171,14 @@ export default {
             }
         },
         file(file) {
-            if (typeof file === 'object' && file.text) {
+            if (typeof file === 'object' && !!file.text) {
                 file.text().then((content) => {
-                    this.$emit('input', content);
+                    this.setGeoJsonString(content);
                 });
             }
         },
         url(value) {
-            if (validURL(value)) {
-                // if gist url get raw
-                /* eslint-disable no-useless-escape */
-                if (RegExp('^(https?://)?gist.github.com/').test(value)) {
-                    let urlSplit = value.split('/');
-                    if (
-                        urlSplit.length > 3 &&
-                        urlSplit[urlSplit.length - 1] !== 'raw'
-                    ) {
-                        urlSplit[urlSplit.length - 3] =
-                            'gist.githubusercontent.com';
-                        urlSplit.push('raw');
-                        value = urlSplit.join('/');
-                    }
-                }
-                axios
-                    .get(value)
-                    .then((res) => {
-                        if (res.status === 200 && res.data) {
-                            if (typeof res.data === 'object') {
-                                this.$emit(
-                                    'input',
-                                    JSON.stringify(res.data, null, 2)
-                                );
-                            } else {
-                                this.$emit('input', res.data);
-                            }
-                        }
-                    })
-                    .catch((err) => {
-                        // eslint-disable-next-line no-console
-                        console.log(err);
-                    });
-            }
+            this.loadGeoJsonFromUrl(value);
         },
         type(t) {
             this.$refs.mapRef.$mapPromise.then((map) => {

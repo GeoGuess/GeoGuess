@@ -8,15 +8,14 @@
                 :loading="isLoading"
                 autofocus
                 :placeholder="
-                    placeGeoJson !== null
+                    isValidGeoJson
                         ? $t('Home.searchBar.customLoaded')
                         : $t('Home.searchBar.enterCity')
                 "
                 v-model="place"
-                :disabled="placeGeoJson !== null"
-                :persistent-hint="placeGeoJson !== null"
-                :outlined="placeGeoJson !== null"
-                background-color="primary"
+                :disabled="isValidGeoJson"
+                :persistent-hint="isValidGeoJson"
+                :background-color="isValidGeoJson ? 'primary' : 'secondary'"
                 append-icon="mdi-magnify"
                 dark
                 rounded
@@ -39,21 +38,20 @@
         <DialogCustomMap
             :visibility="dialogCustom"
             @change-visibility="dialogCustom = !dialogCustom"
-            v-model="geoJson"
-            :validGeoJson="placeGeoJson !== null"
         />
 
         <div class="search-box__btns">
-            <DialogRoom singlePlayer :place="place" :geoJson="placeGeoJson" />
+            <DialogRoom singlePlayer :place="place" :geoJson="geoJson" />
 
-            <DialogRoom :place="place" :geoJson="placeGeoJson" />
+            <DialogRoom :place="place" :geoJson="geoJson" />
         </div>
     </div>
 </template>
 <script>
 import axios from 'axios';
-import DialogCustomMap from '@/components/DialogCustomMap';
+import DialogCustomMap from '@/components/home/DialogCustomMap';
 import DialogRoom from '@/components/widgets/dialog/DialogRoom';
+import { mapGetters } from 'vuex';
 export default {
     components: {
         DialogRoom,
@@ -68,43 +66,18 @@ export default {
             isLoading: false,
             search: '',
             dialogCustom: false,
-            geoJson: '',
         };
     },
 
     computed: {
-        placeGeoJson() {
-            if (this.geoJson == '') {
-                return null;
-            }
-            try {
-                let obj = JSON.parse(this.geoJson);
-                if (obj.type === 'FeatureCollection' && obj.features) {
-                    obj.features.map((f) => {
-                        if (
-                            !['Point', 'Polygon', 'MultiPolygon'].includes(
-                                f.geometry.type
-                            )
-                        ) {
-                            throw new Error('Error Format');
-                        }
-                    });
-                    return obj;
-                } else {
-                    throw new Error('Error Format');
-                }
-            } catch (e) {
-                return null;
-            }
-        },
-
+        ...mapGetters(['isValidGeoJson', 'geoJson']),
         items() {
             return this.entries.map((entry) => entry.properties.name);
         },
     },
 
     watch: {
-        placeGeoJson(val) {
+        geoJson(val) {
             if (val !== null) {
                 this.place = '';
             }

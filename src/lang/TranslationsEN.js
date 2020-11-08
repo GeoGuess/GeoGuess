@@ -31,6 +31,7 @@ export default {
             If the map doesn't load, it means the quotas has been exceeded on the day. \
             It will reset at midnight Pacific Time. Sorry for inconvenience. \
             This game is open source so you can build your own game server and play this game unlimitedly.",
+            play: 'Play',
         },
         StreetView: {
             nearby: {

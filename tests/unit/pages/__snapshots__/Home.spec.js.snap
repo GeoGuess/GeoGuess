@@ -3,9 +3,6 @@
 exports[`Home.vue test mounted 1`] = `
 <div class="home-page">
   <header-stub></header-stub>
-  <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="none" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
-    <history-stub></history-stub>
-  </v-dialog-stub>
   <section class="home-page__main">
     <v-container-stub tag="div" fluid="true" class="home-page__main__container">
       <v-layout-stub tag="div" row="" class="home-page__main__layout">
@@ -17,6 +14,12 @@ exports[`Home.vue test mounted 1`] = `
         </v-layout-stub>
       </v-layout-stub>
     </v-container-stub>
+    <v-btn-stub color="secondary" dark="true" tag="button" activeclass="" href="#maps" large="true" fab="true" type="button" id="btnMaps">
+      <v-icon-stub>mdi-arrow-down</v-icon-stub>
+    </v-btn-stub>
+  </section>
+  <section id="maps">
+    <v-row-stub tag="div"></v-row-stub>
   </section>
   <footer-stub></footer-stub>
 </div>
@@ -25,9 +28,6 @@ exports[`Home.vue test mounted 1`] = `
 exports[`Home.vue test mounted 2`] = `
 <div class="home-page">
   <header-stub></header-stub>
-  <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="none" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
-    <history-stub></history-stub>
-  </v-dialog-stub>
   <section class="home-page__main">
     <v-container-stub tag="div" fluid="true" class="home-page__main__container">
       <v-layout-stub tag="div" row="" class="home-page__main__layout">
@@ -39,6 +39,12 @@ exports[`Home.vue test mounted 2`] = `
         </v-layout-stub>
       </v-layout-stub>
     </v-container-stub>
+    <v-btn-stub color="secondary" dark="true" tag="button" activeclass="" href="#maps" large="true" fab="true" type="button" id="btnMaps">
+      <v-icon-stub>mdi-arrow-down</v-icon-stub>
+    </v-btn-stub>
+  </section>
+  <section id="maps">
+    <v-row-stub tag="div"></v-row-stub>
   </section>
   <footer-stub></footer-stub>
 </div>
