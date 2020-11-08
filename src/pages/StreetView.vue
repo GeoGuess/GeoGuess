@@ -26,6 +26,7 @@
                         :points="points"
                         :difficulty="difficultyData"
                         :timeLimitation="timeLimitation"
+                        :bbox="bbox"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -98,6 +99,10 @@ export default {
             default: 2000,
             type: Number,
         },
+        bboxObj: {
+            default: null,
+            type: Array,
+        },
         roundsPredefined: {
             default: null,
             type: Array,
@@ -133,6 +138,7 @@ export default {
             panorama: null,
             timerInProgress: true,
             difficultyData: this.difficulty,
+            bbox: this.bboxObj,
         };
     },
     methods: {
@@ -448,6 +454,7 @@ export default {
                             .child('timeLimitation')
                             .val();
                         this.difficulty = snapshot.child('difficulty').val();
+                        this.bbox = snapshot.child('bbox').val();
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {
