@@ -72,6 +72,7 @@
                             :value="geoJsonString"
                             v-on:input="onChangeTextArea"
                             :placeholder="placeholderGeoJson"
+                            :rules="rulesTextArea"
                             rows="21"
                             filled
                             clearable
@@ -93,6 +94,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import { validURL } from '@/utils';
+import { isGeoJSONValid } from '../../utils';
 
 const google = window.google;
 
@@ -103,6 +105,7 @@ export default {
         return {
             placeholderGeoJson: geoJsonExample,
             rulesUrl: [(value) => validURL(value)],
+            rulesTextArea: [(value) => this.checkIfStringGeoJsonValid(value)],
             type: 'text',
             file: null,
             url: '',
@@ -113,6 +116,14 @@ export default {
     computed: { ...mapGetters(['geoJsonString', 'isValidGeoJson', 'geoJson']) },
     methods: {
         ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setGeoJsonString']),
+        checkIfStringGeoJsonValid(string) {
+            try {
+                return isGeoJSONValid(JSON.parse(string));
+            } catch (e) {
+                return false;
+            }
+        },
+
         onChangeTextArea(e) {
             this.setGeoJsonString(e);
         },

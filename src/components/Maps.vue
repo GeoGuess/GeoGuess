@@ -12,6 +12,12 @@
         @mouseover="activeMap = true"
         @mouseleave="activeMap = false"
     >
+        <div class="container-map_details">
+            <DetailsMap
+                v-if="printMapFull && !isExitButtonVisible"
+                :properties="randomFeatureProperties"
+            />
+        </div>
         <div class="container-map_controls">
             <div class="container-map_btns">
                 <v-btn
@@ -155,12 +161,14 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 
 import DialogSummary from '@/components/DialogSummary';
+import DetailsMap from '@/components/game/DetailsMap';
 
 const google = window.google;
 
 export default {
     props: [
         'randomLatLng',
+        'randomFeatureProperties',
         'roomName',
         'playerNumber',
         'playerName',
@@ -173,6 +181,7 @@ export default {
     ],
     components: {
         DialogSummary,
+        DetailsMap,
     },
     data() {
         return {
@@ -717,8 +726,14 @@ export default {
         .container-map_controls {
             display: none;
         }
+        .container-map_details {
+            display: block;
+        }
     }
 
+    .container-map_details {
+        display: none;
+    }
     .container-map_controls {
         .container-map_btns {
             background-color: rgba(33, 33, 33);

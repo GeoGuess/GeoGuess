@@ -2,6 +2,7 @@ import * as MutationTypes from './mutation-types';
 import { validURL } from '@/utils';
 
 import axios from 'axios';
+import { isGeoJSONValid } from '../utils';
 export default {
     state: () => ({
         geojson: null,
@@ -38,25 +39,7 @@ export default {
             if (!state.geojson) {
                 return null;
             }
-            try {
-                let obj = state.geojson;
-                if (obj.type === 'FeatureCollection' && obj.features) {
-                    obj.features.map((f) => {
-                        if (
-                            !['Point', 'Polygon', 'MultiPolygon'].includes(
-                                f.geometry.type
-                            )
-                        ) {
-                            throw new Error('Not Point Polygon MultiPolygon');
-                        }
-                    });
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch (e) {
-                return false;
-            }
+            return isGeoJSONValid(state.geojson);
         },
         maps(state) {
             return state.listMaps;

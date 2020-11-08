@@ -50,3 +50,30 @@ export function getCountdownText(time) {
     }
     return minutes + ':' + seconds;
 }
+
+/**
+ * Test in geojson object is valid
+ * @param {object} geojson
+ * @return {boolean} true if geojson is valid else false
+ */
+export function isGeoJSONValid(geojson) {
+    try {
+        let obj = geojson;
+        if (obj.type === 'FeatureCollection' && obj.features) {
+            obj.features.map((f) => {
+                if (
+                    !['Point', 'Polygon', 'MultiPolygon'].includes(
+                        f.geometry.type
+                    )
+                ) {
+                    throw new Error('Not Point Polygon MultiPolygon');
+                }
+            });
+            return true;
+        } else {
+            return false;
+        }
+    } catch (e) {
+        return false;
+    }
+}
