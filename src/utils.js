@@ -1,5 +1,6 @@
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
+
 /**
  * check in valid format url
  * @param {string} str
@@ -19,7 +20,7 @@ export function validURL(str) {
 
 /**
  * Search if point is in GeoJSON
- * @param {Point>} point
+ * @param {Point} point
  * @param {FeatureCollection} geoJSON
  */
 export function isInGeoJSON(point, geoJSON) {
@@ -76,4 +77,20 @@ export function isGeoJSONValid(geojson) {
     } catch (e) {
         return false;
     }
+}
+
+/**
+ * Get value locate from object
+ * @param {object} obj
+ * @param {string} name
+ * @param {string} language
+ * @param {string} defaultLanguage
+ */
+export function getLocateString(obj, name, language, defaultLanguage = 'en') {
+    if (typeof obj[name] === 'string') {
+        return obj[name];
+    } else if (typeof obj[name] === 'object') {
+        return obj[name][language] || obj[name][defaultLanguage] || '';
+    }
+    return '';
 }
