@@ -31,6 +31,8 @@ describe('DialogCustomMap.vue', () => {
             expect.anything(),
             'sdsd'
         );
+
+        expect(wrapper.vm.checkIfStringGeoJsonValid('')).toEqual(false);
     });
 
     it('watch', async () => {
@@ -55,5 +57,8 @@ describe('DialogCustomMap.vue', () => {
         });
 
         expect(wrapper.vm.rulesUrl[0]('sdsd')).toBeFalsy();
+        wrapper.vm.checkIfStringGeoJsonValid = jest.fn();
+        expect(wrapper.vm.rulesTextArea[0]('abc')).toBeFalsy();
+        expect(wrapper.vm.checkIfStringGeoJsonValid).toBeCalledWith('abc');
     });
 });
