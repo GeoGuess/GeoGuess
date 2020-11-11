@@ -231,6 +231,7 @@ export default {
                         this.room.child('streetView/round' + this.round).set({
                             latitude: this.randomLatLng.lat(),
                             longitude: this.randomLatLng.lng(),
+                            roundInfo: this.randomFeatureProperties,
                             warning: this.isVisibleDialog,
                         });
                     }
@@ -426,6 +427,13 @@ export default {
                             this.isVisibleDialog = snapshot
                                 .child(
                                     'streetView/round' + this.round + '/warning'
+                                )
+                                .val();
+                            this.randomFeatureProperties = snapshot
+                                .child(
+                                    'streetView/round' +
+                                        this.round +
+                                        '/roundInfo'
                                 )
                                 .val();
                             this.randomLatLng = new google.maps.LatLng(
