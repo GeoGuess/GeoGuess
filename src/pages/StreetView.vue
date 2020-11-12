@@ -120,6 +120,7 @@ export default {
             round: 1,
             timeLimitation: this.time,
             remainingTime: 0,
+            endTime: null,
             hasTimerStarted: false,
             hasLocationSelected: false,
             overlay: false,
@@ -131,7 +132,7 @@ export default {
             cptNotFoundLocation: 0,
             isVisibleDialog: false,
             panorama: null,
-            timerInProgress: true,
+
             difficultyData: this.difficulty,
         };
     },
@@ -261,9 +262,12 @@ export default {
         },
         startTimer(round = this.round) {
             if (round === this.round) {
+                this.remainingTime = Math.max(
+                    0,
+                    Math.round((this.endTime - Date.now()) / 1000)
+                );
                 if (this.remainingTime > 0) {
                     setTimeout(() => {
-                        this.remainingTime -= 1;
                         this.startTimer(round);
                     }, 1000);
                 } else {
@@ -325,7 +329,10 @@ export default {
             if (this.playerNumber == 1 || !this.multiplayer) {
                 this.loadStreetView();
                 if (!this.multiplayer && this.timeLimitation != 0) {
-                    this.remainingTime = this.timeLimitation;
+                    this.endTime = new Date();
+                    this.endTime.setSeconds(
+                        this.endTime.getSeconds() + this.timeLimitation
+                    );
                     this.startTimer();
                 }
             } else {
@@ -374,7 +381,10 @@ export default {
 
             if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
-                    this.remainingTime = this.timeLimitation;
+                    this.endTime = new Date();
+                    this.endTime.setSeconds(
+                        this.endTime.getSeconds() + this.timeLimitation
+                    );
                     this.startTimer();
                     this.hasTimerStarted = true;
                 }
@@ -451,7 +461,11 @@ export default {
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {
-                                this.remainingTime = this.timeLimitation;
+                                this.endTime = new Date();
+                                this.endTime.setSeconds(
+                                    this.endTime.getSeconds() +
+                                        this.timeLimitation
+                                );
                                 this.startTimer();
                                 this.hasTimerStarted = true;
                             }
