@@ -1,4 +1,9 @@
-const { validURL, isInGeoJSON, getCountdownText } = require('../../src/utils');
+const {
+    validURL,
+    isInGeoJSON,
+    getCountdownText,
+    getLocateString,
+} = require('../../src/utils');
 
 describe('utils.js', () => {
     it('validURL', () => {
@@ -55,5 +60,28 @@ describe('utils.js', () => {
     it('getCountdownText', () => {
         expect(getCountdownText(1212)).toEqual('20:12');
         expect(getCountdownText(3)).toEqual('00:03');
+    });
+
+    it('getLocateString', () => {
+        const object = {
+            title: {
+                fr: 'titre',
+                en: 'title',
+            },
+            description: 'description',
+            name: {
+                en: 'name',
+            },
+            author: {
+                fr: 'auteur',
+            },
+        };
+        expect(getLocateString(object, 'title', 'fr')).toEqual('titre');
+        expect(getLocateString(object, 'description', 'fr')).toEqual(
+            'description'
+        );
+        expect(getLocateString(object, 'name', 'fr')).toEqual('name');
+        expect(getLocateString(object, 'author', 'ar')).toEqual('');
+        expect(getLocateString(object, 'date', 'ar')).toEqual('');
     });
 });

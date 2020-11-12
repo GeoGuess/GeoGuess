@@ -17,6 +17,7 @@
                     <Maps
                         ref="map"
                         :randomLatLng="randomLatLng"
+                        :randomFeatureProperties="randomFeatureProperties"
                         :roomName="roomName"
                         :playerNumber="playerNumber"
                         :playerName="playerName"
@@ -118,6 +119,7 @@ export default {
             randomLatLng: null,
             randomLat: null,
             randomLng: null,
+            randomFeatureProperties: null,
             score: 0,
             scoreHeader: 0,
             points: 0,
@@ -153,6 +155,7 @@ export default {
                 const randomPos = this.getRandomLatLng();
                 point = randomPos.point;
                 position = randomPos.position;
+                this.randomFeatureProperties = randomPos.properties;
             }
             service.getPanorama(
                 {
@@ -167,13 +170,15 @@ export default {
         getRandomLatLng() {
             if (this.placeGeoJson != null) {
                 let position,
-                    point = false;
+                    point = false,
+                    properties;
                 if (this.placeGeoJson.type === 'FeatureCollection') {
                     let randInt = Math.floor(
                         Math.random() * this.placeGeoJson.features.length
                     );
 
                     const feature = this.placeGeoJson.features[randInt];
+                    properties = feature.properties;
                     if (feature.geometry.type === 'Point') {
                         position = feature.geometry.coordinates;
                         point = true;
@@ -187,6 +192,7 @@ export default {
                 return {
                     point,
                     position: new google.maps.LatLng(position[1], position[0]),
+                    properties,
                 };
             }
 
@@ -231,6 +237,7 @@ export default {
                         this.room.child('streetView/round' + this.round).set({
                             latitude: this.randomLatLng.lat(),
                             longitude: this.randomLatLng.lng(),
+                            roundInfo: this.randomFeatureProperties,
                             warning: this.isVisibleDialog,
                         });
                     }
@@ -319,6 +326,7 @@ export default {
             this.hasTimerStarted = false;
             this.hasLocationSelected = false;
             this.isVisibleDialog = false;
+            this.randomFeatureProperties = null;
 
             if (this.multiplayer) {
                 this.dialogMessage = true; // Show the dialog while waiting for other players
@@ -425,6 +433,13 @@ export default {
                             this.isVisibleDialog = snapshot
                                 .child(
                                     'streetView/round' + this.round + '/warning'
+                                )
+                                .val();
+                            this.randomFeatureProperties = snapshot
+                                .child(
+                                    'streetView/round' +
+                                        this.round +
+                                        '/roundInfo'
                                 )
                                 .val();
                             this.randomLatLng = new google.maps.LatLng(
