@@ -170,6 +170,7 @@ export default {
         'points',
         'timeLimitation',
         'difficulty',
+        'bbox',
     ],
     components: {
         DialogSummary,
@@ -525,6 +526,21 @@ export default {
                 });
             }
         },
+        centerOnBbox() {
+            if (this.map && this.bbox) {
+                this.map.fitBounds({
+                    east: this.bbox[2],
+                    north: this.bbox[3],
+                    south: this.bbox[1],
+                    west: this.bbox[0],
+                });
+            }
+        },
+    },
+    watch: {
+        bbox() {
+            this.centerOnBbox();
+        },
     },
     mounted() {
         this.map = new google.maps.Map(document.getElementById('map'), {
@@ -534,6 +550,14 @@ export default {
             mapTypeControl: false,
             streetViewControl: false,
         });
+        if (this.bbox) {
+            this.map.fitBounds({
+                east: this.bbox[2],
+                north: this.bbox[3],
+                south: this.bbox[1],
+                west: this.bbox[0],
+            });
+        }
 
         this.game.timeLimitation = this.timeLimitation;
         this.game.difficulty = this.difficulty;

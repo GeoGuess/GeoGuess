@@ -73,6 +73,7 @@ export default {
             currentComponent: this.singlePlayer ? 'timeLimitation' : 'roomName',
             timeLimitation: null,
             difficulty: null,
+            bboxObj: null,
         };
     },
     computed: {
@@ -214,7 +215,8 @@ export default {
         },
         setDifficulty() {
             if (this.placeGeoJson) {
-                const bboxPlace = Object.values(bbox(this.placeGeoJson));
+                this.bboxObj = bbox(this.placeGeoJson);
+                const bboxPlace = Object.values(this.bboxObj);
                 const from = point(bboxPlace.slice(0, 2));
                 const to = point(bboxPlace.slice(2, 4));
 
@@ -232,6 +234,7 @@ export default {
                         time: this.timeLimitation,
                         difficulty: this.difficulty,
                         placeGeoJson: this.placeGeoJson,
+                        bboxObj: this.bboxObj,
                     },
                 });
             } else {
@@ -239,6 +242,7 @@ export default {
                     {
                         timeLimitation: this.timeLimitation,
                         difficulty: this.difficulty,
+                        bbox: this.bboxObj,
                     },
                     (error) => {
                         if (!error) {
@@ -262,6 +266,7 @@ export default {
                                 playerNumber: this.playerNumber,
                                 placeGeoJson: this.placeGeoJson,
                                 multiplayer: true,
+                                bboxObj: this.bboxObj,
                             },
                         });
                     }
