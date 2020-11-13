@@ -133,5 +133,8 @@ export default {
             privacyPolicy: 'Politique de confidentialité',
         },
         urlCopied: 'Url copiée',
+        DetailsMap: {
+            moreInfo: 'En savoir plus',
+        },
     },
 };
