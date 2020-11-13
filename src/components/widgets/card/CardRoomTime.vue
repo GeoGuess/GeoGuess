@@ -74,11 +74,12 @@ export default {
         },
         changeMinute(m) {
             // Tape in input minute
-            this.timeLimitation = (this.timeLimitation % 60) + m * 60; // Get number seconds and add minutes
+            this.timeLimitation = (this.timeLimitation % 60) + parseInt(m) * 60; // Get number seconds and add minutes
         },
         changeSecond(s) {
             // Tape in input second
-            this.timeLimitation = Math.floor(this.timeLimitation / 60) + s; // Get number minutes and add seconds
+            this.timeLimitation =
+                Math.floor(this.timeLimitation / 60) * 60 + parseInt(s); // Get number minutes and add seconds
         },
         cancel() {
             this.$emit('cancel');
