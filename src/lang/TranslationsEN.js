@@ -134,5 +134,8 @@ export default {
             privacyPolicy: 'Privacy Policy',
         },
         urlCopied: 'Url copied',
+        DetailsMap: {
+            moreInfo: 'More information',
+        },
     },
 };
