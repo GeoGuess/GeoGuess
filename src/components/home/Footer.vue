@@ -29,7 +29,7 @@
             </div>
             <div>
                 <p>
-                    {{ $t('Footer.under') }}
+                    {{ version }} - {{ $t('Footer.under') }}
                     <a
                         href="https://github.com/GeoGuess/Geoguess/blob/master/LICENSE"
                         >MIT license</a
@@ -45,7 +45,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+    computed: {
+        version() {
+            return require('../../../package.json').version;
+        },
+    },
+};
 </script>
 
 <style lang="scss">
