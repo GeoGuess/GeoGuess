@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapDialog.vue methods 1`] = `
+<v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+  <v-card-stub loaderheight="4" tag="div">
+    <v-img-stub height="230px" gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)" options="[object Object]" position="center center" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=140" transition="fade-transition" class="white--text align-end">
+      <v-card-title-stub>Grande Villes</v-card-title-stub>
+    </v-img-stub>
+    <v-card-subtitle-stub class="pt-3 pb-2 font-italic">
+      BilelJegham
+    </v-card-subtitle-stub>
+    <v-card-text-stub class="text--primary map-dialog__description">
+      Une liste de plus de 40 villes : PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…
+    </v-card-text-stub>
+    <v-card-actions-stub>
+      <v-btn-stub color="error" tag="button" activeclass="" text="true" type="button">
+        CANCEL
+      </v-btn-stub>
+      <v-spacer-stub></v-spacer-stub>
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button">
+        Single Player
+      </v-btn-stub>
+      <v-btn-stub color="secondary" dark="true" tag="button" activeclass="" type="button">
+        With Friends
+      </v-btn-stub>
+    </v-card-actions-stub>
+  </v-card-stub>
+</v-dialog-stub>
+`;

@@ -20,6 +20,8 @@ export default new Vuetify({
                 primary: '#468F69',
                 secondary: '#808F87',
                 accent: '#D0CABC',
+                beige: '#ded3af',
+                darkGreen: '#4F665A',
             },
         },
     },

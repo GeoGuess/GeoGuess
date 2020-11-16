@@ -1,9 +1,6 @@
 <template>
     <div class="home-page">
         <Header />
-        <v-dialog v-model="historyDialog">
-            <History :history="history" />
-        </v-dialog>
         <section class="home-page__main">
             <v-container class="home-page__main__container" fluid>
                 <v-layout row class="home-page__main__layout">
@@ -20,6 +17,16 @@
                     </v-layout>
                 </v-layout>
             </v-container>
+            <v-btn id="btnMaps" href="#maps" large fab color="secondary" dark>
+                <v-icon>mdi-arrow-down</v-icon>
+            </v-btn>
+        </section>
+        <section id="maps">
+            <v-row>
+                <v-col v-for="(map, index) in maps" v-bind:key="index">
+                    <MapCard :map="map" />
+                </v-col>
+            </v-row>
         </section>
 
         <Footer />
@@ -27,18 +34,17 @@
 </template>
 
 <script>
-import History from '@/components/History';
-
 import Header from '@/components/home/Header';
 import SearchBox from '@/components/home/SearchBox';
 import Footer from '@/components/home/Footer';
-
+import MapCard from '@/components/home/maps/MapCard';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
         Header,
-        History,
         Footer,
         SearchBox,
+        MapCard,
     },
     mounted() {
         if (this.$route.params && this.$route.params.partyParams) {
@@ -66,49 +72,67 @@ export default {
                 });
             }
         }
+        this.getListMaps();
     },
+    methods: { ...mapActions(['getListMaps']) },
+    computed: { ...mapGetters(['maps']) },
 };
 </script>
 
 <style scoped lang="scss">
 .home-page {
     background-color: #ded3af;
-    .home-page__main__container {
-        font-size: 1.2rem;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        background: url('../assets/home/world.svg');
-        background-size: cover;
-        .home-page__main__layout {
-            height: calc(100vh - 150px);
-            flex-wrap: nowrap;
-            justify-items: end;
-            .box {
-                margin: auto;
-                width: 35vw;
-                min-width: 400px;
-            }
+    .home-page__main {
+        position: relative;
 
-            .home-page__main__content {
-                min-width: 65%;
-            }
-            .home-page__traveler-container {
-                position: relative;
-                height: auto;
-                width: 100%;
-                max-width: 50vw;
-                .home-page__traveler-img {
-                    position: absolute;
-                    bottom: 0;
+        .home-page__main__container {
+            font-size: 1.2rem;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            background: url('../assets/home/world.svg');
+            background-size: cover;
+            .home-page__main__layout {
+                height: calc(100vh - 100px);
+                flex-wrap: nowrap;
+                justify-items: end;
+                .box {
+                    margin: 28vh auto;
+                    width: 35vw;
+                    min-width: 400px;
+                }
+
+                .home-page__main__content {
+                    min-width: 65%;
+                }
+                .home-page__traveler-container {
+                    position: relative;
+                    height: auto;
                     width: 100%;
-                    max-width: 772px;
-                    max-height: 814px;
+                    max-width: 50vw;
+                    .home-page__traveler-img {
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        max-width: 772px;
+                        max-height: 814px;
+                    }
                 }
             }
         }
+        #btnMaps {
+            position: absolute;
+            margin: auto;
+            bottom: 4rem;
+            left: 0;
+            right: 0;
+        }
+    }
+    #maps {
+        padding: 2% 5%;
     }
 }
+
 @media (max-width: 660px) {
     .home-page {
         background-color: #ded3af;

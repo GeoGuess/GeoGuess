@@ -72,10 +72,24 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../utils/appInit';
 import axios from 'axios';
 
+import Vuex from 'vuex';
+import homeStore from '../../../../src/store/homeStore';
+
 const args = appInit(createLocalVue());
 describe('SearchBox.vue', () => {
+    let store;
+    beforeEach(() => {
+        store = new Vuex.Store({
+            modules: {
+                homeStore: {
+                    state: homeStore.state,
+                    getters: homeStore.getters,
+                },
+            },
+        });
+    });
     it('test search Input', () => {
-        const wrapper = shallowMount(SearchBox, args);
+        const wrapper = shallowMount(SearchBox, { ...args, store });
         wrapper.setData({ search: 'Toulouse' });
 
         expect(wrapper.exists('#search-input'));
@@ -91,60 +105,5 @@ describe('SearchBox.vue', () => {
         });
 
         expect(wrapper).toMatchSnapshot();
-    });
-
-    it('test placeGeoJson expect FeatureCollection', () => {
-        const wrapper = shallowMount(SearchBox, args);
-        expect(wrapper.vm.placeGeoJson).toBeNull();
-
-        wrapper.setData({
-            geoJson:
-                '{ "geometry": { "coordinates": [1.4442469, 43.6044622],  "type": "Point"},"type": "Feature" }',
-        });
-        wrapper.vm.$nextTick(() => {
-            expect(wrapper.vm.placeGeoJson).toBeNull();
-            expect(wrapper.vm.placeGeoJson).toMatchSnapshot();
-        });
-    });
-
-    it('test placeGeoJson expect features', () => {
-        const wrapper = shallowMount(SearchBox, args);
-        expect(wrapper.vm.placeGeoJson).toBeNull();
-
-        wrapper.setData({
-            geoJson: '{"type": "FeatureCollection" }',
-        });
-        wrapper.vm.$nextTick(() => {
-            expect(wrapper.vm.placeGeoJson).toBeNull();
-            expect(wrapper.vm.placeGeoJson).toMatchSnapshot();
-        });
-    });
-
-    it('test placeGeoJson', () => {
-        const wrapper = shallowMount(SearchBox, args);
-        expect(wrapper.vm.placeGeoJson).toBeNull();
-
-        wrapper.setData({
-            geoJson:
-                '{"type": "FeatureCollection", "features":[{ "geometry": { "coordinates": [1.4442469, 43.6044622],  "type": "Circle"},"type": "Feature" }] }',
-        });
-
-        expect(wrapper.vm.placeGeoJson).toBeNull();
-        expect(wrapper.vm.placeGeoJson).toMatchSnapshot();
-    });
-
-    it('test placeGeoJson', () => {
-        const wrapper = shallowMount(SearchBox, args);
-        expect(wrapper.vm.placeGeoJson).toBeNull();
-
-        wrapper.setData({
-            geoJson:
-                '{"type": "FeatureCollection", "features":[{ "geometry": { "coordinates": [1.4442469, 43.6044622],  "type": "Point"},"type": "Feature" }] }',
-        });
-
-        expect(wrapper.vm.placeGeoJson).not.toBeNull();
-        expect(wrapper.vm.placeGeoJson.type).toEqual('FeatureCollection');
-        expect(wrapper.vm.placeGeoJson.features).toHaveLength(1);
-        expect(wrapper.vm.placeGeoJson).toMatchSnapshot();
     });
 });

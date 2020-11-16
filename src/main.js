@@ -3,6 +3,7 @@ import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import router from './router';
 import i18n from './lang';
+import store from './store';
 
 import firebase from 'firebase/app';
 import 'firebase/analytics';
@@ -56,5 +57,6 @@ new Vue({
     vuetify,
     router,
     i18n,
+    store,
     render: (h) => h(App),
 }).$mount('#app');

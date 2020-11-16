@@ -1,34 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBox.vue test placeGeoJson 1`] = `null`;
-
-exports[`SearchBox.vue test placeGeoJson 2`] = `
-Object {
-  "features": Array [
-    Object {
-      "geometry": Object {
-        "coordinates": Array [
-          1.4442469,
-          43.6044622,
-        ],
-        "type": "Point",
-      },
-      "type": "Feature",
-    },
-  ],
-  "type": "FeatureCollection",
-}
-`;
-
-exports[`SearchBox.vue test placeGeoJson expect FeatureCollection 1`] = `null`;
-
-exports[`SearchBox.vue test placeGeoJson expect features 1`] = `null`;
-
 exports[`SearchBox.vue test search Input 1`] = `
 <div class="search-box">
   <h2>Record: 0 km</h2>
   <div class="search-box__search-bar">
-    <v-combobox-stub dark="true" errorcount="1" errormessages="" messages="" rules="" successmessages="" value="" appendicon="mdi-magnify" backgroundcolor="primary" height="50" id="search-input" loaderheight="2" autofocus="true" clearicon="$clear" fullwidth="true" placeholder="Enter city, state or country" rounded="true" type="text" valuecomparator="function deepEqual(a, b) {
+    <v-combobox-stub dark="true" errorcount="1" errormessages="" messages="" rules="" successmessages="" value="" appendicon="mdi-magnify" backgroundcolor="secondary" height="50" id="search-input" loaderheight="2" autofocus="true" clearicon="$clear" fullwidth="true" placeholder="Enter city, state or country" rounded="true" type="text" valuecomparator="function deepEqual(a, b) {
   if (a === b) return true;
 
   if (a instanceof Date &amp;&amp; b instanceof Date) {
@@ -58,7 +34,7 @@ exports[`SearchBox.vue test search Input 1`] = `
       <v-icon-stub>mdi-map-plus</v-icon-stub>
     </v-btn-stub>
   </div>
-  <dialogcustommap-stub value=""></dialogcustommap-stub>
+  <dialogcustommap-stub></dialogcustommap-stub>
   <div class="search-box__btns">
     <dialogroom-stub place="" singleplayer="true"></dialogroom-stub>
     <dialogroom-stub place=""></dialogroom-stub>

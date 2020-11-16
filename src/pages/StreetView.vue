@@ -17,6 +17,7 @@
                     <Maps
                         ref="map"
                         :randomLatLng="randomLatLng"
+                        :randomFeatureProperties="randomFeatureProperties"
                         :roomName="roomName"
                         :playerNumber="playerNumber"
                         :playerName="playerName"
@@ -26,6 +27,7 @@
                         :points="points"
                         :difficulty="difficultyData"
                         :timeLimitation="timeLimitation"
+                        :bbox="bbox"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -98,6 +100,10 @@ export default {
             default: 2000,
             type: Number,
         },
+        bboxObj: {
+            default: null,
+            type: Array,
+        },
         roundsPredefined: {
             default: null,
             type: Array,
@@ -113,6 +119,7 @@ export default {
             randomLatLng: null,
             randomLat: null,
             randomLng: null,
+            randomFeatureProperties: null,
             score: 0,
             scoreHeader: 0,
             points: 0,
@@ -120,6 +127,7 @@ export default {
             round: 1,
             timeLimitation: this.time,
             remainingTime: 0,
+            endTime: null,
             hasTimerStarted: false,
             hasLocationSelected: false,
             overlay: false,
@@ -131,8 +139,9 @@ export default {
             cptNotFoundLocation: 0,
             isVisibleDialog: false,
             panorama: null,
-            timerInProgress: true,
+
             difficultyData: this.difficulty,
+            bbox: this.bboxObj,
         };
     },
     methods: {
@@ -147,6 +156,7 @@ export default {
                 const randomPos = this.getRandomLatLng();
                 point = randomPos.point;
                 position = randomPos.position;
+                this.randomFeatureProperties = randomPos.properties;
             }
             service.getPanorama(
                 {
@@ -161,13 +171,15 @@ export default {
         getRandomLatLng() {
             if (this.placeGeoJson != null) {
                 let position,
-                    point = false;
+                    point = false,
+                    properties;
                 if (this.placeGeoJson.type === 'FeatureCollection') {
                     let randInt = Math.floor(
                         Math.random() * this.placeGeoJson.features.length
                     );
 
                     const feature = this.placeGeoJson.features[randInt];
+                    properties = feature.properties;
                     if (feature.geometry.type === 'Point') {
                         position = feature.geometry.coordinates;
                         point = true;
@@ -181,6 +193,7 @@ export default {
                 return {
                     point,
                     position: new google.maps.LatLng(position[1], position[0]),
+                    properties,
                 };
             }
 
@@ -225,6 +238,7 @@ export default {
                         this.room.child('streetView/round' + this.round).set({
                             latitude: this.randomLatLng.lat(),
                             longitude: this.randomLatLng.lng(),
+                            roundInfo: this.randomFeatureProperties,
                             warning: this.isVisibleDialog,
                         });
                     }
@@ -261,9 +275,12 @@ export default {
         },
         startTimer(round = this.round) {
             if (round === this.round) {
+                this.remainingTime = Math.max(
+                    0,
+                    Math.round((this.endTime - Date.now()) / 1000)
+                );
                 if (this.remainingTime > 0) {
                     setTimeout(() => {
-                        this.remainingTime -= 1;
                         this.startTimer(round);
                     }, 1000);
                 } else {
@@ -313,6 +330,7 @@ export default {
             this.hasTimerStarted = false;
             this.hasLocationSelected = false;
             this.isVisibleDialog = false;
+            this.randomFeatureProperties = null;
 
             if (this.multiplayer) {
                 this.dialogMessage = true; // Show the dialog while waiting for other players
@@ -325,7 +343,10 @@ export default {
             if (this.playerNumber == 1 || !this.multiplayer) {
                 this.loadStreetView();
                 if (!this.multiplayer && this.timeLimitation != 0) {
-                    this.remainingTime = this.timeLimitation;
+                    this.endTime = new Date();
+                    this.endTime.setSeconds(
+                        this.endTime.getSeconds() + this.timeLimitation
+                    );
                     this.startTimer();
                 }
             } else {
@@ -374,7 +395,10 @@ export default {
 
             if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
-                    this.remainingTime = this.timeLimitation;
+                    this.endTime = new Date();
+                    this.endTime.setSeconds(
+                        this.endTime.getSeconds() + this.timeLimitation
+                    );
                     this.startTimer();
                     this.hasTimerStarted = true;
                 }
@@ -421,6 +445,13 @@ export default {
                                     'streetView/round' + this.round + '/warning'
                                 )
                                 .val();
+                            this.randomFeatureProperties = snapshot
+                                .child(
+                                    'streetView/round' +
+                                        this.round +
+                                        '/roundInfo'
+                                )
+                                .val();
                             this.randomLatLng = new google.maps.LatLng(
                                 this.randomLat,
                                 this.randomLng
@@ -448,10 +479,15 @@ export default {
                             .child('timeLimitation')
                             .val();
                         this.difficulty = snapshot.child('difficulty').val();
+                        this.bbox = snapshot.child('bbox').val();
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {
-                                this.remainingTime = this.timeLimitation;
+                                this.endTime = new Date();
+                                this.endTime.setSeconds(
+                                    this.endTime.getSeconds() +
+                                        this.timeLimitation
+                                );
                                 this.startTimer();
                                 this.hasTimerStarted = true;
                             }
