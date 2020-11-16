@@ -45,6 +45,7 @@
 <script>
 import History from '@/components/History';
 import About from '@/components/home/About';
+import { languages } from '../../lang';
 
 export default {
     components: {
@@ -59,28 +60,7 @@ export default {
             history: localStorage.getItem('history')
                 ? JSON.parse(localStorage.getItem('history'))
                 : [],
-            languages: [
-                {
-                    text: 'English',
-                    value: 'en',
-                },
-                {
-                    text: 'Français',
-                    value: 'fr',
-                },
-                {
-                    text: 'Deutsch',
-                    value: 'de',
-                },
-                {
-                    text: 'čeština',
-                    value: 'cs',
-                },
-                {
-                    text: '日本語',
-                    value: 'ja',
-                },
-            ],
+            languages,
         };
     },
     methods: {
