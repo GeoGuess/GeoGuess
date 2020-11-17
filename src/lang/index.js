@@ -6,12 +6,38 @@ import ja from './TranslationsJA';
 import fr from './TranslationsFR';
 import cs from './TranslationsCS';
 import de from './TranslationsDE';
+import ru from './TranslationsRU';
 
 Vue.use(VueI18n);
 
-const translations = Object.assign(en, ja, fr, cs, de);
+const translations = Object.assign(en, ja, fr, cs, de, ru);
 
-const languages = ['en', 'ja', 'fr', 'cs', 'de'];
+export const languages = [
+    {
+        text: 'English',
+        value: 'en',
+    },
+    {
+        text: 'Français',
+        value: 'fr',
+    },
+    {
+        text: 'Deutsch',
+        value: 'de',
+    },
+    {
+        text: 'čeština',
+        value: 'cs',
+    },
+    {
+        text: 'русский',
+        value: 'ru',
+    },
+    {
+        text: '日本語',
+        value: 'ja',
+    },
+];
 
 export function checkLanguage(language) {
     return navigator.language.split('-')[0] == language;

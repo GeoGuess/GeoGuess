@@ -45,3 +45,44 @@ npm run build
 
 1. Make sure `npm test` passes
 2. Comments PR : We don't have rules about the PR description, just clearly explain what you have done
+
+## Transalation
+
+
+- [ ] Add translation file in `src/lang/` following `TranslationsEN.js`
+
+- [ ] Add the language in :
+    * `src/lang/index.js` 
+```js
+import ru from './TranslationsRU'; // 1
+
+Vue.use(VueI18n);
+
+const translations = Object.assign(en, ja, fr, cs, de, ru); // 2
+
+
+export const languages = [
+    {
+        text: 'English',
+        value: 'en',
+    },
+    {// 3
+        text: 'русский',
+        value: 'ru',
+    }
+];
+```
+    * `src/plugins/vuetify.js`
+```js
+// 1 
+import ru from 'vuetify/es5/locale/ru';
+
+export default new Vuetify({
+
+    lang: {
+        locales: { en, fr, ja, cs, de, ru },// 2
+    },
+
+```
+
+

@@ -29,7 +29,6 @@ describe('Header.vue', () => {
         expect(localStorage.getItem('language')).toBeNull();
         wrapper.vm.switchLanguage('en');
         expect(localStorage.getItem('language')).toEqual('en');
-        expect(wrapper).toMatchSnapshot();
     });
 
     it('test localSotrage history method', () => {

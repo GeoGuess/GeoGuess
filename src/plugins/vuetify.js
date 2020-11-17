@@ -8,8 +8,9 @@ import en from 'vuetify/es5/locale/en';
 import ja from 'vuetify/es5/locale/ja';
 import cs from 'vuetify/es5/locale/cs';
 import de from 'vuetify/es5/locale/de';
+import ru from 'vuetify/es5/locale/ru';
 
-import { checkLanguage } from '../lang';
+import { checkLanguage, languages } from '../lang';
 Vue.use(Vuetify);
 
 export default new Vuetify({
@@ -25,11 +26,11 @@ export default new Vuetify({
         },
     },
     lang: {
-        locales: { en, fr, ja, cs, de },
+        locales: { en, fr, ja, cs, de, ru },
         current:
             localStorage.getItem('language') != null
                 ? localStorage.getItem('language')
-                : ['en', 'ja', 'fr', 'cs', 'de'].some(checkLanguage),
+                : languages.map((l) => l.value).some(checkLanguage),
     },
     icons: {
         iconfont: 'mdi',
