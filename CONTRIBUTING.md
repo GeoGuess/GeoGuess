@@ -49,7 +49,7 @@ npm run build
 ## Transalation
 
 
-- [] Add translation file in `src/lang/` following `TranslationsEN.js`
+- [ ] Add translation file in `src/lang/` following `TranslationsEN.js`
 
 - [ ] Add the language in :
     * `src/lang/index.js` 
