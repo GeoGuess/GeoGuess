@@ -6,16 +6,13 @@
                     class="ml-4 mr-4"
                     icon
                     color="#FFFFFF"
-                    href="https://mumble.ehma.de/"
-                >
+                    href="https://mumble.ehma.de/">
                     <v-icon size="30">mdi-headset</v-icon>
                 </v-btn>
             </div>
-
         </div>
     </footer>
 </template>
-
 <script>
 export default {
     computed: {
