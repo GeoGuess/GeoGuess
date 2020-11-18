@@ -238,7 +238,7 @@ export default {
                         this.room.child('streetView/round' + this.round).set({
                             latitude: this.randomLatLng.lat(),
                             longitude: this.randomLatLng.lng(),
-                            roundInfo: this.randomFeatureProperties,
+                            //roundInfo: this.randomFeatureProperties,
                             warning: this.isVisibleDialog,
                         });
                     }
