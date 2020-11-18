@@ -7,7 +7,7 @@
             <v-container>
                 <v-row>
                     <v-slider
-                        :value="timeLimitation"
+                        :value="roundsLimitation"
                         class="align-center"
                         v-on:change="changeAll"
                         max="20"
@@ -18,23 +18,12 @@
                     </v-slider>
                 </v-row>
                 <v-row>
-                    <div class="time-input" v-if="this.timeLimitation > 0">
                         <v-text-field
-                            :value="Math.floor(this.timeLimitation / 60)"
-                            v-on:change="changeMinute"
-                            type="number"
-                        ></v-text-field>
-                        <p>:</p>
-
-                        <v-text-field
-                            :value="this.timeLimitation % 60"
-                            v-on:change="changeSecond"
+                            :value="this.roundsLimitation"
+                            v-on:change="changeRounds"
                             type="number"
                         ></v-text-field>
                     </div>
-                    <p v-else class="infinite--text">
-                        {{ $t('CardRoomTime.infinite') }}
-                    </p>
                 </v-row>
             </v-container>
         </v-card-text>
@@ -43,7 +32,7 @@
             <v-btn dark depressed color="#FF5252" @click="cancel">{{
                 $t('cancel')
             }}</v-btn>
-            <v-btn dark depressed color="#43B581" @click="setTimeLimitation">{{
+            <v-btn dark depressed color="#43B581" @click="setRoundsLimitation">{{
                 $t('next')
             }}</v-btn>
         </v-card-actions>
@@ -55,31 +44,18 @@ import { getCountdownText } from '@/utils';
 export default {
     data() {
         return {
-            timeLimitation: 0,
+            roundsLimitation: 5,
         };
     },
     computed: {
         getTextTime() {
-            return getCountdownText(this.timeLimitation);
+            return getCountdownText(this.roundsLimitation);
         },
     },
     methods: {
         setTimeLimitation() {
             // Pass time limitation to parent component
-            this.$emit('setTimeLimitation', this.timeLimitation);
-        },
-        changeAll(time) {
-            // click on the slider
-            this.timeLimitation = time;
-        },
-        changeMinute(m) {
-            // Tape in input minute
-            this.timeLimitation = (this.timeLimitation % 60) + parseInt(m) * 60; // Get number seconds and add minutes
-        },
-        changeSecond(s) {
-            // Tape in input second
-            this.timeLimitation =
-                Math.floor(this.timeLimitation / 60) * 60 + parseInt(s); // Get number minutes and add seconds
+            this.$emit('setRoundsLimitation', this.roundsLimitation);
         },
         cancel() {
             this.$emit('cancel');
@@ -94,7 +70,7 @@ export default {
     font-weight: 500;
     opacity: 0.9;
 }
-.time-input {
+.rounds-input {
     display: flex;
     margin: auto;
     p {
