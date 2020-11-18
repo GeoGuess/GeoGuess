@@ -147,7 +147,8 @@ export default {
                         .child('playerName')
                         .numChildren();
                     this.playerNumber = numberOfPlayers + 1;
-
+                    var test=snapshot.child('size').val();
+                    Console.log(test);
                     if (numberOfPlayers == 0) {
                         // Put the tentative player's name into the room node
                         // So that other player can't enter as the first player while the player decide the name and room size
