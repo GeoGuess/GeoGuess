@@ -170,10 +170,7 @@ export default {
                                 }
                             }
                         );
-                    } else if (
-                        !snapshot.hasChild('size') ||
-                        !snapshot.hasChild('streetView')
-                    ) {
+                    } else if ( !snapshot.hasChild('size') ) {
                         // Prevent other players from getting into the room earlier than the first player
                         this.errorMessage = this.$t('DialogRoom.inProgress');
                     } else if (
