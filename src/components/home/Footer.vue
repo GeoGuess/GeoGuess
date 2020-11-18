@@ -6,40 +6,12 @@
                     class="ml-4 mr-4"
                     icon
                     color="#FFFFFF"
-                    href="https://github.com/GeoGuess/Geoguess"
+                    href="https://mumble.ehma.de/"
                 >
-                    <v-icon size="30">mdi-github-circle</v-icon>
+                    <v-icon size="30">mdi-headset</v-icon>
                 </v-btn>
-                <v-btn
-                    class="ml-4 mr-4"
-                    icon
-                    color="#FFFFFF"
-                    href="https://discord.gg/9GXm6RT"
-                >
-                    <v-icon size="30">mdi-discord</v-icon>
-                </v-btn>
-                <v-btn
-                    class="ml-4 mr-4"
-                    icon
-                    color="#FFFFFF"
-                    href="https://twitter.com/BilelJegham"
-                >
-                    <v-icon size="30">mdi-twitter</v-icon>
-                </v-btn>
-            </div>
-            <div>
-                <p>
-                    {{ version }} - {{ $t('Footer.under') }}
-                    <a
-                        href="https://github.com/GeoGuess/Geoguess/blob/master/LICENSE"
-                        >MIT license</a
-                    >
-                </p>
             </div>
 
-            <div>
-                <a href="https://geoguess.games/">{{ $t('Header.about') }}</a>
-            </div>
         </div>
     </footer>
 </template>
