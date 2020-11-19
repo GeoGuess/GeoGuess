@@ -179,6 +179,7 @@ export default {
         'timeLimitation',
         'difficulty',
         'bbox',
+        'rounds',
     ],
     components: {
         DialogSummary,
@@ -264,7 +265,8 @@ export default {
 
                 this.setInfoWindow();
                 this.printMapFull = true;
-                if (this.round >= 5) {
+                console.log(this.rounds);
+                if (this.round >= this.rounds) {
                     this.isSummaryButtonVisible = true;
                 } else {
                     this.isNextButtonVisible = true;
@@ -650,7 +652,7 @@ export default {
                         // Remove guess node every time the round is done
                         this.room.child('guess').remove();
 
-                        if (this.round >= 5) {
+                        if (this.round >= this.rounds) {
                             // Show summary button
                             snapshot
                                 .child('finalPoints')

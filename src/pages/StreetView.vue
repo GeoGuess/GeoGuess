@@ -6,6 +6,7 @@
                 :score="scoreHeader"
                 :points="pointsHeader"
                 :round="round"
+                :rounds="rounds"
                 :roomName="roomName"
                 :remainingTime="remainingTime"
             />
@@ -23,6 +24,7 @@
                         :playerName="playerName"
                         :isReady="isReady"
                         :round="round"
+                        :rounds="rounds"
                         :score="score"
                         :points="points"
                         :difficulty="difficultyData"
@@ -98,6 +100,10 @@ export default {
         },
         difficulty: {
             default: 2000,
+            type: Number,
+        },
+        rounds: {
+            default: 5,
             type: Number,
         },
         bboxObj: {
@@ -238,6 +244,7 @@ export default {
                         this.room.child('streetView/round' + this.round).set({
                             latitude: this.randomLatLng.lat(),
                             longitude: this.randomLatLng.lng(),
+                            //TODO: noch mal ansehen
                             //roundInfo: this.randomFeatureProperties,
                             warning: this.isVisibleDialog,
                         });
@@ -423,7 +430,7 @@ export default {
                             .child('round' + this.round)
                             .child('player' + this.playerNumber)
                             .set(0);
-
+                        this.rounds = snapshot.child('rounds').val();
                         // Other players load the streetview the first player loaded earlier
                         if (this.playerNumber != 1) {
                             this.randomLat = snapshot

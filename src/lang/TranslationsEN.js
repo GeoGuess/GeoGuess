@@ -109,6 +109,9 @@ export default {
         CardRoomPlayerName: {
             title: 'Type a player name.',
         },
+        CardRoomRounds: {
+            title: 'Set rounds.',
+        },
         CardRoomSize: {
             title: 'Set a room size.',
         },
