@@ -4,7 +4,6 @@
         <section class="home-page__main">
             <v-container class="home-page__main__container" fluid>
                 <v-layout row class="home-page__main__layout">
-                    
                     <v-layout row class="home-page__main__content">
                         <div class="box">
                             <SearchBox />
