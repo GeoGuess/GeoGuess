@@ -72,7 +72,7 @@ export default {
             errorMessage: '',
             room: null,
             roomName: '',
-            currentComponent: this.singlePlayer ? 'timeLimitation' : 'roomName',
+            currentComponent: this.singlePlayer ? 'rounds' : 'roomName',
             timeLimitation: null,
             difficulty: null,
             bboxObj: null,
@@ -206,16 +206,21 @@ export default {
             );
         },
         setRounds(rounds) {
-            this.room.update(
-                {
-                    rounds: rounds,
-                },
-                (error) => {
-                    if (!error) {
-                        this.currentComponent = 'timeLimitation';
+            this.rounds = rounds;
+            if (this.singlePlayer) {
+                this.currentComponent = 'timeLimitation';
+            } else {
+                this.room.update(
+                    {
+                        rounds: rounds,
+                    },
+                    (error) => {
+                        if (!error) {
+                            this.currentComponent = 'timeLimitation';
+                        }
                     }
-                }
-            );
+                );
+            }
         },
         setTimeLimitation(timeLimitation) {
             this.timeLimitation = timeLimitation;
