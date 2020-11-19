@@ -1,7 +1,7 @@
 export default {
     de: {
         Home: {
-            record: 'Aufzeichnung',
+            record: 'Rekord',
             historyBtn: 'Historisch',
             about: 'ÜBER',
             searchBar: {
@@ -16,7 +16,7 @@ export default {
                 Der erste Spieler erstellt einen Raum und entscheidet über seine Größe. Nach der Erstellung können andere Spieler den Raum mit ihrem Namen und ihrem Spieler gemeinsam betreten.',
                 2: 'Dieses Spiel ist aus',
             },
-            customMap: 'CARTE PERSONNALISÉE',
+            customMap: 'benutzerdefinierte Karte',
             customMapDescriptions: {
                 1: 'Sie können die zufälligen Positionen über die Suchleiste auf eine Stadt, eine Region oder ein Land beschränken.',
                 2: 'Im Mehrspielermodus legt der erste Spieler den Ort fest.',
@@ -65,13 +65,13 @@ export default {
             contact: 'Kontakt',
         },
         HeaderGame: {
-            room: 'ZIMMER',
-            round: 'GRIFF',
+            room: 'RAIM',
+            round: 'RUNDE',
             distance: 'ENTFERNUNG',
             kmaway: '{value} km',
             score: 'ERGEBNIS',
         },
-        next: 'FOLGENDES',
+        next: 'WEITER',
         cancel: 'ABBRECHEN',
         DialogCustomMap: {
             title: 'Personalisierte Karte',
