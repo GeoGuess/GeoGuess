@@ -25,6 +25,7 @@
             :errorMessage="errorMessage"
             @searchRoom="searchRoom"
             @setRoomSize="setRoomSize"
+            @setRounds="setRounds"
             @setTimeLimitation="setTimeLimitation"
             @setPlayerName="setPlayerName"
             @setDifficulty="setDifficulty"
@@ -40,6 +41,7 @@ import axios from 'axios';
 
 import CardRoomName from '@/components/widgets/card/CardRoomName';
 import CardRoomSize from '@/components/widgets/card/CardRoomSize';
+import CardRoomRounds from '@/components/widgets/card/CardRoomRounds';
 import CardRoomTime from '@/components/widgets/card/CardRoomTime';
 import CardRoomDifficulty from '@/components/widgets/card/CardRoomDifficulty';
 import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
@@ -108,6 +110,7 @@ export default {
         roomName: CardRoomName,
         roomSize: CardRoomSize,
         timeLimitation: CardRoomTime,
+        rounds: CardRoomRounds,
         difficulty: CardRoomDifficulty,
         playerName: CardRoomPlayerName,
     },
@@ -194,6 +197,18 @@ export default {
             this.room.update(
                 {
                     size: roomSize,
+                },
+                (error) => {
+                    if (!error) {
+                        this.currentComponent = 'rounds';
+                    }
+                }
+            );
+        },
+        setRounds(rounds) {
+            this.room.update(
+                {
+                    rounds: rounds,
                 },
                 (error) => {
                     if (!error) {

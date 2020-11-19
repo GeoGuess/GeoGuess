@@ -1,15 +1,15 @@
 <template>
     <v-card>
         <v-card-title>
-            <span id="card-title">{{ $t('CardRoomTime.title') }}</span>
+            <span id="card-title">{{ $t('CardRoomRounds.title') }}</span>
         </v-card-title>
         <v-card-text>
             <v-container>
                 <v-row>
                     <v-slider
-                        :value="roundsLimitation"
+                        :value="rounds"
                         class="align-center"
-                        v-on:change="changeAll"
+                        v-on:change="changeRounds"
                         max="20"
                         min="1"
                         step="1"
@@ -18,12 +18,11 @@
                     </v-slider>
                 </v-row>
                 <v-row>
-                        <v-text-field
-                            :value="this.roundsLimitation"
-                            v-on:change="changeRounds"
-                            type="number"
-                        ></v-text-field>
-                    </div>
+                    <v-text-field
+                        :value="this.rounds"
+                        v-on:change="changeRounds"
+                        type="number"
+                    ></v-text-field>
                 </v-row>
             </v-container>
         </v-card-text>
@@ -32,7 +31,7 @@
             <v-btn dark depressed color="#FF5252" @click="cancel">{{
                 $t('cancel')
             }}</v-btn>
-            <v-btn dark depressed color="#43B581" @click="setRoundsLimitation">{{
+            <v-btn dark depressed color="#43B581" @click="setRounds">{{
                 $t('next')
             }}</v-btn>
         </v-card-actions>
@@ -40,22 +39,19 @@
 </template>
 
 <script>
-import { getCountdownText } from '@/utils';
 export default {
     data() {
         return {
-            roundsLimitation: 5,
+            rounds: 5,
         };
     },
-    computed: {
-        getTextTime() {
-            return getCountdownText(this.roundsLimitation);
-        },
-    },
     methods: {
-        setTimeLimitation() {
-            // Pass time limitation to parent component
-            this.$emit('setRoundsLimitation', this.roundsLimitation);
+        setRounds() {
+            this.$emit('setRounds', this.rounds);
+        },
+        changeRounds(rounds) {
+            // click on the slider
+            this.rounds = rounds;
         },
         cancel() {
             this.$emit('cancel');
@@ -80,10 +76,5 @@ export default {
     .v-input {
         width: 10rem;
     }
-}
-.infinite--text {
-    text-align: center;
-    font-size: 1rem;
-    width: 100%;
 }
 </style>
