@@ -6,14 +6,23 @@
         <v-card-text>
             <v-container>
                 <v-row>
-                    <v-col cols="4">
-                        <v-autocomplete
-                            v-model="roomSize"
-                            :items="roomSizeItems"
-                            autofocus
-                            v-on:keyup.enter="searchRoom"
-                        ></v-autocomplete>
-                    </v-col>
+                    <v-slider
+                        :value="roomSize"
+                        class="align-center"
+                        v-on:change="changeRoomSize"
+                        max="20"
+                        min="2"
+                        step="1"
+                        hide-details
+                    >
+                    </v-slider>
+                </v-row>
+                <v-row>
+                    <v-text-field
+                        :value="this.roomSize"
+                        v-on:change="changeRoomSize"
+                        type="number"
+                    ></v-text-field>
                 </v-row>
             </v-container>
         </v-card-text>
@@ -34,62 +43,15 @@ export default {
     data() {
         return {
             roomSize: 2,
-            roomSizeItems: [
-                {
-                    text: '2',
-                    value: 2,
-                },
-                {
-                    text: '3',
-                    value: 3,
-                },
-                {
-                    text: '4',
-                    value: 4,
-                },
-                {
-                    text: '5',
-                    value: 5,
-                },
-                {
-                    text: '5',
-                    value: 5,
-                },
-                {
-                    text: '6',
-                    value: 6,
-                },
-                {
-                    text: '7',
-                    value: 7,
-                },
-                {
-                    text: '8',
-                    value: 8,
-                },
-                {
-                    text: '9',
-                    value: 9,
-                },
-                {
-                    text: '10',
-                    value: 10,
-                },
-                {
-                    text: '11',
-                    value: 11,
-                },
-                {
-                    text: '12',
-                    value: 12,
-                },
-            ],
         };
     },
     methods: {
         setRoomSize() {
-            // Pass room size to parent component
             this.$emit('setRoomSize', this.roomSize);
+        },
+        changeRoomSize(roomSize) {
+            // click on the slider
+            this.roomSize = roomSize;
         },
         cancel() {
             this.$emit('cancel');
@@ -98,10 +60,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #card-title {
     font-size: 16px;
     font-weight: 500;
     opacity: 0.9;
+}
+.roomSize-input {
+    display: flex;
+    margin: auto;
+    p {
+        line-height: 4;
+        margin: 0 1rem;
+    }
+    .v-input {
+        width: 10rem;
+    }
 }
 </style>
