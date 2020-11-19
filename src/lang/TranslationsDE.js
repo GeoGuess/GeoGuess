@@ -107,6 +107,9 @@ export default {
         CardRoomPlayerName: {
             title: 'Trage deinen Spitznamen ein.',
         },
+        CardRoomRounds: {
+            title: 'Setze Anzahl der Spielrunden.',
+        },
         CardRoomSize: {
             title: 'Geben Sie die Größe des Raums ein.',
         },

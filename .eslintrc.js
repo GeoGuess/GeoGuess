@@ -20,6 +20,13 @@ module.exports = {
     plugins: ['vue'],
     rules: {
         semi: ['error', 'always'],
+        'prettier/prettier': [
+            'error',
+            {
+                endOfLine: 'auto',
+            },
+        ],
+        'no-console': 'off',
     },
     overrides: [
         {
