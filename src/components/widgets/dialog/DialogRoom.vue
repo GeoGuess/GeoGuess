@@ -26,6 +26,7 @@
             @searchRoom="searchRoom"
             @setRoomSize="setRoomSize"
             @setRounds="setRounds"
+            @setRules="setRules"
             @setTimeLimitation="setTimeLimitation"
             @setPlayerName="setPlayerName"
             @setDifficulty="setDifficulty"
@@ -45,6 +46,7 @@ import CardRoomRounds from '@/components/widgets/card/CardRoomRounds';
 import CardRoomTime from '@/components/widgets/card/CardRoomTime';
 import CardRoomDifficulty from '@/components/widgets/card/CardRoomDifficulty';
 import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
+import CardRoomRules from '@/components/widgets/card/CardRoomRules';
 import { mapState, mapActions } from 'vuex';
 import { point } from '@turf/helpers';
 import distance from '@turf/distance';
@@ -72,7 +74,7 @@ export default {
             errorMessage: '',
             room: null,
             roomName: '',
-            currentComponent: this.singlePlayer ? 'rounds' : 'roomName',
+            currentComponent: this.singlePlayer ? 'rules' : 'roomName',
             timeLimitation: null,
             difficulty: null,
             bboxObj: null,
@@ -113,6 +115,7 @@ export default {
         rounds: CardRoomRounds,
         difficulty: CardRoomDifficulty,
         playerName: CardRoomPlayerName,
+        rules: CardRoomRules,
     },
     methods: {
         ...mapActions(['resetSinglePlayer', 'resetMultiPlayer']),
@@ -200,7 +203,7 @@ export default {
                 },
                 (error) => {
                     if (!error) {
-                        this.currentComponent = 'rounds';
+                        this.currentComponent = 'rules';
                     }
                 }
             );
@@ -217,6 +220,25 @@ export default {
                     (error) => {
                         if (!error) {
                             this.currentComponent = 'timeLimitation';
+                        }
+                    }
+                );
+            }
+        },
+        setRules(rules) {
+            this.moves = rules[0];
+            this.zoom = rules[1];
+            if (this.singlePlayer) {
+                this.currentComponent = 'rounds';
+            } else {
+                this.room.update(
+                    {
+                        moves: this.moves,
+                        zoom: this.zoom,
+                    },
+                    (error) => {
+                        if (!error) {
+                            this.currentComponent = 'rounds';
                         }
                     }
                 );
@@ -255,6 +277,9 @@ export default {
                         difficulty: this.difficulty,
                         placeGeoJson: this.placeGeoJson,
                         bboxObj: this.bboxObj,
+                        moves: this.moves,
+                        rounds: this.rounds,
+                        zoom: this.zoom,
                     },
                 });
             } else {
@@ -287,6 +312,9 @@ export default {
                                 placeGeoJson: this.placeGeoJson,
                                 multiplayer: true,
                                 bboxObj: this.bboxObj,
+                                moves: this.moves,
+                                rounds: this.rounds,
+                                zoom: this.zoom,
                             },
                         });
                     }

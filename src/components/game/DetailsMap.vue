@@ -1,9 +1,9 @@
 <template>
-    <div class="details-map_container">
-        <h2>
+    <div class="details-map_container" v-if="properties != null">
+        <h2 v-if="properties.title != null">
             {{ properties.title }}
         </h2>
-        <p>
+        <p v-if="properties.description != null">
             {{ properties.description }}
         </p>
         <a

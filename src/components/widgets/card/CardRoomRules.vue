@@ -1,23 +1,39 @@
 <template>
     <v-card>
         <v-card-title>
-            <span id="card-title">{{ $t('CardRoomRounds.title') }}</span>
+            <span id="card-title">{{ $t('CardRoomRules.title') }}</span>
         </v-card-title>
         <v-card-text>
             <v-container>
                 <v-row>
                     <v-slider
-                        v-model="rounds"
+                        v-model="moves"
                         class="align-center"
-                        max="20"
-                        min="1"
+                        max="500"
+                        min="-1"
                         step="1"
                         hide-details
                     >
                     </v-slider>
                 </v-row>
                 <v-row>
-                    <v-text-field v-model="rounds" type="number"></v-text-field>
+                    <div class="moves-input" v-if="this.moves >= 0">
+                        <v-text-field
+                            v-model="moves"
+                            type="number"
+                        ></v-text-field>
+                    </div>
+                    <p v-else class="infinite--text">
+                        {{ $t('CardRoomRules.infinite') }}
+                    </p>
+                </v-row>
+                <v-row>
+                    <v-switch
+                        v-model="zoom"
+                        class="align-center"
+                        :label="$t('CardRoomRules.zoom')"
+                    >
+                    </v-switch>
                 </v-row>
             </v-container>
         </v-card-text>
@@ -26,7 +42,7 @@
             <v-btn dark depressed color="#FF5252" @click="cancel">{{
                 $t('cancel')
             }}</v-btn>
-            <v-btn dark depressed color="#43B581" @click="setRounds">{{
+            <v-btn dark depressed color="#43B581" @click="setRules">{{
                 $t('next')
             }}</v-btn>
         </v-card-actions>
@@ -37,12 +53,13 @@
 export default {
     data() {
         return {
-            rounds: 5,
+            moves: -1,
+            zoom: true,
         };
     },
     methods: {
-        setRounds() {
-            this.$emit('setRounds', this.rounds);
+        setRules() {
+            this.$emit('setRules', [this.moves, this.zoom]);
         },
         cancel() {
             this.$emit('cancel');

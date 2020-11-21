@@ -7,6 +7,9 @@
                 :points="pointsHeader"
                 :round="round"
                 :rounds="rounds"
+                :move="move"
+                :zoom="zoom"
+                :moves="moves"
                 :roomName="roomName"
                 :remainingTime="remainingTime"
             />
@@ -25,6 +28,9 @@
                         :isReady="isReady"
                         :round="round"
                         :rounds="rounds"
+                        :move="move"
+                        :zoom="zoom"
+                        :moves="moves"
                         :score="score"
                         :points="points"
                         :difficulty="difficultyData"
@@ -71,12 +77,19 @@ import * as turfModel from '@turf/helpers';
 import { isInGeoJSON } from '../utils';
 
 const google = window.google;
-
 export default {
     props: {
         roomName: {
             default: null,
             type: String,
+        },
+        moves: {
+            default: null,
+            type: Number,
+        },
+        rounds: {
+            default: null,
+            type: Number,
         },
         playerNumber: {
             default: null,
@@ -102,10 +115,6 @@ export default {
             default: 2000,
             type: Number,
         },
-        rounds: {
-            default: 5,
-            type: Number,
-        },
         bboxObj: {
             default: null,
             type: Array,
@@ -113,6 +122,10 @@ export default {
         roundsPredefined: {
             default: null,
             type: Array,
+        },
+        zoom: {
+            default: null,
+            type: Boolean,
         },
     },
     components: {
@@ -131,11 +144,13 @@ export default {
             points: 0,
             pointsHeader: 0,
             round: 1,
+            move: -1,
             timeLimitation: this.time,
             remainingTime: 0,
             endTime: null,
             hasTimerStarted: false,
             hasLocationSelected: false,
+            hasMovingRistricted: false,
             overlay: false,
             room: null,
             isReady: false,
@@ -145,7 +160,6 @@ export default {
             cptNotFoundLocation: 0,
             isVisibleDialog: false,
             panorama: null,
-
             difficultyData: this.difficulty,
             bbox: this.bboxObj,
         };
@@ -338,6 +352,7 @@ export default {
             this.hasLocationSelected = false;
             this.isVisibleDialog = false;
             this.randomFeatureProperties = null;
+            this.move = -1;
 
             if (this.multiplayer) {
                 this.dialogMessage = true; // Show the dialog while waiting for other players
@@ -388,15 +403,70 @@ export default {
                 this.dialogMessage = true;
             }
         },
+        restrictMove() {
+            if (!this.hasMovingRistricted) {
+                this.panorama.setOptions({ linksControl: false });
+                this.panorama.setOptions({ clickToGo: false });
+                this.panorama.setOptions({ zoomControl: false });
+                window.addEventListener(
+                    'keydown',
+                    this.downtmoveevent,
+                    /* useCapture= */ true
+                );
+                this.hasMovingRistricted = true;
+            }
+        },
+        downtmoveevent(event) {
+            if (
+                [37, 38, 39, 40, 107, 109, 187, 189].indexOf(event.keyCode) >
+                    -1 &&
+                this.hasMovingRistricted
+            ) {
+                event.stopPropagation();
+            }
+        },
+        allowMove() {
+            this.panorama.setOptions({ linksControl: true });
+            this.panorama.setOptions({ clickToGo: true });
+            this.hasMovingRistricted = false;
+        },
+        restrictZoom() {
+            this.panorama.setOptions({ zoomControl: false });
+            this.panorama.setOptions({ scrollwheel: false });
+        },
+        allowZoom() {
+            this.panorama.setOptions({ zoomControl: true });
+            this.panorama.setOptions({ scrollwheel: true });
+        },
+    },
+    setRules() {
+        console.log('dddd');
+        if (this.zoom) {
+            this.restrictZoom();
+        } else {
+            this.allowZoom();
+        }
     },
     mounted() {
         this.panorama = new google.maps.StreetViewPanorama(
             document.getElementById('street-view')
         );
+        this.panorama.addListener('position_changed', () => {
+            this.move += 1;
+            if (this.moves >= 0 && this.move >= this.moves) {
+                this.restrictMove();
+            } else {
+                this.allowMove();
+            }
+        });
         if (this.playerNumber == 1 || !this.multiplayer) {
             this.loadStreetView();
         }
-
+        if (this.zoom) {
+            this.allowZoom();
+        } else {
+            this.restrictZoom();
+        }
         if (!this.multiplayer) {
             this.$refs.map.startNextRound();
 
@@ -431,6 +501,13 @@ export default {
                             .child('player' + this.playerNumber)
                             .set(0);
                         this.rounds = snapshot.child('rounds').val();
+                        this.moves = snapshot.child('moves').val();
+                        this.zoom = snapshot.child('zoom').val();
+                        if (this.zoom) {
+                            this.allowZoom();
+                        } else {
+                            this.restrictZoom();
+                        }
                         // Other players load the streetview the first player loaded earlier
                         if (this.playerNumber != 1) {
                             this.randomLat = snapshot

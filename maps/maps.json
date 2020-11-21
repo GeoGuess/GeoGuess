@@ -1,0 +1,70 @@
+{
+  "maps": [
+    {
+      "name": {
+        "en": "Unesco : World Heritage List",
+        "fr": "Unesco : Liste du patrimoine mondial"
+      },
+      "description": {
+        "en": ""
+      },
+      "author": "B3N4K",
+      "imageUrl":"https://images.unsplash.com/photo-1599833975787-5c143f373c30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=230",
+      "url": "https://gist.github.com/BilelJegham/f49687fa5175050ca0d07a19fe99323d"
+    },
+    {
+      "name": {
+        "en": "Europe"
+      },
+      "description": {
+        "en": "Europe without Russia",
+        "fr": "Europe sans la russie"
+      },
+      "author": "",
+      "imageUrl":"https://images.unsplash.com/photo-1588607327673-83b8f3791d6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=230",
+      "url": "https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/maps/Europe.geojson"
+    },
+    {
+      "name": {
+        "en": "Biggest City",
+        "fr": "Grande Villes"
+      },
+      "description": {
+        "fr": "Une liste de plus de 40 villes : PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…",
+        "en": "List of 40 biggest cities of the world: PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…"
+      },
+      "author": "BilelJegham",
+      "imageUrl": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjg3OTd9&auto=format&fit=crop&w=500&h=230",
+      "url": "https://gist.githubusercontent.com/BilelJegham/7f855024440c67d65f24536c9215719e/raw/1c3c4b6457244bc30dc4759098d02c75a328a1c1/cities.geojson"
+    },
+
+    {
+      "name": {
+        "en": "Inferno"
+      },
+      "description": {
+        "fr": "2 villes trés complexes 😵 : Santa Cruz de la Sierre (Bolivia) & Touba (Senegal)",
+        "en": "2 complex cities 😵 : Santa Cruz de la Sierre (Bolivia) & Touba (Senegal)"
+      },
+      "author": "",
+      "imageUrl": "https://images.unsplash.com/photo-1510133768164-a8f7e4d4e3dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=230",
+      "url": "https://gist.githubusercontent.com/BilelJegham/b6a0faa627aac3b7f5bc677523c4c7eb/raw/2e710e5c0b457131a9cb28674507d8725c7de40d/hard.geojson"
+    },
+    {
+      "name": {
+        "en": "French stations 🇫🇷",
+        "fr": "Gares françaises 🇫🇷"
+      },
+      "description": {
+        "fr": "La liste des gares de voyageurs française",
+        "en": "The list of French passenger stations"
+      },
+      "author": "BilelJegham",
+      "imageUrl": "https://images.unsplash.com/photo-1585304999403-daecd24e88b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=230",
+      "url": "https://gist.githubusercontent.com/BilelJegham/891f976fac2017ae19e699991aba4f01/raw/19bfe072be8762e93142b56eddecf83b967f7d9d/referentiel-gares-voyageurs-min.geojson"
+    }
+  ]
+
+
+
+}

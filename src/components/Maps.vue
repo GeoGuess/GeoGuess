@@ -131,7 +131,7 @@
             >
                 {{ $t('Maps.exit') }}
             </button>
-
+            <!--
             <button
                 v-if="isExitButtonVisible && !this.room"
                 id="play-again-button"
@@ -139,7 +139,7 @@
                 @click="playAgain"
             >
                 {{ $t('Maps.playAgain') }}
-            </button>
+            </button>-->
         </div>
 
         <DialogSummary
@@ -180,6 +180,7 @@ export default {
         'difficulty',
         'bbox',
         'rounds',
+        'moves',
     ],
     components: {
         DialogSummary,

@@ -7,6 +7,12 @@
             >
                 <span id="countdown-text">{{ countdownText }}</span>
             </div>
+            <div id="moves" v-if="moves != null && moves >= 0">
+                <span class="sub-text">{{ $t('HeaderGame.moves') }} : </span>
+                <span class="main-text" id="moves-text"
+                    >{{ move }} / {{ moves }}</span
+                >
+            </div>
             <div class="round-score-container room-name" v-if="roomName">
                 <span class="sub-text">{{ $t('HeaderGame.room') }} : </span>
                 <span class="main-text">{{ roomName }}</span>
@@ -41,7 +47,16 @@
 <script>
 import { getCountdownText } from '@/utils';
 export default {
-    props: ['score', 'points', 'round', 'remainingTime', 'roomName', 'rounds'],
+    props: [
+        'score',
+        'points',
+        'round',
+        'remainingTime',
+        'roomName',
+        'rounds',
+        'moves',
+        'move',
+    ],
     computed: {
         countdownText() {
             return getCountdownText(this.remainingTime);

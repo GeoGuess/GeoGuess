@@ -71,6 +71,7 @@ export default {
             distance: 'DISTANCE',
             kmaway: '{value} km away',
             score: 'SCORE',
+            moves: 'MOVES',
         },
         next: 'NEXT',
         cancel: 'CANCEL',
@@ -111,6 +112,11 @@ export default {
         },
         CardRoomRounds: {
             title: 'Set rounds.',
+        },
+        CardRoomRules: {
+            title: 'Set rules.',
+            infinite: 'Infinite',
+            zoom: 'Allow Zoom',
         },
         CardRoomSize: {
             title: 'Set a room size.',

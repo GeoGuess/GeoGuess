@@ -7,9 +7,8 @@
             <v-container>
                 <v-row>
                     <v-slider
-                        :value="roomSize"
+                        v-model="roomSize"
                         class="align-center"
-                        v-on:change="changeRoomSize"
                         max="20"
                         min="2"
                         step="1"
@@ -19,8 +18,7 @@
                 </v-row>
                 <v-row>
                     <v-text-field
-                        :value="this.roomSize"
-                        v-on:change="changeRoomSize"
+                        v-model="roomSize"
                         type="number"
                     ></v-text-field>
                 </v-row>
@@ -48,10 +46,6 @@ export default {
     methods: {
         setRoomSize() {
             this.$emit('setRoomSize', this.roomSize);
-        },
-        changeRoomSize(roomSize) {
-            // click on the slider
-            this.roomSize = roomSize;
         },
         cancel() {
             this.$emit('cancel');
