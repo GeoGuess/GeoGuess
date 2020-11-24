@@ -1,5 +1,18 @@
 # Changelog
 
+## [v0.3.1](https://github.com/Geoguess/Geoguess/tree/v0.3.1) (2020-11-24)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.0...v0.3.1)
+
+**Fixed bugs:**
+
+- Multiplayer Not Working -- streetView not saved in firebase [\#64](https://github.com/GeoGuess/Geoguess/issues/64)
+
+**Merged pull requests:**
+
+- fix: multiplayer without roundInfo \#64 [\#65](https://github.com/GeoGuess/Geoguess/pull/65) ([BilelJegham](https://github.com/BilelJegham))
+- Implement russian language into the game [\#63](https://github.com/GeoGuess/Geoguess/pull/63) ([BurAndBY](https://github.com/BurAndBY))
+
 ## [v0.3.0](https://github.com/Geoguess/Geoguess/tree/v0.3.0) (2020-11-15)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.2.0...v0.3.0)
