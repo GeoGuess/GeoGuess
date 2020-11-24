@@ -172,7 +172,7 @@ export default {
             if (this.placeGeoJson != null) {
                 let position,
                     point = false,
-                    properties;
+                    properties = null;
                 if (this.placeGeoJson.type === 'FeatureCollection') {
                     let randInt = Math.floor(
                         Math.random() * this.placeGeoJson.features.length
@@ -201,7 +201,11 @@ export default {
             let lat = Math.random() * 170 - 85;
             let lng = Math.random() * 360 - 180;
 
-            return { point: false, position: new google.maps.LatLng(lat, lng) };
+            return {
+                point: false,
+                position: new google.maps.LatLng(lat, lng),
+                properties: null,
+            };
         },
         checkStreetView(data, status) {
             // Generate random streetview until the valid one is generated
