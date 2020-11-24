@@ -45,6 +45,15 @@
         "bug",
         "translation"
       ]
+    },
+    {
+      "login": "BurAndBY",
+      "name": "BurAndBY",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/48630651?v=4",
+      "profile": "https://github.com/BurAndBY",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
