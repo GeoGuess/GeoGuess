@@ -54,6 +54,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "chalbin73",
+      "name": "chalbin73",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/59101580?v=4",
+      "profile": "https://github.com/chalbin73",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
