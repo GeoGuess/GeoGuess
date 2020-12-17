@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -63,6 +63,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/dimfort"><img src="https://avatars3.githubusercontent.com/u/22171924?v=4" width="100px;" alt=""/><br /><sub><b>dim.fort</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=dimfort" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/tululum"><img src="https://avatars2.githubusercontent.com/u/67554090?v=4" width="100px;" alt=""/><br /><sub><b>tululum</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3Atululum" title="Bug reports">🐛</a> <a href="#translation-tululum" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/BurAndBY"><img src="https://avatars1.githubusercontent.com/u/48630651?v=4" width="100px;" alt=""/><br /><sub><b>BurAndBY</b></sub></a><br /><a href="#translation-BurAndBY" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/chalbin73"><img src="https://avatars3.githubusercontent.com/u/59101580?v=4" width="100px;" alt=""/><br /><sub><b>chalbin73</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3Achalbin73" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
