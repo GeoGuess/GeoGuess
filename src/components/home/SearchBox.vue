@@ -89,7 +89,7 @@ export default {
             this.isLoading = true;
             // Lazily load input items
             axios
-                .get(`https://photon.komoot.de/api/?q=${encodeURI(val)}`)
+                .get(`https://photon.komoot.io/api/?q=${encodeURI(val)}`)
                 .then((res) => {
                     if (res.status === 200 && res.data && res.data.features) {
                         this.entries = res.data.features.filter(

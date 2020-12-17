@@ -184,9 +184,11 @@ export default {
                         position = feature.geometry.coordinates;
                         point = true;
                     } else {
+                        point = true;
                         position = randomPositionInPolygon(feature);
                     }
                 } else {
+                    point = true;
                     position = randomPositionInPolygon(this.placeGeoJson);
                 }
 
