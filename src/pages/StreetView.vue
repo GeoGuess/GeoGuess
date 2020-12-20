@@ -483,7 +483,9 @@ export default {
                             .child('timeLimitation')
                             .val();
                         this.difficulty = snapshot.child('difficulty').val();
-                        this.bbox = snapshot.child('bbox').val();
+                        if (!this.bbox) {
+                            this.bbox = snapshot.child('bbox').val();
+                        }
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {
