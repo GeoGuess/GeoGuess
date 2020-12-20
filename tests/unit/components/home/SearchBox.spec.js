@@ -95,7 +95,7 @@ describe('SearchBox.vue', () => {
         expect(wrapper.exists('#search-input'));
         wrapper.vm.$nextTick(() => {
             expect(axios.get).toBeCalledWith(
-                'https://photon.komoot.de/api/?q=Toulouse'
+                'https://photon.komoot.io/api/?q=Toulouse'
             );
             wrapper.vm.$nextTick(() => {
                 expect(wrapper.vm.entries).toHaveLength(2);
