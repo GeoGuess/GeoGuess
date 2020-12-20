@@ -37,7 +37,7 @@ export default {
             nearby: {
                 title: 'Kousek vedle',
                 message:
-                    'Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle ������',
+                    'Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle :-)',
             },
             waitForOtherPlayers: 'Čekám na ostatní hráče...',
             redirectToHomePage: 'Přesměruji na úvodní stránku...',
@@ -95,8 +95,8 @@ export default {
         },
 
         DialogRoom: {
-            singlePlayer: 'Hrát Sám',
-            withFriends: 'Více Hráčů',
+            singlePlayer: 'Jeden hráč',
+            withFriends: 'Více hráčů',
             invalidRoomName: 'Nevhodné jméno. Zkus se prosím pojmenovat jinak.',
             inProgress:
                 'První hráč právě nastavuje hru. Vydrž prosím a za chvíli to zkus znovu.',
@@ -133,6 +133,10 @@ export default {
         Footer: {
             under: 'licence:',
             privacyPolicy: 'Zásady ochrany osobních údajů (Anglicky)',
+        },
+        urlCopied: 'Adresa zkopírována',
+        DetailsMap: {
+            moreInfo: 'Více informací',
         },
     },
 };
