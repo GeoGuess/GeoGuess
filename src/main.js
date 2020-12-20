@@ -35,13 +35,18 @@ window.addEventListener('resize', () => {
 
 var firebaseConfig = {
     apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-    authDomain: process.env.VUE_APP_FIREBASE_PROJECT_ID + '.firebaseapp.com',
+    authDomain:
+        process.env.VUE_APP_FIREBASE_AUTH_DOMAIN ||
+        process.env.VUE_APP_FIREBASE_PROJECT_ID + '.firebaseapp.com',
     databaseURL:
+        process.env.VUE_APP_FIREBASE_DATABASE_URL ||
         'https://' +
-        process.env.VUE_APP_FIREBASE_PROJECT_ID +
-        '.firebaseio.com',
+            process.env.VUE_APP_FIREBASE_PROJECT_ID +
+            '.firebaseio.com',
     projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.VUE_APP_FIREBASE_PROJECT_ID + '.appspot.com',
+    storageBucket:
+        process.env.VUE_APP_STORAGE_BUCKET ||
+        process.env.VUE_APP_FIREBASE_PROJECT_ID + '.appspot.com',
     messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.VUE_APP_FIREBASE_APP_ID,
     measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID,
@@ -49,9 +54,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-
-// eslint-disable-next-line no-console
-console.info('Version : ' + process.env.VUE_APP_VERSION);
 
 new Vue({
     vuetify,
