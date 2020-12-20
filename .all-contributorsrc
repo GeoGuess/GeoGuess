@@ -54,6 +54,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "AlexSpelt",
+      "name": "Alex Spelt",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/39807948?v=4",
+      "profile": "https://alexspelt.nl",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
