@@ -27,7 +27,6 @@
             @setRoomSize="setRoomSize"
             @setTimeLimitation="setTimeLimitation"
             @setPlayerName="setPlayerName"
-            @setDifficulty="setDifficulty"
             @cancel="cancel"
         />
     </v-dialog>
@@ -41,7 +40,6 @@ import axios from 'axios';
 import CardRoomName from '@/components/widgets/card/CardRoomName';
 import CardRoomSize from '@/components/widgets/card/CardRoomSize';
 import CardRoomTime from '@/components/widgets/card/CardRoomTime';
-import CardRoomDifficulty from '@/components/widgets/card/CardRoomDifficulty';
 import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
 import { mapState, mapActions } from 'vuex';
 import { point } from '@turf/helpers';
@@ -100,15 +98,15 @@ export default {
     },
     mounted() {
         if (!this.singlePlayer && this.$route.params.roomName) {
-            this.dialogRoom = true;
-            this.searchRoom(this.$route.params.roomName);
+            this.searchRoom(this.$route.params.roomName, () => {
+                this.dialogRoom = true;
+            });
         }
     },
     components: {
         roomName: CardRoomName,
         roomSize: CardRoomSize,
         timeLimitation: CardRoomTime,
-        difficulty: CardRoomDifficulty,
         playerName: CardRoomPlayerName,
     },
     methods: {
@@ -131,9 +129,8 @@ export default {
                     }
                     this.errorMessage = 'No Found Location';
                 });
-            //.catch(() => { this.errorMessage = "No Found Location" })
         },
-        searchRoom(roomName) {
+        searchRoom(roomName, after) {
             if (roomName == '') {
                 this.errorMessage = this.$t('DialogRoom.invalidRoomName');
             } else {
@@ -186,6 +183,9 @@ export default {
                                     this.currentComponent = 'playerName';
                                 }
                             });
+                    }
+                    if (after) {
+                        after();
                     }
                 });
             }
@@ -253,6 +253,9 @@ export default {
             }
         },
         setPlayerName(playerName) {
+            if (playerName === '') {
+                playerName = this.$t('CardRoomPlayerName.anonymousPlayerName');
+            }
             this.room
                 .child('playerName/player' + this.playerNumber)
                 .set(playerName, (error) => {

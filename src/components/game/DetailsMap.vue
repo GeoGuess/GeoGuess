@@ -1,5 +1,5 @@
 <template>
-    <div class="details-map_container">
+    <div class="details-map_container" v-if="properties">
         <h2>
             {{ properties.title }}
         </h2>
