@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Home from '@/pages/Home';
 import StreetView from '@/pages/StreetView';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import MapTest from '@/pages/MapTest';
 
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
@@ -18,6 +19,11 @@ export default new Router({
         {
             path: '*',
             redirect: '/',
+        },
+        {
+            path: '/test',
+            name: 'test',
+            component: MapTest,
         },
         {
             path: '/',

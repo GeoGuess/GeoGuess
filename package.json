@@ -21,6 +21,7 @@
     "firebase-admin": "^8.13.0",
     "firebase-functions": "^3.11.0",
     "firebase-tools": "^7.16.2",
+    "flag-icon-css": "^3.5.0",
     "random-position-in-polygon": "^1.0.2",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.12",
