@@ -1,5 +1,8 @@
 <template>
-    <div class="details-map_container">
+    <div
+        class="details-map_container"
+        v-if="properties && typeof properties === 'object'"
+    >
         <h2>
             {{ properties.title }}
         </h2>

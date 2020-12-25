@@ -1,5 +1,8 @@
+import json from '@/resources/countries.geo.json';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
+import axios from 'axios';
+import { GAME_MODE } from './constants';
 
 /**
  * check in valid format url
@@ -93,4 +96,42 @@ export function getLocateString(obj, name, language, defaultLanguage = 'en') {
         return obj[name][language] || obj[name][defaultLanguage] || '';
     }
     return '';
+}
+
+export function getCountryCodeNameFromLatLng(latLng, errorFunction) {
+    return axios
+        .get(
+            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&zoom=3&addressdetails=0&format=json&extratags=1`
+        )
+        .then((res) => {
+            if (res.status === 200 && res.data) {
+                return res.data.extratags['ISO3166-1:alpha2'];
+            }
+        })
+        .catch(() => {
+            errorFunction();
+            return undefined;
+        });
+}
+
+/**
+ *
+ */
+export function getSelectedPos(selectedPos, gameMode) {
+    switch (gameMode) {
+        case GAME_MODE.NORMAL:
+            return {
+                latitude: selectedPos.lat(),
+                longitude: selectedPos.lng(),
+            };
+        default:
+            return {
+                country: selectedPos,
+            };
+    }
+}
+
+export function getRandomCountry() {
+    return json.features[Math.floor(Math.random() * json.features.length)]
+        .properties['iso_a2'];
 }

@@ -15,7 +15,7 @@
 
                 <div id="game-interface--overlay">
                     <Maps
-                        ref="map"
+                        ref="mapContainer"
                         :randomLatLng="randomLatLng"
                         :randomFeatureProperties="randomFeatureProperties"
                         :roomName="roomName"
@@ -28,6 +28,8 @@
                         :difficulty="difficultyData"
                         :timeLimitation="timeLimitation"
                         :bbox="bbox"
+                        :mode="mode"
+                        :country="country"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -66,7 +68,12 @@ import DialogMessage from '@/components/DialogMessage';
 
 import randomPositionInPolygon from 'random-position-in-polygon';
 import * as turfModel from '@turf/helpers';
-import { isInGeoJSON } from '../utils';
+import {
+    isInGeoJSON,
+    getCountryCodeNameFromLatLng,
+    getRandomCountry,
+} from '../utils';
+import { GAME_MODE } from '../constants';
 
 const google = window.google;
 
@@ -116,6 +123,8 @@ export default {
     },
     data() {
         return {
+            mode: GAME_MODE.COUNTRY,
+            country: null,
             randomLatLng: null,
             randomLat: null,
             randomLng: null,
@@ -238,15 +247,38 @@ export default {
                     // Save the location's latitude and longitude
                     this.randomLatLng = data.location.latLng;
                     this.cptNotFoundLocation = 0;
+                    if (this.mode === GAME_MODE.COUNTRY) {
+                        getCountryCodeNameFromLatLng(
+                            this.randomLatLng,
+                            this.loadStreetView
+                        ).then((c) => {
+                            this.country = c;
 
-                    if (this.multiplayer) {
-                        // Put the streetview's location into firebase
-                        this.room.child('streetView/round' + this.round).set({
-                            latitude: this.randomLatLng.lat(),
-                            longitude: this.randomLatLng.lng(),
-                            roundInfo: this.randomFeatureProperties,
-                            warning: this.isVisibleDialog,
+                            if (this.multiplayer) {
+                                // Put the streetview's location into firebase
+                                this.room
+                                    .child('streetView/round' + this.round)
+                                    .set({
+                                        latitude: this.randomLatLng.lat(),
+                                        longitude: this.randomLatLng.lng(),
+                                        roundInfo: this.randomFeatureProperties,
+                                        country: c,
+                                        warning: this.isVisibleDialog,
+                                    });
+                            }
                         });
+                    } else {
+                        if (this.multiplayer) {
+                            // Put the streetview's location into firebase
+                            this.room
+                                .child('streetView/round' + this.round)
+                                .set({
+                                    latitude: this.randomLatLng.lat(),
+                                    longitude: this.randomLatLng.lng(),
+                                    roundInfo: this.randomFeatureProperties,
+                                    warning: this.isVisibleDialog,
+                                });
+                        }
                     }
                 }
             } else {
@@ -292,10 +324,16 @@ export default {
                 } else {
                     this.timerInProgress = false;
                     if (!this.hasLocationSelected) {
-                        // Set a random location if the player didn't select a location in time
-                        this.$refs.map.selectRandomLocation(
-                            this.getRandomLatLng().position
-                        );
+                        if (this.mode === GAME_MODE.COUNTRY) {
+                            this.$refs.mapContainer.selectRandomLocation(
+                                getRandomCountry()
+                            );
+                        } else {
+                            // Set a random location if the player didn't select a location in time
+                            this.$refs.mapContainer.selectRandomLocation(
+                                this.getRandomLatLng().position
+                            );
+                        }
                     }
                 }
             }
@@ -332,6 +370,7 @@ export default {
         goToNextRound() {
             // Reset
             this.randomLatLng = null;
+            this.country = null;
             this.overlay = false;
             this.hasTimerStarted = false;
             this.hasLocationSelected = false;
@@ -361,7 +400,7 @@ export default {
                     .child('trigger/player' + this.playerNumber)
                     .set(this.round);
             }
-            this.$refs.map.startNextRound();
+            this.$refs.mapContainer.startNextRound();
         },
         exitGame() {
             // Disable the listener and force the players to exit the game
@@ -397,7 +436,7 @@ export default {
         }
 
         if (!this.multiplayer) {
-            this.$refs.map.startNextRound();
+            this.$refs.mapContainer.startNextRound();
 
             if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
@@ -446,6 +485,19 @@ export default {
                                         '/longitude'
                                 )
                                 .val();
+                            this.randomLatLng = new google.maps.LatLng(
+                                this.randomLat,
+                                this.randomLng
+                            );
+                            if (this.mode === GAME_MODE.COUNTRY) {
+                                this.country = snapshot
+                                    .child(
+                                        'streetView/round' +
+                                            this.round +
+                                            '/country'
+                                    )
+                                    .val();
+                            }
                             this.isVisibleDialog = snapshot
                                 .child(
                                     'streetView/round' + this.round + '/warning'
@@ -478,7 +530,7 @@ export default {
                         }
 
                         this.isReady = true;
-                        this.$refs.map.startNextRound();
+                        this.$refs.mapContainer.startNextRound();
 
                         // Countdown timer starts
                         this.timeLimitation = snapshot

@@ -1,16 +1,14 @@
 import Vue from 'vue';
-
-import '../scss/variables.scss';
-import Vuetify from 'vuetify/lib';
-
-import fr from 'vuetify/es5/locale/fr';
-import en from 'vuetify/es5/locale/en';
-import ja from 'vuetify/es5/locale/ja';
 import cs from 'vuetify/es5/locale/cs';
 import de from 'vuetify/es5/locale/de';
+import en from 'vuetify/es5/locale/en';
+import fr from 'vuetify/es5/locale/fr';
+import ja from 'vuetify/es5/locale/ja';
 import ru from 'vuetify/es5/locale/ru';
-
+import Vuetify from 'vuetify/lib';
 import { checkLanguage, languages } from '../lang';
+import '../scss/variables.scss';
+
 Vue.use(Vuetify);
 
 export default new Vuetify({
@@ -31,6 +29,9 @@ export default new Vuetify({
             localStorage.getItem('language') != null
                 ? localStorage.getItem('language')
                 : languages.map((l) => l.value).some(checkLanguage),
+    },
+    options: {
+        customProperties: true,
     },
     icons: {
         iconfont: 'mdi',

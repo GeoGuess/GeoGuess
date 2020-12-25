@@ -77,6 +77,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .header {
+    z-index: 1;
     padding: 0 5%;
     background-color: #f1e9d6 !important;
     nav.header__nav {

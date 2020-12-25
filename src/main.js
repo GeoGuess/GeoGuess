@@ -1,16 +1,18 @@
+import 'firebase/analytics';
+import firebase from 'firebase/app';
+import 'firebase/database';
 import Vue from 'vue';
+import VueClipboard from 'vue-clipboard2';
+import * as VueGoogleMaps from 'vue2-google-maps';
 import App from './App.vue';
-import vuetify from './plugins/vuetify';
-import router from './router';
 import i18n from './lang';
+import CountryNamePlugin from './plugins/countryNamePlugin';
+import vuetify from './plugins/vuetify';
+import './registerServiceWorker';
+import router from './router';
 import store from './store';
 
-import firebase from 'firebase/app';
-import 'firebase/analytics';
-import 'firebase/database';
-import './registerServiceWorker';
-import * as VueGoogleMaps from 'vue2-google-maps';
-import VueClipboard from 'vue-clipboard2';
+Vue.use(CountryNamePlugin);
 Vue.use(VueClipboard);
 Vue.use(VueGoogleMaps, {
     load: {
