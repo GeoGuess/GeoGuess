@@ -102,12 +102,12 @@ export default {
                 'The first player is creating the room right now. Please wait and try again.',
             roomIsFull: 'This room is already full. Please try another.',
         },
-
         CardRoomName: {
             title: 'Type a room name.',
         },
         CardRoomPlayerName: {
             title: 'Type a player name.',
+            anonymousPlayerName: 'Anonymous 🕵',
         },
         CardRoomSize: {
             title: 'Set a room size.',
@@ -129,7 +129,7 @@ export default {
             summaryMsgSingle:
                 'You are <strong>{distance}</strong> km away! Your score is <strong>{points}</strong> points!',
             summaryMsgMulti:
-                '<strong>{playerName}</strong> score is <strong>{points}</strong> ! (<strong>{distance}</strong> kmaway)',
+                '<strong>{playerName}</strong> score is <strong>{points}</strong> ! (<strong>{distance}</strong> km away)',
             viewDetails: 'View details',
         },
         Footer: {

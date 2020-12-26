@@ -133,10 +133,12 @@ export default {
         },
         putMarker(pos, isRandomLocation, country) {
             const c = isRandomLocation ? country || this.country : pos;
-            this.randomPos = new google.maps.Marker({
-                position: pos,
-                map: this.map,
-            });
+            if (isRandomLocation) {
+                this.randomPos = new google.maps.Marker({
+                    position: pos,
+                    map: this.map,
+                });
+            }
 
             this.countries[c].setStyle({
                 fillOpacity: 0.3,

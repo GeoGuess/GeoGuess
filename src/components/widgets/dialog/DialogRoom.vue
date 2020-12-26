@@ -112,8 +112,9 @@ export default {
     },
     mounted() {
         if (!this.singlePlayer && this.$route.params.roomName) {
-            this.dialogRoom = true;
-            this.searchRoom(this.$route.params.roomName);
+            this.searchRoom(this.$route.params.roomName, () => {
+                this.dialogRoom = true;
+            });
         }
     },
     components: {
@@ -158,9 +159,8 @@ export default {
                 .finally(() => {
                     this.loadingGeoJson = false;
                 });
-            //.catch(() => { this.errorMessage = "No Found Location" })
         },
-        searchRoom(roomName) {
+        searchRoom(roomName, after) {
             if (roomName == '') {
                 this.errorMessage = this.$t('DialogRoom.invalidRoomName');
             } else {
@@ -215,6 +215,9 @@ export default {
                                 }
                             });
                     }
+                    if (after) {
+                        after();
+                    }
                 });
             }
         },
@@ -268,6 +271,9 @@ export default {
             }
         },
         setPlayerName(playerName) {
+            if (playerName === '') {
+                playerName = this.$t('CardRoomPlayerName.anonymousPlayerName');
+            }
             this.room
                 .child('playerName/player' + this.playerNumber)
                 .set(playerName, (error) => {

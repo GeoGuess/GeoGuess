@@ -107,6 +107,7 @@ export default {
         },
         CardRoomPlayerName: {
             title: 'Saisir votre pseudo.',
+            anonymousPlayerName: 'Anonyme 🕵',
         },
         CardRoomSize: {
             title: 'Saisir la taille de la salle.',
