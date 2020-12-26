@@ -677,6 +677,7 @@ export default {
     --width: var(--inactive-width);
     max-width: 100%;
     max-height: calc(100% - 150px);
+    transition: 0.4s;
     #map {
         width: 100%;
         height: 100%;
@@ -700,6 +701,7 @@ export default {
         }
     }
     &.container-map--full {
+        transition: none;
         opacity: 1;
         --active-width: 65vw;
         --inactive-width: 65vw;
