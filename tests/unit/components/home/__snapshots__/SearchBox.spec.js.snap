@@ -7,9 +7,9 @@ exports[`SearchBox.vue test search Input 1`] = `
     <v-combobox-stub dark="true" errorcount="1" errormessages="" messages="" rules="" successmessages="" value="" appendicon="mdi-magnify" backgroundcolor="secondary" height="50" id="search-input" loaderheight="2" autofocus="true" clearicon="$clear" fullwidth="true" placeholder="Enter city, state or country" rounded="true" type="text" valuecomparator="function deepEqual(a, b) {
   if (a === b) return true;
 
-  if (a instanceof Date &amp;&amp; b instanceof Date) {
-    // If the values are Date, they were convert to timestamp with getTime and compare it
-    if (a.getTime() !== b.getTime()) return false;
+  if (a instanceof Date &amp;&amp; b instanceof Date &amp;&amp; a.getTime() !== b.getTime()) {
+    // If the values are Date, compare them as timestamps
+    return false;
   }
 
   if (a !== Object(a) || b !== Object(b)) {

@@ -26,9 +26,9 @@ describe('Header.vue', () => {
 
     it('switchLanguage method', () => {
         const wrapper = shallowMount(Header, args);
-        expect(localStorage.getItem('language')).toBeNull();
-        wrapper.vm.switchLanguage('en');
         expect(localStorage.getItem('language')).toEqual('en');
+        wrapper.vm.switchLanguage('fr');
+        expect(localStorage.getItem('language')).toEqual('fr');
     });
 
     it('test localSotrage history method', () => {
