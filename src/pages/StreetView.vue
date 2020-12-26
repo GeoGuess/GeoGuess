@@ -314,6 +314,7 @@ export default {
                 heading: 270,
                 pitch: 0,
             });
+            this.panorama.setZoom(0);
         },
         startTimer(round = this.round) {
             if (round === this.round) {
