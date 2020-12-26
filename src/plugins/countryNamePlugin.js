@@ -1,4 +1,4 @@
-import { checkLanguage, languages } from '../lang';
+import { languages } from '../lang';
 export default {
     install(Vue) {
         const countries = require('i18n-iso-countries');
@@ -9,12 +9,7 @@ export default {
         });
 
         Vue.prototype.$countryNameLocale = (isoA2) => {
-            return countries.getName(
-                isoA2,
-                localStorage.getItem('language') != null
-                    ? localStorage.getItem('language')
-                    : languages.map((l) => l.value).some(checkLanguage)
-            );
+            return countries.getName(isoA2, localStorage.getItem('language'));
         };
     },
 };

@@ -115,6 +115,10 @@ export default {
             default: null,
             type: Array,
         },
+        modeSelected: {
+            default: GAME_MODE.NORMAL,
+            type: String,
+        },
     },
     components: {
         HeaderGame,
@@ -123,7 +127,6 @@ export default {
     },
     data() {
         return {
-            mode: GAME_MODE.COUNTRY,
             country: null,
             randomLatLng: null,
             randomLat: null,
@@ -135,6 +138,7 @@ export default {
             pointsHeader: 0,
             round: 1,
             timeLimitation: this.time,
+            mode: this.modeSelected,
             remainingTime: 0,
             endTime: null,
             hasTimerStarted: false,
@@ -489,15 +493,11 @@ export default {
                                 this.randomLat,
                                 this.randomLng
                             );
-                            if (this.mode === GAME_MODE.COUNTRY) {
-                                this.country = snapshot
-                                    .child(
-                                        'streetView/round' +
-                                            this.round +
-                                            '/country'
-                                    )
-                                    .val();
-                            }
+                            this.country = snapshot
+                                .child(
+                                    'streetView/round' + this.round + '/country'
+                                )
+                                .val();
                             this.isVisibleDialog = snapshot
                                 .child(
                                     'streetView/round' + this.round + '/warning'
@@ -536,8 +536,6 @@ export default {
                         this.timeLimitation = snapshot
                             .child('timeLimitation')
                             .val();
-                        this.difficulty = snapshot.child('difficulty').val();
-                        this.bbox = snapshot.child('bbox').val();
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {

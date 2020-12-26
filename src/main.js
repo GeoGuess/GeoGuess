@@ -6,6 +6,7 @@ import VueClipboard from 'vue-clipboard2';
 import * as VueGoogleMaps from 'vue2-google-maps';
 import App from './App.vue';
 import i18n from './lang';
+import axios from './plugins/axios';
 import CountryNamePlugin from './plugins/countryNamePlugin';
 import vuetify from './plugins/vuetify';
 import './registerServiceWorker';
@@ -35,7 +36,7 @@ window.addEventListener('resize', () => {
     updateSizes(Vue.prototype.$viewport);
 });
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
     authDomain:
         process.env.VUE_APP_FIREBASE_AUTH_DOMAIN ||
@@ -62,5 +63,6 @@ new Vue({
     router,
     i18n,
     store,
+    axios,
     render: (h) => h(App),
 }).$mount('#app');

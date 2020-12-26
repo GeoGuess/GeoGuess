@@ -11,7 +11,7 @@
                             v-model="roomSize"
                             :items="roomSizeItems"
                             autofocus
-                            v-on:keyup.enter="searchRoom"
+                            v-on:keyup.enter="setRoomSize"
                         ></v-autocomplete>
                     </v-col>
                 </v-row>

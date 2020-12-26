@@ -15,7 +15,6 @@
         <div id="mapCountries"></div>
     </div>
 </template>
-
 <script type="text/javascript">
 import json from '@/resources/countries.geo.json';
 import FlagIcon from '@/components/shared/FlagIcon';
@@ -162,10 +161,12 @@ export default {
                     fillOpacity: 0,
                 });
             });
-            this.polygonSelect.setStyle({
-                strokeOpacity: 0,
-                fillOpacity: 0,
-            });
+            if (this.polygonSelect) {
+                this.polygonSelect.setStyle({
+                    strokeOpacity: 0,
+                    fillOpacity: 0,
+                });
+            }
             if (this.randomPos) {
                 this.randomPos.setMap(null);
                 this.randomPos = null;
@@ -180,6 +181,7 @@ export default {
         },
         removeListener() {
             this.allowSelect = false;
+            this.polygonSelect = null;
         },
     },
 };

@@ -3,7 +3,7 @@
         persistent
         :fullscreen="$viewport.width < 450"
         v-model="dialogRoom"
-        max-width="600"
+        max-width="800"
     >
         <template v-slot:activator="{ on }">
             <v-btn
@@ -22,12 +22,13 @@
         </template>
         <component
             :is="currentComponent"
+            :singlePlayer="singlePlayer"
             :errorMessage="errorMessage"
+            :placeGeoJson="placeGeoJson"
+            :loadingGeoJson="loadingGeoJson"
             @searchRoom="searchRoom"
-            @setRoomSize="setRoomSize"
-            @setTimeLimitation="setTimeLimitation"
             @setPlayerName="setPlayerName"
-            @setDifficulty="setDifficulty"
+            @setSettings="setSettings"
             @cancel="cancel"
         />
     </v-dialog>
@@ -36,12 +37,9 @@
 <script>
 import firebase from 'firebase/app';
 import 'firebase/database';
-import axios from 'axios';
 
 import CardRoomName from '@/components/widgets/card/CardRoomName';
-import CardRoomSize from '@/components/widgets/card/CardRoomSize';
-import CardRoomTime from '@/components/widgets/card/CardRoomTime';
-import CardRoomDifficulty from '@/components/widgets/card/CardRoomDifficulty';
+import CardRoomSettings from '@/components/widgets/card/CardRoomSettings';
 import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
 import { mapState, mapActions } from 'vuex';
 import { point } from '@turf/helpers';
@@ -65,15 +63,19 @@ export default {
     },
     data() {
         return {
+            roomSize: 2,
             placeGeoJson: null,
             dialogRoom: false,
             errorMessage: '',
             room: null,
             roomName: '',
-            currentComponent: this.singlePlayer ? 'timeLimitation' : 'roomName',
+            currentComponent: this.singlePlayer ? 'settings' : 'roomName',
             timeLimitation: null,
             difficulty: null,
             bboxObj: null,
+            loadingGeoJson: false,
+            firstPlayer: false,
+            mode: 'normal',
         };
     },
     computed: {
@@ -97,6 +99,16 @@ export default {
                 this.resetMultiPlayer();
             }
         },
+        dialogRoom(val) {
+            if (val && this.currentComponent === 'settings') {
+                this.loadGeoJSON();
+            }
+        },
+        currentComponent(val) {
+            if (val === 'settings' && this.dialogRoom == true) {
+                this.loadGeoJSON();
+            }
+        },
     },
     mounted() {
         if (!this.singlePlayer && this.$route.params.roomName) {
@@ -106,15 +118,27 @@ export default {
     },
     components: {
         roomName: CardRoomName,
-        roomSize: CardRoomSize,
-        timeLimitation: CardRoomTime,
-        difficulty: CardRoomDifficulty,
+        settings: CardRoomSettings,
         playerName: CardRoomPlayerName,
     },
     methods: {
         ...mapActions(['resetSinglePlayer', 'resetMultiPlayer']),
+        loadGeoJSON() {
+            if (this.place != null && this.place != '' && !this.geoJson) {
+                this.getPlaceGeoJSON(this.place);
+            } else {
+                if (this.geoJson != '') {
+                    this.placeGeoJson = this.geoJson;
+                    this.setDifficulty();
+                }
+            }
+        },
         getPlaceGeoJSON(place) {
-            axios
+            if (this.loadingGeoJson) {
+                return;
+            }
+            this.loadingGeoJson = true;
+            this.axios
                 .get(
                     `https://nominatim.openstreetmap.org/search/${encodeURIComponent(
                         place
@@ -130,6 +154,9 @@ export default {
                         this.setDifficulty();
                     }
                     this.errorMessage = 'No Found Location';
+                })
+                .finally(() => {
+                    this.loadingGeoJson = false;
                 });
             //.catch(() => { this.errorMessage = "No Found Location" })
         },
@@ -163,7 +190,8 @@ export default {
                                             firebase.database.ServerValue
                                                 .TIMESTAMP,
                                     });
-                                    this.currentComponent = 'roomSize';
+                                    this.firstPlayer = true;
+                                    this.currentComponent = 'settings';
                                 }
                             }
                         );
@@ -190,28 +218,40 @@ export default {
                 });
             }
         },
-        setRoomSize(roomSize) {
-            this.room.update(
-                {
-                    size: roomSize,
-                },
-                (error) => {
-                    if (!error) {
-                        this.currentComponent = 'timeLimitation';
+        setSettings(timeLimitation, mode, roomSize) {
+            this.timeLimitation = timeLimitation;
+            this.roomSize = roomSize;
+            this.mode = mode;
+            if (this.singlePlayer) {
+                this.$router.push({
+                    name: 'street-view',
+                    params: {
+                        time: this.timeLimitation,
+                        difficulty: this.difficulty,
+                        placeGeoJson: this.placeGeoJson,
+                        modeSelected: mode,
+                        bboxObj: this.bboxObj,
+                    },
+                });
+            } else {
+                this.room.update(
+                    {
+                        timeLimitation: this.timeLimitation,
+                        difficulty: this.difficulty,
+                        bbox: this.bboxObj,
+                        mode,
+                        size: this.roomSize,
+                    },
+                    (error) => {
+                        if (!error) {
+                            this.currentComponent = 'playerName';
+                        }
                     }
-                }
-            );
+                );
+            }
         },
         setTimeLimitation(timeLimitation) {
             this.timeLimitation = timeLimitation;
-            if (this.place != null && this.place != '' && !this.geoJson) {
-                this.getPlaceGeoJSON(this.place);
-            } else {
-                if (this.geoJson != '') {
-                    this.placeGeoJson = this.geoJson;
-                    this.setDifficulty();
-                }
-            }
         },
         setDifficulty() {
             if (this.placeGeoJson) {
@@ -226,59 +266,61 @@ export default {
             } else {
                 this.difficulty = 2000;
             }
-
-            if (this.singlePlayer) {
-                this.$router.push({
-                    name: 'street-view',
-                    params: {
-                        time: this.timeLimitation,
-                        difficulty: this.difficulty,
-                        placeGeoJson: this.placeGeoJson,
-                        bboxObj: this.bboxObj,
-                    },
-                });
-            } else {
-                this.room.update(
-                    {
-                        timeLimitation: this.timeLimitation,
-                        difficulty: this.difficulty,
-                        bbox: this.bboxObj,
-                    },
-                    (error) => {
-                        if (!error) {
-                            this.currentComponent = 'playerName';
-                        }
-                    }
-                );
-            }
         },
         setPlayerName(playerName) {
             this.room
                 .child('playerName/player' + this.playerNumber)
                 .set(playerName, (error) => {
                     if (!error) {
-                        // Start the game
-                        this.$router.push({
-                            name: 'with-friends',
-                            params: {
-                                roomName: this.roomName,
-                                playerName,
-                                playerNumber: this.playerNumber,
-                                placeGeoJson: this.placeGeoJson,
-                                multiplayer: true,
+                        let gameParams = {};
+                        if (this.firstPlayer) {
+                            gameParams = {
+                                difficulty: this.difficulty,
                                 bboxObj: this.bboxObj,
-                            },
-                        });
+                                modeSelected: this.mode,
+                            };
+                            this.startGameMultiplayer(playerName, gameParams);
+                        } else {
+                            this.room.once('value', (snapshot) => {
+                                gameParams = {
+                                    difficulty: snapshot
+                                        .child('difficulty')
+                                        .val(),
+                                    bboxObj: snapshot.child('bbox').val(),
+                                    modeSelected: snapshot.child('mode').val(),
+                                };
+                                this.startGameMultiplayer(
+                                    playerName,
+                                    gameParams
+                                );
+                            });
+                        }
                     }
                 });
+        },
+        startGameMultiplayer(playerName, gameParams) {
+            // Start the game
+            this.$router.push({
+                name: 'with-friends',
+                params: {
+                    ...gameParams,
+                    roomName: this.roomName,
+                    playerName,
+                    playerNumber: this.playerNumber,
+                    placeGeoJson: this.placeGeoJson,
+                    multiplayer: true,
+                },
+            });
         },
         cancel() {
             // Reset
             (this.currentComponent = this.singlePlayer
-                ? 'timeLimitation'
+                ? 'settings'
                 : 'roomName'),
                 (this.roomName = '');
             this.errorMessage = '';
+
+            this.firstPlayer = false;
 
             // Remove the room
             this.dialogRoom = false;

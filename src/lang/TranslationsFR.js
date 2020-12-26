@@ -115,6 +115,9 @@ export default {
             title: 'Saisir le temps maximum par manche.',
             infinite: 'Infini',
         },
+        CardRoomSettings: {
+            title: 'Paramétre de la partie',
+        },
         CardRoomDifficulty: {
             title: 'Saisir la difficulté.',
             easy: 'Facile (monde)',

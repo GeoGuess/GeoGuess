@@ -1,5 +1,7 @@
 <template>
-    <div id="mapNormal"></div>
+    <div id="map">
+        <div id="mapClassic"></div>
+    </div>
 </template>
 <script>
 const google = window.google;
@@ -28,7 +30,7 @@ export default {
         },
     },
     mounted() {
-        this.map = new google.maps.Map(document.getElementById('mapNormal'), {
+        this.map = new google.maps.Map(document.getElementById('mapClassic'), {
             center: { lat: 37.86926, lng: -122.254811 },
             zoom: 1,
             fullscreenControl: false,
@@ -150,3 +152,9 @@ export default {
     },
 };
 </script>
+<style lang="scss" scoped>
+#mapClassic {
+    width: 100%;
+    height: 100%;
+}
+</style>

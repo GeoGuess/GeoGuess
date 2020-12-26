@@ -116,6 +116,9 @@ export default {
             title: 'Set a time limitation.',
             infinite: 'Infinite',
         },
+        CardRoomSettings: {
+            title: 'Game Settings',
+        },
         CardRoomDifficulty: {
             title: 'Set a difficulty level.',
             easy: 'easy (world)',

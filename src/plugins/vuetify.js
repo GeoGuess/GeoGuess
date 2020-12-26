@@ -28,7 +28,9 @@ export default new Vuetify({
         current:
             localStorage.getItem('language') != null
                 ? localStorage.getItem('language')
-                : languages.map((l) => l.value).some(checkLanguage),
+                : languages.map((l) => l.value).some(checkLanguage)
+                ? navigator.language.split('-')[0]
+                : 'en',
     },
     options: {
         customProperties: true,

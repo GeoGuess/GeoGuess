@@ -1,11 +1,10 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-
-import en from './TranslationsEN';
-import ja from './TranslationsJA';
-import fr from './TranslationsFR';
 import cs from './TranslationsCS';
 import de from './TranslationsDE';
+import en from './TranslationsEN';
+import fr from './TranslationsFR';
+import ja from './TranslationsJA';
 import ru from './TranslationsRU';
 
 Vue.use(VueI18n);
@@ -41,6 +40,13 @@ export const languages = [
 
 export function checkLanguage(language) {
     return navigator.language.split('-')[0] == language;
+}
+
+if (!localStorage.getItem('language')) {
+    localStorage.setItem(
+        'language',
+        languages.some(checkLanguage) ? navigator.language.split('-')[0] : 'en'
+    );
 }
 
 export default new VueI18n({
