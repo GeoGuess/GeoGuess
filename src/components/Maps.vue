@@ -342,7 +342,7 @@ export default {
                 this.room
                     .child('round' + this.round + '/player' + this.playerNumber)
                     .set({
-                        ...getSelectedPos(this.selectedPos),
+                        ...getSelectedPos(this.selectedPos, this.mode),
                         distance: this.distance,
                         points: this.point,
                     });

@@ -177,11 +177,17 @@ export default {
         drawPolyline() {},
         removePolylines() {},
         startNextRound() {
+            if (this.polygonSelect) {
+                this.polygonSelect.setStyle({
+                    strokeOpacity: 0,
+                    fillOpacity: 0,
+                });
+            }
+            this.polygonSelect = null;
             this.allowSelect = true;
         },
         removeListener() {
             this.allowSelect = false;
-            this.polygonSelect = null;
         },
     },
 };
