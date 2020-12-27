@@ -128,7 +128,6 @@ export default {
     methods: {
         ...mapActions(['resetSinglePlayer', 'resetMultiPlayer']),
         loadGeoJSON() {
-            console.log(this.geoJson);
             if (this.place != null && this.place != '' && !this.geoJson) {
                 this.getPlaceGeoJSON(this.place);
             } else {
