@@ -126,10 +126,13 @@ export default {
             hard: 'hard (city)',
         },
         DialogSummary: {
-            summaryMsgSingle:
-                'You are <strong>{distance}</strong> km away! Your score is <strong>{points}</strong> points!',
-            summaryMsgMulti:
-                '<strong>{playerName}</strong> score is <strong>{points}</strong> ! (<strong>{distance}</strong> km away)',
+            summaryMsgSinglePoints:
+                'Your score is <strong>{points}</strong> points! ',
+            summaryMsgSingleDistance:
+                'You are <strong>{distance}</strong> km away!',
+            summaryMsgMultiPoints:
+                '<strong>{playerName}</strong> score is <strong>{points}</strong> ! ',
+            summaryMsgMultiDistance: '(<strong>{distance}</strong> km away)',
             viewDetails: 'View details',
         },
         Footer: {

@@ -121,10 +121,13 @@ export default {
             hard: 'Schwierig (Stadt)',
         },
         DialogSummary: {
-            summaryMsgSingle:
-                'Du bist bei<strong>{distance}</strong> km ! Dein Ergebnis ist<strong>{points}</strong> Punkte!',
-            summaryMsgMulti:
-                '<strong>{playerName}</strong> erhält  <strong>{points}</strong> Punkte ! (<strong>{distance}</strong> km)',
+            summaryMsgSinglePoints:
+                'Dein Ergebnis ist<strong>{points}</strong> Punkte! ',
+            summaryMsgSingleDistance:
+                'Du bist bei<strong>{distance}</strong> km !',
+            summaryMsgMultiPoints:
+                '<strong>{playerName}</strong> erhält  <strong>{points}</strong> Punkte ! ',
+            summaryMsgMultiDistance: '(<strong>{distance}</strong> km)',
             viewDetails: 'Siehe die Details',
         },
         Footer: {

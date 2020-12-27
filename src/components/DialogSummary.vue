@@ -11,10 +11,14 @@
                     <span
                         id="summary-text"
                         v-html="
-                            $t('DialogSummary.summaryMsgSingle', {
-                                distance: score / 1000,
+                            $t('DialogSummary.summaryMsgSinglePoints', {
                                 points,
-                            })
+                            }) +
+                            (showDistance
+                                ? $t('DialogSummary.summaryMsgSingleDistance', {
+                                      distance: score / 1000,
+                                  })
+                                : '')
                         "
                     ></span>
                 </v-row>
@@ -38,11 +42,18 @@
                         >
                         <span
                             v-html="
-                                $t('DialogSummary.summaryMsgMulti', {
+                                $t('DialogSummary.summaryMsgMultiPoints', {
                                     playerName: text.playerName,
                                     points: text.finalPoints,
-                                    distance: text.finalScore / 1000,
-                                })
+                                }) +
+                                (showDistance
+                                    ? $t(
+                                          'DialogSummary.summaryMsgMultiDistance',
+                                          {
+                                              distance: text.finalScore / 1000,
+                                          }
+                                      )
+                                    : '')
                             "
                         ></span>
                     </span>
@@ -58,40 +69,12 @@
                     >
                 </v-row>
             </v-card-text>
-            <v-card-text class="text-right">
-                <v-btn
-                    target="_blank"
-                    :href="
-                        'http://www.facebook.com/sharer.php?u=' +
-                        url +
-                        '&amp;t=I am ' +
-                        score / 1000 +
-                        ' km away! How close can you guess?'
-                    "
-                    rel="nofollow"
-                    icon
-                >
-                    <v-icon size="32">mdi-facebook-box</v-icon>
-                </v-btn>
-                <v-btn
-                    target="_blank"
-                    :href="
-                        'http://twitter.com/share?url=' +
-                        url +
-                        '&amp;text=I am ' +
-                        score / 1000 +
-                        ' km away! How close can you guess?'
-                    "
-                    icon
-                >
-                    <v-icon size="32">mdi-twitter-box</v-icon>
-                </v-btn>
-            </v-card-text>
         </v-card>
     </v-dialog>
 </template>
 
 <script>
+import { GAME_MODE } from '../constants';
 export default {
     props: [
         'dialogSummary',
@@ -101,11 +84,12 @@ export default {
         'points',
         'multiplayer',
         'game',
+        'mode',
     ],
-    data() {
-        return {
-            url: process.env.URL,
-        };
+    computed: {
+        showDistance() {
+            return this.mode === GAME_MODE.NORMAL;
+        },
     },
     methods: {
         updateRecord() {

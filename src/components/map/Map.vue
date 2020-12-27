@@ -149,6 +149,17 @@ export default {
         removeListener() {
             google.maps.event.clearListeners(this.map, 'click');
         },
+        fitBounds() {
+            const bounds = new google.maps.LatLngBounds();
+
+            for (let i = 0; i < this.markers.length; i++) {
+                if (this.markers[i].getVisible()) {
+                    bounds.extend(this.markers[i].getPosition());
+                }
+            }
+
+            this.map.fitBounds(bounds);
+        },
     },
 };
 </script>

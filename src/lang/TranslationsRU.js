@@ -124,10 +124,13 @@ export default {
             hard: 'Сложный (город)',
         },
         DialogSummary: {
-            summaryMsgSingle:
-                'Вы попали <strong>{distance}</strong> km отсюда! Ваше количество <strong>{points}</strong> очков!',
-            summaryMsgMulti:
-                '<strong>{playerName}</strong> количество очков <strong>{points}</strong> ! (<strong>{distance}</strong> км отсюда)',
+            summaryMsgSinglePoints:
+                'Ваше количество <strong>{points}</strong> очков! ',
+            summaryMsgSingleDistance:
+                'Вы попали <strong>{distance}</strong> km отсюда!',
+            summaryMsgMultiPoints:
+                '<strong>{playerName}</strong> количество очков <strong>{points}</strong> ! ',
+            summaryMsgMultiDistance: '(<strong>{distance}</strong> км отсюда)',
             viewDetails: 'Посмотреть детали',
         },
         Footer: {

@@ -3,14 +3,21 @@
         <div class="map-label" v-if="polygonSelect" :title="this.countryName">
             <FlagIcon
                 :isoName="
+                    this.countryRandom ||
                     polygonSelect
                         .getFeatureById('feature')
                         .getProperty('iso_a2')
                 "
             />
-            <span class="map-label__country-name beige">{{
-                this.countryName
-            }}</span>
+            <span
+                class="map-label__country-name"
+                v-bind:class="{
+                    beige: !countryRandom,
+                    green: !!countryRandom,
+                    'white--text': !!countryRandom,
+                }"
+                >{{ this.countryName }}</span
+            >
         </div>
         <div id="mapCountries"></div>
     </div>
@@ -32,6 +39,7 @@ export default {
             countries: {},
             markers: [],
             allowSelect: true,
+            countryRandom: null,
             randomPos: null,
             strokeColors: [
                 '#F44336',
@@ -45,9 +53,10 @@ export default {
     computed: {
         countryName() {
             return this.$countryNameLocale(
-                this.polygonSelect
-                    .getFeatureById('feature')
-                    .getProperty('iso_a2')
+                this.countryRandom ||
+                    this.polygonSelect
+                        .getFeatureById('feature')
+                        .getProperty('iso_a2')
             );
         },
     },
@@ -134,6 +143,7 @@ export default {
         putMarker(pos, isRandomLocation, country) {
             const c = isRandomLocation ? country || this.country : pos;
             if (isRandomLocation) {
+                this.countryRandom = this.country;
                 this.randomPos = new google.maps.Marker({
                     position: pos,
                     map: this.map,
@@ -186,10 +196,14 @@ export default {
                 });
             }
             this.polygonSelect = null;
+            this.countryRandom = null;
             this.allowSelect = true;
         },
         removeListener() {
             this.allowSelect = false;
+        },
+        fitBounds() {
+            this.map.setZoom(2);
         },
     },
 };

@@ -105,9 +105,12 @@ export default {
             }
         },
         currentComponent(val) {
-            if (val === 'settings' && this.dialogRoom == true) {
+            if (val === 'settings' && this.dialogRoom === true) {
                 this.loadGeoJSON();
             }
+        },
+        geoJson(val) {
+            this.placeGeoJson = val;
         },
     },
     mounted() {
@@ -125,6 +128,7 @@ export default {
     methods: {
         ...mapActions(['resetSinglePlayer', 'resetMultiPlayer']),
         loadGeoJSON() {
+            console.log(this.geoJson);
             if (this.place != null && this.place != '' && !this.geoJson) {
                 this.getPlaceGeoJSON(this.place);
             } else {

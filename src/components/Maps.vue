@@ -278,6 +278,7 @@ export default {
                 );
 
                 this.$refs.map.setInfoWindow(null, this.distance, this.point);
+                this.$refs.map.fitBounds();
                 this.printMapFull = true;
                 if (this.round >= 5) {
                     this.isSummaryButtonVisible = true;
@@ -413,6 +414,7 @@ export default {
                         );
                     }
                 );
+                this.$refs.map.fitBounds();
             } else {
                 this.room.on('value', (snapshot) => {
                     // Check if the room is already removed
@@ -506,6 +508,7 @@ export default {
                                 i++;
                             });
                         });
+                        this.$refs.map.fitBounds();
                     }
                 });
             }
@@ -597,6 +600,7 @@ export default {
                             i++;
                             j++;
                         });
+                        this.$refs.map.fitBounds();
 
                         this.game.rounds.push({
                             position: this.randomLatLng,
@@ -677,7 +681,7 @@ export default {
     --width: var(--inactive-width);
     max-width: 100%;
     max-height: calc(100% - 150px);
-    transition: 0.4s;
+    transition: 0.3s;
     #map {
         width: 100%;
         height: 100%;
