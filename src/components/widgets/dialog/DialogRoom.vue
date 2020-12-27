@@ -75,7 +75,7 @@ export default {
             bboxObj: null,
             loadingGeoJson: false,
             firstPlayer: false,
-            mode: 'normal',
+            mode: 'classic',
         };
     },
     computed: {

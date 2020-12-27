@@ -118,6 +118,7 @@ export default {
         },
         CardRoomSettings: {
             title: 'Game Settings',
+            modeLabel: 'Select game mode',
         },
         CardRoomDifficulty: {
             title: 'Set a difficulty level.',
@@ -142,6 +143,10 @@ export default {
         urlCopied: 'Url copied',
         DetailsMap: {
             moreInfo: 'More information',
+        },
+        modes: {
+            classic: 'Classic',
+            country: 'Pick country',
         },
     },
 };

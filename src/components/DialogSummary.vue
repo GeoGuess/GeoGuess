@@ -8,7 +8,7 @@
         <v-card color="#061422">
             <v-card-text id="card-text">
                 <v-row v-if="!multiplayer" justify="center">
-                    <span
+                    <p
                         id="summary-text"
                         v-html="
                             $t('DialogSummary.summaryMsgSinglePoints', {
@@ -20,7 +20,7 @@
                                   })
                                 : '')
                         "
-                    ></span>
+                    ></p>
                 </v-row>
                 <v-row
                     class="mt-3"
@@ -88,7 +88,7 @@ export default {
     ],
     computed: {
         showDistance() {
-            return this.mode === GAME_MODE.NORMAL;
+            return this.mode === GAME_MODE.CLASSIC;
         },
     },
     methods: {
@@ -138,6 +138,7 @@ export default {
 }
 
 #card-text {
+    text-align: center;
     padding: 80px 10% 80px 10%;
 }
 

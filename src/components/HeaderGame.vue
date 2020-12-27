@@ -46,7 +46,7 @@ export default {
             return getCountdownText(this.remainingTime);
         },
         isDistanceVisible() {
-            return this.mode === GAME_MODE.NORMAL;
+            return this.mode === GAME_MODE.CLASSIC;
         },
     },
 };

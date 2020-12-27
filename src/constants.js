@@ -1,4 +1,4 @@
 export const GAME_MODE = {
-    NORMAL: 'normal',
+    CLASSIC: 'classic',
     COUNTRY: 'country',
 };

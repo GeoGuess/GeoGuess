@@ -5,16 +5,17 @@
         </v-card-title>
         <v-card-text class="settings">
             <v-row>
+                <label>{{ $t('CardRoomSettings.modeLabel') }}</label>
                 <v-flex class="d-flex justify-space-around w-100">
                     <v-btn
-                        :text="this.mode !== gameMode.NORMAL"
+                        :text="this.mode !== gameMode.CLASSIC"
                         rounded
                         outlined
-                        v-on:click="() => (this.mode = gameMode.NORMAL)"
+                        v-on:click="() => (this.mode = gameMode.CLASSIC)"
                         class="mr-5"
                     >
                         <v-icon large>mdi-map-marker</v-icon>
-                        <span>Mode classic</span>
+                        <span>{{ $t('modes.classic') }}</span>
                     </v-btn>
                     <v-btn
                         :text="this.mode !== gameMode.COUNTRY"
@@ -23,7 +24,7 @@
                         v-on:click="() => (this.mode = gameMode.COUNTRY)"
                     >
                         <v-icon large>mdi-flag</v-icon>
-                        <span>Mode pick Country</span>
+                        <span>{{ $t('modes.country') }}</span>
                     </v-btn>
                 </v-flex>
             </v-row>
@@ -36,7 +37,7 @@
                 ></v-autocomplete>
             </v-row>
             <v-row>
-                <span id="card-title">{{ $t('CardRoomTime.title') }}</span>
+                <label>{{ $t('CardRoomTime.title') }}</label>
                 <TimePicker v-model="timeLimitation" />
             </v-row>
         </v-card-text>
@@ -62,7 +63,7 @@ export default {
     },
     data() {
         return {
-            mode: GAME_MODE.NORMAL,
+            mode: GAME_MODE.CLASSIC,
             timeLimitation: 0,
             roomSize: 2,
             roomSizeItems: [

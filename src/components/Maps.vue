@@ -61,7 +61,7 @@
         </v-btn>
         <Map
             id="map"
-            v-if="this.mode === 'normal'"
+            v-if="this.mode === 'classic'"
             :bbox="bbox"
             ref="map"
             @setSeletedPos="setSeletedPos"
@@ -441,7 +441,7 @@ export default {
                             snapshot.child('playerName').forEach((player) => {
                                 const playerName = player.val();
                                 let posGuess;
-                                if (this.mode === GAME_MODE.NORMAL) {
+                                if (this.mode === GAME_MODE.CLASSIC) {
                                     const latitudeG = snapshot
                                         .child(
                                             round.key +
@@ -538,7 +538,7 @@ export default {
                         let players = {};
                         snapshot.child('guess').forEach((childSnapshot) => {
                             let posGuess;
-                            if (this.mode === GAME_MODE.NORMAL) {
+                            if (this.mode === GAME_MODE.CLASSIC) {
                                 const lat = childSnapshot
                                     .child('latitude')
                                     .val();

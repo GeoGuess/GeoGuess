@@ -119,7 +119,7 @@ export function getCountryCodeNameFromLatLng(latLng, errorFunction) {
  */
 export function getSelectedPos(selectedPos, gameMode) {
     switch (gameMode) {
-        case GAME_MODE.NORMAL:
+        case GAME_MODE.CLASSIC:
             return {
                 latitude: selectedPos.lat(),
                 longitude: selectedPos.lng(),

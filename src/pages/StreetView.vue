@@ -116,7 +116,7 @@ export default {
             type: Array,
         },
         modeSelected: {
-            default: GAME_MODE.NORMAL,
+            default: GAME_MODE.CLASSIC,
             type: String,
         },
     },
