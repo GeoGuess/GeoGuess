@@ -96,8 +96,6 @@ import { mapActions, mapGetters } from 'vuex';
 import { validURL } from '@/utils';
 import { isGeoJSONValid } from '../../utils';
 
-const google = window.google;
-
 export default {
     name: 'DialogCustomMap',
     props: ['visibility'],
@@ -134,6 +132,9 @@ export default {
                 map.data.toGeoJson((geoJson) => this.setGeoJson(geoJson));
             });
         },
+    },
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
     },
     updated() {
         if (!this.initMap) {

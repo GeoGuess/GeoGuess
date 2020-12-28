@@ -75,8 +75,6 @@ import {
 } from '../utils';
 import { GAME_MODE } from '../constants';
 
-const google = window.google;
-
 export default {
     props: {
         roomName: {
@@ -432,7 +430,8 @@ export default {
             }
         },
     },
-    mounted() {
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(
             document.getElementById('street-view')
         );

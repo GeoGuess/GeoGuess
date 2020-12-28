@@ -1,11 +1,21 @@
 <template>
     <div id="map">
-        <div id="mapClassic"></div>
+        <GmapMap
+            :center="{ lat: 37.86926, lng: -122.254811 }"
+            :zoom="1"
+            ref="mapRef"
+            id="mapClassic"
+            map-type-id="terrain"
+            :options="{
+                fullscreenControl: false,
+                mapTypeControl: false,
+                streetViewControl: false,
+            }"
+        >
+        </GmapMap>
     </div>
 </template>
 <script>
-const google = window.google;
-
 export default {
     name: 'Map',
     props: ['bbox'],
@@ -30,22 +40,11 @@ export default {
         },
     },
     mounted() {
-        this.map = new google.maps.Map(document.getElementById('mapClassic'), {
-            center: { lat: 37.86926, lng: -122.254811 },
-            zoom: 1,
-            fullscreenControl: false,
-            mapTypeControl: false,
-            streetViewControl: false,
-        });
+        this.$refs.mapRef.$mapPromise.then((map) => {
+            this.map = map;
 
-        if (this.bbox) {
-            this.map.fitBounds({
-                east: this.bbox[2],
-                north: this.bbox[3],
-                south: this.bbox[1],
-                west: this.bbox[0],
-            });
-        }
+            this.centerOnBbox();
+        });
     },
     methods: {
         centerOnBbox() {
@@ -135,15 +134,17 @@ export default {
             }
         },
         startNextRound() {
-            this.map.addListener('click', (e) => {
-                // Clear the previous marker when clicking the map
-                this.removeMarkers();
+            this.$refs.mapRef.$mapPromise.then(() => {
+                this.map.addListener('click', (e) => {
+                    // Clear the previous marker when clicking the map
+                    this.removeMarkers();
 
-                // Show the new marker
-                this.putMarker(e.latLng);
+                    // Show the new marker
+                    this.putMarker(e.latLng);
 
-                // Save latLng
-                this.$emit('setSeletedPos', e.latLng);
+                    // Save latLng
+                    this.$emit('setSeletedPos', e.latLng);
+                });
             });
         },
         removeListener() {

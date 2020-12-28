@@ -1,9 +1,10 @@
 import 'firebase/analytics';
 import firebase from 'firebase/app';
 import 'firebase/database';
+import * as GmapVue from 'gmap-vue';
 import Vue from 'vue';
+import VueAxios from 'vue-axios';
 import VueClipboard from 'vue-clipboard2';
-import * as VueGoogleMaps from 'vue2-google-maps';
 import App from './App.vue';
 import i18n from './lang';
 import axios from './plugins/axios';
@@ -13,9 +14,11 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 
+Vue.use(VueAxios, axios);
+
 Vue.use(CountryNamePlugin);
 Vue.use(VueClipboard);
-Vue.use(VueGoogleMaps, {
+Vue.use(GmapVue, {
     load: {
         key: process.env.VUE_APP_API_KEY,
     },

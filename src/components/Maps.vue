@@ -181,8 +181,6 @@ import MapCountries from '@/components/map/MapCountries';
 import { GAME_MODE } from '../constants';
 import { getSelectedPos } from '../utils';
 
-const google = window.google;
-
 export default {
     props: [
         'randomLatLng',
@@ -514,7 +512,8 @@ export default {
             }
         },
     },
-    mounted() {
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
         this.game.timeLimitation = this.timeLimitation;
         this.game.difficulty = this.difficulty;
 

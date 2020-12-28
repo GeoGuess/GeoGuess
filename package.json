@@ -23,6 +23,7 @@
     "firebase-functions": "^3.13.0",
     "firebase-tools": "^7.16.2",
     "flag-icon-css": "^3.5.0",
+    "gmap-vue": "^1.5.0",
     "i18n-iso-countries": "^6.4.0",
     "random-position-in-polygon": "^1.0.2",
     "register-service-worker": "^1.7.2",
@@ -31,7 +32,6 @@
     "vue-clipboard2": "^0.3.1",
     "vue-i18n": "^8.22.2",
     "vue-router": "^3.4.9",
-    "vue2-google-maps": "^0.10.7",
     "vuetify": "^2.4.0",
     "vuex": "^3.6.0"
   },

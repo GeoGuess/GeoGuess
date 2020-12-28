@@ -1,6 +1,4 @@
 import { setup } from 'axios-cache-adapter';
-import Vue from 'vue';
-import VueAxios from 'vue-axios';
 
 const axi = setup({
     cache: {
@@ -8,7 +6,5 @@ const axi = setup({
         exclude: { query: false },
     },
 });
-
-Vue.use(VueAxios, axi);
 
 export default axi;

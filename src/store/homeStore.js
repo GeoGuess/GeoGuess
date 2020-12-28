@@ -1,8 +1,8 @@
-import * as MutationTypes from './mutation-types';
 import { validURL } from '@/utils';
-
-import axios from 'axios';
+import axios from '../plugins/axios';
 import { isGeoJSONValid } from '../utils';
+import * as MutationTypes from './mutation-types';
+
 export default {
     state: () => ({
         geojson: null,
@@ -95,7 +95,12 @@ export default {
             const maps = await axios
                 .get(
                     process.env.VUE_APP_LIST_MAPS_JSON_URL ||
-                        'https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/maps.json'
+                        'https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/maps.json',
+                    {
+                        cache: {
+                            maxAge: 1000,
+                        },
+                    }
                 )
                 .then((res) => res.data.maps);
 

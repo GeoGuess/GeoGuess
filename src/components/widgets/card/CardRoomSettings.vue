@@ -5,40 +5,73 @@
         </v-card-title>
         <v-card-text class="settings">
             <v-row>
-                <label>{{ $t('CardRoomSettings.modeLabel') }}</label>
-                <v-flex class="d-flex justify-space-around w-100">
-                    <v-btn
-                        :text="this.mode !== gameMode.CLASSIC"
-                        rounded
-                        outlined
-                        v-on:click="() => (this.mode = gameMode.CLASSIC)"
-                        class="mr-5"
+                <v-col>
+                    <v-row>
+                        <label>{{ $t('CardRoomSettings.modeLabel') }}</label>
+                        <v-flex class="d-flex justify-space-around w-100">
+                            <v-btn
+                                :text="this.mode !== gameMode.CLASSIC"
+                                rounded
+                                outlined
+                                v-on:click="
+                                    () => (this.mode = gameMode.CLASSIC)
+                                "
+                                class="mr-5"
+                            >
+                                <v-icon large>mdi-map-marker</v-icon>
+                                <span>{{ $t('modes.classic') }}</span>
+                            </v-btn>
+                            <v-btn
+                                :text="this.mode !== gameMode.COUNTRY"
+                                rounded
+                                outlined
+                                v-on:click="
+                                    () => (this.mode = gameMode.COUNTRY)
+                                "
+                            >
+                                <v-icon large>mdi-flag</v-icon>
+                                <span>{{ $t('modes.country') }}</span>
+                            </v-btn>
+                        </v-flex>
+                    </v-row>
+                    <v-row v-if="!singlePlayer">
+                        <v-autocomplete
+                            :label="$t('CardRoomSize.title')"
+                            v-model="roomSize"
+                            :items="roomSizeItems"
+                            autofocus
+                        ></v-autocomplete>
+                    </v-row>
+                    <v-row>
+                        <label>{{ $t('CardRoomTime.title') }}</label>
+                        <TimePicker v-model="timeLimitation" />
+                    </v-row>
+                </v-col>
+                <v-col
+                    v-bind:class="{
+                        'd-none': !loadingGeoJson && !placeGeoJson,
+                    }"
+                >
+                    <GmapMap
+                        v-bind:class="{ 'd-none': loadingGeoJson }"
+                        :center="{ lat: 10, lng: 10 }"
+                        :zoom="1"
+                        ref="mapRef"
+                        map-type-id="terrain"
+                        style="width: 350px; height: 250px"
+                        :options="{
+                            gestureHandling: 'greedy',
+                        }"
                     >
-                        <v-icon large>mdi-map-marker</v-icon>
-                        <span>{{ $t('modes.classic') }}</span>
-                    </v-btn>
-                    <v-btn
-                        :text="this.mode !== gameMode.COUNTRY"
-                        rounded
-                        outlined
-                        v-on:click="() => (this.mode = gameMode.COUNTRY)"
-                    >
-                        <v-icon large>mdi-flag</v-icon>
-                        <span>{{ $t('modes.country') }}</span>
-                    </v-btn>
-                </v-flex>
-            </v-row>
-            <v-row v-if="!singlePlayer">
-                <v-autocomplete
-                    :label="$t('CardRoomSize.title')"
-                    v-model="roomSize"
-                    :items="roomSizeItems"
-                    autofocus
-                ></v-autocomplete>
-            </v-row>
-            <v-row>
-                <label>{{ $t('CardRoomTime.title') }}</label>
-                <TimePicker v-model="timeLimitation" />
+                    </GmapMap>
+
+                    <v-skeleton-loader
+                        v-if="loadingGeoJson"
+                        class="mx-auto"
+                        style="width: 100%; height: 250px"
+                        type="image"
+                    ></v-skeleton-loader>
+                </v-col>
             </v-row>
         </v-card-text>
         <v-card-actions>
@@ -121,6 +154,29 @@ export default {
     computed: {
         gameMode() {
             return GAME_MODE;
+        },
+    },
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
+    },
+    watch: {
+        placeGeoJson(val) {
+            this.$refs.mapRef.$mapPromise.then((map) => {
+                map.data.setMap(null);
+                let data = new google.maps.Data({
+                    map: map,
+                });
+                if (val) data.addGeoJson(val);
+                map.data = data;
+                if (val && val.bbox) {
+                    map.fitBounds({
+                        east: val.bbox[2],
+                        north: val.bbox[3],
+                        south: val.bbox[1],
+                        west: val.bbox[0],
+                    });
+                }
+            });
         },
     },
     methods: {

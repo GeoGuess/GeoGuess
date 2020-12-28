@@ -19,14 +19,25 @@
                 >{{ this.countryName }}</span
             >
         </div>
-        <div id="mapCountries"></div>
+        <GmapMap
+            :center="{ lat: 37.86926, lng: -122.254811 }"
+            :zoom="1"
+            ref="mapRef"
+            id="mapCountries"
+            map-type-id="terrain"
+            :options="{
+                fullscreenControl: false,
+                mapTypeControl: false,
+                streetViewControl: false,
+            }"
+        >
+        </GmapMap>
     </div>
 </template>
 <script type="text/javascript">
 import json from '@/resources/countries.geo.json';
 import FlagIcon from '@/components/shared/FlagIcon';
 
-const google = window.google;
 export default {
     props: ['bbox', 'country'],
     components: {
@@ -61,68 +72,56 @@ export default {
         },
     },
     mounted() {
-        this.map = new google.maps.Map(
-            document.getElementById('mapCountries'),
-            {
-                center: { lat: 37.86926, lng: -122.254811 },
-                zoom: 1,
-                fullscreenControl: false,
-                mapTypeControl: false,
-                streetViewControl: false,
-            }
-        );
-        json.features.forEach((c) => {
-            if (Array.isArray(c.geometry.coordinates)) {
-                const p = new google.maps.Data({
-                    style: {
-                        strokeOpacity: 0,
-                        fillOpacity: 0,
-                        strokeWeight: 2,
-                    },
-                });
-                c.id = 'feature';
-                p.addGeoJson(c);
-
-                p.setMap(this.map);
-                p.addListener('click', () => {
-                    if (!this.allowSelect) {
-                        return;
-                    }
-                    if (this.polygonSelect) {
-                        this.polygonSelect.setStyle({
+        this.$refs.mapRef.$mapPromise.then((map) => {
+            this.map = map;
+            json.features.forEach((c) => {
+                if (Array.isArray(c.geometry.coordinates)) {
+                    const p = new google.maps.Data({
+                        style: {
                             strokeOpacity: 0,
                             fillOpacity: 0,
-                        });
-                    }
-                    if (Object.is(p, this.polygonSelect)) {
-                        this.polygonSelect = null;
-                        this.$emit('setSeletedPos', null);
-                    } else {
-                        p.setStyle({
-                            strokeOpacity: 0.8,
-                            fillOpacity: 0.3,
-                            strokeColor: '#1E3A8A',
-                            fillColor: '#1D4ED8',
-                        });
+                            strokeWeight: 2,
+                        },
+                    });
+                    c.id = 'feature';
+                    p.addGeoJson(c);
 
-                        this.polygonSelect = p;
-                        this.$emit(
-                            'setSeletedPos',
-                            p.getFeatureById('feature').getProperty('iso_a2')
-                        );
-                    }
-                });
-                this.countries[c.properties.iso_a2] = p;
-            }
-        });
-        if (this.bbox) {
-            this.map.fitBounds({
-                east: this.bbox[2],
-                north: this.bbox[3],
-                south: this.bbox[1],
-                west: this.bbox[0],
+                    p.setMap(this.map);
+                    p.addListener('click', () => {
+                        if (!this.allowSelect) {
+                            return;
+                        }
+                        if (this.polygonSelect) {
+                            this.polygonSelect.setStyle({
+                                strokeOpacity: 0,
+                                fillOpacity: 0,
+                            });
+                        }
+                        if (Object.is(p, this.polygonSelect)) {
+                            this.polygonSelect = null;
+                            this.$emit('setSeletedPos', null);
+                        } else {
+                            p.setStyle({
+                                strokeOpacity: 0.8,
+                                fillOpacity: 0.3,
+                                strokeColor: '#1E3A8A',
+                                fillColor: '#1D4ED8',
+                            });
+
+                            this.polygonSelect = p;
+                            this.$emit(
+                                'setSeletedPos',
+                                p
+                                    .getFeatureById('feature')
+                                    .getProperty('iso_a2')
+                            );
+                        }
+                    });
+                    this.countries[c.properties.iso_a2] = p;
+                }
             });
-        }
+            this.centerOnBbox();
+        });
     },
     watch: {
         bbox() {

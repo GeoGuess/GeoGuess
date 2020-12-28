@@ -142,10 +142,11 @@ export default {
                 return;
             }
             this.loadingGeoJson = true;
+            this.placeGeoJson = null;
             this.axios
                 .get(
                     `https://nominatim.openstreetmap.org/search/${encodeURIComponent(
-                        place
+                        place.toLowerCase()
                     )}?format=geojson&limit=1&polygon_geojson=1`
                 )
                 .then((res) => {
