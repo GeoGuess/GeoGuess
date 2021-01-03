@@ -71,7 +71,7 @@
                         :center="{ lat: 10, lng: 10 }"
                         :zoom="1"
                         ref="mapRef"
-                        map-type-id="terrain"
+                        map-type-id="roadmap"
                         style="width: 350px; height: 250px"
                         :options="{
                             gestureHandling: 'greedy',

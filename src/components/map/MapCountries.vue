@@ -24,7 +24,7 @@
             :zoom="1"
             ref="mapRef"
             id="mapCountries"
-            map-type-id="terrain"
+            map-type-id="roadmap"
             :options="{
                 fullscreenControl: false,
                 mapTypeControl: false,

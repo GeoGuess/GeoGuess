@@ -5,7 +5,7 @@
             :zoom="1"
             ref="mapRef"
             id="mapClassic"
-            map-type-id="terrain"
+            map-type-id="roadmap"
             :options="{
                 fullscreenControl: false,
                 mapTypeControl: false,
