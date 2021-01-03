@@ -32,7 +32,7 @@ export default function appInit(VueInstance) {
     });
     Vue.use(Vuetify);
     Vue.use(Vuex);
-    
+
     VueInstance.use(VueI18n);
     VueInstance.use(VueRouter);
     VueInstance.use(Vuetify);

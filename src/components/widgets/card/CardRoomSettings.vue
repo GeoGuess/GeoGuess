@@ -7,7 +7,9 @@
             <v-row>
                 <v-col>
                     <v-row>
-                        <label class="card_settings__mode__label">{{ $t('CardRoomSettings.modeLabel') }}</label>
+                        <label class="card_settings__mode__label">{{
+                            $t('CardRoomSettings.modeLabel')
+                        }}</label>
                         <v-flex class="d-flex justify-space-around w-100">
                             <v-btn
                                 :text="this.mode !== gameMode.CLASSIC"
@@ -45,7 +47,9 @@
                         ></v-autocomplete>
                     </v-row>
                     <v-row>
-                        <label class="card_settings__time__label">{{ $t('CardRoomTime.title') }}</label>
+                        <label class="card_settings__time__label">{{
+                            $t('CardRoomTime.title')
+                        }}</label>
                         <TimePicker v-model="timeLimitation" />
                     </v-row>
                 </v-col>
@@ -160,7 +164,7 @@ export default {
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
-        if(this.placeGeoJson){
+        if (this.placeGeoJson) {
             this.setGeoJson(this.placeGeoJson);
         }
     },
@@ -170,7 +174,7 @@ export default {
         },
     },
     methods: {
-        setGeoJson(val){
+        setGeoJson(val) {
             this.$refs.mapRef.$mapPromise.then((map) => {
                 map.data.setMap(null);
                 let data = new google.maps.Data({

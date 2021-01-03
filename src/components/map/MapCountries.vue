@@ -52,13 +52,7 @@ export default {
             allowSelect: true,
             countryRandom: null,
             randomPos: null,
-            strokeColors: [
-                '#F44336',
-                '#76FF03',
-                '#FFEB3B',
-                '#FF4081',
-                '#18FFFF',
-            ],
+            strokeColors: ['#76FF03', '#FFEB3B', '#FF4081', '#18FFFF'],
         };
     },
     computed: {
@@ -140,8 +134,7 @@ export default {
             }
         },
         putMarker(pos, isRandomLocation, country) {
-            console.log(isRandomLocation,(country || this.country) )
-            const c = isRandomLocation ? (country || this.country) : pos;
+            const c = isRandomLocation ? country || this.country : pos;
             if (isRandomLocation) {
                 this.countryRandom = this.country;
                 this.randomPos = new google.maps.Marker({

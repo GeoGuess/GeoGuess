@@ -263,7 +263,9 @@ export default {
                                     .set({
                                         latitude: this.randomLatLng.lat(),
                                         longitude: this.randomLatLng.lng(),
-                                        roundInfo: this.randomFeatureProperties || null,
+                                        roundInfo:
+                                            this.randomFeatureProperties ||
+                                            null,
                                         country: c,
                                         warning: this.isVisibleDialog,
                                     });
@@ -277,7 +279,8 @@ export default {
                                 .set({
                                     latitude: this.randomLatLng.lat(),
                                     longitude: this.randomLatLng.lng(),
-                                    roundInfo: this.randomFeatureProperties || null,
+                                    roundInfo:
+                                        this.randomFeatureProperties || null,
                                     warning: this.isVisibleDialog,
                                 });
                         }
@@ -460,8 +463,6 @@ export default {
             this.room = firebase.database().ref(this.roomName);
             this.room.child('active').set(true);
             this.room.on('value', (snapshot) => {
-                console.log('alal')
-                debugger
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
                     // Put the player into the current round node if the player is not put yet
@@ -477,7 +478,6 @@ export default {
 
                         // Other players load the streetview the first player loaded earlier
                         if (this.playerNumber != 1) {
-                            console.log('all')
                             this.randomLat = snapshot
                                 .child(
                                     'streetView/round' +
@@ -523,14 +523,13 @@ export default {
 
                     // Enable guess button when every players are put into the current round's node
                     if (
-                        snapshot.child('round' + this.round).numChildren() ==
-                        snapshot.child('size').val()
+                        snapshot.child('round' + this.round).numChildren() ===
+                            snapshot.child('size').val() &&
+                        !this.isReady
                     ) {
-                        // Close the dialog when evryone is ready
-                        if (this.isReady == false) {
-                            this.dialogMessage = false;
-                            this.dialogText = '';
-                        }
+                        // Close the dialog when everyone is ready
+                        this.dialogMessage = false;
+                        this.dialogText = '';
 
                         this.isReady = true;
                         this.$refs.mapContainer.startNextRound();

@@ -17,8 +17,8 @@ describe('SinglePlayer', () => {
         btnSinglePlayer.contains('Single Player');
         btnSinglePlayer.click();
 
-        expect(cy.get('#modeClassicBtn')).to.exist
-        expect(cy.get('#modeCountryBtn')).to.exist
+        expect(cy.get('#modeClassicBtn')).to.exist;
+        expect(cy.get('#modeCountryBtn')).to.exist;
         const card = cy.get('.v-card');
         card.contains('.card_settings__time__label', 'Set a time limitation.');
         card.get('.v-card__actions .v-btn:last-of-type')

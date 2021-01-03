@@ -90,13 +90,13 @@ describe('SearchBox.vue', () => {
         });
     });
     it('test search Input', () => {
-        Vue.use(VueAxios, axios)
+        Vue.use(VueAxios, axios);
         const wrapper = shallowMount(SearchBox, { ...args, store, axios });
         wrapper.setData({ search: 'Toulouse' });
 
         expect(wrapper.exists('#search-input'));
         wrapper.vm.$nextTick(() => {
-            expect(wrapper.vm.search).toEqual("Toulouse");
+            expect(wrapper.vm.search).toEqual('Toulouse');
             expect(axios.get).toBeCalledWith(
                 'https://photon.komoot.io/api/?q=Toulouse'
             );
