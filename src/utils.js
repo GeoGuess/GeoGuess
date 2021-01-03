@@ -3,6 +3,7 @@ import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import axios from 'axios';
 import { GAME_MODE } from './constants';
+import { point } from '@turf/helpers';
 
 /**
  * check in valid format url
@@ -114,9 +115,6 @@ export function getCountryCodeNameFromLatLng(latLng, errorFunction) {
         });
 }
 
-/**
- *
- */
 export function getSelectedPos(selectedPos, gameMode) {
     switch (gameMode) {
         case GAME_MODE.CLASSIC:
@@ -134,4 +132,12 @@ export function getSelectedPos(selectedPos, gameMode) {
 export function getRandomCountry() {
     return json.features[Math.floor(Math.random() * json.features.length)]
         .properties['iso_a2'];
+}
+
+export function getMaxDistanceBbox(bbox) {
+    const bboxPlace = Object.values(bbox);
+    const from = point(bboxPlace.slice(0, 2));
+    const to = point(bboxPlace.slice(2, 4));
+
+    return distance(from, to);
 }

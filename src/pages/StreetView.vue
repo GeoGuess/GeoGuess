@@ -71,10 +71,12 @@ import DialogMessage from '@/components/DialogMessage';
 
 import randomPositionInPolygon from 'random-position-in-polygon';
 import * as turfModel from '@turf/helpers';
+import bbox from '@turf/bbox';
 import {
     isInGeoJSON,
     getCountryCodeNameFromLatLng,
     getRandomCountry,
+    getMaxDistanceBbox,
 } from '../utils';
 import { GAME_MODE } from '../constants';
 
@@ -167,22 +169,23 @@ export default {
     methods: {
         loadStreetView() {
             const service = new google.maps.StreetViewService();
-            let point, position;
+            let radius, position;
             if (this.roundsPredefined) {
-                point = true;
+                radius = 50;
                 const positions = this.roundsPredefined[this.round - 1];
                 position = new google.maps.LatLng(positions[0], positions[1]);
             } else {
                 const randomPos = this.getRandomLatLng();
-                point = randomPos.point;
+                radius = randomPos.radius;
                 position = randomPos.position;
                 this.randomFeatureProperties = randomPos.properties;
             }
+
             service.getPanorama(
                 {
                     location: position,
                     preference: 'nearest',
-                    radius: point ? 50 : 100000,
+                    radius,
                     source: 'outdoor',
                 },
                 this.checkStreetView
@@ -191,7 +194,7 @@ export default {
         getRandomLatLng() {
             if (this.placeGeoJson != null) {
                 let position,
-                    point = false,
+                    radius = 100000,
                     properties = null;
                 if (this.placeGeoJson.type === 'FeatureCollection') {
                     let randInt = Math.floor(
@@ -202,18 +205,18 @@ export default {
                     properties = feature.properties;
                     if (feature.geometry.type === 'Point') {
                         position = feature.geometry.coordinates;
-                        point = true;
+                        radius = 50;
                     } else {
-                        point = true;
+                        radius = getMaxDistanceBbox(bbox(feature)) * 100;
                         position = randomPositionInPolygon(feature);
                     }
                 } else {
-                    point = true;
+                    radius = getMaxDistanceBbox(bbox(this.placeGeoJson)) * 100;
                     position = randomPositionInPolygon(this.placeGeoJson);
                 }
 
                 return {
-                    point,
+                    radius,
                     position: new google.maps.LatLng(position[1], position[0]),
                     properties,
                 };
@@ -224,7 +227,7 @@ export default {
             let lng = Math.random() * 360 - 180;
 
             return {
-                point: false,
+                radius: 100000,
                 position: new google.maps.LatLng(lat, lng),
                 properties: null,
             };

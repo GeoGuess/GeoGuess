@@ -43,10 +43,9 @@ import CardRoomName from '@/components/widgets/card/CardRoomName';
 import CardRoomSettings from '@/components/widgets/card/CardRoomSettings';
 import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
 import { mapState, mapActions } from 'vuex';
-import { point } from '@turf/helpers';
-import distance from '@turf/distance';
 import bbox from '@turf/bbox';
 import { GAME_MODE } from '../../../constants';
+import { getMaxDistanceBbox } from '../../../utils';
 
 export default {
     props: {
@@ -268,13 +267,8 @@ export default {
         setDifficulty() {
             if (this.placeGeoJson) {
                 this.bboxObj = bbox(this.placeGeoJson);
-                const bboxPlace = Object.values(this.bboxObj);
-                const from = point(bboxPlace.slice(0, 2));
-                const to = point(bboxPlace.slice(2, 4));
 
-                const distanceMax = distance(from, to);
-
-                this.difficulty = distanceMax / 10;
+                this.difficulty = getMaxDistanceBbox(this.bboxObj) / 10;
             } else {
                 this.difficulty = 2000;
             }
