@@ -197,6 +197,8 @@ export default {
         'bbox',
         'mode',
         'country',
+        'timeAttack',
+        'nbRound',
     ],
     components: {
         DialogSummary,
@@ -278,7 +280,7 @@ export default {
                 this.$refs.map.setInfoWindow(null, this.distance, this.point);
                 this.$refs.map.fitBounds();
                 this.printMapFull = true;
-                if (this.round >= 5) {
+                if (this.round >= this.nbRound) {
                     this.isSummaryButtonVisible = true;
                 } else {
                     this.isNextButtonVisible = true;
@@ -524,8 +526,17 @@ export default {
                 if (snapshot.hasChild('active')) {
                     // Allow players to move on to the next round when every players guess locations
                     if (
-                        snapshot.child('guess').numChildren() ==
-                        snapshot.child('size').val()
+                        (this.timeAttack &&
+                            snapshot.child('guess').numChildren() >= 1 &&
+                            snapshot
+                                .child('guess')
+                                .forEach(
+                                    (guess) =>
+                                        guess.child('country').val() ===
+                                        this.country
+                                )) ||
+                        snapshot.child('guess').numChildren() ===
+                            snapshot.child('size').val()
                     ) {
                         this.game.timeLimitation = this.timeLimitation;
 
@@ -611,7 +622,7 @@ export default {
                         // Remove guess node every time the round is done
                         this.room.child('guess').remove();
 
-                        if (this.round >= 5) {
+                        if (this.round >= this.nbRound) {
                             // Show summary button
                             snapshot
                                 .child('finalPoints')

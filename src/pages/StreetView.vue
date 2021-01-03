@@ -7,6 +7,7 @@
                 :points="pointsHeader"
                 :round="round"
                 :roomName="roomName"
+                :nbRound="nbRound"
                 :remainingTime="remainingTime"
             />
 
@@ -30,6 +31,8 @@
                         :bbox="bbox"
                         :mode="mode"
                         :country="country"
+                        :timeAttack="timeAttack"
+                        :nbRound="nbRound"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -117,6 +120,10 @@ export default {
             default: GAME_MODE.CLASSIC,
             type: String,
         },
+        timeAttackSelected: {
+            default: false,
+            type: Boolean,
+        },
     },
     components: {
         HeaderGame,
@@ -137,6 +144,8 @@ export default {
             round: 1,
             timeLimitation: this.time,
             mode: this.modeSelected,
+            timeAttack: this.timeAttackSelected,
+            nbRound: this.timeAttackSelected ? 10 : 5,
             remainingTime: 0,
             endTime: null,
             hasTimerStarted: false,
@@ -222,7 +231,7 @@ export default {
         },
         checkStreetView(data, status) {
             // Generate random streetview until the valid one is generated
-            if (status == 'OK') {
+            if (status === 'OK') {
                 this.setPosition(data);
                 let isInGeoJSONResult;
                 if (this.placeGeoJson != null) {

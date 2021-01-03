@@ -78,6 +78,7 @@ export default {
             loadingGeoJson: false,
             firstPlayer: false,
             mode: GAME_MODE.CLASSIC,
+            timeAttack: false,
         };
     },
     computed: {
@@ -227,10 +228,11 @@ export default {
                 });
             }
         },
-        setSettings(timeLimitation, mode, roomSize) {
+        setSettings(timeLimitation, mode, roomSize, timeAttack) {
             this.timeLimitation = timeLimitation;
             this.roomSize = roomSize;
             this.mode = mode;
+            this.timeAttack = timeAttack;
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
@@ -250,6 +252,7 @@ export default {
                         bbox: this.bboxObj,
                         mode,
                         size: this.roomSize,
+                        timeAttack,
                     },
                     (error) => {
                         if (!error) {
@@ -290,6 +293,7 @@ export default {
                                 difficulty: this.difficulty,
                                 bboxObj: this.bboxObj,
                                 modeSelected: this.mode,
+                                timeAttackSelected: this.timeAttack,
                             };
                             this.startGameMultiplayer(playerName, gameParams);
                         } else {
@@ -300,6 +304,9 @@ export default {
                                         .val(),
                                     bboxObj: snapshot.child('bbox').val(),
                                     modeSelected: snapshot.child('mode').val(),
+                                    timeAttackSelected: snapshot
+                                        .child('timeAttack')
+                                        .val(),
                                 };
                                 this.startGameMultiplayer(
                                     playerName,

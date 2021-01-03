@@ -52,6 +52,14 @@
                         }}</label>
                         <TimePicker v-model="timeLimitation" />
                     </v-row>
+                    <v-row
+                        v-if="this.mode === gameMode.COUNTRY && !singlePlayer"
+                    >
+                        <v-checkbox
+                            v-model="timeAttack"
+                            label="TimeAttack"
+                        ></v-checkbox>
+                    </v-row>
                 </v-col>
                 <v-col
                     v-bind:class="{
@@ -103,6 +111,7 @@ export default {
     data() {
         return {
             mode: GAME_MODE.CLASSIC,
+            timeAttack: false,
             timeLimitation: 0,
             roomSize: 2,
             roomSizeItems: [
@@ -197,7 +206,8 @@ export default {
                 'setSettings',
                 this.timeLimitation,
                 this.mode,
-                this.roomSize
+                this.roomSize,
+                this.timeAttack
             );
         },
         cancel() {
