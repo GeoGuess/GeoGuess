@@ -1,13 +1,12 @@
-import VueI18n from 'vue-i18n';
-import Vuetify from 'vuetify';
 import i18n from '@/lang';
+import * as GmapVue from 'gmap-vue';
 import Vue from 'vue';
-import Router from 'vue-router';
-import * as VueGoogleMaps from 'vue2-google-maps';
-
+import VueI18n from 'vue-i18n';
+import { default as Router, default as VueRouter } from 'vue-router';
+import Vuetify from 'vuetify';
 import en from 'vuetify/es5/locale/en';
-import VueRouter from 'vue-router';
 import Vuex from 'vuex';
+
 global.File = class MockFile {
     constructor(parts, filename, properties) {
         this.parts = parts;
@@ -20,6 +19,7 @@ global.File = class MockFile {
         });
     }
 };
+
 export default function appInit(VueInstance) {
     const updateSizes = (obj = {}) => {
         obj.width = window.innerWidth;
@@ -30,14 +30,14 @@ export default function appInit(VueInstance) {
     Object.defineProperty(Vue.prototype, '$viewport', {
         value: Vue.observable(updateSizes()),
     });
-    Vue.use(VueI18n);
     Vue.use(Vuetify);
     Vue.use(Vuex);
-
+    
+    VueInstance.use(VueI18n);
     VueInstance.use(VueRouter);
     VueInstance.use(Vuetify);
     VueInstance.config.productionTip = false;
-    Vue.use(VueGoogleMaps, {
+    Vue.use(GmapVue, {
         load: {
             key: 'google-maps-api-key',
         },

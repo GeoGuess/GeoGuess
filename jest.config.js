@@ -9,5 +9,5 @@ module.exports = {
         '!src/lang/*',
         '!src/*.js',
     ],
-    transformIgnorePatterns: ['node_modules/(?!vue2-google-maps)'],
+    transformIgnorePatterns: ['node_modules/(?!gmap-vue|axios-cache-adapter|cache-control-esm)'],
 };

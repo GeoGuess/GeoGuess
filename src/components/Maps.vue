@@ -415,6 +415,7 @@ export default {
                 this.$refs.map.fitBounds();
             } else {
                 this.room.on('value', (snapshot) => {
+                    console.log("M 418")
                     // Check if the room is already removed
                     if (snapshot.hasChild('active')) {
                         snapshot.child('streetView').forEach((round) => {
@@ -520,6 +521,8 @@ export default {
         if (this.roomName) {
             this.room = firebase.database().ref(this.roomName);
             this.room.on('value', (snapshot) => {
+                    console.log("M 524")
+                    debugger
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
                     // Allow players to move on to the next round when every players guess locations
@@ -586,7 +589,7 @@ export default {
                             );
                             this.$refs.map.putMarker(
                                 posGuess,
-                                null,
+                                false,
                                 playerName && playerName.length > 0
                                     ? playerName[0].toUpperCase()
                                     : ''

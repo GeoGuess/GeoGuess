@@ -70,7 +70,7 @@ export default {
                     label,
                 };
             }
-            var marker = new google.maps.Marker({
+            const marker = new google.maps.Marker({
                 ...info,
                 position: position,
                 map: this.map,

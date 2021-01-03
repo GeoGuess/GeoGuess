@@ -26,6 +26,7 @@
             :errorMessage="errorMessage"
             :placeGeoJson="placeGeoJson"
             :loadingGeoJson="loadingGeoJson"
+            :currentComponent="currentComponent"
             @searchRoom="searchRoom"
             @setPlayerName="setPlayerName"
             @setSettings="setSettings"
@@ -45,6 +46,7 @@ import { mapState, mapActions } from 'vuex';
 import { point } from '@turf/helpers';
 import distance from '@turf/distance';
 import bbox from '@turf/bbox';
+import { GAME_MODE } from '../../../constants';
 
 export default {
     props: {
@@ -75,7 +77,7 @@ export default {
             bboxObj: null,
             loadingGeoJson: false,
             firstPlayer: false,
-            mode: 'classic',
+            mode: GAME_MODE.CLASSIC,
         };
     },
     computed: {

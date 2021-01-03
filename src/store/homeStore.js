@@ -1,5 +1,5 @@
+import axios from '@/plugins/axios';
 import { validURL } from '@/utils';
-import axios from '../plugins/axios';
 import { isGeoJSONValid } from '../utils';
 import * as MutationTypes from './mutation-types';
 

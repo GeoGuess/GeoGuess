@@ -140,7 +140,8 @@ export default {
             }
         },
         putMarker(pos, isRandomLocation, country) {
-            const c = isRandomLocation ? country || this.country : pos;
+            console.log(isRandomLocation,(country || this.country) )
+            const c = isRandomLocation ? (country || this.country) : pos;
             if (isRandomLocation) {
                 this.countryRandom = this.country;
                 this.randomPos = new google.maps.Marker({

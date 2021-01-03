@@ -1,3 +1,4 @@
+import axios from '@/plugins/axios';
 import 'firebase/analytics';
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -7,7 +8,6 @@ import VueAxios from 'vue-axios';
 import VueClipboard from 'vue-clipboard2';
 import App from './App.vue';
 import i18n from './lang';
-import axios from './plugins/axios';
 import CountryNamePlugin from './plugins/countryNamePlugin';
 import vuetify from './plugins/vuetify';
 import './registerServiceWorker';

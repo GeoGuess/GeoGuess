@@ -1,4 +1,4 @@
-jest.mock('axios', () => {
+jest.mock('@/plugins/axios', () => {
     const responseTls = {
         geometry: {
             coordinates: [1.4455249, 43.5271458],
@@ -18,29 +18,30 @@ jest.mock('axios', () => {
         },
     };
     return {
-        get: jest.fn((url) => {
-            let data;
+            get: jest.fn((url) => {
+                let data
 
-            switch (url) {
-                case 'https://map.geojson':
-                    data = responseTls;
-                    break;
-                case 'https://listmaps.gejson':
-                    data = { maps: [] };
-                    break;
-            }
+                switch (url) {
+                    case 'https://map.geojson':
+                        data = responseTls;
+                        break;
+                    case 'https://listmaps.gejson':
+                        data = { maps: [] };
+                        break;
+                }
 
-            return Promise.resolve({
-                status: 200,
-                data,
-            });
-        }),
+                return Promise.resolve({
+                    status: 200,
+                    data,
+                });
+            }),
     };
 });
 
-import axios from 'axios';
+import axios from '@/plugins/axios';
 import * as MutationTypes from '../../../src/store/mutation-types';
 const { default: homeStore } = require('../../../src/store/homeStore');
+
 
 describe('homeStore.js', () => {
     //
@@ -196,7 +197,7 @@ describe('homeStore.js', () => {
         process.env.VUE_APP_LIST_MAPS_JSON_URL = 'https://listmaps.gejson';
 
         await homeStore.actions.getListMaps({ commit });
-        expect(axios.get).toBeCalledWith('https://listmaps.gejson');
+        expect(axios.get).toBeCalledWith('https://listmaps.gejson', expect.any(Object));
 
         expect(commit).toBeCalledWith(
             MutationTypes.HOME_SET_LISTMAPS,

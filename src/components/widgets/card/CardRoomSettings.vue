@@ -7,12 +7,13 @@
             <v-row>
                 <v-col>
                     <v-row>
-                        <label>{{ $t('CardRoomSettings.modeLabel') }}</label>
+                        <label class="card_settings__mode__label">{{ $t('CardRoomSettings.modeLabel') }}</label>
                         <v-flex class="d-flex justify-space-around w-100">
                             <v-btn
                                 :text="this.mode !== gameMode.CLASSIC"
                                 rounded
                                 outlined
+                                id="modeClassicBtn"
                                 v-on:click="
                                     () => (this.mode = gameMode.CLASSIC)
                                 "
@@ -25,6 +26,7 @@
                                 :text="this.mode !== gameMode.COUNTRY"
                                 rounded
                                 outlined
+                                id="modeCountryBtn"
                                 v-on:click="
                                     () => (this.mode = gameMode.COUNTRY)
                                 "
@@ -43,7 +45,7 @@
                         ></v-autocomplete>
                     </v-row>
                     <v-row>
-                        <label>{{ $t('CardRoomTime.title') }}</label>
+                        <label class="card_settings__time__label">{{ $t('CardRoomTime.title') }}</label>
                         <TimePicker v-model="timeLimitation" />
                     </v-row>
                 </v-col>
@@ -158,9 +160,17 @@ export default {
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
+        if(this.placeGeoJson){
+            this.setGeoJson(this.placeGeoJson);
+        }
     },
     watch: {
         placeGeoJson(val) {
+            this.setGeoJson(val);
+        },
+    },
+    methods: {
+        setGeoJson(val){
             this.$refs.mapRef.$mapPromise.then((map) => {
                 map.data.setMap(null);
                 let data = new google.maps.Data({
@@ -178,8 +188,6 @@ export default {
                 }
             });
         },
-    },
-    methods: {
         setSettings() {
             this.$emit(
                 'setSettings',

@@ -10,9 +10,6 @@ describe('SinglePlayer', () => {
             },
         });
 
-        // cy.get('#historyBtn').contains('HISTORY').click();
-        // cy.get('tr.v-data-table__empty-wrapper').contains('No data available');
-        // cy.get('body').click(0, 0);
         const btnWithFriends = cy.get('.search-box__btns .v-btn.secondary');
         btnWithFriends.contains('With Friends');
 
@@ -20,8 +17,10 @@ describe('SinglePlayer', () => {
         btnSinglePlayer.contains('Single Player');
         btnSinglePlayer.click();
 
+        expect(cy.get('#modeClassicBtn')).to.exist
+        expect(cy.get('#modeCountryBtn')).to.exist
         const card = cy.get('.v-card');
-        card.contains('.v-card__title', 'Set a time limitation.');
+        card.contains('.card_settings__time__label', 'Set a time limitation.');
         card.get('.v-card__actions .v-btn:last-of-type')
             .contains('NEXT')
             .click();
