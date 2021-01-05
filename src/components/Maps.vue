@@ -277,7 +277,13 @@ export default {
                     this.randomLatLng
                 );
 
-                this.$refs.map.setInfoWindow(null, this.distance, this.point);
+                this.$refs.map.setInfoWindow(
+                    null,
+                    this.distance,
+                    this.point,
+                    false,
+                    this.setSeletedPos
+                );
                 this.$refs.map.fitBounds();
                 this.printMapFull = true;
                 if (this.round >= this.nbRound) {
@@ -502,7 +508,9 @@ export default {
                                 this.$refs.map.setInfoWindow(
                                     playerName,
                                     distance,
-                                    points
+                                    points,
+                                    false,
+                                    posGuess
                                 );
 
                                 i++;
@@ -605,7 +613,9 @@ export default {
                             this.$refs.map.setInfoWindow(
                                 playerName,
                                 distance,
-                                points
+                                points,
+                                false,
+                                posGuess
                             );
                             i++;
                             j++;

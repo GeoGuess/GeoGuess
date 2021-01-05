@@ -1,37 +1,53 @@
 <template>
     <div id="map">
-        <div class="map-label" v-if="polygonSelect" :title="this.countryName">
-            <FlagIcon
-                :isoName="
-                    this.countryRandom ||
-                    polygonSelect
-                        .getFeatureById('feature')
-                        .getProperty('iso_a2')
-                "
-            />
-            <span
-                class="map-label__country-name"
-                v-bind:class="{
-                    beige: !countryRandom,
-                    green: !!countryRandom,
-                    'white--text': !!countryRandom,
-                }"
-                >{{ this.countryName }}</span
+        <div class="map-content">
+            <div
+                class="map-label"
+                v-if="polygonSelect"
+                :title="this.countryName"
             >
+                <FlagIcon
+                    :isoName="
+                        this.countryRandom ||
+                        polygonSelect
+                            .getFeatureById('feature')
+                            .getProperty('iso_a2')
+                    "
+                />
+                <span
+                    class="map-label__country-name"
+                    v-bind:class="{
+                        beige: !countryRandom,
+                        green: !!countryRandom,
+                        'white--text': !!countryRandom,
+                    }"
+                    >{{ this.countryName }}</span
+                >
+            </div>
+            <GmapMap
+                :center="{ lat: 37.86926, lng: -122.254811 }"
+                :zoom="1"
+                ref="mapRef"
+                id="mapCountries"
+                map-type-id="roadmap"
+                :options="{
+                    fullscreenControl: false,
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                }"
+            >
+            </GmapMap>
         </div>
-        <GmapMap
-            :center="{ lat: 37.86926, lng: -122.254811 }"
-            :zoom="1"
-            ref="mapRef"
-            id="mapCountries"
-            map-type-id="roadmap"
-            :options="{
-                fullscreenControl: false,
-                mapTypeControl: false,
-                streetViewControl: false,
-            }"
-        >
-        </GmapMap>
+        <div class="result-panel" v-if="this.infoWindowDatas.length > 0">
+            <div
+                class="result-panel__item"
+                v-bind:key="info.playerName"
+                v-for="info in this.infoWindowDatas"
+            >
+                <FlagIcon :isoName="info.country" />
+                <span>{{ info.playerName }}</span>
+            </div>
+        </div>
     </div>
 </template>
 <script type="text/javascript">
@@ -52,7 +68,7 @@ export default {
             allowSelect: true,
             countryRandom: null,
             randomPos: null,
-            strokeColors: ['#76FF03', '#FFEB3B', '#FF4081', '#18FFFF'],
+            infoWindowDatas: [],
         };
     },
     computed: {
@@ -146,16 +162,8 @@ export default {
             this.countries[c].setStyle({
                 fillOpacity: 0.3,
                 strokeOpacity: 0.8,
-                fillColor: isRandomLocation
-                    ? '#52DA42'
-                    : this.strokeColors[
-                          this.markers.length % this.strokeColors.length
-                      ],
-                strokeColor: isRandomLocation
-                    ? '#16A910'
-                    : this.strokeColors[
-                          this.markers.length % this.strokeColors.length
-                      ],
+                fillColor: isRandomLocation ? '#52DA42' : '#FF4081',
+                strokeColor: isRandomLocation ? '#16A910' : '#FF4081',
             });
             this.markers.push(c);
         },
@@ -177,8 +185,11 @@ export default {
                 this.randomPos = null;
             }
             this.markers = [];
+            this.infoWindowDatas = [];
         },
-        setInfoWindow() {},
+        setInfoWindow(playerName, distance, points, endGame, country) {
+            if (playerName) this.infoWindowDatas.push({ playerName, country });
+        },
         drawPolyline() {},
         removePolylines() {},
         startNextRound() {
@@ -204,36 +215,55 @@ export default {
 
 <style lang="scss" scoped>
 #map {
-    position: relative;
     overflow: hidden;
-    #mapCountries {
-        width: 100%;
+    display: flex;
+    .result-panel {
         height: 100%;
-    }
-    .map-label {
-        z-index: 5;
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
+        padding: 2%;
+        background: #f1e9d6;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        .flag-icon {
-            --width-flag: 3.5rem;
+        .result-panel__item {
+            display: inline-flex;
+            .flag-icon {
+                margin-right: 0.8rem;
+                --width-flag: 1.2em;
+            }
         }
+    }
+    .map-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        #mapCountries {
+            width: 100%;
+            height: 100%;
+        }
+        .map-label {
+            z-index: 5;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .flag-icon {
+                --width-flag: 3.5rem;
+            }
 
-        .map-label__country-name {
-            width: 7rem;
-            text-align: center;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-            background: var(--v-primary-base);
-            margin-top: 0.2rem;
-            padding: 0.1% 5%;
-            border-radius: 5px;
-            font-weight: 500;
+            .map-label__country-name {
+                width: 7rem;
+                text-align: center;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                background: var(--v-primary-base);
+                margin-top: 0.2rem;
+                padding: 0.1% 5%;
+                border-radius: 5px;
+                font-weight: 500;
+            }
         }
     }
 }

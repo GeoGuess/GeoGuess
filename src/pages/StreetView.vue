@@ -12,6 +12,7 @@
             />
 
             <div id="game-interface">
+                <v-overlay :value="!isReady" opacity="1" />
                 <div id="street-view"></div>
 
                 <div id="game-interface--overlay">
@@ -235,7 +236,6 @@ export default {
         checkStreetView(data, status) {
             // Generate random streetview until the valid one is generated
             if (status === 'OK') {
-                this.setPosition(data);
                 let isInGeoJSONResult;
                 if (this.placeGeoJson != null) {
                     isInGeoJSONResult = isInGeoJSON(
@@ -261,6 +261,8 @@ export default {
                     // Save the location's latitude and longitude
                     this.randomLatLng = data.location.latLng;
                     this.cptNotFoundLocation = 0;
+                    this.setPosition(data);
+
                     if (this.mode === GAME_MODE.COUNTRY) {
                         getCountryCodeNameFromLatLng(
                             this.randomLatLng,
