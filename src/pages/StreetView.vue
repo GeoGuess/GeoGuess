@@ -235,7 +235,7 @@ export default {
         },
         checkStreetView(data, status) {
             // Generate random streetview until the valid one is generated
-            if (status === 'OK') {
+            if (status === 'OK' && data.location) {
                 let isInGeoJSONResult;
                 if (this.placeGeoJson != null) {
                     isInGeoJSONResult = isInGeoJSON(
@@ -254,7 +254,7 @@ export default {
                     this.loadStreetView();
                     this.cptNotFoundLocation++;
                 } else {
-                    // If 3 times Street View does not find location in the polygon placeGeo print warning message
+                    // If 3 times Street View does not find location in the polygon placeGeoJson print warning message
                     if (this.placeGeoJson != null && !isInGeoJSONResult) {
                         this.isVisibleDialog = true;
                     }
