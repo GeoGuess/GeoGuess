@@ -26,7 +26,6 @@
             :errorMessage="errorMessage"
             :placeGeoJson="placeGeoJson"
             :loadingGeoJson="loadingGeoJson"
-            :currentComponent="currentComponent"
             @searchRoom="searchRoom"
             @setPlayerName="setPlayerName"
             @setSettings="setSettings"
@@ -43,9 +42,9 @@ import CardRoomName from '@/components/widgets/card/CardRoomName';
 import CardRoomSettings from '@/components/widgets/card/CardRoomSettings';
 import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
 import { mapState, mapActions } from 'vuex';
+import { point } from '@turf/helpers';
+import distance from '@turf/distance';
 import bbox from '@turf/bbox';
-import { GAME_MODE } from '../../../constants';
-import { getMaxDistanceBbox } from '../../../utils';
 
 export default {
     props: {
@@ -76,8 +75,7 @@ export default {
             bboxObj: null,
             loadingGeoJson: false,
             firstPlayer: false,
-            mode: GAME_MODE.CLASSIC,
-            timeAttack: false,
+            mode: 'classic',
         };
     },
     computed: {
@@ -227,15 +225,17 @@ export default {
                 });
             }
         },
-        setSettings(timeLimitation, mode, roomSize, timeAttack) {
+        setSettings(timeLimitation, mode, roomSize, photo) {
             this.timeLimitation = timeLimitation;
             this.roomSize = roomSize;
             this.mode = mode;
-            this.timeAttack = timeAttack;
+            this.photo = photo;
+            console.log('TESTING '+this.photo);
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
                     params: {
+                        photo: this.photo,
                         time: this.timeLimitation,
                         difficulty: this.difficulty,
                         placeGeoJson: this.placeGeoJson,
@@ -251,7 +251,6 @@ export default {
                         bbox: this.bboxObj,
                         mode,
                         size: this.roomSize,
-                        timeAttack,
                     },
                     (error) => {
                         if (!error) {
@@ -267,8 +266,13 @@ export default {
         setDifficulty() {
             if (this.placeGeoJson) {
                 this.bboxObj = bbox(this.placeGeoJson);
+                const bboxPlace = Object.values(this.bboxObj);
+                const from = point(bboxPlace.slice(0, 2));
+                const to = point(bboxPlace.slice(2, 4));
 
-                this.difficulty = getMaxDistanceBbox(this.bboxObj) / 10;
+                const distanceMax = distance(from, to);
+
+                this.difficulty = distanceMax / 10;
             } else {
                 this.difficulty = 2000;
             }
@@ -287,7 +291,6 @@ export default {
                                 difficulty: this.difficulty,
                                 bboxObj: this.bboxObj,
                                 modeSelected: this.mode,
-                                timeAttackSelected: this.timeAttack,
                             };
                             this.startGameMultiplayer(playerName, gameParams);
                         } else {
@@ -298,9 +301,6 @@ export default {
                                         .val(),
                                     bboxObj: snapshot.child('bbox').val(),
                                     modeSelected: snapshot.child('mode').val(),
-                                    timeAttackSelected: snapshot
-                                        .child('timeAttack')
-                                        .val(),
                                 };
                                 this.startGameMultiplayer(
                                     playerName,

@@ -7,12 +7,10 @@
                 :points="pointsHeader"
                 :round="round"
                 :roomName="roomName"
-                :nbRound="nbRound"
                 :remainingTime="remainingTime"
             />
 
             <div id="game-interface">
-                <v-overlay :value="!isReady" opacity="1" />
                 <div id="street-view"></div>
 
                 <div id="game-interface--overlay">
@@ -32,8 +30,6 @@
                         :bbox="bbox"
                         :mode="mode"
                         :country="country"
-                        :timeAttack="timeAttack"
-                        :nbRound="nbRound"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -72,12 +68,10 @@ import DialogMessage from '@/components/DialogMessage';
 
 import randomPositionInPolygon from 'random-position-in-polygon';
 import * as turfModel from '@turf/helpers';
-import bbox from '@turf/bbox';
 import {
     isInGeoJSON,
     getCountryCodeNameFromLatLng,
     getRandomCountry,
-    getMaxDistanceBbox,
 } from '../utils';
 import { GAME_MODE } from '../constants';
 
@@ -85,6 +79,10 @@ export default {
     props: {
         roomName: {
             default: null,
+            type: String,
+        },
+        photo: {
+            default: 'yes',
             type: String,
         },
         playerNumber: {
@@ -123,10 +121,6 @@ export default {
             default: GAME_MODE.CLASSIC,
             type: String,
         },
-        timeAttackSelected: {
-            default: false,
-            type: Boolean,
-        },
     },
     components: {
         HeaderGame,
@@ -147,8 +141,6 @@ export default {
             round: 1,
             timeLimitation: this.time,
             mode: this.modeSelected,
-            timeAttack: this.timeAttackSelected,
-            nbRound: this.timeAttackSelected ? 10 : 5,
             remainingTime: 0,
             endTime: null,
             hasTimerStarted: false,
@@ -170,24 +162,34 @@ export default {
     methods: {
         loadStreetView() {
             const service = new google.maps.StreetViewService();
-            let radius, position;
+            let point, position;
             if (this.roundsPredefined) {
-                radius = 50;
+                point = true;
                 const positions = this.roundsPredefined[this.round - 1];
                 position = new google.maps.LatLng(positions[0], positions[1]);
             } else {
                 const randomPos = this.getRandomLatLng();
-                radius = randomPos.radius;
+                point = randomPos.point;
                 position = randomPos.position;
                 this.randomFeatureProperties = randomPos.properties;
             }
+
+
+            if(this.photo=='yes'){
+                var so='default'
+            }
+            else{
+                var so='outdoor'
+            }
+            console.log('1'+' '+so+' '+this.photo+' '+this.timeLimitation)
+
 
             service.getPanorama(
                 {
                     location: position,
                     preference: 'nearest',
-                    radius,
-                    source: 'outdoor',
+                    radius: point ? 50 : 100000,
+                    source: so,
                 },
                 this.checkStreetView
             );
@@ -195,7 +197,7 @@ export default {
         getRandomLatLng() {
             if (this.placeGeoJson != null) {
                 let position,
-                    radius = 100000,
+                    point = false,
                     properties = null;
                 if (this.placeGeoJson.type === 'FeatureCollection') {
                     let randInt = Math.floor(
@@ -206,18 +208,18 @@ export default {
                     properties = feature.properties;
                     if (feature.geometry.type === 'Point') {
                         position = feature.geometry.coordinates;
-                        radius = 50;
+                        point = true;
                     } else {
-                        radius = getMaxDistanceBbox(bbox(feature)) * 100;
+                        point = true;
                         position = randomPositionInPolygon(feature);
                     }
                 } else {
-                    radius = getMaxDistanceBbox(bbox(this.placeGeoJson)) * 100;
+                    point = true;
                     position = randomPositionInPolygon(this.placeGeoJson);
                 }
 
                 return {
-                    radius,
+                    point,
                     position: new google.maps.LatLng(position[1], position[0]),
                     properties,
                 };
@@ -228,14 +230,15 @@ export default {
             let lng = Math.random() * 360 - 180;
 
             return {
-                radius: 100000,
+                point: false,
                 position: new google.maps.LatLng(lat, lng),
                 properties: null,
             };
         },
         checkStreetView(data, status) {
             // Generate random streetview until the valid one is generated
-            if (status === 'OK' && data.location) {
+            if (status == 'OK') {
+                this.setPosition(data);
                 let isInGeoJSONResult;
                 if (this.placeGeoJson != null) {
                     isInGeoJSONResult = isInGeoJSON(
@@ -254,15 +257,13 @@ export default {
                     this.loadStreetView();
                     this.cptNotFoundLocation++;
                 } else {
-                    // If 3 times Street View does not find location in the polygon placeGeoJson print warning message
+                    // If 3 times Street View does not find location in the polygon placeGeo print warning message
                     if (this.placeGeoJson != null && !isInGeoJSONResult) {
                         this.isVisibleDialog = true;
                     }
                     // Save the location's latitude and longitude
                     this.randomLatLng = data.location.latLng;
                     this.cptNotFoundLocation = 0;
-                    this.setPosition(data);
-
                     if (this.mode === GAME_MODE.COUNTRY) {
                         getCountryCodeNameFromLatLng(
                             this.randomLatLng,
@@ -277,9 +278,7 @@ export default {
                                     .set({
                                         latitude: this.randomLatLng.lat(),
                                         longitude: this.randomLatLng.lng(),
-                                        roundInfo:
-                                            this.randomFeatureProperties ||
-                                            null,
+                                        roundInfo: this.randomFeatureProperties,
                                         country: c,
                                         warning: this.isVisibleDialog,
                                     });
@@ -293,8 +292,7 @@ export default {
                                 .set({
                                     latitude: this.randomLatLng.lat(),
                                     longitude: this.randomLatLng.lng(),
-                                    roundInfo:
-                                        this.randomFeatureProperties || null,
+                                    roundInfo: this.randomFeatureProperties,
                                     warning: this.isVisibleDialog,
                                 });
                         }
@@ -305,13 +303,22 @@ export default {
             }
         },
         resetLocation() {
+
+            if(this.photo=='yes'){
+                var so='default'
+            }
+            else{
+                var so='outdoor'
+            }
+            console.log('2'+' '+so+' '+this.photo+' '+this.timeLimitation)
+
             const service = new google.maps.StreetViewService();
             service.getPanorama(
                 {
                     location: this.randomLatLng,
                     preference: 'nearest',
                     radius: 50,
-                    source: 'outdoor',
+                    source: so,
                 },
                 this.setPosition
             );
@@ -456,6 +463,9 @@ export default {
             this.loadStreetView();
         }
 
+
+        console.log('blob'+this.photo);
+
         if (!this.multiplayer) {
             this.$refs.mapContainer.startNextRound();
 
@@ -537,13 +547,14 @@ export default {
 
                     // Enable guess button when every players are put into the current round's node
                     if (
-                        snapshot.child('round' + this.round).numChildren() ===
-                            snapshot.child('size').val() &&
-                        !this.isReady
+                        snapshot.child('round' + this.round).numChildren() ==
+                        snapshot.child('size').val()
                     ) {
-                        // Close the dialog when everyone is ready
-                        this.dialogMessage = false;
-                        this.dialogText = '';
+                        // Close the dialog when evryone is ready
+                        if (this.isReady == false) {
+                            this.dialogMessage = false;
+                            this.dialogText = '';
+                        }
 
                         this.isReady = true;
                         this.$refs.mapContainer.startNextRound();

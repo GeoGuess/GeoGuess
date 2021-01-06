@@ -197,8 +197,6 @@ export default {
         'bbox',
         'mode',
         'country',
-        'timeAttack',
-        'nbRound',
     ],
     components: {
         DialogSummary,
@@ -277,16 +275,10 @@ export default {
                     this.randomLatLng
                 );
 
-                this.$refs.map.setInfoWindow(
-                    null,
-                    this.distance,
-                    this.point,
-                    false,
-                    this.setSeletedPos
-                );
+                this.$refs.map.setInfoWindow(null, this.distance, this.point);
                 this.$refs.map.fitBounds();
                 this.printMapFull = true;
-                if (this.round >= this.nbRound) {
+                if (this.round >= 5) {
                     this.isSummaryButtonVisible = true;
                 } else {
                     this.isNextButtonVisible = true;
@@ -508,9 +500,7 @@ export default {
                                 this.$refs.map.setInfoWindow(
                                     playerName,
                                     distance,
-                                    points,
-                                    false,
-                                    posGuess
+                                    points
                                 );
 
                                 i++;
@@ -534,17 +524,8 @@ export default {
                 if (snapshot.hasChild('active')) {
                     // Allow players to move on to the next round when every players guess locations
                     if (
-                        (this.timeAttack &&
-                            snapshot.child('guess').numChildren() >= 1 &&
-                            snapshot
-                                .child('guess')
-                                .forEach(
-                                    (guess) =>
-                                        guess.child('country').val() ===
-                                        this.country
-                                )) ||
-                        snapshot.child('guess').numChildren() ===
-                            snapshot.child('size').val()
+                        snapshot.child('guess').numChildren() ==
+                        snapshot.child('size').val()
                     ) {
                         this.game.timeLimitation = this.timeLimitation;
 
@@ -605,7 +586,7 @@ export default {
                             );
                             this.$refs.map.putMarker(
                                 posGuess,
-                                false,
+                                null,
                                 playerName && playerName.length > 0
                                     ? playerName[0].toUpperCase()
                                     : ''
@@ -613,9 +594,7 @@ export default {
                             this.$refs.map.setInfoWindow(
                                 playerName,
                                 distance,
-                                points,
-                                false,
-                                posGuess
+                                points
                             );
                             i++;
                             j++;
@@ -632,7 +611,7 @@ export default {
                         // Remove guess node every time the round is done
                         this.room.child('guess').remove();
 
-                        if (this.round >= this.nbRound) {
+                        if (this.round >= 5) {
                             // Show summary button
                             snapshot
                                 .child('finalPoints')

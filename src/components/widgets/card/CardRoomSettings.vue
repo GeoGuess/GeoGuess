@@ -7,15 +7,12 @@
             <v-row>
                 <v-col>
                     <v-row>
-                        <label class="card_settings__mode__label">{{
-                            $t('CardRoomSettings.modeLabel')
-                        }}</label>
+                        <label>{{ $t('CardRoomSettings.modeLabel') }}</label>
                         <v-flex class="d-flex justify-space-around w-100">
                             <v-btn
                                 :text="this.mode !== gameMode.CLASSIC"
                                 rounded
                                 outlined
-                                id="modeClassicBtn"
                                 v-on:click="
                                     () => (this.mode = gameMode.CLASSIC)
                                 "
@@ -28,7 +25,6 @@
                                 :text="this.mode !== gameMode.COUNTRY"
                                 rounded
                                 outlined
-                                id="modeCountryBtn"
                                 v-on:click="
                                     () => (this.mode = gameMode.COUNTRY)
                                 "
@@ -38,6 +34,37 @@
                             </v-btn>
                         </v-flex>
                     </v-row>
+
+
+                    <v-row>
+                        <label>{{ $t('CardRoomSettings.gameType') }}</label>
+                        <v-flex class="d-flex justify-space-around w-100">
+                            <v-btn
+                                :text="this.photo !== 'yes'"
+                                rounded
+                                outlined
+                                v-on:click="
+                                    () => (this.photo = 'yes')
+                                "
+                                class="mr-5"
+                            >
+                                <span>{{ $t('modes.yes') }}</span>
+                            </v-btn>
+                            <v-btn
+                                :text="this.photo !== 'no'"
+                                rounded
+                                outlined
+                                v-on:click="
+                                    () => (this.photo = 'no')
+                                "
+                            >
+                                <span>{{ $t('modes.no') }}</span>
+                            </v-btn>
+                        </v-flex>
+                    </v-row>
+
+
+
                     <v-row v-if="!singlePlayer">
                         <v-autocomplete
                             :label="$t('CardRoomSize.title')"
@@ -47,18 +74,8 @@
                         ></v-autocomplete>
                     </v-row>
                     <v-row>
-                        <label class="card_settings__time__label">{{
-                            $t('CardRoomTime.title')
-                        }}</label>
+                        <label>{{ $t('CardRoomTime.title') }}</label>
                         <TimePicker v-model="timeLimitation" />
-                    </v-row>
-                    <v-row
-                        v-if="this.mode === gameMode.COUNTRY && !singlePlayer"
-                    >
-                        <v-checkbox
-                            v-model="timeAttack"
-                            label="TimeAttack"
-                        ></v-checkbox>
                     </v-row>
                 </v-col>
                 <v-col
@@ -71,7 +88,7 @@
                         :center="{ lat: 10, lng: 10 }"
                         :zoom="1"
                         ref="mapRef"
-                        map-type-id="roadmap"
+                        map-type-id="terrain"
                         style="width: 350px; height: 250px"
                         :options="{
                             gestureHandling: 'greedy',
@@ -111,7 +128,7 @@ export default {
     data() {
         return {
             mode: GAME_MODE.CLASSIC,
-            timeAttack: false,
+            photo: 'yes', 
             timeLimitation: 0,
             roomSize: 2,
             roomSizeItems: [
@@ -173,17 +190,9 @@ export default {
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
-        if (this.placeGeoJson) {
-            this.setGeoJson(this.placeGeoJson);
-        }
     },
     watch: {
         placeGeoJson(val) {
-            this.setGeoJson(val);
-        },
-    },
-    methods: {
-        setGeoJson(val) {
             this.$refs.mapRef.$mapPromise.then((map) => {
                 map.data.setMap(null);
                 let data = new google.maps.Data({
@@ -201,13 +210,15 @@ export default {
                 }
             });
         },
+    },
+    methods: {
         setSettings() {
             this.$emit(
                 'setSettings',
                 this.timeLimitation,
                 this.mode,
                 this.roomSize,
-                this.timeAttack
+                this.photo
             );
         },
         cancel() {

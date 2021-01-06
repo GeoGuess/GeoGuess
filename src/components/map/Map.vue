@@ -5,7 +5,7 @@
             :zoom="1"
             ref="mapRef"
             id="mapClassic"
-            map-type-id="roadmap"
+            map-type-id="terrain"
             :options="{
                 fullscreenControl: false,
                 mapTypeControl: false,
@@ -70,7 +70,7 @@ export default {
                     label,
                 };
             }
-            const marker = new google.maps.Marker({
+            var marker = new google.maps.Marker({
                 ...info,
                 position: position,
                 map: this.map,

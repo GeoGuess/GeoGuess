@@ -59,7 +59,7 @@
                             gestureHandling: 'greedy',
                         }"
                         :zoom="0"
-                        map-type-id="roadmap"
+                        map-type-id="terrain"
                         :style="
                             'width:' +
                             ($viewport.width - 100) +

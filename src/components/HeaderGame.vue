@@ -16,9 +16,7 @@
                 <span class="sub-text">{{ $t('HeaderGame.round') }}: </span>
             </div>
             <div>
-                <span class="main-text" id="roundLabel"
-                    >{{ round }} / {{ nbRound }}</span
-                >
+                <span class="main-text" id="roundLabel">{{ round }} / 5</span>
             </div>
             <div class="round-score-container" v-if="isDistanceVisible">
                 <span class="sub-text">{{ $t('HeaderGame.distance') }}: </span>
@@ -42,7 +40,7 @@
 import { getCountdownText } from '@/utils';
 import { GAME_MODE } from '../constants';
 export default {
-    props: ['score', 'points', 'round', 'remainingTime', 'roomName', 'nbRound'],
+    props: ['score', 'points', 'round', 'remainingTime', 'roomName', 'mode'],
     computed: {
         countdownText() {
             return getCountdownText(this.remainingTime);

@@ -48,6 +48,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 import DialogCustomMap from '@/components/home/DialogCustomMap';
 import DialogRoom from '@/components/widgets/dialog/DialogRoom';
 import { mapGetters } from 'vuex';
@@ -86,8 +87,8 @@ export default {
             if (!val) return;
 
             this.isLoading = true;
-
-            this.axios
+            // Lazily load input items
+            axios
                 .get(`https://photon.komoot.io/api/?q=${encodeURI(val)}`)
                 .then((res) => {
                     if (res.status === 200 && res.data && res.data.features) {
