@@ -14,7 +14,7 @@
     >
         <div class="container-map_details">
             <DetailsMap
-                v-if="printMapFull && !isExitButtonVisible"
+                v-if="printMapFull"
                 :properties="randomFeatureProperties"
             />
         </div>
@@ -92,7 +92,6 @@
                 v-if="
                     !isNextButtonVisible &&
                     !isSummaryButtonVisible &&
-                    !isExitButtonVisible &&
                     ($viewport.width > 450 || isMakeGuessButtonClicked)
                 "
                 @click="resetLocation"
@@ -109,7 +108,6 @@
                 v-if="
                     !isNextButtonVisible &&
                     !isSummaryButtonVisible &&
-                    !isExitButtonVisible &&
                     ($viewport.width > 450 || isMakeGuessButtonClicked)
                 "
                 @click="selectLocation"
@@ -136,26 +134,6 @@
             {{ $t('Maps.viewSummary') }}
         </button>
 
-        <div>
-            <button
-                id="summary-button"
-                v-bind:class="{ 'w-50': !this.room }"
-                v-if="isExitButtonVisible"
-                @click="finishGame"
-            >
-                {{ $t('Maps.exit') }}
-            </button>
-
-            <button
-                v-if="isExitButtonVisible && !this.room"
-                id="play-again-button"
-                class="w-50"
-                @click="playAgain"
-            >
-                {{ $t('Maps.playAgain') }}
-            </button>
-        </div>
-
         <DialogSummary
             :dialogSummary="dialogSummary"
             :summaryTexts="summaryTexts"
@@ -164,8 +142,8 @@
             :points="points"
             :game="game"
             :multiplayer="!!this.room"
-            @view-details="viewDetails"
             @finishGame="finishGame"
+            @playAgain="playAgain"
         />
     </div>
 </template>
@@ -224,7 +202,6 @@ export default {
             size: 2,
             pinActive: false,
             printMapFull: false,
-            isExitButtonVisible: false,
             game: {
                 multiplayer: !!this.roomName,
                 date: new Date(),
@@ -317,11 +294,8 @@ export default {
         },
         calculateDistance() {
             if (this.mode === GAME_MODE.COUNTRY) {
-                this.$emit(
-                    'calculateDistance',
-                    null,
-                    +(this.country === this.selectedPos)
-                );
+                this.point = +(this.country === this.selectedPos);
+                this.$emit('calculateDistance', null, this.point);
             } else {
                 this.distance = Math.floor(
                     google.maps.geometry.spherical.computeDistanceBetween(
@@ -388,7 +362,6 @@ export default {
             this.$emit('goToNextRound');
         },
         finishGame() {
-            this.isExitButtonVisible = true;
             this.dialogSummary = false;
             if (this.room)
                 this.room
@@ -396,136 +369,12 @@ export default {
                     .set(true);
             this.$emit('finishGame');
         },
-        viewDetails() {
-            this.$refs.map.removeMarkers();
-            this.$refs.map.removePolylines();
-            this.isSummaryButtonVisible = false;
-            this.dialogSummary = false;
-            this.isExitButtonVisible = true;
-            if (!this.room) {
-                this.game.rounds.forEach(
-                    ({ guess, position, distance, points, country }) => {
-                        if (this.mode === GAME_MODE.COUNTRY) {
-                            this.$refs.map.putMarker(position, true, country);
-                        } else {
-                            this.$refs.map.putMarker(position, true);
-                        }
-                        this.$refs.map.drawPolyline(guess, 0, position);
-                        this.$refs.map.putMarker(guess);
-                        this.$refs.map.setInfoWindow(
-                            null,
-                            distance,
-                            points,
-                            true
-                        );
-                    }
-                );
-                this.$refs.map.fitBounds();
-            } else {
-                this.room.on('value', (snapshot) => {
-                    // Check if the room is already removed
-                    if (snapshot.hasChild('active')) {
-                        snapshot.child('streetView').forEach((round) => {
-                            const lat = round.child('latitude').val();
-                            const lng = round.child('longitude').val();
-                            const posRandom = new google.maps.LatLng({
-                                lat: lat,
-                                lng: lng,
-                            });
-                            let country;
-                            if (this.mode === GAME_MODE.COUNTRY) {
-                                country = round.child('country').val();
-                                this.$refs.map.putMarker(
-                                    posRandom,
-                                    true,
-                                    country
-                                );
-                            } else {
-                                this.$refs.map.putMarker(posRandom, true);
-                            }
-                            let i = 0;
-                            snapshot.child('playerName').forEach((player) => {
-                                const playerName = player.val();
-                                let posGuess;
-                                if (this.mode === GAME_MODE.CLASSIC) {
-                                    const latitudeG = snapshot
-                                        .child(
-                                            round.key +
-                                                '/' +
-                                                player.key +
-                                                '/latitude'
-                                        )
-                                        .val();
-                                    const longitudeG = snapshot
-                                        .child(
-                                            round.key +
-                                                '/' +
-                                                player.key +
-                                                '/longitude'
-                                        )
-                                        .val();
-                                    posGuess = new google.maps.LatLng({
-                                        lat: latitudeG,
-                                        lng: longitudeG,
-                                    });
-                                } else {
-                                    posGuess = snapshot
-                                        .child(
-                                            round.key +
-                                                '/' +
-                                                player.key +
-                                                '/country'
-                                        )
-                                        .val();
-                                }
-
-                                const distance = snapshot
-                                    .child(
-                                        round.key +
-                                            '/' +
-                                            player.key +
-                                            '/distance'
-                                    )
-                                    .val();
-                                const points = snapshot
-                                    .child(
-                                        round.key + '/' + player.key + '/points'
-                                    )
-                                    .val();
-
-                                this.$refs.map.drawPolyline(
-                                    posGuess,
-                                    i,
-                                    posRandom
-                                );
-                                this.$refs.map.putMarker(
-                                    posGuess,
-                                    null,
-                                    playerName && playerName.length > 0
-                                        ? playerName[0].toUpperCase()
-                                        : ''
-                                );
-                                this.$refs.map.setInfoWindow(
-                                    playerName,
-                                    distance,
-                                    points,
-                                    false,
-                                    posGuess
-                                );
-
-                                i++;
-                            });
-                        });
-                        this.$refs.map.fitBounds();
-                    }
-                });
-            }
-        },
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
         this.game.timeLimitation = this.timeLimitation;
         this.game.difficulty = this.difficulty;
+        this.game.mode = this.mode;
 
         if (this.roomName) {
             this.room = firebase.database().ref(this.roomName);
@@ -621,9 +470,11 @@ export default {
                             j++;
                         });
                         this.$refs.map.fitBounds();
-
                         this.game.rounds.push({
-                            position: this.randomLatLng,
+                            position: {
+                                ...this.randomLatLng.toJSON(),
+                                country: this.country,
+                            },
                             players,
                         });
                         this.$refs.map.putMarker(this.randomLatLng, true);

@@ -35,6 +35,14 @@ export default new Router({
             component: Home,
         },
         {
+            path: '/history',
+            name: 'History',
+            component: Home,
+            props: {
+                openHistory: true,
+            },
+        },
+        {
             path: '/street-view',
             name: 'street-view',
             component: StreetView,

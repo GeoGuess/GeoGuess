@@ -12,7 +12,7 @@
             />
 
             <div id="game-interface">
-                <v-overlay :value="!isReady" opacity="1" />
+                <v-overlay :value="!isReady && multiplayer" opacity="1" />
                 <div id="street-view"></div>
 
                 <div id="game-interface--overlay">
@@ -323,6 +323,7 @@ export default {
                 motionTracking: false,
                 motionTrackingControl: false,
                 showRoadLabels: false,
+                panControl: true,
             });
             this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
@@ -430,13 +431,11 @@ export default {
             this.room.off();
             this.room.remove();
 
-            setTimeout(() => {
-                this.$router.push({ name: 'home' });
-            }, 5000);
+            this.$router.push('/history');
         },
         finishGame() {
             if (!this.multiplayer) {
-                this.$router.push('/');
+                this.$router.push('/history');
             } else {
                 // Open the dialog while waiting for other players to finsih the game
                 this.dialogTitle = this.$t(

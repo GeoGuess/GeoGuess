@@ -34,7 +34,11 @@
                 </div>
             </nav>
             <v-dialog v-model="historyDialog">
-                <History :history="history" />
+                <History
+                    :history="history"
+                    :openLast="openHistory"
+                    @onHide="historyDialog = false"
+                />
             </v-dialog>
             <v-dialog v-model="aboutDialog">
                 <About />
@@ -43,7 +47,7 @@
     </div>
 </template>
 <script>
-import History from '@/components/History';
+import History from '@/components/history/History';
 import About from '@/components/home/About';
 import { languages } from '../../lang';
 
@@ -52,10 +56,15 @@ export default {
         History,
         About,
     },
+    props: {
+        openHistory: {
+            default: false,
+            type: Boolean,
+        },
+    },
     data() {
         return {
-            drawer: false,
-            historyDialog: false,
+            historyDialog: this.openHistory,
             aboutDialog: false,
             history: localStorage.getItem('history')
                 ? JSON.parse(localStorage.getItem('history'))

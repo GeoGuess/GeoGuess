@@ -93,7 +93,6 @@ export default {
             rank: 'Rank',
             search: 'Search',
         },
-
         DialogRoom: {
             singlePlayer: 'Single Player',
             withFriends: 'With Friends',

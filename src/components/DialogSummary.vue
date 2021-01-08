@@ -64,9 +64,19 @@
                         class="mt-8"
                         dark
                         color="#43B581"
-                        @click="$emit('view-details')"
+                        @click="$emit('finishGame')"
                         >{{ $t('DialogSummary.viewDetails') }}</v-btn
                     >
+                    <v-btn
+                        id="exit-button"
+                        v-if="!multiplayer"
+                        class="mt-8"
+                        dark
+                        color="#f44336"
+                        @click="$emit('playAgain')"
+                    >
+                        {{ $t('Maps.playAgain') }}
+                    </v-btn>
                 </v-row>
             </v-card-text>
         </v-card>
@@ -135,6 +145,7 @@ export default {
     height: 44px;
     width: 210px;
     border-radius: 40px;
+    margin: 0 2%;
 }
 
 #card-text {
