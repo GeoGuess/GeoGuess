@@ -39,9 +39,11 @@ export default {
             this.centerOnBbox();
         },
     },
-    mounted() {
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
         this.$refs.mapRef.$mapPromise.then((map) => {
             this.map = map;
+            console.log(google);
 
             this.centerOnBbox();
         });

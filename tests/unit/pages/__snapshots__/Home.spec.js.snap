@@ -18,9 +18,7 @@ exports[`Home.vue test mounted 1`] = `
       <v-icon-stub>mdi-arrow-down</v-icon-stub>
     </v-btn-stub>
   </section>
-  <section id="maps">
-    <v-row-stub tag="div"></v-row-stub>
-  </section>
+  <section id="maps"></section>
   <footer-stub></footer-stub>
 </div>
 `;
@@ -43,9 +41,7 @@ exports[`Home.vue test mounted 2`] = `
       <v-icon-stub>mdi-arrow-down</v-icon-stub>
     </v-btn-stub>
   </section>
-  <section id="maps">
-    <v-row-stub tag="div"></v-row-stub>
-  </section>
+  <section id="maps"></section>
   <footer-stub></footer-stub>
 </div>
 `;
