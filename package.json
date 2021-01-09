@@ -15,7 +15,7 @@
     "@turf/boolean-point-in-polygon": "^6.0.1",
     "@turf/distance": "^6.0.1",
     "@turf/helpers": "^6.1.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "axios-cache-adapter": "^2.5.0",
     "core-js": "^2.6.12",
     "firebase": "^7.24.0",
