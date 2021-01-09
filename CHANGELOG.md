@@ -1,5 +1,28 @@
 # Changelog
 
+## [Unreleased](https://github.com/Geoguess/Geoguess/tree/HEAD)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.1...HEAD)
+
+**Fixed bugs:**
+
+- Giverny bug [\#36](https://github.com/GeoGuess/Geoguess/issues/36)
+
+**Closed issues:**
+
+- AutoZoom after every guess \(Issue Discord\) [\#73](https://github.com/GeoGuess/Geoguess/issues/73)
+- Firebase url env [\#68](https://github.com/GeoGuess/Geoguess/issues/68)
+- Problem with GEOJson custom map [\#67](https://github.com/GeoGuess/Geoguess/issues/67)
+
+**Merged pull requests:**
+
+- fix \#73 AutoZoom after every guess [\#74](https://github.com/GeoGuess/Geoguess/pull/74) ([BilelJegham](https://github.com/BilelJegham))
+- Updated Czech translation [\#72](https://github.com/GeoGuess/Geoguess/pull/72) ([tululum](https://github.com/tululum))
+- docs: add chalbin73 as a contributor [\#71](https://github.com/GeoGuess/Geoguess/pull/71) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add AlexSpelt as a contributor [\#70](https://github.com/GeoGuess/Geoguess/pull/70) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Fixs \#67 Streetview search radius + \#68 Firebase config [\#69](https://github.com/GeoGuess/Geoguess/pull/69) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add BurAndBY as a contributor [\#66](https://github.com/GeoGuess/Geoguess/pull/66) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+
 ## [v0.3.1](https://github.com/Geoguess/Geoguess/tree/v0.3.1) (2020-11-24)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.0...v0.3.1)
@@ -19,15 +42,21 @@
 
 **Implemented enhancements:**
 
-- Display information once the round results are displayed [\#49](https://github.com/GeoGuess/Geoguess/issues/49) [\#56](https://github.com/GeoGuess/Geoguess/pull/56) ([BilelJegham](https://github.com/BilelJegham))
-- Homepage : Maps list [\#52](https://github.com/GeoGuess/Geoguess/pull/52) ([BilelJegham](https://github.com/BilelJegham))
-- feat\(maps\): Center on start game [\#55](https://github.com/GeoGuess/Geoguess/pull/55) ([BilelJegham](https://github.com/BilelJegham))
-- Center Maps on start game [\#55](https://github.com/GeoGuess/Geoguess/pull/55) ([BilelJegham](https://github.com/BilelJegham))
+- Display information once the round results are displayed [\#49](https://github.com/GeoGuess/Geoguess/issues/49)
 
 **Fixed bugs:**
 
 - Timer doesn't it's the same for all player [\#57](https://github.com/GeoGuess/Geoguess/issues/57)
 - fix: time limitation set \(seconds\) [\#59](https://github.com/GeoGuess/Geoguess/pull/59) ([BilelJegham](https://github.com/BilelJegham))
+
+**Merged pull requests:**
+
+- feat: add link to details map [\#61](https://github.com/GeoGuess/Geoguess/pull/61) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add simonrousseau as a contributor [\#60](https://github.com/GeoGuess/Geoguess/pull/60) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- fix: \#57 timer set on Date [\#58](https://github.com/GeoGuess/Geoguess/pull/58) ([BilelJegham](https://github.com/BilelJegham))
+- Feature/details random point [\#56](https://github.com/GeoGuess/Geoguess/pull/56) ([BilelJegham](https://github.com/BilelJegham))
+- feat\(maps\): Center on start game [\#55](https://github.com/GeoGuess/Geoguess/pull/55) ([BilelJegham](https://github.com/BilelJegham))
+-  Homepage : Maps list [\#52](https://github.com/GeoGuess/Geoguess/pull/52) ([BilelJegham](https://github.com/BilelJegham))
 
 ## [v0.2.0](https://github.com/Geoguess/Geoguess/tree/v0.2.0) (2020-10-15)
 
