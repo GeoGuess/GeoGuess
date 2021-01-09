@@ -147,5 +147,10 @@ export default {
             classic: 'Classique',
             country: 'Pays',
         },
+        Demo: {
+            message:
+                'Tu souhaites contribuer au projet et le rendre meilleur, ton aide est la bienvenue :  Traduction 🔠, Créateur de carte 🌍, Code 💻, Idée 💡, Beta test 👀.',
+            btn: 'Rejoins-nous',
+        },
     },
 };

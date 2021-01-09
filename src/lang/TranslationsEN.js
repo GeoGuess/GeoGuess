@@ -147,5 +147,10 @@ export default {
             classic: 'Classic',
             country: 'Pick country',
         },
+        Demo: {
+            message:
+                'If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.',
+            btn: 'Join Us',
+        },
     },
 };
