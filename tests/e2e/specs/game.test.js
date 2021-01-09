@@ -55,14 +55,11 @@ describe('SinglePlayer', () => {
 
         cy.get('#play-again-button').contains('View details').click();
 
-        cy.get('#summary-button').contains('EXIT').click();
-
-        cy.url().should('eq', Cypress.config().baseUrl);
-
-        cy.get('#historyBtn').contains('HISTORY').click();
+        cy.url().should('eq', Cypress.config().baseUrl + 'history');
 
         cy.get('.v-data-table__wrapper tbody')
             .children()
-            .should('have.length', 1);
+            .should('have.length', 2);
+        cy.get('.v-data-table__expanded').should('exist');
     });
 });

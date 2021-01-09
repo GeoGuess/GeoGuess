@@ -18,10 +18,20 @@ describe('Map.vue', () => {
         expect(wrapper.vm.markers).toHaveLength(0);
         wrapper.vm.putMarker({ lat: 0, lng: 1 });
         wrapper.vm.putMarker({ lat: 0, lng: 1 }, true);
+        expect(wrapper.vm.markers).toHaveLength(3);
         wrapper.vm.putMarker({ lat: 0, lng: 1 }, false, 'l');
 
         expect(global.google.maps.Marker).toHaveBeenCalledTimes(3);
 
-        expect(wrapper.vm.markers).toHaveLength(3);
+        wrapper.vm.setInfoWindow('Mickey', 10, 5000);
+        wrapper.vm.setInfoWindow('Mickey', 10000, 5000);
+        expect(global.google.maps.InfoWindow).toHaveBeenCalledTimes(2);
+
+        wrapper.vm.removeMarkers();
+        expect(wrapper.vm.markers).toHaveLength(0);
+
+        wrapper.drawPolyline({ lat: 0, lng: 1 }, 1, { lat: 1, lng: 1 });
+        expect(global.google.maps.Polyline).toHaveBeenCalledTimes(2);
+        expect(wrapper.vm.polylines).toHaveLength(1);
     });
 });

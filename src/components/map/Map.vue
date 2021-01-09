@@ -122,7 +122,7 @@ export default {
             );
         },
         drawPolyline(selectedLatLng, i = 0, randomLatLng) {
-            var polyline = new google.maps.Polyline({
+            const polyline = new google.maps.Polyline({
                 path: [selectedLatLng, randomLatLng],
                 strokeColor: this.strokeColors[i % this.strokeColors.length],
             });
@@ -130,7 +130,7 @@ export default {
             this.polylines.push(polyline);
         },
         removePolylines() {
-            for (var i = 0; i < this.polylines.length; i++) {
+            for (let i = 0; i < this.polylines.length; i++) {
                 this.polylines[i].setMap(null);
             }
         },

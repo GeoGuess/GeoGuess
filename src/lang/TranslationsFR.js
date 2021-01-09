@@ -143,5 +143,9 @@ export default {
         DetailsMap: {
             moreInfo: 'En savoir plus',
         },
+        modes: {
+            classic: 'Classique',
+            country: 'Pays',
+        },
     },
 };
