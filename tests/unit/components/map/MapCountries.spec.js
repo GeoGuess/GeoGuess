@@ -1,5 +1,5 @@
 import MapCountries from '@/components/map/MapCountries';
-import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import appInit from '../../utils/appInit';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 
