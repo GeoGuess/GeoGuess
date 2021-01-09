@@ -81,7 +81,8 @@ export default {
             );
         },
     },
-    mounted() {
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
         this.$refs.mapRef.$mapPromise.then((map) => {
             this.map = map;
             json.features.forEach((c) => {

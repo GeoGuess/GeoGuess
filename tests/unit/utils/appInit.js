@@ -2,7 +2,7 @@ import i18n from '@/lang';
 import * as GmapVue from 'gmap-vue';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import { default as Router, default as VueRouter } from 'vue-router';
+import Router from 'vue-router';
 import Vuetify from 'vuetify';
 import en from 'vuetify/es5/locale/en';
 import Vuex from 'vuex';
@@ -34,7 +34,7 @@ export default function appInit(VueInstance) {
     Vue.use(Vuex);
 
     VueInstance.use(VueI18n);
-    VueInstance.use(VueRouter);
+    VueInstance.use(Router);
     VueInstance.use(Vuetify);
     VueInstance.config.productionTip = false;
     Vue.use(GmapVue, {
