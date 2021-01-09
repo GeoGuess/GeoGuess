@@ -3,6 +3,7 @@
 exports[`Home.vue test mounted 1`] = `
 <div class="home-page">
   <header-stub></header-stub>
+  <!---->
   <section class="home-page__main">
     <v-container-stub tag="div" fluid="true" class="home-page__main__container">
       <v-layout-stub tag="div" row="" class="home-page__main__layout">
@@ -26,6 +27,7 @@ exports[`Home.vue test mounted 1`] = `
 exports[`Home.vue test mounted 2`] = `
 <div class="home-page">
   <header-stub></header-stub>
+  <!---->
   <section class="home-page__main">
     <v-container-stub tag="div" fluid="true" class="home-page__main__container">
       <v-layout-stub tag="div" row="" class="home-page__main__layout">
