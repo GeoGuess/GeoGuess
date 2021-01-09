@@ -5,7 +5,19 @@ import createGoogleMapsMock from 'jest-google-maps-mock';
 
 const args = appInit(createLocalVue());
 global.google = {
-    maps: createGoogleMapsMock(),
+    maps: {
+        ...createGoogleMapsMock(),
+        InfoWindow: jest.fn().mockImplementation(function () {
+            return {
+                open: jest.fn(),
+            };
+        }),
+        Polyline: jest.fn().mockImplementation(function () {
+            return {
+                setMap: jest.fn(),
+            };
+        }),
+    },
 };
 describe('Map.vue', () => {
     it('test methods', () => {
@@ -18,8 +30,8 @@ describe('Map.vue', () => {
         expect(wrapper.vm.markers).toHaveLength(0);
         wrapper.vm.putMarker({ lat: 0, lng: 1 });
         wrapper.vm.putMarker({ lat: 0, lng: 1 }, true);
-        expect(wrapper.vm.markers).toHaveLength(3);
         wrapper.vm.putMarker({ lat: 0, lng: 1 }, false, 'l');
+        expect(wrapper.vm.markers).toHaveLength(3);
 
         expect(global.google.maps.Marker).toHaveBeenCalledTimes(3);
 
@@ -30,8 +42,8 @@ describe('Map.vue', () => {
         wrapper.vm.removeMarkers();
         expect(wrapper.vm.markers).toHaveLength(0);
 
-        wrapper.drawPolyline({ lat: 0, lng: 1 }, 1, { lat: 1, lng: 1 });
-        expect(global.google.maps.Polyline).toHaveBeenCalledTimes(2);
+        wrapper.vm.drawPolyline({ lat: 0, lng: 1 }, 1, { lat: 1, lng: 1 });
+        expect(global.google.maps.Polyline).toHaveBeenCalledTimes(1);
         expect(wrapper.vm.polylines).toHaveLength(1);
     });
 });
