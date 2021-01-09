@@ -39,12 +39,14 @@
                         </v-flex>
                     </v-row>
                     <v-row v-if="!singlePlayer">
-                        <v-autocomplete
+                        <v-combobox
                             :label="$t('CardRoomSize.title')"
                             v-model="roomSize"
                             :items="roomSizeItems"
+                            :rules="[(v) => +v > 1]"
+                            :filter="(item, queryText) => item == queryText"
                             autofocus
-                        ></v-autocomplete>
+                        ></v-combobox>
                     </v-row>
                     <v-row>
                         <label class="card_settings__time__label">{{
@@ -114,56 +116,7 @@ export default {
             timeAttack: false,
             timeLimitation: 0,
             roomSize: 2,
-            roomSizeItems: [
-                {
-                    text: '2',
-                    value: 2,
-                },
-                {
-                    text: '3',
-                    value: 3,
-                },
-                {
-                    text: '4',
-                    value: 4,
-                },
-                {
-                    text: '5',
-                    value: 5,
-                },
-                {
-                    text: '5',
-                    value: 5,
-                },
-                {
-                    text: '6',
-                    value: 6,
-                },
-                {
-                    text: '7',
-                    value: 7,
-                },
-                {
-                    text: '8',
-                    value: 8,
-                },
-                {
-                    text: '9',
-                    value: 9,
-                },
-                {
-                    text: '10',
-                    value: 10,
-                },
-                {
-                    text: '11',
-                    value: 11,
-                },
-                {
-                    text: '12',
-                    value: 12,
-                },
-            ],
+            roomSizeItems: [...Array(98)].map((item, index) => index + 2),
         };
     },
     computed: {
@@ -202,13 +155,15 @@ export default {
             });
         },
         setSettings() {
-            this.$emit(
-                'setSettings',
-                this.timeLimitation,
-                this.mode,
-                this.roomSize,
-                this.timeAttack
-            );
+            if (+this.roomSize > 1) {
+                this.$emit(
+                    'setSettings',
+                    this.timeLimitation,
+                    this.mode,
+                    +this.roomSize,
+                    this.timeAttack
+                );
+            }
         },
         cancel() {
             this.$emit('cancel');
