@@ -93,7 +93,6 @@ export default {
             rank: 'Rank',
             search: 'Search',
         },
-
         DialogRoom: {
             singlePlayer: 'Single Player',
             withFriends: 'With Friends',
@@ -116,11 +115,24 @@ export default {
             title: 'Set a time limitation.',
             infinite: 'Infinite',
         },
+        CardRoomSettings: {
+            title: 'Game Settings',
+            modeLabel: 'Select game mode',
+        },
+        CardRoomDifficulty: {
+            title: 'Set a difficulty level.',
+            easy: 'easy (world)',
+            medium: 'medium (country)',
+            hard: 'hard (city)',
+        },
         DialogSummary: {
-            summaryMsgSingle:
-                'You are <strong>{distance}</strong> km away! Your score is <strong>{points}</strong> points!',
-            summaryMsgMulti:
-                '<strong>{playerName}</strong> score is <strong>{points}</strong> ! (<strong>{distance}</strong> km away)',
+            summaryMsgSinglePoints:
+                'Your score is <strong>{points}</strong> points! ',
+            summaryMsgSingleDistance:
+                'You are <strong>{distance}</strong> km away!',
+            summaryMsgMultiPoints:
+                '<strong>{playerName}</strong> score is <strong>{points}</strong> ! ',
+            summaryMsgMultiDistance: '(<strong>{distance}</strong> km away)',
             viewDetails: 'View details',
         },
         Footer: {
@@ -130,6 +142,15 @@ export default {
         urlCopied: 'Url copied',
         DetailsMap: {
             moreInfo: 'More information',
+        },
+        modes: {
+            classic: 'Classic',
+            country: 'Pick country',
+        },
+        Demo: {
+            message:
+                'If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.',
+            btn: 'Join Us',
         },
     },
 };

@@ -1,9 +1,8 @@
+import Home from '@/pages/Home';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import StreetView from '@/pages/StreetView';
 import Vue from 'vue';
 import Router from 'vue-router';
-
-import Home from '@/pages/Home';
-import StreetView from '@/pages/StreetView';
-import PrivacyPolicy from '@/pages/PrivacyPolicy';
 
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
@@ -34,6 +33,14 @@ export default new Router({
             path: '/room/:roomName',
             name: 'Room',
             component: Home,
+        },
+        {
+            path: '/history',
+            name: 'History',
+            component: Home,
+            props: {
+                openHistory: true,
+            },
         },
         {
             path: '/street-view',

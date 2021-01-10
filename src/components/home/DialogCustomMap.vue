@@ -23,7 +23,7 @@
                             :center="{ lat: 10, lng: 10 }"
                             :zoom="1"
                             ref="mapRef"
-                            map-type-id="terrain"
+                            map-type-id="roadmap"
                             style="width: 100%; height: 500px"
                             :options="{
                                 gestureHandling: 'greedy',
@@ -96,8 +96,6 @@ import { mapActions, mapGetters } from 'vuex';
 import { validURL } from '@/utils';
 import { isGeoJSONValid } from '../../utils';
 
-const google = window.google;
-
 export default {
     name: 'DialogCustomMap',
     props: ['visibility'],
@@ -134,6 +132,9 @@ export default {
                 map.data.toGeoJson((geoJson) => this.setGeoJson(geoJson));
             });
         },
+    },
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
     },
     updated() {
         if (!this.initMap) {

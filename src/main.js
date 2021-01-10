@@ -1,18 +1,24 @@
+import axios from '@/plugins/axios';
+import 'firebase/analytics';
+import firebase from 'firebase/app';
+import 'firebase/database';
+import * as GmapVue from 'gmap-vue';
 import Vue from 'vue';
+import VueAxios from 'vue-axios';
+import VueClipboard from 'vue-clipboard2';
 import App from './App.vue';
-import vuetify from './plugins/vuetify';
-import router from './router';
 import i18n from './lang';
+import CountryNamePlugin from './plugins/countryNamePlugin';
+import vuetify from './plugins/vuetify';
+import './registerServiceWorker';
+import router from './router';
 import store from './store';
 
-import firebase from 'firebase/app';
-import 'firebase/analytics';
-import 'firebase/database';
-import './registerServiceWorker';
-import * as VueGoogleMaps from 'vue2-google-maps';
-import VueClipboard from 'vue-clipboard2';
+Vue.use(VueAxios, axios);
+
+Vue.use(CountryNamePlugin);
 Vue.use(VueClipboard);
-Vue.use(VueGoogleMaps, {
+Vue.use(GmapVue, {
     load: {
         key: process.env.VUE_APP_API_KEY,
     },
@@ -33,7 +39,7 @@ window.addEventListener('resize', () => {
     updateSizes(Vue.prototype.$viewport);
 });
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
     authDomain:
         process.env.VUE_APP_FIREBASE_AUTH_DOMAIN ||
@@ -60,5 +66,6 @@ new Vue({
     router,
     i18n,
     store,
+    axios,
     render: (h) => h(App),
 }).$mount('#app');

@@ -1,6 +1,20 @@
 <template>
     <div class="home-page">
-        <Header />
+        <Header :openHistory="openHistory" />
+
+        <v-alert v-if="demoMode" color="#7289DA" dark class="demo-alert">
+            <v-row align="center">
+                <v-col class="grow">
+                    {{ $t('Demo.message') }}
+                </v-col>
+                <v-col class="shrink">
+                    <v-btn target="_blank" href="https://discord.gg/9GXm6RT"
+                        ><v-icon left>mdi-discord</v-icon>
+                        {{ $t('Demo.btn') }}</v-btn
+                    >
+                </v-col>
+            </v-row>
+        </v-alert>
         <section class="home-page__main">
             <v-container class="home-page__main__container" fluid>
                 <v-layout row class="home-page__main__layout">
@@ -22,11 +36,11 @@
             </v-btn>
         </section>
         <section id="maps">
-            <v-row>
-                <v-col v-for="(map, index) in maps" v-bind:key="index">
-                    <MapCard :map="map" />
-                </v-col>
-            </v-row>
+            <MapCard
+                :map="map"
+                v-for="(map, index) in maps"
+                v-bind:key="index"
+            />
         </section>
 
         <Footer />
@@ -40,6 +54,12 @@ import Footer from '@/components/home/Footer';
 import MapCard from '@/components/home/maps/MapCard';
 import { mapActions, mapGetters } from 'vuex';
 export default {
+    props: {
+        openHistory: {
+            default: false,
+            type: Boolean,
+        },
+    },
     components: {
         Header,
         Footer,
@@ -75,12 +95,22 @@ export default {
         this.getListMaps();
     },
     methods: { ...mapActions(['getListMaps']) },
-    computed: { ...mapGetters(['maps']) },
+    computed: {
+        ...mapGetters(['maps']),
+        demoMode() {
+            return !!process.env.VUE_APP_DEMO_MODE;
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss">
 .home-page {
+    .demo-alert {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+    }
     background-color: #ded3af;
     .home-page__main {
         position: relative;
@@ -129,7 +159,11 @@ export default {
         }
     }
     #maps {
-        padding: 2% 5%;
+        padding: 3rem 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+        row-gap: 1.5rem;
+        justify-items: center;
     }
 }
 

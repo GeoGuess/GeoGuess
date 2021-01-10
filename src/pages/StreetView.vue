@@ -7,15 +7,17 @@
                 :points="pointsHeader"
                 :round="round"
                 :roomName="roomName"
+                :nbRound="nbRound"
                 :remainingTime="remainingTime"
             />
 
             <div id="game-interface">
+                <v-overlay :value="!isReady && multiplayer" opacity="1" />
                 <div id="street-view"></div>
 
                 <div id="game-interface--overlay">
                     <Maps
-                        ref="map"
+                        ref="mapContainer"
                         :randomLatLng="randomLatLng"
                         :randomFeatureProperties="randomFeatureProperties"
                         :roomName="roomName"
@@ -28,6 +30,10 @@
                         :difficulty="difficultyData"
                         :timeLimitation="timeLimitation"
                         :bbox="bbox"
+                        :mode="mode"
+                        :country="country"
+                        :timeAttack="timeAttack"
+                        :nbRound="nbRound"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -66,9 +72,14 @@ import DialogMessage from '@/components/DialogMessage';
 
 import randomPositionInPolygon from 'random-position-in-polygon';
 import * as turfModel from '@turf/helpers';
-import { isInGeoJSON } from '../utils';
-
-const google = window.google;
+import bbox from '@turf/bbox';
+import {
+    isInGeoJSON,
+    getCountryCodeNameFromLatLng,
+    getRandomCountry,
+    getMaxDistanceBbox,
+} from '../utils';
+import { GAME_MODE } from '../constants';
 
 export default {
     props: {
@@ -108,6 +119,14 @@ export default {
             default: null,
             type: Array,
         },
+        modeSelected: {
+            default: GAME_MODE.CLASSIC,
+            type: String,
+        },
+        timeAttackSelected: {
+            default: false,
+            type: Boolean,
+        },
     },
     components: {
         HeaderGame,
@@ -116,6 +135,7 @@ export default {
     },
     data() {
         return {
+            country: null,
             randomLatLng: null,
             randomLat: null,
             randomLng: null,
@@ -126,6 +146,9 @@ export default {
             pointsHeader: 0,
             round: 1,
             timeLimitation: this.time,
+            mode: this.modeSelected,
+            timeAttack: this.timeAttackSelected,
+            nbRound: this.timeAttackSelected ? 10 : 5,
             remainingTime: 0,
             endTime: null,
             hasTimerStarted: false,
@@ -147,22 +170,23 @@ export default {
     methods: {
         loadStreetView() {
             const service = new google.maps.StreetViewService();
-            let point, position;
+            let radius, position;
             if (this.roundsPredefined) {
-                point = true;
+                radius = 50;
                 const positions = this.roundsPredefined[this.round - 1];
                 position = new google.maps.LatLng(positions[0], positions[1]);
             } else {
                 const randomPos = this.getRandomLatLng();
-                point = randomPos.point;
+                radius = randomPos.radius;
                 position = randomPos.position;
                 this.randomFeatureProperties = randomPos.properties;
             }
+
             service.getPanorama(
                 {
                     location: position,
                     preference: 'nearest',
-                    radius: point ? 50 : 100000,
+                    radius,
                     source: 'outdoor',
                 },
                 this.checkStreetView
@@ -171,7 +195,7 @@ export default {
         getRandomLatLng() {
             if (this.placeGeoJson != null) {
                 let position,
-                    point = false,
+                    radius = 100000,
                     properties = null;
                 if (this.placeGeoJson.type === 'FeatureCollection') {
                     let randInt = Math.floor(
@@ -182,18 +206,18 @@ export default {
                     properties = feature.properties;
                     if (feature.geometry.type === 'Point') {
                         position = feature.geometry.coordinates;
-                        point = true;
+                        radius = 50;
                     } else {
-                        point = true;
+                        radius = getMaxDistanceBbox(bbox(feature)) * 100;
                         position = randomPositionInPolygon(feature);
                     }
                 } else {
-                    point = true;
+                    radius = getMaxDistanceBbox(bbox(this.placeGeoJson)) * 100;
                     position = randomPositionInPolygon(this.placeGeoJson);
                 }
 
                 return {
-                    point,
+                    radius,
                     position: new google.maps.LatLng(position[1], position[0]),
                     properties,
                 };
@@ -204,15 +228,14 @@ export default {
             let lng = Math.random() * 360 - 180;
 
             return {
-                point: false,
+                radius: 100000,
                 position: new google.maps.LatLng(lat, lng),
                 properties: null,
             };
         },
         checkStreetView(data, status) {
             // Generate random streetview until the valid one is generated
-            if (status == 'OK') {
-                this.setPosition(data);
+            if (status === 'OK' && data.location) {
                 let isInGeoJSONResult;
                 if (this.placeGeoJson != null) {
                     isInGeoJSONResult = isInGeoJSON(
@@ -231,22 +254,50 @@ export default {
                     this.loadStreetView();
                     this.cptNotFoundLocation++;
                 } else {
-                    // If 3 times Street View does not find location in the polygon placeGeo print warning message
+                    // If 3 times Street View does not find location in the polygon placeGeoJson print warning message
                     if (this.placeGeoJson != null && !isInGeoJSONResult) {
                         this.isVisibleDialog = true;
                     }
                     // Save the location's latitude and longitude
                     this.randomLatLng = data.location.latLng;
                     this.cptNotFoundLocation = 0;
+                    this.setPosition(data);
 
-                    if (this.multiplayer) {
-                        // Put the streetview's location into firebase
-                        this.room.child('streetView/round' + this.round).set({
-                            latitude: this.randomLatLng.lat(),
-                            longitude: this.randomLatLng.lng(),
-                            roundInfo: this.randomFeatureProperties,
-                            warning: this.isVisibleDialog,
+                    if (this.mode === GAME_MODE.COUNTRY) {
+                        getCountryCodeNameFromLatLng(
+                            this.randomLatLng,
+                            this.loadStreetView
+                        ).then((c) => {
+                            this.country = c;
+
+                            if (this.multiplayer) {
+                                // Put the streetview's location into firebase
+                                this.room
+                                    .child('streetView/round' + this.round)
+                                    .set({
+                                        latitude: this.randomLatLng.lat(),
+                                        longitude: this.randomLatLng.lng(),
+                                        roundInfo:
+                                            this.randomFeatureProperties ||
+                                            null,
+                                        country: c,
+                                        warning: this.isVisibleDialog,
+                                    });
+                            }
                         });
+                    } else {
+                        if (this.multiplayer) {
+                            // Put the streetview's location into firebase
+                            this.room
+                                .child('streetView/round' + this.round)
+                                .set({
+                                    latitude: this.randomLatLng.lat(),
+                                    longitude: this.randomLatLng.lng(),
+                                    roundInfo:
+                                        this.randomFeatureProperties || null,
+                                    warning: this.isVisibleDialog,
+                                });
+                        }
                     }
                 }
             } else {
@@ -272,12 +323,14 @@ export default {
                 motionTracking: false,
                 motionTrackingControl: false,
                 showRoadLabels: false,
+                panControl: true,
             });
             this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,
                 pitch: 0,
             });
+            this.panorama.setZoom(0);
         },
         startTimer(round = this.round) {
             if (round === this.round) {
@@ -292,10 +345,16 @@ export default {
                 } else {
                     this.timerInProgress = false;
                     if (!this.hasLocationSelected) {
-                        // Set a random location if the player didn't select a location in time
-                        this.$refs.map.selectRandomLocation(
-                            this.getRandomLatLng().position
-                        );
+                        if (this.mode === GAME_MODE.COUNTRY) {
+                            this.$refs.mapContainer.selectRandomLocation(
+                                getRandomCountry()
+                            );
+                        } else {
+                            // Set a random location if the player didn't select a location in time
+                            this.$refs.mapContainer.selectRandomLocation(
+                                this.getRandomLatLng().position
+                            );
+                        }
                     }
                 }
             }
@@ -332,6 +391,7 @@ export default {
         goToNextRound() {
             // Reset
             this.randomLatLng = null;
+            this.country = null;
             this.overlay = false;
             this.hasTimerStarted = false;
             this.hasLocationSelected = false;
@@ -361,7 +421,7 @@ export default {
                     .child('trigger/player' + this.playerNumber)
                     .set(this.round);
             }
-            this.$refs.map.startNextRound();
+            this.$refs.mapContainer.startNextRound();
         },
         exitGame() {
             // Disable the listener and force the players to exit the game
@@ -371,13 +431,11 @@ export default {
             this.room.off();
             this.room.remove();
 
-            setTimeout(() => {
-                this.$router.push({ name: 'home' });
-            }, 5000);
+            this.$router.push('/history');
         },
         finishGame() {
             if (!this.multiplayer) {
-                this.$router.push('/');
+                this.$router.push('/history');
             } else {
                 // Open the dialog while waiting for other players to finsih the game
                 this.dialogTitle = this.$t(
@@ -388,7 +446,8 @@ export default {
             }
         },
     },
-    mounted() {
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(
             document.getElementById('street-view')
         );
@@ -397,7 +456,7 @@ export default {
         }
 
         if (!this.multiplayer) {
-            this.$refs.map.startNextRound();
+            this.$refs.mapContainer.startNextRound();
 
             if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
@@ -446,6 +505,15 @@ export default {
                                         '/longitude'
                                 )
                                 .val();
+                            this.randomLatLng = new google.maps.LatLng(
+                                this.randomLat,
+                                this.randomLng
+                            );
+                            this.country = snapshot
+                                .child(
+                                    'streetView/round' + this.round + '/country'
+                                )
+                                .val();
                             this.isVisibleDialog = snapshot
                                 .child(
                                     'streetView/round' + this.round + '/warning'
@@ -468,26 +536,21 @@ export default {
 
                     // Enable guess button when every players are put into the current round's node
                     if (
-                        snapshot.child('round' + this.round).numChildren() ==
-                        snapshot.child('size').val()
+                        snapshot.child('round' + this.round).numChildren() ===
+                            snapshot.child('size').val() &&
+                        !this.isReady
                     ) {
-                        // Close the dialog when evryone is ready
-                        if (this.isReady == false) {
-                            this.dialogMessage = false;
-                            this.dialogText = '';
-                        }
+                        // Close the dialog when everyone is ready
+                        this.dialogMessage = false;
+                        this.dialogText = '';
 
                         this.isReady = true;
-                        this.$refs.map.startNextRound();
+                        this.$refs.mapContainer.startNextRound();
 
                         // Countdown timer starts
                         this.timeLimitation = snapshot
                             .child('timeLimitation')
                             .val();
-                        this.difficulty = snapshot.child('difficulty').val();
-                        if (!this.bbox) {
-                            this.bbox = snapshot.child('bbox').val();
-                        }
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {

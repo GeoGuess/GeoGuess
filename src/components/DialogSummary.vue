@@ -8,15 +8,19 @@
         <v-card color="#061422">
             <v-card-text id="card-text">
                 <v-row v-if="!multiplayer" justify="center">
-                    <span
+                    <p
                         id="summary-text"
                         v-html="
-                            $t('DialogSummary.summaryMsgSingle', {
-                                distance: score / 1000,
+                            $t('DialogSummary.summaryMsgSinglePoints', {
                                 points,
-                            })
+                            }) +
+                            (showDistance
+                                ? $t('DialogSummary.summaryMsgSingleDistance', {
+                                      distance: score / 1000,
+                                  })
+                                : '')
                         "
-                    ></span>
+                    ></p>
                 </v-row>
                 <v-row
                     class="mt-3"
@@ -38,11 +42,18 @@
                         >
                         <span
                             v-html="
-                                $t('DialogSummary.summaryMsgMulti', {
+                                $t('DialogSummary.summaryMsgMultiPoints', {
                                     playerName: text.playerName,
                                     points: text.finalPoints,
-                                    distance: text.finalScore / 1000,
-                                })
+                                }) +
+                                (showDistance
+                                    ? $t(
+                                          'DialogSummary.summaryMsgMultiDistance',
+                                          {
+                                              distance: text.finalScore / 1000,
+                                          }
+                                      )
+                                    : '')
                             "
                         ></span>
                     </span>
@@ -53,45 +64,27 @@
                         class="mt-8"
                         dark
                         color="#43B581"
-                        @click="$emit('view-details')"
+                        @click="$emit('finishGame')"
                         >{{ $t('DialogSummary.viewDetails') }}</v-btn
                     >
+                    <v-btn
+                        id="exit-button"
+                        v-if="!multiplayer"
+                        class="mt-8"
+                        dark
+                        color="#f44336"
+                        @click="$emit('playAgain')"
+                    >
+                        {{ $t('Maps.playAgain') }}
+                    </v-btn>
                 </v-row>
-            </v-card-text>
-            <v-card-text class="text-right">
-                <v-btn
-                    target="_blank"
-                    :href="
-                        'http://www.facebook.com/sharer.php?u=' +
-                        url +
-                        '&amp;t=I am ' +
-                        score / 1000 +
-                        ' km away! How close can you guess?'
-                    "
-                    rel="nofollow"
-                    icon
-                >
-                    <v-icon size="32">mdi-facebook-box</v-icon>
-                </v-btn>
-                <v-btn
-                    target="_blank"
-                    :href="
-                        'http://twitter.com/share?url=' +
-                        url +
-                        '&amp;text=I am ' +
-                        score / 1000 +
-                        ' km away! How close can you guess?'
-                    "
-                    icon
-                >
-                    <v-icon size="32">mdi-twitter-box</v-icon>
-                </v-btn>
             </v-card-text>
         </v-card>
     </v-dialog>
 </template>
 
 <script>
+import { GAME_MODE } from '../constants';
 export default {
     props: [
         'dialogSummary',
@@ -101,11 +94,12 @@ export default {
         'points',
         'multiplayer',
         'game',
+        'mode',
     ],
-    data() {
-        return {
-            url: process.env.URL,
-        };
+    computed: {
+        showDistance() {
+            return this.mode === GAME_MODE.CLASSIC;
+        },
     },
     methods: {
         updateRecord() {
@@ -151,9 +145,11 @@ export default {
     height: 44px;
     width: 210px;
     border-radius: 40px;
+    margin: 0 2%;
 }
 
 #card-text {
+    text-align: center;
     padding: 80px 10% 80px 10%;
 }
 

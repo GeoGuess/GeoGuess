@@ -1,8 +1,35 @@
 {
-    "name": "Geoguess",
-    "short_name": "Geoguess",
-    "icons": [
+    "name": "GeoGuess",
+    "short_name": "GeoGuess",
+    "categories": [
+        "game",
+        "geography",
+        "educational-game",
+        "multiplayer-game",
+        "street-view"
+    ],
+    "shortcuts": [{
+        "name": "Play",
+        "url": "/street-view",
+        "description": "Launch a game"
+    }],
+    "screenshots": [{
+            "src": "./screenshots/screenshot_game.png",
+            "sizes": "1920x937",
+            "type": "image/png"
+        },
         {
+            "src": "./screenshots/screenshot_game2.png",
+            "sizes": "1920x937",
+            "type": "image/png"
+        },
+        {
+            "src": "./screenshots/screenshot_score.png",
+            "sizes": "1920x937",
+            "type": "image/png"
+        }
+    ],
+    "icons": [{
             "src": "./img/icons/android-icon-36x36.png",
             "sizes": "36x36",
             "type": "image/png",
@@ -41,6 +68,6 @@
     ],
     "start_url": "./index.html",
     "display": "standalone",
-    "background_color": "#000000",
-    "theme_color": "#071D3E"
+    "background_color": "#ded3af",
+    "theme_color": "#468F69"
 }

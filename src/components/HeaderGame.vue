@@ -16,12 +16,14 @@
                 <span class="sub-text">{{ $t('HeaderGame.round') }}: </span>
             </div>
             <div>
-                <span class="main-text" id="roundLabel">{{ round }} / 5</span>
+                <span class="main-text" id="roundLabel"
+                    >{{ round }} / {{ nbRound }}</span
+                >
             </div>
-            <div class="round-score-container">
+            <div class="round-score-container" v-if="isDistanceVisible">
                 <span class="sub-text">{{ $t('HeaderGame.distance') }}: </span>
             </div>
-            <div>
+            <div v-if="isDistanceVisible">
                 <span class="main-text">{{
                     $t('HeaderGame.kmaway', { value: score / 1000 })
                 }}</span>
@@ -38,11 +40,15 @@
 
 <script>
 import { getCountdownText } from '@/utils';
+import { GAME_MODE } from '../constants';
 export default {
-    props: ['score', 'points', 'round', 'remainingTime', 'roomName'],
+    props: ['score', 'points', 'round', 'remainingTime', 'roomName', 'nbRound'],
     computed: {
         countdownText() {
             return getCountdownText(this.remainingTime);
+        },
+        isDistanceVisible() {
+            return this.mode === GAME_MODE.CLASSIC;
         },
     },
 };

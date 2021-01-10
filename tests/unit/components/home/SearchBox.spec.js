@@ -1,4 +1,4 @@
-jest.mock('axios', () => {
+jest.mock('@/plugins/axios', () => {
     const responseTls = {
         features: [
             {
@@ -68,12 +68,13 @@ jest.mock('axios', () => {
 });
 
 import SearchBox from '@/components/home/SearchBox.vue';
+import axios from '@/plugins/axios';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import appInit from '../../utils/appInit';
-import axios from 'axios';
-
+import Vue from 'vue';
+import VueAxios from 'vue-axios';
 import Vuex from 'vuex';
 import homeStore from '../../../../src/store/homeStore';
+import appInit from '../../utils/appInit';
 
 const args = appInit(createLocalVue());
 describe('SearchBox.vue', () => {
@@ -89,11 +90,13 @@ describe('SearchBox.vue', () => {
         });
     });
     it('test search Input', () => {
-        const wrapper = shallowMount(SearchBox, { ...args, store });
+        Vue.use(VueAxios, axios);
+        const wrapper = shallowMount(SearchBox, { ...args, store, axios });
         wrapper.setData({ search: 'Toulouse' });
 
         expect(wrapper.exists('#search-input'));
         wrapper.vm.$nextTick(() => {
+            expect(wrapper.vm.search).toEqual('Toulouse');
             expect(axios.get).toBeCalledWith(
                 'https://photon.komoot.io/api/?q=Toulouse'
             );

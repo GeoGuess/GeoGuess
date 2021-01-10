@@ -116,6 +116,9 @@ export default {
             title: 'Saisir le temps maximum par manche.',
             infinite: 'Infini',
         },
+        CardRoomSettings: {
+            title: 'Paramétre de la partie',
+        },
         CardRoomDifficulty: {
             title: 'Saisir la difficulté.',
             easy: 'Facile (monde)',
@@ -123,10 +126,13 @@ export default {
             hard: 'Difficile (ville)',
         },
         DialogSummary: {
-            summaryMsgSingle:
-                'Vous êtes à <strong>{distance}</strong> km ! Votre score est de <strong>{points}</strong> points!',
-            summaryMsgMulti:
-                '<strong>{playerName}</strong> marque <strong>{points}</strong> points ! (<strong>{distance}</strong> km)',
+            summaryMsgSinglePoints:
+                'Votre score est de <strong>{points}</strong> points!',
+            summaryMsgSingleDistance:
+                'Vous êtes à <strong>{distance}</strong> km !',
+            summaryMsgMultiPoints:
+                '<strong>{playerName}</strong> marque <strong>{points}</strong> points ! ',
+            summaryMsgMultiDistance: '(<strong>{distance}</strong> km)',
             viewDetails: 'Voir les détails',
         },
         Footer: {
@@ -136,6 +142,15 @@ export default {
         urlCopied: 'Url copiée',
         DetailsMap: {
             moreInfo: 'En savoir plus',
+        },
+        modes: {
+            classic: 'Classique',
+            country: 'Pays',
+        },
+        Demo: {
+            message:
+                'Tu souhaites contribuer au projet et le rendre meilleur, ton aide est la bienvenue :  Traduction 🔠, Créateur de carte 🌍, Code 💻, Idée 💡, Beta test 👀.',
+            btn: 'Rejoins-nous',
         },
     },
 };

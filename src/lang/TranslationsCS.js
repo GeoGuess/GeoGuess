@@ -124,10 +124,13 @@ export default {
             hard: 'těžká (město)',
         },
         DialogSummary: {
-            summaryMsgSingle:
-                'Byl jsi <strong>{distance}</strong> km daleko! Obdržel jsi <strong>{points}</strong> bodů!',
-            summaryMsgMulti:
-                '<strong>{playerName}</strong> skóroval(a) <strong>{points}</strong> bodů ! (<strong>{distance}</strong> km daleko)',
+            summaryMsgSinglePoints:
+                'Obdržel jsi <strong>{points}</strong> bodů! ',
+            summaryMsgSingleDistance:
+                'Byl jsi <strong>{distance}</strong> km daleko!',
+            summaryMsgMultiPoints:
+                '<strong>{playerName}</strong> skóroval(a) <strong>{points}</strong> bodů ! ',
+            summaryMsgMultiDistance: '(<strong>{distance}</strong> km daleko)',
             viewDetails: 'Zobraz podrobnosti',
         },
         Footer: {
