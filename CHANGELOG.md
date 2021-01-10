@@ -1,8 +1,28 @@
 # Changelog
 
-## [Unreleased](https://github.com/Geoguess/Geoguess/tree/HEAD)
+## [v0.4.0-0](https://github.com/Geoguess/Geoguess/tree/v0.4.0-0) (2021-01-10)
 
-[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.1...HEAD)
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.2...v0.4.0-0)
+
+**Implemented enhancements:**
+
+- New GameMode "PickCountry"
+- New multiplayer feature for "Pick Country": TimeAttack
+- StreetView Zoom Reset between Round
+- Add map preview [\#33](https://github.com/GeoGuess/Geoguess/issues/33)
+- Delete Limit RoomSize
+- Tech : Cache geojson 
+
+**Fixed bugs:**
+- Google Map memory leaks with gmap-vue
+
+**Merged pull requests:**
+
+- Feature : select country [\#75](https://github.com/GeoGuess/Geoguess/pull/75) ([BilelJegham](https://github.com/BilelJegham))
+
+## [v0.3.2](https://github.com/Geoguess/Geoguess/tree/v0.3.2) (2021-01-09)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.1...v0.3.2)
 
 **Fixed bugs:**
 
@@ -34,7 +54,6 @@
 **Merged pull requests:**
 
 - fix: multiplayer without roundInfo \#64 [\#65](https://github.com/GeoGuess/Geoguess/pull/65) ([BilelJegham](https://github.com/BilelJegham))
-- Implement russian language into the game [\#63](https://github.com/GeoGuess/Geoguess/pull/63) ([BurAndBY](https://github.com/BurAndBY))
 
 ## [v0.3.0](https://github.com/Geoguess/Geoguess/tree/v0.3.0) (2020-11-15)
 
@@ -74,6 +93,7 @@
 
 **Merged pull requests:**
 
+- Implement russian language into the game [\#63](https://github.com/GeoGuess/Geoguess/pull/63) ([BurAndBY](https://github.com/BurAndBY))
 - Feature/e2e [\#51](https://github.com/GeoGuess/Geoguess/pull/51) ([BilelJegham](https://github.com/BilelJegham))
 - docs: add simonrousseau as a contributor [\#50](https://github.com/GeoGuess/Geoguess/pull/50) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - Feature/new home page [\#48](https://github.com/GeoGuess/Geoguess/pull/48) ([BilelJegham](https://github.com/BilelJegham))
