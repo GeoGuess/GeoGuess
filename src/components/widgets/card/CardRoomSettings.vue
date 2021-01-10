@@ -38,6 +38,41 @@
                             </v-btn>
                         </v-flex>
                     </v-row>
+
+
+                    <v-row>
+                        <label class="card_settings__mode__label">{{
+                            $t('CardRoomSettings.gameType')
+                        }}</label>
+                        <v-flex class="d-flex justify-space-around w-100">
+                            <v-btn
+                                :text="this.photo !== 'yes'"
+                                rounded
+                                outlined
+                                v-on:click="
+                                    () => (this.photo = 'yes')
+                                "
+                                class="mr-5"
+                            >
+                                <v-icon large>mdi-camera-iris</v-icon>
+                                <span>YES</span>
+                            </v-btn>
+                            <v-btn
+                                :text="this.photo !== 'no'"
+                                rounded
+                                outlined
+                                v-on:click="
+                                    () => (this.photo = 'no')
+                                "
+                            >
+                                <v-icon large>mdi-camera-off</v-icon>
+                                <span>NO</span>
+                            </v-btn>
+                        </v-flex>
+                    </v-row>
+
+
+
                     <v-row v-if="!singlePlayer">
                         <v-combobox
                             :label="$t('CardRoomSize.title')"
@@ -113,6 +148,7 @@ export default {
     data() {
         return {
             mode: GAME_MODE.CLASSIC,
+            photo: 'yes',
             timeAttack: false,
             timeLimitation: 0,
             roomSize: 2,
@@ -161,7 +197,8 @@ export default {
                     this.timeLimitation,
                     this.mode,
                     +this.roomSize,
-                    this.timeAttack
+                    this.timeAttack,
+                    this.photo
                 );
             }
         },

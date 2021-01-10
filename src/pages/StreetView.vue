@@ -87,6 +87,10 @@ export default {
             default: null,
             type: String,
         },
+        photo: {
+            default: 'yes',
+            type: String,
+        },
         playerNumber: {
             default: null,
             type: Number,
@@ -182,12 +186,19 @@ export default {
                 this.randomFeatureProperties = randomPos.properties;
             }
 
+            if(this.photo=='yes'){
+                var so='default'
+            }
+            else{
+                var so='outdoor'
+            }
+
             service.getPanorama(
                 {
                     location: position,
                     preference: 'nearest',
                     radius,
-                    source: 'outdoor',
+                    source: so,
                 },
                 this.checkStreetView
             );
@@ -305,13 +316,22 @@ export default {
             }
         },
         resetLocation() {
+
+            if(this.photo=='yes'){
+                var so='default'
+            }
+            else{
+                var so='outdoor'
+            }
+
+
             const service = new google.maps.StreetViewService();
             service.getPanorama(
                 {
                     location: this.randomLatLng,
                     preference: 'nearest',
                     radius: 50,
-                    source: 'outdoor',
+                    source: so,
                 },
                 this.setPosition
             );

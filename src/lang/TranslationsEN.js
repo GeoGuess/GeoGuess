@@ -118,6 +118,9 @@ export default {
         CardRoomSettings: {
             title: 'Game Settings',
             modeLabel: 'Select game mode',
+            gameType: "Include Photospheres",
+            yes: "YES",
+            no: "NO",
         },
         CardRoomDifficulty: {
             title: 'Set a difficulty level.',

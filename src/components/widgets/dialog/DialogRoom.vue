@@ -227,15 +227,17 @@ export default {
                 });
             }
         },
-        setSettings(timeLimitation, mode, roomSize, timeAttack) {
+        setSettings(timeLimitation, mode, roomSize, timeAttack,photo) {
             this.timeLimitation = timeLimitation;
             this.roomSize = roomSize;
             this.mode = mode;
             this.timeAttack = timeAttack;
+            this.photo = photo;
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
                     params: {
+                        photo: this.photo,
                         time: this.timeLimitation,
                         difficulty: this.difficulty,
                         placeGeoJson: this.placeGeoJson,
