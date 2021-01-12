@@ -7,7 +7,6 @@ on:
     branches: [ master ]
 jobs:
   integration:
-    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
     env:
       VUE_APP_API_KEY: YOUR_GOOGLE_MAPS_API_KEY
       VUE_APP_FIREBASE_API_KEY: YOUR_FIREBASE_API_KEY
@@ -58,7 +57,6 @@ jobs:
       VUE_APP_FIREBASE_MESSAGING_SENDER_ID: YOUR_FIREBASE_MESSAGING_SENDER_ID
       VUE_APP_FIREBASE_APP_ID: YOUR_FIREBASE_APP_ID
       VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
-    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
     runs-on: ubuntu-16.04
     name: E2E on Chrome
     strategy:
