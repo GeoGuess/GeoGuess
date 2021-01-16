@@ -214,7 +214,7 @@ export default {
             if (this.playerNumber == 1 || !this.room) {
                 return true;
             } else {
-                if (this.isNextStreetViewReady == true) {
+                if (this.isNextStreetViewReady) {
                     return true;
                 } else {
                     return false;
@@ -397,6 +397,7 @@ export default {
                             snapshot.child('size').val()
                     ) {
                         this.game.timeLimitation = this.timeLimitation;
+                        this.isNextStreetViewReady = false;
 
                         this.$emit('showResult');
 

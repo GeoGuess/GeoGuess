@@ -118,6 +118,7 @@ export default {
         CardRoomSettings: {
             title: 'Game Settings',
             modeLabel: 'Select game mode',
+            timeAttackLabel: 'TimeAttack demo',
         },
         CardRoomDifficulty: {
             title: 'Set a difficulty level.',

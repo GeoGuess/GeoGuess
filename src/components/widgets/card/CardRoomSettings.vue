@@ -59,7 +59,7 @@
                     >
                         <v-checkbox
                             v-model="timeAttack"
-                            label="TimeAttack"
+                            :label="$t('CardRoomSettings.timeAttackLabel')"
                         ></v-checkbox>
                     </v-row>
                 </v-col>
