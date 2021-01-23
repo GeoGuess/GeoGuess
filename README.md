@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -58,18 +58,22 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/BilelJegham"><img src="https://avatars3.githubusercontent.com/u/20130405?v=4" width="100px;" alt=""/><br /><sub><b>Bilel Jegham</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=BilelJegham" title="Code">💻</a> <a href="#translation-BilelJegham" title="Translation">🌍</a></td>
-    <td align="center"><a href="http://simonrousseau.me"><img src="https://avatars3.githubusercontent.com/u/19766429?v=4" width="100px;" alt=""/><br /><sub><b>Simon</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=simonrousseau" title="Code">💻</a> <a href="#design-simonrousseau" title="Design">🎨</a> <a href="#translation-simonrousseau" title="Translation">🌍</a> <a href="https://github.com/GeoGuess/Geoguess/pulls?q=is%3Apr+reviewed-by%3Asimonrousseau" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/dimfort"><img src="https://avatars3.githubusercontent.com/u/22171924?v=4" width="100px;" alt=""/><br /><sub><b>dim.fort</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=dimfort" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/tululum"><img src="https://avatars2.githubusercontent.com/u/67554090?v=4" width="100px;" alt=""/><br /><sub><b>tululum</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3Atululum" title="Bug reports">🐛</a> <a href="#translation-tululum" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/BurAndBY"><img src="https://avatars1.githubusercontent.com/u/48630651?v=4" width="100px;" alt=""/><br /><sub><b>BurAndBY</b></sub></a><br /><a href="#translation-BurAndBY" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://alexspelt.nl"><img src="https://avatars0.githubusercontent.com/u/39807948?v=4" width="100px;" alt=""/><br /><sub><b>Alex Spelt</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3AAlexSpelt" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/chalbin73"><img src="https://avatars3.githubusercontent.com/u/59101580?v=4" width="100px;" alt=""/><br /><sub><b>chalbin73</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3Achalbin73" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/BilelJegham"><img src="https://avatars3.githubusercontent.com/u/20130405?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bilel Jegham</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=BilelJegham" title="Code">💻</a> <a href="#translation-BilelJegham" title="Translation">🌍</a></td>
+    <td align="center"><a href="http://simonrousseau.me"><img src="https://avatars3.githubusercontent.com/u/19766429?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Simon</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=simonrousseau" title="Code">💻</a> <a href="#design-simonrousseau" title="Design">🎨</a> <a href="#translation-simonrousseau" title="Translation">🌍</a> <a href="https://github.com/GeoGuess/Geoguess/pulls?q=is%3Apr+reviewed-by%3Asimonrousseau" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/dimfort"><img src="https://avatars3.githubusercontent.com/u/22171924?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dim.fort</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=dimfort" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/tululum"><img src="https://avatars2.githubusercontent.com/u/67554090?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tululum</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3Atululum" title="Bug reports">🐛</a> <a href="#translation-tululum" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/BurAndBY"><img src="https://avatars1.githubusercontent.com/u/48630651?v=4?s=100" width="100px;" alt=""/><br /><sub><b>BurAndBY</b></sub></a><br /><a href="#translation-BurAndBY" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://alexspelt.nl"><img src="https://avatars0.githubusercontent.com/u/39807948?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Spelt</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3AAlexSpelt" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/chalbin73"><img src="https://avatars3.githubusercontent.com/u/59101580?v=4?s=100" width="100px;" alt=""/><br /><sub><b>chalbin73</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3Achalbin73" title="Bug reports">🐛</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://viniciusdof.com"><img src="https://avatars.githubusercontent.com/u/6577961?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vinicius Dell Osbel de Freitas</b></sub></a><br /><a href="#translation-viniciusdof" title="Translation">🌍</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
