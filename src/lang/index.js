@@ -6,10 +6,11 @@ import en from './TranslationsEN';
 import fr from './TranslationsFR';
 import ja from './TranslationsJA';
 import ru from './TranslationsRU';
+import pt from './TranslationsPT';
 
 Vue.use(VueI18n);
 
-const translations = Object.assign(en, ja, fr, cs, de, ru);
+const translations = Object.assign(en, ja, fr, cs, de, ru, pt);
 
 export const languages = [
     {
@@ -35,6 +36,10 @@ export const languages = [
     {
         text: '日本語',
         value: 'ja',
+    },
+    {
+        text: 'Português (Brasil)',
+        value: 'pt',
     },
 ];
 
