@@ -1,101 +1,117 @@
 export default {
     Home: {
-        record: 'ベストスコア',
-        // historyBtn: 'HISTORY',
-        about: 'このサイトについて',
-        // searchBar: {
-        //   customLoaded: 'Custom map has been loaded',
-        //   enterCity: 'Enter city, state or country',
-        // },
-        aboutDescriptions: { 1: 'Geoguess は無料で気軽に遊べる地図を使ったゲームです。        プレーヤーは5ラウンドでランダムに出された場所の正確な場所を推測して競います。        友達と遊ぶ時は最初に部屋を作る人が部屋の名前を決めて部屋を作り、他の人が部屋に入るだけで一緒に遊ぶことができます。' },
-        // customMap: 'CUSTOMS MAP',
-        // customMapDescriptions: {
-        //     1: "You can limit random locations to city, state, or country with the search bar.",
-        //     2: "In the multiplayer, the first player fixes the location.",
-        //     3: "Furthermore, you can make your customs map with ",
-        //     4: "file.",
-        //     5: "Insert the content of the GeoJson map with the button :",
-        //     6: "Customs Map selection : "
-        // },
-        limitation: '制限',
-        limitationDescription: '地図とストリートビューを表示させるのにお金がかかるため制限をかけています。        1日の制限を超えると地図が正しくロードされなくなります。         制限は太平洋標準時での深夜にリセットされます。        このサイトはオープンソースなので制限なく遊びたい方は自分でゲームをセットアップすることもできます。'
+        record: 'Рекорд',
+        historyBtn: 'ИСТОРИЯ',
+        about: 'ПРО ПРОЕКТ',
+        searchBar: {
+            customLoaded: 'Пользовательская карта загружена',
+            enterCity: 'Введите страну, штат, город'
+        },
+        aboutDescriptions: {
+            1: 'Geoguess это бесплатная и ленивая игра без рекламы.                 Игроки соревнуются, насколько близко игрок может угадывать случайные места за пять раундов.                 Вы можете поделиться счетом с другими людьми через социальные сети, такие как Facebook или Twitter.                 Вы можете играть в многопользовательскую игру со своими друзьями до пяти друзей.                 Первый игрок создает комнату и определяет ее размер. Другие игроки вводят то же имя комнаты, что и первый созданный игрок, и игра начнется. ',
+            2: 'Эта игра была разветвлена ​​от GeoGuess Master '
+        },
+        customMap: 'Пользовательская',
+        customMapDescriptions: {
+            1: 'Вы можете ограничить случайные местоположения городом, штатом или страной с помощью строки поиска.',
+            2: 'В мультиплеере местоположение определяет первый игрок..',
+            3: 'Кроме того, вы можете составить пользовательскую карту с ',
+            4: 'файла.',
+            5: 'Вставьте содержимое карты GeoJson с помощью кнопки :',
+            6: 'Выбор пользовательской карты  : '
+        },
+        limitation: 'ЛИМИТЫ',
+        limitationDescription: 'В настоящее время я устанавливаю дневные квоты, поэтому стоимость запуска этой игры не может быть слишком высокой.             Если карта не загружается, это означает, что квоты были превышены в день.             Он будет сброшен в полночь по тихоокеанскому времени. Приносим извинения за неудобства.             Эта игра с открытым исходным кодом, поэтому вы можете создать свой собственный игровой сервер и играть в нее неограниченно.',
+        play: 'Играть'
     },
     StreetView: {
-        // nearby: {
-        //   title: 'Nearby Position',
-        //   message: 'Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉',
-        // },
-        waitForOtherPlayers: '他のプレーヤーを待っています...',
-        redirectToHomePage: 'ホーム画面にリダイレクトします...',
-        exitGame: 'ゲームを強制終了しました。5秒後にリダイレクトします...',
-        waitForOtherPlayersToFinish: '他のプレーヤーが終了するのを待っています...'
+        nearby: {
+            title: 'Ближайшая позиция',
+            message: 'К сожалению, нам не удалось найти случайную позицию в указанном месте. Однако мы нашли одну поблизости 😉'
+        },
+        waitForOtherPlayers: 'Ждем других игроков ...',
+        redirectToHomePage: 'Перенаправляем на домашнюю страницу ...',
+        exitGame: 'Вы вынуждены выйти из игры. Перенаправляем на домашнюю страницу через 5 секунд ...',
+        waitForOtherPlayersToFinish: 'Ожидайте, пока другие игроки закончат игру ...'
     },
     Maps: {
-        makeGuess: '推測する',
-        guess: '決定',
-        nextRound: '進む',
-        viewSummary: '結果を見る',
-        exit: '終了する',
-        playAgain: 'もう一度遊ぶ'
+        makeGuess: 'Предположить догадку',
+        guess: 'Угадать',
+        nextRound: 'Следущий раунд',
+        viewSummary: 'Посмтреть Сводку',
+        exit: 'Выход',
+        reset: 'Рестарт',
+        playAgain: 'Играть заново',
+        infoWindow: {
+            Distance: 'Дистанция',
+            Points: 'Очки'
+        }
     },
     Header: {
-        language: '言語',
-        about: 'このサイトについて',
-        limitation: '制限',
-        contact: 'お問い合わせ'
+        language: 'Язык',
+        about: 'Про Проект',
+        limitation: 'Лимиты',
+        contact: 'Контакты'
     },
     HeaderGame: {
-        round: 'ラウンド',
-        score: 'スコア'
+        room: 'КОМНАТА',
+        round: 'РАУНД',
+        distance: 'ДИСТАНЦИЯ',
+        kmaway: '{value} КМ отсюда',
+        score: 'ОЧКИ'
     },
-    next: '進む',
-    cancel: 'キャンセル',
-    // DialogCustomMap: {
-    //   title: 'Custom Map',
-    //   invalid: 'Invalid GeoJSON',
-    //   'text': 'Text',
-    //   url: 'Url',
-    //   file: 'File',
-    //   edit: 'Edit Map',
-    //   'fileLabel': 'Select GeoJSON file'
-    // },
-    // History: {
-    //   title: 'History',
-    //   date: 'Date',
-    //   mode: 'Mode',
-    //   time: 'Time',
-    //   distance: 'Distance',
-    //   points: 'Points',
-    //   rank: 'Rank',
-    //   search: 'Search',
-    // },
+    next: 'ДАЛЕЕ',
+    cancel: 'ОТМЕНА',
+    DialogCustomMap: {
+        title: 'Пользовательская карта',
+        invalid: 'Неверный GeoJSON',
+        text: 'Текст',
+        url: 'Ссылка',
+        file: 'Файл',
+        edit: 'Редактировать карту',
+        fileLabel: 'Выбрать GeoJSON файл'
+    },
+    History: {
+        title: 'История',
+        date: 'Дата',
+        mode: 'Режим',
+        time: 'Время',
+        distance: 'Дистанция',
+        points: 'Очки',
+        rank: 'Ранк',
+        search: 'Поиск'
+    },
     DialogRoom: {
-        singlePlayer: '一人で遊ぶ',
-        withFriends: '友達と遊ぶ',
-        invalidRoomName: '無効な名前です。別の名前を入力して下さい。',
-        inProgress: '最初のプレーヤーが部屋を作っています。再度試して下さい。',
-        roomIsFull: 'この部屋は既に満員です。'
+        singlePlayer: 'Одиночная игра',
+        withFriends: 'Игра с друзьями',
+        invalidRoomName: 'Неверное название. Попробуйте другое.',
+        inProgress: 'Прямо сейчас первый игрок создает комнату. Подождите и попробуйте еще раз.',
+        roomIsFull: 'Эта комната уже заполнена. Пожалуйста, попробуйте другую.'
     },
-    CardRoomName: { title: '部屋の名前を入力して下さい。' },
-    CardRoomPlayerName: { title: 'プレーヤーの名前を入力して下さい。' },
-    CardRoomSize: { title: '部屋の人数を選択して下さい。' },
+    CardRoomName: { title: 'Введите название комнаты.' },
+    CardRoomPlayerName: { title: 'Введите имя игрока.' },
+    CardRoomSize: { title: 'Установите размер комнаты.' },
     CardRoomTime: {
-        title: '1ラウンドの制限時間を選択して下さい。',
-        infinite: '無制限'
+        title: 'Установите ограничение по времени.',
+        infinite: 'Бесконечность'
     },
-    // CardRoomDifficulty: {
-    //   title: 'Set a difficulty level.',
-    //   easy: 'easy (world)',
-    //   medium: 'medium (country)',
-    //   hard: 'hard (city)',
-    // },
-    // DialogSummary: {
-    //   summaryMsgSingle: 'You are <strong>{distance}</strong> km away! Your score is <strong>{points}</strong> points!',
-    //   summaryMsgMulti: '<strong>{playerName}</strong> score is <strong>{points}</strong> ! (<strong>{distance}</strong> kmaway)',
-    //   viewDetails: 'View details',
-    // },
+    CardRoomDifficulty: {
+        title: 'Установите уровень сложности.',
+        easy: 'Легкий (мир)',
+        medium: 'Средний (страна)',
+        hard: 'Сложный (город)'
+    },
+    DialogSummary: {
+        summaryMsgSinglePoints: 'Ваше количество <strong>{points}</strong> очков! ',
+        summaryMsgSingleDistance: 'Вы попали <strong>{distance}</strong> km отсюда!',
+        summaryMsgMultiPoints: '<strong>{playerName}</strong> количество очков <strong>{points}</strong> ! ',
+        summaryMsgMultiDistance: '(<strong>{distance}</strong> км отсюда)',
+        viewDetails: 'Посмотреть детали'
+    },
     Footer: {
-        // under: 'under',
-        privacyPolicy: 'プライバシーポリシー'
-    }
+        under: 'Под',
+        privacyPolicy: 'Политика Конфиденциальности'
+    },
+    urlCopied: 'Ссылка скопирована',
+    DetailsMap: { moreInfo: 'Больше информации' }
 };
