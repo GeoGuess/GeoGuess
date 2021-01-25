@@ -47,14 +47,14 @@ npm run build
 2. Comments PR : We don't have rules about the PR description, just clearly explain what you have done
 
 ## Transalation
+> Update translation : https://translate.geoguess.games/
 
-
-- [ ] Add translation file in `src/lang/locale` following `en.js`
+- [ ] Add translation file in `src/lang/locale` following `en.json`
 
 - [ ] Add the language in :
     * `src/lang/index.js` 
 ```js
-import ru from './locale/ru'; // 1
+import ru from './locale/ru.json'; // 1
 
 Vue.use(VueI18n);
 
