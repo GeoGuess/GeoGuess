@@ -1,157 +1,133 @@
 export default {
     Home: {
-        record: 'Recorde',
-        historyBtn: 'HISTÓRICO',
-        about: 'SOBRE',
+        record: 'Record',
+        historyBtn: 'HISTORY',
+        about: 'ABOUT',
         searchBar: {
-            customLoaded: 'O mapa personalizado foi carregado',
-            enterCity: 'Insira uma cidade, estado ou país',
+            customLoaded: 'Custom map has been loaded',
+            enterCity: 'Enter city, state or country'
         },
         aboutDescriptions: {
-            1: 'Geoguess é um jogo grátis e sem anúncios  \
-                Os jogadores competem em 5 rodadas para adivinhar a posição mais próxima dos locais em que foram colocados aleatoriamente.  \
-                Você pode compartilhar sua pontuação em redes sociais como Facebook e Twitter. \
-                Você pode jogar com seus amigos no modo multiplayer. \
-                O primeiro jogador cria uma sala e decide seu tamanho. Uma vez criado, outros jogadores poderão entrar na sala usando o nome criado pelo primeiro jogador.',
-            2: 'Este jogo foi desenvolvido com base no ',
+            1: 'Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer game with your friends up to five friends.                  The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start.',
+            2: 'This game was forked from '
         },
-        customMap: 'MAPAS PERSONALIZADOS',
+        customMap: 'CUSTOMS MAP',
         customMapDescriptions: {
-            1: 'Você pode limitar as posições aleatórias a uma cidade, região ou país por meio da barra de pesquisa.',
-            2: 'No modo multiplayer, o primeiro jogador define o local.',
-            3: 'Além disso, você pode fazer seu mapa personalizado utilizando um',
-            4: 'arquivo.',
-            5: 'Insira o conteúdo do mapa no formato GeoJson com o botão:',
-            6: 'Exemplos de mapas personalizados: ',
+            1: 'You can limit random locations to city, state, or country with the search bar.',
+            2: 'In the multiplayer, the first player fixes the location.',
+            3: 'Furthermore, you can make your customs map with ',
+            4: 'file.',
+            5: 'Insert the content of the GeoJson map with the button :',
+            6: 'Customs Map selection : '
         },
-        limitation: 'LIMITAÇÃO',
-        limitationDescription:
-            'Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.\
-                Se o mapa não carregar, significa que as cotas do dia foram excedidas\
-                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência. \
-                O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.',
-        play: 'Jogar',
+        limitation: 'LIMITATION',
+        limitationDescription: 'Currently I set quotas per day so the cost to run this game can\'t get too high.             If the map doesn\'t load, it means the quotas has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.',
+        play: 'Play'
     },
     StreetView: {
         nearby: {
-            title: 'Posição aproximada',
-            message:
-                'Infelizmente, não foi possível encontrar uma posição aleatória no local definido. No entanto, encontramos um próximo 😉',
+            title: 'Nearby Position',
+            message: 'Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉'
         },
-        waitForOtherPlayers: 'Esperando por outros jogadores...',
-        redirectToHomePage: 'Redirecionando para a página inicial...',
-        exitGame:
-            'Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...',
-        waitForOtherPlayersToFinish:
-            'Esperando os outros jogadores terminarem a partida..',
+        waitForOtherPlayers: 'Waiting for other players...',
+        redirectToHomePage: 'Redirect to Home Page...',
+        exitGame: 'You are forced to exit the game. Redirect to home page after 5 seconds...',
+        waitForOtherPlayersToFinish: 'Waiting for other players to finish the game...'
     },
     Maps: {
-        makeGuess: 'TENTAR ADIVINHAR',
-        guess: 'ADVINHE',
-        nextRound: 'PROXIMA RODADA',
-        viewSummary: 'VER RESUMO',
-        exit: 'SAIR',
-        reset: 'REINICIAR',
-        playAgain: 'JOGAR NOVAMENTE',
+        makeGuess: 'MAKE GUESS',
+        guess: 'GUESS',
+        nextRound: 'NEXT ROUND',
+        viewSummary: 'VIEW SUMMARY',
+        exit: 'EXIT',
+        reset: 'RESET',
+        playAgain: 'PLAY AGAIN',
         infoWindow: {
-            Distance: 'Distância',
-            Points: 'Pontos',
-        },
+            Distance: 'Distance',
+            Points: 'Points'
+        }
     },
     Header: {
-        language: 'Idioma',
-        about: 'Sobre',
-        limitation: 'Limitação',
-        contact: 'Contato',
+        language: 'Language',
+        about: 'About',
+        limitation: 'Limitation',
+        contact: 'Contact'
     },
     HeaderGame: {
-        room: 'SALA',
-        round: 'RODADA',
-        distance: 'DISTÂNCIA',
-        kmaway: '{value} km',
-        score: 'PONTOS',
+        room: 'ROOM',
+        round: 'ROUND',
+        distance: 'DISTANCE',
+        kmaway: '{value} km away',
+        score: 'SCORE'
     },
-    next: 'PRÓXIMO',
-    cancel: 'CANCELAR',
+    next: 'NEXT',
+    cancel: 'CANCEL',
     DialogCustomMap: {
-        title: 'Mapa Personalizado',
-        invalid: 'GeoJSON inválido',
-        text: 'Texto',
+        title: 'Custom Map',
+        invalid: 'Invalid GeoJSON',
+        text: 'Text',
         url: 'Url',
-        file: 'Arquivo',
-        edit: 'Editar o mapa',
-        fileLabel: 'Selecione um arquivo GeoJSON',
+        file: 'File',
+        edit: 'Edit Map',
+        fileLabel: 'Select GeoJSON file'
     },
     History: {
-        title: 'Historico',
-        date: 'Data',
-        mode: 'Modo',
-        time: 'Tempo',
-        distance: 'Distância',
-        points: 'Pontos',
-        rank: 'Classificação',
-        search: 'Pesquisa',
+        title: 'History',
+        date: 'Date',
+        mode: 'Mode',
+        time: 'Time',
+        distance: 'Distance',
+        points: 'Points',
+        rank: 'Rank',
+        search: 'Search'
     },
     DialogRoom: {
-        singlePlayer: 'Sozinho',
-        withFriends: 'Com amigos',
-        invalidRoomName: 'Nome inválido. Por favor, tente outro.',
-        inProgress:
-            'O primeiro jogador está criando a sala agora. Aguarde e tente novamente.',
-        roomIsFull: 'sta sala já está cheia. Por favor, tente outro.',
+        singlePlayer: 'Single Player',
+        withFriends: 'With Friends',
+        invalidRoomName: 'Invalid name. Please try another.',
+        inProgress: 'The first player is creating the room right now. Please wait and try again.',
+        roomIsFull: 'This room is already full. Please try another.'
     },
-
-    CardRoomName: {
-        title: 'Digite um nome para a sala.',
-    },
+    CardRoomName: { title: 'Type a room name.' },
     CardRoomPlayerName: {
-        title: 'Digite um nome de jogador.',
-        anonymousPlayerName: 'Anônimo 🕵',
+        title: 'Type a player name.',
+        anonymousPlayerName: 'Anonymous 🕵'
     },
-    CardRoomSize: {
-        title: 'Defina o tamanho da sala.',
-    },
+    CardRoomSize: { title: 'Set a room size.' },
     CardRoomTime: {
-        title: 'Defina o tempo limite.',
-        infinite: 'Infinito',
+        title: 'Set a time limitation.',
+        infinite: 'Infinite'
     },
     CardRoomSettings: {
-        title: 'Configurações da partida',
-        modeLabel: 'Selecione o modo de jogo',
-        timeAttackLabel: 'TimeAttack (demo)',
+        title: 'Game Settings',
+        modeLabel: 'Select game mode',
+        timeAttackLabel: 'TimeAttack demo'
     },
     CardRoomDifficulty: {
-        title: 'Defina a dificuldade.',
-        easy: 'Facil(mundo)',
-        medium: 'Médio (país)',
-        hard: 'Difícil (cidade)',
+        title: 'Set a difficulty level.',
+        easy: 'easy (world)',
+        medium: 'medium (country)',
+        hard: 'hard (city)'
     },
     DialogSummary: {
-        summaryMsgSinglePoints:
-            'Sua pontuação é de <strong>{points}</strong> pontos!',
-        summaryMsgSingleDistance:
-            'Sua pontuação é de <strong>{points}</strong> pontos!',
-        summaryMsgMultiPoints:
-            'O jogador <strong>{playerName}</strong> fez <strong>{points}</strong> pontos! ',
-        summaryMsgMultiDistance:
-            '(<strong>{distance}</strong> km de distância)',
-        viewDetails: 'Ver detalhes',
+        summaryMsgSinglePoints: 'Your score is <strong>{points}</strong> points! ',
+        summaryMsgSingleDistance: 'You are <strong>{distance}</strong> km away!',
+        summaryMsgMultiPoints: '<strong>{playerName}</strong> score is <strong>{points}</strong> ! ',
+        summaryMsgMultiDistance: '(<strong>{distance}</strong> km away)',
+        viewDetails: 'View details'
     },
     Footer: {
-        under: 'sob a licença',
-        privacyPolicy: 'Política de Privacidade',
+        under: 'under',
+        privacyPolicy: 'Privacy Policy'
     },
-    urlCopied: 'Url copiada',
-    DetailsMap: {
-        moreInfo: 'Mais Informações',
-    },
+    urlCopied: 'Url copied',
+    DetailsMap: { moreInfo: 'More information' },
     modes: {
-        classic: 'Clássico',
-        country: 'Escolha o país',
+        classic: 'Classic',
+        country: 'Pick country'
     },
     Demo: {
-        message:
-            'Se você quer contribuir com o projeto e torná-lo cada vez melhor, sua ajuda é muito bem-vinda: Tradução 🔠, Criador de mapas 🌍, Desenvolvimento 💻, Ideias 💡, Beta test 👀.',
-        btn: 'Junte-se a nós',
-    },
+        message: 'If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.',
+        btn: 'Join Us'
+    }
 };
