@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import cs from './TranslationsCS';
-import de from './TranslationsDE';
-import en from './TranslationsEN';
-import fr from './TranslationsFR';
-import ja from './TranslationsJA';
-import ru from './TranslationsRU';
-import pt from './TranslationsPT';
+import cs from './locale/cs';
+import de from './locale/de';
+import en from './locale/en';
+import fr from './locale/fr';
+import ja from './locale/ja';
+import ru from './locale/ru';
+import pt from './locale/pt';
 
 Vue.use(VueI18n);
 
