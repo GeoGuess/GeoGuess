@@ -10,7 +10,7 @@ import pt from './TranslationsPT';
 
 Vue.use(VueI18n);
 
-const translations = Object.assign(en, ja, fr, cs, de, ru, pt);
+const translations = { en, ja, fr, cs, de, ru, pt };
 
 export const languages = [
     {
@@ -22,10 +22,6 @@ export const languages = [
         value: 'fr',
     },
     {
-        text: 'Deutsch',
-        value: 'de',
-    },
-    {
         text: 'čeština',
         value: 'cs',
     },
@@ -34,12 +30,16 @@ export const languages = [
         value: 'ru',
     },
     {
-        text: '日本語',
-        value: 'ja',
-    },
-    {
         text: 'Português (Brasil)',
         value: 'pt',
+    },
+    {
+        text: 'Deutsch',
+        value: 'de',
+    },
+    {
+        text: '日本語',
+        value: 'ja',
     },
 ];
 

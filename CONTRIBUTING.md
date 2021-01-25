@@ -58,7 +58,7 @@ import ru from './TranslationsRU'; // 1
 
 Vue.use(VueI18n);
 
-const translations = Object.assign(en, ja, fr, cs, de, ru); // 2
+const translations = {en, ja, fr, cs, de, ru}; // 2
 
 
 export const languages = [
