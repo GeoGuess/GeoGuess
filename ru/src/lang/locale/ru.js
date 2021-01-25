@@ -1,129 +1,133 @@
 export default {
     Home: {
         record: 'Record',
-        historyBtn: 'Historique',
-        about: 'A PROPOS',
+        historyBtn: 'HISTORY',
+        about: 'ABOUT',
         searchBar: {
-            customLoaded: 'Une carte personnalisée a été chargé',
-            enterCity: 'Saisissez une ville, une région ou un pays'
+            customLoaded: 'Custom map has been loaded',
+            enterCity: 'Enter city, state or country'
         },
         aboutDescriptions: {
-            1: 'Geoguess est un jeu gratuit sans publicité.                  Les joueurs s\'affrontent en 5 manches pour deviner la plus proche position d\'où ils ont été placé aléatoirement.                 Vous pouvez partager votre score sur les réseaux Sociaux comme Facebook et Twitter.                 Vous pouvez jouer avec vos amis en multijoueurs.                 Le premier joueur créé une salle et décide de sa taille. Une fois créés, les autres joueurs pourront rejoindre la salle à partir de son nom et joueur tous ensemble.',
-            2: 'Ce jeu est issu de '
+            1: 'Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer game with your friends up to five friends.                  The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start.',
+            2: 'This game was forked from '
         },
-        customMap: 'CARTE PERSONNALISÉE',
+        customMap: 'CUSTOMS MAP',
         customMapDescriptions: {
-            1: 'Vous pouvez limiter les positions aléatoires à une ville, région ou pays via la barre de recherche.',
-            2: 'Dans le mode multijoueur, le premier joueurs définit l\'emplacement.',
-            3: 'Par ailleurs, il vous est possible de créer vos propres cartes avec ',
-            4: 'fichier.',
-            5: 'Insérer le contenu du fichier via le bouton :',
-            6: 'Une sélection de maps personnalisés : '
+            1: 'You can limit random locations to city, state, or country with the search bar.',
+            2: 'In the multiplayer, the first player fixes the location.',
+            3: 'Furthermore, you can make your customs map with ',
+            4: 'file.',
+            5: 'Insert the content of the GeoJson map with the button :',
+            6: 'Customs Map selection : '
         },
         limitation: 'LIMITATION',
-        limitationDescription: 'Actuellement, j\'ai fixé un quota par jour afin que le coût du jeu ne soit pas élevé.            Si la carte ne se charge pas, cela signifie que le quota a été dépassé.            Il est réinitialisé à minuit (heure du pacifique). Désolé pour le dérangement.             Le jeu est open source, ainsi il vous est possible de créer votre propre jeu pour y jouer sans limite.',
-        play: 'Jouer'
+        limitationDescription: 'Currently I set quotas per day so the cost to run this game can\'t get too high.             If the map doesn\'t load, it means the quotas has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.',
+        play: 'Play'
     },
     StreetView: {
         nearby: {
-            title: 'Position Proche',
-            message: 'Malheureusement, nous n\'avons pu trouver une position à l\'emplacement défini. Toutefois, nous en avons trouvé une proche 😉'
+            title: 'Nearby Position',
+            message: 'Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉'
         },
-        waitForOtherPlayers: 'En attente des autres joueurs',
-        redirectToHomePage: 'Redirection vers la page d\'accueil...',
-        exitGame: 'Vous êtes forcé de quitter le jeu. Redirection vers la page d\'accueil dans 5 secondes...',
-        waitForOtherPlayersToFinish: 'En attente des autres joueurs pour finir la partie...'
+        waitForOtherPlayers: 'Waiting for other players...',
+        redirectToHomePage: 'Redirect to Home Page...',
+        exitGame: 'You are forced to exit the game. Redirect to home page after 5 seconds...',
+        waitForOtherPlayersToFinish: 'Waiting for other players to finish the game...'
     },
     Maps: {
         makeGuess: 'MAKE GUESS',
-        guess: 'DEVINER',
-        nextRound: 'MANCHE SUIVANTE',
-        viewSummary: 'VOIR LE RÉSUMÉ',
-        exit: 'QUITTER',
-        reset: 'RÉINIT.',
-        playAgain: 'REJOUER',
+        guess: 'GUESS',
+        nextRound: 'NEXT ROUND',
+        viewSummary: 'VIEW SUMMARY',
+        exit: 'EXIT',
+        reset: 'RESET',
+        playAgain: 'PLAY AGAIN',
         infoWindow: {
             Distance: 'Distance',
             Points: 'Points'
         }
     },
     Header: {
-        language: 'Langue',
-        about: 'A propos',
+        language: 'Language',
+        about: 'About',
         limitation: 'Limitation',
         contact: 'Contact'
     },
     HeaderGame: {
-        room: 'SALLE',
-        round: 'MANCHE',
+        room: 'ROOM',
+        round: 'ROUND',
         distance: 'DISTANCE',
-        kmaway: '{value} km',
+        kmaway: '{value} km away',
         score: 'SCORE'
     },
-    next: 'SUIVANT',
-    cancel: 'ANNULER',
+    next: 'NEXT',
+    cancel: 'CANCEL',
     DialogCustomMap: {
-        title: 'Carte personnalisée',
-        invalid: 'GeoJSON invalide',
-        text: 'Texte',
-        url: 'Lien',
-        file: 'Fichier',
-        edit: 'Editer la carte',
-        fileLabel: 'Selectionner un fichier GeoJSON'
+        title: 'Custom Map',
+        invalid: 'Invalid GeoJSON',
+        text: 'Text',
+        url: 'Url',
+        file: 'File',
+        edit: 'Edit Map',
+        fileLabel: 'Select GeoJSON file'
     },
     History: {
-        title: 'Historique',
+        title: 'History',
         date: 'Date',
         mode: 'Mode',
-        time: 'Temps',
+        time: 'Time',
         distance: 'Distance',
         points: 'Points',
-        rank: 'Classement',
-        search: 'Rechercher'
+        rank: 'Rank',
+        search: 'Search'
     },
     DialogRoom: {
-        singlePlayer: 'Un joueur',
-        withFriends: 'Avec des amis',
-        invalidRoomName: 'Nom invalide. Veuillez en choisir un autre.',
-        inProgress: 'Le premier joueur est en train de créer la salle. Veuillez patienter puis recommencer.',
-        roomIsFull: 'La salle est déjà pleine. Essayer une autre.'
+        singlePlayer: 'Single Player',
+        withFriends: 'With Friends',
+        invalidRoomName: 'Invalid name. Please try another.',
+        inProgress: 'The first player is creating the room right now. Please wait and try again.',
+        roomIsFull: 'This room is already full. Please try another.'
     },
-    CardRoomName: { title: 'Saisir le nom de la salle.' },
+    CardRoomName: { title: 'Type a room name.' },
     CardRoomPlayerName: {
-        title: 'Saisir votre pseudo.',
-        anonymousPlayerName: 'Anonyme 🕵'
+        title: 'Type a player name.',
+        anonymousPlayerName: 'Anonymous 🕵'
     },
-    CardRoomSize: { title: 'Saisir la taille de la salle.' },
+    CardRoomSize: { title: 'Set a room size.' },
     CardRoomTime: {
-        title: 'Saisir le temps maximum par manche.',
-        infinite: 'Infini'
+        title: 'Set a time limitation.',
+        infinite: 'Infinite'
     },
-    CardRoomSettings: { title: 'Paramétre de la partie' },
+    CardRoomSettings: {
+        title: 'Game Settings',
+        modeLabel: 'Select game mode',
+        timeAttackLabel: 'TimeAttack demo'
+    },
     CardRoomDifficulty: {
-        title: 'Saisir la difficulté.',
-        easy: 'Facile (monde)',
-        medium: 'Moyen (pays)',
-        hard: 'Difficile (ville)'
+        title: 'Set a difficulty level.',
+        easy: 'easy (world)',
+        medium: 'medium (country)',
+        hard: 'hard (city)'
     },
     DialogSummary: {
-        summaryMsgSinglePoints: 'Votre score est de <strong>{points}</strong> points!',
-        summaryMsgSingleDistance: 'Vous êtes à <strong>{distance}</strong> km !',
-        summaryMsgMultiPoints: '<strong>{playerName}</strong> marque <strong>{points}</strong> points ! ',
-        summaryMsgMultiDistance: '(<strong>{distance}</strong> km)',
-        viewDetails: 'Voir les détails'
+        summaryMsgSinglePoints: 'Your score is <strong>{points}</strong> points! ',
+        summaryMsgSingleDistance: 'You are <strong>{distance}</strong> km away!',
+        summaryMsgMultiPoints: '<strong>{playerName}</strong> score is <strong>{points}</strong> ! ',
+        summaryMsgMultiDistance: '(<strong>{distance}</strong> km away)',
+        viewDetails: 'View details'
     },
     Footer: {
-        under: 'sous',
-        privacyPolicy: 'Politique de confidentialité'
+        under: 'under',
+        privacyPolicy: 'Privacy Policy'
     },
-    urlCopied: 'Url copiée',
-    DetailsMap: { moreInfo: 'En savoir plus' },
+    urlCopied: 'Url copied',
+    DetailsMap: { moreInfo: 'More information' },
     modes: {
-        classic: 'Classique',
-        country: 'Pays'
+        classic: 'Classic',
+        country: 'Pick country'
     },
     Demo: {
-        message: 'Tu souhaites contribuer au projet et le rendre meilleur, ton aide est la bienvenue :  Traduction 🔠, Créateur de carte 🌍, Code 💻, Idée 💡, Beta test 👀.',
-        btn: 'Rejoins-nous'
+        message: 'If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.',
+        btn: 'Join Us'
     }
 };
