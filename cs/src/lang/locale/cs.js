@@ -1,133 +1,129 @@
 export default {
     Home: {
-        record: 'Recorde',
-        historyBtn: 'HISTÓRICO',
-        about: 'SOBRE',
+        record: 'Record',
+        historyBtn: 'Historique',
+        about: 'A PROPOS',
         searchBar: {
-            customLoaded: 'O mapa personalizado foi carregado',
-            enterCity: 'Insira uma cidade, estado ou país'
+            customLoaded: 'Une carte personnalisée a été chargé',
+            enterCity: 'Saisissez une ville, une région ou un pays'
         },
         aboutDescriptions: {
-            1: 'Geoguess é um jogo grátis e sem anúncios                  Os jogadores competem em 5 rodadas para adivinhar a posição mais próxima dos locais em que foram colocados aleatoriamente.                  Você pode compartilhar sua pontuação em redes sociais como Facebook e Twitter.                 Você pode jogar com seus amigos no modo multiplayer.                 O primeiro jogador cria uma sala e decide seu tamanho. Uma vez criado, outros jogadores poderão entrar na sala usando o nome criado pelo primeiro jogador.',
-            2: 'Este jogo foi desenvolvido com base no '
+            1: 'Geoguess est un jeu gratuit sans publicité.                  Les joueurs s\'affrontent en 5 manches pour deviner la plus proche position d\'où ils ont été placé aléatoirement.                 Vous pouvez partager votre score sur les réseaux Sociaux comme Facebook et Twitter.                 Vous pouvez jouer avec vos amis en multijoueurs.                 Le premier joueur créé une salle et décide de sa taille. Une fois créés, les autres joueurs pourront rejoindre la salle à partir de son nom et joueur tous ensemble.',
+            2: 'Ce jeu est issu de '
         },
-        customMap: 'MAPAS PERSONALIZADOS',
+        customMap: 'CARTE PERSONNALISÉE',
         customMapDescriptions: {
-            1: 'Você pode limitar as posições aleatórias a uma cidade, região ou país por meio da barra de pesquisa.',
-            2: 'No modo multiplayer, o primeiro jogador define o local.',
-            3: 'Além disso, você pode fazer seu mapa personalizado utilizando um',
-            4: 'arquivo.',
-            5: 'Insira o conteúdo do mapa no formato GeoJson com o botão:',
-            6: 'Exemplos de mapas personalizados: '
+            1: 'Vous pouvez limiter les positions aléatoires à une ville, région ou pays via la barre de recherche.',
+            2: 'Dans le mode multijoueur, le premier joueurs définit l\'emplacement.',
+            3: 'Par ailleurs, il vous est possible de créer vos propres cartes avec ',
+            4: 'fichier.',
+            5: 'Insérer le contenu du fichier via le bouton :',
+            6: 'Une sélection de maps personnalisés : '
         },
-        limitation: 'LIMITAÇÃO',
-        limitationDescription: 'Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.                Se o mapa não carregar, significa que as cotas do dia foram excedidas                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência.                 O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.',
-        play: 'Jogar'
+        limitation: 'LIMITATION',
+        limitationDescription: 'Actuellement, j\'ai fixé un quota par jour afin que le coût du jeu ne soit pas élevé.            Si la carte ne se charge pas, cela signifie que le quota a été dépassé.            Il est réinitialisé à minuit (heure du pacifique). Désolé pour le dérangement.             Le jeu est open source, ainsi il vous est possible de créer votre propre jeu pour y jouer sans limite.',
+        play: 'Jouer'
     },
     StreetView: {
         nearby: {
-            title: 'Posição aproximada',
-            message: 'Infelizmente, não foi possível encontrar uma posição aleatória no local definido. No entanto, encontramos um próximo 😉'
+            title: 'Position Proche',
+            message: 'Malheureusement, nous n\'avons pu trouver une position à l\'emplacement défini. Toutefois, nous en avons trouvé une proche 😉'
         },
-        waitForOtherPlayers: 'Esperando por outros jogadores...',
-        redirectToHomePage: 'Redirecionando para a página inicial...',
-        exitGame: 'Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...',
-        waitForOtherPlayersToFinish: 'Esperando os outros jogadores terminarem a partida..'
+        waitForOtherPlayers: 'En attente des autres joueurs',
+        redirectToHomePage: 'Redirection vers la page d\'accueil...',
+        exitGame: 'Vous êtes forcé de quitter le jeu. Redirection vers la page d\'accueil dans 5 secondes...',
+        waitForOtherPlayersToFinish: 'En attente des autres joueurs pour finir la partie...'
     },
     Maps: {
-        makeGuess: 'TENTAR ADIVINHAR',
-        guess: 'ADVINHE',
-        nextRound: 'PROXIMA RODADA',
-        viewSummary: 'VER RESUMO',
-        exit: 'SAIR',
-        reset: 'REINICIAR',
-        playAgain: 'JOGAR NOVAMENTE',
+        makeGuess: 'MAKE GUESS',
+        guess: 'DEVINER',
+        nextRound: 'MANCHE SUIVANTE',
+        viewSummary: 'VOIR LE RÉSUMÉ',
+        exit: 'QUITTER',
+        reset: 'RÉINIT.',
+        playAgain: 'REJOUER',
         infoWindow: {
-            Distance: 'Distância',
-            Points: 'Pontos'
+            Distance: 'Distance',
+            Points: 'Points'
         }
     },
     Header: {
-        language: 'Idioma',
-        about: 'Sobre',
-        limitation: 'Limitação',
-        contact: 'Contato'
+        language: 'Langue',
+        about: 'A propos',
+        limitation: 'Limitation',
+        contact: 'Contact'
     },
     HeaderGame: {
-        room: 'SALA',
-        round: 'RODADA',
-        distance: 'DISTÂNCIA',
+        room: 'SALLE',
+        round: 'MANCHE',
+        distance: 'DISTANCE',
         kmaway: '{value} km',
-        score: 'PONTOS'
+        score: 'SCORE'
     },
-    next: 'PRÓXIMO',
-    cancel: 'CANCELAR',
+    next: 'SUIVANT',
+    cancel: 'ANNULER',
     DialogCustomMap: {
-        title: 'Mapa Personalizado',
-        invalid: 'GeoJSON inválido',
-        text: 'Texto',
-        url: 'Url',
-        file: 'Arquivo',
-        edit: 'Editar o mapa',
-        fileLabel: 'Selecione um arquivo GeoJSON'
+        title: 'Carte personnalisée',
+        invalid: 'GeoJSON invalide',
+        text: 'Texte',
+        url: 'Lien',
+        file: 'Fichier',
+        edit: 'Editer la carte',
+        fileLabel: 'Selectionner un fichier GeoJSON'
     },
     History: {
-        title: 'Historico',
-        date: 'Data',
-        mode: 'Modo',
-        time: 'Tempo',
-        distance: 'Distância',
-        points: 'Pontos',
-        rank: 'Classificação',
-        search: 'Pesquisa'
+        title: 'Historique',
+        date: 'Date',
+        mode: 'Mode',
+        time: 'Temps',
+        distance: 'Distance',
+        points: 'Points',
+        rank: 'Classement',
+        search: 'Rechercher'
     },
     DialogRoom: {
-        singlePlayer: 'Sozinho',
-        withFriends: 'Com amigos',
-        invalidRoomName: 'Nome inválido. Por favor, tente outro.',
-        inProgress: 'O primeiro jogador está criando a sala agora. Aguarde e tente novamente.',
-        roomIsFull: 'sta sala já está cheia. Por favor, tente outro.'
+        singlePlayer: 'Un joueur',
+        withFriends: 'Avec des amis',
+        invalidRoomName: 'Nom invalide. Veuillez en choisir un autre.',
+        inProgress: 'Le premier joueur est en train de créer la salle. Veuillez patienter puis recommencer.',
+        roomIsFull: 'La salle est déjà pleine. Essayer une autre.'
     },
-    CardRoomName: { title: 'Digite um nome para a sala.' },
+    CardRoomName: { title: 'Saisir le nom de la salle.' },
     CardRoomPlayerName: {
-        title: 'Digite um nome de jogador.',
-        anonymousPlayerName: 'Anônimo 🕵'
+        title: 'Saisir votre pseudo.',
+        anonymousPlayerName: 'Anonyme 🕵'
     },
-    CardRoomSize: { title: 'Defina o tamanho da sala.' },
+    CardRoomSize: { title: 'Saisir la taille de la salle.' },
     CardRoomTime: {
-        title: 'Defina o tempo limite.',
-        infinite: 'Infinito'
+        title: 'Saisir le temps maximum par manche.',
+        infinite: 'Infini'
     },
-    CardRoomSettings: {
-        title: 'Configurações da partida',
-        modeLabel: 'Selecione o modo de jogo',
-        timeAttackLabel: 'TimeAttack (demo)'
-    },
+    CardRoomSettings: { title: 'Paramétre de la partie' },
     CardRoomDifficulty: {
-        title: 'Defina a dificuldade.',
-        easy: 'Facil(mundo)',
-        medium: 'Médio (país)',
-        hard: 'Difícil (cidade)'
+        title: 'Saisir la difficulté.',
+        easy: 'Facile (monde)',
+        medium: 'Moyen (pays)',
+        hard: 'Difficile (ville)'
     },
     DialogSummary: {
-        summaryMsgSinglePoints: 'Sua pontuação é de <strong>{points}</strong> pontos!',
-        summaryMsgSingleDistance: 'Sua pontuação é de <strong>{points}</strong> pontos!',
-        summaryMsgMultiPoints: 'O jogador <strong>{playerName}</strong> fez <strong>{points}</strong> pontos! ',
-        summaryMsgMultiDistance: '(<strong>{distance}</strong> km de distância)',
-        viewDetails: 'Ver detalhes'
+        summaryMsgSinglePoints: 'Votre score est de <strong>{points}</strong> points!',
+        summaryMsgSingleDistance: 'Vous êtes à <strong>{distance}</strong> km !',
+        summaryMsgMultiPoints: '<strong>{playerName}</strong> marque <strong>{points}</strong> points ! ',
+        summaryMsgMultiDistance: '(<strong>{distance}</strong> km)',
+        viewDetails: 'Voir les détails'
     },
     Footer: {
-        under: 'sob a licença',
-        privacyPolicy: 'Política de Privacidade'
+        under: 'sous',
+        privacyPolicy: 'Politique de confidentialité'
     },
-    urlCopied: 'Url copiada',
-    DetailsMap: { moreInfo: 'Mais Informações' },
+    urlCopied: 'Url copiée',
+    DetailsMap: { moreInfo: 'En savoir plus' },
     modes: {
-        classic: 'Clássico',
-        country: 'Escolha o país'
+        classic: 'Classique',
+        country: 'Pays'
     },
     Demo: {
-        message: 'Se você quer contribuir com o projeto e torná-lo cada vez melhor, sua ajuda é muito bem-vinda: Tradução 🔠, Criador de mapas 🌍, Desenvolvimento 💻, Ideias 💡, Beta test 👀.',
-        btn: 'Junte-se a nós'
+        message: 'Tu souhaites contribuer au projet et le rendre meilleur, ton aide est la bienvenue :  Traduction 🔠, Créateur de carte 🌍, Code 💻, Idée 💡, Beta test 👀.',
+        btn: 'Rejoins-nous'
     }
 };
