@@ -1,133 +1,101 @@
 export default {
     Home: {
-        record: 'Recorde',
-        historyBtn: 'HISTÓRICO',
-        about: 'SOBRE',
-        searchBar: {
-            customLoaded: 'O mapa personalizado foi carregado',
-            enterCity: 'Insira uma cidade, estado ou país'
-        },
-        aboutDescriptions: {
-            1: 'Geoguess é um jogo grátis e sem anúncios                  Os jogadores competem em 5 rodadas para adivinhar a posição mais próxima dos locais em que foram colocados aleatoriamente.                  Você pode compartilhar sua pontuação em redes sociais como Facebook e Twitter.                 Você pode jogar com seus amigos no modo multiplayer.                 O primeiro jogador cria uma sala e decide seu tamanho. Uma vez criado, outros jogadores poderão entrar na sala usando o nome criado pelo primeiro jogador.',
-            2: 'Este jogo foi desenvolvido com base no '
-        },
-        customMap: 'MAPAS PERSONALIZADOS',
-        customMapDescriptions: {
-            1: 'Você pode limitar as posições aleatórias a uma cidade, região ou país por meio da barra de pesquisa.',
-            2: 'No modo multiplayer, o primeiro jogador define o local.',
-            3: 'Além disso, você pode fazer seu mapa personalizado utilizando um',
-            4: 'arquivo.',
-            5: 'Insira o conteúdo do mapa no formato GeoJson com o botão:',
-            6: 'Exemplos de mapas personalizados: '
-        },
-        limitation: 'LIMITAÇÃO',
-        limitationDescription: 'Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.                Se o mapa não carregar, significa que as cotas do dia foram excedidas                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência.                 O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.',
-        play: 'Jogar'
+        record: 'ベストスコア',
+        // historyBtn: 'HISTORY',
+        about: 'このサイトについて',
+        // searchBar: {
+        //   customLoaded: 'Custom map has been loaded',
+        //   enterCity: 'Enter city, state or country',
+        // },
+        aboutDescriptions: { 1: 'Geoguess は無料で気軽に遊べる地図を使ったゲームです。        プレーヤーは5ラウンドでランダムに出された場所の正確な場所を推測して競います。        友達と遊ぶ時は最初に部屋を作る人が部屋の名前を決めて部屋を作り、他の人が部屋に入るだけで一緒に遊ぶことができます。' },
+        // customMap: 'CUSTOMS MAP',
+        // customMapDescriptions: {
+        //     1: "You can limit random locations to city, state, or country with the search bar.",
+        //     2: "In the multiplayer, the first player fixes the location.",
+        //     3: "Furthermore, you can make your customs map with ",
+        //     4: "file.",
+        //     5: "Insert the content of the GeoJson map with the button :",
+        //     6: "Customs Map selection : "
+        // },
+        limitation: '制限',
+        limitationDescription: '地図とストリートビューを表示させるのにお金がかかるため制限をかけています。        1日の制限を超えると地図が正しくロードされなくなります。         制限は太平洋標準時での深夜にリセットされます。        このサイトはオープンソースなので制限なく遊びたい方は自分でゲームをセットアップすることもできます。'
     },
     StreetView: {
-        nearby: {
-            title: 'Posição aproximada',
-            message: 'Infelizmente, não foi possível encontrar uma posição aleatória no local definido. No entanto, encontramos um próximo 😉'
-        },
-        waitForOtherPlayers: 'Esperando por outros jogadores...',
-        redirectToHomePage: 'Redirecionando para a página inicial...',
-        exitGame: 'Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...',
-        waitForOtherPlayersToFinish: 'Esperando os outros jogadores terminarem a partida..'
+        // nearby: {
+        //   title: 'Nearby Position',
+        //   message: 'Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉',
+        // },
+        waitForOtherPlayers: '他のプレーヤーを待っています...',
+        redirectToHomePage: 'ホーム画面にリダイレクトします...',
+        exitGame: 'ゲームを強制終了しました。5秒後にリダイレクトします...',
+        waitForOtherPlayersToFinish: '他のプレーヤーが終了するのを待っています...'
     },
     Maps: {
-        makeGuess: 'TENTAR ADIVINHAR',
-        guess: 'ADVINHE',
-        nextRound: 'PROXIMA RODADA',
-        viewSummary: 'VER RESUMO',
-        exit: 'SAIR',
-        reset: 'REINICIAR',
-        playAgain: 'JOGAR NOVAMENTE',
-        infoWindow: {
-            Distance: 'Distância',
-            Points: 'Pontos'
-        }
+        makeGuess: '推測する',
+        guess: '決定',
+        nextRound: '進む',
+        viewSummary: '結果を見る',
+        exit: '終了する',
+        playAgain: 'もう一度遊ぶ'
     },
     Header: {
-        language: 'Idioma',
-        about: 'Sobre',
-        limitation: 'Limitação',
-        contact: 'Contato'
+        language: '言語',
+        about: 'このサイトについて',
+        limitation: '制限',
+        contact: 'お問い合わせ'
     },
     HeaderGame: {
-        room: 'SALA',
-        round: 'RODADA',
-        distance: 'DISTÂNCIA',
-        kmaway: '{value} km',
-        score: 'PONTOS'
+        round: 'ラウンド',
+        score: 'スコア'
     },
-    next: 'PRÓXIMO',
-    cancel: 'CANCELAR',
-    DialogCustomMap: {
-        title: 'Mapa Personalizado',
-        invalid: 'GeoJSON inválido',
-        text: 'Texto',
-        url: 'Url',
-        file: 'Arquivo',
-        edit: 'Editar o mapa',
-        fileLabel: 'Selecione um arquivo GeoJSON'
-    },
-    History: {
-        title: 'Historico',
-        date: 'Data',
-        mode: 'Modo',
-        time: 'Tempo',
-        distance: 'Distância',
-        points: 'Pontos',
-        rank: 'Classificação',
-        search: 'Pesquisa'
-    },
+    next: '進む',
+    cancel: 'キャンセル',
+    // DialogCustomMap: {
+    //   title: 'Custom Map',
+    //   invalid: 'Invalid GeoJSON',
+    //   'text': 'Text',
+    //   url: 'Url',
+    //   file: 'File',
+    //   edit: 'Edit Map',
+    //   'fileLabel': 'Select GeoJSON file'
+    // },
+    // History: {
+    //   title: 'History',
+    //   date: 'Date',
+    //   mode: 'Mode',
+    //   time: 'Time',
+    //   distance: 'Distance',
+    //   points: 'Points',
+    //   rank: 'Rank',
+    //   search: 'Search',
+    // },
     DialogRoom: {
-        singlePlayer: 'Sozinho',
-        withFriends: 'Com amigos',
-        invalidRoomName: 'Nome inválido. Por favor, tente outro.',
-        inProgress: 'O primeiro jogador está criando a sala agora. Aguarde e tente novamente.',
-        roomIsFull: 'sta sala já está cheia. Por favor, tente outro.'
+        singlePlayer: '一人で遊ぶ',
+        withFriends: '友達と遊ぶ',
+        invalidRoomName: '無効な名前です。別の名前を入力して下さい。',
+        inProgress: '最初のプレーヤーが部屋を作っています。再度試して下さい。',
+        roomIsFull: 'この部屋は既に満員です。'
     },
-    CardRoomName: { title: 'Digite um nome para a sala.' },
-    CardRoomPlayerName: {
-        title: 'Digite um nome de jogador.',
-        anonymousPlayerName: 'Anônimo 🕵'
-    },
-    CardRoomSize: { title: 'Defina o tamanho da sala.' },
+    CardRoomName: { title: '部屋の名前を入力して下さい。' },
+    CardRoomPlayerName: { title: 'プレーヤーの名前を入力して下さい。' },
+    CardRoomSize: { title: '部屋の人数を選択して下さい。' },
     CardRoomTime: {
-        title: 'Defina o tempo limite.',
-        infinite: 'Infinito'
+        title: '1ラウンドの制限時間を選択して下さい。',
+        infinite: '無制限'
     },
-    CardRoomSettings: {
-        title: 'Configurações da partida',
-        modeLabel: 'Selecione o modo de jogo',
-        timeAttackLabel: 'TimeAttack (demo)'
-    },
-    CardRoomDifficulty: {
-        title: 'Defina a dificuldade.',
-        easy: 'Facil(mundo)',
-        medium: 'Médio (país)',
-        hard: 'Difícil (cidade)'
-    },
-    DialogSummary: {
-        summaryMsgSinglePoints: 'Sua pontuação é de <strong>{points}</strong> pontos!',
-        summaryMsgSingleDistance: 'Sua pontuação é de <strong>{points}</strong> pontos!',
-        summaryMsgMultiPoints: 'O jogador <strong>{playerName}</strong> fez <strong>{points}</strong> pontos! ',
-        summaryMsgMultiDistance: '(<strong>{distance}</strong> km de distância)',
-        viewDetails: 'Ver detalhes'
-    },
+    // CardRoomDifficulty: {
+    //   title: 'Set a difficulty level.',
+    //   easy: 'easy (world)',
+    //   medium: 'medium (country)',
+    //   hard: 'hard (city)',
+    // },
+    // DialogSummary: {
+    //   summaryMsgSingle: 'You are <strong>{distance}</strong> km away! Your score is <strong>{points}</strong> points!',
+    //   summaryMsgMulti: '<strong>{playerName}</strong> score is <strong>{points}</strong> ! (<strong>{distance}</strong> kmaway)',
+    //   viewDetails: 'View details',
+    // },
     Footer: {
-        under: 'sob a licença',
-        privacyPolicy: 'Política de Privacidade'
-    },
-    urlCopied: 'Url copiada',
-    DetailsMap: { moreInfo: 'Mais Informações' },
-    modes: {
-        classic: 'Clássico',
-        country: 'Escolha o país'
-    },
-    Demo: {
-        message: 'Se você quer contribuir com o projeto e torná-lo cada vez melhor, sua ajuda é muito bem-vinda: Tradução 🔠, Criador de mapas 🌍, Desenvolvimento 💻, Ideias 💡, Beta test 👀.',
-        btn: 'Junte-se a nós'
+        // under: 'under',
+        privacyPolicy: 'プライバシーポリシー'
     }
 };
