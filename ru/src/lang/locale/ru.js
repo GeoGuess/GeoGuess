@@ -1,116 +1,117 @@
 export default {
     Home: {
-        record: 'Rekord',
-        historyBtn: 'HISTORIE',
-        about: 'O HŘE',
+        record: 'Рекорд',
+        historyBtn: 'ИСТОРИЯ',
+        about: 'ПРО ПРОЕКТ',
         searchBar: {
-            customLoaded: 'Vlastní mapa byla úspěšně načtena',
-            enterCity: 'Napiš název města, regionu nebo státu (anglicky)'
+            customLoaded: 'Пользовательская карта загружена',
+            enterCity: 'Введите страну, штат, город'
         },
         aboutDescriptions: {
-            1: 'Geoguess je jednoduchá geoguess hra zdarma a bez reklam.                   Hráči jsou umístěni na náhodné místo na světě a musí se pokusit podle svého okolí uhádnout, kde se nachází na mapě.                   Hra se skládá z pěti kol.                   Své skóre můžeš sdílet s ostatními na sociálních sítích Facebook a Twitter.                   Můžeš hrát sám, nebo s dalšími až pěti kamarády.                   Při hře více hráčů vytvoří jeden hráč místnost, do které se ostatní hráči připojí, aby mohli hrát spolu.',
-            2: 'Tato hra je fork '
+            1: 'Geoguess это бесплатная и ленивая игра без рекламы.                 Игроки соревнуются, насколько близко игрок может угадывать случайные места за пять раундов.                 Вы можете поделиться счетом с другими людьми через социальные сети, такие как Facebook или Twitter.                 Вы можете играть в многопользовательскую игру со своими друзьями до пяти друзей.                 Первый игрок создает комнату и определяет ее размер. Другие игроки вводят то же имя комнаты, что и первый созданный игрок, и игра начнется. ',
+            2: 'Эта игра была разветвлена ​​от GeoGuess Master '
         },
-        customMap: 'Vlastní mapy',
+        customMap: 'Пользовательская',
         customMapDescriptions: {
-            1: 'Hru můžeš omezit na města, regiony nebo státy, aby jsi nemusel hrát po celém světě.',
-            2: 'Ve hře více hráčů toto omezení zvolí první hráč.',
-            3: 'Kromě toho můžeš definovat herní oblast pomocí souboru ve formátu ',
-            4: '.',
-            5: 'Obsah souboru GeoJSON vlož pomocí tlačítka :',
-            6: 'Na výběr je také z několika předpřipravených map : '
+            1: 'Вы можете ограничить случайные местоположения городом, штатом или страной с помощью строки поиска.',
+            2: 'В мультиплеере местоположение определяет первый игрок..',
+            3: 'Кроме того, вы можете составить пользовательскую карту с ',
+            4: 'файла.',
+            5: 'Вставьте содержимое карты GeoJson с помощью кнопки :',
+            6: 'Выбор пользовательской карты  : '
         },
-        limitation: 'OMEZENÍ',
-        limitationDescription: 'Tato hra má nastavená omezení počtu her za den, abych snížil náklady na provoz.             Pokud se mapa nenačítá, nebo se načte v režimu negativu (špatné barvy), znamená to, že dnešení limit her byl již naplněn.             Limit se resetuje o půlnoci amerického času (Pacific Time - tj. v 8 hodin ráno našeho zimního času, popř. 9 hodin ráno našeho letního času). Za tuto nepříjemnost se omlouvám.             Hra je poskytována open source, takže je možné hostovat vlastní kopii a hrát bez jakýchkoliv denních omezení.'
+        limitation: 'ЛИМИТЫ',
+        limitationDescription: 'В настоящее время я устанавливаю дневные квоты, поэтому стоимость запуска этой игры не может быть слишком высокой.             Если карта не загружается, это означает, что квоты были превышены в день.             Он будет сброшен в полночь по тихоокеанскому времени. Приносим извинения за неудобства.             Эта игра с открытым исходным кодом, поэтому вы можете создать свой собственный игровой сервер и играть в нее неограниченно.',
+        play: 'Играть'
     },
     StreetView: {
         nearby: {
-            title: 'Kousek vedle',
-            message: 'Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle :-)'
+            title: 'Ближайшая позиция',
+            message: 'К сожалению, нам не удалось найти случайную позицию в указанном месте. Однако мы нашли одну поблизости 😉'
         },
-        waitForOtherPlayers: 'Čekám na ostatní hráče...',
-        redirectToHomePage: 'Přesměruji na úvodní stránku...',
-        exitGame: 'Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...',
-        waitForOtherPlayersToFinish: 'Počkej prosím, až ostatní hráči dokončí hru...'
+        waitForOtherPlayers: 'Ждем других игроков ...',
+        redirectToHomePage: 'Перенаправляем на домашнюю страницу ...',
+        exitGame: 'Вы вынуждены выйти из игры. Перенаправляем на домашнюю страницу через 5 секунд ...',
+        waitForOtherPlayersToFinish: 'Ожидайте, пока другие игроки закончат игру ...'
     },
     Maps: {
-        makeGuess: 'HÁDEJ POLOHU',
-        guess: 'POTVRDIT',
-        nextRound: 'DALŠÍ KOLO',
-        viewSummary: 'ZOBRAZ VÝSLEDKY',
-        exit: 'UKONČIT',
-        reset: 'RESET',
-        playAgain: 'HREJ ZNOVU',
+        makeGuess: 'Предположить догадку',
+        guess: 'Угадать',
+        nextRound: 'Следущий раунд',
+        viewSummary: 'Посмтреть Сводку',
+        exit: 'Выход',
+        reset: 'Рестарт',
+        playAgain: 'Играть заново',
         infoWindow: {
-            Distance: 'Vzdálenost',
-            Points: 'Skóre'
+            Distance: 'Дистанция',
+            Points: 'Очки'
         }
     },
     Header: {
-        language: 'Jazyk',
-        about: 'O Hře',
-        limitation: 'Omezení',
-        contact: 'Kontakt'
+        language: 'Язык',
+        about: 'Про Проект',
+        limitation: 'Лимиты',
+        contact: 'Контакты'
     },
     HeaderGame: {
-        room: 'MÍSTNOST',
-        round: 'KOLO',
-        distance: 'VZDÁLENOST',
-        kmaway: '{value} km daleko',
-        score: 'SKÓRE'
+        room: 'КОМНАТА',
+        round: 'РАУНД',
+        distance: 'ДИСТАНЦИЯ',
+        kmaway: '{value} КМ отсюда',
+        score: 'ОЧКИ'
     },
-    next: 'DAŠÍ',
-    cancel: 'ZRUŠIT',
+    next: 'ДАЛЕЕ',
+    cancel: 'ОТМЕНА',
     DialogCustomMap: {
-        title: 'Vlastní Mapa',
-        invalid: 'Neplatný GeoJSON',
-        text: 'Text',
-        url: 'Url',
-        file: 'Soubor',
-        edit: 'Upravit Mapu',
-        fileLabel: 'Zvol GeoJSON soubor'
+        title: 'Пользовательская карта',
+        invalid: 'Неверный GeoJSON',
+        text: 'Текст',
+        url: 'Ссылка',
+        file: 'Файл',
+        edit: 'Редактировать карту',
+        fileLabel: 'Выбрать GeoJSON файл'
     },
     History: {
-        title: 'Historie',
-        date: 'Datum',
-        mode: 'Typ hry',
-        time: 'Časový limit',
-        distance: 'Vzdálenost',
-        points: 'Skóre',
-        rank: 'Umístění',
-        search: 'Vyhledávání'
+        title: 'История',
+        date: 'Дата',
+        mode: 'Режим',
+        time: 'Время',
+        distance: 'Дистанция',
+        points: 'Очки',
+        rank: 'Ранк',
+        search: 'Поиск'
     },
     DialogRoom: {
-        singlePlayer: 'Jeden hráč',
-        withFriends: 'Více hráčů',
-        invalidRoomName: 'Nevhodné jméno. Zkus se prosím pojmenovat jinak.',
-        inProgress: 'První hráč právě nastavuje hru. Vydrž prosím a za chvíli to zkus znovu.',
-        roomIsFull: 'Tato místnost je již plná. Zkus to prosím znovu později.'
+        singlePlayer: 'Одиночная игра',
+        withFriends: 'Игра с друзьями',
+        invalidRoomName: 'Неверное название. Попробуйте другое.',
+        inProgress: 'Прямо сейчас первый игрок создает комнату. Подождите и попробуйте еще раз.',
+        roomIsFull: 'Эта комната уже заполнена. Пожалуйста, попробуйте другую.'
     },
-    CardRoomName: { title: 'Napiš název herní místnostni.' },
-    CardRoomPlayerName: { title: 'Jak se chceš jmenovat?' },
-    CardRoomSize: { title: 'Zvol počet hráčů.' },
+    CardRoomName: { title: 'Введите название комнаты.' },
+    CardRoomPlayerName: { title: 'Введите имя игрока.' },
+    CardRoomSize: { title: 'Установите размер комнаты.' },
     CardRoomTime: {
-        title: 'Zvol časový limit kola.',
-        infinite: 'Bez omezení'
+        title: 'Установите ограничение по времени.',
+        infinite: 'Бесконечность'
     },
     CardRoomDifficulty: {
-        title: 'Zvol obtížnost hry (ovlivňuje bodování).',
-        easy: 'lehká (celý svět)',
-        medium: 'střední (stát)',
-        hard: 'těžká (město)'
+        title: 'Установите уровень сложности.',
+        easy: 'Легкий (мир)',
+        medium: 'Средний (страна)',
+        hard: 'Сложный (город)'
     },
     DialogSummary: {
-        summaryMsgSinglePoints: 'Obdržel jsi <strong>{points}</strong> bodů! ',
-        summaryMsgSingleDistance: 'Byl jsi <strong>{distance}</strong> km daleko!',
-        summaryMsgMultiPoints: '<strong>{playerName}</strong> skóroval(a) <strong>{points}</strong> bodů ! ',
-        summaryMsgMultiDistance: '(<strong>{distance}</strong> km daleko)',
-        viewDetails: 'Zobraz podrobnosti'
+        summaryMsgSinglePoints: 'Ваше количество <strong>{points}</strong> очков! ',
+        summaryMsgSingleDistance: 'Вы попали <strong>{distance}</strong> km отсюда!',
+        summaryMsgMultiPoints: '<strong>{playerName}</strong> количество очков <strong>{points}</strong> ! ',
+        summaryMsgMultiDistance: '(<strong>{distance}</strong> км отсюда)',
+        viewDetails: 'Посмотреть детали'
     },
     Footer: {
-        under: 'licence:',
-        privacyPolicy: 'Zásady ochrany osobních údajů (Anglicky)'
+        under: 'Под',
+        privacyPolicy: 'Политика Конфиденциальности'
     },
-    urlCopied: 'Adresa zkopírována',
-    DetailsMap: { moreInfo: 'Více informací' }
+    urlCopied: 'Ссылка скопирована',
+    DetailsMap: { moreInfo: 'Больше информации' }
 };
