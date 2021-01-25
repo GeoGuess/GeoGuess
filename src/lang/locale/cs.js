@@ -1,141 +1,133 @@
 export default {
     Home: {
-        record: 'Rekord',
-        historyBtn: 'HISTORIE',
-        about: 'O HŘE',
+        record: 'Record',
+        historyBtn: 'HISTORY',
+        about: 'ABOUT',
         searchBar: {
-            customLoaded: 'Vlastní mapa byla úspěšně načtena',
-            enterCity: 'Napiš název města, regionu nebo státu (anglicky)',
+            customLoaded: 'Custom map has been loaded',
+            enterCity: 'Enter city, state or country'
         },
         aboutDescriptions: {
-            1: 'Geoguess je jednoduchá geoguess hra zdarma a bez reklam. \
-                  Hráči jsou umístěni na náhodné místo na světě a musí se pokusit podle svého okolí uhádnout, kde se nachází na mapě. \
-                  Hra se skládá z pěti kol. \
-                  Své skóre můžeš sdílet s ostatními na sociálních sítích Facebook a Twitter. \
-                  Můžeš hrát sám, nebo s dalšími až pěti kamarády. \
-                  Při hře více hráčů vytvoří jeden hráč místnost, do které se ostatní hráči připojí, aby mohli hrát spolu.',
-            2: 'Tato hra je fork ',
+            1: 'Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer game with your friends up to five friends.                  The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start.',
+            2: 'This game was forked from '
         },
-        customMap: 'Vlastní mapy',
+        customMap: 'CUSTOMS MAP',
         customMapDescriptions: {
-            1: 'Hru můžeš omezit na města, regiony nebo státy, aby jsi nemusel hrát po celém světě.',
-            2: 'Ve hře více hráčů toto omezení zvolí první hráč.',
-            3: 'Kromě toho můžeš definovat herní oblast pomocí souboru ve formátu ',
-            4: '.',
-            5: 'Obsah souboru GeoJSON vlož pomocí tlačítka :',
-            6: 'Na výběr je také z několika předpřipravených map : ',
+            1: 'You can limit random locations to city, state, or country with the search bar.',
+            2: 'In the multiplayer, the first player fixes the location.',
+            3: 'Furthermore, you can make your customs map with ',
+            4: 'file.',
+            5: 'Insert the content of the GeoJson map with the button :',
+            6: 'Customs Map selection : '
         },
-        limitation: 'OMEZENÍ',
-        limitationDescription:
-            'Tato hra má nastavená omezení počtu her za den, abych snížil náklady na provoz. \
-            Pokud se mapa nenačítá, nebo se načte v režimu negativu (špatné barvy), znamená to, že dnešení limit her byl již naplněn. \
-            Limit se resetuje o půlnoci amerického času (Pacific Time - tj. v 8 hodin ráno našeho zimního času, popř. 9 hodin ráno našeho letního času). Za tuto nepříjemnost se omlouvám. \
-            Hra je poskytována open source, takže je možné hostovat vlastní kopii a hrát bez jakýchkoliv denních omezení.',
+        limitation: 'LIMITATION',
+        limitationDescription: 'Currently I set quotas per day so the cost to run this game can\'t get too high.             If the map doesn\'t load, it means the quotas has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.',
+        play: 'Play'
     },
     StreetView: {
         nearby: {
-            title: 'Kousek vedle',
-            message:
-                'Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle :-)',
+            title: 'Nearby Position',
+            message: 'Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉'
         },
-        waitForOtherPlayers: 'Čekám na ostatní hráče...',
-        redirectToHomePage: 'Přesměruji na úvodní stránku...',
-        exitGame:
-            'Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...',
-        waitForOtherPlayersToFinish:
-            'Počkej prosím, až ostatní hráči dokončí hru...',
+        waitForOtherPlayers: 'Waiting for other players...',
+        redirectToHomePage: 'Redirect to Home Page...',
+        exitGame: 'You are forced to exit the game. Redirect to home page after 5 seconds...',
+        waitForOtherPlayersToFinish: 'Waiting for other players to finish the game...'
     },
     Maps: {
-        makeGuess: 'HÁDEJ POLOHU',
-        guess: 'POTVRDIT',
-        nextRound: 'DALŠÍ KOLO',
-        viewSummary: 'ZOBRAZ VÝSLEDKY',
-        exit: 'UKONČIT',
+        makeGuess: 'MAKE GUESS',
+        guess: 'GUESS',
+        nextRound: 'NEXT ROUND',
+        viewSummary: 'VIEW SUMMARY',
+        exit: 'EXIT',
         reset: 'RESET',
-        playAgain: 'HREJ ZNOVU',
+        playAgain: 'PLAY AGAIN',
         infoWindow: {
-            Distance: 'Vzdálenost',
-            Points: 'Skóre',
-        },
+            Distance: 'Distance',
+            Points: 'Points'
+        }
     },
     Header: {
-        language: 'Jazyk',
-        about: 'O Hře',
-        limitation: 'Omezení',
-        contact: 'Kontakt',
+        language: 'Language',
+        about: 'About',
+        limitation: 'Limitation',
+        contact: 'Contact'
     },
     HeaderGame: {
-        room: 'MÍSTNOST',
-        round: 'KOLO',
-        distance: 'VZDÁLENOST',
-        kmaway: '{value} km daleko',
-        score: 'SKÓRE',
+        room: 'ROOM',
+        round: 'ROUND',
+        distance: 'DISTANCE',
+        kmaway: '{value} km away',
+        score: 'SCORE'
     },
-    next: 'DAŠÍ',
-    cancel: 'ZRUŠIT',
+    next: 'NEXT',
+    cancel: 'CANCEL',
     DialogCustomMap: {
-        title: 'Vlastní Mapa',
-        invalid: 'Neplatný GeoJSON',
+        title: 'Custom Map',
+        invalid: 'Invalid GeoJSON',
         text: 'Text',
         url: 'Url',
-        file: 'Soubor',
-        edit: 'Upravit Mapu',
-        fileLabel: 'Zvol GeoJSON soubor',
+        file: 'File',
+        edit: 'Edit Map',
+        fileLabel: 'Select GeoJSON file'
     },
     History: {
-        title: 'Historie',
-        date: 'Datum',
-        mode: 'Typ hry',
-        time: 'Časový limit',
-        distance: 'Vzdálenost',
-        points: 'Skóre',
-        rank: 'Umístění',
-        search: 'Vyhledávání',
+        title: 'History',
+        date: 'Date',
+        mode: 'Mode',
+        time: 'Time',
+        distance: 'Distance',
+        points: 'Points',
+        rank: 'Rank',
+        search: 'Search'
     },
-
     DialogRoom: {
-        singlePlayer: 'Jeden hráč',
-        withFriends: 'Více hráčů',
-        invalidRoomName: 'Nevhodné jméno. Zkus se prosím pojmenovat jinak.',
-        inProgress:
-            'První hráč právě nastavuje hru. Vydrž prosím a za chvíli to zkus znovu.',
-        roomIsFull: 'Tato místnost je již plná. Zkus to prosím znovu později.',
+        singlePlayer: 'Single Player',
+        withFriends: 'With Friends',
+        invalidRoomName: 'Invalid name. Please try another.',
+        inProgress: 'The first player is creating the room right now. Please wait and try again.',
+        roomIsFull: 'This room is already full. Please try another.'
     },
-
-    CardRoomName: {
-        title: 'Napiš název herní místnostni.',
-    },
+    CardRoomName: { title: 'Type a room name.' },
     CardRoomPlayerName: {
-        title: 'Jak se chceš jmenovat?',
+        title: 'Type a player name.',
+        anonymousPlayerName: 'Anonymous 🕵'
     },
-    CardRoomSize: {
-        title: 'Zvol počet hráčů.',
-    },
+    CardRoomSize: { title: 'Set a room size.' },
     CardRoomTime: {
-        title: 'Zvol časový limit kola.',
-        infinite: 'Bez omezení',
+        title: 'Set a time limitation.',
+        infinite: 'Infinite'
+    },
+    CardRoomSettings: {
+        title: 'Game Settings',
+        modeLabel: 'Select game mode',
+        timeAttackLabel: 'TimeAttack demo'
     },
     CardRoomDifficulty: {
-        title: 'Zvol obtížnost hry (ovlivňuje bodování).',
-        easy: 'lehká (celý svět)',
-        medium: 'střední (stát)',
-        hard: 'těžká (město)',
+        title: 'Set a difficulty level.',
+        easy: 'easy (world)',
+        medium: 'medium (country)',
+        hard: 'hard (city)'
     },
     DialogSummary: {
-        summaryMsgSinglePoints: 'Obdržel jsi <strong>{points}</strong> bodů! ',
-        summaryMsgSingleDistance:
-            'Byl jsi <strong>{distance}</strong> km daleko!',
-        summaryMsgMultiPoints:
-            '<strong>{playerName}</strong> skóroval(a) <strong>{points}</strong> bodů ! ',
-        summaryMsgMultiDistance: '(<strong>{distance}</strong> km daleko)',
-        viewDetails: 'Zobraz podrobnosti',
+        summaryMsgSinglePoints: 'Your score is <strong>{points}</strong> points! ',
+        summaryMsgSingleDistance: 'You are <strong>{distance}</strong> km away!',
+        summaryMsgMultiPoints: '<strong>{playerName}</strong> score is <strong>{points}</strong> ! ',
+        summaryMsgMultiDistance: '(<strong>{distance}</strong> km away)',
+        viewDetails: 'View details'
     },
     Footer: {
-        under: 'licence:',
-        privacyPolicy: 'Zásady ochrany osobních údajů (Anglicky)',
+        under: 'under',
+        privacyPolicy: 'Privacy Policy'
     },
-    urlCopied: 'Adresa zkopírována',
-    DetailsMap: {
-        moreInfo: 'Více informací',
+    urlCopied: 'Url copied',
+    DetailsMap: { moreInfo: 'More information' },
+    modes: {
+        classic: 'Classic',
+        country: 'Pick country'
     },
+    Demo: {
+        message: 'If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.',
+        btn: 'Join Us'
+    }
 };
