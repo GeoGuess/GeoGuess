@@ -1,33 +1,33 @@
 {
     "Home": {
         "record": "ベストスコア",
-        "historyBtn": "HISTORY",
+        "historyBtn": "歴史",
         "about": "このサイトについて",
         "searchBar": {
-            "customLoaded": "Custom map has been loaded",
-            "enterCity": "Enter city, state or country"
+            "customLoaded": "カスタムマップが読み込まれました",
+            "enterCity": "都市名、州や県、国名を入力してください"
         },
         "aboutDescriptions": {
             "1": "Geoguess は無料で気軽に遊べる地図を使ったゲームです。        プレーヤーは5ラウンドでランダムに出された場所の正確な場所を推測して競います。        友達と遊ぶ時は最初に部屋を作る人が部屋の名前を決めて部屋を作り、他の人が部屋に入るだけで一緒に遊ぶことができます。",
-            "2": "This game was forked from "
+            "2": "このゲームは以下からフォークされました "
         },
-        "customMap": "CUSTOMS MAP",
+        "customMap": "カスタムマップ",
         "customMapDescriptions": {
-            "1": "You can limit random locations to city, state, or country with the search bar.",
-            "2": "In the multiplayer, the first player fixes the location.",
-            "3": "Furthermore, you can make your customs map with ",
-            "4": "file.",
-            "5": "Insert the content of the GeoJson map with the button :",
-            "6": "Customs Map selection : "
+            "1": "検索バーで都市、都道府県、国にランダムな場所を制限できます。",
+            "2": "マルチプレイヤーでは、最初のプレイヤーが場所を修正します。",
+            "3": "さらに、あなたはあなたの習慣地図を作ることができます ",
+            "4": "ファイル",
+            "5": "以下のボタンでGeoJsonマップの内容を挿入します:",
+            "6": "カスタムマップ選択: "
         },
         "limitation": "制限",
         "limitationDescription": "地図とストリートビューを表示させるのにお金がかかるため制限をかけています。        1日の制限を超えると地図が正しくロードされなくなります。         制限は太平洋標準時での深夜にリセットされます。        このサイトはオープンソースなので制限なく遊びたい方は自分でゲームをセットアップすることもできます。",
-        "play": "Play"
+        "play": "プレイ"
     },
     "StreetView": {
         "nearby": {
-            "title": "Nearby Position",
-            "message": "Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉"
+            "title": "近くの位置",
+            "message": "残念ながら、定義された場所にランダムな位置を見つけることができませんでした。しかし、私たちは近くに見つけました 😉"
         },
         "waitForOtherPlayers": "他のプレーヤーを待っています...",
         "redirectToHomePage": "ホーム画面にリダイレクトします...",
@@ -40,11 +40,11 @@
         "nextRound": "進む",
         "viewSummary": "結果を見る",
         "exit": "終了する",
-        "reset": "RESET",
+        "reset": "リセット",
         "playAgain": "もう一度遊ぶ",
         "infoWindow": {
-            "Distance": "Distance",
-            "Points": "Points"
+            "Distance": "距離",
+            "Points": "ポイント"
         }
     },
     "Header": {
@@ -54,17 +54,17 @@
         "contact": "お問い合わせ"
     },
     "HeaderGame": {
-        "room": "ROOM",
+        "room": "ルーム",
         "round": "ラウンド",
-        "distance": "DISTANCE",
-        "kmaway": "{value} km away",
+        "distance": "距離",
+        "kmaway": "{value} km離れた",
         "score": "スコア"
     },
     "next": "進む",
     "cancel": "キャンセル",
     "DialogCustomMap": {
-        "title": "Custom Map",
-        "invalid": "Invalid GeoJSON",
+        "title": "カスタムマップ",
+        "invalid": "無効なGeoJSON",
         "text": "Text",
         "url": "Url",
         "file": "File",
