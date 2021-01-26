@@ -58,7 +58,7 @@
         "round": "РАУНД",
         "distance": "ДИСТАНЦИЯ",
         "kmaway": "{value} КМ отсюда",
-        "score": "ОЧКИ"
+        "score": "СЧЕТ"
     },
     "next": "ДАЛЕЕ",
     "cancel": "ОТМЕНА",
@@ -93,7 +93,7 @@
     },
     "CardRoomPlayerName": {
         "title": "Введите имя игрока.",
-        "anonymousPlayerName": "Anonymous 🕵"
+        "anonymousPlayerName": "Аноним 🕵"
     },
     "CardRoomSize": {
         "title": "Установите размер комнаты."
@@ -103,9 +103,9 @@
         "infinite": "Бесконечность"
     },
     "CardRoomSettings": {
-        "title": "Game Settings",
-        "modeLabel": "Select game mode",
-        "timeAttackLabel": "TimeAttack demo"
+        "title": "Настройки комнаты",
+        "modeLabel": "Выбери режим игры",
+        "timeAttackLabel": "Демо \"Гонка на Время\""
     },
     "CardRoomDifficulty": {
         "title": "Установите уровень сложности.",
@@ -129,11 +129,11 @@
         "moreInfo": "Больше информации"
     },
     "modes": {
-        "classic": "Classic",
-        "country": "Pick country"
+        "classic": "Классический",
+        "country": "Выберите страну"
     },
     "Demo": {
-        "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
-        "btn": "Join Us"
+        "message": "Если вы хотите внести свой вклад в проект и сделать его лучше, мы будем рады вашей помощи: Перевод 🔠, Карта 🌍, Код 💻, Идея💡, Бета тест 👀.",
+        "btn": "Присоединиться к нам"
     }
 }
