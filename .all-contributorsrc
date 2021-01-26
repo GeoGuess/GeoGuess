@@ -81,6 +81,16 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "wlanowski",
+      "name": "John Nitzsche",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25705332?v=4",
+      "profile": "http://wlanowski.de",
+      "contributions": [
+        "translation",
+        "financial"
+      ]
     }
   ],
   "contributorsPerLine": 7,
