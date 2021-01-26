@@ -8,16 +8,16 @@
             "enterCity": "Geben Sie eine Stadt, Region oder ein Land ein"
         },
         "aboutDescriptions": {
-            "1": "Geoguess ist ein kostenloses Spiel ohne Werbung. Die Spieler werden in fünf Runden an zufälligen Positionen auf der Welt gesetzt und müssen erraten, an welchen Positionen sie sich befinden. Dabei treten Sie gegeneinander an. Du kannst deine Punktzahl in sozialen Netzwerken wie Facebook und Twitter teilen. Du kannst mit deinen Freunden im Mehrspielermodus spielen. Der erste Spieler erstellt einen Raum und entscheidet über seine Größe. Nach der Erstellung können andere Spieler den Raum gemeinsam betreten.",
+            "1": "Geoguess ist ein kostenloses, werbefreies Spiel. Die Spieler werden in fünf Runden zu zufälligen Positionen in der Welt gesetzt und müssen erraten, an welchen Positionen sie sich befinden. Dabei treten Sie gegeneinander an. Du kannst deine Punktzahl in sozialen Netzwerken wie Facebook und Twitter teilen. Der erste Spieler erstellt einen Raum und entscheidet über seine Größe. Nach der Erstellung können andere Spieler den Raum gemeinsam betreten.",
             "2": "Dieses Spiel wurde geforkt von "
         },
         "customMap": "BENUTZERDEFINIERTE KARTEN",
         "customMapDescriptions": {
-            "1": "Sie können die zufälligen Positionen über die Suchleiste auf eine Stadt, eine Region oder ein Land beschränken.",
+            "1": "Du kannst die zufälligen Positionen auf eine Stadt, eine Region oder ein Land beschränken, indem du die Suchleiste benutzt.",
             "2": "Im Mehrspielermodus legt der erste Spieler den Ort fest.",
             "3": "Außerdem kannst du mit ",
             "4": "datei.",
-            "5": "Füge den Inhalt der Datei mit der Schaltfläche ein:",
+            "5": "Füge den Inhalt der Datei mit dieser Schaltfläche ein:",
             "6": "Eine Auswahl an benutzerdefinierten Karten:"
         },
         "limitation": "LIMITIERUNG",
