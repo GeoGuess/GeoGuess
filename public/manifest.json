@@ -64,9 +64,15 @@
             "sizes": "192x192",
             "type": "image/png",
             "density": "4.0"
+        },
+        {
+            "src": "./img/icons/android-launchericon-512-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "density": "5.0"
         }
     ],
-    "start_url": "./index.html",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#ded3af",
     "theme_color": "#468F69"
