@@ -33,10 +33,10 @@
                             v-if="index == 0 || index == 1 || index == 2"
                             :color="
                                 index == 0
-                                    ? '#FAA61A'
+                                    ? '#FFD700'
                                     : index == 1
-                                    ? '#EEEEEE'
-                                    : '#F4511E'
+                                    ? '#C0C0C0'
+                                    : '#CC8E34'
                             "
                             >mdi-crown</v-icon
                         >
