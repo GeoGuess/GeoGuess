@@ -8,6 +8,7 @@
         "multiplayer-game",
         "street-view"
     ],
+    "orientation": "any",
     "shortcuts": [{
         "name": "Play",
         "url": "/street-view",
