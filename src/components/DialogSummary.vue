@@ -33,7 +33,7 @@
                             v-if="index == 0 || index == 1 || index == 2"
                             :color="
                                 index == 0
-                                    ? '#FFD700'
+                                    ? '#CCAC00'
                                     : index == 1
                                     ? '#C0C0C0'
                                     : '#CC8E34'
