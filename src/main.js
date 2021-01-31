@@ -21,6 +21,7 @@ Vue.use(VueClipboard);
 Vue.use(GmapVue, {
     load: {
         key: process.env.VUE_APP_API_KEY,
+        language: localStorage.getItem('language'),
     },
 });
 Vue.config.productionTip = false;
