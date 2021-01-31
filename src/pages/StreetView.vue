@@ -80,6 +80,7 @@ import {
     getMaxDistanceBbox,
 } from '../utils';
 import { GAME_MODE } from '../constants';
+import { mapGetters } from 'vuex';
 
 export default {
     props: {
@@ -166,6 +167,9 @@ export default {
             difficultyData: this.difficulty,
             bbox: this.bboxObj,
         };
+    },
+    computed: {
+        ...mapGetters(['countriesJson']),
     },
     methods: {
         loadStreetView() {
@@ -347,7 +351,7 @@ export default {
                     if (!this.hasLocationSelected) {
                         if (this.mode === GAME_MODE.COUNTRY) {
                             this.$refs.mapContainer.selectRandomLocation(
-                                getRandomCountry()
+                                getRandomCountry(this.countriesJson)
                             );
                         } else {
                             // Set a random location if the player didn't select a location in time

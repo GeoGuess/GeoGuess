@@ -3,12 +3,12 @@
         <div class="map-content">
             <div
                 class="map-label"
-                v-if="polygonSelect"
-                :title="this.countryName"
+                v-if="polygonSelect || countryRandom"
+                :title="countryName"
             >
                 <FlagIcon
                     :isoName="
-                        this.countryRandom ||
+                        countryRandom ||
                         polygonSelect
                             .getFeatureById('feature')
                             .getProperty('iso_a2')
@@ -51,8 +51,8 @@
     </div>
 </template>
 <script type="text/javascript">
-import json from '@/resources/countries.geo.json';
 import FlagIcon from '@/components/shared/FlagIcon';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     props: ['bbox', 'country'],
@@ -72,6 +72,7 @@ export default {
         };
     },
     computed: {
+        ...mapGetters(['countriesJson']),
         countryName() {
             return this.$countryNameLocale(
                 this.countryRandom ||
@@ -82,10 +83,11 @@ export default {
         },
     },
     async mounted() {
+        await this.loadCountries();
         await this.$gmapApiPromiseLazy();
         this.$refs.mapRef.$mapPromise.then((map) => {
             this.map = map;
-            json.features.forEach((c) => {
+            this.countriesJson.features.forEach((c) => {
                 if (Array.isArray(c.geometry.coordinates)) {
                     const p = new google.maps.Data({
                         style: {
@@ -140,6 +142,7 @@ export default {
         },
     },
     methods: {
+        ...mapActions(['loadCountries']),
         centerOnBbox() {
             if (this.map && this.bbox) {
                 this.map.fitBounds({
@@ -188,7 +191,7 @@ export default {
             this.markers = [];
             this.infoWindowDatas = [];
         },
-        setInfoWindow(playerName, distance, points, endGame, country) {
+        setInfoWindow(playerName, _distance, _points, _endGame, country) {
             if (playerName) this.infoWindowDatas.push({ playerName, country });
         },
         drawPolyline() {},
