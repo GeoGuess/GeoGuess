@@ -104,7 +104,7 @@
     },
     "CardRoomSettings": {
         "title": "Nastavení hry",
-        "modeLabel": "Zvolte herní režim",
+        "modeLabel": "Zvol herní režim",
         "timeAttackLabel": "TimeAttack demo"
     },
     "CardRoomDifficulty": {
@@ -133,7 +133,7 @@
         "country": "Hádej zemi"
     },
     "Demo": {
-        "message": "Pokud chcete přispět k projektu a zlepšit jej, Vaše pomoc je velmi vítána: Překlady 🔠, Mapy 🌍, Kód 💻, Nápady 💡, Beta testy 👀.",
+        "message": "Pokud chcete přispět k projektu a zlepšit jej, Vaše pomoc je velmi vítána: Překlad 🔠, Mapy 🌍, Kód 💻, Nápady 💡, Beta testy 👀.",
         "btn": "Přidej se k nám"
     }
 }
