@@ -141,6 +141,8 @@ export default {
             this.$nextTick(() => {
                 if (this.$refs.mapRef)
                     this.$refs.mapRef.$mapPromise.then((map) => {
+                        const streetViewLayer = new google.maps.StreetViewCoverageLayer();
+                        streetViewLayer.setMap(map);
                         let data = new google.maps.Data({
                             map: map,
                         });
