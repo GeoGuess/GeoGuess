@@ -4,13 +4,13 @@ html {
 }
 * {
     scrollbar-width: thin;
-    scrollbar-color: #468F69  #ded3af;
+    scrollbar-color: #1f1e1cce  #ded3af;
   }
 
   
 *::-webkit-scrollbar-track
 {
-	background-color: #ded3af;
+	background-color: #ded3af ;
 }
 
 *::-webkit-scrollbar
@@ -22,7 +22,7 @@ html {
 *::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	background-color: #468F69;
+	background-color: #1f1e1cce;
 }
   .v-application {
     .v-card {

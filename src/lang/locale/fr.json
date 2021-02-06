@@ -85,11 +85,14 @@
       "inProgress":"Le premier joueur est en train de créer la salle. Veuillez patienter puis recommencer.",
       "roomIsFull":"La salle est déjà pleine. Essayez une autre."
     },
-    "CardRoomName":{"title":"Saisir le nom de la salle."},
+    "CardRoomName":{"title":"Saisir le nom de la salle pour la créer ou rejoindre une existante"},
     "CardRoomPlayerName":{"title":"Saisir votre pseudo.","anonymousPlayerName":"Anonyme 🕵"},
     "CardRoomSize":{"title":"Saisir la taille de la salle."},
     "CardRoomTime":{"title":"Saisir le temps maximum par manche.","infinite":"Infini"},
-    "CardRoomSettings":{"title":"Paramètre de la partie"},
+    "CardRoomSettings":{
+      "title":"Paramètre de la partie",
+      "timeattackInfos":"Dans le mode TimeAttack, seulement le premier joueur qui devine le pays récupère le point. Sois rapide et gagne!"
+    },
     "CardRoomDifficulty":{
       "title":"Saisir la difficulté.",
       "easy":"Facile (monde)",

@@ -56,11 +56,27 @@
                     </v-row>
                     <v-row
                         v-if="this.mode === gameMode.COUNTRY && !singlePlayer"
+                        align="center"
                     >
                         <v-checkbox
                             v-model="timeAttack"
                             :label="$t('CardRoomSettings.timeAttackLabel')"
-                        ></v-checkbox>
+                        >
+                        </v-checkbox>
+                        <v-tooltip
+                            top
+                            max-width="350"
+                            class="tooltip-timeattack"
+                        >
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn icon v-bind="attrs" v-on="on">
+                                    <v-icon> mdi-information</v-icon>
+                                </v-btn>
+                            </template>
+                            <span>{{
+                                $t('CardRoomSettings.timeattackInfos')
+                            }}</span>
+                        </v-tooltip>
                     </v-row>
                 </v-col>
                 <v-col
