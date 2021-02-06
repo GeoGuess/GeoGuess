@@ -7,6 +7,8 @@
                 :title="countryName"
             >
                 <FlagIcon
+                    size="big"
+                    rounded
                     :isoName="
                         countryRandom ||
                         polygonSelect
@@ -227,12 +229,11 @@ export default {
         background: #f1e9d6;
         display: flex;
         flex-direction: column;
+        width: 218px;
         .result-panel__item {
-            display: inline-flex;
-            .flag-icon {
-                margin-right: 0.8rem;
-                --width-flag: 1.2em;
-            }
+            display: inline-grid;
+            grid-template-columns: 30px auto;
+            grid-column-gap: 5px;
         }
     }
     .map-content {
@@ -252,9 +253,6 @@ export default {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            .flag-icon {
-                --width-flag: 3.5rem;
-            }
 
             .map-label__country-name {
                 width: 7rem;

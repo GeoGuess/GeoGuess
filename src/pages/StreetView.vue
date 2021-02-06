@@ -265,6 +265,17 @@ export default {
                     // Save the location's latitude and longitude
                     this.randomLatLng = data.location.latLng;
                     this.cptNotFoundLocation = 0;
+                    if (
+                        document.querySelector(
+                            '#street-view a[href^="https://maps"]'
+                        )
+                    )
+                        document
+                            .querySelector(
+                                '#street-view a[href^="https://maps"]'
+                            )
+                            .remove();
+
                     this.setPosition(data);
 
                     if (this.mode === GAME_MODE.COUNTRY) {
@@ -645,10 +656,12 @@ export default {
     margin-top: 56px;
 }
 @media (max-width: 450px) {
-    #street-view {
-        position: fixed;
-        min-height: 92%;
-        height: 92%;
+    #game-interface {
+        display: grid;
+        grid-template-rows: auto 44px;
+        #game-interface--overlay {
+            position: initial;
+        }
     }
 
     #reset-button {
