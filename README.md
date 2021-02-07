@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -70,6 +70,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="http://viniciusdof.com"><img src="https://avatars.githubusercontent.com/u/6577961?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vinicius Dell Osbel de Freitas</b></sub></a><br /><a href="#translation-viniciusdof" title="Translation">🌍</a></td>
+    <td align="center"><a href="http://wlanowski.de"><img src="https://avatars.githubusercontent.com/u/25705332?v=4?s=100" width="100px;" alt=""/><br /><sub><b>John Nitzsche</b></sub></a><br /><a href="#translation-wlanowski" title="Translation">🌍</a> <a href="#financial-wlanowski" title="Financial">💵</a></td>
   </tr>
 </table>
 
