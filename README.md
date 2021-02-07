@@ -22,9 +22,6 @@ This game was forked from [GeoGuess Master Web](https://github.com/spider-hand/G
 ## Table of contents
 
 <!-- TOC -->
-
-- [!logo Geoguess](#-geoguess)
-  - [Table of contents](#table-of-contents)
   - [🃏 Features](#-features)
   - [🚀 Deploy](#-deploy)
   - [📝 Changelog](#-changelog)
