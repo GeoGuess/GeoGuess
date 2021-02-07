@@ -160,6 +160,7 @@ export default {
             display: inline-grid;
             grid-template-columns: 30px auto;
             grid-column-gap: 5px;
+            width: 100%;
         }
     }
 }
