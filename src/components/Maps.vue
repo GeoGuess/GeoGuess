@@ -125,6 +125,7 @@
 
         <button
             id="make-guess-button"
+            class="primary"
             v-if="
                 $viewport.width < 450 &&
                 !isGuessButtonClicked &&
@@ -677,6 +678,7 @@ button.w-50 {
 @media (max-width: 450px) {
     #container-map {
         width: 100%;
+        opacity: 1;
         height: auto;
         left: 0;
         bottom: 0;
@@ -710,6 +712,8 @@ button.w-50 {
 
     #make-guess-button,
     #next-button,
+    #reset-button,
+    #guess-button,
     #summary-button {
         border-radius: 0;
         opacity: 1;
@@ -718,6 +722,10 @@ button.w-50 {
     }
     #guess-button {
         width: 75%;
+    }
+
+    #reset-button {
+        width: 25%;
     }
 
     #hide-map-button {
