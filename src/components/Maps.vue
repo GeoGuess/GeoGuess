@@ -3,7 +3,8 @@
         id="container-map"
         :class="[
             ($viewport.width >= 450 && (activeMap || pinActive)) ||
-            isMakeGuessButtonClicked
+            isMakeGuessButtonClicked ||
+            isNextButtonVisible
                 ? 'container-map--active'
                 : '',
             printMapFull ? 'container-map--full' : '',
@@ -129,7 +130,8 @@
             v-if="
                 $viewport.width < 450 &&
                 !isGuessButtonClicked &&
-                !isMakeGuessButtonClicked
+                !isMakeGuessButtonClicked &&
+                !isNextButtonVisible
             "
             @click="showMap"
         >

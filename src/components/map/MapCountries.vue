@@ -1,5 +1,5 @@
 <template>
-    <div id="map">
+    <div id="map" class="map-countries">
         <div class="map-content">
             <div
                 class="map-label"
@@ -266,6 +266,16 @@ export default {
                 border-radius: 5px;
                 font-weight: 500;
             }
+        }
+    }
+}
+@media (max-width: 450px) {
+    #map.map-countries {
+        display: grid !important;
+        grid-auto-rows: auto 30vw;
+        .result-panel {
+            width: 100%;
+            overflow-y: auto;
         }
     }
 }
