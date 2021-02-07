@@ -8,8 +8,6 @@
 </template>
 
 <script>
-// <i :class="'flag-icon flag-icon flag-icon-' + isoName.toLowerCase()"></i>
-
 import CountryFlag from 'vue-country-flag';
 export default {
     name: 'FlagIcon',

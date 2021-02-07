@@ -18,7 +18,7 @@
     "axios": "^0.21.1",
     "axios-cache-adapter": "^2.5.0",
     "core-js": "^2.6.12",
-    "firebase": "^8.2.4",
+    "firebase": "^8.2.6",
     "gmap-vue": "^1.5.0",
     "i18n-iso-countries": "^6.4.0",
     "random-position-in-polygon": "^1.0.3",
