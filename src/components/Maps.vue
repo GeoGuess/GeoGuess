@@ -91,6 +91,7 @@
             <button
                 id="guess-button"
                 :disabled="
+                    randomLatLng == null ||
                     selectedPos == null ||
                     isGuessButtonClicked ||
                     (!!this.room && !isReady)
