@@ -20,6 +20,10 @@ jobs:
         node: [12]
     runs-on: ${{ matrix.os }}
     steps:
+    - name: Set git to use LF
+      run: |
+        git config --global core.autocrlf false
+        git config --global core.eol lf
     - uses: actions/checkout@v1
     - uses: actions/cache@v1
       id: cache
@@ -38,7 +42,7 @@ jobs:
         path: ${{ steps.npm-cache.outputs.dir }}
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: Linter
       run: npm run lint
