@@ -1,6 +1,6 @@
 <template>
     <v-dialog
-        v-model="dialogSummary"
+        :value="dialogSummary"
         max-width="720"
         persistent
         :fullscreen="$viewport.width < 450"

@@ -443,10 +443,13 @@ export default {
             this.dialogTitle = this.$t('StreetView.redirectToHomePage');
             this.dialogText = this.$t('StreetView.exitGame');
             this.dialogMessage = true;
-            this.room.off();
-            this.room.remove();
-
-            this.$router.push('/history');
+            if (this.room) {
+                this.room.off();
+                this.room.remove();
+                this.$router.push('/history');
+            } else {
+                this.$router.push('/');
+            }
         },
         finishGame() {
             if (!this.multiplayer) {
@@ -485,8 +488,8 @@ export default {
             }
         } else {
             // Set a room name if it's null to detect when the user refresh the page
-            if (this.roomName == null) {
-                this.roomName = 'defaultRoomName';
+            if (!this.roomName) {
+                this.exitGame();
             }
             this.room = firebase.database().ref(this.roomName);
             this.room.child('active').set(true);
@@ -592,22 +595,14 @@ export default {
                     this.exitGame();
                 }
             });
-
-            window.addEventListener('popstate', () => {
-                // Remove the room when the player pressed the back button on browser
-                this.room.child('active').remove();
-                this.room.off();
-            });
-
-            window.addEventListener('beforeunload', () => {
-                // Remove the room when the player refreshes the window
-                this.room.child('active').remove();
-            });
-
-            // Force to exit the game if it's still the name this is set programmatically
-            if (this.roomName == 'defaultRoomName') {
-                this.room.child('active').remove();
-            }
+        }
+    },
+    beforeDestroy() {
+        if (this.room) {
+            // Remove the room when the player refreshes the window
+            // Remove the room when the player pressed the back button on browser
+            this.room.child('active').remove();
+            this.room.off();
         }
     },
 };

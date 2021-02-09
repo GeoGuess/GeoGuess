@@ -1,4 +1,4 @@
-export function startGame(cy, time) {
+export function startGame(cy, time, mode) {
     cy.visit('/', {
         onBeforeLoad: (win) => {
             Object.defineProperty(win.navigator, 'language', {
@@ -16,6 +16,9 @@ export function startGame(cy, time) {
 
     expect(cy.get('#modeClassicBtn')).to.exist;
     expect(cy.get('#modeCountryBtn')).to.exist;
+    if (mode === 'country') {
+        cy.get('#modeCountryBtn').click();
+    }
     const card = cy.get('.v-card');
     card.contains('.card_settings__time__label', 'Set a time limitation.');
 
@@ -23,7 +26,7 @@ export function startGame(cy, time) {
         cy.get('.time-picker .v-slider--horizontal').click('center');
         cy.get('.time-input__second input')
             .should('have.value', 0)
-            .type('{backspace}5');
+            .type('{backspace}' + time);
         cy.get('.time-input__minute input')
             .should('have.value', 5)
             .type('{backspace}0{enter}');

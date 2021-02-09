@@ -73,7 +73,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2]
+        containers: [1, 2, 3]
+        browsers: [chrome, firefox]
     steps:
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
@@ -82,8 +83,10 @@ jobs:
           wait-on: 'http://localhost:8080'
           record: true
           parallel: true
-          group: 'Actions chrome'
-          browser: chrome
+          group: merge
+          tag: ${{ github.event_name }}
+          browser: ${{matrix.browsers}}
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}

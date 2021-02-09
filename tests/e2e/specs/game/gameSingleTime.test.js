@@ -4,7 +4,7 @@ import { finishRound, setPosition, startGame } from '../../utils/gameTestUtils';
 
 describe('SinglePlayer', () => {
     it('Play SinglePlayer with timeout', () => {
-        startGame(cy, true);
+        startGame(cy, 5);
 
         for (const round of [1, 2, 3, 4, 5]) {
             cy.contains('#countdown-text', new RegExp('00:0([0-5])'));
