@@ -6,9 +6,9 @@ exports[`Home.vue test mounted 1`] = `
   <!---->
   <section class="home-page__main">
     <v-container-stub tag="div" fluid="true" class="home-page__main__container">
-      <v-layout-stub tag="div" row="" class="home-page__main__layout">
+      <v-layout-stub tag="div" class="home-page__main__layout">
         <div class="home-page__traveler-container"><img src="../assets/home/traveller.svg" class="home-page__traveler-img"></div>
-        <v-layout-stub tag="div" row="" class="home-page__main__content">
+        <v-layout-stub tag="div" class="home-page__main__content">
           <div class="box">
             <searchbox-stub></searchbox-stub>
           </div>
@@ -30,9 +30,9 @@ exports[`Home.vue test mounted 2`] = `
   <!---->
   <section class="home-page__main">
     <v-container-stub tag="div" fluid="true" class="home-page__main__container">
-      <v-layout-stub tag="div" row="" class="home-page__main__layout">
+      <v-layout-stub tag="div" class="home-page__main__layout">
         <div class="home-page__traveler-container"><img src="../assets/home/traveller.svg" class="home-page__traveler-img"></div>
-        <v-layout-stub tag="div" row="" class="home-page__main__content">
+        <v-layout-stub tag="div" class="home-page__main__content">
           <div class="box">
             <searchbox-stub></searchbox-stub>
           </div>

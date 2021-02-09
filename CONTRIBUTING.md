@@ -72,6 +72,7 @@ export const languages = [
     }
 ];
 ```
+
     * `src/plugins/vuetify.js`
 ```js
 // 1 
@@ -86,3 +87,11 @@ export default new Vuetify({
 ```
 
 
+    * `src/plugins/countryNamePlugin.js`
+
+```js
+import countries from 'i18n-iso-countries';
+countries.registerLocale(require(`i18n-iso-countries/langs/en.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/ru.json`));
+
+```

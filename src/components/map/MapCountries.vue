@@ -1,14 +1,16 @@
 <template>
-    <div id="map">
+    <div id="map" class="map-countries">
         <div class="map-content">
             <div
                 class="map-label"
-                v-if="polygonSelect"
-                :title="this.countryName"
+                v-if="polygonSelect || countryRandom"
+                :title="countryName"
             >
                 <FlagIcon
+                    size="big"
+                    rounded
                     :isoName="
-                        this.countryRandom ||
+                        countryRandom ||
                         polygonSelect
                             .getFeatureById('feature')
                             .getProperty('iso_a2')
@@ -51,8 +53,8 @@
     </div>
 </template>
 <script type="text/javascript">
-import json from '@/resources/countries.geo.json';
 import FlagIcon from '@/components/shared/FlagIcon';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     props: ['bbox', 'country'],
@@ -72,6 +74,7 @@ export default {
         };
     },
     computed: {
+        ...mapGetters(['countriesJson']),
         countryName() {
             return this.$countryNameLocale(
                 this.countryRandom ||
@@ -82,10 +85,11 @@ export default {
         },
     },
     async mounted() {
+        await this.loadCountries();
         await this.$gmapApiPromiseLazy();
         this.$refs.mapRef.$mapPromise.then((map) => {
             this.map = map;
-            json.features.forEach((c) => {
+            this.countriesJson.features.forEach((c) => {
                 if (Array.isArray(c.geometry.coordinates)) {
                     const p = new google.maps.Data({
                         style: {
@@ -140,6 +144,7 @@ export default {
         },
     },
     methods: {
+        ...mapActions(['loadCountries']),
         centerOnBbox() {
             if (this.map && this.bbox) {
                 this.map.fitBounds({
@@ -188,7 +193,7 @@ export default {
             this.markers = [];
             this.infoWindowDatas = [];
         },
-        setInfoWindow(playerName, distance, points, endGame, country) {
+        setInfoWindow(playerName, _distance, _points, _endGame, country) {
             if (playerName) this.infoWindowDatas.push({ playerName, country });
         },
         drawPolyline() {},
@@ -224,12 +229,11 @@ export default {
         background: #f1e9d6;
         display: flex;
         flex-direction: column;
+        width: 218px;
         .result-panel__item {
-            display: inline-flex;
-            .flag-icon {
-                margin-right: 0.8rem;
-                --width-flag: 1.2em;
-            }
+            display: inline-grid;
+            grid-template-columns: 30px auto;
+            grid-column-gap: 5px;
         }
     }
     .map-content {
@@ -249,9 +253,6 @@ export default {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            .flag-icon {
-                --width-flag: 3.5rem;
-            }
 
             .map-label__country-name {
                 width: 7rem;
@@ -265,6 +266,16 @@ export default {
                 border-radius: 5px;
                 font-weight: 500;
             }
+        }
+    }
+}
+@media (max-width: 450px) {
+    #map.map-countries {
+        display: grid !important;
+        grid-auto-rows: auto 30vw;
+        .result-panel {
+            width: 100%;
+            overflow-y: auto;
         }
     }
 }

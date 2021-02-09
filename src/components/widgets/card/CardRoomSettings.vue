@@ -10,7 +10,9 @@
                         <label class="card_settings__mode__label">{{
                             $t('CardRoomSettings.modeLabel')
                         }}</label>
-                        <v-flex class="d-flex justify-space-around w-100">
+                        <v-flex
+                            class="card_settings__mode__btns d-flex justify-space-around w-100"
+                        >
                             <v-btn
                                 :text="this.mode !== gameMode.CLASSIC"
                                 rounded
@@ -56,11 +58,27 @@
                     </v-row>
                     <v-row
                         v-if="this.mode === gameMode.COUNTRY && !singlePlayer"
+                        align="center"
                     >
                         <v-checkbox
                             v-model="timeAttack"
                             :label="$t('CardRoomSettings.timeAttackLabel')"
-                        ></v-checkbox>
+                        >
+                        </v-checkbox>
+                        <v-tooltip
+                            top
+                            max-width="350"
+                            class="tooltip-timeattack"
+                        >
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn icon v-bind="attrs" v-on="on">
+                                    <v-icon> mdi-information</v-icon>
+                                </v-btn>
+                            </template>
+                            <span>{{
+                                $t('CardRoomSettings.timeattackInfos')
+                            }}</span>
+                        </v-tooltip>
                     </v-row>
                 </v-col>
                 <v-col
@@ -74,7 +92,7 @@
                         :zoom="1"
                         ref="mapRef"
                         map-type-id="roadmap"
-                        style="width: 350px; height: 250px"
+                        style="width: 350px; max-width: 100%; height: 250px"
                         :options="{
                             gestureHandling: 'greedy',
                         }"
@@ -174,5 +192,15 @@ export default {
 <style lang="scss" scoped>
 .settings .row {
     margin-bottom: 2.5rem;
+}
+@media (max-width: 360px) {
+    .card_settings__mode__btns {
+        flex-direction: column;
+        margin-top: 2rem;
+        .v-btn {
+            margin: 5px 0;
+            width: 100%;
+        }
+    }
 }
 </style>

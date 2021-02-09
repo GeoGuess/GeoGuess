@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import json from '@/resources/countries.geo.json';
 import FlagIcon from '@/components/shared/FlagIcon';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'HistoryMapCountry',
     props: ['item'],
@@ -69,7 +69,19 @@ export default {
             ],
         };
     },
+    methods: { ...mapActions(['loadCountries']) },
+    computed: {
+        ...mapGetters(['countriesJson']),
+    },
+    watch: {
+        countriesJson(val) {
+            if (!val || !val.features) {
+                return;
+            }
+        },
+    },
     async mounted() {
+        await this.loadCountries();
         await this.$gmapApiPromiseLazy();
         this.$refs.mapRef.$mapPromise.then((map) => {
             if (!this.item.multiplayer) {
@@ -84,7 +96,7 @@ export default {
                             fillColor: '#1D4ED8',
                         },
                     });
-                    const geojsonCountry = json.features.find(
+                    const geojsonCountry = this.countriesJson.features.find(
                         (j) => j.properties.iso_a2 === r.guess
                     );
                     p.addGeoJson(geojsonCountry);
@@ -105,7 +117,7 @@ export default {
                                 fillColor: this.strokeColors[i],
                             },
                         });
-                        const geojsonCountry = json.features.find(
+                        const geojsonCountry = this.countriesJson.features.find(
                             (j) =>
                                 j.properties.iso_a2 ===
                                 r.players[playerName].guess
@@ -143,12 +155,12 @@ export default {
         display: flex;
         flex-direction: column;
         overflow-y: auto;
+        width: 218px;
         .result-panel__item {
-            padding: 0 2%;
-            .flag-icon {
-                margin-right: 0.8rem;
-                --width-flag: 1.2em;
-            }
+            display: inline-grid;
+            grid-template-columns: 30px auto;
+            grid-column-gap: 5px;
+            width: 100%;
         }
     }
 }

@@ -1,4 +1,3 @@
-import json from '@/resources/countries.geo.json';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import axios from 'axios';
@@ -129,9 +128,10 @@ export function getSelectedPos(selectedPos, gameMode) {
     }
 }
 
-export function getRandomCountry() {
-    return json.features[Math.floor(Math.random() * json.features.length)]
-        .properties['iso_a2'];
+export function getRandomCountry(countries) {
+    return countries.features[
+        Math.floor(Math.random() * countries.features.length)
+    ].properties['iso_a2'];
 }
 
 export function getMaxDistanceBbox(bbox) {

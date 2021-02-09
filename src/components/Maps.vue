@@ -3,7 +3,8 @@
         id="container-map"
         :class="[
             ($viewport.width >= 450 && (activeMap || pinActive)) ||
-            isMakeGuessButtonClicked
+            isMakeGuessButtonClicked ||
+            isNextButtonVisible
                 ? 'container-map--active'
                 : '',
             printMapFull ? 'container-map--full' : '',
@@ -74,17 +75,6 @@
             ref="map"
             @setSeletedPos="setSeletedPos"
         />
-        <button
-            id="make-guess-button"
-            v-if="
-                $viewport.width < 450 &&
-                !isGuessButtonClicked &&
-                !isMakeGuessButtonClicked
-            "
-            @click="showMap"
-        >
-            {{ $t('Maps.makeGuess') }}
-        </button>
         <div>
             <button
                 id="reset-button"
@@ -101,6 +91,7 @@
             <button
                 id="guess-button"
                 :disabled="
+                    randomLatLng == null ||
                     selectedPos == null ||
                     isGuessButtonClicked ||
                     (!!this.room && !isReady)
@@ -134,6 +125,19 @@
             {{ $t('Maps.viewSummary') }}
         </button>
 
+        <button
+            id="make-guess-button"
+            class="primary"
+            v-if="
+                $viewport.width < 450 &&
+                !isGuessButtonClicked &&
+                !isMakeGuessButtonClicked &&
+                !isNextButtonVisible
+            "
+            @click="showMap"
+        >
+            {{ $t('Maps.makeGuess') }}
+        </button>
         <DialogSummary
             :dialogSummary="dialogSummary"
             :summaryTexts="summaryTexts"
@@ -676,6 +680,11 @@ button.w-50 {
 
 @media (max-width: 450px) {
     #container-map {
+        width: 100%;
+        opacity: 1;
+        height: auto;
+        left: 0;
+        bottom: 0;
         display: flex;
         flex-direction: column;
         .container-map_controls {
@@ -691,10 +700,8 @@ button.w-50 {
         &.container-map--active .container-map_controls {
             display: none;
         }
-        bottom: 0;
-        width: 95%;
         &.container-map--active {
-            height: 30vh;
+            height: 40vh;
         }
         &.container-map--full {
             position: absolute;
@@ -705,14 +712,23 @@ button.w-50 {
             max-height: 100%;
         }
     }
+
     #make-guess-button,
     #next-button,
+    #reset-button,
+    #guess-button,
     #summary-button {
+        border-radius: 0;
+        opacity: 1;
         bottom: 0;
         width: 100%;
     }
     #guess-button {
         width: 75%;
+    }
+
+    #reset-button {
+        width: 25%;
     }
 
     #hide-map-button {

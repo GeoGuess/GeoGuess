@@ -9,7 +9,7 @@
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/GeoGuess/Geoguess/branch/master/graph/badge.svg?token=J94E3GE4SL)](https://codecov.io/gh/GeoGuess/Geoguess)
-[![e2e](https://github.com/GeoGuess/Geoguess/workflows/e2e/badge.svg)](https://dashboard.cypress.io/projects/2fcg4n/runs)
+[![Crowdin](https://badges.crowdin.net/geoguess/localized.svg)](https://translate.geoguess.games/project/geoguess)
 
 > Demo : https://demo.geoguess.games
 
@@ -22,13 +22,12 @@ This game was forked from [GeoGuess Master Web](https://github.com/spider-hand/G
 ## Table of contents
 
 <!-- TOC -->
-
--   [🃏 Features](#-features)
--   [🚀 Deploy](#-deploy)
--   [📝 Changelog](#-Changelog)
--   [👏 Contribution](#-Contribution)
--   [📜 License](#-license)
--   [📞 Contact](#-contact)
+  - [🃏 Features](#-features)
+  - [🚀 Deploy](#-deploy)
+  - [📝 Changelog](#-changelog)
+  - [👏 Contribution](#-contribution)
+  - [📜 License](#-license)
+  - [📞 Contact](#-contact)
 <!-- /TOC -->
 
 ## 🃏 Features

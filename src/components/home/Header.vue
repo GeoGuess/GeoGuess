@@ -89,7 +89,8 @@ export default {
     z-index: 1;
     padding: 0 5%;
     background-color: #f1e9d6 !important;
-    nav.header__nav {
+    nav.header__nav,
+    .header__nav__btns {
         display: flex;
         & > div {
             margin: 0 1.5rem;

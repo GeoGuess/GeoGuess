@@ -21,6 +21,7 @@ Vue.use(VueClipboard);
 Vue.use(GmapVue, {
     load: {
         key: process.env.VUE_APP_API_KEY,
+        language: localStorage.getItem('language'),
     },
 });
 Vue.config.productionTip = false;
@@ -57,6 +58,7 @@ const firebaseConfig = {
     appId: process.env.VUE_APP_FIREBASE_APP_ID,
     measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID,
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
