@@ -22,8 +22,7 @@ describe('SinglePlayer', () => {
             cy.get('.map-label').should('not.exist');
 
             cy.get('#guess-button[disabled="disabled"]').should('exist');
-            cy.wait(4000);
-            cy.wait('@getReverse');
+            cy.wait(5000);
 
             cy.get('.container-map--full').should('exist');
 
