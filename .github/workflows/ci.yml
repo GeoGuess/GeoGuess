@@ -81,7 +81,8 @@ jobs:
           start: npm run serve
           wait-on: 'http://localhost:8080'
           record: true
-          group: merge
+          parallel: true
+          group: ${{matrix.browsers}}
           tag: ${{ github.event_name }}
           browser: ${{matrix.browsers}}
         env:
