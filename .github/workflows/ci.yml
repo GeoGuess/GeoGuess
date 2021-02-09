@@ -59,36 +59,36 @@ jobs:
   #       name: ${{ matrix.os }}-node-v${{ matrix.node }}-build
   #       path: dist
 
-  cypress-chrome-firefox:
-    # needs: integration
-    env:
-      VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
-      VUE_APP_FIREBASE_API_KEY: YOUR_FIREBASE_API_KEY
-      VUE_APP_FIREBASE_PROJECT_ID: YOUR_FIREBASE_PROJECT_ID
-      VUE_APP_FIREBASE_MESSAGING_SENDER_ID: YOUR_FIREBASE_MESSAGING_SENDER_ID
-      VUE_APP_FIREBASE_APP_ID: YOUR_FIREBASE_APP_ID
-      VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
-    runs-on: ubuntu-16.04
-    name: E2E on Ubuntu
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4]
-        browsers: [chrome, firefox]
-    steps:
-      - uses: actions/checkout@v1
-      - uses: cypress-io/github-action@v2
-        with:
-          start: npm run serve
-          wait-on: 'http://localhost:8080'
-          record: true
-          parallel: true
-          group: ${{matrix.browsers}}
-          tag: ${{ github.event_name }}
-          browser: ${{matrix.browsers}}
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+  # cypress-chrome-firefox:
+  #   needs: integration
+  #   env:
+  #     VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
+  #     VUE_APP_FIREBASE_API_KEY: YOUR_FIREBASE_API_KEY
+  #     VUE_APP_FIREBASE_PROJECT_ID: YOUR_FIREBASE_PROJECT_ID
+  #     VUE_APP_FIREBASE_MESSAGING_SENDER_ID: YOUR_FIREBASE_MESSAGING_SENDER_ID
+  #     VUE_APP_FIREBASE_APP_ID: YOUR_FIREBASE_APP_ID
+  #     VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
+  #   runs-on: ubuntu-16.04
+  #   name: E2E on Ubuntu
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       containers: [1, 2, 3, 4]
+  #       browsers: [chrome, firefox]
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: cypress-io/github-action@v2
+  #       with:
+  #         start: npm run serve
+  #         wait-on: 'http://localhost:8080'
+  #         record: true
+  #         parallel: true
+  #         group: ${{matrix.browsers}}
+  #         tag: ${{ github.event_name }}
+  #         browser: ${{matrix.browsers}}
+  #       env:
+  #         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  #         COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
 
   cypress-edge:    
     # needs: integration
@@ -102,7 +102,10 @@ jobs:
     name: E2E on Windows
     runs-on: windows-latest
     steps:
-      - run: git config --global core.autocrlf false
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
         with:
