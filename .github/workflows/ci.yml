@@ -102,6 +102,7 @@ jobs:
     name: E2E on Windows
     runs-on: windows-latest
     steps:
+      - run: git config --global core.autocrlf false
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
         with:
