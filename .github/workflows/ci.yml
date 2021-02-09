@@ -73,6 +73,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        containers: [1, 2, 3, 4]
         browsers: [chrome, firefox]
     steps:
       - uses: actions/checkout@v1
