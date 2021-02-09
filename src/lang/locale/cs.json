@@ -89,7 +89,7 @@
         "roomIsFull": "Tato místnost je již plná. Zkus to prosím znovu později."
     },
     "CardRoomName": {
-        "title": "Napiš název herní místnostni."
+        "title": "Type a room name to create a new room or join a existing room"
     },
     "CardRoomPlayerName": {
         "title": "Jak se chceš jmenovat?",
@@ -105,7 +105,8 @@
     "CardRoomSettings": {
         "title": "Nastavení hry",
         "modeLabel": "Zvol herní režim",
-        "timeAttackLabel": "TimeAttack demo"
+        "timeAttackLabel": "TimeAttack",
+        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!"
     },
     "CardRoomDifficulty": {
         "title": "Zvol obtížnost hry (ovlivňuje bodování).",
