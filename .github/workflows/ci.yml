@@ -33,7 +33,7 @@ jobs:
       run: |
         echo "::set-output name=dir::$(npm config get cache)"
     - uses: actions/cache@v2
-      if: matrix.os == 'windows'
+      if: matrix.os == 'windows-latest'
       with:
         path: ${{ steps.npm-cache.outputs.dir }}
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
