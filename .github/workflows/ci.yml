@@ -89,6 +89,7 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+
   cypress-edge:    
     # needs: integration
     env:
@@ -108,9 +109,8 @@ jobs:
           wait-on: 'http://localhost:8080'
           record: true
           browser: edge
-          group: ${{matrix.browsers}}
+          group: edge
           tag: ${{ github.event_name }}
-          browser: ${{matrix.browsers}}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
