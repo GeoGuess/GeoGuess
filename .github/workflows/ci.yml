@@ -59,7 +59,7 @@ jobs:
   #       name: ${{ matrix.os }}-node-v${{ matrix.node }}-build
   #       path: dist
 
-  cypress-chrome:
+  cypress-chrome-firefox:
     # needs: integration
     env:
       VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
@@ -69,7 +69,7 @@ jobs:
       VUE_APP_FIREBASE_APP_ID: YOUR_FIREBASE_APP_ID
       VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
     runs-on: ubuntu-16.04
-    name: E2E on Chrome
+    name: E2E on Ubuntu
     strategy:
       fail-fast: false
       matrix:
@@ -87,6 +87,31 @@ jobs:
           tag: ${{ github.event_name }}
           browser: ${{matrix.browsers}}
         env:
-          # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+  cypress-edge:    
+    # needs: integration
+    env:
+      VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
+      VUE_APP_FIREBASE_API_KEY: YOUR_FIREBASE_API_KEY
+      VUE_APP_FIREBASE_PROJECT_ID: YOUR_FIREBASE_PROJECT_ID
+      VUE_APP_FIREBASE_MESSAGING_SENDER_ID: YOUR_FIREBASE_MESSAGING_SENDER_ID
+      VUE_APP_FIREBASE_APP_ID: YOUR_FIREBASE_APP_ID
+      VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
+    name: E2E on Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: cypress-io/github-action@v2
+        with:
+          start: npm run serve
+          wait-on: 'http://localhost:8080'
+          record: true
+          browser: edge
+          group: ${{matrix.browsers}}
+          tag: ${{ github.event_name }}
+          browser: ${{matrix.browsers}}
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+
