@@ -229,9 +229,6 @@ export default {
     methods: {
         setSeletedPos(pos) {
             this.selectedPos = pos;
-
-            // eslint-disable-next-line no-console
-            console.log(pos);
         },
         playAgain() {
             window.location.reload();

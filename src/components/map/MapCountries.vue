@@ -164,8 +164,6 @@ export default {
                     map: this.map,
                 });
             }
-            // eslint-disable-next-line
-            console.log(pos, isRandomLocation, country, c, this.countries[c]);
             this.countries[c].setStyle({
                 fillOpacity: 0.3,
                 strokeOpacity: 0.8,

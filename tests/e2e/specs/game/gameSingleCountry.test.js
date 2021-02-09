@@ -4,8 +4,7 @@ import { finishRound, startGame } from '../../utils/gameTestUtils';
 
 describe('SinglePlayer', () => {
     it('Play SinglePlayer', () => {
-        cy.intercept('/reverse*').as('getReverse');
-        startGame(cy, 4, 'country');
+        startGame(cy, 5, 'country');
 
         cy.get('div#container-map').should(
             'have.class',
@@ -23,8 +22,7 @@ describe('SinglePlayer', () => {
             cy.get('.map-label').should('not.exist');
 
             cy.get('#guess-button[disabled="disabled"]').should('exist');
-            cy.wait(4000);
-            cy.wait('@getReverse');
+            cy.wait(5000);
 
             cy.get('.container-map--full').should('exist');
 
