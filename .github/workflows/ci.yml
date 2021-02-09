@@ -73,7 +73,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2, 3]
         browsers: [chrome, firefox]
     steps:
       - uses: actions/checkout@v1
@@ -82,7 +81,6 @@ jobs:
           start: npm run serve
           wait-on: 'http://localhost:8080'
           record: true
-          parallel: true
           group: merge
           tag: ${{ github.event_name }}
           browser: ${{matrix.browsers}}
