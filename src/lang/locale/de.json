@@ -89,7 +89,7 @@
         "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen."
     },
     "CardRoomName": {
-        "title": "Gebe den Namen des Raumes ein, um ihn zu anzulegen oder um ihn zu betreten, wenn dieser bereits von jemandem erstellt wurde."
+        "title": "Type a room name to create a new room or join a existing room"
     },
     "CardRoomPlayerName": {
         "title": "Trage deinen Namen ein.",
@@ -105,7 +105,8 @@
     "CardRoomSettings": {
         "title": "Spieleinstellungen",
         "modeLabel": "Spielmodus wählen",
-        "timeAttackLabel": "TimeAttack Demo"
+        "timeAttackLabel": "TimeAttack",
+        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!"
     },
     "CardRoomDifficulty": {
         "title": "Lege den Schwierigkeitsgrad fest.",
