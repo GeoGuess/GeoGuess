@@ -1,10 +1,8 @@
-import { finishRound, startGame } from '../../utils/gameTestUtils';
-
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('SinglePlayer', () => {
     it('Play SinglePlayer Mode Country Time 8s', () => {
-        startGame(cy, 8, 'country');
+        cy.startGame(10, 'country');
 
         cy.get('div#container-map').should(
             'have.class',
@@ -22,7 +20,7 @@ describe('SinglePlayer', () => {
             cy.get('.map-label').should('not.exist');
 
             cy.get('#guess-button[disabled="disabled"]').should('exist');
-            cy.wait(5000);
+            cy.wait(10000);
 
             cy.get('.container-map--full').should('exist');
 
@@ -36,6 +34,6 @@ describe('SinglePlayer', () => {
                 cy.get('#summary-button').click();
             }
         }
-        finishRound(cy);
+        cy.finishRound();
     });
 });
