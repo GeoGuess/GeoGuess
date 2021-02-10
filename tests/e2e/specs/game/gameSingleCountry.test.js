@@ -3,7 +3,7 @@ import { finishRound, startGame } from '../../utils/gameTestUtils';
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('SinglePlayer', () => {
-    it('Play SinglePlayer', () => {
+    it('Play SinglePlayer Mode Country Time 5s', () => {
         startGame(cy, 5, 'country');
 
         cy.get('div#container-map').should(

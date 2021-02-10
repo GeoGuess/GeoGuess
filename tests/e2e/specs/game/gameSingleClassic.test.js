@@ -3,7 +3,7 @@ import { finishRound, setPosition, startGame } from '../../utils/gameTestUtils';
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('SinglePlayer', () => {
-    it('Play SinglePlayer', () => {
+    it('Play SinglePlayer Classic', () => {
         startGame(cy);
 
         cy.get('div#container-map').should(

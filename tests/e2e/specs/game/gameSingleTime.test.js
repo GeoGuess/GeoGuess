@@ -3,7 +3,7 @@ import { finishRound, setPosition, startGame } from '../../utils/gameTestUtils';
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('SinglePlayer', () => {
-    it('Play SinglePlayer with timeout', () => {
+    it('Play SinglePlayer Mode Classic Time 5s', () => {
         startGame(cy, 5);
 
         for (const round of [1, 2, 3, 4, 5]) {
