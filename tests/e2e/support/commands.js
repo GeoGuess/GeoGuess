@@ -51,6 +51,9 @@ Cypress.Commands.add('setPosition', (isMobile) => {
     if (isMobile) {
         cy.get('#make-guess-button').click();
     }
+    if (cy.get('div#container-map .dismissButton')) {
+        cy.get('div#container-map .dismissButton').click();
+    }
     cy.get('div#container-map').click('center');
     cy.get('map').should('exist');
 });
