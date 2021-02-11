@@ -51,10 +51,13 @@ Cypress.Commands.add('setPosition', (isMobile) => {
     if (isMobile) {
         cy.get('#make-guess-button').click();
     }
+
     // if panel Dev mode Google
-    if (cy.find('div#container-map .dismissButton').length > 0) {
+    cy.get("div#container-map").then($body => {
+      if ($body.find(".dismissButton").length > 0) {       
         cy.get('div#container-map .dismissButton').click();
-    }
+      }
+    });
     cy.get('div#container-map').click('center');
     cy.get('map').should('exist');
 });
