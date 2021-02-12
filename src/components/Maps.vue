@@ -10,8 +10,18 @@
             printMapFull ? 'container-map--full' : '',
             `container-map--size-${size}`,
         ]"
-        @mouseover="activeMap = true"
-        @mouseleave="activeMap = false"
+        v-on="
+            $viewport.width >= 450 // Only on tablet and desktop Issue #104
+                ? {
+                      mouseover: () => {
+                          activeMap = true;
+                      },
+                      mouseleave: () => {
+                          activeMap = false;
+                      },
+                  }
+                : {}
+        "
     >
         <div class="container-map_details">
             <DetailsMap
