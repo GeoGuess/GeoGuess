@@ -25,7 +25,7 @@ describe('SinglePlayer', () => {
 
         for (const round of [1, 2, 3, 4, 5]) {
             cy.contains('#roundLabel', round + ' / 5');
-            cy.setPosition();
+            cy.setPositionGuess();
             cy.get('#guess-button:not([disabled="disabled"])').click();
 
             if (round !== 5) {

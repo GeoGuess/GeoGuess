@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card id="card-playername">
         <v-card-title>
             <span id="card-title">{{ $t('CardRoomPlayerName.title') }}</span>
         </v-card-title>
@@ -8,6 +8,7 @@
                 <v-row>
                     <v-col cols="12">
                         <v-text-field
+                            id="inputPlayerName"
                             maxlength="10"
                             v-model="playerName"
                             autofocus

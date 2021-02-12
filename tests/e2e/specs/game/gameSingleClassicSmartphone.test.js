@@ -26,7 +26,7 @@ describe('SinglePlayer', () => {
             if (round < 2) {
                 cy.wait(5000);
             } else {
-                cy.setPosition(true);
+                cy.setPositionGuess(true);
                 cy.get('#guess-button:not([disabled="disabled"])').click();
             }
 

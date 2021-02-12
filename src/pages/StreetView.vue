@@ -612,6 +612,7 @@ export default {
 #game-page {
     position: relative;
     height: 100%;
+    height: var(--global-height, 100%);
     width: 100%;
     top: 0;
     left: 0;

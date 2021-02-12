@@ -2,7 +2,7 @@
 
 describe('SinglePlayer', () => {
     it('Play SinglePlayer Mode Country Time 8s', () => {
-        cy.startGame(10, 'country');
+        cy.startGame(10, 'country', 'France');
 
         cy.get('div#container-map').should(
             'have.class',
@@ -27,6 +27,10 @@ describe('SinglePlayer', () => {
             cy.get('.map-label .map-label__country-name').should(
                 'have.class',
                 'green'
+            );
+            cy.get('.map-label .map-label__country-name').should(
+                'eq',
+                'France'
             );
             if (round !== 5) {
                 cy.get('#next-button').click();

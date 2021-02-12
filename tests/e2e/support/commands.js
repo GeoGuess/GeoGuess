@@ -8,7 +8,30 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-Cypress.Commands.add('startGame', (time, mode) => {
+import firebase from 'firebase/app';
+import 'firebase/database';
+
+const firebaseConfig = {
+    apiKey: Cypress.env('VUE_APP_FIREBASE_API_KEY'),
+    authDomain:
+        Cypress.env('VUE_APP_FIREBASE_AUTH_DOMAIN') ||
+        Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') + '.firebaseapp.com',
+    databaseURL:
+        Cypress.env('VUE_APP_FIREBASE_DATABASE_URL') ||
+        'https://' +
+            Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') +
+            '.firebaseio.com',
+    projectId: Cypress.env('VUE_APP_FIREBASE_PROJECT_ID'),
+    storageBucket:
+        Cypress.env('VUE_APP_STORAGE_BUCKET') ||
+        Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') + '.appspot.com',
+    messagingSenderId: Cypress.env('VUE_APP_FIREBASE_MESSAGING_SENDER_ID'),
+    appId: Cypress.env('VUE_APP_FIREBASE_APP_ID'),
+    measurementId: Cypress.env('VUE_APP_FIREBASE_MEASUREMENT_ID'),
+};
+firebase.initializeApp(firebaseConfig);
+
+Cypress.Commands.add('startGame', (time, mode, place) => {
     cy.visit('/', {
         onBeforeLoad: (win) => {
             Object.defineProperty(win.navigator, 'language', {
@@ -16,6 +39,10 @@ Cypress.Commands.add('startGame', (time, mode) => {
             });
         },
     });
+
+    if (place) {
+        cy.get('#search-input').type(place);
+    }
 
     const btnWithFriends = cy.get('.search-box__btns .v-btn.secondary');
     btnWithFriends.contains('With Friends');
@@ -47,16 +74,16 @@ Cypress.Commands.add('startGame', (time, mode) => {
     cy.url().should('include', '/street-view');
 });
 
-Cypress.Commands.add('setPosition', (isMobile) => {
+Cypress.Commands.add('setPositionGuess', (isMobile) => {
     if (isMobile) {
         cy.get('#make-guess-button').click();
     }
 
     // if panel Dev mode Google
-    cy.get("div#container-map").then($body => {
-      if ($body.find(".dismissButton").length > 0) {       
-        cy.get('div#container-map .dismissButton').click();
-      }
+    cy.get('div#container-map').then(($body) => {
+        if ($body.find('.dismissButton').length > 0) {
+            cy.get('div#container-map .dismissButton').click();
+        }
     });
     cy.get('div#container-map').click('center');
     cy.get('map').should('exist');
@@ -69,4 +96,51 @@ Cypress.Commands.add('finishRound', () => {
 
     cy.get('.v-data-table__wrapper tbody').children().should('have.length', 2);
     cy.get('.v-data-table__expanded').should('exist');
+});
+
+Cypress.Commands.add('createRoom', (time = 0, mode = 'classic') => {
+    const room = firebase.database().ref('cypress');
+    cy.log('created new room cypress', firebase.database.ServerValue.TIMESTAMP);
+    room.update({
+        test: true,
+        playerName: {
+            player1: 'Toto',
+        },
+        timeLimitation: time,
+        difficulty: 2000,
+        mode: mode,
+        size: 2,
+        createdAt: firebase.database.ServerValue.TIMESTAMP,
+        round1: {
+            player1: 0,
+        },
+        streetView: {
+            round1: {
+                latitude: -47.17523906165908,
+                longitude: -66.1606798240516,
+                roundInfo: null,
+                warning: false,
+            },
+        },
+    });
+});
+
+Cypress.Commands.add('setPositionFirstPlayerFirebase', (nbround = 1) => {
+    const round = firebase.database().ref('cypress/round' + nbround);
+    round.update({
+        player1: {
+            distance: 13896482,
+            latitude: -12.936520604248104,
+            longitude: 161.80768899999998,
+            points: 5,
+        },
+    });
+    const guess = firebase.database().ref('cypress/guess');
+
+    guess.update({
+        player1: {
+            latitude: -12.936520604248104,
+            longitude: 161.80768899999998,
+        },
+    });
 });

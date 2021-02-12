@@ -121,7 +121,7 @@ export default {
         justify-content: space-around;
     }
 }
-@media (max-width: 400px) {
+@media (max-width: 410px) {
     .search-box {
         .v-input {
             font-size: 1rem !important;

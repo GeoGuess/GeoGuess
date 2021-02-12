@@ -29,6 +29,10 @@ Vue.config.productionTip = false;
 const updateSizes = (obj = {}) => {
     obj.width = window.innerWidth;
     obj.height = window.innerHeight;
+    document.documentElement.style.setProperty(
+        '--global-height',
+        window.innerHeight + 'px'
+    );
     return obj;
 };
 

@@ -12,7 +12,7 @@ describe('SinglePlayer', () => {
                 cy.get('#guess-button[disabled="disabled"]').should('exist');
                 cy.wait(5000);
             } else {
-                cy.setPosition();
+                cy.setPositionGuess();
                 cy.get('#guess-button:not([disabled="disabled"])').click();
             }
 

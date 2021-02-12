@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card id="card-settings">
         <v-card-title>
             <p>{{ $t('CardRoomSettings.title') }}</p>
         </v-card-title>
