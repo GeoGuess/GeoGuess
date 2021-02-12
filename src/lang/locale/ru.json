@@ -89,7 +89,7 @@
         "roomIsFull": "Эта комната уже заполнена. Пожалуйста, попробуйте другую."
     },
     "CardRoomName": {
-        "title": "Type a room name to create a new room or join a existing room"
+        "title": "Введите название комнаты, чтобы создать новую комнату или присоединиться к существующей комнате"
     },
     "CardRoomPlayerName": {
         "title": "Введите имя игрока.",
@@ -105,8 +105,8 @@
     "CardRoomSettings": {
         "title": "Настройки комнаты",
         "modeLabel": "Выбери режим игры",
-        "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!"
+        "timeAttackLabel": "Временная Атака",
+        "timeattackInfos": "В режиме Временной Атаки очко получает только игрок, угадавший страну первым. Быстрее и побеждайте!"
     },
     "CardRoomDifficulty": {
         "title": "Установите уровень сложности.",
