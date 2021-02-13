@@ -1,13 +1,14 @@
-import { languages } from '../lang';
+import countries from 'i18n-iso-countries';
+countries.registerLocale(require(`i18n-iso-countries/langs/en.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/fr.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/cs.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/ru.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/pt.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/de.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/ja.json`));
+
 export default {
     install(Vue) {
-        const countries = require('i18n-iso-countries');
-        languages.forEach(({ value }) => {
-            countries.registerLocale(
-                require(`i18n-iso-countries/langs/${value}.json`)
-            );
-        });
-
         Vue.prototype.$countryNameLocale = (isoA2) => {
             return countries.getName(isoA2, localStorage.getItem('language'));
         };

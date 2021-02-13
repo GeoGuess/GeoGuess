@@ -3,14 +3,18 @@
         :value="this.visibility"
         @input="$emit('change-visibility')"
         scrollable
+        :fullscreen="$viewport.width < 450"
     >
         <v-card class="dialog-customs">
+            <v-btn class="close-btn" icon @click="$emit('change-visibility')">
+                <v-icon>mdi-close</v-icon>
+            </v-btn>
             <v-card-title>
                 <p>{{ $t('DialogCustomMap.title') }}</p>
             </v-card-title>
             <v-card-text>
-                <v-row no-gutters>
-                    <v-col md="5" class="mr-6">
+                <v-row no-gutters class="dialog-customs__row">
+                    <v-col md="12" class="mr-6">
                         <v-alert
                             type="error"
                             v-if="isValidGeoJson === false"
@@ -141,6 +145,8 @@ export default {
             this.$nextTick(() => {
                 if (this.$refs.mapRef)
                     this.$refs.mapRef.$mapPromise.then((map) => {
+                        const streetViewLayer = new google.maps.StreetViewCoverageLayer();
+                        streetViewLayer.setMap(map);
                         let data = new google.maps.Data({
                             map: map,
                         });
@@ -250,5 +256,14 @@ const geoJsonExample = `{
 <style lang="scss" scoped>
 .dialog-customs {
     background: #fffaec;
+}
+
+@media (max-width: 400px) {
+    .v-card__text {
+        width: calc(100% - 25px);
+    }
+    .dialog-customs__row {
+        display: block;
+    }
 }
 </style>

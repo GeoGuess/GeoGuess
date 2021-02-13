@@ -80,6 +80,7 @@ import {
     getMaxDistanceBbox,
 } from '../utils';
 import { GAME_MODE } from '../constants';
+import { mapGetters } from 'vuex';
 
 export default {
     props: {
@@ -166,6 +167,9 @@ export default {
             difficultyData: this.difficulty,
             bbox: this.bboxObj,
         };
+    },
+    computed: {
+        ...mapGetters(['countriesJson']),
     },
     methods: {
         loadStreetView() {
@@ -261,6 +265,17 @@ export default {
                     // Save the location's latitude and longitude
                     this.randomLatLng = data.location.latLng;
                     this.cptNotFoundLocation = 0;
+                    if (
+                        document.querySelector(
+                            '#street-view a[href^="https://maps"]'
+                        )
+                    )
+                        document
+                            .querySelector(
+                                '#street-view a[href^="https://maps"]'
+                            )
+                            .remove();
+
                     this.setPosition(data);
 
                     if (this.mode === GAME_MODE.COUNTRY) {
@@ -347,7 +362,7 @@ export default {
                     if (!this.hasLocationSelected) {
                         if (this.mode === GAME_MODE.COUNTRY) {
                             this.$refs.mapContainer.selectRandomLocation(
-                                getRandomCountry()
+                                getRandomCountry(this.countriesJson)
                             );
                         } else {
                             // Set a random location if the player didn't select a location in time
@@ -641,10 +656,12 @@ export default {
     margin-top: 56px;
 }
 @media (max-width: 450px) {
-    #street-view {
-        position: fixed;
-        min-height: 92%;
-        height: 92%;
+    #game-interface {
+        display: grid;
+        grid-template-rows: auto 44px;
+        #game-interface--overlay {
+            position: initial;
+        }
     }
 
     #reset-button {

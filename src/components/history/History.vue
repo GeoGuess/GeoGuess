@@ -203,12 +203,6 @@ export default {
 }
 #history {
     padding: 10px;
-    .close-btn {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        color: black;
-    }
     .item {
         padding: 0;
         width: 90%;

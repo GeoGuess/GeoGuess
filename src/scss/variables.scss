@@ -4,7 +4,7 @@ html {
 }
 * {
     scrollbar-width: thin;
-    scrollbar-color: #468F69  #ded3af;
+    scrollbar-color: #1f1e1cce  #ded3af;
   }
 
   
@@ -22,10 +22,26 @@ html {
 *::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	background-color: #468F69;
+	background-color: #1f1e1cce;
 }
   .v-application {
     .v-card {
         background-color: #F1E9D6 !important;
     }
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.v-application, .v-application--wrap{
+  min-height: 100%;
+}
+
+.close-btn {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: black;
 }
