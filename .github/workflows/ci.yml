@@ -45,7 +45,7 @@ jobs:
       run: npm ci
 
     - name: Linter
-      run: npm run lint
+      run: npm run lint -- --no-fix-warnings 
 
     - name: Run unit tests
       run: npm run test:unit

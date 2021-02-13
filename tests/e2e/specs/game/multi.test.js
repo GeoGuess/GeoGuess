@@ -2,7 +2,8 @@
 
 describe('Multiplayer', () => {
     it('Play Multiplayer', () => {
-        cy.createRoom();
+        const id = Date.now().toString().slice(-5);
+        cy.createRoom(id);
         cy.visit('/', {
             onBeforeLoad: (win) => {
                 Object.defineProperty(win.navigator, 'language', {
@@ -42,7 +43,7 @@ describe('Multiplayer', () => {
             .contains('Waiting for other players...')
             .should('be.visible');
 
-        cy.setPositionFirstPlayerFirebase();
+        cy.setPositionFirstPlayerFirebase(id);
 
         cy.get('.container-map--full').should('exist');
     });

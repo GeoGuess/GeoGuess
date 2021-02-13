@@ -83,6 +83,8 @@ Cypress.Commands.add('setPositionGuess', (isMobile) => {
     cy.get('div#container-map').then(($body) => {
         if ($body.find('.dismissButton').length > 0) {
             cy.get('div#container-map .dismissButton').click();
+            cy.wait(500);
+            cy.get('div#container-map').click('center');
         }
     });
     cy.get('div#container-map').click('center');
@@ -98,8 +100,8 @@ Cypress.Commands.add('finishRound', () => {
     cy.get('.v-data-table__expanded').should('exist');
 });
 
-Cypress.Commands.add('createRoom', (time = 0, mode = 'classic') => {
-    const room = firebase.database().ref('cypress');
+Cypress.Commands.add('createRoom', (id, time = 0, mode = 'classic') => {
+    const room = firebase.database().ref('cy' + id);
     cy.log('created new room cypress', firebase.database.ServerValue.TIMESTAMP);
     room.update({
         test: true,
@@ -125,8 +127,8 @@ Cypress.Commands.add('createRoom', (time = 0, mode = 'classic') => {
     });
 });
 
-Cypress.Commands.add('setPositionFirstPlayerFirebase', (nbround = 1) => {
-    const round = firebase.database().ref('cypress/round' + nbround);
+Cypress.Commands.add('setPositionFirstPlayerFirebase', (id, nbround = 1) => {
+    const round = firebase.database().ref('cy' + id + '/round' + nbround);
     round.update({
         player1: {
             distance: 13896482,
