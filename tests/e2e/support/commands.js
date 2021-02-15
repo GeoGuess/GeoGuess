@@ -31,7 +31,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-Cypress.Commands.add('startGame', (time, mode, place) => {
+Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
     cy.visit('/', {
         onBeforeLoad: (win) => {
             Object.defineProperty(win.navigator, 'language', {
@@ -41,15 +41,30 @@ Cypress.Commands.add('startGame', (time, mode, place) => {
     });
 
     if (place) {
-        cy.get('#search-input').type(place);
+        cy.get('#search-input').type(place + '{enter}');
     }
 
     const btnWithFriends = cy.get('.search-box__btns .v-btn.secondary');
     btnWithFriends.contains('With Friends');
+    if (multiplayer) {
+        btnWithFriends.click();
+
+        const cardRoom = cy.get('#card-roomname');
+        cardRoom
+            .get('.v-card__title span')
+            .contains(
+                'Type a room name to create a new room or join a existing room'
+            );
+        cardRoom.get('#inputRoomName').type('cy' + multiplayer);
+        cardRoom
+            .get('.v-card__actions .v-btn:last-of-type')
+            .contains('NEXT')
+            .click();
+    }
 
     const btnSinglePlayer = cy.get('.search-box__btns .v-btn.primary');
     btnSinglePlayer.contains('Single Player');
-    btnSinglePlayer.click();
+    if (!multiplayer) btnSinglePlayer.click();
 
     expect(cy.get('#modeClassicBtn')).to.exist;
     expect(cy.get('#modeCountryBtn')).to.exist;
@@ -71,6 +86,12 @@ Cypress.Commands.add('startGame', (time, mode, place) => {
 
     card.get('.v-card__actions .v-btn:last-of-type').contains('NEXT').click();
 
+    if (multiplayer) {
+        cy.get('#inputPlayerName').type('Titi');
+        card.get('.v-card__actions .v-btn:last-of-type')
+            .contains('NEXT')
+            .click();
+    }
     cy.url().should('include', '/street-view');
 });
 
@@ -137,7 +158,7 @@ Cypress.Commands.add('setPositionFirstPlayerFirebase', (id, nbround = 1) => {
             points: 5,
         },
     });
-    const guess = firebase.database().ref('cypress/guess');
+    const guess = firebase.database().ref('cy' + id + '/guess');
 
     guess.update({
         player1: {

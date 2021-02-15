@@ -2,7 +2,7 @@
 
 describe('SinglePlayer', () => {
     it('Play SinglePlayer Mode Country Time 8s', () => {
-        cy.startGame(10, 'country', 'France');
+        cy.startGame(8, 'country', 'France');
 
         cy.get('div#container-map').should(
             'have.class',
@@ -20,7 +20,7 @@ describe('SinglePlayer', () => {
             cy.get('.map-label').should('not.exist');
 
             cy.get('#guess-button[disabled="disabled"]').should('exist');
-            cy.wait(10000);
+            cy.wait(8000);
 
             cy.get('.container-map--full').should('exist');
 
@@ -28,10 +28,7 @@ describe('SinglePlayer', () => {
                 'have.class',
                 'green'
             );
-            cy.get('.map-label .map-label__country-name').should(
-                'eq',
-                'France'
-            );
+            cy.get('.map-label .map-label__country-name').contains('France');
             if (round !== 5) {
                 cy.get('#next-button').click();
             } else {

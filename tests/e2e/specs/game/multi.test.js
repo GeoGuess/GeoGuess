@@ -1,7 +1,19 @@
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('Multiplayer', () => {
-    it('Play Multiplayer', () => {
+    it('Create Multiplayer', () => {
+        const id = Date.now().toString().slice(-5);
+
+        cy.visit('/', {
+            onBeforeLoad: (win) => {
+                Object.defineProperty(win.navigator, 'language', {
+                    value: 'en-EN',
+                });
+            },
+        });
+        cy.startGame(null, 'classic', null, id);
+    });
+    it('Join Multiplayer', () => {
         const id = Date.now().toString().slice(-5);
         cy.createRoom(id);
         cy.visit('/', {
@@ -18,7 +30,7 @@ describe('Multiplayer', () => {
         card.get('.v-card__title span').contains(
             'Type a room name to create a new room or join a existing room'
         );
-        card.get('#inputRoomName').type('cypress');
+        card.get('#inputRoomName').type('cy' + id);
 
         card.get('#card-roomname .v-card__actions .v-btn:last-of-type').click();
 
