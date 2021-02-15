@@ -89,7 +89,7 @@
         "roomIsFull": "この部屋は既に満員です。"
     },
     "CardRoomName": {
-        "title": "部屋の名前を入力して下さい。"
+        "title": "Type a room name to create a new room or join a existing room"
     },
     "CardRoomPlayerName": {
         "title": "プレーヤーの名前を入力して下さい。",
@@ -105,7 +105,8 @@
     "CardRoomSettings": {
         "title": "Game Settings",
         "modeLabel": "Select game mode",
-        "timeAttackLabel": "TimeAttack demo"
+        "timeAttackLabel": "TimeAttack",
+        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!"
     },
     "CardRoomDifficulty": {
         "title": "Set a difficulty level.",

@@ -1,6 +1,6 @@
 {
     "Home": {
-        "record": "Aufzeichnung",
+        "record": "Rekord",
         "historyBtn": "HISTORIE",
         "about": "ÜBER",
         "searchBar": {
@@ -89,7 +89,7 @@
         "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen."
     },
     "CardRoomName": {
-        "title": "Gebe den Namen des Raumes ein."
+        "title": "Geben Sie einen Raumnamen einen, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten."
     },
     "CardRoomPlayerName": {
         "title": "Trage deinen Namen ein.",
@@ -105,7 +105,8 @@
     "CardRoomSettings": {
         "title": "Spieleinstellungen",
         "modeLabel": "Spielmodus wählen",
-        "timeAttackLabel": "TimeAttack Demo"
+        "timeAttackLabel": "TimeAttack",
+        "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!"
     },
     "CardRoomDifficulty": {
         "title": "Lege den Schwierigkeitsgrad fest.",

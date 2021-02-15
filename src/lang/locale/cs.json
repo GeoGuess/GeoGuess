@@ -22,7 +22,7 @@
         },
         "limitation": "OMEZENÍ",
         "limitationDescription": "Tato hra má nastavená omezení počtu her za den, abych snížil náklady na provoz. Pokud se mapa nenačítá, nebo se načte v režimu negativu (špatné barvy), znamená to, že dnešení limit her byl již naplněn. Limit se resetuje o půlnoci amerického času (Pacific Time - tj. v 8 hodin ráno našeho zimního času, popř. 9 hodin ráno našeho letního času). Za tuto nepříjemnost se omlouvám. Hra je poskytována open source, takže je možné hostovat vlastní kopii a hrát bez jakýchkoliv denních omezení.",
-        "play": "Play"
+        "play": "Hrát"
     },
     "StreetView": {
         "nearby": {
@@ -66,7 +66,7 @@
         "title": "Vlastní Mapa",
         "invalid": "Neplatný GeoJSON",
         "text": "Text",
-        "url": "Url",
+        "url": "URL",
         "file": "Soubor",
         "edit": "Upravit Mapu",
         "fileLabel": "Zvol GeoJSON soubor"
@@ -89,11 +89,11 @@
         "roomIsFull": "Tato místnost je již plná. Zkus to prosím znovu později."
     },
     "CardRoomName": {
-        "title": "Napiš název herní místnostni."
+        "title": "Type a room name to create a new room or join a existing room"
     },
     "CardRoomPlayerName": {
         "title": "Jak se chceš jmenovat?",
-        "anonymousPlayerName": "Anonymous 🕵"
+        "anonymousPlayerName": "Anonym 🕵"
     },
     "CardRoomSize": {
         "title": "Zvol počet hráčů."
@@ -103,9 +103,10 @@
         "infinite": "Bez omezení"
     },
     "CardRoomSettings": {
-        "title": "Game Settings",
-        "modeLabel": "Select game mode",
-        "timeAttackLabel": "TimeAttack demo"
+        "title": "Nastavení hry",
+        "modeLabel": "Zvol herní režim",
+        "timeAttackLabel": "TimeAttack",
+        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!"
     },
     "CardRoomDifficulty": {
         "title": "Zvol obtížnost hry (ovlivňuje bodování).",
@@ -129,11 +130,11 @@
         "moreInfo": "Více informací"
     },
     "modes": {
-        "classic": "Classic",
-        "country": "Pick country"
+        "classic": "Klasická hra",
+        "country": "Hádej zemi"
     },
     "Demo": {
-        "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
-        "btn": "Join Us"
+        "message": "Pokud chcete přispět k projektu a zlepšit jej, Vaše pomoc je velmi vítána: Překlad 🔠, Mapy 🌍, Kód 💻, Nápady 💡, Beta testy 👀.",
+        "btn": "Přidej se k nám"
     }
 }
