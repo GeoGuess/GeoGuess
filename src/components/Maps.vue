@@ -10,8 +10,18 @@
             printMapFull ? 'container-map--full' : '',
             `container-map--size-${size}`,
         ]"
-        @mouseover="activeMap = true"
-        @mouseleave="activeMap = false"
+        v-on="
+            $viewport.width >= 450 // Only on tablet and desktop Issue #104
+                ? {
+                      mouseover: () => {
+                          activeMap = true;
+                      },
+                      mouseleave: () => {
+                          activeMap = false;
+                      },
+                  }
+                : {}
+        "
     >
         <div class="container-map_details">
             <DetailsMap
@@ -75,7 +85,7 @@
             ref="map"
             @setSeletedPos="setSeletedPos"
         />
-        <div>
+        <div class="container-map_controls_guess">
             <button
                 id="reset-button"
                 :disabled="isGuessButtonClicked || (!!this.room && !isReady)"
@@ -630,6 +640,7 @@ export default {
     text-decoration: none;
     text-align: center;
     padding: 10px 0;
+    z-index: 999;
 }
 
 #make-guess-button,
@@ -710,6 +721,9 @@ button.w-50 {
             bottom: 0;
             margin: 0;
             max-height: 100%;
+        }
+        .container-map_controls_guess {
+            z-index: 999;
         }
     }
 

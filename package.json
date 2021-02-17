@@ -8,6 +8,7 @@
     "test": "npm run lint && npm run test:unit && npm run test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
+    "cypress": "cypress",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -43,7 +44,7 @@
     "@vue/test-utils": "^1.1.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "cypress": "^6.4.0",
+    "cypress": "^6.5.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.3.0",

@@ -1,10 +1,6 @@
-import { finishRound, setPosition, startGame } from '../../utils/gameTestUtils';
-
-// https://docs.cypress.io/api/introduction/api.html
-
 describe('SinglePlayer', () => {
-    it('Play SinglePlayer', () => {
-        startGame(cy);
+    it('Play SinglePlayer Classic', () => {
+        cy.startGame();
 
         cy.get('div#container-map').should(
             'have.class',
@@ -29,7 +25,7 @@ describe('SinglePlayer', () => {
 
         for (const round of [1, 2, 3, 4, 5]) {
             cy.contains('#roundLabel', round + ' / 5');
-            setPosition(cy);
+            cy.setPositionGuess();
             cy.get('#guess-button:not([disabled="disabled"])').click();
 
             if (round !== 5) {
@@ -38,6 +34,6 @@ describe('SinglePlayer', () => {
                 cy.get('#summary-button').click();
             }
         }
-        finishRound(cy);
+        cy.finishRound();
     });
 });

@@ -164,13 +164,13 @@ export default {
                     map: this.map,
                 });
             }
-
-            this.countries[c].setStyle({
-                fillOpacity: 0.3,
-                strokeOpacity: 0.8,
-                fillColor: isRandomLocation ? '#52DA42' : '#FF4081',
-                strokeColor: isRandomLocation ? '#16A910' : '#FF4081',
-            });
+            if (this.countries[c])
+                this.countries[c].setStyle({
+                    fillOpacity: 0.3,
+                    strokeOpacity: 0.8,
+                    fillColor: isRandomLocation ? '#52DA42' : '#FF4081',
+                    strokeColor: isRandomLocation ? '#16A910' : '#FF4081',
+                });
             this.markers.push(c);
         },
         removeMarkers() {

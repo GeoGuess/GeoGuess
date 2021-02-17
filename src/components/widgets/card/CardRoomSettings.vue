@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card id="card-settings">
         <v-card-title>
             <p>{{ $t('CardRoomSettings.title') }}</p>
         </v-card-title>
@@ -113,9 +113,15 @@
             <v-btn dark depressed color="#FF5252" @click="cancel">{{
                 $t('cancel')
             }}</v-btn>
-            <v-btn dark depressed color="#43B581" @click="setSettings">{{
-                $t('next')
-            }}</v-btn>
+            <v-btn
+                id="btnNextSettings"
+                depressed
+                color="#43B581"
+                @click="setSettings"
+                :disabled="loadingGeoJson"
+            >
+                {{ $t('next') }}
+            </v-btn>
         </v-card-actions>
     </v-card>
 </template>
@@ -193,6 +199,10 @@ export default {
 .settings .row {
     margin-bottom: 2.5rem;
 }
+
+.v-card__actions .v-btn {
+    color: white;
+}
 @media (max-width: 360px) {
     .card_settings__mode__btns {
         flex-direction: column;
@@ -200,6 +210,7 @@ export default {
         .v-btn {
             margin: 5px 0;
             width: 100%;
+            color: white;
         }
     }
 }

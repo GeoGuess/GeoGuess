@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card id="card-roomname">
         <v-card-title>
             <span id="card-title">{{ $t('CardRoomName.title') }}</span>
         </v-card-title>
@@ -8,6 +8,7 @@
                 <v-row>
                     <v-col cols="12">
                         <v-text-field
+                            id="inputRoomName"
                             maxlength="10"
                             autofocus
                             :error-messages="errorMessage"
