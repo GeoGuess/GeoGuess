@@ -2,7 +2,7 @@
 
 describe('SinglePlayer', () => {
     it('Play SinglePlayer Mode Country Time 10s', () => {
-        cy.startGame(10, 'country', 'France');
+        cy.startGame(10, 'country', 'Toulouse');
 
         cy.get('div#container-map').should(
             'have.class',

@@ -648,7 +648,7 @@ export default {
 }
 
 .warning-alert {
-    z-index: 1;
+    z-index: 5;
     margin-top: 56px;
 }
 @media (max-width: 450px) {
