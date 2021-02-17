@@ -9,12 +9,6 @@ describe('SinglePlayer', () => {
             'container-map--size-2'
         );
 
-        cy.get('#btnDown[disabled="disabled"]').should('not.exist');
-        const btnDown = cy.get('#btnDown');
-        btnDown.click();
-
-        cy.get('#btnDown[disabled="disabled"]').should('exist');
-
         for (const round of [1, 2, 3, 4, 5]) {
             cy.contains('#roundLabel', round + ' / 5');
             cy.get('.map-label').should('not.exist');

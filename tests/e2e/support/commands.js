@@ -32,6 +32,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
+    cy.intercept('GET', '/search/*').as('getGeoJson');
     cy.visit('/', {
         onBeforeLoad: (win) => {
             Object.defineProperty(win.navigator, 'language', {
@@ -41,7 +42,8 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
     });
 
     if (place) {
-        cy.get('#search-input').type(place + '{enter}');
+        cy.get('#search-input').type(place);
+        cy.get('.home-page__traveler-img').click();
     }
 
     const btnWithFriends = cy.get('.search-box__btns .v-btn.secondary');
@@ -83,8 +85,12 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
             .should('have.value', 5)
             .type('{backspace}0{enter}');
     }
-
-    card.get('.v-card__actions .v-btn:last-of-type').contains('NEXT').click();
+    if (place) {
+        cy.wait('@getGeoJson');
+    }
+    card.get('#btnNextSettings:not([disabled="disabled"])')
+        .contains('NEXT')
+        .click();
 
     if (multiplayer) {
         cy.get('#inputPlayerName').type('Titi');
