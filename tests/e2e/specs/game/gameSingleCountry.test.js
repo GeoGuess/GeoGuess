@@ -1,8 +1,8 @@
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('SinglePlayer', () => {
-    it('Play SinglePlayer Mode Country Time 8s', () => {
-        cy.startGame(8, 'country', 'France');
+    it('Play SinglePlayer Mode Country Time 10s', () => {
+        cy.startGame(10, 'country', 'France');
 
         cy.get('div#container-map').should(
             'have.class',
@@ -14,7 +14,7 @@ describe('SinglePlayer', () => {
             cy.get('.map-label').should('not.exist');
 
             cy.get('#guess-button[disabled="disabled"]').should('exist');
-            cy.wait(8000);
+            cy.wait(10000);
 
             cy.get('.container-map--full').should('exist');
 
