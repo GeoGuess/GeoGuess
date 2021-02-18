@@ -1,5 +1,32 @@
 # Changelog
 
+## [v0.4.0](https://github.com/Geoguess/Geoguess/tree/v0.4.0) (2021-02-18)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.4.0-1...v0.4.0)
+
+**Implemented enhancements:**
+
+- Button on Starting Page to Enter room [\#90](https://github.com/GeoGuess/Geoguess/issues/90)
+
+**Fixed bugs:**
+
+- Layout Issues Firefox Mobile Devices [\#104](https://github.com/GeoGuess/Geoguess/issues/104)
+- \[BUG\] Fix responsible for country mode [\#101](https://github.com/GeoGuess/Geoguess/issues/101)
+- \[BUG\] American Samoa is identified as the United States while on the map no [\#100](https://github.com/GeoGuess/Geoguess/issues/100)
+- Layout issue on mobile browsers in street-view-View [\#91](https://github.com/GeoGuess/Geoguess/issues/91)
+
+**Closed issues:**
+
+- .env.dist not complete [\#92](https://github.com/GeoGuess/Geoguess/issues/92)
+
+**Merged pull requests:**
+
+- Tests e2e + Layout issues fixes [\#103](https://github.com/GeoGuess/Geoguess/pull/103) ([BilelJegham](https://github.com/BilelJegham))
+- Ready : v4. [\#102](https://github.com/GeoGuess/Geoguess/pull/102) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#98](https://github.com/GeoGuess/Geoguess/pull/98) ([BilelJegham](https://github.com/BilelJegham))
+- improve color of crowns in DialogSummary [\#94](https://github.com/GeoGuess/Geoguess/pull/94) ([wlanowski](https://github.com/wlanowski))
+- Update .env.dist [\#93](https://github.com/GeoGuess/Geoguess/pull/93) ([wlanowski](https://github.com/wlanowski))
+
 ## [v0.4.0-1](https://github.com/Geoguess/Geoguess/tree/v0.4.0-1) (2021-01-26)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.4.0-0...v0.4.0-1)
