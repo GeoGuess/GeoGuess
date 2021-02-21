@@ -67,8 +67,6 @@ export default {
     },
     methods: {
         changeVisibilityHistory(val) {
-            // eslint-disable-next-line no-console
-            console.log(val);
             this.$router.push(val ? '/history' : '/');
         },
         switchLanguage(language) {

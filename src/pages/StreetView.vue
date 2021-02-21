@@ -459,8 +459,6 @@ export default {
         },
         finishGame() {
             this.canExit = true;
-            // eslint-disable-next-line no-console
-            console.log('finish', this.$router, this.multiplayer);
             if (!this.multiplayer) {
                 this.$router.push('/history');
             } else {
