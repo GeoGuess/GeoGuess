@@ -32,7 +32,8 @@
         "waitForOtherPlayers": "Čekám na ostatní hráče...",
         "redirectToHomePage": "Přesměruji na úvodní stránku...",
         "exitGame": "Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...",
-        "waitForOtherPlayersToFinish": "Počkej prosím, až ostatní hráči dokončí hru..."
+        "waitForOtherPlayersToFinish": "Počkej prosím, až ostatní hráči dokončí hru...",
+        "confirmExit": "Are you sure to leave the current game ?"
     },
     "Maps": {
         "makeGuess": "HÁDEJ POLOHU",
