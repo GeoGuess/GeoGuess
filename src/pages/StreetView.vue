@@ -79,10 +79,15 @@ import {
     getRandomCountry,
     getMaxDistanceBbox,
 } from '../utils';
+
 import { GAME_MODE } from '../constants';
+
 import { mapGetters } from 'vuex';
 
+import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
+
 export default {
+    mixins: [ConfirmExitMixin],
     props: {
         roomName: {
             default: null,
@@ -443,6 +448,7 @@ export default {
             this.dialogTitle = this.$t('StreetView.redirectToHomePage');
             this.dialogText = this.$t('StreetView.exitGame');
             this.dialogMessage = true;
+            this.canExit = true;
             if (this.room) {
                 this.room.off();
                 this.room.remove();
@@ -452,6 +458,9 @@ export default {
             }
         },
         finishGame() {
+            this.canExit = true;
+            // eslint-disable-next-line no-console
+            console.log('finish', this.$router, this.multiplayer);
             if (!this.multiplayer) {
                 this.$router.push('/history');
             } else {
@@ -598,6 +607,7 @@ export default {
         }
     },
     beforeDestroy() {
+        window.removeEventListener('beforeunload', this.beforeUnload);
         if (this.room) {
             // Remove the room when the player refreshes the window
             // Remove the room when the player pressed the back button on browser

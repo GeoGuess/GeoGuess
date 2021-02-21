@@ -6,9 +6,11 @@
             <div class="flex-grow-1"></div>
 
             <nav class="header__nav">
-                <v-btn text @click="historyDialog = true" id="historyBtn">{{
-                    $t('Home.historyBtn')
-                }}</v-btn>
+                <v-btn text id="historyBtn">
+                    <router-link to="/history">{{
+                        $t('Home.historyBtn')
+                    }}</router-link></v-btn
+                >
                 <div class="header__nav__btns">
                     <v-btn text @click="aboutDialog = true" id="aboutBtn">
                         <v-icon size="30">mdi-help-circle</v-icon>
@@ -33,13 +35,8 @@
                     </v-menu>
                 </div>
             </nav>
-            <v-dialog v-model="historyDialog">
-                <History
-                    :history="history"
-                    :openLast="openHistory"
-                    @onHide="historyDialog = false"
-                />
-            </v-dialog>
+
+            <History v-if="openHistory" />
             <v-dialog v-model="aboutDialog">
                 <About />
             </v-dialog>
@@ -64,15 +61,16 @@ export default {
     },
     data() {
         return {
-            historyDialog: this.openHistory,
             aboutDialog: false,
-            history: localStorage.getItem('history')
-                ? JSON.parse(localStorage.getItem('history'))
-                : [],
             languages,
         };
     },
     methods: {
+        changeVisibilityHistory(val) {
+            // eslint-disable-next-line no-console
+            console.log(val);
+            this.$router.push(val ? '/history' : '/');
+        },
         switchLanguage(language) {
             this.$i18n.locale = language;
             this.$vuetify.lang.current = language;
@@ -97,6 +95,10 @@ export default {
         }
     }
     .v-btn {
+        a {
+            text-decoration: none;
+            color: initial;
+        }
         font-size: 1.2rem;
     }
     .header__logo {
