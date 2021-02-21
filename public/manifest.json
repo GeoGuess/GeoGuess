@@ -73,6 +73,15 @@
             "density": "5.0"
         }
     ],
+    "file_handlers": [
+        {
+          "action": "/",
+          "accept": {
+            "application/vnd.geo+json": [".geojson",".json"],
+            "application/json": [".geojson",".json"]
+          }
+        }
+    ],
     "start_url": "/?utm_source=pwa",
     "display": "standalone",
     "background_color": "#ded3af",
