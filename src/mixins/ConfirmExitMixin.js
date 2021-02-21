@@ -13,8 +13,6 @@ export default {
         window.addEventListener('beforeunload', this.beforeUnload);
     },
     beforeRouteLeave(_to, _from, next) {
-        // eslint-disable-next-line no-console
-        console.log('before');
         if (!this.canExit) {
             const answer = window.confirm(this.$t('StreetView.confirmExit'));
             if (answer) {
