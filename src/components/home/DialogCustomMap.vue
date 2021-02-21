@@ -41,7 +41,7 @@
                                 color="secondary"
                             >
                                 <v-icon left dark> mdi-cloud-download </v-icon>
-                                {{ $t('download') }}
+                                {{ $t('DialogCustomMap.download') }}
                             </v-btn>
                         </v-row>
                     </v-col>
@@ -159,13 +159,17 @@ export default {
         if ('launchQueue' in window) {
             launchQueue.setConsumer((launchParams) => {
                 // Nothing to do when the queue is empty.
-                if (!launchParams.files.length) {
+                if (
+                    !Array.isArray(launchParams.files) ||
+                    launchParams.files.length !== 1
+                ) {
                     return;
                 }
-                const fileHandle = launchParams.files[0];
-
-                // eslint-disable-next-line no-console
-                console.log(fileHandle);
+                launchParams.files[0].getFile().then((f) => {
+                    this.file = f;
+                    // eslint-disable-next-line no-console
+                    console.log('load');
+                });
             });
         }
     },
@@ -221,6 +225,8 @@ export default {
             if (typeof file === 'object' && !!file.text) {
                 file.text().then((content) => {
                     this.setGeoJsonString(content);
+                    // eslint-disable-next-line no-console
+                    console.log(content);
                 });
             }
         },
