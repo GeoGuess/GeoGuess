@@ -7,10 +7,11 @@ import fr from './locale/fr.json';
 import ja from './locale/ja.json';
 import ru from './locale/ru.json';
 import pt from './locale/pt.json';
+import sv from './locale/sv.json';
 
 Vue.use(VueI18n);
 
-const translations = { en, ja, fr, cs, de, ru, pt };
+const translations = { en, ja, fr, cs, de, ru, pt, sv };
 
 export const languages = [
     {
@@ -40,6 +41,10 @@ export const languages = [
     {
         text: '日本語',
         value: 'ja',
+    },
+        {
+        text: 'Svenska',
+        value: 'sv',
     },
 ];
 
