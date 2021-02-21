@@ -167,8 +167,6 @@ export default {
                 }
                 launchParams.files[0].getFile().then((f) => {
                     this.file = f;
-                    // eslint-disable-next-line no-console
-                    console.log('load');
                 });
             });
         }
