@@ -1,71 +1,74 @@
 <template>
-    <v-card id="history">
-        <v-btn class="close-btn" icon @click="$emit('onHide')">
-            <v-icon>mdi-close</v-icon>
-        </v-btn>
-        <v-card-title>
-            {{ $t('History.title') }}
-        </v-card-title>
-        <v-dialog v-model="dialog" max-width="500">
-            <v-card>
-                <v-card-text>
-                    <center>
-                        <v-icon x-large> mdi-clipboard-check</v-icon>
-                        <p>{{ $t('urlCopied') }}</p>
-                        <v-text-field v-model="url" readonly></v-text-field>
-                    </center>
-                </v-card-text>
-                <v-card-actions>
-                    <v-spacer></v-spacer>
+    <v-dialog :value="true" @input="hide">
+        <v-card id="history">
+            <v-btn class="close-btn" icon @click="hide">
+                <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <v-card-title>
+                {{ $t('History.title') }}
+            </v-card-title>
+            <v-dialog v-model="dialog" max-width="500">
+                <v-card>
+                    <v-card-text>
+                        <center>
+                            <v-icon x-large> mdi-clipboard-check</v-icon>
+                            <p>{{ $t('urlCopied') }}</p>
+                            <v-text-field v-model="url" readonly></v-text-field>
+                        </center>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
 
-                    <v-btn
-                        @click="dialog = false"
-                        dark
-                        depressed
-                        color="#43B581"
-                    >
-                        {{ $t('OK') }}
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
-        <v-text-field
-            v-model="search"
-            :label="$t('History.search')"
-            append-icon="mdi-magnify"
-            single-line
-            hide-details
-        ></v-text-field>
-        <v-data-table
-            calculate-widths
-            :search="search"
-            id="history-table"
-            :headers="headers"
-            :items="items"
-            show-expand
-            single-expand
-            :sort-by="['dateString']"
-            :sort-desc="[true]"
-            item-key="date"
-            :customSort="customSort"
-            :expanded="openLast ? [items[items.length - 1]] : []"
-        >
-            <template v-slot:[`item.actions`]="{ item }">
-                <v-icon small class="mr-2" @click="share(item)">
-                    mdi-share
-                </v-icon>
-            </template>
-            <template v-slot:expanded-item="{ headers, item }">
-                <td :colspan="headers.length" class="item">
-                    <HistoryMapCountry
-                        :item="item"
-                        v-if="item.gameMode === $t('modes.country')"
-                    />
-                    <HistoryMapClassic :item="item" v-else />
-                </td>
-            </template>
-        </v-data-table>
-    </v-card>
+                        <v-btn
+                            @click="dialog = false"
+                            dark
+                            depressed
+                            color="#43B581"
+                        >
+                            {{ $t('OK') }}
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+            <v-text-field
+                v-model="search"
+                :label="$t('History.search')"
+                append-icon="mdi-magnify"
+                single-line
+                hide-details
+            ></v-text-field>
+            <v-data-table
+                :items-per-page="5"
+                calculate-widths
+                :search="search"
+                id="history-table"
+                :headers="headers"
+                :items="items"
+                show-expand
+                single-expand
+                :sort-by="['dateString']"
+                :sort-desc="[true]"
+                item-key="id"
+                :customSort="customSort"
+                :expanded="items.length > 0 ? [items[items.length - 1]] : []"
+            >
+                <template v-slot:[`item.actions`]="{ item }">
+                    <v-icon small class="mr-2" @click="share(item)">
+                        mdi-share
+                    </v-icon>
+                </template>
+                <template v-slot:expanded-item="{ headers, item }">
+                    <td :colspan="headers.length" class="item">
+                        <HistoryMapCountry
+                            :item="item"
+                            v-if="item.gameMode === $t('modes.country')"
+                        />
+                        <HistoryMapClassic :item="item" v-else />
+                    </td>
+                </template>
+            </v-data-table>
+        </v-card>
+    </v-dialog>
 </template>
 <script>
 import { GAME_MODE } from '../../constants';
@@ -73,13 +76,15 @@ import HistoryMapClassic from './gameResult/HistoryMapClassic';
 import HistoryMapCountry from './gameResult/HistoryMapCountry';
 export default {
     name: 'History',
-    props: ['history', 'openLast'],
     components: {
         HistoryMapClassic,
         HistoryMapCountry,
     },
     data() {
         return {
+            history: localStorage.getItem('history')
+                ? JSON.parse(localStorage.getItem('history'))
+                : [],
             expanded: [history[history.length - 1]],
             dialog: false,
             url: '',
@@ -127,8 +132,9 @@ export default {
     },
     computed: {
         items() {
-            return this.history.map((g) => ({
+            return this.history.map((g, index) => ({
                 ...g,
+                id: index,
                 score: g.score / 1000,
                 points: g.points,
                 dateString: new Date(g.date).toLocaleString(),
@@ -147,6 +153,9 @@ export default {
         },
     },
     methods: {
+        hide() {
+            this.$router.push('/');
+        },
         customSort(items, index, isDesc) {
             if (index.length === 0) {
                 return items;
