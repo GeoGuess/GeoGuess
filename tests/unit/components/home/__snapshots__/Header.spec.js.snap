@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`History.vue open dialog about 1`] = `
+exports[`Header.vue open dialog about 1`] = `
 <div>
   <header class="header v-sheet theme--light v-toolbar v-app-bar" style="height: 100px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;">
     <div class="v-toolbar__content" style="height: 100px;"><img src="@/assets/geoguessLogo.png" class="header__logo">
