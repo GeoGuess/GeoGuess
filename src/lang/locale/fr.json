@@ -32,7 +32,8 @@
         "waitForOtherPlayers": "En attente des autres joueurs...",
         "redirectToHomePage": "Redirection vers la page d'accueil...",
         "exitGame": "Vous êtes forcé de quitter le jeu. Redirection vers la page d'accueil dans 5 secondes...",
-        "waitForOtherPlayersToFinish": "En attente des autres joueurs pour finir la partie..."
+        "waitForOtherPlayersToFinish": "En attente des autres joueurs pour finir la partie...",
+        "confirmExit": "Are you sure to leave the current game ?"
     },
     "Maps": {
         "makeGuess": "FAIRE UN CHOIX",
