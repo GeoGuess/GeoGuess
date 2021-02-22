@@ -32,7 +32,8 @@
         "waitForOtherPlayers": "Warte auf weitere Spieler...",
         "redirectToHomePage": "Weiterleitung zur Homepage ...",
         "exitGame": "Du musst das Spiel beenden. Umleitung zur Startseite in 5 Sekunden...",
-        "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden..."
+        "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden...",
+        "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen willst?"
     },
     "Maps": {
         "makeGuess": "TIPP ABGEBEN",
