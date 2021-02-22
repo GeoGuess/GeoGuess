@@ -33,7 +33,7 @@
         "redirectToHomePage": "Redirection vers la page d'accueil...",
         "exitGame": "Vous êtes forcé de quitter le jeu. Redirection vers la page d'accueil dans 5 secondes...",
         "waitForOtherPlayersToFinish": "En attente des autres joueurs pour finir la partie...",
-        "confirmExit": "Are you sure to leave the current game? This will abort the game!"
+        "confirmExit": "Êtes-vous sûr de vouloir quitter la partie en cours ? Cela annulera la partie !"
     },
     "Maps": {
         "makeGuess": "FAIRE UN CHOIX",
