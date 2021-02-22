@@ -33,7 +33,7 @@
         "redirectToHomePage": "Omdirigera till startsidan...",
         "exitGame": "Du har tvingats avbryta spelet. Omdirigerar till startsidan om 5 sekunder...",
         "waitForOtherPlayersToFinish": "Väntar på andra spelare att slutföra spelet...",
-        "confirmExit": "Are you sure to leave the current game? This will abort the game!"
+        "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet? Detta kommer att avbryta spelet!"
     },
     "Maps": {
         "makeGuess": "GISSA",
@@ -44,8 +44,8 @@
         "reset": "ÅTERSTÄLL",
         "playAgain": "SPELA IGEN",
         "infoWindow": {
-            "Distance": "Distance",
-            "Points": "Points"
+            "Distance": "Distans",
+            "Points": "Poäng"
         }
     },
     "Header": {
@@ -110,7 +110,7 @@
         "timeattackInfos": "I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!"
     },
     "CardRoomDifficulty": {
-        "title": "Sätt en svårighetsgrad",
+        "title": "Sätt en svårighetsgrad.",
         "easy": "enkel (världen)",
         "medium": "mellan (land)",
         "hard": "svår (stad)"
