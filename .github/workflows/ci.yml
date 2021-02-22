@@ -89,6 +89,7 @@ jobs:
           wait-on: 'http://localhost:8080'
           record: true
           parallel: true
+          config_file: cypress.json
           group: ${{matrix.browsers}}
           tag: ${{ github.event_name }}
           browser: ${{matrix.browsers}}
