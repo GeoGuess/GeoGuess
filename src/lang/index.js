@@ -42,7 +42,7 @@ export const languages = [
         text: '日本語',
         value: 'ja',
     },
-        {
+    {
         text: 'Svenska',
         value: 'sv',
     },
