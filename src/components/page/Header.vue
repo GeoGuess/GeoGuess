@@ -1,7 +1,9 @@
 <template>
     <div>
         <v-app-bar class="header" height="100">
-            <img class="header__logo" src="@/assets/geoguessLogo.png" />
+            <router-link to="/">
+                <img class="header__logo" src="@/assets/geoguessLogo.png"
+            /></router-link>
 
             <div class="flex-grow-1"></div>
 
@@ -36,28 +38,34 @@
                 </div>
             </nav>
 
-            <History v-if="openHistory" />
+            <History />
             <v-dialog v-model="aboutDialog">
                 <About />
             </v-dialog>
         </v-app-bar>
+
+        <v-alert v-if="demoMode" color="#7289DA" dark class="demo-alert">
+            <v-row align="center">
+                <v-col class="grow">
+                    {{ $t('Demo.message') }}
+                </v-col>
+                <v-col class="shrink">
+                    <v-btn target="_blank" href="https://discord.gg/9GXm6RT"
+                        ><v-icon left>mdi-discord</v-icon>
+                        {{ $t('Demo.btn') }}</v-btn
+                    >
+                </v-col>
+            </v-row>
+        </v-alert>
     </div>
 </template>
 <script>
-import History from '@/components/history/History';
-import About from '@/components/home/About';
+import About from '@/components/page/About';
 import { languages } from '../../lang';
 
 export default {
     components: {
-        History,
         About,
-    },
-    props: {
-        openHistory: {
-            default: false,
-            type: Boolean,
-        },
     },
     data() {
         return {
@@ -65,10 +73,12 @@ export default {
             languages,
         };
     },
-    methods: {
-        changeVisibilityHistory(val) {
-            this.$router.push(val ? '/history' : '/');
+    computed: {
+        demoMode() {
+            return !!process.env.VUE_APP_DEMO_MODE;
         },
+    },
+    methods: {
         switchLanguage(language) {
             this.$i18n.locale = language;
             this.$vuetify.lang.current = language;

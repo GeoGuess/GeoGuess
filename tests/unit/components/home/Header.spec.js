@@ -1,4 +1,4 @@
-import Header from '@/components/home/Header.vue';
+import Header from '@/components/page/Header.vue';
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
 import appInit from '../../utils/appInit';
 

@@ -1,20 +1,5 @@
 <template>
-    <div class="home-page">
-        <Header :openHistory="openHistory" />
-
-        <v-alert v-if="demoMode" color="#7289DA" dark class="demo-alert">
-            <v-row align="center">
-                <v-col class="grow">
-                    {{ $t('Demo.message') }}
-                </v-col>
-                <v-col class="shrink">
-                    <v-btn target="_blank" href="https://discord.gg/9GXm6RT"
-                        ><v-icon left>mdi-discord</v-icon>
-                        {{ $t('Demo.btn') }}</v-btn
-                    >
-                </v-col>
-            </v-row>
-        </v-alert>
+    <ContentPage class="home-page">
         <section class="home-page__main">
             <v-container class="home-page__main__container" fluid>
                 <v-layout class="home-page__main__layout">
@@ -42,27 +27,17 @@
                 v-bind:key="index"
             />
         </section>
-
-        <Footer />
-    </div>
+    </ContentPage>
 </template>
 
 <script>
-import Header from '@/components/home/Header';
 import SearchBox from '@/components/home/SearchBox';
-import Footer from '@/components/home/Footer';
+import ContentPage from '@/components/page/ContentPage';
 import MapCard from '@/components/home/maps/MapCard';
 import { mapActions, mapGetters } from 'vuex';
 export default {
-    props: {
-        openHistory: {
-            default: false,
-            type: Boolean,
-        },
-    },
     components: {
-        Header,
-        Footer,
+        ContentPage,
         SearchBox,
         MapCard,
     },
