@@ -91,6 +91,15 @@
         "translation",
         "financial"
       ]
+    },
+    {
+      "login": "TechnicProblem",
+      "name": "TechnicProblem",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38329398?v=4",
+      "profile": "http://technicproblem.github.io",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
