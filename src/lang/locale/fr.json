@@ -14,7 +14,7 @@
         "customMap": "CARTE PERSONNALISÉE",
         "customMapDescriptions": {
             "1": "Vous pouvez limiter les positions aléatoires à une ville, région ou pays via la barre de recherche.",
-            "2": "Dans le mode multijoueur, le premier joueurs définit l'emplacement.",
+            "2": "Dans le mode multijoueur, le premier joueur définit l'emplacement.",
             "3": "Par ailleurs, il vous est possible de créer vos propres cartes avec ",
             "4": "fichier.",
             "5": "Insérer le contenu du fichier via le bouton :",
@@ -33,7 +33,7 @@
         "redirectToHomePage": "Redirection vers la page d'accueil...",
         "exitGame": "Vous êtes forcé de quitter le jeu. Redirection vers la page d'accueil dans 5 secondes...",
         "waitForOtherPlayersToFinish": "En attente des autres joueurs pour finir la partie...",
-        "confirmExit": "Etes-vous sûr de quitter la partie en cours ?"
+        "confirmExit": "Êtes-vous sûr de vouloir quitter la partie en cours ? Cela annulera la partie !"
     },
     "Maps": {
         "makeGuess": "FAIRE UN CHOIX",
@@ -90,7 +90,7 @@
         "roomIsFull": "La salle est déjà pleine. Essayez une autre."
     },
     "CardRoomName": {
-        "title": "Saisir le nom de la salle pour la créer ou rejoindre une existante"
+        "title": "Saisir le nom de la salle pour la créer, ou la rejoindre si elle existe"
     },
     "CardRoomPlayerName": {
         "title": "Saisir votre pseudo.",
