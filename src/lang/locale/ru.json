@@ -32,7 +32,8 @@
         "waitForOtherPlayers": "Ждем других игроков ...",
         "redirectToHomePage": "Перенаправляем на домашнюю страницу ...",
         "exitGame": "Вы вынуждены выйти из игры. Перенаправляем на домашнюю страницу через 5 секунд ...",
-        "waitForOtherPlayersToFinish": "Ожидайте, пока другие игроки закончат игру ..."
+        "waitForOtherPlayersToFinish": "Ожидайте, пока другие игроки закончат игру ...",
+        "confirmExit": "Are you sure to leave the current game? This will abort the game!"
     },
     "Maps": {
         "makeGuess": "Предположить догадку",

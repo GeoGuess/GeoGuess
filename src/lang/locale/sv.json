@@ -1,120 +1,141 @@
 {
-    "Home":{
-      "record":"Rekord",
-      "historyBtn":"HISTORIK",
-      "about":"OM",
-      "searchBar":{
-        "customLoaded":"Egen karta har laddats",
-        "enterCity":"Ange stad, region eller land"
-      },
-      "aboutDescriptions":{
-        "1":"Geoguess är ett gratis geoguess-spel utan reklam.                  Spelare tävlar om hur nära de kan gissa slumpmässiga platser på fem rundor.                 Du kan dela resultatet med andra på sociala medier som Facebook och Twitter.                 Du kan spela flerpersonsspel med upp till fem vänner.                  Den första spelaren skapar ett rum och bestämmer rumstorleken. Andra spelare skriver samma rumsnamn som den första spelaren skapade och spelet kommer att starta.",
-        "2":"Spelet har forkats från "
-      },
-      "customMap":"EGNA KARTOR",
-      "customMapDescriptions":{
-        "1":"Du kan begränsa slumpmässiga platser till stad, region eller land med sökfältet.",
-        "2":"I flerspelarläge bestäms platsen från var den första spelaren hamnar.",
-        "3":"Dessutom kan du göra en egen karta med en ",
-        "4":"-fil.",
-        "5":"Infoga innehållet av GeoJson-kartan med knappen: ",
-        "6":"Egen kartväljning : "
-      },
-      "limitation":"BEGRÄNSNING",
-      "limitationDescription":"För nuvarande sätter jag begränsningar per dag för att kostnadena för spelet inte ska bli för höga.             Om kartan inte laddar innebär det att den åtkomliga mängden har förbrukats.              Den kommer att återställas vid midnatt Pacific Time(UTC-8) Ursäktar för besvären.             This game is open source so you can build your own game server and play this game unlimitedly.",
-      "play":"Spela"
+    "Home": {
+        "record": "Rekord",
+        "historyBtn": "HISTORIK",
+        "about": "OM",
+        "searchBar": {
+            "customLoaded": "Egen karta har laddats",
+            "enterCity": "Ange stad, region eller land"
+        },
+        "aboutDescriptions": {
+            "1": "Geoguess är ett gratis geoguess-spel utan reklam.                  Spelare tävlar om hur nära de kan gissa slumpmässiga platser på fem rundor.                 Du kan dela resultatet med andra på sociala medier som Facebook och Twitter.                 Du kan spela flerpersonsspel med upp till fem vänner.                  Den första spelaren skapar ett rum och bestämmer rumstorleken. Andra spelare skriver samma rumsnamn som den första spelaren skapade och spelet kommer att starta.",
+            "2": "Spelet har forkats från "
+        },
+        "customMap": "EGNA KARTOR",
+        "customMapDescriptions": {
+            "1": "Du kan begränsa slumpmässiga platser till stad, region eller land med sökfältet.",
+            "2": "I flerspelarläge bestäms platsen från var den första spelaren hamnar.",
+            "3": "Dessutom kan du göra en egen karta med en ",
+            "4": "-fil.",
+            "5": "Infoga innehållet av GeoJson-kartan med knappen: ",
+            "6": "Egen kartväljning : "
+        },
+        "limitation": "BEGRÄNSNING",
+        "limitationDescription": "För nuvarande sätter jag begränsningar per dag för att kostnadena för spelet inte ska bli för höga.             Om kartan inte laddar innebär det att den åtkomliga mängden har förbrukats.              Den kommer att återställas vid midnatt Pacific Time(UTC-8) Ursäktar för besvären.             This game is open source so you can build your own game server and play this game unlimitedly.",
+        "play": "Spela"
     },
-    "StreetView":{
-      "nearby":{
-        "title":"Närområde",
-        "message":"Tyvärr kunde vi inte hitta en slumpmässig plats i det definerade området. Vi har däremot hittat en i närheten 😉"
-      },
-      "waitForOtherPlayers":"Väntar på andra spelare...",
-      "redirectToHomePage":"Omdirigera till startsidan...",
-      "exitGame":"Du har tvingats avbryta spelet. Omdirigerar till startsidan om 5 sekunder...",
-      "waitForOtherPlayersToFinish":"Väntar på andra spelare att slutföra spelet...",
-      "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet?"
+    "StreetView": {
+        "nearby": {
+            "title": "Närområde",
+            "message": "Tyvärr kunde vi inte hitta en slumpmässig plats i det definerade området. Vi har däremot hittat en i närheten 😉"
+        },
+        "waitForOtherPlayers": "Väntar på andra spelare...",
+        "redirectToHomePage": "Omdirigera till startsidan...",
+        "exitGame": "Du har tvingats avbryta spelet. Omdirigerar till startsidan om 5 sekunder...",
+        "waitForOtherPlayersToFinish": "Väntar på andra spelare att slutföra spelet...",
+        "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet? Detta kommer att avbryta spelet!"
     },
-    "Maps":{
-      "makeGuess":"GISSA",
-      "guess":"GISSNING",
-      "nextRound":"NÄSTA RUNDA",
-      "viewSummary":"VISA SAMMANFATTNING",
-      "exit":"AVBRYT",
-      "reset":"ÅTERSTÄLL",
-      "playAgain":"SPELA IGEN",
-      "infoWindow":{"Distans":"Distance","Poäng":"Points"}
+    "Maps": {
+        "makeGuess": "GISSA",
+        "guess": "GISSNING",
+        "nextRound": "NÄSTA RUNDA",
+        "viewSummary": "VISA SAMMANFATTNING",
+        "exit": "AVBRYT",
+        "reset": "ÅTERSTÄLL",
+        "playAgain": "SPELA IGEN",
+        "infoWindow": {
+            "Distance": "Distans",
+            "Points": "Poäng"
+        }
     },
-    "Header":{
-      "language":"Språk",
-      "about":"Om",
-      "limitation":"Begränsning",
-      "contact":"Kontakt"
+    "Header": {
+        "language": "Språk",
+        "about": "Om",
+        "limitation": "Begränsning",
+        "contact": "Kontakt"
     },
-    "HeaderGame":{
-      "room":"RUM",
-      "round":"RUNDA",
-      "distance":"DISTANS",
-      "kmaway":"{value} km iväg",
-      "score":"POÄNG"
+    "HeaderGame": {
+        "room": "RUM",
+        "round": "RUNDA",
+        "distance": "DISTANS",
+        "kmaway": "{value} km iväg",
+        "score": "POÄNG"
     },
-    "next":"NÄSTA",
-    "cancel":"AVBRYT",
-    "DialogCustomMap":{
-      "title":"Egen karta",
-      "invalid":"Ogiltig GeoJSON",
-      "text":"Text",
-      "url":"Url",
-      "file":"Fil",
-      "edit":"Redigera karta",
-      "fileLabel":"Välj GeoJSON-fil"
+    "next": "NÄSTA",
+    "cancel": "AVBRYT",
+    "DialogCustomMap": {
+        "title": "Egen karta",
+        "invalid": "Ogiltig GeoJSON",
+        "text": "Text",
+        "url": "Url",
+        "file": "Fil",
+        "edit": "Redigera karta",
+        "fileLabel": "Välj GeoJSON-fil"
     },
-    "History":{
-      "title":"Historik",
-      "date":"Datum",
-      "mode":"Läge",
-      "time":"Tid",
-      "distance":"Distans",
-      "points":"Poäng",
-      "rank":"Rank",
-      "search":"Sök"
+    "History": {
+        "title": "Historik",
+        "date": "Datum",
+        "mode": "Läge",
+        "time": "Tid",
+        "distance": "Distans",
+        "points": "Poäng",
+        "rank": "Rank",
+        "search": "Sök"
     },
-    "DialogRoom":{
-      "singlePlayer":"Enspelarläge",
-      "withFriends":"Med vänner",
-      "invalidRoomName":"Ogiltigt namn. Vänligen försök med ett annat.",
-      "inProgress":"Den första spelaren skapar rummet just nu. Vänligen vänta och försök igen.",
-      "roomIsFull":"Detta rum är redan fullt. Vänligen försök med ett annat."
+    "DialogRoom": {
+        "singlePlayer": "Enspelarläge",
+        "withFriends": "Med vänner",
+        "invalidRoomName": "Ogiltigt namn. Vänligen försök med ett annat.",
+        "inProgress": "Den första spelaren skapar rummet just nu. Vänligen vänta och försök igen.",
+        "roomIsFull": "Detta rum är redan fullt. Vänligen försök med ett annat."
     },
-    "CardRoomName":{"title":"Skriv ett rumsnamn för att skapa ett nytt rum eller gå med i ett redan existerande rum"},
-    "CardRoomPlayerName":{"title":"Skriv ett spelarnamn.","anonymousPlayerName":"Anonym 🕵"},
-    "CardRoomSize":{"title":"Sätt en rumsstorlek."},
-    "CardRoomTime":{"title":"Sätt en tidsbegränsning.","infinite":"Oändlig"},
-    "CardRoomSettings":{
-      "title":"Spelinställningar",
-      "modeLabel":"Välj spelläge",
-      "timeAttackLabel":"TimeAttack",
-      "timeattackInfos":"I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!"
+    "CardRoomName": {
+        "title": "Skriv ett rumsnamn för att skapa ett nytt rum eller gå med i ett redan existerande rum"
     },
-    "CardRoomDifficulty":{
-      "title":"Sätt en svårighetsgrad",
-      "easy":"enkel (världen)",
-      "medium":"mellan (land)",
-      "hard":"svår (stad)"
+    "CardRoomPlayerName": {
+        "title": "Skriv ett spelarnamn.",
+        "anonymousPlayerName": "Anonym 🕵"
     },
-    "DialogSummary":{
-      "summaryMsgSinglePoints":"Din poäng är <strong>{points}</strong> ! ",
-      "summaryMsgSingleDistance":"Du är <strong>{distance}</strong> km iväg!",
-      "summaryMsgMultiPoints":"<strong>{playerName}</strong>s poäng är <strong>{points}</strong> ! ",
-      "summaryMsgMultiDistance":"(<strong>{distance}</strong> km iväg)",
-      "viewDetails":"Visa detaljer"
+    "CardRoomSize": {
+        "title": "Sätt en rumsstorlek."
     },
-    "Footer":{"under":"under","privacyPolicy":"Integritetspolicy"},
-    "urlCopied":"Url kopierad",
-    "DetailsMap":{"moreInfo":"Mer information"},
-    "modes":{"classic":"Klassiskt","country":"Välj land"},
-    "Demo":{
-      "message":"Om du vill bidra till ett projekt och göra det bättre är din hjälp väldigt välkommen :  Översättning 🔠, Kartor 🌍, Kod 💻, Idéer 💡, Betatestning 👀.",
-      "btn":"Gå med"
+    "CardRoomTime": {
+        "title": "Sätt en tidsbegränsning.",
+        "infinite": "Oändlig"
+    },
+    "CardRoomSettings": {
+        "title": "Spelinställningar",
+        "modeLabel": "Välj spelläge",
+        "timeAttackLabel": "TimeAttack",
+        "timeattackInfos": "I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!"
+    },
+    "CardRoomDifficulty": {
+        "title": "Sätt en svårighetsgrad.",
+        "easy": "enkel (världen)",
+        "medium": "mellan (land)",
+        "hard": "svår (stad)"
+    },
+    "DialogSummary": {
+        "summaryMsgSinglePoints": "Din poäng är <strong>{points}</strong> ! ",
+        "summaryMsgSingleDistance": "Du är <strong>{distance}</strong> km iväg!",
+        "summaryMsgMultiPoints": "<strong>{playerName}</strong>s poäng är <strong>{points}</strong> ! ",
+        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km iväg)",
+        "viewDetails": "Visa detaljer"
+    },
+    "Footer": {
+        "under": "under",
+        "privacyPolicy": "Integritetspolicy"
+    },
+    "urlCopied": "Url kopierad",
+    "DetailsMap": {
+        "moreInfo": "Mer information"
+    },
+    "modes": {
+        "classic": "Klassiskt",
+        "country": "Välj land"
+    },
+    "Demo": {
+        "message": "Om du vill bidra till ett projekt och göra det bättre är din hjälp väldigt välkommen :  Översättning 🔠, Kartor 🌍, Kod 💻, Idéer 💡, Betatestning 👀.",
+        "btn": "Gå med"
     }
-  }
+}
