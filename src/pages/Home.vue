@@ -72,9 +72,6 @@ export default {
     methods: { ...mapActions(['getListMaps']) },
     computed: {
         ...mapGetters(['maps']),
-        demoMode() {
-            return !!process.env.VUE_APP_DEMO_MODE;
-        },
     },
 };
 </script>
