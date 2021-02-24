@@ -222,8 +222,6 @@ export default {
             if (typeof file === 'object' && !!file.text) {
                 file.text().then((content) => {
                     this.setGeoJsonString(content);
-                    // eslint-disable-next-line no-console
-                    console.log(content);
                 });
             }
         },

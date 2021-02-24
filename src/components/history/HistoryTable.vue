@@ -148,15 +148,18 @@ export default {
                 },
                 {
                     text: Array(10)
+                        .fill(0)
                         .map(
                             (_a, i) =>
-                                `Round ${i}: position latitude;Round ${i}: position longitude`
+                                `Round ${i + 1}: position latitude,Round ${
+                                    i + 1
+                                }: position longitude`
                         )
-                        .join(';'),
+                        .join(','),
                     value: (item) =>
                         item.rounds
-                            .map((r) => [r.position.lat, r.position.lng])
-                            .join(';'),
+                            .map((r) => `${r.position.lat},${r.position.lng}`)
+                            .join(','),
                     export: true,
                     hide: true,
                 },
@@ -283,12 +286,16 @@ export default {
         exportCsv() {
             const headersExport = this.headers.filter((h) => h.export);
 
-            const header = headersExport.map((h) => h.text).join(';') + '\n';
+            const header = headersExport.map((h) => h.text).join(',') + '\n';
             const content = this.items
                 .map((item) =>
-                    headersExport.map((h) =>
-                        typeof v === 'function' ? h.value(item) : item[h.value]
-                    )
+                    headersExport
+                        .map((h) =>
+                            typeof h.value === 'function'
+                                ? h.value(item)
+                                : item[h.value]
+                        )
+                        .join(',')
                 )
                 .join('\n');
 
