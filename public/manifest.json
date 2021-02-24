@@ -77,8 +77,14 @@
         {
           "action": "/",
           "accept": {
-            "application/vnd.geo+json": [".geojson",".json"],
-            "application/json": [".geojson",".json"]
+            "application/vnd.geo+json": [".geojson",".geo.json"],
+            "application/json": [".geojson", ".geo.json"]
+          }
+        },
+        {
+          "action": "/history",
+          "accept": {
+            "application/json": [".geoHistory"]
           }
         }
     ],

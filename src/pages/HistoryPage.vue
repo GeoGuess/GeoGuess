@@ -20,7 +20,7 @@ export default {
 <style lang="scss">
 .history__content {
     background: #f1e9d6;
-    margin: 5%;
+    margin: 2.5% 5%;
     border-radius: 5px;
     padding: 2%;
 }

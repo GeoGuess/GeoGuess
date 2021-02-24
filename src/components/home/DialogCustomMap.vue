@@ -158,7 +158,6 @@ export default {
         await this.$gmapApiPromiseLazy();
         if ('launchQueue' in window) {
             launchQueue.setConsumer((launchParams) => {
-                // Nothing to do when the queue is empty.
                 if (
                     !Array.isArray(launchParams.files) ||
                     launchParams.files.length !== 1

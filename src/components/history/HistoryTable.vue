@@ -32,21 +32,21 @@
                     <div v-bind="attrs" v-on="on">
                         <v-file-input
                             hide-input
-                            prepend-icon="mdi-upload-outline"
+                            prepend-icon="mdi-download-outline"
                             @change="importSave"
                         ></v-file-input>
                     </div>
                 </template>
-                <span>Import GeoGuess Save</span>
+                <span>Import GeoHistory</span>
             </v-tooltip>
 
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on" @click="exportSave">
-                        <v-icon>mdi-download-outline</v-icon>
+                        <v-icon>mdi-upload-outline</v-icon>
                     </v-btn>
                 </template>
-                <span>Export GeoGuess Save</span>
+                <span>Export GeoHistory</span>
             </v-tooltip>
         </div>
         <v-text-field
@@ -60,7 +60,7 @@
             calculate-widths
             :search="search"
             id="history-table"
-            :headers="headers"
+            :headers="headers.filter((h) => !h.hide)"
             :items="items"
             show-expand
             single-expand
@@ -85,7 +85,9 @@
                 </td>
             </template>
         </v-data-table>
-        <v-btn @click="exportCsv"> Export CSV</v-btn>
+        <v-btn @click="exportCsv" color="primary" class="btn-export"
+            >Export CSV</v-btn
+        >
     </div>
 </template>
 <script>
@@ -116,26 +118,46 @@ export default {
                 {
                     text: this.$t('History.mode'),
                     value: 'gameMode',
+                    export: true,
                 },
                 {
                     text: this.$t('History.mode'),
                     value: 'mode',
+                    export: true,
                 },
                 {
                     text: this.$t('History.rank'),
                     value: 'rank',
+                    export: true,
                 },
                 {
                     text: this.$t('History.time'),
                     value: 'timeString',
+                    export: true,
                 },
                 {
                     text: this.$t('History.distance'),
                     value: 'score',
+                    export: true,
                 },
                 {
                     text: this.$t('History.points'),
                     value: 'points',
+                    export: true,
+                },
+                {
+                    text: Array(10)
+                        .map(
+                            (_a, i) =>
+                                `Round ${i}: position latitude;Round ${i}: position longitude`
+                        )
+                        .join(';'),
+                    value: (item) =>
+                        item.rounds
+                            .map((r) => [r.position.lat, r.position.lng])
+                            .join(';'),
+                    export: true,
+                    hide: true,
                 },
                 {
                     text: 'Actions',
@@ -148,6 +170,21 @@ export default {
                 },
             ],
         };
+    },
+    mounted() {
+        if ('launchQueue' in window) {
+            launchQueue.setConsumer((launchParams) => {
+                if (
+                    !Array.isArray(launchParams.files) ||
+                    launchParams.files.length !== 1
+                ) {
+                    return;
+                }
+                launchParams.files[0].getFile().then((f) => {
+                    this.importSave(f);
+                });
+            });
+        }
     },
     computed: {
         items() {
@@ -172,9 +209,6 @@ export default {
         },
     },
     methods: {
-        hide() {
-            this.$router.push('/');
-        },
         customSort(items, index, isDesc) {
             if (index.length === 0) {
                 return items;
@@ -223,55 +257,39 @@ export default {
         exportSave() {
             download(
                 JSON.stringify(this.history),
-                'save_' + new Date().toISOString() + '.geoguess',
+                'save_' + new Date().toISOString() + '.geoHistory',
                 'application/json'
             );
         },
         importSave(file) {
             file.text().then((text) => {
-                const history = JSON.parse(text);
-                // eslint-disable-next-line no-console
-                console.log(this.history, history);
+                const historyFile = JSON.parse(text);
 
                 if (
-                    !Array.isArray(history) ||
-                    history.some((h) => !h.date || !h.score)
+                    !Array.isArray(historyFile) ||
+                    historyFile.some((h) => !h.date || !h.score)
                 ) {
                     return;
                 }
-                this.history = this.history.concat(history);
+                const historyFileFilter = historyFile.filter(
+                    (line) => !this.history.some((h) => h.date === line.date)
+                );
+                this.history = this.history.concat(historyFileFilter);
 
                 localStorage.setItem('history', JSON.stringify(this.history));
             });
         },
         exportCsv() {
-            const content = this.history
-                .map((h) =>
-                    [
-                        h.date,
-                        h.multiplayer,
-                        h.timeLimitation,
-                        h.points,
-                        h.score,
-                        h.rounds.map((r) => [
-                            r.position.lat,
-                            r.position.lng,
-                            r.guess.lat,
-                            r.guess.lng,
-                        ]),
-                    ]
-                        .flat(2)
-                        .join(';')
+            const headersExport = this.headers.filter((h) => h.export);
+
+            const header = headersExport.map((h) => h.text).join(';') + '\n';
+            const content = this.items
+                .map((item) =>
+                    headersExport.map((h) =>
+                        typeof v === 'function' ? h.value(item) : item[h.value]
+                    )
                 )
                 .join('\n');
-
-            const roundHeader = [1, 2, 3, 4, 5]
-                .map(
-                    (i) =>
-                        `Round ${i}: position latitude;Round ${i}: position longitude;Round ${i}: guess latitude;Round ${i}:guess longitude`
-                )
-                .join(';');
-            const header = `Date;is Multiplayer game?;Time (seconds);Points;Distance (km);${roundHeader};\n`;
 
             download(
                 header + content,
@@ -311,6 +329,11 @@ export default {
         .v-btn {
             margin-right: 5px;
         }
+    }
+    .btn-export {
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
     }
 }
 </style>
