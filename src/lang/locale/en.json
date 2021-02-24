@@ -79,7 +79,10 @@
       "distance":"Distance",
       "points":"Points",
       "rank":"Rank",
-      "search":"Search"
+      "search":"Search",
+      "exportGeoSave":"Export GeoSave",
+      "importGeoSave":"Import GeoSave",
+      "exportCSV":"Export CSV"
     },
     "DialogRoom":{
       "singlePlayer":"Single Player",

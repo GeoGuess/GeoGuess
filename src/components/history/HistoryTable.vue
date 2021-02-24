@@ -32,12 +32,13 @@
                     <div v-bind="attrs" v-on="on">
                         <v-file-input
                             hide-input
+                            accept="application/json"
                             prepend-icon="mdi-download-outline"
                             @change="importSave"
                         ></v-file-input>
                     </div>
                 </template>
-                <span>Import GeoHistory</span>
+                <span>{{ $t('History.HistoryimportGeoSave') }}</span>
             </v-tooltip>
 
             <v-tooltip top>
@@ -46,7 +47,7 @@
                         <v-icon>mdi-upload-outline</v-icon>
                     </v-btn>
                 </template>
-                <span>Export GeoHistory</span>
+                <span>{{ $t('History.exportGeoSave') }}</span>
             </v-tooltip>
         </div>
         <v-text-field
@@ -85,9 +86,9 @@
                 </td>
             </template>
         </v-data-table>
-        <v-btn @click="exportCsv" color="primary" class="btn-export"
-            >Export CSV</v-btn
-        >
+        <v-btn @click="exportCsv" color="primary" class="btn-export">{{
+            $t('History.exportCSV')
+        }}</v-btn>
     </div>
 </template>
 <script>
@@ -257,7 +258,7 @@ export default {
         exportSave() {
             download(
                 JSON.stringify(this.history),
-                'save_' + new Date().toISOString() + '.geoHistory',
+                'save_' + new Date().toISOString() + '.geosave',
                 'application/json'
             );
         },

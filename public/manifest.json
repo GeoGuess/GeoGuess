@@ -84,7 +84,7 @@
         {
           "action": "/history",
           "accept": {
-            "application/json": [".geoHistory"]
+            "application/json": [".geosave"]
           }
         }
     ],
