@@ -13,7 +13,6 @@ exports[`Header.vue open dialog about 1`] = `
           </div>
         </div>
       </nav>
-      <history></history>
       <div role="dialog" class="v-dialog__container">
         <!---->
       </div>
