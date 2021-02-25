@@ -129,6 +129,14 @@ export default {
             default: GAME_MODE.CLASSIC,
             type: String,
         },
+        zoomControl: {
+            default: true,
+            type: Boolean,
+        },
+        moveControl: {
+            default: true,
+            type: Boolean,
+        },
         timeAttackSelected: {
             default: false,
             type: Boolean,
@@ -344,7 +352,17 @@ export default {
                 motionTrackingControl: false,
                 showRoadLabels: false,
                 panControl: true,
+                draggable: false,
+                zoomControl: this.zoomControl,
+                scrollwheel: this.zoomControl,
+                disableDoubleClickZoom: !this.zoomControl,
+                linksControl: this.moveControl,
+                clickToGo: this.moveControl,
             });
+
+            document
+                .querySelector('.widget-scene')
+                .addEventListener('keydown', this.onUserEventPanorama);
             this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,
@@ -468,6 +486,15 @@ export default {
                 );
                 this.dialogText = '';
                 this.dialogMessage = true;
+            }
+        },
+        onUserEventPanorama(e) {
+            if (
+                (!this.moveControl &&
+                    [38, 40, 87, 83, 90].indexOf(e.keyCode)) ||
+                (!this.zoomControl && [107, 109, 187, 189].includes(e.keyCode))
+            ) {
+                e.stopPropagation();
             }
         },
     },

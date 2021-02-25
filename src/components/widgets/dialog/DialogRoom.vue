@@ -78,6 +78,8 @@ export default {
             firstPlayer: false,
             mode: GAME_MODE.CLASSIC,
             timeAttack: false,
+            zoomControl: true,
+            moveControl: true,
         };
     },
     computed: {
@@ -227,11 +229,20 @@ export default {
                 });
             }
         },
-        setSettings(timeLimitation, mode, roomSize, timeAttack) {
+        setSettings(
+            timeLimitation,
+            mode,
+            roomSize,
+            timeAttack,
+            zoomControl,
+            moveControl
+        ) {
             this.timeLimitation = timeLimitation;
             this.roomSize = roomSize;
             this.mode = mode;
             this.timeAttack = timeAttack;
+            this.zoomControl = zoomControl;
+            this.moveControl = moveControl;
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
@@ -241,6 +252,8 @@ export default {
                         placeGeoJson: this.placeGeoJson,
                         modeSelected: mode,
                         bboxObj: this.bboxObj,
+                        zoomControl,
+                        moveControl,
                     },
                 });
             } else {
@@ -252,6 +265,8 @@ export default {
                         mode,
                         size: this.roomSize,
                         timeAttack,
+                        zoomControl,
+                        moveControl,
                     },
                     (error) => {
                         if (!error) {
@@ -288,6 +303,8 @@ export default {
                                 bboxObj: this.bboxObj,
                                 modeSelected: this.mode,
                                 timeAttackSelected: this.timeAttack,
+                                zoomControl: this.zoomControl,
+                                moveControl: this.moveControl,
                             };
                             this.startGameMultiplayer(playerName, gameParams);
                         } else {
@@ -300,6 +317,12 @@ export default {
                                     modeSelected: snapshot.child('mode').val(),
                                     timeAttackSelected: snapshot
                                         .child('timeAttack')
+                                        .val(),
+                                    zoomControl: snapshot
+                                        .child('zoomControl')
+                                        .val(),
+                                    moveControl: snapshot
+                                        .child('moveControl')
                                         .val(),
                                 };
                                 this.startGameMultiplayer(

@@ -56,6 +56,15 @@
                         }}</label>
                         <TimePicker v-model="timeLimitation" />
                     </v-row>
+
+                    <v-row align="center">
+                        <v-checkbox v-model="zoomControl" label="Allow Zoom">
+                        </v-checkbox>
+                    </v-row>
+                    <v-row align="center">
+                        <v-checkbox v-model="moveControl" label="Allow Move">
+                        </v-checkbox>
+                    </v-row>
                     <v-row
                         v-if="this.mode === gameMode.COUNTRY && !singlePlayer"
                         align="center"
@@ -141,6 +150,8 @@ export default {
             timeLimitation: 0,
             roomSize: 2,
             roomSizeItems: [...Array(98)].map((item, index) => index + 2),
+            zoomControl: true,
+            moveControl: true,
         };
     },
     computed: {
@@ -185,7 +196,9 @@ export default {
                     this.timeLimitation,
                     this.mode,
                     +this.roomSize,
-                    this.timeAttack
+                    this.timeAttack,
+                    this.zoomControl,
+                    this.moveControl
                 );
             }
         },
