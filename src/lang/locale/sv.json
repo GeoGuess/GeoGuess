@@ -70,7 +70,9 @@
         "url": "Url",
         "file": "Fil",
         "edit": "Redigera karta",
-        "fileLabel": "Välj GeoJSON-fil"
+        "fileLabel": "Välj GeoJSON-fil",
+        "OK": "OK",
+        "download": "Download GeoJSON"
     },
     "History": {
         "title": "Historik",
@@ -80,7 +82,10 @@
         "distance": "Distans",
         "points": "Poäng",
         "rank": "Rank",
-        "search": "Sök"
+        "search": "Sök",
+        "exportGeoSave": "Export GeoSave",
+        "importGeoSave": "Import GeoSave",
+        "exportCSV": "Export CSV"
     },
     "DialogRoom": {
         "singlePlayer": "Enspelarläge",
