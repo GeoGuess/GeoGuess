@@ -72,7 +72,7 @@
         "edit": "Redigera karta",
         "fileLabel": "Välj GeoJSON-fil",
         "OK": "OK",
-        "download": "Download GeoJSON"
+        "download": "Ladda ner GeoJSON"
     },
     "History": {
         "title": "Historik",
@@ -83,9 +83,9 @@
         "points": "Poäng",
         "rank": "Rank",
         "search": "Sök",
-        "exportGeoSave": "Export GeoSave",
-        "importGeoSave": "Import GeoSave",
-        "exportCSV": "Export CSV"
+        "exportGeoSave": "Exportera GeoSave",
+        "importGeoSave": "Importera GeoSave",
+        "exportCSV": "Exportera CSV"
     },
     "DialogRoom": {
         "singlePlayer": "Enspelarläge",
