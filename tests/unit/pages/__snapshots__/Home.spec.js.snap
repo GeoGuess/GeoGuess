@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home.vue test mounted 1`] = `
-<div class="home-page">
-  <header-stub></header-stub>
-  <!---->
+<contentpage-stub class="home-page">
   <section class="home-page__main">
     <v-container-stub tag="div" fluid="true" class="home-page__main__container">
       <v-layout-stub tag="div" class="home-page__main__layout">
@@ -20,14 +18,11 @@ exports[`Home.vue test mounted 1`] = `
     </v-btn-stub>
   </section>
   <section id="maps"></section>
-  <footer-stub></footer-stub>
-</div>
+</contentpage-stub>
 `;
 
 exports[`Home.vue test mounted 2`] = `
-<div class="home-page">
-  <header-stub></header-stub>
-  <!---->
+<contentpage-stub class="home-page">
   <section class="home-page__main">
     <v-container-stub tag="div" fluid="true" class="home-page__main__container">
       <v-layout-stub tag="div" class="home-page__main__layout">
@@ -44,6 +39,5 @@ exports[`Home.vue test mounted 2`] = `
     </v-btn-stub>
   </section>
   <section id="maps"></section>
-  <footer-stub></footer-stub>
-</div>
+</contentpage-stub>
 `;

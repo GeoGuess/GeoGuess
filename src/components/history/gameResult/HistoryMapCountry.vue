@@ -1,8 +1,5 @@
 <template>
-    <div
-        :style="'width:' + ($viewport.width - 100) + 'px ; height: 400px'"
-        class="map-container"
-    >
+    <div style="height: 400px" class="map-container">
         <GmapMap
             ref="mapRef"
             :center="{ lat: 0, lng: 0 }"

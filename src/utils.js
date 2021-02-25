@@ -1,8 +1,8 @@
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
+import { point } from '@turf/helpers';
 import axios from 'axios';
 import { GAME_MODE } from './constants';
-import { point } from '@turf/helpers';
 
 /**
  * check in valid format url
@@ -140,4 +140,30 @@ export function getMaxDistanceBbox(bbox) {
     const to = point(bboxPlace.slice(2, 4));
 
     return distance(from, to);
+}
+
+/**
+ * Download file
+ * @param {string} data
+ * @param {string} filename
+ * @param {string} type
+ */
+export function download(data, filename, type) {
+    const file = new Blob([data], { type: type });
+    if (window.navigator.msSaveOrOpenBlob)
+        // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else {
+        // Others
+        var a = document.createElement('a'),
+            url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }, 0);
+    }
 }

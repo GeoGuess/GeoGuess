@@ -1,6 +1,7 @@
 import Home from '@/pages/Home';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import StreetView from '@/pages/StreetView';
+import HistoryPage from '@/pages/HistoryPage';
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -37,10 +38,7 @@ export default new Router({
         {
             path: '/history',
             name: 'History',
-            component: Home,
-            props: {
-                openHistory: true,
-            },
+            component: HistoryPage,
         },
         {
             path: '/street-view',
