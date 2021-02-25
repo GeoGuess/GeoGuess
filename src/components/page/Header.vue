@@ -37,8 +37,6 @@
                     </v-menu>
                 </div>
             </nav>
-
-            <History />
             <v-dialog v-model="aboutDialog">
                 <About />
             </v-dialog>

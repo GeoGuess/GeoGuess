@@ -227,9 +227,9 @@ export default {
                 } else {
                     if (index[0] === 'timeString')
                         if (!isDesc[0]) {
-                            return a.time - b.time;
+                            return a.timeLimitation - b.timeLimitation;
                         } else {
-                            return b.time - a.time;
+                            return b.timeLimitation - a.timeLimitation;
                         }
 
                     if (!isDesc[0]) {
