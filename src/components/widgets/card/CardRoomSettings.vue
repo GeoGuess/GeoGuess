@@ -57,12 +57,24 @@
                         <TimePicker v-model="timeLimitation" />
                     </v-row>
 
-                    <v-row align="center">
-                        <v-checkbox v-model="zoomControl" label="Allow Zoom">
+                    <v-row align="center" class="card_settings__allow_btns">
+                        <v-checkbox
+                            v-model="zoomControl"
+                            label="Allow Zoom"
+                            hide-details
+                        >
                         </v-checkbox>
-                    </v-row>
-                    <v-row align="center">
-                        <v-checkbox v-model="moveControl" label="Allow Move">
+                        <v-checkbox
+                            v-model="moveControl"
+                            label="Allow Move"
+                            hide-details
+                        >
+                        </v-checkbox>
+                        <v-checkbox
+                            v-model="panControl"
+                            label="Allow Pan"
+                            hide-details
+                        >
                         </v-checkbox>
                     </v-row>
                     <v-row
@@ -152,6 +164,7 @@ export default {
             roomSizeItems: [...Array(98)].map((item, index) => index + 2),
             zoomControl: true,
             moveControl: true,
+            panControl: true,
         };
     },
     computed: {
@@ -198,7 +211,8 @@ export default {
                     +this.roomSize,
                     this.timeAttack,
                     this.zoomControl,
-                    this.moveControl
+                    this.moveControl,
+                    this.panControl
                 );
             }
         },
@@ -215,6 +229,17 @@ export default {
 
 .v-card__actions .v-btn {
     color: white;
+}
+.card_settings__allow_btns {
+    display: flex;
+    flex-direction: column;
+    .v-input {
+        align-self: start;
+        margin: 0;
+        .v-messages {
+            display: contents;
+        }
+    }
 }
 @media (max-width: 360px) {
     .card_settings__mode__btns {

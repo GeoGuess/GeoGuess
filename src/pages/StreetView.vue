@@ -129,6 +129,10 @@ export default {
             default: GAME_MODE.CLASSIC,
             type: String,
         },
+        panControl: {
+            default: true,
+            type: Boolean,
+        },
         zoomControl: {
             default: true,
             type: Boolean,
@@ -351,8 +355,7 @@ export default {
                 motionTracking: false,
                 motionTrackingControl: false,
                 showRoadLabels: false,
-                panControl: true,
-                draggable: false,
+                panControl: this.panControl,
                 zoomControl: this.zoomControl,
                 scrollwheel: this.zoomControl,
                 disableDoubleClickZoom: !this.zoomControl,
@@ -492,7 +495,10 @@ export default {
             if (
                 (!this.moveControl &&
                     [38, 40, 87, 83, 90].indexOf(e.keyCode)) ||
-                (!this.zoomControl && [107, 109, 187, 189].includes(e.keyCode))
+                (!this.zoomControl &&
+                    [107, 109, 187, 189].includes(e.keyCode)) ||
+                (!this.panControl &&
+                    [37, 39, 65, 68, 100, 102].includes(e.keyCode))
             ) {
                 e.stopPropagation();
             }

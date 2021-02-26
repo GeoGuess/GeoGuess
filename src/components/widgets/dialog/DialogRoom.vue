@@ -80,6 +80,7 @@ export default {
             timeAttack: false,
             zoomControl: true,
             moveControl: true,
+            panControl: true,
         };
     },
     computed: {
@@ -235,7 +236,8 @@ export default {
             roomSize,
             timeAttack,
             zoomControl,
-            moveControl
+            moveControl,
+            panControl
         ) {
             this.timeLimitation = timeLimitation;
             this.roomSize = roomSize;
@@ -243,6 +245,7 @@ export default {
             this.timeAttack = timeAttack;
             this.zoomControl = zoomControl;
             this.moveControl = moveControl;
+            this.panControl = panControl;
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
@@ -254,6 +257,7 @@ export default {
                         bboxObj: this.bboxObj,
                         zoomControl,
                         moveControl,
+                        panControl,
                     },
                 });
             } else {
@@ -267,6 +271,7 @@ export default {
                         timeAttack,
                         zoomControl,
                         moveControl,
+                        panControl,
                     },
                     (error) => {
                         if (!error) {
@@ -305,6 +310,7 @@ export default {
                                 timeAttackSelected: this.timeAttack,
                                 zoomControl: this.zoomControl,
                                 moveControl: this.moveControl,
+                                panControl: this.panControl,
                             };
                             this.startGameMultiplayer(playerName, gameParams);
                         } else {
@@ -323,6 +329,9 @@ export default {
                                         .val(),
                                     moveControl: snapshot
                                         .child('moveControl')
+                                        .val(),
+                                    panControl: snapshot
+                                        .child('panControl')
                                         .val(),
                                 };
                                 this.startGameMultiplayer(
