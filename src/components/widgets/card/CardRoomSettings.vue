@@ -60,19 +60,19 @@
                     <v-row align="center" class="card_settings__allow_btns">
                         <v-checkbox
                             v-model="zoomControl"
-                            label="Allow Zoom"
+                            :label="$t('CardRoomSettings.allowZoom')"
                             hide-details
                         >
                         </v-checkbox>
                         <v-checkbox
                             v-model="moveControl"
-                            label="Allow Move"
+                            :label="$t('CardRoomSettings.allowMove')"
                             hide-details
                         >
                         </v-checkbox>
                         <v-checkbox
                             v-model="panControl"
-                            label="Allow Pan"
+                            :label="$t('CardRoomSettings.allowPan')"
                             hide-details
                         >
                         </v-checkbox>

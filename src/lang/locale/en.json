@@ -94,7 +94,10 @@
       "title":"Game Settings",
       "modeLabel":"Select game mode",
       "timeAttackLabel":"TimeAttack",
-      "timeattackInfos":"In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!"
+      "timeattackInfos":"In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
+      "allowMove":"Allow Move",     
+      "allowZoom":"Allow Zoom",     
+      "allowPan":"Allow Pan"
     },
     "CardRoomDifficulty":{
       "title":"Set a difficulty level.",

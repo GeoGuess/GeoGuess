@@ -362,15 +362,24 @@ export default {
                 linksControl: this.moveControl,
                 clickToGo: this.moveControl,
             });
+            if (document.querySelector('.widget-scene')) {
+                document
+                    .querySelector('.widget-scene')
+                    .addEventListener('keydown', this.onUserEventPanoramaKey);
 
-            document
-                .querySelector('.widget-scene')
-                .addEventListener('keydown', this.onUserEventPanorama);
+                document
+                    .querySelector('.widget-scene')
+                    .addEventListener(
+                        'mousedown',
+                        this.onUserEventPanoramaMouse
+                    );
+            }
             this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,
                 pitch: 0,
             });
+
             this.panorama.setZoom(0);
         },
         startTimer(round = this.round) {
@@ -491,10 +500,10 @@ export default {
                 this.dialogMessage = true;
             }
         },
-        onUserEventPanorama(e) {
+        onUserEventPanoramaKey(e) {
             if (
                 (!this.moveControl &&
-                    [38, 40, 87, 83, 90].indexOf(e.keyCode)) ||
+                    [38, 40, 87, 83, 90].includes(e.keyCode)) ||
                 (!this.zoomControl &&
                     [107, 109, 187, 189].includes(e.keyCode)) ||
                 (!this.panControl &&
@@ -503,12 +512,16 @@ export default {
                 e.stopPropagation();
             }
         },
+        onUserEventPanoramaMouse(e) {
+            if (!this.panControl) e.stopPropagation();
+        },
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(
             document.getElementById('street-view')
         );
+
         if (this.playerNumber == 1 || !this.multiplayer) {
             this.loadStreetView();
         }
@@ -638,6 +651,18 @@ export default {
         }
     },
     beforeDestroy() {
+        if (document.querySelector('.widget-scene')) {
+            document
+                .querySelector('.widget-scene')
+                .removeEventListener('keydown', this.onUserEventPanoramaKey);
+
+            document
+                .querySelector('.widget-scene')
+                .removeEventListener(
+                    'mousedown',
+                    this.onUserEventPanoramaMouse
+                );
+        }
         window.removeEventListener('beforeunload', this.beforeUnload);
         if (this.room) {
             // Remove the room when the player refreshes the window
