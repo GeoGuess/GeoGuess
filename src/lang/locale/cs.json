@@ -70,7 +70,9 @@
         "url": "URL",
         "file": "Soubor",
         "edit": "Upravit Mapu",
-        "fileLabel": "Zvol GeoJSON soubor"
+        "fileLabel": "Zvol GeoJSON soubor",
+        "OK": "OK",
+        "download": "Download GeoJSON"
     },
     "History": {
         "title": "Historie",
@@ -80,7 +82,10 @@
         "distance": "Vzdálenost",
         "points": "Skóre",
         "rank": "Umístění",
-        "search": "Vyhledávání"
+        "search": "Vyhledávání",
+        "exportGeoSave": "Export GeoSave",
+        "importGeoSave": "Import GeoSave",
+        "exportCSV": "Export CSV"
     },
     "DialogRoom": {
         "singlePlayer": "Jeden hráč",
