@@ -248,7 +248,6 @@ export default {
         .v-btn {
             margin: 5px 0;
             width: 100%;
-            color: white;
         }
     }
 }

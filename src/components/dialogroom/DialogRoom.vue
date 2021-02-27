@@ -39,13 +39,13 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import CardRoomName from '@/components/widgets/card/CardRoomName';
-import CardRoomSettings from '@/components/widgets/card/CardRoomSettings';
-import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
+import CardRoomName from '@/components/dialogroom/card/CardRoomName';
+import CardRoomSettings from '@/components/dialogroom/card/CardRoomSettings';
+import CardRoomPlayerName from '@/components/dialogroom/card/CardRoomPlayerName';
 import { mapState, mapActions } from 'vuex';
 import bbox from '@turf/bbox';
-import { GAME_MODE } from '../../../constants';
-import { getMaxDistanceBbox } from '../../../utils';
+import { GAME_MODE } from '../../constants';
+import { getMaxDistanceBbox } from '../../utils';
 
 export default {
     props: {

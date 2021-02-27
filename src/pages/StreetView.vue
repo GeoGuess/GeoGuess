@@ -130,7 +130,7 @@ export default {
             type: String,
         },
         panControl: {
-            default: true,
+            default: false,
             type: Boolean,
         },
         zoomControl: {
@@ -371,6 +371,18 @@ export default {
                     .querySelector('.widget-scene')
                     .addEventListener(
                         'mousedown',
+                        this.onUserEventPanoramaMouse
+                    );
+                document
+                    .querySelector('.widget-scene')
+                    .addEventListener(
+                        'touchstart',
+                        this.onUserEventPanoramaMouse
+                    );
+                document
+                    .querySelector('.widget-scene')
+                    .addEventListener(
+                        'pointerdown',
                         this.onUserEventPanoramaMouse
                     );
             }
