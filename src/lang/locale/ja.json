@@ -70,7 +70,9 @@
         "url": "Url",
         "file": "File",
         "edit": "Edit Map",
-        "fileLabel": "Select GeoJSON file"
+        "fileLabel": "Select GeoJSON file",
+        "OK": "OK",
+        "download": "Download GeoJSON"
     },
     "History": {
         "title": "History",
@@ -80,7 +82,10 @@
         "distance": "Distance",
         "points": "Points",
         "rank": "Rank",
-        "search": "Search"
+        "search": "Search",
+        "exportGeoSave": "Export GeoSave",
+        "importGeoSave": "Import GeoSave",
+        "exportCSV": "Export CSV"
     },
     "DialogRoom": {
         "singlePlayer": "一人で遊ぶ",

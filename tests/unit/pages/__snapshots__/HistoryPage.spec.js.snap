@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home.vue test mounted 1`] = `
+<contentpage-stub>
+  <div class="history__content">
+    <historytable-stub></historytable-stub>
+  </div>
+</contentpage-stub>
+`;

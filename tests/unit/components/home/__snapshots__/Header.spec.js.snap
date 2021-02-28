@@ -3,7 +3,8 @@
 exports[`Header.vue open dialog about 1`] = `
 <div>
   <header class="header v-sheet theme--light v-toolbar v-app-bar" style="height: 100px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;">
-    <div class="v-toolbar__content" style="height: 100px;"><img src="@/assets/geoguessLogo.png" class="header__logo">
+    <div class="v-toolbar__content" style="height: 100px;">
+      <router-link to="/"><img src="@/assets/geoguessLogo.png" class="header__logo"></router-link>
       <div class="flex-grow-1"></div>
       <nav class="header__nav"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content"><router-link to="/history">HISTORY</router-link></span></button>
         <div class="header__nav__btns"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="aboutBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-circle theme--light" style="font-size: 30px;"></i></span></button>
@@ -12,11 +13,11 @@ exports[`Header.vue open dialog about 1`] = `
           </div>
         </div>
       </nav>
-      <!---->
       <div role="dialog" class="v-dialog__container">
         <!---->
       </div>
     </div>
   </header>
+  <!---->
 </div>
 `;

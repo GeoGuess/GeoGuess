@@ -6,6 +6,7 @@ import Router from 'vue-router';
 import Vuetify from 'vuetify';
 import en from 'vuetify/es5/locale/en';
 import Vuex from 'vuex';
+import VueClipboard from 'vue-clipboard2';
 
 global.File = class MockFile {
     constructor(parts, filename, properties) {
@@ -32,6 +33,7 @@ export default function appInit(VueInstance) {
     });
     Vue.use(Vuetify);
     Vue.use(Vuex);
+    Vue.use(VueClipboard);
 
     VueInstance.use(VueI18n);
     VueInstance.use(Router);

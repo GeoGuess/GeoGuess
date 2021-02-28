@@ -53,7 +53,7 @@
     "prettier": "2.1.2",
     "react-is": "^16.13.1",
     "sass": "^1.30.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^8.0.2",
     "vue-cli-plugin-vuetify": "^0.6.3",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.6.0"
@@ -77,6 +77,6 @@
   "bugs": {
     "url": "https://github.com/GeoGuess/Geoguess/issues"
   },
-  "homepage": "hhttps://github.com/GeoGuess/Geoguess#readme",
+  "homepage": "https://github.com/GeoGuess/Geoguess#readme",
   "license": "MIT"
 }

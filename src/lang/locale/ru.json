@@ -70,7 +70,9 @@
         "url": "Ссылка",
         "file": "Файл",
         "edit": "Редактировать карту",
-        "fileLabel": "Выбрать GeoJSON файл"
+        "fileLabel": "Выбрать GeoJSON файл",
+        "OK": "OK",
+        "download": "Download GeoJSON"
     },
     "History": {
         "title": "История",
@@ -80,7 +82,10 @@
         "distance": "Дистанция",
         "points": "Очки",
         "rank": "Ранк",
-        "search": "Поиск"
+        "search": "Поиск",
+        "exportGeoSave": "Export GeoSave",
+        "importGeoSave": "Import GeoSave",
+        "exportCSV": "Export CSV"
     },
     "DialogRoom": {
         "singlePlayer": "Одиночная игра",

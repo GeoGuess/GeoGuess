@@ -10,6 +10,7 @@ module.exports = {
         'plugin:prettier/recommended',
     ],
     globals: {
+        launchQueue: 'readonly',
         google: 'readonly',
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
