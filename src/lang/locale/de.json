@@ -112,7 +112,10 @@
         "title": "Spieleinstellungen",
         "modeLabel": "Spielmodus wählen",
         "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!"
+        "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!",
+        "allowMove": "Allow Move",
+        "allowZoom": "Allow Zoom",
+        "allowPan": "Allow Pan"
     },
     "CardRoomDifficulty": {
         "title": "Lege den Schwierigkeitsgrad fest.",
