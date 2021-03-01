@@ -39,13 +39,13 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import CardRoomName from '@/components/widgets/card/CardRoomName';
-import CardRoomSettings from '@/components/widgets/card/CardRoomSettings';
-import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName';
+import CardRoomName from '@/components/dialogroom/card/CardRoomName';
+import CardRoomSettings from '@/components/dialogroom/card/CardRoomSettings';
+import CardRoomPlayerName from '@/components/dialogroom/card/CardRoomPlayerName';
 import { mapState, mapActions } from 'vuex';
 import bbox from '@turf/bbox';
-import { GAME_MODE } from '../../../constants';
-import { getMaxDistanceBbox } from '../../../utils';
+import { GAME_MODE } from '../../constants';
+import { getMaxDistanceBbox } from '../../utils';
 
 export default {
     props: {
@@ -78,6 +78,9 @@ export default {
             firstPlayer: false,
             mode: GAME_MODE.CLASSIC,
             timeAttack: false,
+            zoomControl: true,
+            moveControl: true,
+            panControl: true,
         };
     },
     computed: {
@@ -227,11 +230,22 @@ export default {
                 });
             }
         },
-        setSettings(timeLimitation, mode, roomSize, timeAttack) {
+        setSettings(
+            timeLimitation,
+            mode,
+            roomSize,
+            timeAttack,
+            zoomControl,
+            moveControl,
+            panControl
+        ) {
             this.timeLimitation = timeLimitation;
             this.roomSize = roomSize;
             this.mode = mode;
             this.timeAttack = timeAttack;
+            this.zoomControl = zoomControl;
+            this.moveControl = moveControl;
+            this.panControl = panControl;
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
@@ -241,6 +255,9 @@ export default {
                         placeGeoJson: this.placeGeoJson,
                         modeSelected: mode,
                         bboxObj: this.bboxObj,
+                        zoomControl,
+                        moveControl,
+                        panControl,
                     },
                 });
             } else {
@@ -252,6 +269,9 @@ export default {
                         mode,
                         size: this.roomSize,
                         timeAttack,
+                        zoomControl,
+                        moveControl,
+                        panControl,
                     },
                     (error) => {
                         if (!error) {
@@ -288,6 +308,9 @@ export default {
                                 bboxObj: this.bboxObj,
                                 modeSelected: this.mode,
                                 timeAttackSelected: this.timeAttack,
+                                zoomControl: this.zoomControl,
+                                moveControl: this.moveControl,
+                                panControl: this.panControl,
                             };
                             this.startGameMultiplayer(playerName, gameParams);
                         } else {
@@ -300,6 +323,15 @@ export default {
                                     modeSelected: snapshot.child('mode').val(),
                                     timeAttackSelected: snapshot
                                         .child('timeAttack')
+                                        .val(),
+                                    zoomControl: snapshot
+                                        .child('zoomControl')
+                                        .val(),
+                                    moveControl: snapshot
+                                        .child('moveControl')
+                                        .val(),
+                                    panControl: snapshot
+                                        .child('panControl')
                                         .val(),
                                 };
                                 this.startGameMultiplayer(

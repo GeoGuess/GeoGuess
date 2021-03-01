@@ -56,6 +56,27 @@
                         }}</label>
                         <TimePicker v-model="timeLimitation" />
                     </v-row>
+
+                    <v-row align="center" class="card_settings__allow_btns">
+                        <v-checkbox
+                            v-model="zoomControl"
+                            :label="$t('CardRoomSettings.allowZoom')"
+                            hide-details
+                        >
+                        </v-checkbox>
+                        <v-checkbox
+                            v-model="moveControl"
+                            :label="$t('CardRoomSettings.allowMove')"
+                            hide-details
+                        >
+                        </v-checkbox>
+                        <v-checkbox
+                            v-model="panControl"
+                            :label="$t('CardRoomSettings.allowPan')"
+                            hide-details
+                        >
+                        </v-checkbox>
+                    </v-row>
                     <v-row
                         v-if="this.mode === gameMode.COUNTRY && !singlePlayer"
                         align="center"
@@ -141,6 +162,9 @@ export default {
             timeLimitation: 0,
             roomSize: 2,
             roomSizeItems: [...Array(98)].map((item, index) => index + 2),
+            zoomControl: true,
+            moveControl: true,
+            panControl: true,
         };
     },
     computed: {
@@ -185,7 +209,10 @@ export default {
                     this.timeLimitation,
                     this.mode,
                     +this.roomSize,
-                    this.timeAttack
+                    this.timeAttack,
+                    this.zoomControl,
+                    this.moveControl,
+                    this.panControl
                 );
             }
         },
@@ -203,6 +230,17 @@ export default {
 .v-card__actions .v-btn {
     color: white;
 }
+.card_settings__allow_btns {
+    display: flex;
+    flex-direction: column;
+    .v-input {
+        align-self: start;
+        margin: 0;
+        .v-messages {
+            display: contents;
+        }
+    }
+}
 @media (max-width: 360px) {
     .card_settings__mode__btns {
         flex-direction: column;
@@ -210,7 +248,6 @@ export default {
         .v-btn {
             margin: 5px 0;
             width: 100%;
-            color: white;
         }
     }
 }
