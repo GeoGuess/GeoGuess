@@ -112,7 +112,10 @@
         "title": "Spelinställningar",
         "modeLabel": "Välj spelläge",
         "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!"
+        "timeattackInfos": "I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!",
+        "allowMove": "Allow Move",
+        "allowZoom": "Allow Zoom",
+        "allowPan": "Allow Pan"
     },
     "CardRoomDifficulty": {
         "title": "Sätt en svårighetsgrad.",
