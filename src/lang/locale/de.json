@@ -105,7 +105,7 @@
         "title": "Lege die Größe des Raumes fest."
     },
     "CardRoomTime": {
-        "title": "Geben Sie die maximale Zeit pro Runde ein.",
+        "title": "Lege die maximale Zeit pro Runde fest.",
         "infinite": "Unendlich"
     },
     "CardRoomSettings": {
