@@ -113,9 +113,9 @@
         "modeLabel": "Spielmodus wählen",
         "timeAttackLabel": "TimeAttack",
         "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!",
-        "allowMove": "Allow Move",
-        "allowZoom": "Allow Zoom",
-        "allowPan": "Allow Pan"
+        "allowMove": "Bewegen zulassen",
+        "allowZoom": "Zoomen zulassen",
+        "allowPan": "Schwenken zulassen"
     },
     "CardRoomDifficulty": {
         "title": "Lege den Schwierigkeitsgrad fest.",
