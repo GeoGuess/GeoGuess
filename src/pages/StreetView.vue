@@ -34,6 +34,7 @@
                         :country="country"
                         :timeAttack="timeAttack"
                         :nbRound="nbRound"
+                        :countdown="countdown"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -144,6 +145,10 @@ export default {
         timeAttackSelected: {
             default: false,
             type: Boolean,
+        },
+        countdown: {
+            default: 0,
+            type: Number,
         },
     },
     components: {
@@ -394,8 +399,20 @@ export default {
 
             this.panorama.setZoom(0);
         },
+        initTimer(time) {
+            const endDate = new Date();
+            endDate.setSeconds(endDate.getSeconds() + time);
+            if (this.hasTimerStarted) {
+                this.endTime = this.endTime > endDate ? endDate : this.endTime;
+            } else {
+                this.endTime = endDate;
+                this.startTimer();
+            }
+        },
         startTimer(round = this.round) {
             if (round === this.round) {
+                // eslint-disable-next-line no-console
+                console.log(this.round, round, this.remainingTime);
                 this.remainingTime = Math.max(
                     0,
                     Math.round((this.endTime - Date.now()) / 1000)
@@ -471,11 +488,7 @@ export default {
             if (this.playerNumber == 1 || !this.multiplayer) {
                 this.loadStreetView();
                 if (!this.multiplayer && this.timeLimitation != 0) {
-                    this.endTime = new Date();
-                    this.endTime.setSeconds(
-                        this.endTime.getSeconds() + this.timeLimitation
-                    );
-                    this.startTimer();
+                    this.initTimer(this.timeLimitation);
                 }
             } else {
                 // Trigger listener and load the next streetview
@@ -543,11 +556,7 @@ export default {
 
             if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
-                    this.endTime = new Date();
-                    this.endTime.setSeconds(
-                        this.endTime.getSeconds() + this.timeLimitation
-                    );
-                    this.startTimer();
+                    this.initTimer(this.timeLimitation);
                     this.hasTimerStarted = true;
                 }
             }
@@ -637,12 +646,7 @@ export default {
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {
-                                this.endTime = new Date();
-                                this.endTime.setSeconds(
-                                    this.endTime.getSeconds() +
-                                        this.timeLimitation
-                                );
-                                this.startTimer();
+                                this.initTimer(this.timeLimitation);
                                 this.hasTimerStarted = true;
                             }
                         }

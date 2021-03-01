@@ -191,6 +191,7 @@ export default {
         'country',
         'timeAttack',
         'nbRound',
+        'countdown',
     ],
     components: {
         DialogSummary,
@@ -216,6 +217,7 @@ export default {
             size: 2,
             pinActive: false,
             printMapFull: false,
+            countdownStarted: false,
             game: {
                 multiplayer: !!this.roomName,
                 date: new Date(),
@@ -307,6 +309,8 @@ export default {
             this.$emit('resetLocation');
         },
         calculateDistance() {
+            // eslint-disable-next-line no-debugger
+            debugger;
             if (this.mode === GAME_MODE.COUNTRY) {
                 this.point = +(this.country === this.selectedPos);
                 this.$emit('calculateDistance', null, this.point);
@@ -362,6 +366,7 @@ export default {
             this.isGuessButtonClicked = false;
             this.isSelected = false;
             this.isNextButtonVisible = false;
+            this.countdownStarted = false;
 
             if (this.$viewport.width < 450) {
                 // Hide the map if the player is on mobile
@@ -396,9 +401,10 @@ export default {
             this.room.on('value', (snapshot) => {
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
-                    // Allow players to move on to the next round when every players guess locations
                     if (
+                        // If Time Attack and 1st true guess finish round
                         (this.timeAttack &&
+                            this.countdown === 0 &&
                             snapshot.child('guess').numChildren() >= 1 &&
                             snapshot
                                 .child('guess')
@@ -407,6 +413,7 @@ export default {
                                         guess.child('country').val() ===
                                         this.country
                                 )) ||
+                        // Allow players to move on to the next round when every players guess locations
                         snapshot.child('guess').numChildren() ===
                             snapshot.child('size').val()
                     ) {
@@ -539,6 +546,17 @@ export default {
                         this.round + 1
                     ) {
                         this.isNextStreetViewReady = true;
+                    }
+
+                    if (
+                        !this.countdownStarted &&
+                        !this.printMapFull &&
+                        this.countdown > 0 &&
+                        snapshot.child('guess').numChildren() >= 1
+                    ) {
+                        this.$parent.initTimer(this.countdown);
+
+                        this.countdownStarted = true;
                     }
                 }
             });

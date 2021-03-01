@@ -57,50 +57,81 @@
                         <TimePicker v-model="timeLimitation" />
                     </v-row>
 
-                    <v-row align="center" class="card_settings__allow_btns">
-                        <v-checkbox
-                            v-model="zoomControl"
-                            :label="$t('CardRoomSettings.allowZoom')"
-                            hide-details
-                        >
-                        </v-checkbox>
-                        <v-checkbox
-                            v-model="moveControl"
-                            :label="$t('CardRoomSettings.allowMove')"
-                            hide-details
-                        >
-                        </v-checkbox>
-                        <v-checkbox
-                            v-model="panControl"
-                            :label="$t('CardRoomSettings.allowPan')"
-                            hide-details
-                        >
-                        </v-checkbox>
-                    </v-row>
                     <v-row
-                        v-if="this.mode === gameMode.COUNTRY && !singlePlayer"
                         align="center"
+                        class="card_settings__allow_btns d-flex justify-space-around flex-row"
                     >
-                        <v-checkbox
-                            v-model="timeAttack"
-                            :label="$t('CardRoomSettings.timeAttackLabel')"
-                        >
-                        </v-checkbox>
-                        <v-tooltip
-                            top
-                            max-width="350"
-                            class="tooltip-timeattack"
-                        >
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn icon v-bind="attrs" v-on="on">
-                                    <v-icon> mdi-information</v-icon>
-                                </v-btn>
-                            </template>
-                            <span>{{
-                                $t('CardRoomSettings.timeattackInfos')
-                            }}</span>
-                        </v-tooltip>
+                        <div>
+                            <v-checkbox
+                                v-model="zoomControl"
+                                :label="$t('CardRoomSettings.allowZoom')"
+                                hide-details
+                            >
+                            </v-checkbox>
+                            <v-checkbox
+                                v-model="moveControl"
+                                :label="$t('CardRoomSettings.allowMove')"
+                                hide-details
+                            >
+                            </v-checkbox>
+                            <v-checkbox
+                                v-model="panControl"
+                                :label="$t('CardRoomSettings.allowPan')"
+                                hide-details
+                            >
+                            </v-checkbox>
+                        </div>
+                        <div>
+                            <v-text-field
+                                v-if="!singlePlayer"
+                                v-model="countdown"
+                                hide-details
+                                label="CountDown (seconds)"
+                                type="number"
+                            ></v-text-field>
+                            <div
+                                v-if="
+                                    this.mode === gameMode.COUNTRY &&
+                                    !singlePlayer
+                                "
+                            >
+                                <v-checkbox v-model="timeAttack" hide-details>
+                                    <template #label>
+                                        {{
+                                            $t(
+                                                'CardRoomSettings.timeAttackLabel'
+                                            )
+                                        }}
+                                        <v-tooltip
+                                            top
+                                            max-width="350"
+                                            class="tooltip-timeattack"
+                                        >
+                                            <template
+                                                v-slot:activator="{ on, attrs }"
+                                            >
+                                                <v-btn
+                                                    icon
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                >
+                                                    <v-icon>
+                                                        mdi-information</v-icon
+                                                    >
+                                                </v-btn>
+                                            </template>
+                                            <span>{{
+                                                $t(
+                                                    'CardRoomSettings.timeattackInfos'
+                                                )
+                                            }}</span>
+                                        </v-tooltip>
+                                    </template>
+                                </v-checkbox>
+                            </div>
+                        </div>
                     </v-row>
+                    <v-row align="center"> </v-row>
                 </v-col>
                 <v-col
                     v-bind:class="{
@@ -165,6 +196,7 @@ export default {
             zoomControl: true,
             moveControl: true,
             panControl: true,
+            countdown: 0,
         };
     },
     computed: {
@@ -212,7 +244,8 @@ export default {
                     this.timeAttack,
                     this.zoomControl,
                     this.moveControl,
-                    this.panControl
+                    this.panControl,
+                    +this.countdown
                 );
             }
         },
