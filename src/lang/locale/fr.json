@@ -72,7 +72,7 @@
         "edit": "Editer la carte",
         "fileLabel": "Selectionner un fichier GeoJSON",
         "OK": "OK",
-        "download": "Download GeoJSON"
+        "download": "Télécharger GeoJSON"
     },
     "History": {
         "title": "Historique",
@@ -83,8 +83,8 @@
         "points": "Points",
         "rank": "Classement",
         "search": "Rechercher",
-        "exportGeoSave": "Export GeoSave",
-        "importGeoSave": "Import GeoSave",
+        "exportGeoSave": "Exporter en GeoSave",
+        "importGeoSave": "Import un GeoSave",
         "exportCSV": "Export CSV"
     },
     "DialogRoom": {
@@ -112,7 +112,10 @@
         "title": "Paramètre de la partie",
         "modeLabel": "Choisissez le mode de jeu",
         "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "Dans le mode TimeAttack, seulement le premier joueur qui devine le pays récupère le point. Sois rapide et gagne!"
+        "timeattackInfos": "Dans le mode TimeAttack, seulement le premier joueur qui devine le pays récupère le point. Sois rapide et gagne!",
+        "allowMove": "Autoriser les déplacements",
+        "allowZoom": "Autoriser le zoom",
+        "allowPan": "Autoriser les rotations"
     },
     "CardRoomDifficulty": {
         "title": "Saisir la difficulté.",

@@ -112,7 +112,10 @@
         "title": "Nastavení hry",
         "modeLabel": "Zvol herní režim",
         "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!"
+        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
+        "allowMove": "Allow Move",
+        "allowZoom": "Allow Zoom",
+        "allowPan": "Allow Pan"
     },
     "CardRoomDifficulty": {
         "title": "Zvol obtížnost hry (ovlivňuje bodování).",

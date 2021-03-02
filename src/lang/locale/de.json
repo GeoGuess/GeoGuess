@@ -105,14 +105,17 @@
         "title": "Lege die Größe des Raumes fest."
     },
     "CardRoomTime": {
-        "title": "Geben Sie die maximale Zeit pro Runde ein.",
+        "title": "Lege die maximale Zeit pro Runde fest.",
         "infinite": "Unendlich"
     },
     "CardRoomSettings": {
         "title": "Spieleinstellungen",
         "modeLabel": "Spielmodus wählen",
         "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!"
+        "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!",
+        "allowMove": "Bewegen zulassen",
+        "allowZoom": "Zoomen zulassen",
+        "allowPan": "Schwenken zulassen"
     },
     "CardRoomDifficulty": {
         "title": "Lege den Schwierigkeitsgrad fest.",
