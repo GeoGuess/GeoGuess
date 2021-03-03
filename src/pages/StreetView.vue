@@ -50,16 +50,28 @@
             :dialogTitle="dialogTitle"
             :dialogText="dialogText"
         />
-        <v-alert
-            type="warning"
-            dismissible
-            class="warning-alert"
-            v-if="isVisibleDialog"
-            tile
-        >
-            <b>{{ $t('StreetView.nearby.title') }}</b> :
-            {{ $t('StreetView.nearby.message') }}
-        </v-alert>
+        <div class="alert-container">
+            <v-alert
+                type="warning"
+                dismissible
+                class="warning-alert"
+                v-if="isVisibleDialog"
+            >
+                <b>{{ $t('StreetView.nearby.title') }}</b> :
+                {{ $t('StreetView.nearby.message') }}
+            </v-alert>
+            <v-alert
+                type="info"
+                id="warningCountdown"
+                dismissible
+                transition="slide-x-transition"
+                v-model="isVisibleCountdownAlert"
+                prominent
+                icon="mdi-clock-fast"
+            >
+                {{ $tc('StreetView.countdownAlert', timeCountdown) }}
+            </v-alert>
+        </div>
     </div>
 </template>
 
@@ -188,6 +200,8 @@ export default {
 
             difficultyData: this.difficulty,
             bbox: this.bboxObj,
+            isVisibleCountdownAlert: false,
+            timeCountdown: 0,
         };
     },
     computed: {
@@ -399,9 +413,13 @@ export default {
 
             this.panorama.setZoom(0);
         },
-        initTimer(time) {
+        initTimer(time, printAlert) {
             const endDate = new Date();
             endDate.setSeconds(endDate.getSeconds() + time);
+            if (printAlert) {
+                this.timeCountdown = time;
+                this.isVisibleCountdownAlert = true;
+            }
             if (this.hasTimerStarted) {
                 this.endTime = this.endTime > endDate ? endDate : this.endTime;
             } else {
@@ -476,6 +494,7 @@ export default {
             this.hasLocationSelected = false;
             this.isVisibleDialog = false;
             this.randomFeatureProperties = null;
+            this.isVisibleCountdownAlert = false;
 
             if (this.multiplayer) {
                 this.dialogMessage = true; // Show the dialog while waiting for other players
@@ -728,11 +747,19 @@ export default {
     min-height: 100%;
     width: 100%;
 }
-
-.warning-alert {
-    z-index: 5;
-    margin-top: 56px;
+.alert-container {
+    margin-top: 65px;
+    .v-alert {
+        z-index: 2;
+    }
+    #warningCountdown {
+        width: fit-content;
+        margin: 10px;
+        margin-top: 90px;
+        padding: auto 30px;
+    }
 }
+
 @media (max-width: 450px) {
     #game-interface {
         display: grid;

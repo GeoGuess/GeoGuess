@@ -309,8 +309,6 @@ export default {
             this.$emit('resetLocation');
         },
         calculateDistance() {
-            // eslint-disable-next-line no-debugger
-            debugger;
             if (this.mode === GAME_MODE.COUNTRY) {
                 this.point = +(this.country === this.selectedPos);
                 this.$emit('calculateDistance', null, this.point);
@@ -554,7 +552,7 @@ export default {
                         this.countdown > 0 &&
                         snapshot.child('guess').numChildren() >= 1
                     ) {
-                        this.$parent.initTimer(this.countdown);
+                        this.$parent.initTimer(this.countdown, true);
 
                         this.countdownStarted = true;
                     }
