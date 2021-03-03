@@ -95,7 +95,7 @@
         "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen."
     },
     "CardRoomName": {
-        "title": "Geben Sie einen Raumnamen einen, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten."
+        "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten."
     },
     "CardRoomPlayerName": {
         "title": "Trage deinen Namen ein.",
