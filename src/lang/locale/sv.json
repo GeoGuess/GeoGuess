@@ -33,7 +33,8 @@
         "redirectToHomePage": "Omdirigera till startsidan...",
         "exitGame": "Du har tvingats avbryta spelet. Omdirigerar till startsidan om 5 sekunder...",
         "waitForOtherPlayersToFinish": "Väntar på andra spelare att slutföra spelet...",
-        "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet? Detta kommer att avbryta spelet!"
+        "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet? Detta kommer att avbryta spelet!",
+        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
     },
     "Maps": {
         "makeGuess": "GISSA",
