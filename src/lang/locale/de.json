@@ -33,7 +33,8 @@
         "redirectToHomePage": "Weiterleitung zur Homepage ...",
         "exitGame": "Du musst das Spiel beenden. Umleitung zur Startseite in 5 Sekunden...",
         "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden...",
-        "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen möchtest? Das Spiel wird dadurch abgebrochen!"
+        "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen möchtest? Das Spiel wird dadurch abgebrochen!",
+        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
     },
     "Maps": {
         "makeGuess": "TIPP ABGEBEN",
