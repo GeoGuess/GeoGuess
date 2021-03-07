@@ -81,6 +81,7 @@ export default {
             zoomControl: true,
             moveControl: true,
             panControl: true,
+            countdown: 0,
         };
     },
     computed: {
@@ -237,7 +238,8 @@ export default {
             timeAttack,
             zoomControl,
             moveControl,
-            panControl
+            panControl,
+            countdown
         ) {
             this.timeLimitation = timeLimitation;
             this.roomSize = roomSize;
@@ -246,6 +248,7 @@ export default {
             this.zoomControl = zoomControl;
             this.moveControl = moveControl;
             this.panControl = panControl;
+            this.countdown = countdown;
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
@@ -272,6 +275,7 @@ export default {
                         zoomControl,
                         moveControl,
                         panControl,
+                        countdown,
                     },
                     (error) => {
                         if (!error) {
@@ -311,6 +315,7 @@ export default {
                                 zoomControl: this.zoomControl,
                                 moveControl: this.moveControl,
                                 panControl: this.panControl,
+                                countdown: this.countdown,
                             };
                             this.startGameMultiplayer(playerName, gameParams);
                         } else {
@@ -332,6 +337,9 @@ export default {
                                         .val(),
                                     panControl: snapshot
                                         .child('panControl')
+                                        .val(),
+                                    countdown: snapshot
+                                        .child('countdown')
                                         .val(),
                                 };
                                 this.startGameMultiplayer(
