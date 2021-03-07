@@ -17,7 +17,7 @@ exports[`StreetView.vue methods startTimer 1`] = `
   <div class="alert-container">
     <!---->
     <v-alert-stub tag="div" transition="slide-x-transition" closelabel="$vuetify.close" dismissible="true" closeicon="$cancel" icon="mdi-clock-fast" prominent="true" type="info" id="warningCountdown">
-      Countdown started : 0 secondes remaining
+      Countdown started : 0 seconds remaining
     </v-alert-stub>
   </div>
 </div>
@@ -40,7 +40,7 @@ exports[`StreetView.vue methods startTimer hasTimerStarted 1`] = `
   <div class="alert-container">
     <!---->
     <v-alert-stub tag="div" transition="slide-x-transition" closelabel="$vuetify.close" dismissible="true" closeicon="$cancel" icon="mdi-clock-fast" prominent="true" type="info" id="warningCountdown">
-      Countdown started : 0 secondes remaining
+      Countdown started : 0 seconds remaining
     </v-alert-stub>
   </div>
 </div>
