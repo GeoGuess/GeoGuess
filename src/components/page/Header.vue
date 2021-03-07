@@ -2,8 +2,12 @@
     <div>
         <v-app-bar class="header" height="100">
             <router-link to="/">
-                <img class="header__logo" src="@/assets/geoguessLogo.png"
-            /></router-link>
+                <img class="header__logo" src="@/assets/geoguessLogo.png" />
+                <img
+                    class="header__logo-min"
+                    src="/img/icons/android-icon-72x72.png"
+                />
+            </router-link>
 
             <div class="flex-grow-1"></div>
 
@@ -111,12 +115,18 @@ export default {
         height: 6rem;
         width: auto;
     }
+    .header__logo-min {
+        display: none;
+    }
 }
 
 @media (max-width: 660px) {
     .header {
         .header__logo {
             display: none;
+        }
+        .header__logo-min {
+            display: block;
         }
     }
 }
