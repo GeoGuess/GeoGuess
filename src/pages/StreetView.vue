@@ -143,7 +143,7 @@ export default {
             type: String,
         },
         panControl: {
-            default: false,
+            default: true,
             type: Boolean,
         },
         zoomControl: {
@@ -429,8 +429,6 @@ export default {
         },
         startTimer(round = this.round) {
             if (round === this.round) {
-                // eslint-disable-next-line no-console
-                console.log(this.round, round, this.remainingTime);
                 this.remainingTime = Math.max(
                     0,
                     Math.round((this.endTime - Date.now()) / 1000)
