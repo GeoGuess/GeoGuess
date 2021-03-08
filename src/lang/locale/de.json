@@ -34,7 +34,7 @@
         "exitGame": "Du musst das Spiel beenden. Umleitung zur Startseite in 5 Sekunden...",
         "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden...",
         "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen möchtest? Das Spiel wird dadurch abgebrochen!",
-        "countdownAlert": "Countdown gestartet: {count} Sekunde verbleibend | Countdown gestartet: {count} Sekunden verbleibend"
+        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
     },
     "Maps": {
         "makeGuess": "TIPP ABGEBEN",
@@ -146,5 +146,6 @@
     "Demo": {
         "message": "Wenn du zum Projekt beitragen und es verbessern möchtest, ist deine Hilfe sehr willkommen : Übersetzung 🔠, Mapping 🌍, Code 💻, Idee 💡, Betatest 👀.",
         "btn": "Tritt uns bei!"
-    }
+    },
+    "OK": "OK"
 }

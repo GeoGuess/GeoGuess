@@ -34,7 +34,7 @@
         "exitGame": "Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...",
         "waitForOtherPlayersToFinish": "Počkej prosím, až ostatní hráči dokončí hru...",
         "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
+        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
     },
     "Maps": {
         "makeGuess": "HÁDEJ POLOHU",
@@ -146,5 +146,6 @@
     "Demo": {
         "message": "Pokud chcete přispět k projektu a zlepšit jej, Vaše pomoc je velmi vítána: Překlad 🔠, Mapy 🌍, Kód 💻, Nápady 💡, Beta testy 👀.",
         "btn": "Přidej se k nám"
-    }
+    },
+    "OK": "OK"
 }

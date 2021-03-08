@@ -34,7 +34,7 @@
         "exitGame": "Вы вынуждены выйти из игры. Перенаправляем на домашнюю страницу через 5 секунд ...",
         "waitForOtherPlayersToFinish": "Ожидайте, пока другие игроки закончат игру ...",
         "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
+        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
     },
     "Maps": {
         "makeGuess": "Предположить догадку",
@@ -146,5 +146,6 @@
     "Demo": {
         "message": "Если вы хотите внести свой вклад в проект и сделать его лучше, мы будем рады вашей помощи: Перевод 🔠, Карта 🌍, Код 💻, Идея💡, Бета тест 👀.",
         "btn": "Присоединиться к нам"
-    }
+    },
+    "OK": "OK"
 }
