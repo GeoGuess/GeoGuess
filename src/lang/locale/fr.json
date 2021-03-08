@@ -34,7 +34,7 @@
         "exitGame": "Vous êtes forcé de quitter le jeu. Redirection vers la page d'accueil dans 5 secondes...",
         "waitForOtherPlayersToFinish": "En attente des autres joueurs pour finir la partie...",
         "confirmExit": "Êtes-vous sûr de vouloir quitter la partie en cours ? Cela annulera la partie !",
-        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
+        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
     },
     "Maps": {
         "makeGuess": "FAIRE UN CHOIX",
@@ -146,5 +146,6 @@
     "Demo": {
         "message": "Tu souhaites contribuer au projet et le rendre meilleur, ton aide est la bienvenue :  Traduction 🔠, Créateur de carte 🌍, Code 💻, Idée 💡, Beta test 👀.",
         "btn": "Rejoins-nous"
-    }
+    },
+    "OK": "OK"
 }
