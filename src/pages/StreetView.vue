@@ -34,6 +34,7 @@
                         :country="country"
                         :timeAttack="timeAttack"
                         :nbRound="nbRound"
+                        :countdown="countdown"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -49,16 +50,28 @@
             :dialogTitle="dialogTitle"
             :dialogText="dialogText"
         />
-        <v-alert
-            type="warning"
-            dismissible
-            class="warning-alert"
-            v-if="isVisibleDialog"
-            tile
-        >
-            <b>{{ $t('StreetView.nearby.title') }}</b> :
-            {{ $t('StreetView.nearby.message') }}
-        </v-alert>
+        <div class="alert-container">
+            <v-alert
+                type="warning"
+                dismissible
+                class="warning-alert"
+                v-if="isVisibleDialog"
+            >
+                <b>{{ $t('StreetView.nearby.title') }}</b> :
+                {{ $t('StreetView.nearby.message') }}
+            </v-alert>
+            <v-alert
+                type="info"
+                id="warningCountdown"
+                dismissible
+                transition="slide-x-transition"
+                v-model="isVisibleCountdownAlert"
+                prominent
+                icon="mdi-clock-fast"
+            >
+                {{ $tc('StreetView.countdownAlert', timeCountdown) }}
+            </v-alert>
+        </div>
     </div>
 </template>
 
@@ -130,7 +143,7 @@ export default {
             type: String,
         },
         panControl: {
-            default: false,
+            default: true,
             type: Boolean,
         },
         zoomControl: {
@@ -144,6 +157,10 @@ export default {
         timeAttackSelected: {
             default: false,
             type: Boolean,
+        },
+        countdown: {
+            default: 0,
+            type: Number,
         },
     },
     components: {
@@ -183,6 +200,8 @@ export default {
 
             difficultyData: this.difficulty,
             bbox: this.bboxObj,
+            isVisibleCountdownAlert: false,
+            timeCountdown: 0,
         };
     },
     computed: {
@@ -282,17 +301,6 @@ export default {
                     // Save the location's latitude and longitude
                     this.randomLatLng = data.location.latLng;
                     this.cptNotFoundLocation = 0;
-                    if (
-                        document.querySelector(
-                            '#street-view a[href^="https://maps"]'
-                        )
-                    )
-                        document
-                            .querySelector(
-                                '#street-view a[href^="https://maps"]'
-                            )
-                            .remove();
-
                     this.setPosition(data);
 
                     if (this.mode === GAME_MODE.COUNTRY) {
@@ -362,30 +370,41 @@ export default {
                 linksControl: this.moveControl,
                 clickToGo: this.moveControl,
             });
-            if (document.querySelector('.widget-scene')) {
+            // Remove google streetview link
+            if (document.querySelector('#street-view a[href^="https://maps"]'))
                 document
-                    .querySelector('.widget-scene')
-                    .addEventListener('keydown', this.onUserEventPanoramaKey);
+                    .querySelector('#street-view a[href^="https://maps"]')
+                    .remove();
+            setTimeout(() => {
+                if (document.querySelector('.widget-scene')) {
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'keydown',
+                            this.onUserEventPanoramaKey
+                        );
 
-                document
-                    .querySelector('.widget-scene')
-                    .addEventListener(
-                        'mousedown',
-                        this.onUserEventPanoramaMouse
-                    );
-                document
-                    .querySelector('.widget-scene')
-                    .addEventListener(
-                        'touchstart',
-                        this.onUserEventPanoramaMouse
-                    );
-                document
-                    .querySelector('.widget-scene')
-                    .addEventListener(
-                        'pointerdown',
-                        this.onUserEventPanoramaMouse
-                    );
-            }
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'mousedown',
+                            this.onUserEventPanoramaMouse
+                        );
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'touchstart',
+                            this.onUserEventPanoramaMouse
+                        );
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'pointerdown',
+                            this.onUserEventPanoramaMouse
+                        );
+                }
+            }, 50);
+
             this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,
@@ -393,6 +412,20 @@ export default {
             });
 
             this.panorama.setZoom(0);
+        },
+        initTimer(time, printAlert) {
+            const endDate = new Date();
+            endDate.setSeconds(endDate.getSeconds() + time);
+            if (printAlert) {
+                this.timeCountdown = time;
+                this.isVisibleCountdownAlert = true;
+            }
+            if (this.hasTimerStarted) {
+                this.endTime = this.endTime > endDate ? endDate : this.endTime;
+            } else {
+                this.endTime = endDate;
+                this.startTimer();
+            }
         },
         startTimer(round = this.round) {
             if (round === this.round) {
@@ -459,6 +492,7 @@ export default {
             this.hasLocationSelected = false;
             this.isVisibleDialog = false;
             this.randomFeatureProperties = null;
+            this.isVisibleCountdownAlert = false;
 
             if (this.multiplayer) {
                 this.dialogMessage = true; // Show the dialog while waiting for other players
@@ -471,11 +505,7 @@ export default {
             if (this.playerNumber == 1 || !this.multiplayer) {
                 this.loadStreetView();
                 if (!this.multiplayer && this.timeLimitation != 0) {
-                    this.endTime = new Date();
-                    this.endTime.setSeconds(
-                        this.endTime.getSeconds() + this.timeLimitation
-                    );
-                    this.startTimer();
+                    this.initTimer(this.timeLimitation);
                 }
             } else {
                 // Trigger listener and load the next streetview
@@ -543,11 +573,7 @@ export default {
 
             if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
-                    this.endTime = new Date();
-                    this.endTime.setSeconds(
-                        this.endTime.getSeconds() + this.timeLimitation
-                    );
-                    this.startTimer();
+                    this.initTimer(this.timeLimitation);
                     this.hasTimerStarted = true;
                 }
             }
@@ -637,12 +663,7 @@ export default {
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {
-                                this.endTime = new Date();
-                                this.endTime.setSeconds(
-                                    this.endTime.getSeconds() +
-                                        this.timeLimitation
-                                );
-                                this.startTimer();
+                                this.initTimer(this.timeLimitation);
                                 this.hasTimerStarted = true;
                             }
                         }
@@ -724,11 +745,19 @@ export default {
     min-height: 100%;
     width: 100%;
 }
-
-.warning-alert {
-    z-index: 5;
-    margin-top: 56px;
+.alert-container {
+    margin-top: 65px;
+    .v-alert {
+        z-index: 2;
+    }
+    #warningCountdown {
+        width: fit-content;
+        margin: 10px;
+        margin-top: 90px;
+        padding: auto 30px;
+    }
 }
+
 @media (max-width: 450px) {
     #game-interface {
         display: grid;
