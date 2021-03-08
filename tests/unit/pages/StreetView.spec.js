@@ -1,5 +1,5 @@
 import StreetView from '@/pages/StreetView.vue';
-import { createLocalVue, shallowMount, mount } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../utils/appInit';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 
