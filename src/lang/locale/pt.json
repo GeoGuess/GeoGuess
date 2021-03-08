@@ -34,7 +34,7 @@
         "exitGame": "Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...",
         "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida..",
         "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
     },
     "Maps": {
         "makeGuess": "TENTAR ADIVINHAR",
@@ -146,6 +146,5 @@
     "Demo": {
         "message": "Se você quer contribuir com o projeto e torná-lo cada vez melhor, sua ajuda é muito bem-vinda: Tradução 🔠, Criador de mapas 🌍, Desenvolvimento 💻, Ideias 💡, Beta test 👀.",
         "btn": "Junte-se a nós"
-    },
-    "OK": "OK"
+    }
 }

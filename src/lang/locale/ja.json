@@ -34,7 +34,7 @@
         "exitGame": "ゲームを強制終了しました。5秒後にリダイレクトします...",
         "waitForOtherPlayersToFinish": "他のプレーヤーが終了するのを待っています...",
         "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
     },
     "Maps": {
         "makeGuess": "推測する",
@@ -146,6 +146,5 @@
     "Demo": {
         "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
         "btn": "Join Us"
-    },
-    "OK": "OK"
+    }
 }
