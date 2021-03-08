@@ -34,7 +34,7 @@
         "exitGame": "Du har tvingats avbryta spelet. Omdirigerar till startsidan om 5 sekunder...",
         "waitForOtherPlayersToFinish": "Väntar på andra spelare att slutföra spelet...",
         "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet? Detta kommer att avbryta spelet!",
-        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
     },
     "Maps": {
         "makeGuess": "GISSA",
@@ -146,6 +146,5 @@
     "Demo": {
         "message": "Om du vill bidra till ett projekt och göra det bättre är din hjälp väldigt välkommen :  Översättning 🔠, Kartor 🌍, Kod 💻, Idéer 💡, Betatestning 👀.",
         "btn": "Gå med"
-    },
-    "OK": "OK"
+    }
 }
