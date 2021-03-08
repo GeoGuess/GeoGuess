@@ -6,7 +6,7 @@ on:
 
 jobs:
   merge-me:
-    if: ${{ github.event.pull_request.title == 'New Crowdin updates' && github.actor=== 'BilelJegham' }}
+    if: ${{ github.event.pull_request.title == 'New Crowdin updates' && github.actor == 'BilelJegham' }}
     name: Merge
     runs-on: ubuntu-latest
     steps:
