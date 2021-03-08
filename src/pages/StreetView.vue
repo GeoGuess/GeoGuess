@@ -301,17 +301,6 @@ export default {
                     // Save the location's latitude and longitude
                     this.randomLatLng = data.location.latLng;
                     this.cptNotFoundLocation = 0;
-                    if (
-                        document.querySelector(
-                            '#street-view a[href^="https://maps"]'
-                        )
-                    )
-                        document
-                            .querySelector(
-                                '#street-view a[href^="https://maps"]'
-                            )
-                            .remove();
-
                     this.setPosition(data);
 
                     if (this.mode === GAME_MODE.COUNTRY) {
@@ -381,30 +370,41 @@ export default {
                 linksControl: this.moveControl,
                 clickToGo: this.moveControl,
             });
-            if (document.querySelector('.widget-scene')) {
+            // Remove google streetview link
+            if (document.querySelector('#street-view a[href^="https://maps"]'))
                 document
-                    .querySelector('.widget-scene')
-                    .addEventListener('keydown', this.onUserEventPanoramaKey);
+                    .querySelector('#street-view a[href^="https://maps"]')
+                    .remove();
+            setTimeout(() => {
+                if (document.querySelector('.widget-scene')) {
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'keydown',
+                            this.onUserEventPanoramaKey
+                        );
 
-                document
-                    .querySelector('.widget-scene')
-                    .addEventListener(
-                        'mousedown',
-                        this.onUserEventPanoramaMouse
-                    );
-                document
-                    .querySelector('.widget-scene')
-                    .addEventListener(
-                        'touchstart',
-                        this.onUserEventPanoramaMouse
-                    );
-                document
-                    .querySelector('.widget-scene')
-                    .addEventListener(
-                        'pointerdown',
-                        this.onUserEventPanoramaMouse
-                    );
-            }
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'mousedown',
+                            this.onUserEventPanoramaMouse
+                        );
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'touchstart',
+                            this.onUserEventPanoramaMouse
+                        );
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'pointerdown',
+                            this.onUserEventPanoramaMouse
+                        );
+                }
+            }, 50);
+
             this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,

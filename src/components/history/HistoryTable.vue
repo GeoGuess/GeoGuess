@@ -38,7 +38,7 @@
                         ></v-file-input>
                     </div>
                 </template>
-                <span>{{ $t('History.HistoryimportGeoSave') }}</span>
+                <span>{{ $t('History.importGeoSave') }}</span>
             </v-tooltip>
 
             <v-tooltip top>
