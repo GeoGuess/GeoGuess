@@ -6,14 +6,16 @@ on:
 
 jobs:
   merge-me:
-    if: github.event.pull_request.title == 'New Crowdin updates'
+    if: ${{ github.event.pull_request.title == 'New Crowdin updates' && github.actor == 'BilelJegham' }}
     name: Merge
     runs-on: ubuntu-latest
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: translation
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge me!
         uses: ridedott/merge-me-action@v1
         with:
+          GITHUB_LOGIN: 'BilelJegham'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
