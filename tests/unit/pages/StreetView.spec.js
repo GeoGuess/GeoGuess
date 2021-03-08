@@ -1,8 +1,22 @@
 import StreetView from '@/pages/StreetView.vue';
-import { createLocalVue, shallowMount } from '@vue/test-utils';
+import { createLocalVue, shallowMount, mount } from '@vue/test-utils';
 import appInit from '../utils/appInit';
+import createGoogleMapsMock from 'jest-google-maps-mock';
 
 const args = appInit(createLocalVue());
+global.google = {
+    maps: {
+        ...createGoogleMapsMock(),
+        StreetViewPanorama: jest.fn().mockImplementation(function () {
+            return {
+                setOptions: jest.fn(),
+                setPov: jest.fn(),
+                setPano: jest.fn(),
+                setZoom: jest.fn(),
+            };
+        }),
+    },
+};
 describe('StreetView.vue', () => {
     it('methods startTimer', () => {
         const wrapper = shallowMount(StreetView, args);
@@ -44,6 +58,41 @@ describe('StreetView.vue', () => {
             endDate.getTime()
         );
         expect(wrapper.vm.startTimer).not.toBeCalled();
+
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('methods startTimer hasTimerStarted', () => {
+        const wrapper = shallowMount(StreetView, {
+            ...args,
+            propsData: {
+                zoomControl: false,
+                moveControl: false,
+            },
+        });
+
+        wrapper.vm.panorama = new google.maps.StreetViewPanorama();
+        wrapper.vm.panorama.setOptions = jest.fn();
+
+        wrapper.vm.setPosition({
+            location: {
+                pano: {},
+            },
+        });
+
+        expect(wrapper.vm.panorama.setOptions).toBeCalledWith({
+            addressControl: false,
+            fullscreenControl: false,
+            motionTracking: false,
+            motionTrackingControl: false,
+            showRoadLabels: false,
+            panControl: true,
+            zoomControl: false,
+            scrollwheel: false,
+            disableDoubleClickZoom: true,
+            linksControl: false,
+            clickToGo: false,
+        });
 
         expect(wrapper).toMatchSnapshot();
     });
