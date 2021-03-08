@@ -33,7 +33,8 @@
         "redirectToHomePage": "Přesměruji na úvodní stránku...",
         "exitGame": "Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...",
         "waitForOtherPlayersToFinish": "Počkej prosím, až ostatní hráči dokončí hru...",
-        "confirmExit": "Are you sure to leave the current game? This will abort the game!"
+        "confirmExit": "Are you sure to leave the current game? This will abort the game!",
+        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
     },
     "Maps": {
         "makeGuess": "HÁDEJ POLOHU",

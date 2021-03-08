@@ -33,7 +33,8 @@
         "redirectToHomePage": "Перенаправляем на домашнюю страницу ...",
         "exitGame": "Вы вынуждены выйти из игры. Перенаправляем на домашнюю страницу через 5 секунд ...",
         "waitForOtherPlayersToFinish": "Ожидайте, пока другие игроки закончат игру ...",
-        "confirmExit": "Are you sure to leave the current game? This will abort the game!"
+        "confirmExit": "Are you sure to leave the current game? This will abort the game!",
+        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
     },
     "Maps": {
         "makeGuess": "Предположить догадку",

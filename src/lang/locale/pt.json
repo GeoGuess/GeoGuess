@@ -33,7 +33,8 @@
         "redirectToHomePage": "Redirecionando para a página inicial...",
         "exitGame": "Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...",
         "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida..",
-        "confirmExit": "Are you sure to leave the current game? This will abort the game!"
+        "confirmExit": "Are you sure to leave the current game? This will abort the game!",
+        "countdownAlert": "Countdown started : {count} seconde remaining | Countdown started : {count} secondes remaining"
     },
     "Maps": {
         "makeGuess": "TENTAR ADIVINHAR",
