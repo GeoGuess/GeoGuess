@@ -2,7 +2,6 @@ name: Merge Translation
 
 on:
   pull_request:
-    types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
   merge-me:
