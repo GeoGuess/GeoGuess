@@ -1,5 +1,41 @@
 # Changelog
 
+## [v0.5.0](https://github.com/Geoguess/Geoguess/tree/v0.5.0) (2021-03-12)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.4.0...v0.5.0)
+
+**Implemented enhancements:**
+
+- \[FEAT\] No Zoom / No Move [\#117](https://github.com/GeoGuess/Geoguess/issues/117)
+- \[FEAT\] countdown  after 1st guess [\#106](https://github.com/GeoGuess/Geoguess/issues/106)
+- \[FEAT\] Download game information \(specifically lat/lon of locations visited\) [\#105](https://github.com/GeoGuess/Geoguess/issues/105)
+- "Are you sure to leave this window?" should be implemented? [\#95](https://github.com/GeoGuess/Geoguess/issues/95)
+- Be able to save played maps in order to play again / share them [\#54](https://github.com/GeoGuess/Geoguess/issues/54)
+
+**Merged pull requests:**
+
+- Ci [\#135](https://github.com/GeoGuess/Geoguess/pull/135) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#134](https://github.com/GeoGuess/Geoguess/pull/134) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#133](https://github.com/GeoGuess/Geoguess/pull/133) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#132](https://github.com/GeoGuess/Geoguess/pull/132) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#131](https://github.com/GeoGuess/Geoguess/pull/131) ([BilelJegham](https://github.com/BilelJegham))
+- fix: game settings mutliplayer [\#130](https://github.com/GeoGuess/Geoguess/pull/130) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#128](https://github.com/GeoGuess/Geoguess/pull/128) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#126](https://github.com/GeoGuess/Geoguess/pull/126) ([BilelJegham](https://github.com/BilelJegham))
+- feature: countdown \#106 [\#123](https://github.com/GeoGuess/Geoguess/pull/123) ([BilelJegham](https://github.com/BilelJegham))
+- Minor patches [\#122](https://github.com/GeoGuess/Geoguess/pull/122) ([wlanowski](https://github.com/wlanowski))
+- New Crowdin updates [\#120](https://github.com/GeoGuess/Geoguess/pull/120) ([BilelJegham](https://github.com/BilelJegham))
+- \[MINOR\] Typo in package.json [\#119](https://github.com/GeoGuess/Geoguess/pull/119) ([wlanowski](https://github.com/wlanowski))
+- feat: No Zoom + no move [\#118](https://github.com/GeoGuess/Geoguess/pull/118) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#116](https://github.com/GeoGuess/Geoguess/pull/116) ([BilelJegham](https://github.com/BilelJegham))
+- Export Import Save + Export CSV [\#115](https://github.com/GeoGuess/Geoguess/pull/115) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#114](https://github.com/GeoGuess/Geoguess/pull/114) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add TechnicProblem as a contributor [\#113](https://github.com/GeoGuess/Geoguess/pull/113) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Update en.json [\#112](https://github.com/GeoGuess/Geoguess/pull/112) ([wlanowski](https://github.com/wlanowski))
+- Swedish Translation [\#111](https://github.com/GeoGuess/Geoguess/pull/111) ([TechnicProblem](https://github.com/TechnicProblem))
+- linter issue [\#109](https://github.com/GeoGuess/Geoguess/pull/109) ([BilelJegham](https://github.com/BilelJegham))
+- feat: \#95 confirm exit [\#107](https://github.com/GeoGuess/Geoguess/pull/107) ([BilelJegham](https://github.com/BilelJegham))
+
 ## [v0.4.0](https://github.com/Geoguess/Geoguess/tree/v0.4.0) (2021-02-18)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.4.0-1...v0.4.0)
