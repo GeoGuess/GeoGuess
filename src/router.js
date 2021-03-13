@@ -42,18 +42,28 @@ export default new Router({
             component: HistoryPage,
         },
         {
-            path: '/street-view/:modeSelected',
+            path: '/street-view/:modeSelected/:time',
             name: 'street-view',
             component: StreetView,
             props: (route) => ({
                 multiplayer: false,
                 ...route.params,
+                time: parseInt(route.params.time, 10),
             }),
             beforeEnter: (to, from, next) => {
+                var enterGame = true;
                 if (
-                    to.params.modeSelected === GAME_MODE.CLASSIC ||
-                    to.params.modeSelected === GAME_MODE.COUNTRY
+                    to.params.modeSelected !== GAME_MODE.CLASSIC &&
+                    to.params.modeSelected !== GAME_MODE.COUNTRY
                 ) {
+                    enterGame = false;
+                }
+
+                if (isNaN(to.params.time) || to.params.time < 0) {
+                    enterGame = false;
+                }
+
+                if (enterGame) {
                     next();
                 } else {
                     next('/');
