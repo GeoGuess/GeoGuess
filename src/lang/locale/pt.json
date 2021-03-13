@@ -34,7 +34,7 @@
         "exitGame": "Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...",
         "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida..",
         "confirmExit": "Tem certeza que quer sair do jogo atual? Isso cancelará o jogo!",
-        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+        "countdownAlert": "Contagem regressiva iniciada: {count} segundos restantes | Contagem regressiva iniciada: {count} segundos restantes"
     },
     "Maps": {
         "makeGuess": "TENTAR ADIVINHAR",
@@ -93,7 +93,7 @@
         "withFriends": "Com amigos",
         "invalidRoomName": "Nome inválido. Por favor, tente outro.",
         "inProgress": "O primeiro jogador está criando a sala agora. Aguarde e tente novamente.",
-        "roomIsFull": "sta sala já está cheia. Por favor, tente outro."
+        "roomIsFull": "Esta sala já está cheia. Por favor, tente outro."
     },
     "CardRoomName": {
         "title": "Digite o nome da sala para criar uma nova sala ou junte-se a uma sala existente"
