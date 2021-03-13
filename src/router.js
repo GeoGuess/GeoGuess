@@ -1,4 +1,5 @@
 import Home from '@/pages/Home';
+import { GAME_MODE } from './constants';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import StreetView from '@/pages/StreetView';
 import HistoryPage from '@/pages/HistoryPage';
@@ -41,13 +42,23 @@ export default new Router({
             component: HistoryPage,
         },
         {
-            path: '/street-view',
+            path: '/street-view/:modeSelected',
             name: 'street-view',
             component: StreetView,
             props: (route) => ({
                 multiplayer: false,
                 ...route.params,
             }),
+            beforeEnter: (to, from, next) => {
+                if (
+                    to.params.modeSelected === GAME_MODE.CLASSIC ||
+                    to.params.modeSelected === GAME_MODE.COUNTRY
+                ) {
+                    next();
+                } else {
+                    next('/');
+                }
+            },
         },
         {
             path: '/street-view/with-friends',
