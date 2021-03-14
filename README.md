@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg)](#-contribution)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -66,7 +66,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/chalbin73"><img src="https://avatars3.githubusercontent.com/u/59101580?v=4?s=100" width="100px;" alt=""/><br /><sub><b>chalbin73</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/issues?q=author%3Achalbin73" title="Bug reports">🐛</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="http://viniciusdof.com"><img src="https://avatars.githubusercontent.com/u/6577961?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vinicius Dell Osbel de Freitas</b></sub></a><br /><a href="#translation-viniciusdof" title="Translation">🌍</a></td>
+    <td align="center"><a href="http://viniciusdof.com"><img src="https://avatars.githubusercontent.com/u/6577961?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vinicius Dell Osbel de Freitas</b></sub></a><br /><a href="#translation-viniciusdof" title="Translation">🌍</a> <a href="https://github.com/GeoGuess/Geoguess/commits?author=viniciusdof" title="Code">💻</a></td>
     <td align="center"><a href="http://wlanowski.de"><img src="https://avatars.githubusercontent.com/u/25705332?v=4?s=100" width="100px;" alt=""/><br /><sub><b>John Nitzsche</b></sub></a><br /><a href="#translation-wlanowski" title="Translation">🌍</a> <a href="#financial-wlanowski" title="Financial">💵</a></td>
     <td align="center"><a href="http://technicproblem.github.io"><img src="https://avatars.githubusercontent.com/u/38329398?v=4?s=100" width="100px;" alt=""/><br /><sub><b>TechnicProblem</b></sub></a><br /><a href="#translation-TechnicProblem" title="Translation">🌍</a></td>
   </tr>
