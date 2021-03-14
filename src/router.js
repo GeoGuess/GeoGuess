@@ -51,7 +51,7 @@ export default new Router({
                 time: parseInt(route.params.time, 10),
             }),
             beforeEnter: (to, from, next) => {
-                var enterGame = true;
+                let enterGame = true;
                 if (
                     to.params.modeSelected !== GAME_MODE.CLASSIC &&
                     to.params.modeSelected !== GAME_MODE.COUNTRY
