@@ -157,7 +157,7 @@
             :game="game"
             :multiplayer="!!this.room"
             @finishGame="finishGame"
-            @playAgain="playAgain"
+            @playAgain="$emit('playAgain')"
         />
     </div>
 </template>
@@ -241,9 +241,6 @@ export default {
     methods: {
         setSeletedPos(pos) {
             this.selectedPos = pos;
-        },
-        playAgain() {
-            window.location.reload();
         },
         showMap() {
             this.isMakeGuessButtonClicked = true;
