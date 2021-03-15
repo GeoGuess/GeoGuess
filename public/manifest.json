@@ -79,13 +79,25 @@
           "accept": {
             "application/vnd.geo+json": [".geojson",".json"],
             "application/json": [".geojson"]
-          }
+          },
+          "icons": [
+            {
+              "src": "./img/fileIcons/geojson.png",
+              "sizes": "144x144"
+            }
+          ] 
         },
         {
           "action": "/history",
           "accept": {
             "application/json": [".geosave"]
-          }
+          },
+          "icons": [
+            {
+              "src": "./img/fileIcons/geosave.png",
+              "sizes": "144x144"
+            }
+          ] 
         }
     ],
     "start_url": "/?utm_source=pwa",
