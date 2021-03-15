@@ -166,6 +166,7 @@ export default {
                 }
                 launchParams.files[0].getFile().then((f) => {
                     this.file = f;
+                    this.$emit('change-visibility');
                 });
             });
         }
