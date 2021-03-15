@@ -165,8 +165,13 @@ export default {
                     return;
                 }
                 launchParams.files[0].getFile().then((f) => {
-                    this.file = f;
-                    this.$emit('change-visibility');
+                    f.text()
+                        .then((content) => {
+                            return this.setGeoJsonString(content);
+                        })
+                        .then(() => {
+                            this.$emit('change-visibility');
+                        });
                 });
             });
         }
