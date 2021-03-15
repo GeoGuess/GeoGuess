@@ -2,9 +2,7 @@ import StreetView from '@/pages/StreetView.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 import appInit from '../utils/appInit';
-const $router = {
-    push: jest.fn(),
-};
+
 const args = appInit(createLocalVue());
 global.google = {
     maps: {
@@ -97,32 +95,5 @@ describe('StreetView.vue', () => {
         });
 
         expect(wrapper).toMatchSnapshot();
-    });
-
-    it('methods playAgain', () => {
-        const params = {
-            time: 123,
-            difficulty: 1999,
-            placeGeoJson: {},
-            modeSelected: 'country',
-            bboxObj: [0, 0, 180, 180],
-            zoomControl: true,
-            moveControl: false,
-            panControl: true,
-            roundsPredefined: [],
-        };
-        const wrapper = shallowMount(StreetView, {
-            ...args,
-            propsData: params,
-            mocks: {
-                $router,
-            },
-        });
-        wrapper.vm.playAgain();
-
-        expect($router.push).toBeCalledWith({
-            name: 'street-view',
-            params,
-        });
     });
 });

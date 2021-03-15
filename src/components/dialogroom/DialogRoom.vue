@@ -253,6 +253,7 @@ export default {
                 this.$router.push({
                     name: 'street-view',
                     params: {
+                        date: new Date().getTime(),
                         time: this.timeLimitation,
                         difficulty: this.difficulty,
                         placeGeoJson: this.placeGeoJson,

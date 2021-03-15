@@ -40,7 +40,6 @@
                         @showResult="showResult"
                         @goToNextRound="goToNextRound"
                         @finishGame="finishGame"
-                        @playAgain="playAgain"
                     />
                 </div>
             </div>
@@ -484,7 +483,15 @@ export default {
             this.dialogMessage = false;
             this.overlay = true;
         },
-        goToNextRound() {
+        goToNextRound(playAgain = false) {
+            if (playAgain) {
+                this.round = 0;
+                this.scoreHeader = 0;
+                this.pointsHeader = 0;
+                this.score = 0;
+                this.points = 0;
+            }
+
             // Reset
             this.randomLatLng = null;
             this.country = null;
@@ -529,22 +536,6 @@ export default {
             } else {
                 this.$router.push('/');
             }
-        },
-        playAgain() {
-            this.$router.push({
-                name: 'street-view',
-                params: {
-                    time: this.time,
-                    difficulty: this.difficulty,
-                    placeGeoJson: this.placeGeoJson,
-                    modeSelected: this.modeSelected,
-                    bboxObj: this.bboxObj,
-                    zoomControl: this.zoomControl,
-                    moveControl: this.moveControl,
-                    panControl: this.panControl,
-                    roundsPredefined: this.roundsPredefined,
-                },
-            });
         },
         finishGame() {
             this.canExit = true;
