@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Maps.vue test methods goToNextRound (true | false) 1`] = `
+<div id="container-map" class="container-map--size-2">
+  <div class="container-map_details">
+    <!---->
+  </div>
+  <div class="container-map_controls">
+    <div class="container-map_btns"><button type="button" class="v-btn v-btn--contained v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small" id="btnDown"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-arrow-bottom-left theme--dark"></i></span></button> <button type="button" class="v-btn v-btn--contained v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small" id="btnUp"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-arrow-top-right theme--dark"></i></span></button> <button type="button" class="v-btn v-btn--contained v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small" id="btnPin"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-pin theme--dark"></i></span></button></div>
+  </div>
+  <!---->
+  <div id="map">
+    <div class="vue-map-container" id="mapClassic">
+      <div class="vue-map"></div>
+      <div class="vue-map-hidden"></div>
+    </div>
+  </div>
+  <!---->
+  <div class="container-map_controls_guess"><button id="reset-button">
+      RESET
+    </button> <button id="guess-button" disabled="disabled">
+      GUESS
+    </button></div>
+  <!---->
+  <!---->
+  <!---->
+  <div role="dialog" class="v-dialog__container">
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`Maps.vue test methods goToNextRound (true | false) 2`] = `
+<div id="container-map" class="container-map--size-2">
+  <div class="container-map_details">
+    <!---->
+  </div>
+  <div class="container-map_controls">
+    <div class="container-map_btns"><button type="button" class="v-btn v-btn--contained v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small" id="btnDown"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-arrow-bottom-left theme--dark"></i></span></button> <button type="button" class="v-btn v-btn--contained v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small" id="btnUp"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-arrow-top-right theme--dark"></i></span></button> <button type="button" class="v-btn v-btn--contained v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small" id="btnPin"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-pin theme--dark"></i></span></button></div>
+  </div>
+  <!---->
+  <div id="map">
+    <div class="vue-map-container" id="mapClassic">
+      <div class="vue-map"></div>
+      <div class="vue-map-hidden"></div>
+    </div>
+  </div>
+  <!---->
+  <div class="container-map_controls_guess"><button id="reset-button">
+      RESET
+    </button> <button id="guess-button" disabled="disabled">
+      GUESS
+    </button></div>
+  <!---->
+  <!---->
+  <!---->
+  <div role="dialog" class="v-dialog__container">
+    <!---->
+  </div>
+</div>
+`;
