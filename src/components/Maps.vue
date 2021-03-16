@@ -358,7 +358,6 @@ export default {
         goToNextRound(isPlayAgain = false) {
             if (isPlayAgain) {
                 this.dialogSummary = false;
-
                 this.isSummaryButtonVisible = false;
             }
 
