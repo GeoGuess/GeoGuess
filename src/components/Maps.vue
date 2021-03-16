@@ -123,7 +123,7 @@
                 backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C',
             }"
             v-if="isNextButtonVisible"
-            @click="goToNextRound"
+            @click="goToNextRound(false)"
         >
             {{ $t('Maps.nextRound') }}
         </button>
@@ -157,7 +157,7 @@
             :game="game"
             :multiplayer="!!this.room"
             @finishGame="finishGame"
-            @playAgain="playAgain"
+            @playAgain="goToNextRound(true)"
         />
     </div>
 </template>
@@ -241,9 +241,6 @@ export default {
     methods: {
         setSeletedPos(pos) {
             this.selectedPos = pos;
-        },
-        playAgain() {
-            window.location.reload();
         },
         showMap() {
             this.isMakeGuessButtonClicked = true;
@@ -358,7 +355,12 @@ export default {
         startNextRound() {
             this.$refs.map.startNextRound();
         },
-        goToNextRound() {
+        goToNextRound(isPlayAgain = false) {
+            if (isPlayAgain) {
+                this.dialogSummary = false;
+                this.isSummaryButtonVisible = false;
+            }
+
             // Reset
             this.selectedPos = null;
             this.isGuessButtonClicked = false;
@@ -376,7 +378,7 @@ export default {
             this.$refs.map.removePolylines();
 
             // Replace the streetview with the next one
-            this.$emit('goToNextRound');
+            this.$emit('goToNextRound', isPlayAgain);
         },
         finishGame() {
             this.dialogSummary = false;

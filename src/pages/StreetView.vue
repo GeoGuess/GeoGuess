@@ -483,7 +483,15 @@ export default {
             this.dialogMessage = false;
             this.overlay = true;
         },
-        goToNextRound() {
+        goToNextRound(playAgain = false) {
+            if (playAgain) {
+                this.round = 0;
+                this.scoreHeader = 0;
+                this.pointsHeader = 0;
+                this.score = 0;
+                this.points = 0;
+            }
+
             // Reset
             this.randomLatLng = null;
             this.country = null;
