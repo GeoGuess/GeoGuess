@@ -46,6 +46,7 @@
     "cypress": "^6.7.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-vue": "^5.0.0",
     "jest-google-maps-mock": "^1.0.3",
