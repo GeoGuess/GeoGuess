@@ -34,7 +34,7 @@
         "exitGame": "Du har tvingats avbryta spelet. Omdirigerar till startsidan om 5 sekunder...",
         "waitForOtherPlayersToFinish": "Väntar på andra spelare att slutföra spelet...",
         "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet? Detta kommer att avbryta spelet!",
-        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+        "countdownAlert": "Nedräkning startad: {count} sekunder kvar | Nedräkning startad: {count} sekunder kvar"
     },
     "Maps": {
         "makeGuess": "GISSA",
@@ -114,9 +114,9 @@
         "modeLabel": "Välj spelläge",
         "timeAttackLabel": "TimeAttack",
         "timeattackInfos": "I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!",
-        "allowMove": "Allow Move",
-        "allowZoom": "Allow Zoom",
-        "allowPan": "Allow Pan"
+        "allowMove": "Tillåt förflyttning",
+        "allowZoom": "Tillåt zoomning",
+        "allowPan": "Tillåt panorering"
     },
     "CardRoomDifficulty": {
         "title": "Sätt en svårighetsgrad.",
