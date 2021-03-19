@@ -15,7 +15,6 @@
             <v-card-text>
                 <v-row no-gutters class="dialog-customs__row">
                     <v-col md="5" sm="12" class="mr-6">
-
                         <v-skeleton-loader
                             v-if="loading"
                             class="mx-auto"
