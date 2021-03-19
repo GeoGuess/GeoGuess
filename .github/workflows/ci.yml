@@ -4,10 +4,9 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
+
 jobs:
   integration:
-    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
     env:
       VUE_APP_API_KEY: YOUR_GOOGLE_MAPS_API_KEY
       VUE_APP_FIREBASE_API_KEY: YOUR_FIREBASE_API_KEY
@@ -17,21 +16,36 @@ jobs:
       VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest] # , macos-latest, windows-latest
         node: [12]
     runs-on: ${{ matrix.os }}
     steps:
+    - name: Set git to use LF
+      run: |
+        git config --global core.autocrlf false
+        git config --global core.eol lf
     - uses: actions/checkout@v1
     - uses: actions/cache@v1
       id: cache
+      if: matrix.os != 'windows-latest'
       with:
         path: ~/.npm          
         key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles('**/package-lock.json') }}
+    - name: Get npm cache directory
+      id: npm-cache
+      if: matrix.os == 'windows-latest'
+      run: |
+        echo "::set-output name=dir::$(npm config get cache)"
+    - uses: actions/cache@v2
+      if: matrix.os == 'windows-latest'
+      with:
+        path: ${{ steps.npm-cache.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: Linter
-      run: npm run lint
+      run: npm run lint -- --no-fix
 
     - name: Run unit tests
       run: npm run test:unit
@@ -49,22 +63,24 @@ jobs:
         name: ${{ matrix.os }}-node-v${{ matrix.node }}-build
         path: dist
 
-  cypress-chrome:
+  cypress-chrome-firefox:
     needs: integration
     env:
       VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
-      VUE_APP_FIREBASE_API_KEY: YOUR_FIREBASE_API_KEY
-      VUE_APP_FIREBASE_PROJECT_ID: YOUR_FIREBASE_PROJECT_ID
-      VUE_APP_FIREBASE_MESSAGING_SENDER_ID: YOUR_FIREBASE_MESSAGING_SENDER_ID
-      VUE_APP_FIREBASE_APP_ID: YOUR_FIREBASE_APP_ID
-      VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
-    if:  ${{ contains(github.repository, 'GeoGuess/Geoguess')}}    
+      VUE_APP_FIREBASE_API_KEY:  ${{ secrets.VUE_APP_FIREBASE_API_KEY }}
+      VUE_APP_FIREBASE_APP_ID:  ${{ secrets.VUE_APP_FIREBASE_APP_ID }}
+      VUE_APP_FIREBASE_AUTH_DOMAIN:  ${{ secrets.VUE_APP_FIREBASE_AUTH_DOMAIN }}
+      VUE_APP_FIREBASE_DATABASE_URL:  ${{ secrets.VUE_APP_FIREBASE_DATABASE_URL }}
+      VUE_APP_FIREBASE_MESSAGING_SENDER_ID:  ${{ secrets.VUE_APP_FIREBASE_MESSAGING_SENDER_ID }}
+      VUE_APP_FIREBASE_PROJECT_ID:  ${{ secrets.VUE_APP_FIREBASE_PROJECT_ID }}
+      VUE_APP_STORAGE_BUCKET:  ${{ secrets.VUE_APP_STORAGE_BUCKET }}
     runs-on: ubuntu-16.04
-    name: E2E on Chrome
+    name: E2E on Ubuntu
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2]
+        containers: [1, 2, 3, 4]
+        browsers: [chrome, firefox]
     steps:
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
@@ -73,8 +89,44 @@ jobs:
           wait-on: 'http://localhost:8080'
           record: true
           parallel: true
-          group: 'Actions chrome'
-          browser: chrome
+          group: ${{matrix.browsers}}
+          tag: ${{ github.event_name }}
+          browser: ${{matrix.browsers}}
         env:
-          # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+
+  # cypress-edge:    
+  #   needs: integration
+  #   env:
+  #     VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
+  #     VUE_APP_FIREBASE_API_KEY: YOUR_FIREBASE_API_KEY
+  #     VUE_APP_FIREBASE_PROJECT_ID: YOUR_FIREBASE_PROJECT_ID
+  #     VUE_APP_FIREBASE_MESSAGING_SENDER_ID: YOUR_FIREBASE_MESSAGING_SENDER_ID
+  #     VUE_APP_FIREBASE_APP_ID: YOUR_FIREBASE_APP_ID
+  #     VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
+  #   runs-on: windows-latest
+  #   name: E2E on Windows
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       containers: [1, 2, 3, 4]
+  #   steps:
+  #     - name: Set git to use LF
+  #       run: |
+  #         git config --global core.autocrlf false
+  #         git config --global core.eol lf
+  #     - uses: actions/checkout@v1
+  #     - uses: cypress-io/github-action@v2
+  #       with:
+  #         start: npm run serve
+  #         wait-on: 'http://localhost:8080'
+  #         record: true
+  #         browser: edge
+  #         group: edge
+  #         parallel: true
+  #         tag: ${{ github.event_name }}
+  #       env:
+  #         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  #         COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+

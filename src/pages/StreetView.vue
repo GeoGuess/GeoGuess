@@ -98,6 +98,7 @@ import { GAME_MODE } from '../constants';
 import { mapGetters } from 'vuex';
 
 import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
+
 export default {
     mixins: [ConfirmExitMixin],
     props: {

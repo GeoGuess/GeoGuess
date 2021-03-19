@@ -67,7 +67,6 @@
                             </v-btn>
                         </v-flex>
                     </v-row>
-
                     <v-row v-if="!singlePlayer">
                         <v-combobox
                             :label="$t('CardRoomSize.title')"

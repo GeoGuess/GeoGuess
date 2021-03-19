@@ -15,35 +15,46 @@
             <v-card-text>
                 <v-row no-gutters class="dialog-customs__row">
                     <v-col md="5" sm="12" class="mr-6">
-                        <v-alert
-                            type="error"
-                            v-if="isValidGeoJson === false"
-                            transition="out-in"
-                        >
-                            {{ $t('DialogCustomMap.invalid') }}
-                        </v-alert>
 
-                        <GmapMap
-                            :center="{ lat: 10, lng: 10 }"
-                            :zoom="1"
-                            ref="mapRef"
-                            map-type-id="roadmap"
-                            style="width: 100%; height: 500px"
-                            :options="{
-                                gestureHandling: 'greedy',
-                            }"
-                        >
-                        </GmapMap>
-                        <v-row>
-                            <v-btn
-                                class="mt-6 mr-auto ml-auto"
-                                @click="saveGeoJson"
-                                color="secondary"
+                        <v-skeleton-loader
+                            v-if="loading"
+                            class="mx-auto"
+                            height="500"
+                            type="image"
+                        ></v-skeleton-loader>
+                        <div v-else>
+                            <v-alert
+                                type="error"
+                                v-if="isValidGeoJson === false"
+                                transition="out-in"
                             >
-                                <v-icon left dark> mdi-cloud-download </v-icon>
-                                {{ $t('DialogCustomMap.download') }}
-                            </v-btn>
-                        </v-row>
+                                {{ $t('DialogCustomMap.invalid') }}
+                            </v-alert>
+
+                            <GmapMap
+                                :center="{ lat: 10, lng: 10 }"
+                                :zoom="1"
+                                ref="mapRef"
+                                map-type-id="roadmap"
+                                style="width: 100%; height: 500px"
+                                :options="{
+                                    gestureHandling: 'greedy',
+                                }"
+                            >
+                            </GmapMap>
+                            <v-row>
+                                <v-btn
+                                    class="mt-6 mr-auto ml-auto"
+                                    @click="saveGeoJson"
+                                    color="secondary"
+                                >
+                                    <v-icon left dark>
+                                        mdi-cloud-download
+                                    </v-icon>
+                                    {{ $t('DialogCustomMap.download') }}
+                                </v-btn>
+                            </v-row>
+                        </div>
                     </v-col>
 
                     <v-col>
@@ -90,6 +101,7 @@
                             rows="21"
                             filled
                             clearable
+                            :loading="loading"
                         >
                         </v-textarea>
                     </v-col>
@@ -115,7 +127,6 @@ export default {
     props: ['visibility'],
     data() {
         return {
-            placeholderGeoJson: geoJsonExample,
             rulesUrl: [(value) => validURL(value)],
             rulesTextArea: [(value) => this.checkIfStringGeoJsonValid(value)],
             type: 'text',
@@ -123,9 +134,15 @@ export default {
             url: '',
             initMap: false,
             editMap: false,
+            loading: false,
         };
     },
-    computed: { ...mapGetters(['geoJsonString', 'isValidGeoJson', 'geoJson']) },
+    computed: {
+        ...mapGetters(['geoJsonString', 'isValidGeoJson', 'geoJson']),
+        placeholderGeoJson() {
+            return this.loading ? '' : geoJsonExample;
+        },
+    },
     methods: {
         ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setGeoJsonString']),
         checkIfStringGeoJsonValid(string) {
@@ -166,6 +183,15 @@ export default {
                 }
                 launchParams.files[0].getFile().then((f) => {
                     this.file = f;
+                    this.loading = true;
+                    this.$emit('change-visibility');
+                    f.text()
+                        .then((content) => {
+                            return this.setGeoJsonString(content);
+                        })
+                        .then(() => {
+                            this.loading = false;
+                        });
                 });
             });
         }
