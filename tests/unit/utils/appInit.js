@@ -1,11 +1,13 @@
 import i18n from '@/lang';
 import * as GmapVue from 'gmap-vue';
 import Vue from 'vue';
+import VueClipboard from 'vue-clipboard2';
 import VueI18n from 'vue-i18n';
 import Router from 'vue-router';
 import Vuetify from 'vuetify';
 import en from 'vuetify/es5/locale/en';
 import Vuex from 'vuex';
+import countryNamePlugin from '../../../src/plugins/countryNamePlugin';
 
 global.File = class MockFile {
     constructor(parts, filename, properties) {
@@ -32,17 +34,19 @@ export default function appInit(VueInstance) {
     });
     Vue.use(Vuetify);
     Vue.use(Vuex);
-
-    VueInstance.use(VueI18n);
-    VueInstance.use(Router);
-    VueInstance.use(Vuetify);
-    VueInstance.config.productionTip = false;
+    Vue.use(VueClipboard);
     Vue.use(GmapVue, {
         load: {
             key: 'google-maps-api-key',
         },
         installComponents: true,
     });
+    Vue.use(countryNamePlugin);
+
+    VueInstance.use(Router);
+    VueInstance.use(VueI18n);
+    VueInstance.use(Vuetify);
+    VueInstance.config.productionTip = false;
 
     return {
         Vue,

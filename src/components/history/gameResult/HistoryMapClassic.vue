@@ -7,7 +7,7 @@
         }"
         :zoom="0"
         map-type-id="roadmap"
-        :style="'width:' + ($viewport.width - 100) + 'px ; height: 400px'"
+        style="height: 400px"
     >
         <div v-if="!item.multiplayer">
             <div :key="index" v-for="(r, index) in item.rounds">

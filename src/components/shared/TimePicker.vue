@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container class="time-picker">
         <v-row>
             <v-slider
                 :value="value"
@@ -19,6 +19,7 @@
                     v-on:change="changeMinute"
                     reverse
                     type="number"
+                    class="time-input__minute"
                 ></v-text-field>
                 <p>:</p>
 
@@ -26,6 +27,7 @@
                     :value="this.value % 60"
                     v-on:change="changeSecond"
                     type="number"
+                    class="time-input__second"
                 ></v-text-field>
             </div>
             <p v-else class="infinite--text">

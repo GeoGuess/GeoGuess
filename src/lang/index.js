@@ -1,15 +1,17 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import cs from './TranslationsCS';
-import de from './TranslationsDE';
-import en from './TranslationsEN';
-import fr from './TranslationsFR';
-import ja from './TranslationsJA';
-import ru from './TranslationsRU';
+import cs from './locale/cs.json';
+import de from './locale/de.json';
+import en from './locale/en.json';
+import fr from './locale/fr.json';
+import ja from './locale/ja.json';
+import ru from './locale/ru.json';
+import pt from './locale/pt.json';
+import sv from './locale/sv.json';
 
 Vue.use(VueI18n);
 
-const translations = Object.assign(en, ja, fr, cs, de, ru);
+const translations = { en, ja, fr, cs, de, ru, pt, sv };
 
 export const languages = [
     {
@@ -21,10 +23,6 @@ export const languages = [
         value: 'fr',
     },
     {
-        text: 'Deutsch',
-        value: 'de',
-    },
-    {
         text: 'čeština',
         value: 'cs',
     },
@@ -33,8 +31,20 @@ export const languages = [
         value: 'ru',
     },
     {
+        text: 'Português (Brasil)',
+        value: 'pt',
+    },
+    {
+        text: 'Deutsch',
+        value: 'de',
+    },
+    {
         text: '日本語',
         value: 'ja',
+    },
+    {
+        text: 'Svenska',
+        value: 'sv',
     },
 ];
 

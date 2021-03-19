@@ -3,14 +3,25 @@
         id="container-map"
         :class="[
             ($viewport.width >= 450 && (activeMap || pinActive)) ||
-            isMakeGuessButtonClicked
+            isMakeGuessButtonClicked ||
+            isNextButtonVisible
                 ? 'container-map--active'
                 : '',
             printMapFull ? 'container-map--full' : '',
             `container-map--size-${size}`,
         ]"
-        @mouseover="activeMap = true"
-        @mouseleave="activeMap = false"
+        v-on="
+            $viewport.width >= 450 // Only on tablet and desktop Issue #104
+                ? {
+                      mouseover: () => {
+                          activeMap = true;
+                      },
+                      mouseleave: () => {
+                          activeMap = false;
+                      },
+                  }
+                : {}
+        "
     >
         <div class="container-map_details">
             <DetailsMap
@@ -74,18 +85,7 @@
             ref="map"
             @setSeletedPos="setSeletedPos"
         />
-        <button
-            id="make-guess-button"
-            v-if="
-                $viewport.width < 450 &&
-                !isGuessButtonClicked &&
-                !isMakeGuessButtonClicked
-            "
-            @click="showMap"
-        >
-            {{ $t('Maps.makeGuess') }}
-        </button>
-        <div>
+        <div class="container-map_controls_guess">
             <button
                 id="reset-button"
                 :disabled="isGuessButtonClicked || (!!this.room && !isReady)"
@@ -101,6 +101,7 @@
             <button
                 id="guess-button"
                 :disabled="
+                    randomLatLng == null ||
                     selectedPos == null ||
                     isGuessButtonClicked ||
                     (!!this.room && !isReady)
@@ -122,7 +123,7 @@
                 backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C',
             }"
             v-if="isNextButtonVisible"
-            @click="goToNextRound"
+            @click="goToNextRound(false)"
         >
             {{ $t('Maps.nextRound') }}
         </button>
@@ -134,6 +135,19 @@
             {{ $t('Maps.viewSummary') }}
         </button>
 
+        <button
+            id="make-guess-button"
+            class="primary"
+            v-if="
+                $viewport.width < 450 &&
+                !isGuessButtonClicked &&
+                !isMakeGuessButtonClicked &&
+                !isNextButtonVisible
+            "
+            @click="showMap"
+        >
+            {{ $t('Maps.makeGuess') }}
+        </button>
         <DialogSummary
             :dialogSummary="dialogSummary"
             :summaryTexts="summaryTexts"
@@ -143,7 +157,7 @@
             :game="game"
             :multiplayer="!!this.room"
             @finishGame="finishGame"
-            @playAgain="playAgain"
+            @playAgain="goToNextRound(true)"
         />
     </div>
 </template>
@@ -177,6 +191,7 @@ export default {
         'country',
         'timeAttack',
         'nbRound',
+        'countdown',
     ],
     components: {
         DialogSummary,
@@ -202,6 +217,7 @@ export default {
             size: 2,
             pinActive: false,
             printMapFull: false,
+            countdownStarted: false,
             game: {
                 multiplayer: !!this.roomName,
                 date: new Date(),
@@ -214,7 +230,7 @@ export default {
             if (this.playerNumber == 1 || !this.room) {
                 return true;
             } else {
-                if (this.isNextStreetViewReady == true) {
+                if (this.isNextStreetViewReady) {
                     return true;
                 } else {
                     return false;
@@ -225,9 +241,6 @@ export default {
     methods: {
         setSeletedPos(pos) {
             this.selectedPos = pos;
-        },
-        playAgain() {
-            window.location.reload();
         },
         showMap() {
             this.isMakeGuessButtonClicked = true;
@@ -342,12 +355,18 @@ export default {
         startNextRound() {
             this.$refs.map.startNextRound();
         },
-        goToNextRound() {
+        goToNextRound(isPlayAgain = false) {
+            if (isPlayAgain) {
+                this.dialogSummary = false;
+                this.isSummaryButtonVisible = false;
+            }
+
             // Reset
             this.selectedPos = null;
             this.isGuessButtonClicked = false;
             this.isSelected = false;
             this.isNextButtonVisible = false;
+            this.countdownStarted = false;
 
             if (this.$viewport.width < 450) {
                 // Hide the map if the player is on mobile
@@ -359,7 +378,7 @@ export default {
             this.$refs.map.removePolylines();
 
             // Replace the streetview with the next one
-            this.$emit('goToNextRound');
+            this.$emit('goToNextRound', isPlayAgain);
         },
         finishGame() {
             this.dialogSummary = false;
@@ -375,15 +394,17 @@ export default {
         this.game.timeLimitation = this.timeLimitation;
         this.game.difficulty = this.difficulty;
         this.game.mode = this.mode;
+        this.game.timeAttack = this.timeAttack;
 
         if (this.roomName) {
             this.room = firebase.database().ref(this.roomName);
             this.room.on('value', (snapshot) => {
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
-                    // Allow players to move on to the next round when every players guess locations
                     if (
+                        // If Time Attack and 1st true guess finish round
                         (this.timeAttack &&
+                            this.countdown === 0 &&
                             snapshot.child('guess').numChildren() >= 1 &&
                             snapshot
                                 .child('guess')
@@ -392,10 +413,12 @@ export default {
                                         guess.child('country').val() ===
                                         this.country
                                 )) ||
+                        // Allow players to move on to the next round when every players guess locations
                         snapshot.child('guess').numChildren() ===
                             snapshot.child('size').val()
                     ) {
                         this.game.timeLimitation = this.timeLimitation;
+                        this.isNextStreetViewReady = false;
 
                         this.$emit('showResult');
 
@@ -524,6 +547,17 @@ export default {
                     ) {
                         this.isNextStreetViewReady = true;
                     }
+
+                    if (
+                        !this.countdownStarted &&
+                        !this.printMapFull &&
+                        this.countdown > 0 &&
+                        snapshot.child('guess').numChildren() >= 1
+                    ) {
+                        this.$parent.initTimer(this.countdown, true);
+
+                        this.countdownStarted = true;
+                    }
                 }
             });
         }
@@ -624,6 +658,7 @@ export default {
     text-decoration: none;
     text-align: center;
     padding: 10px 0;
+    z-index: 999;
 }
 
 #make-guess-button,
@@ -674,6 +709,11 @@ button.w-50 {
 
 @media (max-width: 450px) {
     #container-map {
+        width: 100%;
+        opacity: 1;
+        height: auto;
+        left: 0;
+        bottom: 0;
         display: flex;
         flex-direction: column;
         .container-map_controls {
@@ -689,10 +729,8 @@ button.w-50 {
         &.container-map--active .container-map_controls {
             display: none;
         }
-        bottom: 0;
-        width: 95%;
         &.container-map--active {
-            height: 30vh;
+            height: 40vh;
         }
         &.container-map--full {
             position: absolute;
@@ -702,15 +740,27 @@ button.w-50 {
             margin: 0;
             max-height: 100%;
         }
+        .container-map_controls_guess {
+            z-index: 999;
+        }
     }
+
     #make-guess-button,
     #next-button,
+    #reset-button,
+    #guess-button,
     #summary-button {
+        border-radius: 0;
+        opacity: 1;
         bottom: 0;
         width: 100%;
     }
     #guess-button {
         width: 75%;
+    }
+
+    #reset-button {
+        width: 25%;
     }
 
     #hide-map-button {

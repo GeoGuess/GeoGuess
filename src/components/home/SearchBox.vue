@@ -49,7 +49,7 @@
 </template>
 <script>
 import DialogCustomMap from '@/components/home/DialogCustomMap';
-import DialogRoom from '@/components/widgets/dialog/DialogRoom';
+import DialogRoom from '@/components/dialogroom/DialogRoom';
 import { mapGetters } from 'vuex';
 export default {
     components: {
@@ -121,18 +121,19 @@ export default {
         justify-content: space-around;
     }
 }
-@media (max-width: 380px) {
+@media (max-width: 410px) {
     .search-box {
         .v-input {
             font-size: 1rem !important;
+            width: 95% !important;
+            margin: auto !important;
         }
-
         .search-box__search-bar {
             flex-direction: column;
-            width: 100vw;
+            width: 100%;
             margin: auto;
             .btn-customs {
-                margin: 2% auto;
+                margin: 0 auto;
             }
         }
         .search-box__btns {

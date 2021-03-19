@@ -34,6 +34,7 @@
                         :country="country"
                         :timeAttack="timeAttack"
                         :nbRound="nbRound"
+                        :countdown="countdown"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -49,16 +50,28 @@
             :dialogTitle="dialogTitle"
             :dialogText="dialogText"
         />
-        <v-alert
-            type="warning"
-            dismissible
-            class="warning-alert"
-            v-if="isVisibleDialog"
-            tile
-        >
-            <b>{{ $t('StreetView.nearby.title') }}</b> :
-            {{ $t('StreetView.nearby.message') }}
-        </v-alert>
+        <div class="alert-container">
+            <v-alert
+                type="warning"
+                dismissible
+                class="warning-alert"
+                v-if="isVisibleDialog"
+            >
+                <b>{{ $t('StreetView.nearby.title') }}</b> :
+                {{ $t('StreetView.nearby.message') }}
+            </v-alert>
+            <v-alert
+                type="info"
+                id="warningCountdown"
+                dismissible
+                transition="slide-x-transition"
+                v-model="isVisibleCountdownAlert"
+                prominent
+                icon="mdi-clock-fast"
+            >
+                {{ $tc('StreetView.countdownAlert', timeCountdown) }}
+            </v-alert>
+        </div>
     </div>
 </template>
 
@@ -79,17 +92,22 @@ import {
     getRandomCountry,
     getMaxDistanceBbox,
 } from '../utils';
+
 import { GAME_MODE } from '../constants';
 
+import { mapGetters } from 'vuex';
+
+import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
 export default {
+    mixins: [ConfirmExitMixin],
     props: {
         roomName: {
             default: null,
             type: String,
         },
         photo: {
-            default: 'yes',
-            type: String,
+            default: true,
+            type: Boolean,
         },
         playerNumber: {
             default: null,
@@ -127,9 +145,25 @@ export default {
             default: GAME_MODE.CLASSIC,
             type: String,
         },
+        panControl: {
+            default: true,
+            type: Boolean,
+        },
+        zoomControl: {
+            default: true,
+            type: Boolean,
+        },
+        moveControl: {
+            default: true,
+            type: Boolean,
+        },
         timeAttackSelected: {
             default: false,
             type: Boolean,
+        },
+        countdown: {
+            default: 0,
+            type: Number,
         },
     },
     components: {
@@ -169,10 +203,17 @@ export default {
 
             difficultyData: this.difficulty,
             bbox: this.bboxObj,
+            isVisibleCountdownAlert: false,
+            timeCountdown: 0,
         };
+    },
+    computed: {
+        ...mapGetters(['countriesJson']),
     },
     methods: {
         loadStreetView() {
+            let so;
+            this.so = so;
             const service = new google.maps.StreetViewService();
             let radius, position;
             if (this.roundsPredefined) {
@@ -186,11 +227,10 @@ export default {
                 this.randomFeatureProperties = randomPos.properties;
             }
 
-            if(this.photo=='yes'){
-                var so='default'
-            }
-            else{
-                var so='outdoor'
+            if (this.photo == true) {
+                so = 'default';
+            } else {
+                so = 'outdoor';
             }
 
             service.getPanorama(
@@ -316,14 +356,11 @@ export default {
             }
         },
         resetLocation() {
-
-            if(this.photo=='yes'){
-                var so='default'
+            if (this.photo == true) {
+                this.so = 'default';
+            } else {
+                this.so = 'outdoor';
             }
-            else{
-                var so='outdoor'
-            }
-
 
             const service = new google.maps.StreetViewService();
             service.getPanorama(
@@ -331,7 +368,7 @@ export default {
                     location: this.randomLatLng,
                     preference: 'nearest',
                     radius: 50,
-                    source: so,
+                    source: this.so,
                 },
                 this.setPosition
             );
@@ -343,14 +380,69 @@ export default {
                 motionTracking: false,
                 motionTrackingControl: false,
                 showRoadLabels: false,
-                panControl: true,
+                panControl: this.panControl,
+                zoomControl: this.zoomControl,
+                scrollwheel: this.zoomControl,
+                disableDoubleClickZoom: !this.zoomControl,
+                linksControl: this.moveControl,
+                clickToGo: this.moveControl,
             });
+            // Remove google streetview link
+            if (document.querySelector('#street-view a[href^="https://maps"]'))
+                document
+                    .querySelector('#street-view a[href^="https://maps"]')
+                    .remove();
+            setTimeout(() => {
+                if (document.querySelector('.widget-scene')) {
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'keydown',
+                            this.onUserEventPanoramaKey
+                        );
+
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'mousedown',
+                            this.onUserEventPanoramaMouse
+                        );
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'touchstart',
+                            this.onUserEventPanoramaMouse
+                        );
+                    document
+                        .querySelector('.widget-scene')
+                        .addEventListener(
+                            'pointerdown',
+                            this.onUserEventPanoramaMouse
+                        );
+                }
+            }, 50);
+
             this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,
                 pitch: 0,
             });
+
             this.panorama.setZoom(0);
+        },
+        initTimer(time, printAlert) {
+            const endDate = new Date();
+            endDate.setSeconds(endDate.getSeconds() + time);
+            if (printAlert) {
+                this.timeCountdown = time;
+                this.isVisibleCountdownAlert = true;
+            }
+            if (this.hasTimerStarted) {
+                this.endTime = this.endTime > endDate ? endDate : this.endTime;
+            } else {
+                this.endTime = endDate;
+                this.startTimer();
+            }
         },
         startTimer(round = this.round) {
             if (round === this.round) {
@@ -367,7 +459,7 @@ export default {
                     if (!this.hasLocationSelected) {
                         if (this.mode === GAME_MODE.COUNTRY) {
                             this.$refs.mapContainer.selectRandomLocation(
-                                getRandomCountry()
+                                getRandomCountry(this.countriesJson)
                             );
                         } else {
                             // Set a random location if the player didn't select a location in time
@@ -408,7 +500,15 @@ export default {
             this.dialogMessage = false;
             this.overlay = true;
         },
-        goToNextRound() {
+        goToNextRound(playAgain = false) {
+            if (playAgain) {
+                this.round = 0;
+                this.scoreHeader = 0;
+                this.pointsHeader = 0;
+                this.score = 0;
+                this.points = 0;
+            }
+
             // Reset
             this.randomLatLng = null;
             this.country = null;
@@ -417,6 +517,7 @@ export default {
             this.hasLocationSelected = false;
             this.isVisibleDialog = false;
             this.randomFeatureProperties = null;
+            this.isVisibleCountdownAlert = false;
 
             if (this.multiplayer) {
                 this.dialogMessage = true; // Show the dialog while waiting for other players
@@ -429,11 +530,7 @@ export default {
             if (this.playerNumber == 1 || !this.multiplayer) {
                 this.loadStreetView();
                 if (!this.multiplayer && this.timeLimitation != 0) {
-                    this.endTime = new Date();
-                    this.endTime.setSeconds(
-                        this.endTime.getSeconds() + this.timeLimitation
-                    );
-                    this.startTimer();
+                    this.initTimer(this.timeLimitation);
                 }
             } else {
                 // Trigger listener and load the next streetview
@@ -448,12 +545,17 @@ export default {
             this.dialogTitle = this.$t('StreetView.redirectToHomePage');
             this.dialogText = this.$t('StreetView.exitGame');
             this.dialogMessage = true;
-            this.room.off();
-            this.room.remove();
-
-            this.$router.push('/history');
+            this.canExit = true;
+            if (this.room) {
+                this.room.off();
+                this.room.remove();
+                this.$router.push('/history');
+            } else {
+                this.$router.push('/');
+            }
         },
         finishGame() {
+            this.canExit = true;
             if (!this.multiplayer) {
                 this.$router.push('/history');
             } else {
@@ -465,12 +567,28 @@ export default {
                 this.dialogMessage = true;
             }
         },
+        onUserEventPanoramaKey(e) {
+            if (
+                (!this.moveControl &&
+                    [38, 40, 87, 83, 90].includes(e.keyCode)) ||
+                (!this.zoomControl &&
+                    [107, 109, 187, 189].includes(e.keyCode)) ||
+                (!this.panControl &&
+                    [37, 39, 65, 68, 100, 102].includes(e.keyCode))
+            ) {
+                e.stopPropagation();
+            }
+        },
+        onUserEventPanoramaMouse(e) {
+            if (!this.panControl) e.stopPropagation();
+        },
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(
             document.getElementById('street-view')
         );
+
         if (this.playerNumber == 1 || !this.multiplayer) {
             this.loadStreetView();
         }
@@ -480,18 +598,14 @@ export default {
 
             if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
-                    this.endTime = new Date();
-                    this.endTime.setSeconds(
-                        this.endTime.getSeconds() + this.timeLimitation
-                    );
-                    this.startTimer();
+                    this.initTimer(this.timeLimitation);
                     this.hasTimerStarted = true;
                 }
             }
         } else {
             // Set a room name if it's null to detect when the user refresh the page
-            if (this.roomName == null) {
-                this.roomName = 'defaultRoomName';
+            if (!this.roomName) {
+                this.exitGame();
             }
             this.room = firebase.database().ref(this.roomName);
             this.room.child('active').set(true);
@@ -574,12 +688,7 @@ export default {
 
                         if (this.timeLimitation != 0) {
                             if (!this.hasTimerStarted) {
-                                this.endTime = new Date();
-                                this.endTime.setSeconds(
-                                    this.endTime.getSeconds() +
-                                        this.timeLimitation
-                                );
-                                this.startTimer();
+                                this.initTimer(this.timeLimitation);
                                 this.hasTimerStarted = true;
                             }
                         }
@@ -597,22 +706,27 @@ export default {
                     this.exitGame();
                 }
             });
+        }
+    },
+    beforeDestroy() {
+        if (document.querySelector('.widget-scene')) {
+            document
+                .querySelector('.widget-scene')
+                .removeEventListener('keydown', this.onUserEventPanoramaKey);
 
-            window.addEventListener('popstate', () => {
-                // Remove the room when the player pressed the back button on browser
-                this.room.child('active').remove();
-                this.room.off();
-            });
-
-            window.addEventListener('beforeunload', () => {
-                // Remove the room when the player refreshes the window
-                this.room.child('active').remove();
-            });
-
-            // Force to exit the game if it's still the name this is set programmatically
-            if (this.roomName == 'defaultRoomName') {
-                this.room.child('active').remove();
-            }
+            document
+                .querySelector('.widget-scene')
+                .removeEventListener(
+                    'mousedown',
+                    this.onUserEventPanoramaMouse
+                );
+        }
+        window.removeEventListener('beforeunload', this.beforeUnload);
+        if (this.room) {
+            // Remove the room when the player refreshes the window
+            // Remove the room when the player pressed the back button on browser
+            this.room.child('active').remove();
+            this.room.off();
         }
     },
 };
@@ -622,6 +736,7 @@ export default {
 #game-page {
     position: relative;
     height: 100%;
+    height: var(--global-height, 100%);
     width: 100%;
     top: 0;
     left: 0;
@@ -655,16 +770,26 @@ export default {
     min-height: 100%;
     width: 100%;
 }
-
-.warning-alert {
-    z-index: 1;
-    margin-top: 56px;
+.alert-container {
+    margin-top: 65px;
+    .v-alert {
+        z-index: 2;
+    }
+    #warningCountdown {
+        width: fit-content;
+        margin: 10px;
+        margin-top: 90px;
+        padding: auto 30px;
+    }
 }
+
 @media (max-width: 450px) {
-    #street-view {
-        position: fixed;
-        min-height: 92%;
-        height: 92%;
+    #game-interface {
+        display: grid;
+        grid-template-rows: auto 44px;
+        #game-interface--overlay {
+            position: initial;
+        }
     }
 
     #reset-button {

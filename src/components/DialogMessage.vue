@@ -1,13 +1,15 @@
 <template>
     <v-dialog
-        v-model="dialogMessage"
+        :value="dialogMessage"
         max-width="600"
         persistent
         :fullscreen="$viewport.width < 450"
     >
         <v-card color="#061422">
             <v-card-title>
-                <span id="card-title">{{ dialogTitle }}</span>
+                <span class="dialog-message__title" id="card-title">{{
+                    dialogTitle
+                }}</span>
             </v-card-title>
             <v-card-text>
                 <v-container>

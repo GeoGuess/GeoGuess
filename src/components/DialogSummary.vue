@@ -1,6 +1,6 @@
 <template>
     <v-dialog
-        v-model="dialogSummary"
+        :value="dialogSummary"
         max-width="720"
         persistent
         :fullscreen="$viewport.width < 450"
@@ -33,10 +33,10 @@
                             v-if="index == 0 || index == 1 || index == 2"
                             :color="
                                 index == 0
-                                    ? '#FAA61A'
+                                    ? '#CCAC00'
                                     : index == 1
-                                    ? '#EEEEEE'
-                                    : '#F4511E'
+                                    ? '#C0C0C0'
+                                    : '#CC8E34'
                             "
                             >mdi-crown</v-icon
                         >

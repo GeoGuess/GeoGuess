@@ -1,5 +1,5 @@
 <template>
-    <v-card width="300" rounded="lg">
+    <v-card class="map-card" rounded="lg">
         <v-img
             class="white--text align-end"
             height="140px"
@@ -52,5 +52,8 @@ export default {
 <style lang="scss">
 .map-card__actions {
     padding: 1%;
+}
+.map-card {
+    width: 100%;
 }
 </style>

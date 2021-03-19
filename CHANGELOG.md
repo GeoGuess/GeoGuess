@@ -1,5 +1,119 @@
 # Changelog
 
+## [v0.5.0](https://github.com/Geoguess/Geoguess/tree/v0.5.0) (2021-03-12)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.4.0...v0.5.0)
+
+**Implemented enhancements:**
+
+- \[FEAT\] No Zoom / No Move [\#117](https://github.com/GeoGuess/Geoguess/issues/117)
+- \[FEAT\] countdown  after 1st guess [\#106](https://github.com/GeoGuess/Geoguess/issues/106)
+- \[FEAT\] Download game information \(specifically lat/lon of locations visited\) [\#105](https://github.com/GeoGuess/Geoguess/issues/105)
+- "Are you sure to leave this window?" should be implemented? [\#95](https://github.com/GeoGuess/Geoguess/issues/95)
+- Be able to save played maps in order to play again / share them [\#54](https://github.com/GeoGuess/Geoguess/issues/54)
+
+**Merged pull requests:**
+
+- Ci [\#135](https://github.com/GeoGuess/Geoguess/pull/135) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#134](https://github.com/GeoGuess/Geoguess/pull/134) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#133](https://github.com/GeoGuess/Geoguess/pull/133) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#132](https://github.com/GeoGuess/Geoguess/pull/132) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#131](https://github.com/GeoGuess/Geoguess/pull/131) ([BilelJegham](https://github.com/BilelJegham))
+- fix: game settings mutliplayer [\#130](https://github.com/GeoGuess/Geoguess/pull/130) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#128](https://github.com/GeoGuess/Geoguess/pull/128) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#126](https://github.com/GeoGuess/Geoguess/pull/126) ([BilelJegham](https://github.com/BilelJegham))
+- feature: countdown \#106 [\#123](https://github.com/GeoGuess/Geoguess/pull/123) ([BilelJegham](https://github.com/BilelJegham))
+- Minor patches [\#122](https://github.com/GeoGuess/Geoguess/pull/122) ([wlanowski](https://github.com/wlanowski))
+- New Crowdin updates [\#120](https://github.com/GeoGuess/Geoguess/pull/120) ([BilelJegham](https://github.com/BilelJegham))
+- \[MINOR\] Typo in package.json [\#119](https://github.com/GeoGuess/Geoguess/pull/119) ([wlanowski](https://github.com/wlanowski))
+- feat: No Zoom + no move [\#118](https://github.com/GeoGuess/Geoguess/pull/118) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#116](https://github.com/GeoGuess/Geoguess/pull/116) ([BilelJegham](https://github.com/BilelJegham))
+- Export Import Save + Export CSV [\#115](https://github.com/GeoGuess/Geoguess/pull/115) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#114](https://github.com/GeoGuess/Geoguess/pull/114) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add TechnicProblem as a contributor [\#113](https://github.com/GeoGuess/Geoguess/pull/113) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Update en.json [\#112](https://github.com/GeoGuess/Geoguess/pull/112) ([wlanowski](https://github.com/wlanowski))
+- Swedish Translation [\#111](https://github.com/GeoGuess/Geoguess/pull/111) ([TechnicProblem](https://github.com/TechnicProblem))
+- linter issue [\#109](https://github.com/GeoGuess/Geoguess/pull/109) ([BilelJegham](https://github.com/BilelJegham))
+- feat: \#95 confirm exit [\#107](https://github.com/GeoGuess/Geoguess/pull/107) ([BilelJegham](https://github.com/BilelJegham))
+
+## [v0.4.0](https://github.com/Geoguess/Geoguess/tree/v0.4.0) (2021-02-18)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.4.0-1...v0.4.0)
+
+**Implemented enhancements:**
+
+- Button on Starting Page to Enter room [\#90](https://github.com/GeoGuess/Geoguess/issues/90)
+
+**Fixed bugs:**
+
+- Layout Issues Firefox Mobile Devices [\#104](https://github.com/GeoGuess/Geoguess/issues/104)
+- \[BUG\] Fix responsible for country mode [\#101](https://github.com/GeoGuess/Geoguess/issues/101)
+- \[BUG\] American Samoa is identified as the United States while on the map no [\#100](https://github.com/GeoGuess/Geoguess/issues/100)
+- Layout issue on mobile browsers in street-view-View [\#91](https://github.com/GeoGuess/Geoguess/issues/91)
+
+**Closed issues:**
+
+- .env.dist not complete [\#92](https://github.com/GeoGuess/Geoguess/issues/92)
+
+**Merged pull requests:**
+
+- Tests e2e + Layout issues fixes [\#103](https://github.com/GeoGuess/Geoguess/pull/103) ([BilelJegham](https://github.com/BilelJegham))
+- Ready : v4. [\#102](https://github.com/GeoGuess/Geoguess/pull/102) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#98](https://github.com/GeoGuess/Geoguess/pull/98) ([BilelJegham](https://github.com/BilelJegham))
+- improve color of crowns in DialogSummary [\#94](https://github.com/GeoGuess/Geoguess/pull/94) ([wlanowski](https://github.com/wlanowski))
+- Update .env.dist [\#93](https://github.com/GeoGuess/Geoguess/pull/93) ([wlanowski](https://github.com/wlanowski))
+
+## [v0.4.0-1](https://github.com/Geoguess/Geoguess/tree/v0.4.0-1) (2021-01-26)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.4.0-0...v0.4.0-1)
+
+**Fixed bugs:**
+
+- Discord Bug Report: Time Attack "next round" as the same round [\#80](https://github.com/GeoGuess/Geoguess/issues/80)
+
+**Merged pull requests:**
+
+- docs: add wlanowski as a contributor [\#88](https://github.com/GeoGuess/Geoguess/pull/88) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- New Crowdin updates [\#87](https://github.com/GeoGuess/Geoguess/pull/87) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add viniciusdof as a contributor [\#84](https://github.com/GeoGuess/Geoguess/pull/84) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- adding translation to portuguese \(Brazil\) [\#83](https://github.com/GeoGuess/Geoguess/pull/83) ([viniciusdof](https://github.com/viniciusdof))
+- fix: \#80 End room Timeattack [\#82](https://github.com/GeoGuess/Geoguess/pull/82) ([BilelJegham](https://github.com/BilelJegham))
+
+## [v0.4.0-0](https://github.com/Geoguess/Geoguess/tree/v0.4.0-0) (2021-01-10)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.2...v0.4.0-0)
+
+**Implemented enhancements:**
+
+- Add map preview [\#33](https://github.com/GeoGuess/Geoguess/issues/33)
+
+**Merged pull requests:**
+
+- Feature : select country [\#75](https://github.com/GeoGuess/Geoguess/pull/75) ([BilelJegham](https://github.com/BilelJegham))
+
+## [v0.3.2](https://github.com/Geoguess/Geoguess/tree/v0.3.2) (2021-01-09)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.1...v0.3.2)
+
+**Fixed bugs:**
+
+- Giverny bug [\#36](https://github.com/GeoGuess/Geoguess/issues/36)
+
+**Closed issues:**
+
+- AutoZoom after every guess \(Issue Discord\) [\#73](https://github.com/GeoGuess/Geoguess/issues/73)
+- Firebase url env [\#68](https://github.com/GeoGuess/Geoguess/issues/68)
+- Problem with GEOJson custom map [\#67](https://github.com/GeoGuess/Geoguess/issues/67)
+
+**Merged pull requests:**
+
+- fix \#73 AutoZoom after every guess [\#74](https://github.com/GeoGuess/Geoguess/pull/74) ([BilelJegham](https://github.com/BilelJegham))
+- Updated Czech translation [\#72](https://github.com/GeoGuess/Geoguess/pull/72) ([tululum](https://github.com/tululum))
+- docs: add chalbin73 as a contributor [\#71](https://github.com/GeoGuess/Geoguess/pull/71) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add AlexSpelt as a contributor [\#70](https://github.com/GeoGuess/Geoguess/pull/70) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Fixs \#67 Streetview search radius + \#68 Firebase config [\#69](https://github.com/GeoGuess/Geoguess/pull/69) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add BurAndBY as a contributor [\#66](https://github.com/GeoGuess/Geoguess/pull/66) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+
 ## [v0.3.1](https://github.com/Geoguess/Geoguess/tree/v0.3.1) (2020-11-24)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.3.0...v0.3.1)
@@ -19,15 +133,21 @@
 
 **Implemented enhancements:**
 
-- Display information once the round results are displayed [\#49](https://github.com/GeoGuess/Geoguess/issues/49) [\#56](https://github.com/GeoGuess/Geoguess/pull/56) ([BilelJegham](https://github.com/BilelJegham))
-- Homepage : Maps list [\#52](https://github.com/GeoGuess/Geoguess/pull/52) ([BilelJegham](https://github.com/BilelJegham))
-- feat\(maps\): Center on start game [\#55](https://github.com/GeoGuess/Geoguess/pull/55) ([BilelJegham](https://github.com/BilelJegham))
-- Center Maps on start game [\#55](https://github.com/GeoGuess/Geoguess/pull/55) ([BilelJegham](https://github.com/BilelJegham))
+- Display information once the round results are displayed [\#49](https://github.com/GeoGuess/Geoguess/issues/49)
 
 **Fixed bugs:**
 
 - Timer doesn't it's the same for all player [\#57](https://github.com/GeoGuess/Geoguess/issues/57)
 - fix: time limitation set \(seconds\) [\#59](https://github.com/GeoGuess/Geoguess/pull/59) ([BilelJegham](https://github.com/BilelJegham))
+
+**Merged pull requests:**
+
+- feat: add link to details map [\#61](https://github.com/GeoGuess/Geoguess/pull/61) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add simonrousseau as a contributor [\#60](https://github.com/GeoGuess/Geoguess/pull/60) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- fix: \#57 timer set on Date [\#58](https://github.com/GeoGuess/Geoguess/pull/58) ([BilelJegham](https://github.com/BilelJegham))
+- Feature/details random point [\#56](https://github.com/GeoGuess/Geoguess/pull/56) ([BilelJegham](https://github.com/BilelJegham))
+- feat\(maps\): Center on start game [\#55](https://github.com/GeoGuess/Geoguess/pull/55) ([BilelJegham](https://github.com/BilelJegham))
+-  Homepage : Maps list [\#52](https://github.com/GeoGuess/Geoguess/pull/52) ([BilelJegham](https://github.com/BilelJegham))
 
 ## [v0.2.0](https://github.com/Geoguess/Geoguess/tree/v0.2.0) (2020-10-15)
 

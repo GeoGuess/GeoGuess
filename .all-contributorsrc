@@ -4,6 +4,7 @@
   ],
   "imageSize": 100,
   "commit": false,
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg)](#-contribution)",
   "contributors": [
     {
       "login": "BilelJegham",
@@ -71,6 +72,35 @@
       "profile": "https://github.com/chalbin73",
       "contributions": [
         "bug"
+      ]
+    },
+    {
+      "login": "viniciusdof",
+      "name": "Vinicius Dell Osbel de Freitas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6577961?v=4",
+      "profile": "http://viniciusdof.com",
+      "contributions": [
+        "translation",
+        "code"
+      ]
+    },
+    {
+      "login": "wlanowski",
+      "name": "John Nitzsche",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25705332?v=4",
+      "profile": "http://wlanowski.de",
+      "contributions": [
+        "translation",
+        "financial"
+      ]
+    },
+    {
+      "login": "TechnicProblem",
+      "name": "TechnicProblem",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38329398?v=4",
+      "profile": "http://technicproblem.github.io",
+      "contributions": [
+        "translation"
       ]
     }
   ],

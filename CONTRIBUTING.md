@@ -47,18 +47,18 @@ npm run build
 2. Comments PR : We don't have rules about the PR description, just clearly explain what you have done
 
 ## Transalation
+> Update translation : https://translate.geoguess.games/
 
-
-- [ ] Add translation file in `src/lang/` following `TranslationsEN.js`
+- [ ] Add translation file in `src/lang/locale` following `en.json`
 
 - [ ] Add the language in :
     * `src/lang/index.js` 
 ```js
-import ru from './TranslationsRU'; // 1
+import ru from './locale/ru.json'; // 1
 
 Vue.use(VueI18n);
 
-const translations = Object.assign(en, ja, fr, cs, de, ru); // 2
+const translations = {en, ja, fr, cs, de, ru}; // 2
 
 
 export const languages = [
@@ -72,6 +72,7 @@ export const languages = [
     }
 ];
 ```
+
     * `src/plugins/vuetify.js`
 ```js
 // 1 
@@ -86,3 +87,11 @@ export default new Vuetify({
 ```
 
 
+    * `src/plugins/countryNamePlugin.js`
+
+```js
+import countries from 'i18n-iso-countries';
+countries.registerLocale(require(`i18n-iso-countries/langs/en.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/ru.json`));
+
+```
