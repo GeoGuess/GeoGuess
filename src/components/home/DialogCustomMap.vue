@@ -180,18 +180,17 @@ export default {
                 ) {
                     return;
                 }
-                launchParams.files[0]
-                    .getFile()
-                    .then((f) => {
-                        this.loading = true;
-                        this.$emit('change-visibility');
-                        f.text().then((content) => {
+                launchParams.files[0].getFile().then((f) => {
+                    this.loading = true;
+                    this.$emit('change-visibility');
+                    f.text()
+                        .then((content) => {
                             return this.setGeoJsonString(content);
+                        })
+                        .then(() => {
+                            this.loading = false;
                         });
-                    })
-                    .then(() => {
-                        this.loading = false;
-                    });
+                });
             });
         }
     },
