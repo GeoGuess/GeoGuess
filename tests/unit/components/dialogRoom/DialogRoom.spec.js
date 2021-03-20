@@ -58,7 +58,16 @@ describe('DialogRoom.vue', () => {
             },
         });
 
-        wrapper.vm.setSettings(true,1, 'country', 0, false, false, true, false);
+        wrapper.vm.setSettings(
+            true,
+            1,
+            'country',
+            0,
+            false,
+            false,
+            true,
+            false
+        );
         expect(wrapper.vm.photo).toEqual(true);
         expect(wrapper.vm.timeLimitation).toEqual(1);
         expect(wrapper.vm.mode).toEqual('country');
