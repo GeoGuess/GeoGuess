@@ -1,5 +1,29 @@
 # Changelog
 
+## [v0.5.1](https://github.com/Geoguess/Geoguess/tree/v0.5.1) (2021-03-20)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.5.0...v0.5.1)
+
+**Implemented enhancements:**
+
+- Url customs [\#97](https://github.com/GeoGuess/Geoguess/issues/97)
+
+**Fixed bugs:**
+
+- "Play again" at end of a game doesn't play custom map again [\#99](https://github.com/GeoGuess/Geoguess/issues/99)
+- File Handling Loader [\#142](https://github.com/GeoGuess/Geoguess/pull/142) 
+- Security stop SEO (Robots.txt)
+
+**Merged pull requests:**
+
+- New Crowdin updates [\#144](https://github.com/GeoGuess/Geoguess/pull/144) ([BilelJegham](https://github.com/BilelJegham))
+- fix: play again single Player [\#143](https://github.com/GeoGuess/Geoguess/pull/143) ([BilelJegham](https://github.com/BilelJegham))
+- fix: fileIcon Manifest.json [\#142](https://github.com/GeoGuess/Geoguess/pull/142) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add viniciusdof as a contributor [\#140](https://github.com/GeoGuess/Geoguess/pull/140) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Adding game mode settings to url [\#138](https://github.com/GeoGuess/Geoguess/pull/138) ([viniciusdof](https://github.com/viniciusdof))
+- New Crowdin updates [\#137](https://github.com/GeoGuess/Geoguess/pull/137) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#128](https://github.com/GeoGuess/Geoguess/pull/128) ([BilelJegham](https://github.com/BilelJegham))
+
 ## [v0.5.0](https://github.com/Geoguess/Geoguess/tree/v0.5.0) (2021-03-12)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.4.0...v0.5.0)
@@ -20,7 +44,6 @@
 - New Crowdin updates [\#132](https://github.com/GeoGuess/Geoguess/pull/132) ([BilelJegham](https://github.com/BilelJegham))
 - New Crowdin updates [\#131](https://github.com/GeoGuess/Geoguess/pull/131) ([BilelJegham](https://github.com/BilelJegham))
 - fix: game settings mutliplayer [\#130](https://github.com/GeoGuess/Geoguess/pull/130) ([BilelJegham](https://github.com/BilelJegham))
-- New Crowdin updates [\#128](https://github.com/GeoGuess/Geoguess/pull/128) ([BilelJegham](https://github.com/BilelJegham))
 - New Crowdin updates [\#126](https://github.com/GeoGuess/Geoguess/pull/126) ([BilelJegham](https://github.com/BilelJegham))
 - feature: countdown \#106 [\#123](https://github.com/GeoGuess/Geoguess/pull/123) ([BilelJegham](https://github.com/BilelJegham))
 - Minor patches [\#122](https://github.com/GeoGuess/Geoguess/pull/122) ([wlanowski](https://github.com/wlanowski))
@@ -35,6 +58,7 @@
 - Swedish Translation [\#111](https://github.com/GeoGuess/Geoguess/pull/111) ([TechnicProblem](https://github.com/TechnicProblem))
 - linter issue [\#109](https://github.com/GeoGuess/Geoguess/pull/109) ([BilelJegham](https://github.com/BilelJegham))
 - feat: \#95 confirm exit [\#107](https://github.com/GeoGuess/Geoguess/pull/107) ([BilelJegham](https://github.com/BilelJegham))
+- Ready : v4. [\#102](https://github.com/GeoGuess/Geoguess/pull/102) ([BilelJegham](https://github.com/BilelJegham))
 
 ## [v0.4.0](https://github.com/Geoguess/Geoguess/tree/v0.4.0) (2021-02-18)
 
@@ -58,7 +82,6 @@
 **Merged pull requests:**
 
 - Tests e2e + Layout issues fixes [\#103](https://github.com/GeoGuess/Geoguess/pull/103) ([BilelJegham](https://github.com/BilelJegham))
-- Ready : v4. [\#102](https://github.com/GeoGuess/Geoguess/pull/102) ([BilelJegham](https://github.com/BilelJegham))
 - New Crowdin updates [\#98](https://github.com/GeoGuess/Geoguess/pull/98) ([BilelJegham](https://github.com/BilelJegham))
 - improve color of crowns in DialogSummary [\#94](https://github.com/GeoGuess/Geoguess/pull/94) ([wlanowski](https://github.com/wlanowski))
 - Update .env.dist [\#93](https://github.com/GeoGuess/Geoguess/pull/93) ([wlanowski](https://github.com/wlanowski))
