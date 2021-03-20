@@ -181,7 +181,6 @@ export default {
                     return;
                 }
                 launchParams.files[0].getFile().then((f) => {
-                    this.file = f;
                     this.loading = true;
                     this.$emit('change-visibility');
                     f.text()
