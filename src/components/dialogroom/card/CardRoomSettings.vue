@@ -40,33 +40,6 @@
                             </v-btn>
                         </v-flex>
                     </v-row>
-
-                    <v-row>
-                        <label class="card_settings__mode__label">{{
-                            $t('CardRoomSettings.includePhotopheres')
-                        }}</label>
-                        <v-flex class="d-flex justify-space-around w-100">
-                            <v-btn
-                                :text="this.photo !== true"
-                                rounded
-                                outlined
-                                v-on:click="() => (this.photo = true)"
-                                class="mr-5"
-                            >
-                                <v-icon large>mdi-camera-iris</v-icon>
-                                <span>{{ $t('yes') }}</span>
-                            </v-btn>
-                            <v-btn
-                                :text="this.photo !== false"
-                                rounded
-                                outlined
-                                v-on:click="() => (this.photo = false)"
-                            >
-                                <v-icon large>mdi-camera-off</v-icon>
-                                <span>{{ $t('no') }}</span>
-                            </v-btn>
-                        </v-flex>
-                    </v-row>
                     <v-row v-if="!singlePlayer">
                         <v-combobox
                             :label="$t('CardRoomSize.title')"
@@ -104,6 +77,15 @@
                             <v-checkbox
                                 v-model="panControl"
                                 :label="$t('CardRoomSettings.allowPan')"
+                                hide-details
+                            >
+                            </v-checkbox>
+                            <br />
+                            <v-checkbox
+                                v-model="allPanorama"
+                                :label="
+                                    $t('CardRoomSettings.includePhotopheres')
+                                "
                                 hide-details
                             >
                             </v-checkbox>
@@ -215,7 +197,6 @@ export default {
     },
     data() {
         return {
-            photo: true,
             mode: GAME_MODE.CLASSIC,
             timeAttack: false,
             timeLimitation: 0,
@@ -225,6 +206,7 @@ export default {
             moveControl: true,
             panControl: true,
             countdown: 0,
+            allPanorama: false,
         };
     },
     computed: {
@@ -266,7 +248,7 @@ export default {
             if (+this.roomSize > 1) {
                 this.$emit(
                     'setSettings',
-                    this.photo,
+                    this.allPanorama,
                     this.timeLimitation,
                     this.mode,
                     +this.roomSize,

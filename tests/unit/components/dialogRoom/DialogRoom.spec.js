@@ -68,7 +68,7 @@ describe('DialogRoom.vue', () => {
             true,
             false
         );
-        expect(wrapper.vm.photo).toEqual(true);
+        expect(wrapper.vm.allPanorama).toEqual(true);
         expect(wrapper.vm.timeLimitation).toEqual(1);
         expect(wrapper.vm.mode).toEqual('country');
         expect(wrapper.vm.roomSize).toEqual(0);

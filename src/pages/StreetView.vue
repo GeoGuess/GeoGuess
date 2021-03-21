@@ -106,8 +106,9 @@ export default {
             default: null,
             type: String,
         },
-        photo: {
-            default: true,
+        // https://developers.google.com/maps/documentation/javascript/reference/street-view-service#StreetViewSource
+        allPanorama: {
+            default: false,
             type: Boolean,
         },
         playerNumber: {
@@ -213,8 +214,6 @@ export default {
     },
     methods: {
         loadStreetView() {
-            let so;
-            this.so = so;
             const service = new google.maps.StreetViewService();
             let radius, position;
             if (this.roundsPredefined) {
@@ -228,18 +227,12 @@ export default {
                 this.randomFeatureProperties = randomPos.properties;
             }
 
-            if (this.photo == true) {
-                so = 'default';
-            } else {
-                so = 'outdoor';
-            }
-
             service.getPanorama(
                 {
                     location: position,
                     preference: 'nearest',
                     radius,
-                    source: so,
+                    source: this.allPanorama ? 'default' : 'outdoor',
                 },
                 this.checkStreetView
             );
@@ -357,19 +350,13 @@ export default {
             }
         },
         resetLocation() {
-            if (this.photo == true) {
-                this.so = 'default';
-            } else {
-                this.so = 'outdoor';
-            }
-
             const service = new google.maps.StreetViewService();
             service.getPanorama(
                 {
                     location: this.randomLatLng,
                     preference: 'nearest',
                     radius: 50,
-                    source: this.so,
+                    source: this.allPanorama ? 'default' : 'outdoor',
                 },
                 this.setPosition
             );

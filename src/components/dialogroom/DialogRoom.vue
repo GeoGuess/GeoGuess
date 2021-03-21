@@ -82,6 +82,7 @@ export default {
             moveControl: true,
             panControl: true,
             countdown: 0,
+            allPanorama: false,
         };
     },
     computed: {
@@ -232,7 +233,7 @@ export default {
             }
         },
         setSettings(
-            photo,
+            allPanorama,
             timeLimitation,
             mode,
             roomSize,
@@ -242,7 +243,7 @@ export default {
             panControl,
             countdown
         ) {
-            this.photo = photo;
+            this.allPanorama = allPanorama;
             this.timeLimitation = timeLimitation;
             this.roomSize = roomSize;
             this.mode = mode;
@@ -255,7 +256,7 @@ export default {
                 this.$router.push({
                     name: 'street-view',
                     params: {
-                        photo: this.photo,
+                        allPanorama: this.allPanorama,
                         time: this.timeLimitation,
                         difficulty: this.difficulty,
                         placeGeoJson: this.placeGeoJson,
@@ -269,6 +270,7 @@ export default {
             } else {
                 this.room.update(
                     {
+                        allPanorama: this.allPanorama,
                         timeLimitation: this.timeLimitation,
                         difficulty: this.difficulty,
                         bbox: this.bboxObj,
@@ -319,6 +321,7 @@ export default {
                                 moveControl: this.moveControl,
                                 panControl: this.panControl,
                                 countdown: this.countdown,
+                                allPanorama: this.allPanorama,
                             };
                             this.startGameMultiplayer(playerName, gameParams);
                         } else {
@@ -343,6 +346,9 @@ export default {
                                         .val(),
                                     countdown: snapshot
                                         .child('countdown')
+                                        .val(),
+                                    allPanorama: snapshot
+                                        .child('allPanorama')
                                         .val(),
                                 };
                                 this.startGameMultiplayer(
