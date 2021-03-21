@@ -106,6 +106,11 @@ export default {
             default: null,
             type: String,
         },
+        // https://developers.google.com/maps/documentation/javascript/reference/street-view-service#StreetViewSource
+        allPanorama: {
+            default: false,
+            type: Boolean,
+        },
         playerNumber: {
             default: null,
             type: Number,
@@ -227,7 +232,7 @@ export default {
                     location: position,
                     preference: 'nearest',
                     radius,
-                    source: 'outdoor',
+                    source: this.allPanorama ? 'default' : 'outdoor',
                 },
                 this.checkStreetView
             );
@@ -351,7 +356,7 @@ export default {
                     location: this.randomLatLng,
                     preference: 'nearest',
                     radius: 50,
-                    source: 'outdoor',
+                    source: this.allPanorama ? 'default' : 'outdoor',
                 },
                 this.setPosition
             );

@@ -80,6 +80,15 @@
                                 hide-details
                             >
                             </v-checkbox>
+                            <br />
+                            <v-checkbox
+                                v-model="allPanorama"
+                                :label="
+                                    $t('CardRoomSettings.includePhotopheres')
+                                "
+                                hide-details
+                            >
+                            </v-checkbox>
                         </div>
                         <div>
                             <v-text-field
@@ -197,6 +206,7 @@ export default {
             moveControl: true,
             panControl: true,
             countdown: 0,
+            allPanorama: false,
         };
     },
     computed: {
@@ -238,6 +248,7 @@ export default {
             if (+this.roomSize > 1) {
                 this.$emit(
                     'setSettings',
+                    this.allPanorama,
                     this.timeLimitation,
                     this.mode,
                     +this.roomSize,
