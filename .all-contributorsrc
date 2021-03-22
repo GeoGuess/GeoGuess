@@ -102,6 +102,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "maksovnik",
+      "name": "maksovnik",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60991351?v=4",
+      "profile": "https://github.com/maksovnik",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
