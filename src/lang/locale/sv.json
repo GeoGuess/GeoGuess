@@ -112,7 +112,7 @@
   "CardRoomSettings": {
     "title": "Spelinställningar",
     "modeLabel": "Välj spelläge",
-    "includePhotopheres": "Include Photospheres",
+    "includePhotopheres": "Inkludera Fotoklot",
     "timeAttackLabel": "TimeAttack",
     "timeattackInfos": "I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!",
     "allowMove": "Tillåt förflyttning",
@@ -149,6 +149,6 @@
     "btn": "Gå med"
   },
   "OK": "OK",
-  "yes": "yes",
-  "no": "no"
+  "yes": "ja",
+  "no": "nej"
 }
