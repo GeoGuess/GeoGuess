@@ -8,7 +8,7 @@
                     color="#FFFFFF"
                     href="https://github.com/GeoGuess/Geoguess"
                 >
-                    <v-icon size="30">mdi-github-circle</v-icon>
+                    <v-icon size="30"> mdi-github-circle </v-icon>
                 </v-btn>
                 <v-btn
                     class="ml-4 mr-4"
@@ -16,7 +16,7 @@
                     color="#FFFFFF"
                     href="https://discord.gg/9GXm6RT"
                 >
-                    <v-icon size="30">mdi-discord</v-icon>
+                    <v-icon size="30"> mdi-discord </v-icon>
                 </v-btn>
                 <v-btn
                     class="ml-4 mr-4"
@@ -24,7 +24,7 @@
                     color="#FFFFFF"
                     href="https://twitter.com/BilelJegham"
                 >
-                    <v-icon size="30">mdi-twitter</v-icon>
+                    <v-icon size="30"> mdi-twitter </v-icon>
                 </v-btn>
             </div>
             <div>

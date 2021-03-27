@@ -6,7 +6,9 @@ exports[`Header.vue open dialog about 1`] = `
     <div class="v-toolbar__content" style="height: 100px;">
       <router-link to="/"><img src="@/assets/geoguessLogo.png" class="header__logo"> <img src="/img/icons/android-icon-72x72.png" class="header__logo-min"></router-link>
       <div class="flex-grow-1"></div>
-      <nav class="header__nav"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content"><router-link to="/history">HISTORY</router-link></span></button>
+      <nav class="header__nav"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content"><router-link to="/history">
+                    HISTORY
+                </router-link></span></button>
         <div class="header__nav__btns"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="aboutBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-circle theme--light" style="font-size: 30px;"></i></span></button>
           <div class="v-menu"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="languageBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-translate theme--light" style="font-size: 30px;"></i></span></button>
             <!---->

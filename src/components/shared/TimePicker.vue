@@ -13,7 +13,7 @@
             </v-slider>
         </v-row>
         <v-row>
-            <div class="time-input" v-if="this.value > 0">
+            <div v-if="this.value > 0" class="time-input">
                 <v-text-field
                     :value="Math.floor(this.value / 60)"
                     v-on:change="changeMinute"

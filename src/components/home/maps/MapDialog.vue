@@ -34,7 +34,7 @@
                     {{ $t('cancel') }}
                 </v-btn>
 
-                <v-spacer></v-spacer>
+                <v-spacer />
                 <v-btn color="primary" @click="onClickSinglePlayer">
                     {{ $t('DialogRoom.singlePlayer') }}
                 </v-btn>

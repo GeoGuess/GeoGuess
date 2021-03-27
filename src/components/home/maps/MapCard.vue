@@ -14,8 +14,8 @@
             <v-card-title>{{ mapLocate.nameLocate }}</v-card-title>
         </v-img>
         <v-card-actions class="map-card__actions">
-            <v-spacer></v-spacer>
-            <MapDialog :mapLocate="mapLocate" />
+            <v-spacer />
+            <MapDialog :map-locate="mapLocate" />
         </v-card-actions>
     </v-card>
 </template>

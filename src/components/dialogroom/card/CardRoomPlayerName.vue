@@ -12,26 +12,28 @@
                             maxlength="10"
                             v-model="playerName"
                             autofocus
-                            v-on:keyup.enter="searchRoom"
+                            @keyup.enter="searchRoom"
                         ></v-text-field>
                     </v-col>
                 </v-row>
             </v-container>
         </v-card-text>
         <v-card-actions>
-            <div class="flex-grow-1"></div>
-            <v-btn dark depressed color="#FF5252" @click="cancel">{{
-                $t('cancel')
-            }}</v-btn>
-            <v-btn dark depressed color="#43B581" @click="setPlayerName">{{
-                $t('next')
-            }}</v-btn>
+            <div class="flex-grow-1" />
+            <v-btn dark depressed color="#FF5252" @click="cancel">
+                {{ $t('cancel') }}
+            </v-btn>
+            <v-btn dark depressed color="#43B581" @click="setPlayerName">
+                {{ $t('next') }}
+            </v-btn>
         </v-card-actions>
     </v-card>
 </template>
 
 <script>
+import CardRoomMixin from './mixins/CardRoomMixin';
 export default {
+    mixins: [CardRoomMixin],
     data() {
         return {
             playerName: '',
@@ -41,9 +43,6 @@ export default {
         setPlayerName() {
             // Pass room name to parent component
             this.$emit('setPlayerName', this.playerName);
-        },
-        cancel() {
-            this.$emit('cancel');
         },
     },
 };

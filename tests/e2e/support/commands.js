@@ -30,6 +30,10 @@ const firebaseConfig = {
     measurementId: Cypress.env('VUE_APP_FIREBASE_MEASUREMENT_ID'),
 };
 firebase.initializeApp(firebaseConfig);
+Cypress.Commands.add('addPlayer', (id, playerNumber, playerName) => {
+    const room = firebase.database().ref('cy' + id);
+    room.child('playerName/player' + playerNumber).set(playerName);
+});
 
 Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
     cy.intercept('GET', '/search/*').as('getGeoJson');
@@ -95,6 +99,12 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
     if (multiplayer) {
         cy.get('#inputPlayerName').type('Titi');
         card.get('.v-card__actions .v-btn:last-of-type')
+            .contains('NEXT')
+            .click();
+
+        cy.addPlayer(multiplayer, 2, 'Toto');
+
+        card.get('#btnStart.v-btn:last-of-type:not([disabled="disabled"])')
             .contains('NEXT')
             .click();
     }

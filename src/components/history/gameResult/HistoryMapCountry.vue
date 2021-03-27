@@ -11,7 +11,7 @@
             map-type-id="roadmap"
             class="map"
         >
-            <div :key="index" v-for="(r, index) in item.rounds">
+            <div v-for="(r, index) in item.rounds" :key="index">
                 <GmapMarker
                     :position="r.position"
                     :label="(index + 1).toString()"
@@ -24,15 +24,15 @@
                 <p>
                     <b>
                         {{ $t('HeaderGame.round') }} {{ index + 1 }} :
-                        <FlagIcon :isoName="r.position.country" />
+                        <FlagIcon :iso-name="r.position.country" />
                     </b>
                 </p>
                 <div
-                    class="result-panel__item"
                     v-bind:key="playerName"
                     v-for="(value, playerName, index) in r.players"
+                    class="result-panel__item"
                 >
-                    <FlagIcon :isoName="value.guess" />
+                    <FlagIcon :iso-name="value.guess" />
                     <span
                         :style="`color: ${
                             strokeColors[index % strokeColors.length]
@@ -50,10 +50,10 @@ import FlagIcon from '@/components/shared/FlagIcon';
 import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'HistoryMapCountry',
-    props: ['item'],
     components: {
         FlagIcon,
     },
+    props: ['item'],
     data() {
         return {
             strokeColors: [

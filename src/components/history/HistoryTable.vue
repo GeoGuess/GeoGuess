@@ -7,17 +7,17 @@
             <v-card>
                 <v-card-text>
                     <center>
-                        <v-icon x-large> mdi-clipboard-check</v-icon>
+                        <v-icon x-large> mdi-clipboard-check </v-icon>
                         <p>{{ $t('urlCopied') }}</p>
-                        <v-text-field v-model="url" readonly></v-text-field>
+                        <v-text-field v-model="url" readonly />
                     </center>
                 </v-card-text>
                 <v-card-actions>
-                    <v-spacer></v-spacer>
+                    <v-spacer />
 
                     <v-btn
-                        @click="dialog = false"
                         dark
+                        @click="dialog = false"
                         depressed
                         color="#43B581"
                     >
@@ -56,11 +56,11 @@
             append-icon="mdi-magnify"
             single-line
             hide-details
-        ></v-text-field>
+        />
         <v-data-table
             calculate-widths
-            :search="search"
             id="history-table"
+            :search="search"
             :headers="headers.filter((h) => !h.hide)"
             :items="items"
             show-expand
@@ -68,7 +68,7 @@
             :sort-by="['dateString']"
             :sort-desc="[true]"
             item-key="id"
-            :customSort="customSort"
+            :custom-sort="customSort"
             :expanded="items.length > 0 ? [items[items.length - 1]] : []"
         >
             <template v-slot:[`item.actions`]="{ item }">
@@ -82,13 +82,13 @@
                         :item="item"
                         v-if="item.gameMode === $t('modes.country')"
                     />
-                    <HistoryMapClassic :item="item" v-else />
+                    <HistoryMapClassic v-else :item="item" />
                 </td>
             </template>
         </v-data-table>
-        <v-btn @click="exportCsv" color="primary" class="btn-export">{{
-            $t('History.exportCSV')
-        }}</v-btn>
+        <v-btn color="primary" @click="exportCsv" class="btn-export">
+            {{ $t('History.exportCSV') }}
+        </v-btn>
     </div>
 </template>
 <script>
@@ -175,21 +175,6 @@ export default {
             ],
         };
     },
-    mounted() {
-        if ('launchQueue' in window) {
-            launchQueue.setConsumer((launchParams) => {
-                if (
-                    !Array.isArray(launchParams.files) ||
-                    launchParams.files.length !== 1
-                ) {
-                    return;
-                }
-                launchParams.files[0].getFile().then((f) => {
-                    this.importSave(f);
-                });
-            });
-        }
-    },
     computed: {
         items() {
             return this.history.map((g, index) => ({
@@ -211,6 +196,21 @@ export default {
                         : g.timeLimitation / 60,
             }));
         },
+    },
+    mounted() {
+        if ('launchQueue' in window) {
+            launchQueue.setConsumer((launchParams) => {
+                if (
+                    !Array.isArray(launchParams.files) ||
+                    launchParams.files.length !== 1
+                ) {
+                    return;
+                }
+                launchParams.files[0].getFile().then((f) => {
+                    this.importSave(f);
+                });
+            });
+        }
     },
     methods: {
         customSort(items, index, isDesc) {

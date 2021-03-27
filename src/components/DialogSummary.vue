@@ -55,7 +55,7 @@
                                       )
                                     : '')
                             "
-                        ></span>
+                        />
                     </span>
                 </v-row>
                 <v-row class="mt-8" justify="center">
@@ -65,11 +65,12 @@
                         dark
                         color="#43B581"
                         @click="$emit('finishGame')"
-                        >{{ $t('DialogSummary.viewDetails') }}</v-btn
                     >
+                        {{ $t('DialogSummary.viewDetails') }}
+                    </v-btn>
                     <v-btn
-                        id="exit-button"
                         v-if="!multiplayer"
+                        id="exit-button"
                         class="mt-8"
                         dark
                         color="#f44336"
@@ -101,6 +102,13 @@ export default {
             return this.mode === GAME_MODE.CLASSIC;
         },
     },
+    watch: {
+        dialogSummary: function (newVal) {
+            if (newVal == true) {
+                this.updateRecord();
+            }
+        },
+    },
     methods: {
         updateRecord() {
             var currentRecord = localStorage.getItem('record');
@@ -127,13 +135,6 @@ export default {
         },
         finishGame() {
             this.$emit('finishGame');
-        },
-    },
-    watch: {
-        dialogSummary: function (newVal) {
-            if (newVal == true) {
-                this.updateRecord();
-            }
         },
     },
 };

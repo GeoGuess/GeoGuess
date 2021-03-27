@@ -23,7 +23,7 @@
                                 "
                                 class="mr-5"
                             >
-                                <v-icon large>mdi-map-marker</v-icon>
+                                <v-icon large> mdi-map-marker </v-icon>
                                 <span>{{ $t('modes.classic') }}</span>
                             </v-btn>
                             <v-btn
@@ -35,20 +35,10 @@
                                     () => (this.mode = gameMode.COUNTRY)
                                 "
                             >
-                                <v-icon large>mdi-flag</v-icon>
+                                <v-icon large> mdi-flag </v-icon>
                                 <span>{{ $t('modes.country') }}</span>
                             </v-btn>
                         </v-flex>
-                    </v-row>
-                    <v-row v-if="!singlePlayer">
-                        <v-combobox
-                            :label="$t('CardRoomSize.title')"
-                            v-model="roomSize"
-                            :items="roomSizeItems"
-                            :rules="[(v) => +v > 1]"
-                            :filter="(item, queryText) => item == queryText"
-                            autofocus
-                        ></v-combobox>
                     </v-row>
                     <v-row>
                         <label class="card_settings__time__label">{{
@@ -87,8 +77,7 @@
                                     $t('CardRoomSettings.includePhotopheres')
                                 "
                                 hide-details
-                            >
-                            </v-checkbox>
+                            />
                         </div>
                         <div>
                             <v-text-field
@@ -125,8 +114,8 @@
                                                     v-on="on"
                                                 >
                                                     <v-icon>
-                                                        mdi-information</v-icon
-                                                    >
+                                                        mdi-information
+                                                    </v-icon>
                                                 </v-btn>
                                             </template>
                                             <span>{{
@@ -140,10 +129,10 @@
                             </div>
                         </div>
                     </v-row>
-                    <v-row align="center"> </v-row>
+                    <v-row align="center" />
                 </v-col>
                 <v-col
-                    v-bind:class="{
+                    :class="{
                         'd-none': !loadingGeoJson && !placeGeoJson,
                     }"
                 >
@@ -170,10 +159,10 @@
             </v-row>
         </v-card-text>
         <v-card-actions>
-            <div class="flex-grow-1"></div>
-            <v-btn dark depressed color="#FF5252" @click="cancel">{{
-                $t('cancel')
-            }}</v-btn>
+            <div class="flex-grow-1" />
+            <v-btn dark depressed color="#FF5252" @click="cancel">
+                {{ $t('cancel') }}
+            </v-btn>
             <v-btn
                 id="btnNextSettings"
                 depressed
@@ -189,19 +178,19 @@
 <script>
 import TimePicker from '@/components/shared/TimePicker';
 import { GAME_MODE } from '../../../constants';
+import CardRoomMixin from './mixins/CardRoomMixin';
 
 export default {
-    props: ['singlePlayer', 'placeGeoJson', 'loadingGeoJson'],
+    mixins: [CardRoomMixin],
     components: {
         TimePicker,
     },
+    props: ['singlePlayer', 'placeGeoJson', 'loadingGeoJson'],
     data() {
         return {
             mode: GAME_MODE.CLASSIC,
             timeAttack: false,
             timeLimitation: 0,
-            roomSize: 2,
-            roomSizeItems: [...Array(98)].map((item, index) => index + 2),
             zoomControl: true,
             moveControl: true,
             panControl: true,
@@ -214,16 +203,16 @@ export default {
             return GAME_MODE;
         },
     },
+    watch: {
+        placeGeoJson(val) {
+            this.setGeoJson(val);
+        },
+    },
     async mounted() {
         await this.$gmapApiPromiseLazy();
         if (this.placeGeoJson) {
             this.setGeoJson(this.placeGeoJson);
         }
-    },
-    watch: {
-        placeGeoJson(val) {
-            this.setGeoJson(val);
-        },
     },
     methods: {
         setGeoJson(val) {
@@ -245,23 +234,17 @@ export default {
             });
         },
         setSettings() {
-            if (+this.roomSize > 1) {
-                this.$emit(
-                    'setSettings',
-                    this.allPanorama,
-                    this.timeLimitation,
-                    this.mode,
-                    +this.roomSize,
-                    this.timeAttack,
-                    this.zoomControl,
-                    this.moveControl,
-                    this.panControl,
-                    +this.countdown
-                );
-            }
-        },
-        cancel() {
-            this.$emit('cancel');
+            this.$emit(
+                'setSettings',
+                this.allPanorama,
+                this.timeLimitation,
+                this.mode,
+                this.timeAttack,
+                this.zoomControl,
+                this.moveControl,
+                this.panControl,
+                +this.countdown
+            );
         },
     },
 };

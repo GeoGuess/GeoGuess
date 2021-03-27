@@ -20,7 +20,7 @@
                             class="mx-auto"
                             height="500"
                             type="image"
-                        ></v-skeleton-loader>
+                        />
                         <div v-else>
                             <v-alert
                                 type="error"
@@ -61,7 +61,7 @@
                             <v-radio
                                 :label="$t('DialogCustomMap.text')"
                                 value="text"
-                            ></v-radio>
+                            />
                             <v-radio
                                 :label="$t('DialogCustomMap.url')"
                                 value="url"
@@ -73,7 +73,7 @@
                             <v-radio
                                 :label="$t('DialogCustomMap.edit')"
                                 value="edit"
-                            ></v-radio>
+                            />
                         </v-radio-group>
                         <v-file-input
                             v-if="type === 'file'"
@@ -107,7 +107,7 @@
                 </v-row>
             </v-card-text>
             <v-card-actions>
-                <div class="flex-grow-1"></div>
+                <div class="flex-grow-1" />
                 <v-btn dark color="primary" @click="$emit('change-visibility')">
                     {{ $t('DialogCustomMap.OK') }}
                 </v-btn>
@@ -169,48 +169,6 @@ export default {
                 'application/vnd.geo+json'
             );
         },
-    },
-    async mounted() {
-        await this.$gmapApiPromiseLazy();
-        if ('launchQueue' in window) {
-            launchQueue.setConsumer((launchParams) => {
-                if (
-                    !Array.isArray(launchParams.files) ||
-                    launchParams.files.length !== 1
-                ) {
-                    return;
-                }
-                launchParams.files[0].getFile().then((f) => {
-                    this.loading = true;
-                    this.$emit('change-visibility');
-                    f.text()
-                        .then((content) => {
-                            return this.setGeoJsonString(content);
-                        })
-                        .then(() => {
-                            this.loading = false;
-                        });
-                });
-            });
-        }
-    },
-    updated() {
-        if (!this.initMap) {
-            this.$nextTick(() => {
-                if (this.$refs.mapRef)
-                    this.$refs.mapRef.$mapPromise.then((map) => {
-                        const streetViewLayer = new google.maps.StreetViewCoverageLayer();
-                        streetViewLayer.setMap(map);
-                        let data = new google.maps.Data({
-                            map: map,
-                        });
-                        if (this.geoJson) data.addGeoJson(this.geoJson);
-                        map.data.setMap(null);
-                        map.data = data;
-                        this.initMap = true;
-                    });
-            });
-        }
     },
     watch: {
         geoJson(v) {
@@ -282,6 +240,48 @@ export default {
                 }
             });
         },
+    },
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
+        if ('launchQueue' in window) {
+            launchQueue.setConsumer((launchParams) => {
+                if (
+                    !Array.isArray(launchParams.files) ||
+                    launchParams.files.length !== 1
+                ) {
+                    return;
+                }
+                launchParams.files[0].getFile().then((f) => {
+                    this.loading = true;
+                    this.$emit('change-visibility');
+                    f.text()
+                        .then((content) => {
+                            return this.setGeoJsonString(content);
+                        })
+                        .then(() => {
+                            this.loading = false;
+                        });
+                });
+            });
+        }
+    },
+    updated() {
+        if (!this.initMap) {
+            this.$nextTick(() => {
+                if (this.$refs.mapRef)
+                    this.$refs.mapRef.$mapPromise.then((map) => {
+                        const streetViewLayer = new google.maps.StreetViewCoverageLayer();
+                        streetViewLayer.setMap(map);
+                        let data = new google.maps.Data({
+                            map: map,
+                        });
+                        if (this.geoJson) data.addGeoJson(this.geoJson);
+                        map.data.setMap(null);
+                        map.data = data;
+                        this.initMap = true;
+                    });
+            });
+        }
     },
 };
 

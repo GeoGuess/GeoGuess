@@ -9,22 +9,22 @@
                 />
             </router-link>
 
-            <div class="flex-grow-1"></div>
+            <div class="flex-grow-1" />
 
             <nav class="header__nav">
-                <v-btn text id="historyBtn">
-                    <router-link to="/history">{{
-                        $t('Home.historyBtn')
-                    }}</router-link></v-btn
-                >
+                <v-btn id="historyBtn" text>
+                    <router-link to="/history">
+                        {{ $t('Home.historyBtn') }}
+                    </router-link>
+                </v-btn>
                 <div class="header__nav__btns">
                     <v-btn text @click="aboutDialog = true" id="aboutBtn">
-                        <v-icon size="30">mdi-help-circle</v-icon>
+                        <v-icon size="30"> mdi-help-circle </v-icon>
                     </v-btn>
                     <v-menu>
                         <template v-slot:activator="{ on }">
                             <v-btn text v-on="on" id="languageBtn">
-                                <v-icon size="30">mdi-translate</v-icon>
+                                <v-icon size="30"> mdi-translate </v-icon>
                             </v-btn>
                         </template>
                         <v-list id="menuLanguage">
@@ -33,9 +33,9 @@
                                 :key="index"
                                 @click="switchLanguage(language.value)"
                             >
-                                <v-list-item-title>{{
-                                    language.text
-                                }}</v-list-item-title>
+                                <v-list-item-title>
+                                    {{ language.text }}
+                                </v-list-item-title>
                             </v-list-item>
                         </v-list>
                     </v-menu>
@@ -52,10 +52,10 @@
                     {{ $t('Demo.message') }}
                 </v-col>
                 <v-col class="shrink">
-                    <v-btn target="_blank" href="https://discord.gg/9GXm6RT"
-                        ><v-icon left>mdi-discord</v-icon>
-                        {{ $t('Demo.btn') }}</v-btn
-                    >
+                    <v-btn target="_blank" href="https://discord.gg/9GXm6RT">
+                        <v-icon left> mdi-discord </v-icon>
+                        {{ $t('Demo.btn') }}
+                    </v-btn>
                 </v-col>
             </v-row>
         </v-alert>

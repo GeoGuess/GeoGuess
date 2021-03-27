@@ -10,7 +10,9 @@
                 <a href="https://geoguessmaster.com/">GeoGuess Master</a>.
             </p>
 
-            <h3 class="section-header">{{ $t('Home.customMap') }}</h3>
+            <h3 class="section-header">
+                {{ $t('Home.customMap') }}
+            </h3>
             <p class="section-description">
                 {{ $t('Home.customMapDescriptions.1') }}
                 <br />{{ $t('Home.customMapDescriptions.2') }} <br /><br />
@@ -37,7 +39,9 @@
                 </li>
             </ul>
             <br />
-            <h3 class="section-header">{{ $t('Home.limitation') }}</h3>
+            <h3 class="section-header">
+                {{ $t('Home.limitation') }}
+            </h3>
             <p class="section-description">
                 {{ $t('Home.limitationDescription') }}
             </p>

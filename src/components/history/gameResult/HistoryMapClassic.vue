@@ -10,7 +10,7 @@
         style="height: 400px"
     >
         <div v-if="!item.multiplayer">
-            <div :key="index" v-for="(r, index) in item.rounds">
+            <div v-for="(r, index) in item.rounds" :key="index">
                 <GmapMarker
                     :position="{ lat: r.guess.lat, lng: r.guess.lng }"
                 />
@@ -40,10 +40,10 @@
             </div>
         </div>
         <div v-else>
-            <div :key="indexR" v-for="(r, indexR) in item.rounds">
+            <div v-for="(r, indexR) in item.rounds" :key="indexR">
                 <div
-                    :key="indexR + '' + indexP"
                     v-for="(player, indexP) in Object.keys(r.players)"
+                    :key="indexR + '' + indexP"
                 >
                     <GmapMarker
                         :label="

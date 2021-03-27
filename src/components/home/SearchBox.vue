@@ -7,12 +7,12 @@
                 :search-input.sync="search"
                 :loading="isLoading"
                 autofocus
+                v-model="place"
                 :placeholder="
                     isValidGeoJson
                         ? $t('Home.searchBar.customLoaded')
                         : $t('Home.searchBar.enterCity')
                 "
-                v-model="place"
                 :disabled="isValidGeoJson"
                 :persistent-hint="isValidGeoJson"
                 :background-color="isValidGeoJson ? 'primary' : 'secondary'"
@@ -20,8 +20,8 @@
                 dark
                 rounded
                 height="50"
-                full-width
                 id="search-input"
+                full-width
             >
             </v-combobox>
 
@@ -29,8 +29,8 @@
                 icon
                 class="btn-customs"
                 color="primary"
-                @click="dialogCustom = !dialogCustom"
                 height="50"
+                @click="dialogCustom = !dialogCustom"
             >
                 <v-icon>mdi-map-plus</v-icon>
             </v-btn>
@@ -41,7 +41,7 @@
         />
 
         <div class="search-box__btns">
-            <DialogRoom singlePlayer :place="place" :geoJson="geoJson" />
+            <DialogRoom single-player :place="place" :geo-json="geoJson" />
 
             <DialogRoom :place="place" :geoJson="geoJson" />
         </div>
