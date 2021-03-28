@@ -98,10 +98,6 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
 
     if (multiplayer) {
         cy.get('#inputPlayerName').type('Titi');
-        card.get('.v-card__actions .v-btn:last-of-type')
-            .contains('NEXT')
-            .click();
-
         cy.addPlayer(multiplayer, 2, 'Toto');
 
         card.get('#btnStart.v-btn:last-of-type:not([disabled="disabled"])')

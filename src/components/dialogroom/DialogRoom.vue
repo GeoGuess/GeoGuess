@@ -46,7 +46,6 @@ import 'firebase/database';
 import CardRoomName from '@/components/dialogroom/card/CardRoomName';
 import CardRoomSettings from '@/components/dialogroom/card/CardRoomSettings';
 import CardRoomPlayerName from '@/components/dialogroom/card/CardRoomPlayerName';
-import CardRoomWaiting from '@/components/dialogroom/card/CardRoomWaiting';
 import { mapState, mapActions } from 'vuex';
 import bbox from '@turf/bbox';
 import { GAME_MODE } from '../../constants';
@@ -57,7 +56,6 @@ export default {
         roomName: CardRoomName,
         settings: CardRoomSettings,
         playerName: CardRoomPlayerName,
-        waitingRoom: CardRoomWaiting,
     },
     props: {
         geoJson: {
@@ -197,7 +195,9 @@ export default {
                         // So that other player can't enter as the first player while the player decide the name and room size
                         this.room.child('playerName').update(
                             {
-                                player1: true,
+                                player1: this.$t(
+                                    'CardRoomPlayerName.anonymousPlayerName'
+                                ),
                             },
                             (error) => {
                                 if (!error) {
@@ -216,11 +216,16 @@ export default {
                         // Put other player's tentative name
                         this.room
                             .child('playerName/player' + this.playerNumber)
-                            .set(true, (error) => {
-                                if (!error) {
-                                    this.currentComponent = 'playerName';
+                            .set(
+                                this.$t(
+                                    'CardRoomPlayerName.anonymousPlayerName'
+                                ),
+                                (error) => {
+                                    if (!error) {
+                                        this.currentComponent = 'playerName';
+                                    }
                                 }
-                            });
+                            );
                     }
                     if (after) {
                         after();
@@ -302,11 +307,7 @@ export default {
             this.name = playerName;
             this.room
                 .child('playerName/player' + this.playerNumber)
-                .set(playerName, (error) => {
-                    if (!error) {
-                        this.currentComponent = 'waitingRoom';
-                    }
-                });
+                .set(playerName);
         },
         startGame() {
             let gameParams = {};
