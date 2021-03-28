@@ -112,7 +112,7 @@
   "CardRoomSettings": {
     "title": "Spieleinstellungen",
     "modeLabel": "Spielmodus wählen",
-    "includePhotopheres": "Include Photospheres",
+    "includePhotopheres": "Photospheres aktivieren",
     "timeAttackLabel": "TimeAttack",
     "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!",
     "allowMove": "Bewegen zulassen",
@@ -149,6 +149,6 @@
     "btn": "Tritt uns bei!"
   },
   "OK": "Okay",
-  "yes": "yes",
-  "no": "no"
+  "yes": "Ja",
+  "no": "Nein"
 }
