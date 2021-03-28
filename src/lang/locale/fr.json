@@ -34,7 +34,7 @@
     "exitGame": "Vous êtes forcé de quitter le jeu. Redirection vers la page d'accueil dans 5 secondes...",
     "waitForOtherPlayersToFinish": "En attente des autres joueurs pour finir la partie...",
     "confirmExit": "Êtes-vous sûr de vouloir quitter la partie en cours ? Cela annulera la partie !",
-    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+    "countdownAlert": "Compte à rebours lancé : {count} seconde restante | Compte à rebours lancé : {count} secondes restantes"
   },
   "Maps": {
     "makeGuess": "FAIRE UN CHOIX",
@@ -112,7 +112,7 @@
   "CardRoomSettings": {
     "title": "Paramètre de la partie",
     "modeLabel": "Choisissez le mode de jeu",
-    "includePhotopheres": "Include Photospheres",
+    "includePhotopheres": "Inclure les Photosphères",
     "timeAttackLabel": "TimeAttack",
     "timeattackInfos": "Dans le mode TimeAttack, seulement le premier joueur qui devine le pays récupère le point. Sois rapide et gagne!",
     "allowMove": "Autoriser les déplacements",
@@ -149,6 +149,6 @@
     "btn": "Rejoins-nous"
   },
   "OK": "OK",
-  "yes": "yes",
-  "no": "no"
+  "yes": "oui",
+  "no": "non"
 }
