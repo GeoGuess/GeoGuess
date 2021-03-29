@@ -99,7 +99,7 @@
     "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten."
   },
   "CardRoomPlayerName": {
-    "title": "Trage deinen Namen ein.",
+    "input": "Trage deinen Namen ein.",
     "anonymousPlayerName": "Anonymous"
   },
   "CardRoomSize": {

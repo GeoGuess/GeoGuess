@@ -99,7 +99,7 @@
     "title": "Digite o nome da sala para criar uma nova sala ou junte-se a uma sala existente"
   },
   "CardRoomPlayerName": {
-    "title": "Digite um nome de jogador.",
+    "input": "Digite um nome de jogador.",
     "anonymousPlayerName": "Anônimo 🕵"
   },
   "CardRoomSize": {

@@ -99,7 +99,7 @@
     "title": "Skriv ett rumsnamn för att skapa ett nytt rum eller gå med i ett redan existerande rum"
   },
   "CardRoomPlayerName": {
-    "title": "Skriv ett spelarnamn.",
+    "input": "Skriv ett spelarnamn.",
     "anonymousPlayerName": "Anonym 🕵"
   },
   "CardRoomSize": {

@@ -99,7 +99,7 @@
     "title": "Type a room name to create a new room or join a existing room"
   },
   "CardRoomPlayerName": {
-    "title": "Jak se chceš jmenovat?",
+    "input": "Jak se chceš jmenovat?",
     "anonymousPlayerName": "Anonym 🕵"
   },
   "CardRoomSize": {
