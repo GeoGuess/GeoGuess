@@ -33,8 +33,8 @@
     "redirectToHomePage": "Přesměruji na úvodní stránku...",
     "exitGame": "Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...",
     "waitForOtherPlayersToFinish": "Počkej prosím, až ostatní hráči dokončí hru...",
-    "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+    "confirmExit": "Opravdu chceš opustit aktuální hru? Ukončíš tím hru pro všechny hráče!",
+    "countdownAlert": "Odpočítávání začalo: zbývá {count} sekund | Odpočítávání začalo: zbývá {count} sekund"
   },
   "Maps": {
     "makeGuess": "HÁDEJ POLOHU",
@@ -73,7 +73,7 @@
     "edit": "Upravit Mapu",
     "fileLabel": "Zvol GeoJSON soubor",
     "OK": "OK",
-    "download": "Download GeoJSON"
+    "download": "Stáhni GeoJSON"
   },
   "History": {
     "title": "Historie",
@@ -84,9 +84,9 @@
     "points": "Skóre",
     "rank": "Umístění",
     "search": "Vyhledávání",
-    "exportGeoSave": "Export GeoSave",
-    "importGeoSave": "Import GeoSave",
-    "exportCSV": "Export CSV"
+    "exportGeoSave": "Exportuj GeoSave",
+    "importGeoSave": "Importuj GeoSave",
+    "exportCSV": "Exportuj CSV"
   },
   "DialogRoom": {
     "singlePlayer": "Jeden hráč",
@@ -96,7 +96,7 @@
     "roomIsFull": "Tato místnost je již plná. Zkus to prosím znovu později."
   },
   "CardRoomName": {
-    "title": "Type a room name to create a new room or join a existing room"
+    "title": "Napiš název herní mistnosti, aby jsi ji vytvořil nebo se do ní připojil"
   },
   "CardRoomPlayerName": {
     "title": "Jak se chceš jmenovat?",
@@ -112,12 +112,12 @@
   "CardRoomSettings": {
     "title": "Nastavení hry",
     "modeLabel": "Zvol herní režim",
-    "includePhotopheres": "Include Photospheres",
+    "includePhotopheres": "Zahrnout fotosféry",
     "timeAttackLabel": "TimeAttack",
-    "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
-    "allowMove": "Allow Move",
-    "allowZoom": "Allow Zoom",
-    "allowPan": "Allow Pan"
+    "timeattackInfos": "V režimu TimeAttack dostane bod pouze první hráč, který správně uhádne zemi. Buď nejrychlejší a vyhraj!",
+    "allowMove": "Povolit Pohyb",
+    "allowZoom": "Povolit Zoom (přiblížení)",
+    "allowPan": "Povolit Otáčení"
   },
   "CardRoomDifficulty": {
     "title": "Zvol obtížnost hry (ovlivňuje bodování).",
@@ -149,6 +149,6 @@
     "btn": "Přidej se k nám"
   },
   "OK": "OK",
-  "yes": "yes",
-  "no": "no"
+  "yes": "Ano",
+  "no": "Ne"
 }
