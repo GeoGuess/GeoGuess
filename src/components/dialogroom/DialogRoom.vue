@@ -181,6 +181,10 @@ export default {
             } else {
                 this.room = firebase.database().ref(roomName);
 
+                if (this.room.child('started').val()) {
+                    this.errorMessage = this.$t('DialogRoom.alreadyStarted');
+                    return;
+                }
                 // Save room name so it can be used in setPlayerName()
                 this.roomName = roomName;
 
@@ -190,7 +194,7 @@ export default {
                         .numChildren();
                     this.playerNumber = numberOfPlayers + 1;
 
-                    if (numberOfPlayers == 0) {
+                    if (numberOfPlayers === 0) {
                         // Put the tentative player's name into the room node
                         // So that other player can't enter as the first player while the player decide the name and room size
                         this.room.child('playerName').update(
@@ -323,6 +327,8 @@ export default {
                     countdown: this.countdown,
                     allPanorama: this.allPanorama,
                 };
+                // Set flag started
+                this.room.child('started').set(true);
                 this.startGameMultiplayer(gameParams);
             } else {
                 this.room.once('value', (snapshot) => {

@@ -7,7 +7,7 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:vue/essential',
-        'plugin:prettier/recommended',
+		'plugin:vue/recommended',
     ],
     globals: {
         launchQueue: 'readonly',
@@ -19,10 +19,11 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: 'module',
     },
-    plugins: ['vue'],
+    plugins: ['vue', 'prettier'],
     rules: {
         'no-console': 'warn',
         semi: ['error', 'always'],
+        "vue/html-indent": ['warn', 4]
     },
     overrides: [
         {
