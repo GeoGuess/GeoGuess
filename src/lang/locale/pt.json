@@ -93,14 +93,17 @@
     "withFriends": "Com amigos",
     "invalidRoomName": "Nome inválido. Por favor, tente outro.",
     "inProgress": "O primeiro jogador está criando a sala agora. Aguarde e tente novamente.",
-    "roomIsFull": "Esta sala já está cheia. Por favor, tente outra."
+    "roomIsFull": "Esta sala já está cheia. Por favor, tente outra.",
+    "alreadyStarted": "This room has aldready started.  Please try another."
   },
   "CardRoomName": {
     "title": "Digite o nome da sala para criar uma nova sala ou junte-se a uma sala existente"
   },
   "CardRoomPlayerName": {
-    "title": "Digite um nome de jogador.",
-    "anonymousPlayerName": "Anônimo 🕵"
+    "title": "Room:",
+    "input": "Type a player name.",
+    "anonymousPlayerName": "Anônimo 🕵",
+    "players": "1 player | {count} players"
   },
   "CardRoomSize": {
     "title": "Defina o tamanho da sala."
