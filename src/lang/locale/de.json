@@ -93,14 +93,17 @@
     "withFriends": "Mit Freunden",
     "invalidRoomName": "Ungültiger Name. Bitte versuche einen anderen.",
     "inProgress": "Der erste Spieler erstellt den Raum. Bitte warte und versuche es erneut.",
-    "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen."
+    "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen.",
+    "alreadyStarted": "This room has aldready started.  Please try another."
   },
   "CardRoomName": {
     "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten."
   },
   "CardRoomPlayerName": {
-    "title": "Trage deinen Namen ein.",
-    "anonymousPlayerName": "Anonymous"
+    "title": "Room:",
+    "input": "Type a player name.",
+    "anonymousPlayerName": "Anonymous",
+    "players": "1 player | {count} players"
   },
   "CardRoomSize": {
     "title": "Lege die Größe des Raumes fest."
