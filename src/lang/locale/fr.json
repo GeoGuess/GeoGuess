@@ -99,8 +99,10 @@
     "title": "Saisir le nom de la salle pour la créer, ou la rejoindre si elle existe"
   },
   "CardRoomPlayerName": {
-    "title": "Saisir votre pseudo.",
-    "anonymousPlayerName": "Anonyme 🕵"
+    "title": "Salle:",
+    "input": "Saisir votre pseudo.",
+    "anonymousPlayerName": "Anonyme 🕵",
+    "players": "1 joueur | {count} joueurs"
   },
   "CardRoomSize": {
     "title": "Saisir la taille de la salle."

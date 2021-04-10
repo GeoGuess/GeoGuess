@@ -1,5 +1,8 @@
 <template>
-    <div style="height: 400px" class="map-container">
+    <div
+        style="height: 400px"
+        class="map-container"
+    >
         <GmapMap
             ref="mapRef"
             :center="{ lat: 0, lng: 0 }"
@@ -11,7 +14,10 @@
             map-type-id="roadmap"
             class="map"
         >
-            <div :key="index" v-for="(r, index) in item.rounds">
+            <div
+                v-for="(r, index) in item.rounds"
+                :key="index"
+            >
                 <GmapMarker
                     :position="r.position"
                     :label="(index + 1).toString()"
@@ -19,26 +25,31 @@
             </div>
         </GmapMap>
 
-        <div v-if="item.multiplayer" class="result-panel">
-            <div v-for="(r, index) in item.rounds" :key="index">
+        <div
+            v-if="item.multiplayer"
+            class="result-panel"
+        >
+            <div
+                v-for="(r, index) in item.rounds"
+                :key="index"
+            >
                 <p>
                     <b>
                         {{ $t('HeaderGame.round') }} {{ index + 1 }} :
-                        <FlagIcon :isoName="r.position.country" />
+                        <FlagIcon :iso-name="r.position.country" />
                     </b>
                 </p>
                 <div
-                    class="result-panel__item"
-                    v-bind:key="playerName"
                     v-for="(value, playerName, index) in r.players"
+                    :key="playerName"
+                    class="result-panel__item"
                 >
-                    <FlagIcon :isoName="value.guess" />
+                    <FlagIcon :iso-name="value.guess" />
                     <span
                         :style="`color: ${
                             strokeColors[index % strokeColors.length]
                         }`"
-                        >{{ playerName }}</span
-                    >
+                    >{{ playerName }}</span>
                 </div>
             </div>
         </div>
@@ -50,10 +61,10 @@ import FlagIcon from '@/components/shared/FlagIcon';
 import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'HistoryMapCountry',
-    props: ['item'],
     components: {
         FlagIcon,
     },
+    props: ['item'],
     data() {
         return {
             strokeColors: [

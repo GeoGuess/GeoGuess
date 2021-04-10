@@ -99,7 +99,7 @@
     "title": "Napiš název herní mistnosti, aby jsi ji vytvořil nebo se do ní připojil"
   },
   "CardRoomPlayerName": {
-    "title": "Jak se chceš jmenovat?",
+    "input": "Jak se chceš jmenovat?",
     "anonymousPlayerName": "Anonym 🕵"
   },
   "CardRoomSize": {

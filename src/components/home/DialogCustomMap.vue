@@ -1,53 +1,66 @@
 <template>
     <v-dialog
         :value="this.visibility"
-        @input="$emit('change-visibility')"
         scrollable
         :fullscreen="$viewport.width < 450"
+        @input="$emit('change-visibility')"
     >
         <v-card class="dialog-customs">
-            <v-btn class="close-btn" icon @click="$emit('change-visibility')">
+            <v-btn
+                class="close-btn"
+                icon
+                @click="$emit('change-visibility')"
+            >
                 <v-icon>mdi-close</v-icon>
             </v-btn>
             <v-card-title>
                 <p>{{ $t('DialogCustomMap.title') }}</p>
             </v-card-title>
             <v-card-text>
-                <v-row no-gutters class="dialog-customs__row">
-                    <v-col md="5" sm="12" class="mr-6">
+                <v-row
+                    no-gutters
+                    class="dialog-customs__row"
+                >
+                    <v-col
+                        md="5"
+                        sm="12"
+                        class="mr-6"
+                    >
                         <v-skeleton-loader
                             v-if="loading"
                             class="mx-auto"
                             height="500"
                             type="image"
-                        ></v-skeleton-loader>
+                        />
                         <div v-else>
                             <v-alert
-                                type="error"
                                 v-if="isValidGeoJson === false"
+                                type="error"
                                 transition="out-in"
                             >
                                 {{ $t('DialogCustomMap.invalid') }}
                             </v-alert>
 
                             <GmapMap
+                                ref="mapRef"
                                 :center="{ lat: 10, lng: 10 }"
                                 :zoom="1"
-                                ref="mapRef"
                                 map-type-id="roadmap"
                                 style="width: 100%; height: 500px"
                                 :options="{
                                     gestureHandling: 'greedy',
                                 }"
-                            >
-                            </GmapMap>
+                            />
                             <v-row>
                                 <v-btn
                                     class="mt-6 mr-auto ml-auto"
-                                    @click="saveGeoJson"
                                     color="secondary"
+                                    @click="saveGeoJson"
                                 >
-                                    <v-icon left dark>
+                                    <v-icon
+                                        left
+                                        dark
+                                    >
                                         mdi-cloud-download
                                     </v-icon>
                                     {{ $t('DialogCustomMap.download') }}
@@ -57,36 +70,39 @@
                     </v-col>
 
                     <v-col>
-                        <v-radio-group v-model="type" row>
+                        <v-radio-group
+                            v-model="type"
+                            row
+                        >
                             <v-radio
                                 :label="$t('DialogCustomMap.text')"
                                 value="text"
-                            ></v-radio>
+                            />
                             <v-radio
                                 :label="$t('DialogCustomMap.url')"
                                 value="url"
-                            ></v-radio>
+                            />
                             <v-radio
                                 :label="$t('DialogCustomMap.file')"
                                 value="file"
-                            ></v-radio>
+                            />
                             <v-radio
                                 :label="$t('DialogCustomMap.edit')"
                                 value="edit"
-                            ></v-radio>
+                            />
                         </v-radio-group>
                         <v-file-input
                             v-if="type === 'file'"
-                            :label="$t('DialogCustomMap.fileLabel')"
                             v-model="file"
+                            :label="$t('DialogCustomMap.fileLabel')"
                             prepend-icon="mdi-map"
-                        ></v-file-input>
+                        />
                         <v-text-field
                             v-else-if="type === 'url'"
+                            v-model="url"
                             placeholder="https://gist.github.com/..."
                             label="Url"
                             type="text"
-                            v-model="url"
                             :rules="rulesUrl"
                         />
                         <v-textarea
@@ -94,21 +110,24 @@
                             :error="isValidGeoJson !== null && !isValidGeoJson"
                             :success="isValidGeoJson"
                             :value="geoJsonString"
-                            v-on:input="onChangeTextArea"
                             :placeholder="placeholderGeoJson"
                             :rules="rulesTextArea"
                             rows="21"
                             filled
                             clearable
                             :loading="loading"
-                        >
-                        </v-textarea>
+                            @input="onChangeTextArea"
+                        />
                     </v-col>
                 </v-row>
             </v-card-text>
             <v-card-actions>
-                <div class="flex-grow-1"></div>
-                <v-btn dark color="primary" @click="$emit('change-visibility')">
+                <div class="flex-grow-1" />
+                <v-btn
+                    dark
+                    color="primary"
+                    @click="$emit('change-visibility')"
+                >
                     {{ $t('DialogCustomMap.OK') }}
                 </v-btn>
             </v-card-actions>
@@ -169,48 +188,6 @@ export default {
                 'application/vnd.geo+json'
             );
         },
-    },
-    async mounted() {
-        await this.$gmapApiPromiseLazy();
-        if ('launchQueue' in window) {
-            launchQueue.setConsumer((launchParams) => {
-                if (
-                    !Array.isArray(launchParams.files) ||
-                    launchParams.files.length !== 1
-                ) {
-                    return;
-                }
-                launchParams.files[0].getFile().then((f) => {
-                    this.loading = true;
-                    this.$emit('change-visibility');
-                    f.text()
-                        .then((content) => {
-                            return this.setGeoJsonString(content);
-                        })
-                        .then(() => {
-                            this.loading = false;
-                        });
-                });
-            });
-        }
-    },
-    updated() {
-        if (!this.initMap) {
-            this.$nextTick(() => {
-                if (this.$refs.mapRef)
-                    this.$refs.mapRef.$mapPromise.then((map) => {
-                        const streetViewLayer = new google.maps.StreetViewCoverageLayer();
-                        streetViewLayer.setMap(map);
-                        let data = new google.maps.Data({
-                            map: map,
-                        });
-                        if (this.geoJson) data.addGeoJson(this.geoJson);
-                        map.data.setMap(null);
-                        map.data = data;
-                        this.initMap = true;
-                    });
-            });
-        }
     },
     watch: {
         geoJson(v) {
@@ -282,6 +259,48 @@ export default {
                 }
             });
         },
+    },
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
+        if ('launchQueue' in window) {
+            launchQueue.setConsumer((launchParams) => {
+                if (
+                    !Array.isArray(launchParams.files) ||
+                    launchParams.files.length !== 1
+                ) {
+                    return;
+                }
+                launchParams.files[0].getFile().then((f) => {
+                    this.loading = true;
+                    this.$emit('change-visibility');
+                    f.text()
+                        .then((content) => {
+                            return this.setGeoJsonString(content);
+                        })
+                        .then(() => {
+                            this.loading = false;
+                        });
+                });
+            });
+        }
+    },
+    updated() {
+        if (!this.initMap) {
+            this.$nextTick(() => {
+                if (this.$refs.mapRef)
+                    this.$refs.mapRef.$mapPromise.then((map) => {
+                        const streetViewLayer = new google.maps.StreetViewCoverageLayer();
+                        streetViewLayer.setMap(map);
+                        let data = new google.maps.Data({
+                            map: map,
+                        });
+                        if (this.geoJson) data.addGeoJson(this.geoJson);
+                        map.data.setMap(null);
+                        map.data = data;
+                        this.initMap = true;
+                    });
+            });
+        }
     },
 };
 

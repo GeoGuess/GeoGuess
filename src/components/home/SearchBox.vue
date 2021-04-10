@@ -3,8 +3,10 @@
         <h2>{{ $t('Home.record') }}: {{ record / 1000 }} km</h2>
         <div class="search-box__search-bar">
             <v-combobox
+                v-model="place"
                 :items="items"
                 :search-input.sync="search"
+                id="search-input"
                 :loading="isLoading"
                 autofocus
                 :placeholder="
@@ -12,7 +14,6 @@
                         ? $t('Home.searchBar.customLoaded')
                         : $t('Home.searchBar.enterCity')
                 "
-                v-model="place"
                 :disabled="isValidGeoJson"
                 :persistent-hint="isValidGeoJson"
                 :background-color="isValidGeoJson ? 'primary' : 'secondary'"
@@ -21,16 +22,14 @@
                 rounded
                 height="50"
                 full-width
-                id="search-input"
-            >
-            </v-combobox>
+            />
 
             <v-btn
                 icon
                 class="btn-customs"
                 color="primary"
-                @click="dialogCustom = !dialogCustom"
                 height="50"
+                @click="dialogCustom = !dialogCustom"
             >
                 <v-icon>mdi-map-plus</v-icon>
             </v-btn>
@@ -41,9 +40,16 @@
         />
 
         <div class="search-box__btns">
-            <DialogRoom singlePlayer :place="place" :geoJson="geoJson" />
+            <DialogRoom
+                single-player
+                :place="place"
+                :geo-json="geoJson"
+            />
 
-            <DialogRoom :place="place" :geoJson="geoJson" />
+            <DialogRoom
+                :place="place"
+                :geo-json="geoJson"
+            />
         </div>
     </div>
 </template>

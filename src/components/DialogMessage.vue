@@ -7,7 +7,10 @@
     >
         <v-card color="#061422">
             <v-card-title>
-                <span class="dialog-message__title" id="card-title">{{
+                <span
+                    id="card-title"
+                    class="dialog-message__title"
+                >{{
                     dialogTitle
                 }}</span>
             </v-card-title>

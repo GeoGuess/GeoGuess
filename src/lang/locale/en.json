@@ -90,10 +90,11 @@
     "withFriends":"With Friends",
     "invalidRoomName":"Invalid name. Please try another.",
     "inProgress":"The first player is creating the room right now. Please wait and try again.",
-    "roomIsFull":"This room is already full. Please try another."
+    "roomIsFull":"This room is already full. Please try another.",
+    "alreadyStarted": "This room has aldready started.  Please try another."
   },
   "CardRoomName":{"title":"Type a room name to create a new room or join a existing room"},
-  "CardRoomPlayerName":{"title":"Type a player name.","anonymousPlayerName":"Anonymous 🕵"},
+  "CardRoomPlayerName":{"title":"Room:","input":"Type a player name.","anonymousPlayerName":"Anonymous 🕵", "players": "1 player | {count} players"},
   "CardRoomSize":{"title":"Set a room size."},
   "CardRoomTime":{"title":"Set a time limitation.","infinite":"Infinite"},
   "CardRoomSettings":{

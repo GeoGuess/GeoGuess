@@ -6,34 +6,37 @@
                 :score="scoreHeader"
                 :points="pointsHeader"
                 :round="round"
-                :roomName="roomName"
-                :nbRound="nbRound"
-                :remainingTime="remainingTime"
+                :room-name="roomName"
+                :nb-round="nbRound"
+                :remaining-time="remainingTime"
             />
 
             <div id="game-interface">
-                <v-overlay :value="!isReady && multiplayer" opacity="1" />
-                <div id="street-view"></div>
+                <v-overlay
+                    :value="!isReady && multiplayer"
+                    opacity="1"
+                />
+                <div id="street-view" />
 
                 <div id="game-interface--overlay">
                     <Maps
                         ref="mapContainer"
-                        :randomLatLng="randomLatLng"
-                        :randomFeatureProperties="randomFeatureProperties"
-                        :roomName="roomName"
-                        :playerNumber="playerNumber"
-                        :playerName="playerName"
-                        :isReady="isReady"
+                        :random-lat-lng="randomLatLng"
+                        :random-feature-properties="randomFeatureProperties"
+                        :room-name="roomName"
+                        :player-number="playerNumber"
+                        :player-name="playerName"
+                        :is-ready="isReady"
                         :round="round"
                         :score="score"
                         :points="points"
                         :difficulty="difficultyData"
-                        :timeLimitation="timeLimitation"
+                        :time-limitation="timeLimitation"
                         :bbox="bbox"
                         :mode="mode"
                         :country="country"
-                        :timeAttack="timeAttack"
-                        :nbRound="nbRound"
+                        :time-attack="timeAttack"
+                        :nb-round="nbRound"
                         :countdown="countdown"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
@@ -44,28 +47,32 @@
                 </div>
             </div>
         </div>
-        <v-overlay :value="overlay" opacity="0.8" z-index="1" />
+        <v-overlay
+            :value="overlay"
+            opacity="0.8"
+            z-index="1"
+        />
         <DialogMessage
-            :dialogMessage="dialogMessage"
-            :dialogTitle="dialogTitle"
-            :dialogText="dialogText"
+            :dialog-message="dialogMessage"
+            :dialog-title="dialogTitle"
+            :dialog-text="dialogText"
         />
         <div class="alert-container">
             <v-alert
+                v-if="isVisibleDialog"
                 type="warning"
                 dismissible
                 class="warning-alert"
-                v-if="isVisibleDialog"
             >
                 <b>{{ $t('StreetView.nearby.title') }}</b> :
                 {{ $t('StreetView.nearby.message') }}
             </v-alert>
             <v-alert
-                type="info"
                 id="warningCountdown"
+                v-model="isVisibleCountdownAlert"
+                type="info"
                 dismissible
                 transition="slide-x-transition"
-                v-model="isVisibleCountdownAlert"
                 prominent
                 icon="mdi-clock-fast"
             >
@@ -100,6 +107,11 @@ import { mapGetters } from 'vuex';
 import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
 
 export default {
+    components: {
+        HeaderGame,
+        Maps,
+        DialogMessage,
+    },
     mixins: [ConfirmExitMixin],
     props: {
         roomName: {
@@ -168,11 +180,6 @@ export default {
             type: Number,
         },
     },
-    components: {
-        HeaderGame,
-        Maps,
-        DialogMessage,
-    },
     data() {
         return {
             country: null,
@@ -211,6 +218,152 @@ export default {
     },
     computed: {
         ...mapGetters(['countriesJson']),
+    },
+    async mounted() {
+        await this.$gmapApiPromiseLazy();
+        this.panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('street-view')
+        );
+
+        if (this.playerNumber == 1 || !this.multiplayer) {
+            this.loadStreetView();
+        }
+
+        if (!this.multiplayer) {
+            this.$refs.mapContainer.startNextRound();
+
+            if (this.timeLimitation != 0) {
+                if (!this.hasTimerStarted) {
+                    this.initTimer(this.timeLimitation);
+                    this.hasTimerStarted = true;
+                }
+            }
+        } else {
+            // Set a room name if it's null to detect when the user refresh the page
+            if (!this.roomName) {
+                this.exitGame();
+            }
+            this.room = firebase.database().ref(this.roomName);
+            this.room.child('active').set(true);
+            this.room.on('value', (snapshot) => {
+                // Check if the room is already removed
+                if (snapshot.hasChild('active')) {
+                    // Put the player into the current round node if the player is not put yet
+                    if (
+                        !snapshot
+                            .child('round' + this.round)
+                            .hasChild('player' + this.playerNumber)
+                    ) {
+                        this.room
+                            .child('round' + this.round)
+                            .child('player' + this.playerNumber)
+                            .set(0);
+
+                        // Other players load the streetview the first player loaded earlier
+                        if (this.playerNumber != 1) {
+                            this.randomLat = snapshot
+                                .child(
+                                    'streetView/round' +
+                                        this.round +
+                                        '/latitude'
+                                )
+                                .val();
+                            this.randomLng = snapshot
+                                .child(
+                                    'streetView/round' +
+                                        this.round +
+                                        '/longitude'
+                                )
+                                .val();
+                            this.randomLatLng = new google.maps.LatLng(
+                                this.randomLat,
+                                this.randomLng
+                            );
+                            this.country = snapshot
+                                .child(
+                                    'streetView/round' + this.round + '/country'
+                                )
+                                .val();
+                            this.isVisibleDialog = snapshot
+                                .child(
+                                    'streetView/round' + this.round + '/warning'
+                                )
+                                .val();
+                            this.randomFeatureProperties = snapshot
+                                .child(
+                                    'streetView/round' +
+                                        this.round +
+                                        '/roundInfo'
+                                )
+                                .val();
+                            this.randomLatLng = new google.maps.LatLng(
+                                this.randomLat,
+                                this.randomLng
+                            );
+                            this.resetLocation();
+                        }
+                    }
+
+                    // Enable guess button when every players are put into the current round's node
+                    if (
+                        snapshot.child('round' + this.round).numChildren() ===
+                            snapshot.child('size').val() &&
+                        !this.isReady
+                    ) {
+                        // Close the dialog when everyone is ready
+                        this.dialogMessage = false;
+                        this.dialogText = '';
+
+                        this.isReady = true;
+                        this.$refs.mapContainer.startNextRound();
+
+                        // Countdown timer starts
+                        this.timeLimitation = snapshot
+                            .child('timeLimitation')
+                            .val();
+
+                        if (this.timeLimitation != 0) {
+                            if (!this.hasTimerStarted) {
+                                this.initTimer(this.timeLimitation);
+                                this.hasTimerStarted = true;
+                            }
+                        }
+                    }
+
+                    // Delete the room when everyone finished the game
+                    if (
+                        snapshot.child('isGameDone').numChildren() ==
+                        snapshot.child('size').val()
+                    ) {
+                        this.room.child('active').remove();
+                    }
+                } else {
+                    // Force the players to exit the game when 'Active' is removed
+                    this.exitGame();
+                }
+            });
+        }
+    },
+    beforeDestroy() {
+        if (document.querySelector('.widget-scene')) {
+            document
+                .querySelector('.widget-scene')
+                .removeEventListener('keydown', this.onUserEventPanoramaKey);
+
+            document
+                .querySelector('.widget-scene')
+                .removeEventListener(
+                    'mousedown',
+                    this.onUserEventPanoramaMouse
+                );
+        }
+        window.removeEventListener('beforeunload', this.beforeUnload);
+        if (this.room) {
+            // Remove the room when the player refreshes the window
+            // Remove the room when the player pressed the back button on browser
+            this.room.child('active').remove();
+            this.room.off();
+        }
     },
     methods: {
         loadStreetView() {
@@ -570,152 +723,6 @@ export default {
         onUserEventPanoramaMouse(e) {
             if (!this.panControl) e.stopPropagation();
         },
-    },
-    async mounted() {
-        await this.$gmapApiPromiseLazy();
-        this.panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('street-view')
-        );
-
-        if (this.playerNumber == 1 || !this.multiplayer) {
-            this.loadStreetView();
-        }
-
-        if (!this.multiplayer) {
-            this.$refs.mapContainer.startNextRound();
-
-            if (this.timeLimitation != 0) {
-                if (!this.hasTimerStarted) {
-                    this.initTimer(this.timeLimitation);
-                    this.hasTimerStarted = true;
-                }
-            }
-        } else {
-            // Set a room name if it's null to detect when the user refresh the page
-            if (!this.roomName) {
-                this.exitGame();
-            }
-            this.room = firebase.database().ref(this.roomName);
-            this.room.child('active').set(true);
-            this.room.on('value', (snapshot) => {
-                // Check if the room is already removed
-                if (snapshot.hasChild('active')) {
-                    // Put the player into the current round node if the player is not put yet
-                    if (
-                        !snapshot
-                            .child('round' + this.round)
-                            .hasChild('player' + this.playerNumber)
-                    ) {
-                        this.room
-                            .child('round' + this.round)
-                            .child('player' + this.playerNumber)
-                            .set(0);
-
-                        // Other players load the streetview the first player loaded earlier
-                        if (this.playerNumber != 1) {
-                            this.randomLat = snapshot
-                                .child(
-                                    'streetView/round' +
-                                        this.round +
-                                        '/latitude'
-                                )
-                                .val();
-                            this.randomLng = snapshot
-                                .child(
-                                    'streetView/round' +
-                                        this.round +
-                                        '/longitude'
-                                )
-                                .val();
-                            this.randomLatLng = new google.maps.LatLng(
-                                this.randomLat,
-                                this.randomLng
-                            );
-                            this.country = snapshot
-                                .child(
-                                    'streetView/round' + this.round + '/country'
-                                )
-                                .val();
-                            this.isVisibleDialog = snapshot
-                                .child(
-                                    'streetView/round' + this.round + '/warning'
-                                )
-                                .val();
-                            this.randomFeatureProperties = snapshot
-                                .child(
-                                    'streetView/round' +
-                                        this.round +
-                                        '/roundInfo'
-                                )
-                                .val();
-                            this.randomLatLng = new google.maps.LatLng(
-                                this.randomLat,
-                                this.randomLng
-                            );
-                            this.resetLocation();
-                        }
-                    }
-
-                    // Enable guess button when every players are put into the current round's node
-                    if (
-                        snapshot.child('round' + this.round).numChildren() ===
-                            snapshot.child('size').val() &&
-                        !this.isReady
-                    ) {
-                        // Close the dialog when everyone is ready
-                        this.dialogMessage = false;
-                        this.dialogText = '';
-
-                        this.isReady = true;
-                        this.$refs.mapContainer.startNextRound();
-
-                        // Countdown timer starts
-                        this.timeLimitation = snapshot
-                            .child('timeLimitation')
-                            .val();
-
-                        if (this.timeLimitation != 0) {
-                            if (!this.hasTimerStarted) {
-                                this.initTimer(this.timeLimitation);
-                                this.hasTimerStarted = true;
-                            }
-                        }
-                    }
-
-                    // Delete the room when everyone finished the game
-                    if (
-                        snapshot.child('isGameDone').numChildren() ==
-                        snapshot.child('size').val()
-                    ) {
-                        this.room.child('active').remove();
-                    }
-                } else {
-                    // Force the players to exit the game when 'Active' is removed
-                    this.exitGame();
-                }
-            });
-        }
-    },
-    beforeDestroy() {
-        if (document.querySelector('.widget-scene')) {
-            document
-                .querySelector('.widget-scene')
-                .removeEventListener('keydown', this.onUserEventPanoramaKey);
-
-            document
-                .querySelector('.widget-scene')
-                .removeEventListener(
-                    'mousedown',
-                    this.onUserEventPanoramaMouse
-                );
-        }
-        window.removeEventListener('beforeunload', this.beforeUnload);
-        if (this.room) {
-            // Remove the room when the player refreshes the window
-            // Remove the room when the player pressed the back button on browser
-            this.room.child('active').remove();
-            this.room.off();
-        }
     },
 };
 </script>

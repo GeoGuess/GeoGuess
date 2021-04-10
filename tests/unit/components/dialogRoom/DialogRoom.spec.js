@@ -58,20 +58,10 @@ describe('DialogRoom.vue', () => {
             },
         });
 
-        wrapper.vm.setSettings(
-            true,
-            1,
-            'country',
-            0,
-            false,
-            false,
-            true,
-            false
-        );
+        wrapper.vm.setSettings(true, 1, 'country', false, false, true, false);
         expect(wrapper.vm.allPanorama).toEqual(true);
         expect(wrapper.vm.timeLimitation).toEqual(1);
         expect(wrapper.vm.mode).toEqual('country');
-        expect(wrapper.vm.roomSize).toEqual(0);
         expect(wrapper.vm.timeAttack).toEqual(false);
         expect(wrapper.vm.zoomControl).toEqual(false);
         expect(wrapper.vm.moveControl).toEqual(true);

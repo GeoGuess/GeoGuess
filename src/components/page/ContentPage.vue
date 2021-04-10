@@ -2,7 +2,7 @@
     <div class="page">
         <Header class="page__header" />
 
-        <slot></slot>
+        <slot />
 
         <Footer class="page__footer" />
     </div>

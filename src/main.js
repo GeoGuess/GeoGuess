@@ -18,6 +18,7 @@ Vue.use(VueAxios, axios);
 
 Vue.use(CountryNamePlugin);
 Vue.use(VueClipboard);
+
 Vue.use(GmapVue, {
     load: {
         key: process.env.VUE_APP_API_KEY,

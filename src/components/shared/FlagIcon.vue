@@ -11,6 +11,9 @@
 import CountryFlag from 'vue-country-flag';
 export default {
     name: 'FlagIcon',
+    components: {
+        CountryFlag,
+    },
     props: {
         isoName: {
             type: String,
@@ -26,9 +29,6 @@ export default {
             required: false,
             default: false,
         },
-    },
-    components: {
-        CountryFlag,
     },
 };
 </script>

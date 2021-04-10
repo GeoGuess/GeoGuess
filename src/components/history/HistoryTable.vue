@@ -3,23 +3,31 @@
         <h2>
             {{ $t('History.title') }}
         </h2>
-        <v-dialog v-model="dialog" max-width="500">
+        <v-dialog
+            v-model="dialog"
+            max-width="500"
+        >
             <v-card>
                 <v-card-text>
                     <center>
-                        <v-icon x-large> mdi-clipboard-check</v-icon>
+                        <v-icon x-large>
+                            mdi-clipboard-check
+                        </v-icon>
                         <p>{{ $t('urlCopied') }}</p>
-                        <v-text-field v-model="url" readonly></v-text-field>
+                        <v-text-field
+                            v-model="url"
+                            readonly
+                        />
                     </center>
                 </v-card-text>
                 <v-card-actions>
-                    <v-spacer></v-spacer>
+                    <v-spacer />
 
                     <v-btn
-                        @click="dialog = false"
                         dark
                         depressed
                         color="#43B581"
+                        @click="dialog = false"
                     >
                         {{ $t('OK') }}
                     </v-btn>
@@ -29,13 +37,16 @@
         <div class="history-table__btns">
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                    <div v-bind="attrs" v-on="on">
+                    <div
+                        v-bind="attrs"
+                        v-on="on"
+                    >
                         <v-file-input
                             hide-input
                             accept="application/json"
                             prepend-icon="mdi-download-outline"
                             @change="importSave"
-                        ></v-file-input>
+                        />
                     </div>
                 </template>
                 <span>{{ $t('History.importGeoSave') }}</span>
@@ -43,7 +54,12 @@
 
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn icon v-bind="attrs" v-on="on" @click="exportSave">
+                    <v-btn
+                        icon
+                        v-bind="attrs"
+                        v-on="on"
+                        @click="exportSave"
+                    >
                         <v-icon>mdi-upload-outline</v-icon>
                     </v-btn>
                 </template>
@@ -56,11 +72,11 @@
             append-icon="mdi-magnify"
             single-line
             hide-details
-        ></v-text-field>
+        />
         <v-data-table
+            id="history-table"
             calculate-widths
             :search="search"
-            id="history-table"
             :headers="headers.filter((h) => !h.hide)"
             :items="items"
             show-expand
@@ -68,27 +84,41 @@
             :sort-by="['dateString']"
             :sort-desc="[true]"
             item-key="id"
-            :customSort="customSort"
+            :custom-sort="customSort"
             :expanded="items.length > 0 ? [items[items.length - 1]] : []"
         >
             <template v-slot:[`item.actions`]="{ item }">
-                <v-icon small class="mr-2" @click="share(item)">
+                <v-icon
+                    small
+                    class="mr-2"
+                    @click="share(item)"
+                >
                     mdi-share
                 </v-icon>
             </template>
             <template v-slot:expanded-item="{ headers, item }">
-                <td :colspan="headers.length" class="item">
+                <td
+                    :colspan="headers.length"
+                    class="item"
+                >
                     <HistoryMapCountry
-                        :item="item"
                         v-if="item.gameMode === $t('modes.country')"
+                        :item="item"
                     />
-                    <HistoryMapClassic :item="item" v-else />
+                    <HistoryMapClassic
+                        v-else
+                        :item="item"
+                    />
                 </td>
             </template>
         </v-data-table>
-        <v-btn @click="exportCsv" color="primary" class="btn-export">{{
-            $t('History.exportCSV')
-        }}</v-btn>
+        <v-btn
+            color="primary"
+            class="btn-export"
+            @click="exportCsv"
+        >
+            {{ $t('History.exportCSV') }}
+        </v-btn>
     </div>
 </template>
 <script>
@@ -175,21 +205,6 @@ export default {
             ],
         };
     },
-    mounted() {
-        if ('launchQueue' in window) {
-            launchQueue.setConsumer((launchParams) => {
-                if (
-                    !Array.isArray(launchParams.files) ||
-                    launchParams.files.length !== 1
-                ) {
-                    return;
-                }
-                launchParams.files[0].getFile().then((f) => {
-                    this.importSave(f);
-                });
-            });
-        }
-    },
     computed: {
         items() {
             return this.history.map((g, index) => ({
@@ -211,6 +226,21 @@ export default {
                         : g.timeLimitation / 60,
             }));
         },
+    },
+    mounted() {
+        if ('launchQueue' in window) {
+            launchQueue.setConsumer((launchParams) => {
+                if (
+                    !Array.isArray(launchParams.files) ||
+                    launchParams.files.length !== 1
+                ) {
+                    return;
+                }
+                launchParams.files[0].getFile().then((f) => {
+                    this.importSave(f);
+                });
+            });
+        }
     },
     methods: {
         customSort(items, index, isDesc) {

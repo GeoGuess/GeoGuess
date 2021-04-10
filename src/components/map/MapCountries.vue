@@ -1,52 +1,56 @@
 <template>
-    <div id="map" class="map-countries">
+    <div
+        id="map"
+        class="map-countries"
+    >
         <div class="map-content">
             <div
-                class="map-label"
                 v-if="polygonSelect || countryRandom"
+                class="map-label"
                 :title="countryName"
             >
                 <FlagIcon
                     size="big"
                     rounded
-                    :isoName="
+                    :iso-name="
                         countryRandom ||
-                        polygonSelect
-                            .getFeatureById('feature')
-                            .getProperty('iso_a2')
+                            polygonSelect
+                                .getFeatureById('feature')
+                                .getProperty('iso_a2')
                     "
                 />
                 <span
                     class="map-label__country-name"
-                    v-bind:class="{
+                    :class="{
                         beige: !countryRandom,
                         green: !!countryRandom,
                         'white--text': !!countryRandom,
                     }"
-                    >{{ this.countryName }}</span
-                >
+                >{{ this.countryName }}</span>
             </div>
             <GmapMap
+                id="mapCountries"
+                ref="mapRef"
                 :center="{ lat: 37.86926, lng: -122.254811 }"
                 :zoom="1"
-                ref="mapRef"
-                id="mapCountries"
                 map-type-id="roadmap"
                 :options="{
                     fullscreenControl: false,
                     mapTypeControl: false,
                     streetViewControl: false,
                 }"
-            >
-            </GmapMap>
+            />
         </div>
-        <div class="result-panel" v-if="this.infoWindowDatas.length > 0">
+        <div
+            v-if="this.infoWindowDatas.length > 0"
+            class="result-panel"
+        >
             <div
-                class="result-panel__item"
-                v-bind:key="info.playerName"
                 v-for="info in this.infoWindowDatas"
+                :key="info.playerName"
+                class="result-panel__item"
             >
-                <FlagIcon :isoName="info.country" />
+                <FlagIcon :iso-name="info.country" />
                 <span>{{ info.playerName }}</span>
             </div>
         </div>
@@ -57,10 +61,10 @@ import FlagIcon from '@/components/shared/FlagIcon';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-    props: ['bbox', 'country'],
     components: {
         FlagIcon,
     },
+    props: ['bbox', 'country'],
     data() {
         return {
             map: null,
@@ -82,6 +86,11 @@ export default {
                         .getFeatureById('feature')
                         .getProperty('iso_a2')
             );
+        },
+    },
+    watch: {
+        bbox() {
+            this.centerOnBbox();
         },
     },
     async mounted() {
@@ -137,11 +146,6 @@ export default {
             });
             this.centerOnBbox();
         });
-    },
-    watch: {
-        bbox() {
-            this.centerOnBbox();
-        },
     },
     methods: {
         ...mapActions(['loadCountries']),

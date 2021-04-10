@@ -99,7 +99,7 @@
     "title": "Type a room name to create a new room or join a existing room"
   },
   "CardRoomPlayerName": {
-    "title": "プレーヤーの名前を入力して下さい。",
+    "input": "プレーヤーの名前を入力して下さい。",
     "anonymousPlayerName": "Anonymous 🕵"
   },
   "CardRoomSize": {

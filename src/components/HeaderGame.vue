@@ -1,26 +1,36 @@
 <template>
     <div>
-        <v-app-bar class="header-game" color="grey darken-4">
+        <v-app-bar
+            class="header-game"
+            color="grey darken-4"
+        >
             <div
-                id="countdown-timer"
                 v-if="remainingTime != null && remainingTime > 0"
+                id="countdown-timer"
             >
                 <span id="countdown-text">{{ countdownText }}</span>
             </div>
-            <div class="round-score-container room-name" v-if="roomName">
+            <div
+                v-if="roomName"
+                class="round-score-container room-name"
+            >
                 <span class="sub-text">{{ $t('HeaderGame.room') }} : </span>
                 <span class="main-text">{{ roomName }}</span>
             </div>
-            <div class="flex-grow-1"></div>
+            <div class="flex-grow-1" />
             <div class="round-score-container">
                 <span class="sub-text">{{ $t('HeaderGame.round') }}: </span>
             </div>
             <div>
-                <span class="main-text" id="roundLabel"
-                    >{{ round }} / {{ nbRound }}</span
-                >
+                <span
+                    id="roundLabel"
+                    class="main-text"
+                >{{ round }} / {{ nbRound }}</span>
             </div>
-            <div class="round-score-container" v-if="isDistanceVisible">
+            <div
+                v-if="isDistanceVisible"
+                class="round-score-container"
+            >
                 <span class="sub-text">{{ $t('HeaderGame.distance') }}: </span>
             </div>
             <div v-if="isDistanceVisible">
