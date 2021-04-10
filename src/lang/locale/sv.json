@@ -93,14 +93,17 @@
     "withFriends": "Med vänner",
     "invalidRoomName": "Ogiltigt namn. Vänligen försök med ett annat.",
     "inProgress": "Den första spelaren skapar rummet just nu. Vänligen vänta och försök igen.",
-    "roomIsFull": "Detta rum är redan fullt. Vänligen försök med ett annat."
+    "roomIsFull": "Detta rum är redan fullt. Vänligen försök med ett annat.",
+    "alreadyStarted": "This room has aldready started.  Please try another."
   },
   "CardRoomName": {
     "title": "Skriv ett rumsnamn för att skapa ett nytt rum eller gå med i ett redan existerande rum"
   },
   "CardRoomPlayerName": {
-    "title": "Skriv ett spelarnamn.",
-    "anonymousPlayerName": "Anonym 🕵"
+    "title": "Room:",
+    "input": "Type a player name.",
+    "anonymousPlayerName": "Anonym 🕵",
+    "players": "1 player | {count} players"
   },
   "CardRoomSize": {
     "title": "Sätt en rumsstorlek."
