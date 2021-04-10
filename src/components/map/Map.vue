@@ -1,18 +1,17 @@
 <template>
     <div id="map">
         <GmapMap
+            id="mapClassic"
+            ref="mapRef"
             :center="{ lat: 37.86926, lng: -122.254811 }"
             :zoom="1"
-            ref="mapRef"
-            id="mapClassic"
             map-type-id="roadmap"
             :options="{
                 fullscreenControl: false,
                 mapTypeControl: false,
                 streetViewControl: false,
             }"
-        >
-        </GmapMap>
+        />
     </div>
 </template>
 <script>

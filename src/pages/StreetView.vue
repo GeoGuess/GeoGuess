@@ -6,33 +6,36 @@
                 :score="scoreHeader"
                 :points="pointsHeader"
                 :round="round"
-                :roomName="roomName"
-                :nbRound="nbRound"
+                :room-name="roomName"
+                :nb-round="nbRound"
                 :remaining-time="remainingTime"
             />
 
             <div id="game-interface">
-                <v-overlay :value="!isReady && multiplayer" opacity="1" />
+                <v-overlay
+                    :value="!isReady && multiplayer"
+                    opacity="1"
+                />
                 <div id="street-view" />
 
                 <div id="game-interface--overlay">
                     <Maps
                         ref="mapContainer"
-                        :randomLatLng="randomLatLng"
+                        :random-lat-lng="randomLatLng"
                         :random-feature-properties="randomFeatureProperties"
-                        :roomName="roomName"
-                        :playerNumber="playerNumber"
+                        :room-name="roomName"
+                        :player-number="playerNumber"
                         :player-name="playerName"
-                        :isReady="isReady"
+                        :is-ready="isReady"
                         :round="round"
                         :score="score"
                         :points="points"
                         :difficulty="difficultyData"
-                        :timeLimitation="timeLimitation"
+                        :time-limitation="timeLimitation"
                         :bbox="bbox"
                         :mode="mode"
                         :country="country"
-                        :timeAttack="timeAttack"
+                        :time-attack="timeAttack"
                         :nb-round="nbRound"
                         :countdown="countdown"
                         @resetLocation="resetLocation"
@@ -44,28 +47,32 @@
                 </div>
             </div>
         </div>
-        <v-overlay :value="overlay" opacity="0.8" z-index="1" />
+        <v-overlay
+            :value="overlay"
+            opacity="0.8"
+            z-index="1"
+        />
         <DialogMessage
-            :dialogMessage="dialogMessage"
+            :dialog-message="dialogMessage"
             :dialog-title="dialogTitle"
-            :dialogText="dialogText"
+            :dialog-text="dialogText"
         />
         <div class="alert-container">
             <v-alert
+                v-if="isVisibleDialog"
                 type="warning"
                 dismissible
-                v-if="isVisibleDialog"
                 class="warning-alert"
             >
                 <b>{{ $t('StreetView.nearby.title') }}</b> :
                 {{ $t('StreetView.nearby.message') }}
             </v-alert>
             <v-alert
-                type="info"
                 id="warningCountdown"
+                v-model="isVisibleCountdownAlert"
+                type="info"
                 dismissible
                 transition="slide-x-transition"
-                v-model="isVisibleCountdownAlert"
                 prominent
                 icon="mdi-clock-fast"
             >

@@ -28,8 +28,8 @@
             :loading-geo-json="loadingGeoJson"
             :current-component="currentComponent"
             :room="room"
-            :roomName="roomName"
-            :firstPlayer="firstPlayer"
+            :room-name="roomName"
+            :first-player="firstPlayer"
             @searchRoom="searchRoom"
             @setPlayerName="setPlayerName"
             @setSettings="setSettings"
@@ -181,14 +181,14 @@ export default {
             } else {
                 this.room = firebase.database().ref(roomName);
 
-                if (this.room.child('started').val()) {
-                    this.errorMessage = this.$t('DialogRoom.alreadyStarted');
-                    return;
-                }
                 // Save room name so it can be used in setPlayerName()
                 this.roomName = roomName;
 
                 this.room.once('value', (snapshot) => {
+                    if (snapshot.child('started').val()) {
+                        this.errorMessage = this.$t('DialogRoom.alreadyStarted');
+                        return;
+                    }
                     const numberOfPlayers = snapshot
                         .child('playerName')
                         .numChildren();

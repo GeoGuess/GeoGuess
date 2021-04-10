@@ -3,13 +3,21 @@
         <h2>
             {{ $t('History.title') }}
         </h2>
-        <v-dialog v-model="dialog" max-width="500">
+        <v-dialog
+            v-model="dialog"
+            max-width="500"
+        >
             <v-card>
                 <v-card-text>
                     <center>
-                        <v-icon x-large> mdi-clipboard-check </v-icon>
+                        <v-icon x-large>
+                            mdi-clipboard-check
+                        </v-icon>
                         <p>{{ $t('urlCopied') }}</p>
-                        <v-text-field v-model="url" readonly />
+                        <v-text-field
+                            v-model="url"
+                            readonly
+                        />
                     </center>
                 </v-card-text>
                 <v-card-actions>
@@ -17,9 +25,9 @@
 
                     <v-btn
                         dark
-                        @click="dialog = false"
                         depressed
                         color="#43B581"
+                        @click="dialog = false"
                     >
                         {{ $t('OK') }}
                     </v-btn>
@@ -29,13 +37,16 @@
         <div class="history-table__btns">
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                    <div v-bind="attrs" v-on="on">
+                    <div
+                        v-bind="attrs"
+                        v-on="on"
+                    >
                         <v-file-input
                             hide-input
                             accept="application/json"
                             prepend-icon="mdi-download-outline"
                             @change="importSave"
-                        ></v-file-input>
+                        />
                     </div>
                 </template>
                 <span>{{ $t('History.importGeoSave') }}</span>
@@ -43,7 +54,12 @@
 
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn icon v-bind="attrs" v-on="on" @click="exportSave">
+                    <v-btn
+                        icon
+                        v-bind="attrs"
+                        v-on="on"
+                        @click="exportSave"
+                    >
                         <v-icon>mdi-upload-outline</v-icon>
                     </v-btn>
                 </template>
@@ -58,8 +74,8 @@
             hide-details
         />
         <v-data-table
-            calculate-widths
             id="history-table"
+            calculate-widths
             :search="search"
             :headers="headers.filter((h) => !h.hide)"
             :items="items"
@@ -72,21 +88,35 @@
             :expanded="items.length > 0 ? [items[items.length - 1]] : []"
         >
             <template v-slot:[`item.actions`]="{ item }">
-                <v-icon small class="mr-2" @click="share(item)">
+                <v-icon
+                    small
+                    class="mr-2"
+                    @click="share(item)"
+                >
                     mdi-share
                 </v-icon>
             </template>
             <template v-slot:expanded-item="{ headers, item }">
-                <td :colspan="headers.length" class="item">
+                <td
+                    :colspan="headers.length"
+                    class="item"
+                >
                     <HistoryMapCountry
-                        :item="item"
                         v-if="item.gameMode === $t('modes.country')"
+                        :item="item"
                     />
-                    <HistoryMapClassic v-else :item="item" />
+                    <HistoryMapClassic
+                        v-else
+                        :item="item"
+                    />
                 </td>
             </template>
         </v-data-table>
-        <v-btn color="primary" @click="exportCsv" class="btn-export">
+        <v-btn
+            color="primary"
+            class="btn-export"
+            @click="exportCsv"
+        >
             {{ $t('History.exportCSV') }}
         </v-btn>
     </div>

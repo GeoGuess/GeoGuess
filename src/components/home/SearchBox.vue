@@ -3,11 +3,12 @@
         <h2>{{ $t('Home.record') }}: {{ record / 1000 }} km</h2>
         <div class="search-box__search-bar">
             <v-combobox
+                v-model="place"
                 :items="items"
                 :search-input.sync="search"
+                id="search-input"
                 :loading="isLoading"
                 autofocus
-                v-model="place"
                 :placeholder="
                     isValidGeoJson
                         ? $t('Home.searchBar.customLoaded')
@@ -20,10 +21,8 @@
                 dark
                 rounded
                 height="50"
-                id="search-input"
                 full-width
-            >
-            </v-combobox>
+            />
 
             <v-btn
                 icon
@@ -41,9 +40,16 @@
         />
 
         <div class="search-box__btns">
-            <DialogRoom single-player :place="place" :geo-json="geoJson" />
+            <DialogRoom
+                single-player
+                :place="place"
+                :geo-json="geoJson"
+            />
 
-            <DialogRoom :place="place" :geoJson="geoJson" />
+            <DialogRoom
+                :place="place"
+                :geo-json="geoJson"
+            />
         </div>
     </div>
 </template>

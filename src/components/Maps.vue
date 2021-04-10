@@ -3,8 +3,8 @@
         id="container-map"
         :class="[
             ($viewport.width >= 450 && (activeMap || pinActive)) ||
-            isMakeGuessButtonClicked ||
-            isNextButtonVisible
+                isMakeGuessButtonClicked ||
+                isNextButtonVisible
                 ? 'container-map--active'
                 : '',
             printMapFull ? 'container-map--full' : '',
@@ -13,13 +13,13 @@
         v-on="
             $viewport.width >= 450 // Only on tablet and desktop Issue #104
                 ? {
-                      mouseover: () => {
-                          activeMap = true;
-                      },
-                      mouseleave: () => {
-                          activeMap = false;
-                      },
-                  }
+                    mouseover: () => {
+                        activeMap = true;
+                    },
+                    mouseleave: () => {
+                        activeMap = false;
+                    },
+                }
                 : {}
         "
     >
@@ -32,35 +32,46 @@
         <div class="container-map_controls">
             <div class="container-map_btns">
                 <v-btn
+                    id="btnDown"
                     fab
                     x-small
                     :disabled="size < 2"
                     @click="size--"
-                    id="btnDown"
                 >
-                    <v-icon dark> mdi-arrow-bottom-left </v-icon>
+                    <v-icon dark>
+                        mdi-arrow-bottom-left
+                    </v-icon>
                 </v-btn>
 
                 <v-btn
+                    id="btnUp"
                     fab
                     x-small
                     :disabled="size > 3"
                     @click="size++"
-                    id="btnUp"
                 >
-                    <v-icon dark> mdi-arrow-top-right </v-icon>
+                    <v-icon dark>
+                        mdi-arrow-top-right
+                    </v-icon>
                 </v-btn>
 
-                <v-btn fab x-small id="btnPin" @click="pinActive = !pinActive">
-                    <v-icon dark> mdi-pin{{ pinActive ? '-off' : '' }} </v-icon>
+                <v-btn
+                    id="btnPin"
+                    fab
+                    x-small
+                    @click="pinActive = !pinActive"
+                >
+                    <v-icon dark>
+                        mdi-pin{{ pinActive ? '-off' : '' }}
+                    </v-icon>
                 </v-btn>
             </div>
         </div>
         <v-btn
             v-if="
                 $viewport.width < 450 &&
-                !isGuessButtonClicked &&
-                isMakeGuessButtonClicked
+                    !isGuessButtonClicked &&
+                    isMakeGuessButtonClicked
             "
             id="hide-map-button"
             fab
@@ -68,7 +79,9 @@
             color="red"
             @click="hideMap"
         >
-            <v-icon color="white"> mdi-close </v-icon>
+            <v-icon color="white">
+                mdi-close
+            </v-icon>
         </v-btn>
         <Map
             v-if="this.mode === 'classic'"
@@ -78,8 +91,8 @@
             @setSeletedPos="setSeletedPos"
         />
         <MapCountries
-            id="map"
             v-if="this.mode === 'country'"
+            id="map"
             ref="map"
             :country="country"
             :bbox="bbox"
@@ -89,8 +102,8 @@
             <button
                 v-if="
                     !isNextButtonVisible &&
-                    !isSummaryButtonVisible &&
-                    ($viewport.width > 450 || isMakeGuessButtonClicked)
+                        !isSummaryButtonVisible &&
+                        ($viewport.width > 450 || isMakeGuessButtonClicked)
                 "
                 id="reset-button"
                 :disabled="isGuessButtonClicked || (!!this.room && !isReady)"
@@ -99,17 +112,17 @@
                 {{ $t('Maps.reset') }}
             </button>
             <button
+                v-if="
+                    !isNextButtonVisible &&
+                        !isSummaryButtonVisible &&
+                        ($viewport.width > 450 || isMakeGuessButtonClicked)
+                "
                 id="guess-button"
                 :disabled="
                     randomLatLng == null ||
-                    selectedPos == null ||
-                    isGuessButtonClicked ||
-                    (!!this.room && !isReady)
-                "
-                v-if="
-                    !isNextButtonVisible &&
-                    !isSummaryButtonVisible &&
-                    ($viewport.width > 450 || isMakeGuessButtonClicked)
+                        selectedPos == null ||
+                        isGuessButtonClicked ||
+                        (!!this.room && !isReady)
                 "
                 @click="selectLocation"
             >
@@ -117,12 +130,12 @@
             </button>
         </div>
         <button
+            v-if="isNextButtonVisible"
             id="next-button"
             :disabled="!isNextButtonEnabled"
             :style="{
                 backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C',
             }"
-            v-if="isNextButtonVisible"
             @click="goToNextRound(false)"
         >
             {{ $t('Maps.nextRound') }}
@@ -138,9 +151,9 @@
         <button
             v-if="
                 $viewport.width < 450 &&
-                !isGuessButtonClicked &&
-                !isMakeGuessButtonClicked &&
-                !isNextButtonVisible
+                    !isGuessButtonClicked &&
+                    !isMakeGuessButtonClicked &&
+                    !isNextButtonVisible
             "
             id="make-guess-button"
             class="primary"

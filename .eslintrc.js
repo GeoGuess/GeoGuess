@@ -7,7 +7,6 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:vue/essential',
-        'plugin:vue/recommended',
     ],
     globals: {
         launchQueue: 'readonly',

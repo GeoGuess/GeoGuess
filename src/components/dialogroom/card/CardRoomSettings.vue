@@ -14,28 +14,32 @@
                             class="card_settings__mode__btns d-flex justify-space-around w-100"
                         >
                             <v-btn
+                                id="modeClassicBtn"
                                 :text="this.mode !== gameMode.CLASSIC"
                                 rounded
                                 outlined
-                                id="modeClassicBtn"
-                                v-on:click="
+                                class="mr-5"
+                                @click="
                                     () => (this.mode = gameMode.CLASSIC)
                                 "
-                                class="mr-5"
                             >
-                                <v-icon large> mdi-map-marker </v-icon>
+                                <v-icon large>
+                                    mdi-map-marker
+                                </v-icon>
                                 <span>{{ $t('modes.classic') }}</span>
                             </v-btn>
                             <v-btn
+                                id="modeCountryBtn"
                                 :text="this.mode !== gameMode.COUNTRY"
                                 rounded
                                 outlined
-                                id="modeCountryBtn"
-                                v-on:click="
+                                @click="
                                     () => (this.mode = gameMode.COUNTRY)
                                 "
                             >
-                                <v-icon large> mdi-flag </v-icon>
+                                <v-icon large>
+                                    mdi-flag
+                                </v-icon>
                                 <span>{{ $t('modes.country') }}</span>
                             </v-btn>
                         </v-flex>
@@ -56,21 +60,18 @@
                                 v-model="zoomControl"
                                 :label="$t('CardRoomSettings.allowZoom')"
                                 hide-details
-                            >
-                            </v-checkbox>
+                            />
                             <v-checkbox
                                 v-model="moveControl"
                                 :label="$t('CardRoomSettings.allowMove')"
                                 hide-details
-                            >
-                            </v-checkbox>
+                            />
                             <v-checkbox
                                 v-model="panControl"
                                 :label="$t('CardRoomSettings.allowPan')"
                                 hide-details
-                            >
-                            </v-checkbox>
-                            <br />
+                            />
+                            <br>
                             <v-checkbox
                                 v-model="allPanorama"
                                 :label="
@@ -86,14 +87,17 @@
                                 hide-details
                                 label="CountDown (seconds)"
                                 type="number"
-                            ></v-text-field>
+                            />
                             <div
                                 v-if="
                                     this.mode === gameMode.COUNTRY &&
-                                    !singlePlayer
+                                        !singlePlayer
                                 "
                             >
-                                <v-checkbox v-model="timeAttack" hide-details>
+                                <v-checkbox
+                                    v-model="timeAttack"
+                                    hide-details
+                                >
                                     <template #label>
                                         {{
                                             $t(
@@ -137,38 +141,42 @@
                     }"
                 >
                     <GmapMap
-                        v-bind:class="{ 'd-none': loadingGeoJson }"
+                        ref="mapRef"
+                        :class="{ 'd-none': loadingGeoJson }"
                         :center="{ lat: 10, lng: 10 }"
                         :zoom="1"
-                        ref="mapRef"
                         map-type-id="roadmap"
                         style="width: 350px; max-width: 100%; height: 250px"
                         :options="{
                             gestureHandling: 'greedy',
                         }"
-                    >
-                    </GmapMap>
+                    />
 
                     <v-skeleton-loader
                         v-if="loadingGeoJson"
                         class="mx-auto"
                         style="width: 100%; height: 250px"
                         type="image"
-                    ></v-skeleton-loader>
+                    />
                 </v-col>
             </v-row>
         </v-card-text>
         <v-card-actions>
             <div class="flex-grow-1" />
-            <v-btn dark depressed color="#FF5252" @click="cancel">
+            <v-btn
+                dark
+                depressed
+                color="#FF5252"
+                @click="cancel"
+            >
                 {{ $t('cancel') }}
             </v-btn>
             <v-btn
                 id="btnNextSettings"
                 depressed
                 color="#43B581"
-                @click="setSettings"
                 :disabled="loadingGeoJson"
+                @click="setSettings"
             >
                 {{ $t('next') }}
             </v-btn>
@@ -181,10 +189,10 @@ import { GAME_MODE } from '../../../constants';
 import CardRoomMixin from './mixins/CardRoomMixin';
 
 export default {
-    mixins: [CardRoomMixin],
     components: {
         TimePicker,
     },
+    mixins: [CardRoomMixin],
     props: ['singlePlayer', 'placeGeoJson', 'loadingGeoJson'],
     data() {
         return {

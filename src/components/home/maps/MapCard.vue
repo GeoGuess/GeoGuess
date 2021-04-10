@@ -1,14 +1,17 @@
 <template>
-    <v-card class="map-card" rounded="lg">
+    <v-card
+        class="map-card"
+        rounded="lg"
+    >
         <v-img
             class="white--text align-end"
             height="140px"
             gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
             :src="
                 mapLocate.imageUrl ||
-                `https://source.unsplash.com/300x140/daily?${encodeURI(
-                    mapLocate.nameLocate
-                )}`
+                    `https://source.unsplash.com/300x140/daily?${encodeURI(
+                        mapLocate.nameLocate
+                    )}`
             "
         >
             <v-card-title>{{ mapLocate.nameLocate }}</v-card-title>

@@ -2,18 +2,20 @@
     <div id="page">
         <v-container class="pt-8 pb-8">
             <v-row justify="center">
-                <h3 class="section-header">PRIVACY POLICY</h3>
+                <h3 class="section-header">
+                    PRIVACY POLICY
+                </h3>
             </v-row>
             <v-row justify="center">
                 <span class="section-description">
                     Spider Hand build Geoguess Master as free web app. This app
                     is provided by Spider Hand at no cost and is intended for
                     use as it is.
-                    <br />
+                    <br>
                     This page is used to inform visitors regarding my policies
                     with the collection, use, and disclosure of personal
                     information if anyone decided to use this app.
-                    <br />
+                    <br>
                     If you choose to use this app, then you agree to the
                     collection and use of information in relation to this
                     policy. The personal information that I collect is used for
@@ -23,7 +25,9 @@
                 </span>
             </v-row>
             <v-row justify="center">
-                <h4 class="section-header">Information Collection and Use</h4>
+                <h4 class="section-header">
+                    Information Collection and Use
+                </h4>
             </v-row>
             <v-row justify="center">
                 <span class="section-description">
@@ -35,14 +39,16 @@
                     party services that may collect information to identify you.
                     Link to privacy policy of third party service providers used
                     by this app.
-                    <br />
-                    <a href="https://firebase.google.com/policies/analytics"
-                        >Google Analytics for Firebase</a
-                    >
+                    <br>
+                    <a
+                        href="https://firebase.google.com/policies/analytics"
+                    >Google Analytics for Firebase</a>
                 </span>
             </v-row>
             <v-row justify="center">
-                <h4 class="section-header">Log Data</h4>
+                <h4 class="section-header">
+                    Log Data
+                </h4>
             </v-row>
             <v-row justify="center">
                 <span class="section-description">
@@ -57,7 +63,9 @@
                 </span>
             </v-row>
             <v-row justify="center">
-                <h4 class="section-header">Service Providers</h4>
+                <h4 class="section-header">
+                    Service Providers
+                </h4>
             </v-row>
             <v-row justify="center">
                 <span class="section-description">
@@ -77,7 +85,9 @@
                 </span>
             </v-row>
             <v-row justify="center">
-                <h4 class="section-header">Links to Other Sites</h4>
+                <h4 class="section-header">
+                    Links to Other Sites
+                </h4>
             </v-row>
             <v-row justify="center">
                 <span class="section-description">
@@ -91,7 +101,9 @@
                 </span>
             </v-row>
             <v-row justify="center">
-                <h4 class="section-header">Changes to This Privacy Policy</h4>
+                <h4 class="section-header">
+                    Changes to This Privacy Policy
+                </h4>
             </v-row>
             <v-row justify="center">
                 <span class="section-description">

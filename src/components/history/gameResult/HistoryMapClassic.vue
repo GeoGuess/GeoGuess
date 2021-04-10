@@ -10,15 +10,19 @@
         style="height: 400px"
     >
         <div v-if="!item.multiplayer">
-            <div v-for="(r, index) in item.rounds" :key="index">
+            <div
+                v-for="(r, index) in item.rounds"
+                :key="index"
+            >
                 <GmapMarker
                     :position="{ lat: r.guess.lat, lng: r.guess.lng }"
                 />
-                <GmapInfoWindow :options="infoOptions" :position="r.guess">
+                <GmapInfoWindow
+                    :options="infoOptions"
+                    :position="r.guess"
+                >
                     <p>
-                        <b>{{ $t('Maps.infoWindow.Distance') }} : </b
-                        >{{ r.distance / 1000 }} km <br /><b
-                            >{{ $t('Maps.infoWindow.Points') }}
+                        <b>{{ $t('Maps.infoWindow.Distance') }} : </b>{{ r.distance / 1000 }} km <br><b>{{ $t('Maps.infoWindow.Points') }}
                             :
                         </b>
                         {{ r.points }}
@@ -40,7 +44,10 @@
             </div>
         </div>
         <div v-else>
-            <div v-for="(r, indexR) in item.rounds" :key="indexR">
+            <div
+                v-for="(r, indexR) in item.rounds"
+                :key="indexR"
+            >
                 <div
                     v-for="(player, indexP) in Object.keys(r.players)"
                     :key="indexR + '' + indexP"
@@ -64,11 +71,8 @@
                         }"
                     >
                         <p>
-                            <b>{{ player }}</b
-                            ><br />
-                            <b>{{ $t('Maps.infoWindow.Distance') }} : </b
-                            >{{ r.players[player].distance / 1000 }} km <br /><b
-                                >{{ $t('Maps.infoWindow.Points') }}
+                            <b>{{ player }}</b><br>
+                            <b>{{ $t('Maps.infoWindow.Distance') }} : </b>{{ r.players[player].distance / 1000 }} km <br><b>{{ $t('Maps.infoWindow.Points') }}
                                 :
                             </b>
                             {{ r.players[player].points }}

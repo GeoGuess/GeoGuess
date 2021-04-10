@@ -1,12 +1,20 @@
 <template>
     <v-card id="card-playername">
         <v-card-title>
-            <span id="card-title">Room: {{ roomName }}</span>
+            <span id="card-title">{{$t('CardRoomPlayerName.title')}} {{ roomName }}</span>
         </v-card-title>
 
-        <v-card-subtitle class="pb-0" ref="roomUrl">
+        <v-card-subtitle
+            ref="roomUrl"
+            class="pb-0"
+        >
             {{ roomUrl }}
-            <v-icon small @click="copy">mdi-content-copy</v-icon>
+            <v-icon
+                small
+                @click="copy"
+            >
+                mdi-content-copy
+            </v-icon>
         </v-card-subtitle>
         <v-card-text>
             <v-container>
@@ -14,12 +22,12 @@
                     <v-col cols="12">
                         <v-text-field
                             id="inputPlayerName"
-                            maxlength="10"
                             v-model="playerName"
+                            maxlength="10"
                             autofocus
-                            @keyup.enter="searchRoom"
                             :label="$t('CardRoomPlayerName.input')"
-                        ></v-text-field>
+                            @keyup.enter="searchRoom"
+                        />
                     </v-col>
                 </v-row>
 
@@ -27,10 +35,10 @@
 
                 <div class="players-list">
                     <v-chip
-                        color="#424242"
-                        dark
                         v-for="(name, i) in players"
                         :key="'player' + i"
+                        color="#424242"
+                        dark
                     >
                         <v-avatar
                             :color="
@@ -53,7 +61,12 @@
         </v-card-text>
         <v-card-actions>
             <div class="flex-grow-1" />
-            <v-btn dark depressed color="#FF5252" @click="cancel">
+            <v-btn
+                dark
+                depressed
+                color="#FF5252"
+                @click="cancel"
+            >
                 {{ $t('cancel') }}
             </v-btn>
             <v-btn
@@ -75,7 +88,20 @@
 import CardRoomMixin from './mixins/CardRoomMixin';
 export default {
     mixins: [CardRoomMixin],
-    props: ['room', 'roomName', 'firstPlayer'],
+    props: {
+        'room': {
+            type: Object,
+            required: true,
+        }, 
+        'roomName': {
+            type: String,
+            required: true,
+        },
+        'firstPlayer': {
+            type: Boolean,
+            required: true,
+        },
+    },
     data() {
         return {
             players: [],

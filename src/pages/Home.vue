@@ -1,13 +1,16 @@
 <template>
     <ContentPage class="home-page">
         <section class="home-page__main">
-            <v-container class="home-page__main__container" fluid>
+            <v-container
+                class="home-page__main__container"
+                fluid
+            >
                 <v-layout class="home-page__main__layout">
                     <div class="home-page__traveler-container">
                         <img
                             class="home-page__traveler-img"
                             src="../assets/home/traveller.svg"
-                        />
+                        >
                     </div>
                     <v-layout class="home-page__main__content">
                         <div class="box">
@@ -16,15 +19,22 @@
                     </v-layout>
                 </v-layout>
             </v-container>
-            <v-btn id="btnMaps" href="#maps" large fab color="secondary" dark>
+            <v-btn
+                id="btnMaps"
+                href="#maps"
+                large
+                fab
+                color="secondary"
+                dark
+            >
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
         <section id="maps">
             <MapCard
-                :map="map"
                 v-for="(map, index) in maps"
-                v-bind:key="index"
+                :key="index"
+                :map="map"
             />
         </section>
     </ContentPage>

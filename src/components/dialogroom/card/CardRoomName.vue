@@ -9,22 +9,32 @@
                     <v-col cols="12">
                         <v-text-field
                             id="inputRoomName"
+                            v-model="roomName"
                             maxlength="10"
                             autofocus
                             :error-messages="errorMessage"
-                            v-model="roomName"
-                            v-on:keyup.enter="searchRoom"
-                        ></v-text-field>
+                            @keyup.enter="searchRoom"
+                        />
                     </v-col>
                 </v-row>
             </v-container>
         </v-card-text>
         <v-card-actions>
             <div class="flex-grow-1" />
-            <v-btn dark depressed color="#FF5252" @click="cancel">
+            <v-btn
+                dark
+                depressed
+                color="#FF5252"
+                @click="cancel"
+            >
                 {{ $t('cancel') }}
             </v-btn>
-            <v-btn dark depressed color="#43B581" @click="searchRoom">
+            <v-btn
+                dark
+                depressed
+                color="#43B581"
+                @click="searchRoom"
+            >
                 {{ $t('next') }}
             </v-btn>
         </v-card-actions>
