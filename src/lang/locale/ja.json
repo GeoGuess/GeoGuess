@@ -93,14 +93,17 @@
     "withFriends": "友達と遊ぶ",
     "invalidRoomName": "無効な名前です。別の名前を入力して下さい。",
     "inProgress": "最初のプレーヤーが部屋を作っています。再度試して下さい。",
-    "roomIsFull": "この部屋は既に満員です。"
+    "roomIsFull": "この部屋は既に満員です。",
+    "alreadyStarted": "This room has aldready started.  Please try another."
   },
   "CardRoomName": {
     "title": "Type a room name to create a new room or join a existing room"
   },
   "CardRoomPlayerName": {
-    "title": "プレーヤーの名前を入力して下さい。",
-    "anonymousPlayerName": "Anonymous 🕵"
+    "title": "Room:",
+    "input": "Type a player name.",
+    "anonymousPlayerName": "Anonymous 🕵",
+    "players": "1 player | {count} players"
   },
   "CardRoomSize": {
     "title": "部屋の人数を選択して下さい。"
