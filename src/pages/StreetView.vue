@@ -12,10 +12,7 @@
             />
 
             <div id="game-interface">
-                <v-overlay
-                    :value="!isReady && multiplayer"
-                    opacity="1"
-                />
+                <v-overlay :value="!isReady && multiplayer" opacity="1" />
                 <div id="street-view" />
 
                 <div id="game-interface--overlay">
@@ -38,6 +35,7 @@
                         :time-attack="timeAttack"
                         :nb-round="nbRound"
                         :countdown="countdown"
+                        :score-mode="scoreMode"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -47,11 +45,7 @@
                 </div>
             </div>
         </div>
-        <v-overlay
-            :value="overlay"
-            opacity="0.8"
-            z-index="1"
-        />
+        <v-overlay :value="overlay" opacity="0.8" z-index="1" />
         <DialogMessage
             :dialog-message="dialogMessage"
             :dialog-title="dialogTitle"
@@ -98,6 +92,7 @@ import {
     getCountryCodeNameFromLatLng,
     getRandomCountry,
     getMaxDistanceBbox,
+    SCORE_MODE,
 } from '../utils';
 
 import { GAME_MODE } from '../constants';
@@ -178,6 +173,10 @@ export default {
         countdown: {
             default: 0,
             type: Number,
+        },
+        scoreMode: {
+            default: SCORE_MODE.NORMAL,
+            type: String,
         },
     },
     data() {

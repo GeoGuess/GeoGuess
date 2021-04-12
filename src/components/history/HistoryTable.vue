@@ -3,21 +3,13 @@
         <h2>
             {{ $t('History.title') }}
         </h2>
-        <v-dialog
-            v-model="dialog"
-            max-width="500"
-        >
+        <v-dialog v-model="dialog" max-width="500">
             <v-card>
                 <v-card-text>
                     <center>
-                        <v-icon x-large>
-                            mdi-clipboard-check
-                        </v-icon>
+                        <v-icon x-large> mdi-clipboard-check </v-icon>
                         <p>{{ $t('urlCopied') }}</p>
-                        <v-text-field
-                            v-model="url"
-                            readonly
-                        />
+                        <v-text-field v-model="url" readonly />
                     </center>
                 </v-card-text>
                 <v-card-actions>
@@ -37,10 +29,7 @@
         <div class="history-table__btns">
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                    <div
-                        v-bind="attrs"
-                        v-on="on"
-                    >
+                    <div v-bind="attrs" v-on="on">
                         <v-file-input
                             hide-input
                             accept="application/json"
@@ -54,12 +43,7 @@
 
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn
-                        icon
-                        v-bind="attrs"
-                        v-on="on"
-                        @click="exportSave"
-                    >
+                    <v-btn icon v-bind="attrs" v-on="on" @click="exportSave">
                         <v-icon>mdi-upload-outline</v-icon>
                     </v-btn>
                 </template>
@@ -88,40 +72,44 @@
             :expanded="items.length > 0 ? [items[items.length - 1]] : []"
         >
             <template v-slot:[`item.actions`]="{ item }">
-                <v-icon
-                    small
-                    class="mr-2"
-                    @click="share(item)"
-                >
+                <v-icon small class="mr-2" @click="share(item)">
                     mdi-share
                 </v-icon>
             </template>
             <template v-slot:expanded-item="{ headers, item }">
-                <td
-                    :colspan="headers.length"
-                    class="item"
-                >
+                <td :colspan="headers.length" class="item">
+                    <div class="item__times">
+                        <p
+                            v-for="(r, index) in item.rounds"
+                            :key="`round_${index}`"
+                        >
+                            <b>
+                                {{ $t('HeaderGame.round') }}
+                                {{ index + 1 }} :
+                            </b>
+                            {{ durationToText(r.timePassed) }}
+                        </p>
+
+                        <p>
+                            <b> {{ $t('History.total') }} : </b>
+                            {{ durationToText(getTotalDuration(item)) }}
+                        </p>
+                    </div>
                     <HistoryMapCountry
                         v-if="item.gameMode === $t('modes.country')"
                         :item="item"
                     />
-                    <HistoryMapClassic
-                        v-else
-                        :item="item"
-                    />
+                    <HistoryMapClassic v-else :item="item" />
                 </td>
             </template>
         </v-data-table>
-        <v-btn
-            color="primary"
-            class="btn-export"
-            @click="exportCsv"
-        >
+        <v-btn color="primary" class="btn-export" @click="exportCsv">
             {{ $t('History.exportCSV') }}
         </v-btn>
     </div>
 </template>
 <script>
+import { getCountdownText } from '@/utils';
 import { GAME_MODE } from '../../constants';
 import { download } from '../../utils';
 import HistoryMapClassic from './gameResult/HistoryMapClassic';
@@ -243,6 +231,15 @@ export default {
         }
     },
     methods: {
+        durationToText(time) {
+            return getCountdownText(Math.floor(time / 1000));
+        },
+        getTotalDuration(item) {
+            return item.rounds.reduce(
+                (acc, { timePassed }) => acc + timePassed,
+                0
+            );
+        },
         customSort(items, index, isDesc) {
             if (index.length === 0) {
                 return items;
@@ -348,30 +345,34 @@ export default {
     h2 {
         font-weight: 500;
     }
-    padding: 10px;
+    padding: 0.625rem;
     .item {
         padding: 0;
-        width: 90%;
+        width: 100%;
+        &__times {
+            display: flex;
+            justify-content: space-evenly;
+        }
     }
 
     position: relative;
     .history-table__btns {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 0.625rem;
+        right: 0.625rem;
         display: inline-flex;
         .v-input {
-            margin-top: 2px;
+            margin-top: 0.125rem;
             padding-top: 0;
         }
         .v-btn {
-            margin-right: 5px;
+            margin-right: 0.3125rem;
         }
     }
     .btn-export {
         position: absolute;
-        bottom: 20px;
-        left: 10px;
+        bottom: 1.25rem;
+        left: 0.625rem;
     }
 }
 </style>
