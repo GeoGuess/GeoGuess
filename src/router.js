@@ -1,8 +1,8 @@
 import Home from '@/pages/Home';
 import { GAME_MODE } from './constants';
-import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import StreetView from '@/pages/StreetView';
 import HistoryPage from '@/pages/HistoryPage';
+import PlayerProfile from '@/pages/PlayerProfile';
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -42,6 +42,11 @@ export default new Router({
             component: HistoryPage,
         },
         {
+            path: '/test',
+            name: 'PlayerProfile',
+            component: PlayerProfile,
+        },
+        {
             path: '/street-view/:modeSelected/:time',
             name: 'street-view',
             component: StreetView,
@@ -78,11 +83,6 @@ export default new Router({
                 multiplayer: true,
                 ...route.params,
             }),
-        },
-        {
-            path: '/privacy-policy',
-            name: 'privacy-policy',
-            component: PrivacyPolicy,
         },
     ],
 });
