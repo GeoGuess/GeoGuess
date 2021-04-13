@@ -91,6 +91,7 @@ export default {
             moveControl: true,
             panControl: true,
             countdown: 0,
+            scoreMode: null,
             allPanorama: false,
         };
     },
@@ -186,7 +187,9 @@ export default {
 
                 this.room.once('value', (snapshot) => {
                     if (snapshot.child('started').val()) {
-                        this.errorMessage = this.$t('DialogRoom.alreadyStarted');
+                        this.errorMessage = this.$t(
+                            'DialogRoom.alreadyStarted'
+                        );
                         return;
                     }
                     const numberOfPlayers = snapshot
@@ -245,7 +248,8 @@ export default {
             zoomControl,
             moveControl,
             panControl,
-            countdown
+            countdown,
+            scoreMode
         ) {
             this.allPanorama = allPanorama;
             this.timeLimitation = timeLimitation;
@@ -255,6 +259,7 @@ export default {
             this.moveControl = moveControl;
             this.panControl = panControl;
             this.countdown = countdown;
+            this.scoreMode = scoreMode;
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
@@ -268,6 +273,7 @@ export default {
                         zoomControl,
                         moveControl,
                         panControl,
+                        scoreMode,
                     },
                 });
             } else {
@@ -283,6 +289,7 @@ export default {
                         moveControl,
                         panControl,
                         countdown,
+                        scoreMode,
                     },
                     (error) => {
                         if (!error) {
@@ -326,6 +333,7 @@ export default {
                     panControl: this.panControl,
                     countdown: this.countdown,
                     allPanorama: this.allPanorama,
+                    scoreMode: this.scoreMode,
                 };
                 // Set flag started
                 this.room.child('started').set(true);
@@ -342,6 +350,7 @@ export default {
                         panControl: snapshot.child('panControl').val(),
                         countdown: snapshot.child('countdown').val(),
                         allPanorama: snapshot.child('allPanorama').val(),
+                        scoreMode: snapshot.child('scoreMode').val(),
                     };
                     this.startGameMultiplayer(gameParams);
                 });

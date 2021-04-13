@@ -2,7 +2,7 @@ import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import { point } from '@turf/helpers';
 import axios from 'axios';
-import { GAME_MODE } from './constants';
+import { GAME_MODE, SCORE_MODE } from './constants';
 
 /**
  * check in valid format url
@@ -168,15 +168,10 @@ export function download(data, filename, type) {
     }
 }
 
-export const SCORE_MODE = {
-    NORMAL: 'normal',
-    TIME: 'time',
-};
-
 export function getScore(distance, difficulty, time, mode) {
     switch (mode) {
         case SCORE_MODE.TIME:
-            return (
+            return Math.round(
                 getScoreNormal(distance, difficulty) * Math.exp(-time / 6000000)
             );
 

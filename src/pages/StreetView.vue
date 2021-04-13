@@ -92,10 +92,9 @@ import {
     getCountryCodeNameFromLatLng,
     getRandomCountry,
     getMaxDistanceBbox,
-    SCORE_MODE,
 } from '../utils';
 
-import { GAME_MODE } from '../constants';
+import { GAME_MODE, SCORE_MODE } from '../constants';
 
 import { mapGetters } from 'vuex';
 

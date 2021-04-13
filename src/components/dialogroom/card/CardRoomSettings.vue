@@ -19,13 +19,9 @@
                                 rounded
                                 outlined
                                 class="mr-5"
-                                @click="
-                                    () => (this.mode = gameMode.CLASSIC)
-                                "
+                                @click="() => (this.mode = gameMode.CLASSIC)"
                             >
-                                <v-icon large>
-                                    mdi-map-marker
-                                </v-icon>
+                                <v-icon large> mdi-map-marker </v-icon>
                                 <span>{{ $t('modes.classic') }}</span>
                             </v-btn>
                             <v-btn
@@ -33,13 +29,9 @@
                                 :text="this.mode !== gameMode.COUNTRY"
                                 rounded
                                 outlined
-                                @click="
-                                    () => (this.mode = gameMode.COUNTRY)
-                                "
+                                @click="() => (this.mode = gameMode.COUNTRY)"
                             >
-                                <v-icon large>
-                                    mdi-flag
-                                </v-icon>
+                                <v-icon large> mdi-flag </v-icon>
                                 <span>{{ $t('modes.country') }}</span>
                             </v-btn>
                         </v-flex>
@@ -71,7 +63,7 @@
                                 :label="$t('CardRoomSettings.allowPan')"
                                 hide-details
                             />
-                            <br>
+                            <br />
                             <v-checkbox
                                 v-model="allPanorama"
                                 :label="
@@ -79,6 +71,7 @@
                                 "
                                 hide-details
                             />
+                            <v-select v-model="scoreMode" :items="scoreModes" />
                         </div>
                         <div>
                             <v-text-field
@@ -91,13 +84,10 @@
                             <div
                                 v-if="
                                     this.mode === gameMode.COUNTRY &&
-                                        !singlePlayer
+                                    !singlePlayer
                                 "
                             >
-                                <v-checkbox
-                                    v-model="timeAttack"
-                                    hide-details
-                                >
+                                <v-checkbox v-model="timeAttack" hide-details>
                                     <template #label>
                                         {{
                                             $t(
@@ -163,12 +153,7 @@
         </v-card-text>
         <v-card-actions>
             <div class="flex-grow-1" />
-            <v-btn
-                dark
-                depressed
-                color="#FF5252"
-                @click="cancel"
-            >
+            <v-btn dark depressed color="#FF5252" @click="cancel">
                 {{ $t('cancel') }}
             </v-btn>
             <v-btn
@@ -185,7 +170,7 @@
 </template>
 <script>
 import TimePicker from '@/components/shared/TimePicker';
-import { GAME_MODE } from '../../../constants';
+import { GAME_MODE, SCORE_MODE } from '../../../constants';
 import CardRoomMixin from './mixins/CardRoomMixin';
 
 export default {
@@ -204,9 +189,16 @@ export default {
             panControl: true,
             countdown: 0,
             allPanorama: false,
+            scoreMode: SCORE_MODE.NORMAL,
         };
     },
     computed: {
+        scoreModes() {
+            return Object.values(SCORE_MODE).map((a) => ({
+                value: a,
+                text: a,
+            }));
+        },
         gameMode() {
             return GAME_MODE;
         },
@@ -251,7 +243,8 @@ export default {
                 this.zoomControl,
                 this.moveControl,
                 this.panControl,
-                +this.countdown
+                +this.countdown,
+                this.scoreMode
             );
         },
     },
