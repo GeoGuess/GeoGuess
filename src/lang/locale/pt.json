@@ -100,7 +100,7 @@
     "title": "Digite o nome da sala para criar uma nova sala ou junte-se a uma sala existente"
   },
   "CardRoomPlayerName": {
-    "title": "Room:",
+    "title": "Sala:",
     "input": "Type a player name.",
     "anonymousPlayerName": "Anônimo 🕵",
     "players": "1 player | {count} players"
@@ -115,7 +115,7 @@
   "CardRoomSettings": {
     "title": "Configurações da partida",
     "modeLabel": "Selecione o modo de jogo",
-    "includePhotopheres": "Include Photospheres",
+    "includePhotopheres": "Incluir Photospheres",
     "timeAttackLabel": "TimeAttack",
     "timeattackInfos": "No modo TimeAttack, apenas o jogador que adivinhar o país primeiro ganha o ponto. Seja rápido e vença!",
     "allowMove": "Permitir movimento",
