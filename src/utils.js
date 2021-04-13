@@ -131,7 +131,7 @@ export function getSelectedPos(selectedPos, gameMode) {
 export function getRandomCountry(countries) {
     return countries.features[
         Math.floor(Math.random() * countries.features.length)
-    ].properties['iso_a2'];
+    ].properties['sov_a3'];
 }
 
 export function getMaxDistanceBbox(bbox) {

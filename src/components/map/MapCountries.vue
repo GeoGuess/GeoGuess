@@ -16,7 +16,7 @@
                         countryRandom ||
                             polygonSelect
                                 .getFeatureById('feature')
-                                .getProperty('iso_a2')
+                                .getProperty('sov_a3')
                     "
                 />
                 <span
@@ -84,7 +84,7 @@ export default {
                 this.countryRandom ||
                     this.polygonSelect
                         .getFeatureById('feature')
-                        .getProperty('iso_a2')
+                        .getProperty('sov_a3')
             );
         },
     },
@@ -117,9 +117,9 @@ export default {
                         }
                         if (this.polygonSelect) {
                             this.polygonSelect.setStyle({
-                                strokeOpacity: 0,
-                                fillOpacity: 0,
-                            });
+                                    strokeOpacity: 0,
+                                    fillOpacity: 0,
+                                });
                         }
                         if (Object.is(p, this.polygonSelect)) {
                             this.polygonSelect = null;
@@ -137,11 +137,15 @@ export default {
                                 'setSeletedPos',
                                 p
                                     .getFeatureById('feature')
-                                    .getProperty('iso_a2')
+                                    .getProperty('sov_a3')
                             );
                         }
                     });
-                    this.countries[c.properties.iso_a2] = p;
+                    if(!Array.isArray(this.countries[c.properties.sov_a3])){
+                        this.countries[c.properties.sov_a3] = [p];
+                    }
+                    this.countries[c.properties.sov_a3].push(p);
+                   
                 }
             });
             this.centerOnBbox();
@@ -169,26 +173,30 @@ export default {
                 });
             }
             if (this.countries[c])
-                this.countries[c].setStyle({
-                    fillOpacity: 0.3,
-                    strokeOpacity: 0.8,
-                    fillColor: isRandomLocation ? '#52DA42' : '#FF4081',
-                    strokeColor: isRandomLocation ? '#16A910' : '#FF4081',
+                this.countries[c].map((g)=>{
+                    g.setStyle({
+                        fillOpacity: 0.3,
+                        strokeOpacity: 0.8,
+                        fillColor: isRandomLocation ? '#52DA42' : '#FF4081',
+                        strokeColor: isRandomLocation ? '#16A910' : '#FF4081',
+                    });
                 });
             this.markers.push(c);
         },
         removeMarkers() {
             this.markers.forEach((country) => {
-                this.countries[country].setStyle({
-                    strokeOpacity: 0,
-                    fillOpacity: 0,
+                this.countries[country].map((g)=>{
+                    g.setStyle({
+                        strokeOpacity: 0,
+                        fillOpacity: 0,
+                    });
                 });
             });
             if (this.polygonSelect) {
                 this.polygonSelect.setStyle({
-                    strokeOpacity: 0,
-                    fillOpacity: 0,
-                });
+                        strokeOpacity: 0,
+                        fillOpacity: 0,
+                    });
             }
             if (this.randomPos) {
                 this.randomPos.setMap(null);
@@ -204,10 +212,10 @@ export default {
         removePolylines() {},
         startNextRound() {
             if (this.polygonSelect) {
-                this.polygonSelect.setStyle({
-                    strokeOpacity: 0,
-                    fillOpacity: 0,
-                });
+                 this.polygonSelect.setStyle({
+                        strokeOpacity: 0,
+                        fillOpacity: 0,
+                    });
             }
             this.polygonSelect = null;
             this.countryRandom = null;

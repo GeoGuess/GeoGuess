@@ -104,10 +104,13 @@ export default {
                             fillColor: '#1D4ED8',
                         },
                     });
-                    const geojsonCountry = this.countriesJson.features.find(
-                        (j) => j.properties.iso_a2 === r.guess
-                    );
-                    p.addGeoJson(geojsonCountry);
+                    
+                    this.countriesJson.features.filter(
+                        (j) => j.properties.sov_a3 === r.guess
+                    ).map((c)=>{
+                        p.addGeoJson(c);
+
+                    });
 
                     p.setMap(map);
                 });
@@ -125,12 +128,14 @@ export default {
                                 fillColor: this.strokeColors[i],
                             },
                         });
-                        const geojsonCountry = this.countriesJson.features.find(
+                       this.countriesJson.features.filter(
                             (j) =>
-                                j.properties.iso_a2 ===
+                                j.properties.sov_a3 ===
                                 r.players[playerName].guess
-                        );
-                        p.addGeoJson(geojsonCountry);
+                        ).map((c)=>{
+                            p.addGeoJson(c);
+
+                         });
 
                         p.setMap(map);
                         i = (i + 1) % this.strokeColors.length;
