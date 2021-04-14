@@ -84,7 +84,7 @@
                             <div
                                 v-if="
                                     this.mode === gameMode.COUNTRY &&
-                                    !singlePlayer
+                                        !singlePlayer
                                 "
                             >
                                 <v-checkbox v-model="timeAttack" hide-details>

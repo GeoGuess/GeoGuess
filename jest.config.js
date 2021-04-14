@@ -7,7 +7,9 @@ module.exports = {
         '!**/node_modules/**',
         '!src/plugins/*',
         '!src/lang/*',
-        '!src/*.js',
+        '!src/router.js',
+        '!src/main.js',
+        '!src/registerServiceWorker.js',
     ],
     transformIgnorePatterns: [
         'node_modules/(?!gmap-vue|axios-cache-adapter|cache-control-esm)',

@@ -155,7 +155,7 @@ export function download(data, filename, type) {
         window.navigator.msSaveOrOpenBlob(file, filename);
     else {
         // Others
-        var a = document.createElement('a'),
+        const a = document.createElement('a'),
             url = URL.createObjectURL(file);
         a.href = url;
         a.download = filename;
@@ -176,7 +176,7 @@ export function getScore(distance, difficulty, time, mode) {
             );
 
         default:
-            getScoreNormal(distance, difficulty);
+            return getScoreNormal(distance, difficulty);
     }
 }
 
