@@ -93,7 +93,8 @@
     "withFriends": "Avec des amis",
     "invalidRoomName": "Nom invalide. Veuillez en choisir un autre.",
     "inProgress": "Le premier joueur est en train de créer la salle. Veuillez patienter puis recommencer.",
-    "roomIsFull": "La salle est déjà pleine. Essayez une autre."
+    "roomIsFull": "La salle est déjà pleine. Essayez une autre.",
+    "alreadyStarted": "La partie a déjà commencé. Essayer une autre."
   },
   "CardRoomName": {
     "title": "Saisir le nom de la salle pour la créer, ou la rejoindre si elle existe"
