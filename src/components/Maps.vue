@@ -246,6 +246,7 @@ export default {
         this.game.difficulty = this.difficulty;
         this.game.mode = this.mode;
         this.game.timeAttack = this.timeAttack;
+        this.game.playerName = this.playerName;
 
         if (this.roomName) {
             this.room = firebase.database().ref(this.roomName);

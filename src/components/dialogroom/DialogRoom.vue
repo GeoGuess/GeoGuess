@@ -226,7 +226,7 @@ export default {
                             .set(
                                 this.$t(
                                     'CardRoomPlayerName.anonymousPlayerName'
-                                ),
+                                ) + this.playerNumber,
                                 (error) => {
                                     if (!error) {
                                         this.currentComponent = 'playerName';
