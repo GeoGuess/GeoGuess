@@ -101,11 +101,13 @@ export function getLocateString(obj, name, language, defaultLanguage = 'en') {
 export function getCountryCodeNameFromLatLng(latLng, errorFunction) {
     return axios
         .get(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&zoom=3&addressdetails=0&format=json&extratags=1`
+            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&zoom=5&addressdetails=1&format=json&extratags=1`
         )
-        .then((res) => {
-            if (res.status === 200 && res.data) {
-                return res.data.extratags['ISO3166-1:alpha2'];
+        .then(({status, data}) => {
+            if (status === 200 && data) {
+                if(data.extratags['ISO3166-1:alpha2'])
+                    return data.extratags['ISO3166-1:alpha2'];
+                return data.address['country_code'].toUpperCase();
             }
         })
         .catch(() => {
