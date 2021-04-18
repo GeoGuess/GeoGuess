@@ -78,22 +78,18 @@
             </template>
             <template v-slot:expanded-item="{ headers, item }">
                 <td :colspan="headers.length" class="item">
-                    <div class="item__times">
-                        <p
-                            v-for="(r, index) in item.rounds"
-                            :key="`round_${index}`"
-                        >
-                            <b>
-                                {{ $t('HeaderGame.round') }}
-                                {{ index + 1 }} :
-                            </b>
-                            {{ durationToText(r.timePassed) }}
-                        </p>
-
-                        <p>
-                            <b> {{ $t('History.total') }} : </b>
-                            {{ durationToText(getTotalDuration(item)) }}
-                        </p>
+                    <div v-if="item.multiplayer" class="item_time_multi">
+                        <HistoryTimeDetail 
+                            class="item__times"
+                            v-for="(playerName,index) in playersNames(item.rounds)"
+                            :rounds="roundsPlayer(item.rounds, playerName)"
+                            :playerName="playerName"
+                            :key="`HistoryTimeDetail`+playerName"
+                            :index="index"
+                        />
+                    </div>
+                    <div v-else>
+                        <HistoryTimeDetail class="item__times"  :rounds="item.rounds"/>
                     </div>
                     <HistoryMapCountry
                         v-if="item.gameMode === $t('modes.country')"
@@ -109,16 +105,17 @@
     </div>
 </template>
 <script>
-import { getCountdownText } from '@/utils';
 import { GAME_MODE } from '../../constants';
 import { download } from '../../utils';
 import HistoryMapClassic from './gameResult/HistoryMapClassic';
 import HistoryMapCountry from './gameResult/HistoryMapCountry';
+import HistoryTimeDetail from './gameResult/HistoryTimeDetail';
 export default {
     name: 'HistoryTable',
     components: {
         HistoryMapClassic,
         HistoryMapCountry,
+        HistoryTimeDetail,
     },
     data() {
         return {
@@ -231,14 +228,11 @@ export default {
         }
     },
     methods: {
-        durationToText(time) {
-            return getCountdownText(Math.floor(time / 1000));
+        roundsPlayer(rounds,name){
+            return rounds.map((r)=> r.players[name]);
         },
-        getTotalDuration(item) {
-            return item.rounds.reduce(
-                (acc, { timePassed }) => acc + timePassed,
-                0
-            );
+        playersNames(rounds){
+            return Object.keys(rounds[0].players);
         },
         customSort(items, index, isDesc) {
             if (index.length === 0) {
@@ -349,9 +343,9 @@ export default {
     .item {
         padding: 0;
         width: 100%;
-        &__times {
-            display: flex;
-            justify-content: space-evenly;
+        .item_time_multi{
+            max-height: 10.5rem;
+            overflow-x: auto;
         }
     }
 

@@ -299,28 +299,18 @@ export default {
                                 .child('playerName')
                                 .child(childSnapshot.key)
                                 .val();
-                            const distance = snapshot
+                            const roundValues =snapshot
                                 .child(
                                     'round' +
                                         this.round +
                                         '/player' +
-                                        j +
-                                        '/distance'
+                                        j 
                                 )
-                                .val();
-                            const points = snapshot
-                                .child(
-                                    'round' +
-                                        this.round +
-                                        '/player' +
-                                        j +
-                                        '/points'
-                                )
-                                .val();
+                                .exportVal();
+                            const {points, distance }= roundValues;
                             players[playerName] = {
+                                ...roundValues,
                                 guess: posGuess,
-                                distance,
-                                points,
                             };
                             this.$refs.map.drawPolyline(
                                 posGuess,
@@ -509,7 +499,7 @@ export default {
                         ...getSelectedPos(this.selectedPos, this.mode),
                         distance: this.distance,
                         points: this.point,
-                        timePassed: timePassed,
+                        timePassed,
                     });
             } else {
                 this.game.rounds.push({
@@ -518,7 +508,7 @@ export default {
                     position: this.randomLatLng,
                     distance: this.distance,
                     points: this.point,
-                    timePassed: timePassed,
+                    timePassed,
                 });
             }
 
