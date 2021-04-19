@@ -1,157 +1,158 @@
 {
-  "Home": {
-    "record": "Rekord",
-    "historyBtn": "HISTORIE",
-    "about": "ÜBER",
-    "searchBar": {
-      "customLoaded": "Eine benutzerdefinierte Karte wurde geladen",
-      "enterCity": "Geben Sie eine Stadt, Region oder ein Land ein"
+    "Home": {
+        "record": "Rekord",
+        "historyBtn": "HISTORIE",
+        "about": "ÜBER",
+        "searchBar": {
+            "customLoaded": "Eine benutzerdefinierte Karte wurde geladen",
+            "enterCity": "Geben Sie eine Stadt, Region oder ein Land ein"
+        },
+        "aboutDescriptions": {
+            "1": "Geoguess ist ein kostenloses, werbefreies Spiel. Die Spieler werden in fünf Runden zu zufälligen Positionen in der Welt gesetzt und müssen erraten, an welchen Positionen sie sich befinden. Dabei treten Sie gegeneinander an. Du kannst deine Punktzahl in sozialen Netzwerken wie Facebook und Twitter teilen. Der erste Spieler erstellt einen Raum und entscheidet über seine Größe. Nach der Erstellung können andere Spieler den Raum gemeinsam betreten.",
+            "2": "Dieses Spiel wurde geforkt von "
+        },
+        "customMap": "BENUTZERDEFINIERTE KARTEN",
+        "customMapDescriptions": {
+            "1": "Du kannst die zufälligen Positionen auf eine Stadt, eine Region oder ein Land beschränken, indem du die Suchleiste benutzt.",
+            "2": "Im Mehrspielermodus legt der erste Spieler den Ort fest.",
+            "3": "Außerdem kannst du mit ",
+            "4": "datei.",
+            "5": "Füge den Inhalt der Datei mit dieser Schaltfläche ein:",
+            "6": "Eine Auswahl an benutzerdefinierten Karten:"
+        },
+        "limitation": "LIMITIERUNG",
+        "limitationDescription": "Derzeit habe ich eine Quote pro Tag festgelegt, damit die Kosten des Spiels gering bleiben.            Wenn die Karte nicht geladen wird, bedeutet dies, dass das Kontingent überschritten wurde.            Es wird um Mitternacht (pazifische Zeit) zurückgesetzt. Ich bitte um Entschuldigung für die Unannehmlichkeiten.            Das Spiel ist Open Source, so dass du einen eigenen Server erstellen kannst, um ohne Kontigente spielen zu können.",
+        "play": "Spielen"
     },
-    "aboutDescriptions": {
-      "1": "Geoguess ist ein kostenloses, werbefreies Spiel. Die Spieler werden in fünf Runden zu zufälligen Positionen in der Welt gesetzt und müssen erraten, an welchen Positionen sie sich befinden. Dabei treten Sie gegeneinander an. Du kannst deine Punktzahl in sozialen Netzwerken wie Facebook und Twitter teilen. Der erste Spieler erstellt einen Raum und entscheidet über seine Größe. Nach der Erstellung können andere Spieler den Raum gemeinsam betreten.",
-      "2": "Dieses Spiel wurde geforkt von "
+    "StreetView": {
+        "nearby": {
+            "title": "Position der Nähe",
+            "message": "Leider konnten wir beim definierten Ort keine passende Location finden. Wir haben jedoch eine Location in der Nähe gefunden 😉"
+        },
+        "waitForOtherPlayers": "Warte auf weitere Spieler...",
+        "redirectToHomePage": "Weiterleitung zur Homepage ...",
+        "exitGame": "Du musst das Spiel beenden. Umleitung zur Startseite in 5 Sekunden...",
+        "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden...",
+        "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen möchtest? Das Spiel wird dadurch abgebrochen!",
+        "countdownAlert": "Countdown gestartet: {count} Sekunde verbleibend | Countdown gestartet: {count} Sekunden verbleibend"
     },
-    "customMap": "BENUTZERDEFINIERTE KARTEN",
-    "customMapDescriptions": {
-      "1": "Du kannst die zufälligen Positionen auf eine Stadt, eine Region oder ein Land beschränken, indem du die Suchleiste benutzt.",
-      "2": "Im Mehrspielermodus legt der erste Spieler den Ort fest.",
-      "3": "Außerdem kannst du mit ",
-      "4": "datei.",
-      "5": "Füge den Inhalt der Datei mit dieser Schaltfläche ein:",
-      "6": "Eine Auswahl an benutzerdefinierten Karten:"
+    "Maps": {
+        "makeGuess": "TIPP ABGEBEN",
+        "guess": "RATEN",
+        "nextRound": "NÄCHSTE RUNDE",
+        "viewSummary": "ZUSAMMENFASSUNG ANSEHEN",
+        "exit": "VERLASSEN",
+        "reset": "RESET",
+        "playAgain": "ERNEUT SPIELEN",
+        "infoWindow": {
+            "Distance": "Distanz",
+            "Points": "Punkte"
+        }
     },
-    "limitation": "LIMITIERUNG",
-    "limitationDescription": "Derzeit habe ich eine Quote pro Tag festgelegt, damit die Kosten des Spiels gering bleiben.            Wenn die Karte nicht geladen wird, bedeutet dies, dass das Kontingent überschritten wurde.            Es wird um Mitternacht (pazifische Zeit) zurückgesetzt. Ich bitte um Entschuldigung für die Unannehmlichkeiten.            Das Spiel ist Open Source, so dass du einen eigenen Server erstellen kannst, um ohne Kontigente spielen zu können.",
-    "play": "Spielen"
-  },
-  "StreetView": {
-    "nearby": {
-      "title": "Position der Nähe",
-      "message": "Leider konnten wir beim definierten Ort keine passende Location finden. Wir haben jedoch eine Location in der Nähe gefunden 😉"
+    "Header": {
+        "language": "Sprache",
+        "about": "Über",
+        "limitation": "Limitierung",
+        "contact": "Kontakt"
     },
-    "waitForOtherPlayers": "Warte auf weitere Spieler...",
-    "redirectToHomePage": "Weiterleitung zur Homepage ...",
-    "exitGame": "Du musst das Spiel beenden. Umleitung zur Startseite in 5 Sekunden...",
-    "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden...",
-    "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen möchtest? Das Spiel wird dadurch abgebrochen!",
-    "countdownAlert": "Countdown gestartet: {count} Sekunde verbleibend | Countdown gestartet: {count} Sekunden verbleibend"
-  },
-  "Maps": {
-    "makeGuess": "TIPP ABGEBEN",
-    "guess": "RATEN",
-    "nextRound": "NÄCHSTE RUNDE",
-    "viewSummary": "ZUSAMMENFASSUNG ANSEHEN",
-    "exit": "VERLASSEN",
-    "reset": "RESET",
-    "playAgain": "ERNEUT SPIELEN",
-    "infoWindow": {
-      "Distance": "Distanz",
-      "Points": "Punkte"
-    }
-  },
-  "Header": {
-    "language": "Sprache",
-    "about": "Über",
-    "limitation": "Limitierung",
-    "contact": "Kontakt"
-  },
-  "HeaderGame": {
-    "room": "RAUM",
-    "round": "RUNDE",
-    "distance": "DISTANZ",
-    "kmaway": "{value} km entfernt",
-    "score": "PUNKTESTAND"
-  },
-  "next": "WEITER",
-  "cancel": "ABBRECHEN",
-  "DialogCustomMap": {
-    "title": "Benutzerdefinierte Karte",
-    "invalid": "GeoJSON ungültig",
-    "text": "Text",
-    "url": "URL",
-    "file": "Datei",
-    "edit": "Karte bearbeiten",
-    "fileLabel": "GeoJSON-Datei auswählen",
+    "HeaderGame": {
+        "room": "RAUM",
+        "round": "RUNDE",
+        "distance": "DISTANZ",
+        "kmaway": "{value} km entfernt",
+        "score": "PUNKTESTAND"
+    },
+    "next": "WEITER",
+    "cancel": "ABBRECHEN",
+    "DialogCustomMap": {
+        "title": "Benutzerdefinierte Karte",
+        "invalid": "GeoJSON ungültig",
+        "text": "Text",
+        "url": "URL",
+        "file": "Datei",
+        "edit": "Karte bearbeiten",
+        "fileLabel": "GeoJSON-Datei auswählen",
+        "OK": "Okay",
+        "download": "GeoJSON herunterladen"
+    },
+    "History": {
+        "title": "Historie",
+        "date": "Datum",
+        "mode": "Modus",
+        "time": "Zeit",
+        "distance": "Distanz",
+        "points": "Punkte",
+        "rank": "Rang",
+        "search": "Suchen",
+        "exportGeoSave": "GeoSave exportieren",
+        "importGeoSave": "GeoSave importieren",
+        "exportCSV": "CSV exportieren",
+        "total": "Total"
+    },
+    "DialogRoom": {
+        "singlePlayer": "Ein Spieler",
+        "withFriends": "Mit Freunden",
+        "invalidRoomName": "Ungültiger Name. Bitte versuche einen anderen.",
+        "inProgress": "Der erste Spieler erstellt den Raum. Bitte warte und versuche es erneut.",
+        "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen.",
+        "alreadyStarted": "Dieser Raum hat bereits begonnen. Bitte versuche einen anderen."
+    },
+    "CardRoomName": {
+        "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten."
+    },
+    "CardRoomPlayerName": {
+        "title": "Raum:",
+        "input": "Trage deinen Namen ein.",
+        "anonymousPlayerName": "Anonymous",
+        "players": "1 Spieler | {count} Spieler"
+    },
+    "CardRoomSize": {
+        "title": "Lege die Größe des Raumes fest."
+    },
+    "CardRoomTime": {
+        "title": "Lege die maximale Zeit pro Runde fest.",
+        "infinite": "Unendlich"
+    },
+    "CardRoomSettings": {
+        "title": "Spieleinstellungen",
+        "modeLabel": "Spielmodus wählen",
+        "includePhotopheres": "Photospheres aktivieren",
+        "timeAttackLabel": "TimeAttack",
+        "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!",
+        "allowMove": "Bewegen zulassen",
+        "allowZoom": "Zoomen zulassen",
+        "allowPan": "Schwenken zulassen"
+    },
+    "CardRoomDifficulty": {
+        "title": "Lege den Schwierigkeitsgrad fest.",
+        "easy": "Einfach (Welt)",
+        "medium": "Mittel (Land)",
+        "hard": "Schwierig (Stadt)"
+    },
+    "DialogSummary": {
+        "summaryMsgSinglePoints": "Deine Punktzahl beträgt <strong>{points}</strong>! ",
+        "summaryMsgSingleDistance": "Du bist <strong>{distance}</strong> km entfernt!",
+        "summaryMsgMultiPoints": "<strong>{playerName}</strong> erhält  <strong>{points}</strong> Punkte! ",
+        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km entfernt)",
+        "viewDetails": "Details anzeigen"
+    },
+    "Footer": {
+        "under": "unter",
+        "privacyPolicy": "Datenschutzerklärung"
+    },
+    "urlCopied": "URL kopiert",
+    "DetailsMap": {
+        "moreInfo": "Weitere Informationen"
+    },
+    "modes": {
+        "classic": "Klassisch",
+        "country": "Land auswählen"
+    },
+    "Demo": {
+        "message": "Wenn du zum Projekt beitragen und es verbessern möchtest, ist deine Hilfe sehr willkommen : Übersetzung 🔠, Mapping 🌍, Code 💻, Idee 💡, Betatest 👀.",
+        "btn": "Tritt uns bei!"
+    },
     "OK": "Okay",
-    "download": "GeoJSON herunterladen"
-  },
-  "History": {
-    "title": "Historie",
-    "date": "Datum",
-    "mode": "Modus",
-    "time": "Zeit",
-    "distance": "Distanz",
-    "points": "Punkte",
-    "rank": "Rang",
-    "search": "Suchen",
-    "exportGeoSave": "GeoSave exportieren",
-    "importGeoSave": "GeoSave importieren",
-    "exportCSV": "CSV exportieren"
-  },
-  "DialogRoom": {
-    "singlePlayer": "Ein Spieler",
-    "withFriends": "Mit Freunden",
-    "invalidRoomName": "Ungültiger Name. Bitte versuche einen anderen.",
-    "inProgress": "Der erste Spieler erstellt den Raum. Bitte warte und versuche es erneut.",
-    "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen.",
-    "alreadyStarted": "Dieser Raum hat bereits begonnen. Bitte versuche einen anderen."
-  },
-  "CardRoomName": {
-    "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten."
-  },
-  "CardRoomPlayerName": {
-    "title": "Raum:",
-    "input": "Trage deinen Namen ein.",
-    "anonymousPlayerName": "Anonymous",
-    "players": "1 Spieler | {count} Spieler"
-  },
-  "CardRoomSize": {
-    "title": "Lege die Größe des Raumes fest."
-  },
-  "CardRoomTime": {
-    "title": "Lege die maximale Zeit pro Runde fest.",
-    "infinite": "Unendlich"
-  },
-  "CardRoomSettings": {
-    "title": "Spieleinstellungen",
-    "modeLabel": "Spielmodus wählen",
-    "includePhotopheres": "Photospheres aktivieren",
-    "timeAttackLabel": "TimeAttack",
-    "timeattackInfos": "Im TimeAttack-Modus bekommt nur der Spieler einen Punkt, der das Land als erstes errät! Sei schnell um zu gewinnen!",
-    "allowMove": "Bewegen zulassen",
-    "allowZoom": "Zoomen zulassen",
-    "allowPan": "Schwenken zulassen"
-  },
-  "CardRoomDifficulty": {
-    "title": "Lege den Schwierigkeitsgrad fest.",
-    "easy": "Einfach (Welt)",
-    "medium": "Mittel (Land)",
-    "hard": "Schwierig (Stadt)"
-  },
-  "DialogSummary": {
-    "summaryMsgSinglePoints": "Deine Punktzahl beträgt <strong>{points}</strong>! ",
-    "summaryMsgSingleDistance": "Du bist <strong>{distance}</strong> km entfernt!",
-    "summaryMsgMultiPoints": "<strong>{playerName}</strong> erhält  <strong>{points}</strong> Punkte! ",
-    "summaryMsgMultiDistance": "(<strong>{distance}</strong> km entfernt)",
-    "viewDetails": "Details anzeigen"
-  },
-  "Footer": {
-    "under": "unter",
-    "privacyPolicy": "Datenschutzerklärung"
-  },
-  "urlCopied": "URL kopiert",
-  "DetailsMap": {
-    "moreInfo": "Weitere Informationen"
-  },
-  "modes": {
-    "classic": "Klassisch",
-    "country": "Land auswählen"
-  },
-  "Demo": {
-    "message": "Wenn du zum Projekt beitragen und es verbessern möchtest, ist deine Hilfe sehr willkommen : Übersetzung 🔠, Mapping 🌍, Code 💻, Idee 💡, Betatest 👀.",
-    "btn": "Tritt uns bei!"
-  },
-  "OK": "Okay",
-  "yes": "Ja",
-  "no": "Nein"
+    "yes": "Ja",
+    "no": "Nein"
 }
