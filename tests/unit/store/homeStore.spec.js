@@ -47,7 +47,7 @@ describe('homeStore.js', () => {
     // MUTATIONS
     //
     it('mutations', () => {
-        const state = homeStore.state();
+        const state = homeStore.state;
         expect(state.geojson).toBeNull();
         const geojson = {
             type: 'Point',
@@ -239,5 +239,17 @@ describe('homeStore.js', () => {
             MutationTypes.HOME_SET_MULTIPLAYER,
             false
         );
+    });
+
+    it('loadHistory', () => {
+        const commit = jest.fn();
+        homeStore.actions.loadHistory({ commit });
+
+        expect(commit).toBeCalledWith(
+            MutationTypes.HOME_SET_HISTORY,
+            expect.anything()
+        );
+        expect(homeStore.state.history).toHaveLength(1);
+        expect(homeStore.state.history[0].score).toEqual(2488978);
     });
 });
