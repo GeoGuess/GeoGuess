@@ -79,17 +79,22 @@
             <template v-slot:expanded-item="{ headers, item }">
                 <td :colspan="headers.length" class="item">
                     <div v-if="item.multiplayer" class="item_time_multi">
-                        <HistoryTimeDetail 
+                        <HistoryTimeDetail
                             class="item__times"
-                            v-for="(playerName,index) in playersNames(item.rounds)"
+                            v-for="(playerName, index) in playersNames(
+                                item.rounds
+                            )"
                             :rounds="roundsPlayer(item.rounds, playerName)"
                             :playerName="playerName"
-                            :key="`HistoryTimeDetail`+playerName"
+                            :key="`HistoryTimeDetail` + playerName"
                             :index="index"
                         />
                     </div>
                     <div v-else>
-                        <HistoryTimeDetail class="item__times"  :rounds="item.rounds"/>
+                        <HistoryTimeDetail
+                            class="item__times"
+                            :rounds="item.rounds"
+                        />
                     </div>
                     <HistoryMapCountry
                         v-if="item.gameMode === $t('modes.country')"
@@ -105,6 +110,7 @@
     </div>
 </template>
 <script>
+import { mapActions, mapState } from 'vuex';
 import { GAME_MODE } from '../../constants';
 import { download } from '../../utils';
 import HistoryMapClassic from './gameResult/HistoryMapClassic';
@@ -119,9 +125,6 @@ export default {
     },
     data() {
         return {
-            history: localStorage.getItem('history')
-                ? JSON.parse(localStorage.getItem('history'))
-                : [],
             expanded: [history[history.length - 1]],
             dialog: false,
             url: '',
@@ -191,6 +194,9 @@ export default {
         };
     },
     computed: {
+        ...mapState({
+            history: (state) => state.homeStore.history,
+        }),
         items() {
             return this.history.map((g, index) => ({
                 ...g,
@@ -213,6 +219,7 @@ export default {
         },
     },
     mounted() {
+        this.loadHistory();
         if ('launchQueue' in window) {
             launchQueue.setConsumer((launchParams) => {
                 if (
@@ -228,10 +235,11 @@ export default {
         }
     },
     methods: {
-        roundsPlayer(rounds,name){
-            return rounds.map((r)=> r.players[name]);
+        ...mapActions(['loadHistory']),
+        roundsPlayer(rounds, name) {
+            return rounds.map((r) => r.players[name]);
         },
-        playersNames(rounds){
+        playersNames(rounds) {
             return Object.keys(rounds[0].players);
         },
         customSort(items, index, isDesc) {
@@ -343,7 +351,7 @@ export default {
     .item {
         padding: 0;
         width: 100%;
-        .item_time_multi{
+        .item_time_multi {
             max-height: 10.5rem;
             overflow-x: auto;
         }
