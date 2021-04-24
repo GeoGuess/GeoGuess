@@ -309,24 +309,15 @@ export default {
                                 .child('playerName')
                                 .child(childSnapshot.key)
                                 .val();
-                            const distance = snapshot
+                            const roundValues = snapshot
                                 .child(
                                     'round' +
                                         this.round +
                                         '/player' +
-                                        j +
-                                        '/distance'
+                                        j 
                                 )
-                                .val();
-                            const points = snapshot
-                                .child(
-                                    'round' +
-                                        this.round +
-                                        '/player' +
-                                        j +
-                                        '/points'
-                                )
-                                .val();
+                                .exportVal();
+                            const { points, distance } = roundValues;
                             players[playerName] = {
                                 guess: posGuess,
                                 distance,

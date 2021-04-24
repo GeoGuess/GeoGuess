@@ -156,10 +156,8 @@ h3 {
 }
 .players-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 130px);
-    -webkit-column-gap: 30px;
-    -moz-column-gap: 30px;
-    column-gap: 30px;
+    grid-template-columns: repeat(auto-fill, 8.75rem);
+    column-gap: 1.875rem;
     row-gap: 1.5rem;
     justify-content: center;
 }

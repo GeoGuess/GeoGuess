@@ -2,7 +2,6 @@
     <div id="game-page">
         <div id="street-view-container">
             <HeaderGame
-                ref="header"
                 :score="scoreHeader"
                 :points="pointsHeader"
                 :round="round"
@@ -205,7 +204,7 @@ export default {
             isReady: false,
             dialogMessage: this.multiplayer,
             dialogTitle: this.$t('StreetView.waitForOtherPlayers'),
-            dialogText: window.origin + '/room/' + this.roomName,
+            dialogText: '',
             cptNotFoundLocation: 0,
             isVisibleDialog: false,
             panorama: null,
@@ -639,6 +638,7 @@ export default {
             this.pointsHeader = this.points;
             this.remainingTime = 0;
             this.dialogMessage = false;
+            this.isVisibleCountdownAlert = false;
             this.overlay = true;
         },
         goToNextRound(playAgain = false) {
@@ -658,7 +658,6 @@ export default {
             this.hasLocationSelected = false;
             this.isVisibleDialog = false;
             this.randomFeatureProperties = null;
-            this.isVisibleCountdownAlert = false;
 
             if (this.multiplayer) {
                 this.dialogMessage = true; // Show the dialog while waiting for other players
