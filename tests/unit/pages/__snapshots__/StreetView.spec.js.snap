@@ -13,7 +13,7 @@ exports[`StreetView.vue methods startTimer 1`] = `
     </div>
   </div>
   <v-overlay-stub color="#212121" dark="true" opacity="0.8" zindex="1"></v-overlay-stub>
-  <dialogmessage-stub dialogtext="undefined/room/null" dialogtitle="Waiting for other players..."></dialogmessage-stub>
+  <dialogmessage-stub dialogtext="" dialogtitle="Waiting for other players..."></dialogmessage-stub>
   <div class="alert-container">
     <!---->
     <v-alert-stub tag="div" transition="slide-x-transition" closelabel="$vuetify.close" dismissible="true" closeicon="$cancel" icon="mdi-clock-fast" prominent="true" type="info" id="warningCountdown">
@@ -36,7 +36,7 @@ exports[`StreetView.vue methods startTimer hasTimerStarted 1`] = `
     </div>
   </div>
   <v-overlay-stub color="#212121" dark="true" opacity="0.8" zindex="1"></v-overlay-stub>
-  <dialogmessage-stub dialogtext="undefined/room/null" dialogtitle="Waiting for other players..."></dialogmessage-stub>
+  <dialogmessage-stub dialogtext="" dialogtitle="Waiting for other players..."></dialogmessage-stub>
   <div class="alert-container">
     <!---->
     <v-alert-stub tag="div" transition="slide-x-transition" closelabel="$vuetify.close" dismissible="true" closeicon="$cancel" icon="mdi-clock-fast" prominent="true" type="info" id="warningCountdown">
@@ -59,7 +59,7 @@ exports[`StreetView.vue methods startTimer hasTimerStarted 2`] = `
     </div>
   </div>
   <v-overlay-stub color="#212121" dark="true" opacity="0.8" zindex="1"></v-overlay-stub>
-  <dialogmessage-stub dialogtext="undefined/room/null" dialogtitle="Waiting for other players..."></dialogmessage-stub>
+  <dialogmessage-stub dialogtext="" dialogtitle="Waiting for other players..."></dialogmessage-stub>
   <div class="alert-container">
     <!---->
     <v-alert-stub tag="div" transition="slide-x-transition" closelabel="$vuetify.close" dismissible="true" closeicon="$cancel" icon="mdi-clock-fast" prominent="true" type="info" id="warningCountdown">
