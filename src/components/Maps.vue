@@ -38,9 +38,7 @@
                     :disabled="size < 2"
                     @click="size--"
                 >
-                    <v-icon dark>
-                        mdi-arrow-bottom-left
-                    </v-icon>
+                    <v-icon dark> mdi-arrow-bottom-left </v-icon>
                 </v-btn>
 
                 <v-btn
@@ -50,20 +48,11 @@
                     :disabled="size > 3"
                     @click="size++"
                 >
-                    <v-icon dark>
-                        mdi-arrow-top-right
-                    </v-icon>
+                    <v-icon dark> mdi-arrow-top-right </v-icon>
                 </v-btn>
 
-                <v-btn
-                    id="btnPin"
-                    fab
-                    x-small
-                    @click="pinActive = !pinActive"
-                >
-                    <v-icon dark>
-                        mdi-pin{{ pinActive ? '-off' : '' }}
-                    </v-icon>
+                <v-btn id="btnPin" fab x-small @click="pinActive = !pinActive">
+                    <v-icon dark> mdi-pin{{ pinActive ? '-off' : '' }} </v-icon>
                 </v-btn>
             </div>
         </div>
@@ -79,9 +68,7 @@
             color="red"
             @click="hideMap"
         >
-            <v-icon color="white">
-                mdi-close
-            </v-icon>
+            <v-icon color="white"> mdi-close </v-icon>
         </v-btn>
         <Map
             v-if="this.mode === 'classic'"
@@ -184,7 +171,7 @@ import DetailsMap from '@/components/game/DetailsMap';
 import Map from '@/components/map/Map';
 import MapCountries from '@/components/map/MapCountries';
 import { GAME_MODE } from '../constants';
-import { getSelectedPos } from '../utils';
+import { getScore, getSelectedPos } from '../utils';
 
 export default {
     components: {
@@ -211,6 +198,7 @@ export default {
         'timeAttack',
         'nbRound',
         'countdown',
+        'scoreMode',
     ],
     data() {
         return {
@@ -236,6 +224,7 @@ export default {
                 date: new Date(),
                 rounds: [],
             },
+            startTime: null,
         };
     },
     computed: {
@@ -257,6 +246,7 @@ export default {
         this.game.difficulty = this.difficulty;
         this.game.mode = this.mode;
         this.game.timeAttack = this.timeAttack;
+        this.game.playerName = this.playerName;
 
         if (this.roomName) {
             this.room = firebase.database().ref(this.roomName);
@@ -317,11 +307,12 @@ export default {
                                         j 
                                 )
                                 .exportVal();
+
                             const { points, distance } = roundValues;
+
                             players[playerName] = {
+                                ...roundValues,
                                 guess: posGuess,
-                                distance,
-                                points,
                             };
                             this.$refs.map.drawPolyline(
                                 posGuess,
@@ -483,9 +474,10 @@ export default {
             this.$emit('resetLocation');
         },
         calculateDistance() {
+            const timePassed = new Date() - this.startTime;
             if (this.mode === GAME_MODE.COUNTRY) {
                 this.point = +(this.country === this.selectedPos);
-                this.$emit('calculateDistance', null, this.point);
+                this.distance = null;
             } else {
                 this.distance = Math.floor(
                     google.maps.geometry.spherical.computeDistanceBetween(
@@ -493,20 +485,13 @@ export default {
                         this.selectedPos
                     )
                 );
-                if (this.distance < 50) {
-                    this.point = 5000;
-                } else {
-                    this.point = Math.round(
-                        5000 *
-                            Math.exp(-(this.distance / 1000 / this.difficulty))
-                    );
 
-                    if (this.point > 5000) {
-                        this.point = 5000;
-                    } else if (this.point < 0) {
-                        this.point = 0;
-                    }
-                }
+                this.point = getScore(
+                    this.distance,
+                    this.difficulty,
+                    timePassed,
+                    this.scoreMode
+                );
             }
             // Save the distance into firebase
             if (this.room) {
@@ -516,6 +501,7 @@ export default {
                         ...getSelectedPos(this.selectedPos, this.mode),
                         distance: this.distance,
                         points: this.point,
+                        timePassed,
                     });
             } else {
                 this.game.rounds.push({
@@ -524,6 +510,7 @@ export default {
                     position: this.randomLatLng,
                     distance: this.distance,
                     points: this.point,
+                    timePassed,
                 });
             }
 
@@ -531,6 +518,7 @@ export default {
         },
         startNextRound() {
             this.$refs.map.startNextRound();
+            this.startTime = new Date();
         },
         goToNextRound(isPlayAgain = false) {
             if (isPlayAgain) {

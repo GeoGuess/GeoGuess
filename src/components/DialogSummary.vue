@@ -116,10 +116,6 @@ export default {
     },
     methods: {
         updateRecord() {
-            var currentRecord = localStorage.getItem('record');
-            if (currentRecord == null || this.score < currentRecord) {
-                localStorage.setItem('record', this.score);
-            }
             let history = localStorage.getItem('history');
             if (history == null) {
                 history = [];

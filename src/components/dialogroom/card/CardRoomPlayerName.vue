@@ -26,7 +26,7 @@
                             maxlength="10"
                             autofocus
                             :label="$t('CardRoomPlayerName.input')"
-                            @keyup.enter="searchRoom"
+                            :error="invalidName"
                         />
                     </v-col>
                 </v-row>
@@ -106,6 +106,7 @@ export default {
         return {
             players: [],
             playerName: '',
+            invalidName: false,
         };
     },
     computed: {
@@ -115,7 +116,12 @@ export default {
     },
     watch: {
         playerName(val) {
-            this.$emit('setPlayerName', val);
+            if(!this.players.includes(val)){
+                this.invalidName = false;
+                this.$emit('setPlayerName', val);
+            }else{
+                this.invalidName = true;
+            }
         },
     },
     mounted() {

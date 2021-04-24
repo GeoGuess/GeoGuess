@@ -1,6 +1,6 @@
 <template>
     <div class="search-box">
-        <h2>{{ $t('Home.record') }}: {{ record / 1000 }} km</h2>
+        <h2>{{ $tc('Home.placeVisited', nbPlaceVisits) }}</h2>
         <div class="search-box__search-bar">
             <v-combobox
                 v-model="place"
@@ -40,23 +40,16 @@
         />
 
         <div class="search-box__btns">
-            <DialogRoom
-                single-player
-                :place="place"
-                :geo-json="geoJson"
-            />
+            <DialogRoom single-player :place="place" :geo-json="geoJson" />
 
-            <DialogRoom
-                :place="place"
-                :geo-json="geoJson"
-            />
+            <DialogRoom :place="place" :geo-json="geoJson" />
         </div>
     </div>
 </template>
 <script>
 import DialogCustomMap from '@/components/home/DialogCustomMap';
 import DialogRoom from '@/components/dialogroom/DialogRoom';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
         DialogRoom,
@@ -64,7 +57,6 @@ export default {
     },
     data() {
         return {
-            record: localStorage.getItem('record'),
             place: '',
             dialog: false,
             entries: [],
@@ -75,7 +67,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters(['isValidGeoJson', 'geoJson']),
+        ...mapGetters(['isValidGeoJson', 'geoJson', 'nbPlaceVisits']),
         items() {
             return this.entries.map((entry) => entry.properties.name);
         },
@@ -106,6 +98,10 @@ export default {
                 .finally(() => (this.isLoading = false));
         },
     },
+    mounted() {
+        this.loadHistory();
+    },
+    methods: mapActions(['loadHistory']),
 };
 </script>
 <style lang="scss">

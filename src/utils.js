@@ -2,7 +2,7 @@ import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import { point } from '@turf/helpers';
 import axios from 'axios';
-import { GAME_MODE } from './constants';
+import { GAME_MODE, SCORE_MODE } from './constants';
 
 /**
  * check in valid format url
@@ -101,11 +101,13 @@ export function getLocateString(obj, name, language, defaultLanguage = 'en') {
 export function getCountryCodeNameFromLatLng(latLng, errorFunction) {
     return axios
         .get(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&zoom=3&addressdetails=0&format=json&extratags=1`
+            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&zoom=5&addressdetails=1&format=json&extratags=1`
         )
-        .then((res) => {
-            if (res.status === 200 && res.data) {
-                return res.data.extratags['ISO3166-1:alpha2'];
+        .then(({status, data}) => {
+            if (status === 200 && data) {
+                if(data.extratags['ISO3166-1:alpha2'])
+                    return data.extratags['ISO3166-1:alpha2'];
+                return data.address['country_code'].toUpperCase();
             }
         })
         .catch(() => {
@@ -155,7 +157,7 @@ export function download(data, filename, type) {
         window.navigator.msSaveOrOpenBlob(file, filename);
     else {
         // Others
-        var a = document.createElement('a'),
+        const a = document.createElement('a'),
             url = URL.createObjectURL(file);
         a.href = url;
         a.download = filename;
@@ -165,5 +167,34 @@ export function download(data, filename, type) {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
         }, 0);
+    }
+}
+
+export function getScore(distance, difficulty, time, mode) {
+    switch (mode) {
+        case SCORE_MODE.TIME:
+            return Math.round(
+                getScoreNormal(distance, difficulty) * Math.exp(-time / 6000000)
+            );
+
+        default:
+            return getScoreNormal(distance, difficulty);
+    }
+}
+
+function getScoreNormal(distance, difficulty) {
+    if (distance < 50) {
+        return 5000;
+    } else {
+        const point = Math.round(
+            5000 * Math.exp(-(distance / 1000 / difficulty))
+        );
+
+        if (point > 5000) {
+            return 5000;
+        } else if (point < 0) {
+            return 0;
+        }
+        return point;
     }
 }
