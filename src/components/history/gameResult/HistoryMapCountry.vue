@@ -1,8 +1,5 @@
 <template>
-    <div
-        style="height: 400px"
-        class="map-container"
-    >
+    <div style="height: 400px" class="map-container">
         <GmapMap
             ref="mapRef"
             :center="{ lat: 0, lng: 0 }"
@@ -14,10 +11,7 @@
             map-type-id="roadmap"
             class="map"
         >
-            <div
-                v-for="(r, index) in item.rounds"
-                :key="index"
-            >
+            <div v-for="(r, index) in item.rounds" :key="index">
                 <GmapMarker
                     :position="r.position"
                     :label="(index + 1).toString()"
@@ -25,14 +19,8 @@
             </div>
         </GmapMap>
 
-        <div
-            v-if="item.multiplayer"
-            class="result-panel"
-        >
-            <div
-                v-for="(r, index) in item.rounds"
-                :key="index"
-            >
+        <div v-if="item.multiplayer" class="result-panel">
+            <div v-for="(r, index) in item.rounds" :key="index">
                 <p>
                     <b>
                         {{ $t('HeaderGame.round') }} {{ index + 1 }} :
@@ -49,7 +37,8 @@
                         :style="`color: ${
                             strokeColors[index % strokeColors.length]
                         }`"
-                    >{{ playerName }}</span>
+                    >{{ playerName }}</span
+                    >
                 </div>
             </div>
         </div>
