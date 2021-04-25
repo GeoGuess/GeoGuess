@@ -19,6 +19,8 @@
     "axios": "^0.21.1",
     "axios-cache-adapter": "^2.5.0",
     "core-js": "^2.6.12",
+    "discord-rich-presence": "0.0.8",
+    "discord-rpc": "^3.2.0",
     "firebase": "^8.2.6",
     "gmap-vue": "^1.5.0",
     "i18n-iso-countries": "^6.4.0",
