@@ -2,12 +2,14 @@
     <div id="game-page">
         <div id="street-view-container">
             <HeaderGame
-                :score="scoreHeader"
+                ref="header"
+                :distance="scoreHeader"
                 :points="pointsHeader"
                 :round="round"
                 :room-name="roomName"
                 :nb-round="nbRound"
                 :remaining-time="remainingTime"
+                :mode="mode"
             />
 
             <div id="game-interface">
@@ -638,6 +640,7 @@ export default {
             this.dialogMessage = false;
             this.isVisibleCountdownAlert = false;
             this.overlay = true;
+            this.$refs.header.stopTimer();
         },
         goToNextRound(playAgain = false) {
             if (playAgain) {

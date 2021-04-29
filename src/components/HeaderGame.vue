@@ -1,15 +1,21 @@
 <template>
     <div>
         <v-app-bar class="header-game" color="grey darken-4">
-            <div
-                v-if="remainingTime != null && remainingTime > 0"
-                id="countdown-timer"
-            >
+            <div v-if="remainingTime != null && remainingTime > 0">
                 <span id="countdown-text">{{ countdownText }}</span>
             </div>
-            <div v-if="roomName" class="round-score-container room-name">
+
+            <div v-else>
+                <span id="countdown-text">{{ timerText }}</span>
+            </div>
+            <div
+                v-if="roomName && !streamerMode"
+                class="round-score-container room-name"
+            >
                 <span class="sub-text">{{ $t('HeaderGame.room') }} : </span>
-                <span class="main-text">{{ roomName }}</span>
+                <span class="main-text">
+                    {{ roomName }}
+                </span>
             </div>
             <div class="flex-grow-1" />
             <div class="round-score-container">
@@ -25,7 +31,7 @@
             </div>
             <div v-if="isDistanceVisible">
                 <span class="main-text">{{
-                    $t('HeaderGame.kmaway', { value: score / 1000 })
+                    $t('HeaderGame.kmaway', { value: distance / 1000 })
                 }}</span>
             </div>
             <div class="round-points-container">
@@ -41,14 +47,60 @@
 <script>
 import { getCountdownText } from '@/utils';
 import { GAME_MODE } from '../constants';
+import { mapState } from 'vuex';
 export default {
-    props: ['score', 'points', 'round', 'remainingTime', 'roomName', 'nbRound'],
+    props: [
+        'distance',
+        'points',
+        'round',
+        'remainingTime',
+        'roomName',
+        'nbRound',
+    ],
+    data() {
+        return {
+            startedAt: new Date(),
+            timerText: '',
+            intervalFunction: null,
+        };
+    },
+    watch: {
+        round: function () {
+            this.startTimer();
+        },
+    },
     computed: {
+        ...mapState({
+            streamerMode: (state) => state.homeStore.streamerMode,
+        }),
         countdownText() {
             return getCountdownText(this.remainingTime);
         },
         isDistanceVisible() {
-            return this.mode === GAME_MODE.CLASSIC;
+            return this.mode !== GAME_MODE.COUNTRY;
+        },
+    },
+    mounted() {
+        this.startTimer();
+    },
+    methods: {
+        startTimer() {
+            if (this.remainingTime != null && this.remainingTime > 0) {
+                return;
+            }
+            this.startedAt = new Date();
+
+            this.intervalFunction = setInterval(() => {
+                this.timerText = getCountdownText(
+                    Math.round((Date.now() - this.startedAt) / 1000)
+                );
+            }, 1000);
+        },
+        stopTimer() {
+            if (this.remainingTime != null && this.remainingTime > 0) {
+                return;
+            }
+            clearInterval(this.intervalFunction);
         },
     },
 };

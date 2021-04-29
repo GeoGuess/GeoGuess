@@ -1,19 +1,11 @@
 <template>
-    <div class="time_detail">        
-        <v-chip
-            color="#424242"
-            dark
-            v-if="playerName"
-        >
+    <div class="time_detail">
+        <v-chip color="#424242" dark v-if="playerName">
             <v-avatar
                 :color="
-                    [
-                        '#E91B0C',
-                        '#5ccc00',
-                        '#e0ca00',
-                        '#FF1F69',
-                        '#00b8b8',
-                    ][index % 5]
+                    ['#E91B0C', '#5ccc00', '#e0ca00', '#FF1F69', '#00b8b8'][
+                        index % 5
+                    ]
                 "
                 left
             >
@@ -21,15 +13,12 @@
             </v-avatar>
             {{ playerName }}
         </v-chip>
-        <p
-            v-for="(r, index) in rounds"
-            :key="`round_${index}`"
-        >
+        <p v-for="(r, index) in rounds" :key="`round_${index}`">
             <b>
                 {{ $t('HeaderGame.round') }}
                 {{ index + 1 }} :
             </b>
-            {{ durationToText(r.timePassed) }}
+            {{ durationToText(r.timePassed / 1000) }}
         </p>
 
         <p>
@@ -42,31 +31,31 @@
 <script>
 import { getCountdownText } from '@/utils';
 export default {
-    props:{
-        rounds:{
+    props: {
+        rounds: {
             type: Array,
             required: true,
         },
-        playerName:{
+        playerName: {
             type: String,
             required: false,
         },
-        index:{
-            type:Number,
+        index: {
+            type: Number,
             required: false,
-        }
+        },
     },
-    methods:{        
+    methods: {
         durationToText(time) {
-            return getCountdownText(Math.floor(time / 1000));
+            return getCountdownText(Math.floor(time));
         },
         getTotalDuration(rounds) {
             return rounds.reduce(
-                (acc, { timePassed }) => acc + timePassed,
+                (acc, { timePassed }) => acc + Math.floor(timePassed / 1000),
                 0
             );
         },
-    }
+    },
 };
 </script>
 
@@ -76,10 +65,10 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     padding: 0.3em 0;
-    .v-chip{ 
+    .v-chip {
         width: 8.875rem;
     }
-    p{
+    p {
         margin: 0;
     }
 }

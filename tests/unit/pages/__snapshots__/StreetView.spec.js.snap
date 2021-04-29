@@ -3,7 +3,7 @@
 exports[`StreetView.vue methods startTimer 1`] = `
 <div id="game-page">
   <div id="street-view-container">
-    <headergame-stub nbround="5" remainingtime="0" round="1" points="0" score="0"></headergame-stub>
+    <headergame-stub nbround="5" remainingtime="0" round="1" points="0" distance="0" mode="classic"></headergame-stub>
     <div id="game-interface">
       <v-overlay-stub color="#212121" dark="true" opacity="1" zindex="5"></v-overlay-stub>
       <div id="street-view"></div>
@@ -26,7 +26,7 @@ exports[`StreetView.vue methods startTimer 1`] = `
 exports[`StreetView.vue methods startTimer hasTimerStarted 1`] = `
 <div id="game-page">
   <div id="street-view-container">
-    <headergame-stub nbround="5" remainingtime="0" round="1" points="0" score="0"></headergame-stub>
+    <headergame-stub nbround="5" remainingtime="0" round="1" points="0" distance="0" mode="classic"></headergame-stub>
     <div id="game-interface">
       <v-overlay-stub color="#212121" dark="true" opacity="1" zindex="5"></v-overlay-stub>
       <div id="street-view"></div>
@@ -49,7 +49,7 @@ exports[`StreetView.vue methods startTimer hasTimerStarted 1`] = `
 exports[`StreetView.vue methods startTimer hasTimerStarted 2`] = `
 <div id="game-page">
   <div id="street-view-container">
-    <headergame-stub nbround="5" remainingtime="0" round="1" points="0" score="0"></headergame-stub>
+    <headergame-stub nbround="5" remainingtime="0" round="1" points="0" distance="0" mode="classic"></headergame-stub>
     <div id="game-interface">
       <v-overlay-stub color="#212121" dark="true" opacity="1" zindex="5"></v-overlay-stub>
       <div id="street-view"></div>

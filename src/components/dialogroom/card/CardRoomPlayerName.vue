@@ -1,20 +1,15 @@
 <template>
     <v-card id="card-playername">
         <v-card-title>
-            <span id="card-title">{{$t('CardRoomPlayerName.title')}} {{ roomName }}</span>
+            <span id="card-title">
+                {{ $t('CardRoomPlayerName.title') }}
+                <span :class="{ blur: streamerMode }">{{ roomName }}</span>
+            </span>
         </v-card-title>
 
-        <v-card-subtitle
-            ref="roomUrl"
-            class="pb-0"
-        >
-            {{ roomUrl }}
-            <v-icon
-                small
-                @click="copy"
-            >
-                mdi-content-copy
-            </v-icon>
+        <v-card-subtitle ref="roomUrl" class="pb-0">
+            <span :class="{ blur: streamerMode }">{{ roomUrl }}</span>
+            <v-icon small @click="copy"> mdi-content-copy </v-icon>
         </v-card-subtitle>
         <v-card-text>
             <v-container>
@@ -61,12 +56,7 @@
         </v-card-text>
         <v-card-actions>
             <div class="flex-grow-1" />
-            <v-btn
-                dark
-                depressed
-                color="#FF5252"
-                @click="cancel"
-            >
+            <v-btn dark depressed color="#FF5252" @click="cancel">
                 {{ $t('cancel') }}
             </v-btn>
             <v-btn
@@ -85,19 +75,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import CardRoomMixin from './mixins/CardRoomMixin';
 export default {
     mixins: [CardRoomMixin],
     props: {
-        'room': {
+        room: {
             type: Object,
             required: true,
-        }, 
-        'roomName': {
+        },
+        roomName: {
             type: String,
             required: true,
         },
-        'firstPlayer': {
+        firstPlayer: {
             type: Boolean,
             required: true,
         },
@@ -110,16 +101,19 @@ export default {
         };
     },
     computed: {
+        ...mapState({
+            streamerMode: (state) => state.homeStore.streamerMode,
+        }),
         roomUrl() {
             return window.origin + '/room/' + this.roomName;
         },
     },
     watch: {
         playerName(val) {
-            if(!this.players.includes(val)){
+            if (!this.players.includes(val)) {
                 this.invalidName = false;
                 this.$emit('setPlayerName', val);
-            }else{
+            } else {
                 this.invalidName = true;
             }
         },

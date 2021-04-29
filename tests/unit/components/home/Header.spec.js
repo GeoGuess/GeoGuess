@@ -1,12 +1,29 @@
 import Header from '@/components/page/Header.vue';
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
+import homeStore from '@/store/homeStore';
 import appInit from '../../utils/appInit';
+import Vuex from 'vuex';
 
 const args = appInit(createLocalVue());
 
 describe('Header.vue', () => {
+    let store;
+    beforeEach(() => {
+        store = new Vuex.Store({
+            modules: {
+                homeStore: {
+                    state: homeStore.state,
+                    getters: homeStore.getters,
+                    actions: homeStore.actions,
+                },
+            },
+        });
+    });
     it('open dialog about', () => {
-        const wrapper = mount(Header, args);
+        const wrapper = mount(Header, {
+            ...args,
+            store,
+        });
 
         const aboutBtn = wrapper.find('#aboutBtn');
         expect(wrapper.vm.aboutDialog).toEqual(false);
@@ -16,7 +33,10 @@ describe('Header.vue', () => {
     });
 
     it('switchLanguage method', () => {
-        const wrapper = shallowMount(Header, args);
+        const wrapper = shallowMount(Header, {
+            ...args,
+            store,
+        });
         expect(localStorage.getItem('language')).toEqual('en');
         wrapper.vm.switchLanguage('fr');
         expect(localStorage.getItem('language')).toEqual('fr');
