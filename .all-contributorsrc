@@ -111,6 +111,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Stimmenhotel",
+      "name": "Stimmenhotel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15821524?v=4",
+      "profile": "https://github.com/Stimmenhotel",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
