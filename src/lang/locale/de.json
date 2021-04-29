@@ -90,7 +90,7 @@
         "total": "Total"
     },
     "DialogRoom": {
-        "singlePlayer": "Ein Spieler",
+        "singlePlayer": "Einzelspieler",
         "withFriends": "Mit Freunden",
         "invalidRoomName": "Ungültiger Name. Bitte versuche einen anderen.",
         "inProgress": "Der erste Spieler erstellt den Raum. Bitte warte und versuche es erneut.",
