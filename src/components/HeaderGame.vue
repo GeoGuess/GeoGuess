@@ -59,7 +59,7 @@ export default {
     ],
     data() {
         return {
-            startedAt: new Date(),
+            startedAt: null,
             timerText: '',
             intervalFunction: null,
         };
