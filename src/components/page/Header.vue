@@ -10,8 +10,9 @@
             </router-link>
 
             <div class="flex-grow-1" />
-
-            <nav class="header__nav">
+            
+            <v-app-bar-nav-icon class="header__nav-icon" @click="menuMobile = !menuMobile"></v-app-bar-nav-icon>
+            <nav class="header__nav" :class="{visible: menuMobile}">
                 <v-btn id="historyBtn" text>
                     <router-link to="/history">
                         {{ $t('Home.historyBtn') }}
@@ -20,6 +21,11 @@
                 <div class="header__nav__btns">
                     <v-btn id="aboutBtn" text @click="aboutDialog = true">
                         <v-icon size="30"> mdi-help-circle </v-icon>
+                    </v-btn>
+                    <v-btn text @click="setStreamerMode(!streamerMode)">
+                        <v-icon size="30">
+                            mdi-eye{{ streamerMode ? '-off' : '' }}
+                        </v-icon>
                     </v-btn>
                     <v-menu>
                         <template v-slot:activator="{ on }">
@@ -39,12 +45,6 @@
                             </v-list-item>
                         </v-list>
                     </v-menu>
-
-                    <v-btn text @click="setStreamerMode(!streamerMode)">
-                        <v-icon size="30">
-                            mdi-eye{{ streamerMode ? '-off' : '' }}
-                        </v-icon>
-                    </v-btn>
                 </div>
             </nav>
             <v-dialog v-model="aboutDialog">
@@ -52,7 +52,7 @@
             </v-dialog>
         </v-app-bar>
 
-        <v-alert v-if="!emoMode" color="#7289DA" dark class="demo-alert">
+        <v-alert v-if="demoMode" color="#7289DA" dark class="demo-alert">
             <v-row align="center">
                 <v-col class="grow">
                     {{ $t('Demo.message') }}
@@ -93,6 +93,7 @@ export default {
         return {
             aboutDialog: false,
             languages,
+            menuMobile: false,
         };
     },
     computed: {
@@ -123,7 +124,7 @@ export default {
     z-index: 1;
     padding: 0 5%;
     background-color: #f1e9d6 !important;
-    nav.header__nav,
+    .header__nav,
     .header__nav__btns {
         display: flex;
         & > div {
@@ -144,6 +145,9 @@ export default {
     .header__logo-min {
         display: none;
     }
+    .header__nav-icon{
+        visibility: hidden;
+    }
 }
 
 #alertStreamerMode {
@@ -153,13 +157,34 @@ export default {
     right: 0;
     margin: 0.625rem;
 }
-@media (max-width: 660px) {
+@media (max-width: 780px) {
     .header {
         .header__logo {
             display: none;
         }
         .header__logo-min {
             display: block;
+        }
+        .header__nav{
+            &:not(.visible){
+                display: none;
+            }
+            position: absolute;
+            top: 6.2rem;
+            right: 0rem;
+            background: #f1e9d6;
+            padding: 1rem;
+            box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%);
+            border-bottom-left-radius: .3125rem;
+            border-bottom-right-radius: .3125rem;
+            max-width: 100%;
+            flex-direction: row;
+            .header__nav__btns{
+                margin: 0;
+            }
+        }
+        .header__nav-icon{
+            visibility: visible;
         }
     }
 }

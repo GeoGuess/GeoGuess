@@ -24,7 +24,7 @@
         "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quotas has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Play",
         "streamerModeActivate": "Streamer mode activate",
-        "streamerModeDetails": "Urls and roomName are hidden"
+        "streamerModeDetails": "URLs and room names are hidden"
     },
     "StreetView": {
         "nearby": {
