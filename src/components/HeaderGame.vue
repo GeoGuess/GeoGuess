@@ -31,7 +31,7 @@
             </div>
             <div v-if="isDistanceVisible">
                 <span class="main-text">{{
-                    $t('HeaderGame.kmaway', { value: distance / 1000 })
+                    $t('HeaderGame.kmaway', { value: new Intl.NumberFormat($i18n.locale).format(distance / 1000) })
                 }}</span>
             </div>
             <div class="round-points-container">
@@ -85,7 +85,7 @@ export default {
     },
     methods: {
         startTimer() {
-            if (this.remainingTime != null && this.remainingTime > 0) {
+            if (this.remainingTime != null || this.remainingTime > 0) {
                 return;
             }
             this.startedAt = new Date();
@@ -97,7 +97,7 @@ export default {
             }, 1000);
         },
         stopTimer() {
-            if (this.remainingTime != null && this.remainingTime > 0) {
+            if (this.remainingTime != null || this.remainingTime > 0) {
                 return;
             }
             clearInterval(this.intervalFunction);
@@ -132,7 +132,10 @@ export default {
 .sub-text {
     color: #616161;
 }
-@media (max-width: 450px) {
+@media (max-width: 555px) {
+    .room-name {
+        display: none;
+    }
     .main-text,
     .sub-text,
     #countdown-text {
@@ -151,12 +154,6 @@ export default {
         .sub-text {
             display: none;
         }
-    }
-}
-
-@media (max-width: 555px) {
-    .room-name {
-        display: none;
     }
 }
 </style>

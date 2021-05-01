@@ -13,7 +13,7 @@ exports[`HeaderGame.vue methods 1`] = `
     <div class="round-score-container"><span class="sub-text">DISTANCE: </span></div>
     <div><span class="main-text">NaN km away</span></div>
     <div class="round-points-container"><span class="sub-text">SCORE: </span></div>
-    <div><span class="main-text"></span></div>
+    <div><span class="main-text">NaN</span></div>
   </v-app-bar-stub>
 </div>
 `;
@@ -31,7 +31,7 @@ exports[`HeaderGame.vue mounted 1`] = `
     <div class="round-score-container"><span class="sub-text">DISTANCE: </span></div>
     <div><span class="main-text">NaN km away</span></div>
     <div class="round-points-container"><span class="sub-text">SCORE: </span></div>
-    <div><span class="main-text"></span></div>
+    <div><span class="main-text">NaN</span></div>
   </v-app-bar-stub>
 </div>
 `;
