@@ -131,7 +131,7 @@
     },
     "DialogSummary": {
         "summaryMsgSinglePoints": "Sua pontuação é de <strong>{points}</strong> pontos!",
-        "summaryMsgSingleDistance": "Sua pontuação é de <strong>{points}</strong> pontos!",
+        "summaryMsgSingleDistance": "Você está a <strong>{distance}</strong> km de distância!",
         "summaryMsgMultiPoints": "O jogador <strong>{playerName}</strong> fez <strong>{points}</strong> pontos! ",
         "summaryMsgMultiDistance": "(<strong>{distance}</strong> km de distância)",
         "viewDetails": "Ver detalhes"
