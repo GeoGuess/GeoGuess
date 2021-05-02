@@ -19,7 +19,9 @@ describe('HeaderGame.vue', () => {
     
     it('methods', () => {
         window.setInterval = (func) => { func();};
-        const wrapper = shallowMount(HeaderGame, args);
+        const wrapper = shallowMount(HeaderGame, {...args, propsData:{
+            remainingTime: 0,
+        } });
 
         expect(wrapper.vm.startedAt.getTime()).toBeLessThanOrEqual(new Date().getTime());
         expect(wrapper.vm.timerText).toEqual("00:00");
@@ -30,7 +32,9 @@ describe('HeaderGame.vue', () => {
     
     it('methods', done => {
         const spy = jest.fn();
-        const wrapper = shallowMount(HeaderGame, args);
+        const wrapper = shallowMount(HeaderGame, {...args, propsData:{
+            remainingTime: 0,
+        } });
         wrapper.vm.startTimer = spy;
 
         wrapper.setProps({round: 2});
