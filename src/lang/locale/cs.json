@@ -22,7 +22,9 @@
         },
         "limitation": "OMEZENÍ",
         "limitationDescription": "Tato hra má nastavená omezení počtu her za den, abych snížil náklady na provoz. Pokud se mapa nenačítá, nebo se načte v režimu negativu (špatné barvy), znamená to, že dnešení limit her byl již naplněn. Limit se resetuje o půlnoci amerického času (Pacific Time - tj. v 8 hodin ráno našeho zimního času, popř. 9 hodin ráno našeho letního času). Za tuto nepříjemnost se omlouvám. Hra je poskytována open source, takže je možné hostovat vlastní kopii a hrát bez jakýchkoliv denních omezení.",
-        "play": "Hrát"
+        "play": "Hrát",
+        "streamerModeActivate": "Streamer mode activate",
+        "streamerModeDetails": "URLs and room names are hidden"
     },
     "StreetView": {
         "nearby": {
@@ -121,7 +123,13 @@
         "timeattackInfos": "V režimu TimeAttack dostane bod pouze první hráč, který správně uhádne zemi. Buď nejrychlejší a vyhraj!",
         "allowMove": "Povolit Pohyb",
         "allowZoom": "Povolit Zoom (přiblížení)",
-        "allowPan": "Povolit Otáčení"
+        "allowPan": "Povolit Otáčení",
+        "countDownLabel": "CountDown (seconds)",
+        "scoreModeLabel": "Score formula",
+        "scoreModes": {
+            "normal": "normal",
+            "time": "time"
+        }
     },
     "CardRoomDifficulty": {
         "title": "Zvol obtížnost hry (ovlivňuje bodování).",
