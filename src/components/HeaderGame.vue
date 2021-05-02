@@ -85,7 +85,7 @@ export default {
     },
     methods: {
         startTimer() {
-            if (this.remainingTime == 0) {
+            if (this.remainingTime != 0) {
                 return;
             }
             this.startedAt = new Date();
