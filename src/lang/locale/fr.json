@@ -23,8 +23,8 @@
         "limitation": "LIMITATION",
         "limitationDescription": "Actuellement, j'ai fixé un quota par jour afin que le coût du jeu ne soit pas élevé.            Si la carte ne se charge pas, cela signifie que le quota a été dépassé.            Il est réinitialisé à minuit (heure du pacifique). Désolé pour le dérangement.             Le jeu est open source, ainsi il vous est possible de créer votre propre jeu pour y jouer sans limite.",
         "play": "Jouer",
-        "streamerModeActivate": "Streamer mode activate",
-        "streamerModeDetails": "URLs and room names are hidden"
+        "streamerModeActivate": "Mode Streamer activé",
+        "streamerModeDetails": "Les URLs et les noms des salles sont masqués"
     },
     "StreetView": {
         "nearby": {
@@ -124,11 +124,11 @@
         "allowMove": "Autoriser les déplacements",
         "allowZoom": "Autoriser le zoom",
         "allowPan": "Autoriser les rotations",
-        "countDownLabel": "CountDown (seconds)",
-        "scoreModeLabel": "Score formula",
+        "countDownLabel": "Compte à rebours (secondes)",
+        "scoreModeLabel": "Formule de calcul du score",
         "scoreModes": {
             "normal": "normal",
-            "time": "time"
+            "time": "temps"
         }
     },
     "CardRoomDifficulty": {
