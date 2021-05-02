@@ -22,7 +22,9 @@
         },
         "limitation": "LIMITATION",
         "limitationDescription": "Actuellement, j'ai fixé un quota par jour afin que le coût du jeu ne soit pas élevé.            Si la carte ne se charge pas, cela signifie que le quota a été dépassé.            Il est réinitialisé à minuit (heure du pacifique). Désolé pour le dérangement.             Le jeu est open source, ainsi il vous est possible de créer votre propre jeu pour y jouer sans limite.",
-        "play": "Jouer"
+        "play": "Jouer",
+        "streamerModeActivate": "Streamer mode activate",
+        "streamerModeDetails": "URLs and room names are hidden"
     },
     "StreetView": {
         "nearby": {
@@ -121,7 +123,13 @@
         "timeattackInfos": "Dans le mode TimeAttack, seulement le premier joueur qui devine le pays récupère le point. Sois rapide et gagne!",
         "allowMove": "Autoriser les déplacements",
         "allowZoom": "Autoriser le zoom",
-        "allowPan": "Autoriser les rotations"
+        "allowPan": "Autoriser les rotations",
+        "countDownLabel": "CountDown (seconds)",
+        "scoreModeLabel": "Score formula",
+        "scoreModes": {
+            "normal": "normal",
+            "time": "time"
+        }
     },
     "CardRoomDifficulty": {
         "title": "Saisir la difficulté.",
