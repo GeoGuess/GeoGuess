@@ -22,7 +22,9 @@
         },
         "limitation": "BEGRÄNSNING",
         "limitationDescription": "För nuvarande sätter jag begränsningar per dag för att kostnadena för spelet inte ska bli för höga.             Om kartan inte laddar innebär det att den åtkomliga mängden har förbrukats.              Den kommer att återställas vid midnatt Pacific Time(UTC-8) Ursäktar för besvären.             This game is open source so you can build your own game server and play this game unlimitedly.",
-        "play": "Spela"
+        "play": "Spela",
+        "streamerModeActivate": "Streamer mode activate",
+        "streamerModeDetails": "URLs and room names are hidden"
     },
     "StreetView": {
         "nearby": {
@@ -121,7 +123,13 @@
         "timeattackInfos": "I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!",
         "allowMove": "Tillåt förflyttning",
         "allowZoom": "Tillåt zoomning",
-        "allowPan": "Tillåt panorering"
+        "allowPan": "Tillåt panorering",
+        "countDownLabel": "CountDown (seconds)",
+        "scoreModeLabel": "Score formula",
+        "scoreModes": {
+            "normal": "normal",
+            "time": "time"
+        }
     },
     "CardRoomDifficulty": {
         "title": "Sätt en svårighetsgrad.",
