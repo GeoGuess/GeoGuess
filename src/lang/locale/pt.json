@@ -22,7 +22,9 @@
         },
         "limitation": "LIMITAÇÃO",
         "limitationDescription": "Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.                Se o mapa não carregar, significa que as cotas do dia foram excedidas                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência.                 O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.",
-        "play": "Jogar"
+        "play": "Jogar",
+        "streamerModeActivate": "Streamer mode activate",
+        "streamerModeDetails": "URLs and room names are hidden"
     },
     "StreetView": {
         "nearby": {
@@ -121,7 +123,13 @@
         "timeattackInfos": "No modo TimeAttack, apenas o jogador que adivinhar o país primeiro ganha o ponto. Seja rápido e vença!",
         "allowMove": "Permitir movimento",
         "allowZoom": "Permitir Zoom",
-        "allowPan": "Permitir Visão Panorâmica"
+        "allowPan": "Permitir Visão Panorâmica",
+        "countDownLabel": "CountDown (seconds)",
+        "scoreModeLabel": "Score formula",
+        "scoreModes": {
+            "normal": "normal",
+            "time": "time"
+        }
     },
     "CardRoomDifficulty": {
         "title": "Defina a dificuldade.",
