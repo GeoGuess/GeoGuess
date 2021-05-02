@@ -85,7 +85,7 @@ export default {
     },
     methods: {
         startTimer() {
-            if (this.remainingTime != null || this.remainingTime > 0) {
+            if (this.remainingTime != null) {
                 return;
             }
             this.startedAt = new Date();
@@ -97,10 +97,9 @@ export default {
             }, 1000);
         },
         stopTimer() {
-            if (this.remainingTime != null || this.remainingTime > 0) {
-                return;
+            if (this.intervalFunction) {
+                clearInterval(this.intervalFunction);
             }
-            clearInterval(this.intervalFunction);
         },
     },
 };
