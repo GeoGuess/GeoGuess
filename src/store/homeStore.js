@@ -10,6 +10,7 @@ export default {
         openDialogSinglePlayer: false,
         openDialogMultiPlayer: false,
         history: [],
+        streamerMode: false,
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
@@ -26,6 +27,9 @@ export default {
         },
         [MutationTypes.HOME_SET_HISTORY](state, history) {
             state.history = history;
+        },
+        [MutationTypes.HOME_SET_STREAMER_MODE](state, streamerMode) {
+            state.streamerMode = streamerMode;
         },
     },
 

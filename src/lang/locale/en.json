@@ -22,7 +22,9 @@
         },
         "limitation": "LIMITATION",
         "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quotas has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
-        "play": "Play"
+        "play": "Play",
+        "streamerModeActivate": "Streamer mode activate",
+        "streamerModeDetails": "URLs and room names are hidden"
     },
     "StreetView": {
         "nearby": {
@@ -116,7 +118,13 @@
         "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
         "allowMove": "Allow Move",
         "allowZoom": "Allow Zoom",
-        "allowPan": "Allow Pan"
+        "allowPan": "Allow Pan", 
+        "countDownLabel": "CountDown (seconds)",       
+        "scoreModeLabel": "Score formula",
+        "scoreModes": {
+            "normal": "normal",
+            "time": "time"
+        }
     },
     "CardRoomDifficulty": {
         "title": "Set a difficulty level.",

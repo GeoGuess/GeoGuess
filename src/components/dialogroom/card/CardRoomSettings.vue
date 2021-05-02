@@ -71,14 +71,20 @@
                                 "
                                 hide-details
                             />
-                            <v-select v-model="scoreMode" :items="scoreModes" />
+                            <br />
+                            <v-select  
+                                v-if="this.mode !== gameMode.COUNTRY"
+                                :label="$t('CardRoomSettings.scoreModeLabel')"
+                                v-model="scoreMode" 
+                                :items="scoreModes" 
+                            />
                         </div>
                         <div>
                             <v-text-field
                                 v-if="!singlePlayer"
+                                :label="$t('CardRoomSettings.countDownLabel')"
                                 v-model="countdown"
                                 hide-details
-                                label="CountDown (seconds)"
                                 type="number"
                             />
                             <div
@@ -123,7 +129,6 @@
                             </div>
                         </div>
                     </v-row>
-                    <v-row align="center" />
                 </v-col>
                 <v-col
                     :class="{
@@ -196,7 +201,7 @@ export default {
         scoreModes() {
             return Object.values(SCORE_MODE).map((a) => ({
                 value: a,
-                text: a,
+                text: this.$t('CardRoomSettings.scoreModes.'+a),
             }));
         },
         gameMode() {
@@ -251,8 +256,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.settings .row {
-    margin-bottom: 2.5rem;
+.settings .row{
+    margin-bottom: 1.5rem;
+    .v-select{
+        width: 15.5rem;
+    }
 }
 
 .v-card__actions .v-btn {

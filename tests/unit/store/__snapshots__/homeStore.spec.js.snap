@@ -49,5 +49,6 @@ Object {
   ],
   "openDialogMultiPlayer": true,
   "openDialogSinglePlayer": true,
+  "streamerMode": false,
 }
 `;

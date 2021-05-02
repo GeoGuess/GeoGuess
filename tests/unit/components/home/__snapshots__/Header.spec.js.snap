@@ -4,12 +4,12 @@ exports[`Header.vue open dialog about 1`] = `
 <div>
   <header class="header v-sheet theme--light v-toolbar v-app-bar" style="height: 100px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;">
     <div class="v-toolbar__content" style="height: 100px;">
-      <router-link to="/"><img src="@/assets/geoguessLogo.png" class="header__logo"> <img src="/img/icons/android-icon-72x72.png" class="header__logo-min"></router-link>
-      <div class="flex-grow-1"></div>
+      <router-link to="/"><img src="@/assets/geoguessLogo.png" class="header__logo"> <img src="@/../public/img/icons/android-icon-72x72.png" class="header__logo-min"></router-link>
+      <div class="flex-grow-1"></div> <button type="button" class="v-app-bar__nav-icon header__nav-icon v-btn v-btn--flat v-btn--icon v-btn--round theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-menu theme--light"></i></span></button>
       <nav class="header__nav"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content"><router-link to="/history">
                     HISTORY
                 </router-link></span></button>
-        <div class="header__nav__btns"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="aboutBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-circle theme--light" style="font-size: 30px;"></i></span></button>
+        <div class="header__nav__btns"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="aboutBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-circle theme--light" style="font-size: 30px;"></i></span></button> <button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--light" style="font-size: 30px;"></i></span></button>
           <div class="v-menu"><button type="button" class="v-btn v-btn--flat v-btn--text theme--light v-size--default" id="languageBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-translate theme--light" style="font-size: 30px;"></i></span></button>
             <!---->
           </div>
@@ -21,5 +21,15 @@ exports[`Header.vue open dialog about 1`] = `
     </div>
   </header>
   <!---->
+  <transition-stub name="slide-x-reverse-transition" id="alertStreamerMode">
+    <div role="alert" class="v-alert v-sheet theme--dark streamerMode" style="display: none;">
+      <div class="v-alert__wrapper"><i aria-hidden="true" class="v-icon notranslate v-alert__icon mdi mdi-twitch theme--dark"></i>
+        <div class="v-alert__content">
+          <h4>Streamer mode activate</h4>
+          <p>URLs and room names are hidden</p>
+        </div><button type="button" class="v-alert__dismissible v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--small" aria-label="Close"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-close-circle theme--dark"></i></span></button>
+      </div>
+    </div>
+  </transition-stub>
 </div>
 `;

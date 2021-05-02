@@ -1,6 +1,5 @@
 import Home from '@/pages/Home';
 import { GAME_MODE } from './constants';
-import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import StreetView from '@/pages/StreetView';
 import HistoryPage from '@/pages/HistoryPage';
 import Vue from 'vue';
@@ -78,11 +77,6 @@ export default new Router({
                 multiplayer: true,
                 ...route.params,
             }),
-        },
-        {
-            path: '/privacy-policy',
-            name: 'privacy-policy',
-            component: PrivacyPolicy,
         },
     ],
 });

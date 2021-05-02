@@ -22,6 +22,7 @@ export default new Vuetify({
                 accent: '#D0CABC',
                 beige: '#ded3af',
                 darkGreen: '#4F665A',
+                streamerMode: '#9146ff',
             },
         },
     },

@@ -1,51 +1,36 @@
 <template>
     <div>
-        <v-app-bar
-            class="header"
-            height="100"
-        >
+        <v-app-bar class="header" height="100">
             <router-link to="/">
-                <img
-                    class="header__logo"
-                    src="@/assets/geoguessLogo.png"
-                >
+                <img class="header__logo" src="@/assets/geoguessLogo.png" />
                 <img
                     class="header__logo-min"
-                    src="/img/icons/android-icon-72x72.png"
-                >
+                    src="@/../public/img/icons/android-icon-72x72.png"
+                />
             </router-link>
 
             <div class="flex-grow-1" />
-
-            <nav class="header__nav">
-                <v-btn
-                    id="historyBtn"
-                    text
-                >
+            
+            <v-app-bar-nav-icon class="header__nav-icon" @click="menuMobile = !menuMobile"></v-app-bar-nav-icon>
+            <nav class="header__nav" :class="{visible: menuMobile}">
+                <v-btn id="historyBtn" text>
                     <router-link to="/history">
                         {{ $t('Home.historyBtn') }}
                     </router-link>
                 </v-btn>
                 <div class="header__nav__btns">
-                    <v-btn
-                        id="aboutBtn"
-                        text
-                        @click="aboutDialog = true"
-                    >
+                    <v-btn id="aboutBtn" text @click="aboutDialog = true">
+                        <v-icon size="30"> mdi-help-circle </v-icon>
+                    </v-btn>
+                    <v-btn text @click="setStreamerMode(!streamerMode)">
                         <v-icon size="30">
-                            mdi-help-circle
+                            mdi-eye{{ streamerMode ? '-off' : '' }}
                         </v-icon>
                     </v-btn>
                     <v-menu>
                         <template v-slot:activator="{ on }">
-                            <v-btn
-                                id="languageBtn"
-                                text
-                                v-on="on"
-                            >
-                                <v-icon size="30">
-                                    mdi-translate
-                                </v-icon>
+                            <v-btn id="languageBtn" text v-on="on">
+                                <v-icon size="30"> mdi-translate </v-icon>
                             </v-btn>
                         </template>
                         <v-list id="menuLanguage">
@@ -67,34 +52,38 @@
             </v-dialog>
         </v-app-bar>
 
-        <v-alert
-            v-if="demoMode"
-            color="#7289DA"
-            dark
-            class="demo-alert"
-        >
+        <v-alert v-if="demoMode" color="#7289DA" dark class="demo-alert">
             <v-row align="center">
                 <v-col class="grow">
                     {{ $t('Demo.message') }}
                 </v-col>
                 <v-col class="shrink">
-                    <v-btn
-                        target="_blank"
-                        href="https://discord.gg/9GXm6RT"
-                    >
-                        <v-icon left>
-                            mdi-discord
-                        </v-icon>
+                    <v-btn target="_blank" href="https://discord.gg/9GXm6RT">
+                        <v-icon left> mdi-discord </v-icon>
                         {{ $t('Demo.btn') }}
                     </v-btn>
                 </v-col>
             </v-row>
+        </v-alert>
+        <v-alert
+            type="success"
+            v-model="streamerMode"
+            dismissible
+            transition="slide-x-reverse-transition"
+            id="alertStreamerMode"
+            icon="mdi-twitch"
+            color="streamerMode"
+        >
+            <h4>{{ $t('Home.streamerModeActivate') }}</h4>
+            <p>{{ $t('Home.streamerModeDetails') }}</p>
         </v-alert>
     </div>
 </template>
 <script>
 import About from '@/components/page/About';
 import { languages } from '../../lang';
+import { mapMutations, mapState } from 'vuex';
+import * as MutationTypes from '@/store/mutation-types';
 
 export default {
     components: {
@@ -104,14 +93,21 @@ export default {
         return {
             aboutDialog: false,
             languages,
+            menuMobile: false,
         };
     },
     computed: {
+        ...mapState({
+            streamerMode: (state) => state.homeStore.streamerMode,
+        }),
         demoMode() {
             return !!process.env.VUE_APP_DEMO_MODE;
         },
     },
     methods: {
+        ...mapMutations({
+            setStreamerMode: MutationTypes.HOME_SET_STREAMER_MODE,
+        }),
         switchLanguage(language) {
             this.$i18n.locale = language;
             this.$vuetify.lang.current = language;
@@ -128,7 +124,7 @@ export default {
     z-index: 1;
     padding: 0 5%;
     background-color: #f1e9d6 !important;
-    nav.header__nav,
+    .header__nav,
     .header__nav__btns {
         display: flex;
         & > div {
@@ -149,15 +145,46 @@ export default {
     .header__logo-min {
         display: none;
     }
+    .header__nav-icon{
+        visibility: hidden;
+    }
 }
 
-@media (max-width: 660px) {
+#alertStreamerMode {
+    width: fit-content;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    margin: 0.625rem;
+}
+@media (max-width: 780px) {
     .header {
         .header__logo {
             display: none;
         }
         .header__logo-min {
             display: block;
+        }
+        .header__nav{
+            &:not(.visible){
+                display: none;
+            }
+            position: absolute;
+            top: 6.2rem;
+            right: 0rem;
+            background: #f1e9d6;
+            padding: 1rem;
+            box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%);
+            border-bottom-left-radius: .3125rem;
+            border-bottom-right-radius: .3125rem;
+            max-width: 100%;
+            flex-direction: row;
+            .header__nav__btns{
+                margin: 0;
+            }
+        }
+        .header__nav-icon{
+            visibility: visible;
         }
     }
 }

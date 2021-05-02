@@ -93,15 +93,13 @@ export default {
                     '<b>' +
                     this.$t('Maps.infoWindow.Distance') +
                     ' : </b>' +
-                    distance +
-                    ' m';
+                    new Intl.NumberFormat(this.$i18n.locale, { style: "unit", unit:"meter" }).format(distance); 
             } else {
                 dataToDisplay +=
                     '<b>' +
                     this.$t('Maps.infoWindow.Distance') +
                     ' : </b>' +
-                    distance / 1000 +
-                    ' km';
+                    new Intl.NumberFormat(this.$i18n.locale, { style: "unit", unit:"kilometer" }).format(distance / 1000); 
             }
 
             dataToDisplay +=
