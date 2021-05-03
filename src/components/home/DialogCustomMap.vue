@@ -201,11 +201,7 @@ export default {
                         style: map.data.getStyle(),
                         controls: map.data.getControls(),
                     });
-                    try {
-                        data.addGeoJson(v);
-                    } catch (e) {
-                        throw e;
-                    }
+                    data.addGeoJson(v);
 
                     if (this.type === 'edit') {
                         data.addListener('addfeature', this.onChangeMap);
@@ -237,25 +233,9 @@ export default {
                         editable: true,
                         draggable: true,
                     });
-                    map.data.addListener('addfeature', this.onChangeMap);
-                    map.data.addListener('removefeature', this.onChangeMap);
-                    map.data.addListener('setgeometry', this.onChangeMap);
                 } else {
                     map.data.setControls(null);
                     map.data.setStyle({});
-
-                    map.data.removeEventListener(
-                        'addfeature',
-                        this.onChangeMap
-                    );
-                    map.data.removeEventListener(
-                        'removefeature',
-                        this.onChangeMap
-                    );
-                    map.data.removeEventListener(
-                        'setgeometry',
-                        this.onChangeMap
-                    );
                 }
             });
         },
@@ -297,6 +277,10 @@ export default {
                         if (this.geoJson) data.addGeoJson(this.geoJson);
                         map.data.setMap(null);
                         map.data = data;
+
+                        map.data.addListener('addfeature', this.onChangeMap);
+                        map.data.addListener('removefeature', this.onChangeMap);
+                        map.data.addListener('setgeometry', this.onChangeMap);
                         this.initMap = true;
                     });
             });

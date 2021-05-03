@@ -392,7 +392,7 @@ export default {
         getRandomLatLng() {
             if (this.placeGeoJson != null) {
                 let position,
-                    radius = 100000,
+                    radius,
                     properties = null;
                 if (this.placeGeoJson.type === 'FeatureCollection') {
                     let randInt = Math.floor(
