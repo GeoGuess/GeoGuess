@@ -8,6 +8,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
+[![DeepScan grade](https://deepscan.io/api/teams/6533/projects/15869/branches/324468/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=6533&pid=15869&bid=324468)
 [![codecov](https://codecov.io/gh/GeoGuess/Geoguess/branch/master/graph/badge.svg?token=J94E3GE4SL)](https://codecov.io/gh/GeoGuess/Geoguess)
 [![Crowdin](https://badges.crowdin.net/geoguess/localized.svg)](https://translate.geoguess.games/project/geoguess)
 
