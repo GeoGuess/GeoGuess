@@ -23,8 +23,8 @@
         "limitation": "LIMITIERUNG",
         "limitationDescription": "Derzeit habe ich eine Quote pro Tag festgelegt, damit die Kosten des Spiels gering bleiben.            Wenn die Karte nicht geladen wird, bedeutet dies, dass das Kontingent überschritten wurde.            Es wird um Mitternacht (pazifische Zeit) zurückgesetzt. Ich bitte um Entschuldigung für die Unannehmlichkeiten.            Das Spiel ist Open Source, so dass du einen eigenen Server erstellen kannst, um ohne Kontigente spielen zu können.",
         "play": "Spielen",
-        "streamerModeActivate": "Streamer mode activate",
-        "streamerModeDetails": "URLs and room names are hidden"
+        "streamerModeActivate": "Streamer-Modus aktivieren",
+        "streamerModeDetails": "URLs und Raumnamen sind versteckt"
     },
     "StreetView": {
         "nearby": {
@@ -124,11 +124,11 @@
         "allowMove": "Bewegen zulassen",
         "allowZoom": "Zoomen zulassen",
         "allowPan": "Schwenken zulassen",
-        "countDownLabel": "CountDown (seconds)",
-        "scoreModeLabel": "Score formula",
+        "countDownLabel": "Countdown (Sekunden)",
+        "scoreModeLabel": "Punkteberechnung",
         "scoreModes": {
-            "normal": "normal",
-            "time": "time"
+            "normal": "Normal",
+            "time": "Zeit"
         }
     },
     "CardRoomDifficulty": {
