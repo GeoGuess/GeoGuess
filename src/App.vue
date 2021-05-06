@@ -5,14 +5,10 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 export default {
     name: 'App',
-   mounted(){
-       this.loadHomeStore();
-   },
-   methods:{
-        ...mapActions(['loadHomeStore']),
-   }
+    data: () => ({
+        //
+    }),
 };
 </script>
