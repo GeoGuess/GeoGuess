@@ -335,6 +335,8 @@ export default {
                         snapshot.child('size').val()
                     ) {
                         this.room.child('active').remove();
+                        this.room.off();
+                        this.room.remove();
                     }
                 } else {
                     // Force the players to exit the game when 'Active' is removed

@@ -59,12 +59,14 @@
 <script type="text/javascript">
 import FlagIcon from '@/components/shared/FlagIcon';
 import { mapActions, mapGetters } from 'vuex';
+import MapMixin from './mixins/MapMixin';
 
 export default {
+    mixins: [MapMixin],
     components: {
         FlagIcon,
     },
-    props: ['bbox', 'country'],
+    props: ['country'],
     data() {
         return {
             map: null,
@@ -86,11 +88,6 @@ export default {
                         .getFeatureById('feature')
                         .getProperty('iso_a2')
             );
-        },
-    },
-    watch: {
-        bbox() {
-            this.centerOnBbox();
         },
     },
     async mounted() {
@@ -149,16 +146,6 @@ export default {
     },
     methods: {
         ...mapActions(['loadCountries']),
-        centerOnBbox() {
-            if (this.map && this.bbox) {
-                this.map.fitBounds({
-                    east: this.bbox[2],
-                    north: this.bbox[3],
-                    south: this.bbox[1],
-                    west: this.bbox[0],
-                });
-            }
-        },
         putMarker(pos, isRandomLocation, country) {
             const c = isRandomLocation ? country || this.country : pos;
             if (isRandomLocation) {
@@ -200,8 +187,6 @@ export default {
         setInfoWindow(playerName, _distance, _points, _endGame, country) {
             if (playerName) this.infoWindowDatas.push({ playerName, country });
         },
-        drawPolyline() {},
-        removePolylines() {},
         startNextRound() {
             if (this.polygonSelect) {
                 this.polygonSelect.setStyle({
@@ -212,6 +197,8 @@ export default {
             this.polygonSelect = null;
             this.countryRandom = null;
             this.allowSelect = true;
+            
+            this.centerOnBbox();
         },
         removeListener() {
             this.allowSelect = false;

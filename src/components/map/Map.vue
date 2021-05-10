@@ -15,9 +15,10 @@
     </div>
 </template>
 <script>
+import MapMixin from './mixins/MapMixin';
 export default {
     name: 'Map',
-    props: ['bbox'],
+    mixins: [MapMixin],
     data() {
         return {
             map: null,
@@ -33,11 +34,6 @@ export default {
             ],
         };
     },
-    watch: {
-        bbox() {
-            this.centerOnBbox();
-        },
-    },
     async mounted() {
         await this.$gmapApiPromiseLazy();
         this.$refs.mapRef.$mapPromise.then((map) => {
@@ -47,16 +43,6 @@ export default {
         });
     },
     methods: {
-        centerOnBbox() {
-            if (this.map && this.bbox) {
-                this.map.fitBounds({
-                    east: this.bbox[2],
-                    north: this.bbox[3],
-                    south: this.bbox[1],
-                    west: this.bbox[0],
-                });
-            }
-        },
         putMarker(position, isRandomLocation, label) {
             let info = {};
             if (isRandomLocation) {
@@ -143,6 +129,7 @@ export default {
                     // Save latLng
                     this.$emit('setSeletedPos', e.latLng);
                 });
+                this.centerOnBbox();
             });
         },
         removeListener() {

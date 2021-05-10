@@ -22,7 +22,7 @@
                     <v-btn id="aboutBtn" text @click="aboutDialog = true">
                         <v-icon size="30"> mdi-help-circle </v-icon>
                     </v-btn>
-                    <v-btn text @click="setStreamerMode(!streamerMode)">
+                    <v-btn text @click="changeStreamerMode(!streamerMode)">
                         <v-icon size="30">
                             mdi-eye{{ streamerMode ? '-off' : '' }}
                         </v-icon>
@@ -67,7 +67,7 @@
         </v-alert>
         <v-alert
             type="success"
-            v-model="streamerMode"
+            v-model="showAlertStreamerMode"
             dismissible
             transition="slide-x-reverse-transition"
             id="alertStreamerMode"
@@ -94,6 +94,7 @@ export default {
             aboutDialog: false,
             languages,
             menuMobile: false,
+            showAlertStreamerMode: false,
         };
     },
     computed: {
@@ -108,6 +109,14 @@ export default {
         ...mapMutations({
             setStreamerMode: MutationTypes.HOME_SET_STREAMER_MODE,
         }),
+        changeStreamerMode(streamerMode){
+            this.setStreamerMode(streamerMode);
+            if(streamerMode){
+                this.showAlertStreamerMode = true;
+            } else if(this.showAlertStreamerMode){
+                this.showAlertStreamerMode = false;
+            }
+        },
         switchLanguage(language) {
             this.$i18n.locale = language;
             this.$vuetify.lang.current = language;
