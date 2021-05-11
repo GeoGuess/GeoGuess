@@ -1,82 +1,82 @@
 {
-  "name": "geoguess",
-  "version": "0.6.0",
-  "description": "GeoGuess is an open-source geography game with Google Map StreetView.",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test": "npm run lint && npm run test:unit && npm run test:e2e",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "cypress run",
-    "cypress": "cypress",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "@turf/bbox": "^6.0.1",
-    "@turf/boolean-point-in-polygon": "^6.0.1",
-    "@turf/distance": "^6.0.1",
-    "@turf/helpers": "^6.1.4",
-    "axios": "^0.21.1",
-    "axios-cache-adapter": "^2.5.0",
-    "core-js": "^2.6.12",
-    "firebase": "^8.2.6",
-    "gmap-vue": "^1.5.0",
-    "i18n-iso-countries": "^6.4.0",
-    "random-position-in-polygon": "^1.0.4",
-    "register-service-worker": "^1.7.2",
-    "vue": "^2.6.12",
-    "vue-axios": "^3.2.0",
-    "vue-clipboard2": "^0.3.1",
-    "vue-country-flag": "^2.0.3",
-    "vue-i18n": "^8.22.2",
-    "vue-router": "^3.4.9",
-    "vuetify": "^2.4.0",
-    "vuex": "^3.6.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@vue/cli-plugin-babel": "^3.12.1",
-    "@vue/cli-plugin-eslint": "^3.12.1",
-    "@vue/cli-plugin-pwa": "^3.12.1",
-    "@vue/cli-plugin-unit-jest": "^4.5.11",
-    "@vue/cli-service": "^4.5.11",
-    "@vue/test-utils": "^1.1.2",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.2",
-    "cypress": "^7.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-cypress": "^2.11.2",
-    "eslint-plugin-prettier": "^3.3.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "jest-google-maps-mock": "^1.0.3",
-    "prettier": "2.1.2",
-    "react-is": "^16.13.1",
-    "sass": "^1.30.0",
-    "sass-loader": "^8.0.2",
-    "vue-cli-plugin-vuetify": "^0.6.3",
-    "vue-template-compiler": "^2.6.12",
-    "vuetify-loader": "^1.6.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ],
-  "keywords": [
-    "game",
-    "geography",
-    "educational-game",
-    "multiplayer-game",
-    "street-view"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GeoGuess/GeoGuess.git"
-  },
-  "author": "Bilel Jegham and others",
-  "bugs": {
-    "url": "https://github.com/GeoGuess/Geoguess/issues"
-  },
-  "homepage": "https://github.com/GeoGuess/Geoguess#readme",
-  "license": "MIT"
+    "name": "geoguess",
+    "version": "0.6.0",
+    "description": "GeoGuess is an open-source geography game with Google Map StreetView.",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "test": "npm run lint && npm run test:unit && npm run test:e2e",
+        "test:unit": "vue-cli-service test:unit",
+        "test:e2e": "cypress run",
+        "cypress": "cypress",
+        "lint": "vue-cli-service lint"
+    },
+    "dependencies": {
+        "@turf/bbox": "^6.0.1",
+        "@turf/boolean-point-in-polygon": "^6.0.1",
+        "@turf/distance": "^6.0.1",
+        "@turf/helpers": "^6.1.4",
+        "axios": "^0.21.1",
+        "axios-cache-adapter": "^2.5.0",
+        "core-js": "^2.6.12",
+        "firebase": "^8.2.6",
+        "gmap-vue": "^1.5.0",
+        "i18n-iso-countries": "^6.4.0",
+        "random-position-in-polygon": "^1.0.4",
+        "register-service-worker": "^1.7.2",
+        "vue": "^2.6.12",
+        "vue-axios": "^3.2.0",
+        "vue-clipboard2": "^0.3.1",
+        "vue-country-flag": "^2.0.3",
+        "vue-i18n": "^8.22.2",
+        "vue-router": "^3.4.9",
+        "vuetify": "^2.4.0",
+        "vuex": "^3.6.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@vue/cli-plugin-babel": "^3.12.1",
+        "@vue/cli-plugin-eslint": "^3.12.1",
+        "@vue/cli-plugin-pwa": "^3.12.1",
+        "@vue/cli-plugin-unit-jest": "^4.5.13",
+        "@vue/cli-service": "^4.5.13",
+        "@vue/test-utils": "^1.1.2",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.2.2",
+        "cypress": "^7.2.0",
+        "eslint": "^5.16.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-plugin-cypress": "^2.11.2",
+        "eslint-plugin-prettier": "^3.3.0",
+        "eslint-plugin-vue": "^5.0.0",
+        "jest-google-maps-mock": "^1.0.3",
+        "prettier": "2.1.2",
+        "react-is": "^16.13.1",
+        "sass": "^1.30.0",
+        "sass-loader": "^8.0.2",
+        "vue-cli-plugin-vuetify": "^0.6.3",
+        "vue-template-compiler": "^2.6.12",
+        "vuetify-loader": "^1.6.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ],
+    "keywords": [
+        "game",
+        "geography",
+        "educational-game",
+        "multiplayer-game",
+        "street-view"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GeoGuess/GeoGuess.git"
+    },
+    "author": "Bilel Jegham and others",
+    "bugs": {
+        "url": "https://github.com/GeoGuess/Geoguess/issues"
+    },
+    "homepage": "https://github.com/GeoGuess/Geoguess#readme",
+    "license": "MIT"
 }
