@@ -517,6 +517,8 @@ export default {
             this.$emit('calculateDistance', this.distance, this.point);
         },
         startNextRound() {
+            // eslint-disable-next-line no-debugger
+            debugger;
             this.$refs.map.startNextRound();
             this.startTime = new Date();
         },
