@@ -1,12 +1,29 @@
 # Changelog
 
+## [v0.6.1](https://github.com/Geoguess/Geoguess/tree/v0.6.1) (2021-05-13)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.6.0...v0.6.1)
+
+**Fixed bugs:**
+
+- \[BUG\] Room Remove - Issue discord [\#176](https://github.com/GeoGuess/Geoguess/issues/176)
+- \[BUG\] StreamerMode settings is not saved [\#173](https://github.com/GeoGuess/Geoguess/issues/173)
+- \[BUG\] fit BBox center between rounds [7d3da18](https://github.com/GeoGuess/Geoguess/commit/7d3da1896db240405283fc52696470c4891e2d71)
+
+**Merged pull requests:**
+
+- fix: \#176 Room Remove + fitBounds fix beetween round [\#177](https://github.com/GeoGuess/Geoguess/pull/177) ([BilelJegham](https://github.com/BilelJegham))
+- fix: \#173 StreamerMode not save [\#175](https://github.com/GeoGuess/Geoguess/pull/175) ([BilelJegham](https://github.com/BilelJegham))
+- chore\(deps\): bump lodash from 4.17.20 to 4.17.21 in /functions [\#174](https://github.com/GeoGuess/Geoguess/pull/174) ([dependabot[bot]](https://github.com/apps/dependabot))
+- fix y18n-vulnerability [\#172](https://github.com/GeoGuess/Geoguess/pull/172) ([wlanowski](https://github.com/wlanowski))
+- New Crowdin updates [\#170](https://github.com/GeoGuess/Geoguess/pull/170) ([BilelJegham](https://github.com/BilelJegham))
+
 ## [v0.6.0](https://github.com/Geoguess/Geoguess/tree/v0.6.0) (2021-05-03)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.6.0-alpha.0...v0.6.0)
 
 **Implemented enhancements:**
 
-- \[FEAT\] Streamer Mode
 - \[FEAT\] Add timer "seconds lapsed"  [\#154](https://github.com/GeoGuess/Geoguess/issues/154)
 
 **Fixed bugs:**
