@@ -1,4 +1,5 @@
 files:
   - source: src/lang/locale/en.json
     translation: /**/src/lang/locale/%two_letters_code%.json
+    export_only_approved: true
 commit_message: "[ci skip]"
