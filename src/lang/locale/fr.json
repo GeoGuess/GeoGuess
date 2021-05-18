@@ -87,8 +87,8 @@
         "rank": "Classement",
         "search": "Rechercher",
         "exportGeoSave": "Exporter en GeoSave",
-        "importGeoSave": "Import un GeoSave",
-        "exportCSV": "Export CSV",
+        "importGeoSave": "Import une GeoSave",
+        "exportCSV": "Exporter en CSV",
         "total": "Total"
     },
     "DialogRoom": {
