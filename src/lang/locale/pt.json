@@ -15,7 +15,7 @@
         "customMapDescriptions": {
             "1": "Você pode limitar as posições aleatórias a uma cidade, região ou país por meio da barra de pesquisa.",
             "2": "No modo multiplayer, o primeiro jogador define o local.",
-            "3": "Além disso, você pode fazer seu mapa personalizado utilizando um",
+            "3": "Furthermore, you can make your customs map with ",
             "4": "arquivo.",
             "5": "Insira o conteúdo do mapa no formato GeoJson com o botão:",
             "6": "Exemplos de mapas personalizados: "
@@ -34,7 +34,7 @@
         "waitForOtherPlayers": "Esperando por outros jogadores...",
         "redirectToHomePage": "Redirecionando para a página inicial...",
         "exitGame": "Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...",
-        "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida..",
+        "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida...",
         "confirmExit": "Tem certeza que quer sair da partida atual? Isso cancelará a partida!",
         "countdownAlert": "Contagem regressiva iniciada: {count} segundos restantes | Contagem regressiva iniciada: {count} segundos restantes"
     },
@@ -133,12 +133,12 @@
     },
     "CardRoomDifficulty": {
         "title": "Defina a dificuldade.",
-        "easy": "Facil(mundo)",
+        "easy": "fácil (mundo)",
         "medium": "Médio (país)",
         "hard": "Difícil (cidade)"
     },
     "DialogSummary": {
-        "summaryMsgSinglePoints": "Sua pontuação é de <strong>{points}</strong> pontos!",
+        "summaryMsgSinglePoints": "Sua pontuação é de <strong>{points}</strong> pontos! ",
         "summaryMsgSingleDistance": "Você está a <strong>{distance}</strong> km de distância!",
         "summaryMsgMultiPoints": "O jogador <strong>{playerName}</strong> fez <strong>{points}</strong> pontos! ",
         "summaryMsgMultiDistance": "(<strong>{distance}</strong> km de distância)",
