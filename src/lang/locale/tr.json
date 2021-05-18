@@ -100,52 +100,52 @@
         "alreadyStarted": "Bu oda çoktan başladı. Lütfen başka bir tane deneyin."
     },
     "CardRoomName": {
-        "title": "Type a room name to create a new room or join a existing room"
+        "title": "Yeni oda açmak için bir oda ismi yazın veya var olan bir odaya katılın"
     },
     "CardRoomPlayerName": {
-        "title": "Room:",
-        "input": "Type a player name.",
-        "anonymousPlayerName": "Anonymous 🕵",
-        "players": "1 player | {count} players"
+        "title": "Oda:",
+        "input": "Oyuncu ismi yazın.",
+        "anonymousPlayerName": "Anonim 🕵",
+        "players": "1 oyuncu | {count} oyuncu"
     },
     "CardRoomSize": {
-        "title": "Set a room size."
+        "title": "Oda boyutunu belirle."
     },
     "CardRoomTime": {
-        "title": "Set a time limitation.",
-        "infinite": "Infinite"
+        "title": "Bir zaman sınırlaması ayarlayın.",
+        "infinite": "Sınırsız"
     },
     "CardRoomSettings": {
-        "title": "Game Settings",
-        "modeLabel": "Select game mode",
-        "includePhotopheres": "Include Photospheres",
-        "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
-        "allowMove": "Allow Move",
-        "allowZoom": "Allow Zoom",
-        "allowPan": "Allow Pan",
-        "countDownLabel": "CountDown (seconds)",
-        "scoreModeLabel": "Score formula",
+        "title": "Oyun Ayarları",
+        "modeLabel": "Oyun modu seç",
+        "includePhotopheres": "Fotoğraf kürelerini dahil et",
+        "timeAttackLabel": "ZamanYarışı",
+        "timeattackInfos": "Zaman yarışı modunda, sadece ülkeyi ilk doğru tahmin eden oyuncu puan alır. Çabuk olun ve kazanın!",
+        "allowMove": "Hareket Etmeye İzin Ver",
+        "allowZoom": "Yakınlaştırmaya İzin Ver",
+        "allowPan": "Kaydırmaya İzin Ver",
+        "countDownLabel": "Geri Sayım (saniyeler)",
+        "scoreModeLabel": "Puan Formülü",
         "scoreModes": {
             "normal": "normal",
-            "time": "time"
+            "time": "zaman"
         }
     },
     "CardRoomDifficulty": {
-        "title": "Set a difficulty level.",
-        "easy": "easy (world)",
-        "medium": "medium (country)",
-        "hard": "hard (city)"
+        "title": "Zorluk seviyesi seç.",
+        "easy": "kolay (dünya)",
+        "medium": "orta (ülke)",
+        "hard": "zor (şehir)"
     },
     "DialogSummary": {
-        "summaryMsgSinglePoints": "Your score is <strong>{points}</strong> points! ",
-        "summaryMsgSingleDistance": "You are <strong>{distance}</strong> km away!",
+        "summaryMsgSinglePoints": "Skorun <strong>{points}</strong> puan! ",
+        "summaryMsgSingleDistance": "<strong>{distance}</strong> km uzaktasın!",
         "summaryMsgMultiPoints": "<strong>{playerName}</strong> skoru <strong>{points}</strong> ! ",
         "summaryMsgMultiDistance": "(<strong>{distance}</strong> km uzak)",
         "viewDetails": "Detayları görüntüle"
     },
     "Footer": {
-        "under": "ve altı",
+        "under": "altındadır",
         "privacyPolicy": "Gizlilik Politikası"
     },
     "urlCopied": "Bağlantı kopyalandı",
