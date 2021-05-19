@@ -120,6 +120,33 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "jabbarmusin",
+      "name": "Cabbar Musin",
+      "avatar_url": "https://crowdin-static.downloads.crowdin.com/avatar/14762568/large/a571d24c903f99fb222b289840695534.jpeg",
+      "profile": "https://crowdin.com/profile/jabbarmusin",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "jukefox",
+      "name": "M Treize",
+      "avatar_url": "https://crowdin-static.downloads.crowdin.com/avatar/14626368/large/a84a666b450718b62ed469fd1a225acd.png",
+      "profile": "https://crowdin.com/profile/jukefox",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "ThalisSevero",
+      "name": "ThalisSevero",
+      "avatar_url": "https://www.gravatar.com/avatar/8ef7e5e3502f9816962a7d1536609dd6?s=260&d=https%3A%2F%2Fcrowdin.com%2Fimages%2Fuser-picture.png",
+      "profile": "https://crowdin.com/profile/thalissevero",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -127,5 +154,6 @@
   "projectOwner": "GeoGuess",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "none"
 }
