@@ -7,6 +7,7 @@ import ja from 'vuetify/es5/locale/ja';
 import ru from 'vuetify/es5/locale/ru';
 import pt from 'vuetify/es5/locale/pt';
 import sv from 'vuetify/es5/locale/sv';
+import tr from 'vuetify/es5/locale/tr';
 import Vuetify from 'vuetify/lib';
 import { checkLanguage, languages } from '../lang';
 import '../scss/variables.scss';
@@ -27,7 +28,7 @@ export default new Vuetify({
         },
     },
     lang: {
-        locales: { en, fr, ja, cs, de, ru, pt, sv },
+        locales: { en, fr, ja, cs, de, ru, pt, sv, tr },
         current:
             localStorage.getItem('language') != null
                 ? localStorage.getItem('language')

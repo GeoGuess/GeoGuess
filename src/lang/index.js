@@ -8,10 +8,11 @@ import ja from './locale/ja.json';
 import ru from './locale/ru.json';
 import pt from './locale/pt.json';
 import sv from './locale/sv.json';
+import tr from './locale/tr.json';
 
 Vue.use(VueI18n);
 
-const translations = { en, ja, fr, cs, de, ru, pt, sv };
+const translations = { en, ja, fr, cs, de, ru, pt, sv, tr };
 
 export const languages = [
     {
@@ -39,17 +40,21 @@ export const languages = [
         value: 'de',
     },
     {
-        text: '日本語',
-        value: 'ja',
-    },
-    {
         text: 'Svenska',
         value: 'sv',
+    },
+    {
+        text: 'Türkçe',
+        value: 'tr',
+    },
+    {
+        text: '日本語',
+        value: 'ja',
     },
 ];
 
 export function checkLanguage(language) {
-    return navigator.language.split('-')[0] == language;
+    return navigator.language.split('-')[0] === language.value;
 }
 
 if (!localStorage.getItem('language')) {
