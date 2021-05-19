@@ -135,7 +135,7 @@ export default {
         justify-items: center;
     }
 }
-@media (max-width: 1100px) and (min-width: 600px) {
+@media (max-width: 1300px) and (min-width: 600px) {
     .home-page
         .home-page__main
         .home-page__main__container
