@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg)](#-contribution)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg)](#-contribution)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -72,6 +72,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://technicproblem.github.io"><img src="https://avatars.githubusercontent.com/u/38329398?v=4?s=100" width="100px;" alt=""/><br /><sub><b>TechnicProblem</b></sub></a><br /><a href="#translation-TechnicProblem" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/maksovnik"><img src="https://avatars.githubusercontent.com/u/60991351?v=4?s=100" width="100px;" alt=""/><br /><sub><b>maksovnik</b></sub></a><br /><a href="https://github.com/GeoGuess/Geoguess/commits?author=maksovnik" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Stimmenhotel"><img src="https://avatars.githubusercontent.com/u/15821524?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stimmenhotel</b></sub></a><br /><a href="#translation-Stimmenhotel" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://twitter.com/hello"><img src="https://avatars.githubusercontent.com/u/1836624?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hello</b></sub></a><br /><a href="#translation-hello" title="Translation">🌍</a></td>
   </tr>
 </table>
 
