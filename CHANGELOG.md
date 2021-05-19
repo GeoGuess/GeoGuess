@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.2](https://github.com/Geoguess/Geoguess/tree/0.6.2) (2021-05-19)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.6.1...0.6.2)
+
+**Fixed bugs:**
+
+- \[BUG\] GeoGuess doesn't use langage of the broswer [\#184](https://github.com/GeoGuess/Geoguess/issues/184)
+
+**Merged pull requests:**
+
+- New Crowdin updates [\#183](https://github.com/GeoGuess/Geoguess/pull/183) ([BilelJegham](https://github.com/BilelJegham))
+- feat: Add turkish [\#182](https://github.com/GeoGuess/Geoguess/pull/182) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#181](https://github.com/GeoGuess/Geoguess/pull/181) ([BilelJegham](https://github.com/BilelJegham))
+
 ## [v0.6.1](https://github.com/Geoguess/Geoguess/tree/v0.6.1) (2021-05-13)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.6.0...v0.6.1)
@@ -8,7 +22,6 @@
 
 - \[BUG\] Room Remove - Issue discord [\#176](https://github.com/GeoGuess/Geoguess/issues/176)
 - \[BUG\] StreamerMode settings is not saved [\#173](https://github.com/GeoGuess/Geoguess/issues/173)
-- \[BUG\] fit BBox center between rounds [7d3da18](https://github.com/GeoGuess/Geoguess/commit/7d3da1896db240405283fc52696470c4891e2d71)
 
 **Merged pull requests:**
 
