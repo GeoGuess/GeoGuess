@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.6.2](https://github.com/Geoguess/Geoguess/tree/0.6.2) (2021-05-19)
+## [v0.6.2](https://github.com/Geoguess/Geoguess/tree/v0.6.2) (2021-05-19)
 
-[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.6.1...0.6.2)
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.6.1...v0.6.2)
 
 **Fixed bugs:**
 
-- \[BUG\] GeoGuess doesn't use langage of the broswer [\#184](https://github.com/GeoGuess/Geoguess/issues/184)
+- \[BUG\] GeoGuess doesn't use language of the broswer [\#184](https://github.com/GeoGuess/Geoguess/issues/184)
 
 **Merged pull requests:**
 
