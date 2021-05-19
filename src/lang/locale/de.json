@@ -18,7 +18,7 @@
             "3": "Außerdem kannst du mit ",
             "4": "datei.",
             "5": "Füge den Inhalt der Datei mit dieser Schaltfläche ein:",
-            "6": "Eine Auswahl an benutzerdefinierten Karten:"
+            "6": "Eine Auswahl an benutzerdefinierten Karten : "
         },
         "limitation": "LIMITIERUNG",
         "limitationDescription": "Derzeit habe ich eine Quote pro Tag festgelegt, damit die Kosten des Spiels gering bleiben.            Wenn die Karte nicht geladen wird, bedeutet dies, dass das Kontingent überschritten wurde.            Es wird um Mitternacht (pazifische Zeit) zurückgesetzt. Ich bitte um Entschuldigung für die Unannehmlichkeiten.            Das Spiel ist Open Source, so dass du einen eigenen Server erstellen kannst, um ohne Kontigente spielen zu können.",
@@ -32,7 +32,7 @@
             "message": "Leider konnten wir beim definierten Ort keine passende Location finden. Wir haben jedoch eine Location in der Nähe gefunden 😉"
         },
         "waitForOtherPlayers": "Warte auf weitere Spieler...",
-        "redirectToHomePage": "Weiterleitung zur Homepage ...",
+        "redirectToHomePage": "Weiterleitung zur Homepage...",
         "exitGame": "Du musst das Spiel beenden. Umleitung zur Startseite in 5 Sekunden...",
         "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden...",
         "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen möchtest? Das Spiel wird dadurch abgebrochen!",
@@ -70,7 +70,7 @@
         "title": "Benutzerdefinierte Karte",
         "invalid": "GeoJSON ungültig",
         "text": "Text",
-        "url": "URL",
+        "url": "Url",
         "file": "Datei",
         "edit": "Karte bearbeiten",
         "fileLabel": "GeoJSON-Datei auswählen",
@@ -100,7 +100,7 @@
         "alreadyStarted": "Dieser Raum hat bereits begonnen. Bitte versuche einen anderen."
     },
     "CardRoomName": {
-        "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten."
+        "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten"
     },
     "CardRoomPlayerName": {
         "title": "Raum:",
@@ -161,6 +161,6 @@
         "btn": "Tritt uns bei!"
     },
     "OK": "Okay",
-    "yes": "Ja",
-    "no": "Nein"
+    "yes": "ja",
+    "no": "nein"
 }
