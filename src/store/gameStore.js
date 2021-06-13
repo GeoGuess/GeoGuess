@@ -3,47 +3,47 @@ import * as MutationTypes from './mutation-types';
 
 export default {
     state: () => ({
-        countries: null,
-        loadingCountries: false,
+        areas: null,
+        loadingAreas: false,
     }),
     mutations: {
-        [MutationTypes.GAME_SET_COUNTRIES](state, geojson) {
-            state.countries = geojson;
+        [MutationTypes.GAME_SET_AREAS](state, geojson) {
+            state.areas = geojson;
         },
-        [MutationTypes.GAME_SET_LOADING_COUNTRIES](state, status) {
-            state.loadingCountries = status;
+        [MutationTypes.GAME_SET_LOADING_AREAS](state, status) {
+            state.loadingAreas = status;
         },
     },
 
     getters: {
-        countriesJson(state) {
-            return state.countries;
+        areasJson(state) {
+            return state.areas;
         },
     },
 
     actions: {
-        async loadCountries({ commit, state }) {
+        async loadAreas({ commit, state }, urlAreas) {
             if (
-                state.countries &&
+                state.areas &&
                 Array.isArray(state.countries.features) &&
-                state.loadingCountries
+                state.loadingAreas
             ) {
                 return;
             }
 
-            commit(MutationTypes.GAME_SET_LOADING_COUNTRIES, true);
+            commit(MutationTypes.GAME_SET_LOADING_AREAS, true);
             const geojson = await axios
-                .get(process.env.BASE_URL + 'resources/countries.geo.json')
+                .get(urlAreas)
                 .then((res) => {
                     if (res.status === 200 && res.data) {
                         return res.data;
                     }
                 })
                 .finally(() => {
-                    commit(MutationTypes.GAME_SET_LOADING_COUNTRIES, false);
+                    commit(MutationTypes.GAME_SET_LOADING_AREAS, false);
                 });
 
-            commit(MutationTypes.GAME_SET_COUNTRIES, geojson);
+            commit(MutationTypes.GAME_SET_AREAS, geojson);
         },
     },
 };
