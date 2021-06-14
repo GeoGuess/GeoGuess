@@ -34,8 +34,27 @@
                                 <v-icon large> mdi-flag </v-icon>
                                 <span>{{ $t('modes.country') }}</span>
                             </v-btn>
+                            <v-btn
+                                id="modeCountryBtn"
+                                :text="mode !== gameMode.CUSTOM_AREA"
+                                rounded
+                                outlined
+                                @click="() => (mode = gameMode.CUSTOM_AREA)"
+                            >
+                                <v-icon large> mdi-world </v-icon>
+                                <span>Area </span>
+                                <!--  TODO: Custom Area Label  -->
+                            </v-btn>
                         </v-flex>
                     </v-row>
+
+                    <v-row v-if="mode === gameMode.CUSTOM_AREA">
+                        <v-autocomplete
+                            v-model="areaParams"
+                            :items="optionsArea"
+                        ></v-autocomplete>
+                    </v-row>
+
                     <v-row>
                         <label class="card_settings__time__label">{{
                             $t('CardRoomTime.title')
@@ -72,11 +91,11 @@
                                 hide-details
                             />
                             <br />
-                            <v-select  
+                            <v-select
                                 v-if="this.mode !== gameMode.COUNTRY"
                                 :label="$t('CardRoomSettings.scoreModeLabel')"
-                                v-model="scoreMode" 
-                                :items="scoreModes" 
+                                v-model="scoreMode"
+                                :items="scoreModes"
                             />
                         </div>
                         <div>
@@ -90,7 +109,7 @@
                             <div
                                 v-if="
                                     this.mode === gameMode.COUNTRY &&
-                                        !singlePlayer
+                                    !singlePlayer
                                 "
                             >
                                 <v-checkbox v-model="timeAttack" hide-details>
@@ -195,13 +214,31 @@ export default {
             countdown: 0,
             allPanorama: false,
             scoreMode: SCORE_MODE.NORMAL,
+            areaParams: null,
+            optionsArea: [
+                {
+                    text: 'France Région',
+                    value: {
+                        urlArea:
+                            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-version-simplifiee.geojson',
+                        type: 'nominatim',
+                        pathKey: 'nom',
+                        nominatimResultPath: 'address.state',
+                        nominatimQueryParams: {
+                            zoom: '5',
+                            addressdetails: '1',
+                            'accept-language': 'fr',
+                        },
+                    },
+                },
+            ],
         };
     },
     computed: {
         scoreModes() {
             return Object.values(SCORE_MODE).map((a) => ({
                 value: a,
-                text: this.$t('CardRoomSettings.scoreModes.'+a),
+                text: this.$t('CardRoomSettings.scoreModes.' + a),
             }));
         },
         gameMode() {
@@ -249,16 +286,17 @@ export default {
                 this.moveControl,
                 this.panControl,
                 +this.countdown,
-                this.scoreMode
+                this.scoreMode,
+                this.areaParams
             );
         },
     },
 };
 </script>
 <style lang="scss" scoped>
-.settings .row{
+.settings .row {
     margin-bottom: 1.5rem;
-    .v-select{
+    .v-select {
         width: 15.5rem;
     }
 }

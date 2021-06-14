@@ -1,32 +1,27 @@
 <template>
-    <div
-        id="map"
-        class="map-areas"
-    >
+    <div id="map" class="map-areas">
         <div class="map-content">
             <div
-                v-if="1 === 0"
+                v-if="polygonSelect || areaName"
                 class="map-label"
                 :title="areaName"
             >
-                <FlagIcon
+                <!-- <FlagIcon
                     size="big"
                     rounded
-                    :iso-name="
-                        areaRandom ||
-                            polygonSelect
-                                .getFeatureById('feature')
-                                .getProperty(this.pathKey)
-                    "
-                />
+                    :iso-name="areaRandom || areaNameSelect"
+                /> -->
                 <span
                     class="map-label__country-name"
                     :class="{
                         beige: !areaRandom,
                         green: !!areaRandom,
                         'white--text': !!areaRandom,
+                        large: !nameVisible,
                     }"
-                >{{ areaName }}</span>
+                >
+                    {{ areaName }}
+                </span>
             </div>
             <GmapMap
                 id="mapAreas"
@@ -41,10 +36,7 @@
                 }"
             />
         </div>
-        <div
-            v-if="infoWindowDatas.length > 0"
-            class="result-panel"
-        >
+        <div v-if="infoWindowDatas.length > 0" class="result-panel">
             <div
                 v-for="info in infoWindowDatas"
                 :key="info.playerName"
@@ -67,13 +59,15 @@ export default {
         FlagIcon,
     },
     props: {
-        'area': {
+        area: {
             type: String,
         },
-        'pathKey': {
+        areasGeoJsonUrl: String,
+        pathKey: {
             type: String,
-            default: 'iso_a2'
-        }
+            default: 'iso_a2',
+        },
+        nameVisible: Boolean,
     },
     data() {
         return {
@@ -90,16 +84,24 @@ export default {
     computed: {
         ...mapGetters(['areasJson']),
         areaName() {
-            return this.$countryNameLocale(
-                this.areaRandom ||
-                    this.polygonSelect
-                        .getFeatureById('feature')
-                        .getProperty(this.pathKey)
-            );
+            if (this.nameVisible && (this.areaRandom || this.polygonSelect)) {
+                return this.$countryNameLocale(
+                    this.areaRandom || this.areaNameSelect
+                );
+            } else {
+                return this.areaRandom || this.areaNameSelect;
+            }
+        },
+        areaNameSelect() {
+            return this.polygonSelect
+                ? this.polygonSelect
+                      .getFeatureById('feature')
+                      .getProperty(this.pathKey)
+                : undefined;
         },
     },
     async mounted() {
-        await this.loadAreas('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-version-simplifiee.geojson');
+        await this.loadAreas(this.areasGeoJsonUrl);
         await this.$gmapApiPromiseLazy();
         this.$refs.mapRef.$mapPromise.then((map) => {
             this.map = map;
@@ -170,8 +172,8 @@ export default {
                     fillColor: isRandomLocation ? '#52DA42' : '#FF4081',
                     strokeColor: isRandomLocation ? '#16A910' : '#FF4081',
                 });
+                this.markers.push(areaName);
             }
-            this.markers.push(areaName);
         },
         removeMarkers() {
             this.markers.forEach((areaName) => {
@@ -206,7 +208,7 @@ export default {
             this.polygonSelect = null;
             this.areaRandom = null;
             this.allowSelect = true;
-            
+
             this.centerOnBbox();
         },
         removeListener() {
@@ -255,6 +257,9 @@ export default {
             justify-content: center;
 
             .map-label__country-name {
+                &.large {
+                    width: fit-content;
+                }
                 width: 7rem;
                 text-align: center;
                 text-overflow: ellipsis;

@@ -93,6 +93,8 @@ export default {
             countdown: 0,
             scoreMode: null,
             allPanorama: false,
+            areasGeoJsonUrl: '',
+            pathKey: '',
         };
     },
     computed: {
@@ -249,7 +251,8 @@ export default {
             moveControl,
             panControl,
             countdown,
-            scoreMode
+            scoreMode,
+            areaParams
         ) {
             this.allPanorama = allPanorama;
             this.timeLimitation = timeLimitation;
@@ -260,6 +263,8 @@ export default {
             this.panControl = panControl;
             this.countdown = countdown;
             this.scoreMode = scoreMode;
+            this.areaParams = areaParams;
+
             if (this.singlePlayer) {
                 this.$router.push({
                     name: 'street-view',
@@ -274,6 +279,7 @@ export default {
                         moveControl,
                         panControl,
                         scoreMode,
+                        areaParams,
                     },
                 });
             } else {
@@ -290,6 +296,7 @@ export default {
                         panControl,
                         countdown,
                         scoreMode,
+                        areaParams,
                     },
                     (error) => {
                         if (!error) {
@@ -334,6 +341,7 @@ export default {
                     countdown: this.countdown,
                     allPanorama: this.allPanorama,
                     scoreMode: this.scoreMode,
+                    areaParams: this.areaParams,
                 };
                 // Set flag started
                 this.room.child('started').set(true);
@@ -351,6 +359,7 @@ export default {
                         countdown: snapshot.child('countdown').val(),
                         allPanorama: snapshot.child('allPanorama').val(),
                         scoreMode: snapshot.child('scoreMode').val(),
+                        areaParams: snapshot.child('areaParams').val(),
                     };
                     this.startGameMultiplayer(gameParams);
                 });

@@ -97,22 +97,45 @@ export function getLocateString(obj, name, language, defaultLanguage = 'en') {
     }
     return '';
 }
-
-export function getCountryCodeNameFromLatLng(latLng, errorFunction) {
+/**
+ * Get Area Code name From latlng with nominatim api
+ * @param {object} latLng
+ * @param {function} errorFunction
+ * @param {string} key
+ * @param {object} nominatimQueryParams
+ * @returns {string}
+ */
+export function getAreaCodeNameFromLatLng(
+    latLng,
+    errorFunction,
+    key,
+    nominatimQueryParams = {
+        zoom: 5,
+        addressdetails: 1,
+        extratags: 1,
+    }
+) {
     return axios
         .get(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&zoom=5&addressdetails=1&format=json&extratags=1`
+            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&format=json&${new URLSearchParams(
+                nominatimQueryParams
+            )}`
         )
-        .then(({status, data}) => {
+        .then(({ status, data }) => {
             if (status === 200 && data) {
-                if(data.extratags['ISO3166-1:alpha2'])
+                if (key) {
+                    return key.split('.').reduce((o, i) => o[i], data);
+                }
+
+                if (data.extratags['ISO3166-1:alpha2']) {
                     return data.extratags['ISO3166-1:alpha2'];
+                }
                 return data.address['country_code'].toUpperCase();
             }
         })
         .catch(() => {
             errorFunction();
-            return undefined;
+            return '';
         });
 }
 
@@ -130,10 +153,9 @@ export function getSelectedPos(selectedPos, gameMode) {
     }
 }
 
-export function getRandomCountry(countries) {
-    return countries.features[
-        Math.floor(Math.random() * countries.features.length)
-    ].properties['iso_a2'];
+export function getRandomArea(areas, pathKey = 'iso_a2') {
+    return areas.features[Math.floor(Math.random() * areas.features.length)]
+        .properties[pathKey];
 }
 
 export function getMaxDistanceBbox(bbox) {

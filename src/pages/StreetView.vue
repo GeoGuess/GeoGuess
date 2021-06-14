@@ -14,7 +14,7 @@
 
             <div id="game-interface">
                 <v-overlay :value="!isReady && multiplayer" opacity="1" />
-                <div id="street-view" />
+                <div id="street-view" ref="streetView" />
 
                 <div id="game-interface--overlay">
                     <Maps
@@ -37,6 +37,8 @@
                         :nb-round="nbRound"
                         :countdown="countdown"
                         :score-mode="scoreMode"
+                        :areasGeoJsonUrl="areaParams.urlArea"
+                        :pathKey="areaParams.pathKey"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -90,8 +92,8 @@ import * as turfModel from '@turf/helpers';
 import bbox from '@turf/bbox';
 import {
     isInGeoJSON,
-    getCountryCodeNameFromLatLng,
-    getRandomCountry,
+    getAreaCodeNameFromLatLng,
+    getRandomArea,
     getMaxDistanceBbox,
 } from '../utils';
 
@@ -178,6 +180,9 @@ export default {
             default: SCORE_MODE.NORMAL,
             type: String,
         },
+        areaParams: {
+            type: Object,
+        },
     },
     data() {
         return {
@@ -216,12 +221,12 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(['countriesJson']),
+        ...mapGetters(['areasJson']),
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('street-view')
+            this.$refs.streetView
         );
 
         if (this.playerNumber == 1 || !this.multiplayer) {
@@ -462,10 +467,16 @@ export default {
                     this.cptNotFoundLocation = 0;
                     this.setPosition(data);
 
-                    if (this.mode === GAME_MODE.COUNTRY) {
-                        getCountryCodeNameFromLatLng(
+                    if (
+                        [GAME_MODE.COUNTRY, GAME_MODE.CUSTOM_AREA].includes(
+                            this.mode
+                        )
+                    ) {
+                        getAreaCodeNameFromLatLng(
                             this.randomLatLng,
-                            this.loadStreetView
+                            this.loadStreetView,
+                            this.areaParams.nominatimResultPath,
+                            this.areaParams.nominatimQueryParams
                         ).then((c) => {
                             this.country = c;
 
@@ -599,9 +610,16 @@ export default {
                 } else {
                     this.timerInProgress = false;
                     if (!this.hasLocationSelected) {
-                        if (this.mode === GAME_MODE.COUNTRY) {
+                        if (
+                            [GAME_MODE.COUNTRY, GAME_MODE.CUSTOM_AREA].includes(
+                                this.mode
+                            )
+                        ) {
                             this.$refs.mapContainer.selectRandomLocation(
-                                getRandomCountry(this.countriesJson)
+                                getRandomArea(
+                                    this.areasJson,
+                                    this.areaParams.pathKey
+                                )
                             );
                         } else {
                             // Set a random location if the player didn't select a location in time
