@@ -105,16 +105,16 @@ export function getLocateString(obj, name, language, defaultLanguage = 'en') {
  * @param {object} nominatimQueryParams
  * @returns {string}
  */
-export function getAreaCodeNameFromLatLng(
-    latLng,
-    errorFunction,
-    key,
-    nominatimQueryParams = {
-        zoom: 5,
-        addressdetails: 1,
-        extratags: 1,
-    }
-) {
+export function getAreaCodeNameFromLatLng(latLng, errorFunction, areaParams) {
+    const nominatimQueryParams =
+        areaParams && areaParams.nominatimQueryParams
+            ? areaParams.nominatimQueryParams
+            : {
+                  zoom: 5,
+                  addressdetails: 1,
+                  extratags: 1,
+              };
+
     return axios
         .get(
             `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&format=json&${new URLSearchParams(
@@ -123,8 +123,10 @@ export function getAreaCodeNameFromLatLng(
         )
         .then(({ status, data }) => {
             if (status === 200 && data) {
-                if (key) {
-                    return key.split('.').reduce((o, i) => o[i], data);
+                if (areaParams && areaParams.nominatimResultPath) {
+                    return areaParams.nominatimResultPath
+                        .split('.')
+                        .reduce((o, i) => o[i], data);
                 }
 
                 if (data.extratags['ISO3166-1:alpha2']) {
@@ -135,7 +137,7 @@ export function getAreaCodeNameFromLatLng(
         })
         .catch(() => {
             errorFunction();
-            return '';
+            return null;
         });
 }
 

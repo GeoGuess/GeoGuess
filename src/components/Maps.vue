@@ -3,8 +3,8 @@
         id="container-map"
         :class="[
             ($viewport.width >= 450 && (activeMap || pinActive)) ||
-            isMakeGuessButtonClicked ||
-            isNextButtonVisible
+                isMakeGuessButtonClicked ||
+                isNextButtonVisible
                 ? 'container-map--active'
                 : '',
             printMapFull ? 'container-map--full' : '',
@@ -13,13 +13,13 @@
         v-on="
             $viewport.width >= 450 // Only on tablet and desktop Issue #104
                 ? {
-                      mouseover: () => {
-                          activeMap = true;
-                      },
-                      mouseleave: () => {
-                          activeMap = false;
-                      },
-                  }
+                    mouseover: () => {
+                        activeMap = true;
+                    },
+                    mouseleave: () => {
+                        activeMap = false;
+                    },
+                }
                 : {}
         "
     >
@@ -59,8 +59,8 @@
         <v-btn
             v-if="
                 $viewport.width < 450 &&
-                !isGuessButtonClicked &&
-                isMakeGuessButtonClicked
+                    !isGuessButtonClicked &&
+                    isMakeGuessButtonClicked
             "
             id="hide-map-button"
             fab
@@ -81,19 +81,19 @@
             v-if="this.mode !== 'classic'"
             id="map"
             ref="map"
-            :area="country"
+            :area="area"
             :areasGeoJsonUrl="areasGeoJsonUrl"
             :pathKey="pathKey"
             :bbox="bbox"
-            :name-visible="this.mode === 'country'"
+            :showFlag="this.mode === 'country'"
             @setSeletedPos="setSeletedPos"
         />
         <div class="container-map_controls_guess">
             <button
                 v-if="
                     !isNextButtonVisible &&
-                    !isSummaryButtonVisible &&
-                    ($viewport.width > 450 || isMakeGuessButtonClicked)
+                        !isSummaryButtonVisible &&
+                        ($viewport.width > 450 || isMakeGuessButtonClicked)
                 "
                 id="reset-button"
                 :disabled="isGuessButtonClicked || (!!this.room && !isReady)"
@@ -104,15 +104,15 @@
             <button
                 v-if="
                     !isNextButtonVisible &&
-                    !isSummaryButtonVisible &&
-                    ($viewport.width > 450 || isMakeGuessButtonClicked)
+                        !isSummaryButtonVisible &&
+                        ($viewport.width > 450 || isMakeGuessButtonClicked)
                 "
                 id="guess-button"
                 :disabled="
                     randomLatLng == null ||
-                    selectedPos == null ||
-                    isGuessButtonClicked ||
-                    (!!this.room && !isReady)
+                        selectedPos == null ||
+                        isGuessButtonClicked ||
+                        (!!this.room && !isReady)
                 "
                 @click="selectLocation"
             >
@@ -141,9 +141,9 @@
         <button
             v-if="
                 $viewport.width < 450 &&
-                !isGuessButtonClicked &&
-                !isMakeGuessButtonClicked &&
-                !isNextButtonVisible
+                    !isGuessButtonClicked &&
+                    !isMakeGuessButtonClicked &&
+                    !isNextButtonVisible
             "
             id="make-guess-button"
             class="primary"
@@ -197,7 +197,7 @@ export default {
         'difficulty',
         'bbox',
         'mode',
-        'country',
+        'area',
         'timeAttack',
         'nbRound',
         'countdown',
@@ -267,8 +267,7 @@ export default {
                                 .child('guess')
                                 .forEach(
                                     (guess) =>
-                                        guess.child('country').val() ===
-                                        this.country
+                                        guess.child('area').val() === this.area
                                 )) ||
                         // Allow players to move on to the next round when every players guess locations
                         snapshot.child('guess').numChildren() ===
@@ -297,7 +296,7 @@ export default {
                                     lng: lng,
                                 });
                             } else {
-                                posGuess = childSnapshot.child('country').val();
+                                posGuess = childSnapshot.child('area').val();
                             }
 
                             const playerName = snapshot
@@ -340,7 +339,7 @@ export default {
                         this.game.rounds.push({
                             position: {
                                 ...this.randomLatLng.toJSON(),
-                                country: this.country,
+                                area: this.area,
                             },
                             players,
                         });
@@ -478,7 +477,7 @@ export default {
             if (
                 [GAME_MODE.COUNTRY, GAME_MODE.CUSTOM_AREA].includes(this.mode)
             ) {
-                this.point = +(this.country === this.selectedPos);
+                this.point = +(this.area === this.selectedPos);
                 this.distance = null;
             } else {
                 this.distance = Math.floor(
@@ -508,7 +507,7 @@ export default {
             } else {
                 this.game.rounds.push({
                     guess: this.selectedPos,
-                    country: this.country,
+                    area: this.area,
                     position: this.randomLatLng,
                     distance: this.distance,
                     points: this.point,

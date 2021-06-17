@@ -6,18 +6,19 @@
                 class="map-label"
                 :title="areaName"
             >
-                <!-- <FlagIcon
+                <FlagIcon
+                    v-if="showFlag"
                     size="big"
                     rounded
                     :iso-name="areaRandom || areaNameSelect"
-                /> -->
+                />
                 <span
                     class="map-label__country-name"
                     :class="{
                         beige: !areaRandom,
                         green: !!areaRandom,
                         'white--text': !!areaRandom,
-                        large: !nameVisible,
+                        large: !showFlag,
                     }"
                 >
                     {{ areaName }}
@@ -67,7 +68,7 @@ export default {
             type: String,
             default: 'iso_a2',
         },
-        nameVisible: Boolean,
+        showFlag: Boolean,
     },
     data() {
         return {
@@ -84,7 +85,7 @@ export default {
     computed: {
         ...mapGetters(['areasJson']),
         areaName() {
-            if (this.nameVisible && (this.areaRandom || this.polygonSelect)) {
+            if (this.showFlag && (this.areaRandom || this.polygonSelect)) {
                 return this.$countryNameLocale(
                     this.areaRandom || this.areaNameSelect
                 );

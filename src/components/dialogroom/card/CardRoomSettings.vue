@@ -41,7 +41,7 @@
                                 outlined
                                 @click="() => (mode = gameMode.CUSTOM_AREA)"
                             >
-                                <v-icon large> mdi-world </v-icon>
+                                <v-icon large> mdi-shape-polygon-plus </v-icon>
                                 <span>Area </span>
                                 <!--  TODO: Custom Area Label  -->
                             </v-btn>
@@ -109,7 +109,7 @@
                             <div
                                 v-if="
                                     this.mode === gameMode.COUNTRY &&
-                                    !singlePlayer
+                                        !singlePlayer
                                 "
                             >
                                 <v-checkbox v-model="timeAttack" hide-details>
@@ -217,7 +217,7 @@ export default {
             areaParams: null,
             optionsArea: [
                 {
-                    text: 'France Région',
+                    text: 'France Régions',
                     value: {
                         urlArea:
                             'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-version-simplifiee.geojson',
@@ -229,6 +229,45 @@ export default {
                             addressdetails: '1',
                             'accept-language': 'fr',
                         },
+                    },
+                },
+                {
+                    text: 'France Départements',
+                    value: {
+                        urlArea:
+                            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
+                        type: 'nominatim',
+                        pathKey: 'nom',
+                        nominatimResultPath: 'address.county',
+                        nominatimQueryParams: {
+                            zoom: '8',
+                            addressdetails: '1',
+                            'accept-language': 'fr',
+                        },
+                    },
+                },
+                {
+                    text: 'US States',
+                    value: {
+                        urlArea:
+                            'https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/cultural/ne_110m_admin_1_states_provinces.json',
+                        type: 'nominatim',
+                        pathKey: 'name',
+                        nominatimResultPath: 'address.state',
+                        nominatimQueryParams: {
+                            zoom: '5',
+                            addressdetails: '1',
+                            'accept-language': 'en',
+                        },
+                    },
+                },
+                {
+                    text: 'Continent',
+                    value: {
+                        urlArea:
+                            'https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json',
+                        type: 'polygon',
+                        pathKey: 'CONTINENT',
                     },
                 },
             ],

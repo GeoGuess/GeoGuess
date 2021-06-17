@@ -100,7 +100,11 @@
                         v-if="item.gameMode === $t('modes.country')"
                         :item="item"
                     />
-                    <HistoryMapClassic v-else :item="item" />
+                    <HistoryMapClassic
+                        v-else-if="item.gameMode === $t('modes.classic')"
+                        :item="item"
+                    />
+                    <p v-else>in progress</p>
                 </td>
             </template>
         </v-data-table>
@@ -111,7 +115,6 @@
 </template>
 <script>
 import { mapActions, mapState } from 'vuex';
-import { GAME_MODE } from '../../constants';
 import { download } from '../../utils';
 import HistoryMapClassic from './gameResult/HistoryMapClassic';
 import HistoryMapCountry from './gameResult/HistoryMapCountry';
@@ -207,10 +210,7 @@ export default {
                 mode: g.multiplayer
                     ? this.$t('DialogRoom.withFriends')
                     : this.$t('DialogRoom.singlePlayer'),
-                gameMode:
-                    g.mode === GAME_MODE.COUNTRY
-                        ? this.$t('modes.country')
-                        : this.$t('modes.classic'),
+                gameMode: this.$t('modes.' + g.mode),
                 timeString:
                     g.timeLimitation === 0
                         ? this.$t('CardRoomTime.infinite')

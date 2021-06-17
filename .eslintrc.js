@@ -4,10 +4,7 @@ module.exports = {
         node: true,
         es6: true,
     },
-    extends: [
-        'eslint:recommended',
-        'plugin:vue/essential',
-    ],
+    extends: ['eslint:recommended', 'plugin:vue/essential'],
     globals: {
         launchQueue: 'readonly',
         google: 'readonly',
@@ -20,9 +17,10 @@ module.exports = {
     },
     plugins: ['vue', 'prettier'],
     rules: {
-        'no-console': 'warn',
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         semi: ['error', 'always'],
-        "vue/html-indent": ['warn', 4]
+        'vue/html-indent': ['warn', 4],
     },
     overrides: [
         {
