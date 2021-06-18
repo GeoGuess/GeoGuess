@@ -20,6 +20,30 @@
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
+
+        <section>
+            <v-sheet class="mx-auto" elevation="8" mstyle="width: 100vw">
+                <v-slide-group class="pa-4" active-class="success" show-arrows>
+                    <v-slide-item v-for="n in 15" :key="n">
+                        <v-card class="ma-4" height="200" width="100">
+                            <v-row
+                                class="fill-height"
+                                align="center"
+                                justify="center"
+                            >
+                                <v-scale-transition>
+                                    <v-icon
+                                        color="white"
+                                        size="48"
+                                        v-text="'mdi-close-circle-outline'"
+                                    ></v-icon>
+                                </v-scale-transition>
+                            </v-row>
+                        </v-card>
+                    </v-slide-item>
+                </v-slide-group>
+            </v-sheet>
+        </section>
         <section id="maps">
             <MapCard v-for="(map, index) in maps" :key="index" :map="map" />
         </section>

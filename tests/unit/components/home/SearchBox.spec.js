@@ -74,7 +74,7 @@ import Vue from 'vue';
 import VueAxios from 'vue-axios';
 import Vuex from 'vuex';
 import homeStore from '../../../../src/store/homeStore';
-import appInit from '../../utils/appInit';
+import appInit from '../../testutils/appInit';
 
 const args = appInit(createLocalVue());
 describe('SearchBox.vue', () => {

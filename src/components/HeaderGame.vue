@@ -31,7 +31,11 @@
             </div>
             <div v-if="isDistanceVisible">
                 <span class="main-text">{{
-                    $t('HeaderGame.kmaway', { value: new Intl.NumberFormat($i18n.locale).format(distance / 1000) })
+                    $t('HeaderGame.kmaway', {
+                        value: new Intl.NumberFormat($i18n.locale).format(
+                            distance / 1000
+                        ),
+                    })
                 }}</span>
             </div>
             <div class="round-points-container">

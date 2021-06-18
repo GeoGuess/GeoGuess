@@ -1,6 +1,6 @@
 import DialogCustomMap from '@/components/home/DialogCustomMap.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import appInit from '../../utils/appInit';
+import appInit from '../../testutils/appInit';
 
 import Vuex from 'vuex';
 import homeStore from '../../../../src/store/homeStore';

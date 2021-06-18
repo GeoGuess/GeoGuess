@@ -3,12 +3,11 @@ const {
     isInGeoJSON,
     getCountdownText,
     getLocateString,
-    getScore,
     isGeoJSONValid,
     getAreaCodeNameFromLatLng,
-} = require('../../src/utils');
+} = require('../../../src/utils');
 
-describe('utils.js', () => {
+describe('utils/index.js', () => {
     it('validURL', () => {
         expect(validURL('')).toBeFalsy();
         expect(validURL('ftp://helllo.com')).toBeFalsy();
@@ -86,16 +85,6 @@ describe('utils.js', () => {
         expect(getLocateString(object, 'name', 'fr')).toEqual('name');
         expect(getLocateString(object, 'author', 'ar')).toEqual('');
         expect(getLocateString(object, 'date', 'ar')).toEqual('');
-    });
-
-    it('getScore', () => {
-        expect(getScore(20, 2000, 0, 'time')).toEqual(5000);
-        expect(getScore(100, 2000, 0, 'time')).toEqual(5000);
-        expect(getScore(100, 2000, 1000, 'time')).toEqual(4999);
-
-        expect(getScore(20, 2000, 0, 'normal')).toEqual(5000);
-        expect(getScore(200000, 2, 0, 'normal')).toEqual(0);
-        expect(getScore(20, 2000, 0, 'normal')).toEqual(5000);
     });
 
     it('isGeoJSON Valid', () => {

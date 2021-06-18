@@ -1,6 +1,6 @@
 import MapCard from '@/components/home/maps/MapCard.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import appInit from '../../../utils/appInit';
+import appInit from '../../../testutils/appInit';
 
 const args = appInit(createLocalVue());
 

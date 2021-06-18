@@ -1,5 +1,5 @@
 <template>
-    <v-card id="card-settings">
+    <v-card id="card-settings" :disabled="loadingAreas" :loading="loadingAreas">
         <v-card-title>
             <p>{{ $t('CardRoomSettings.title') }}</p>
         </v-card-title>
@@ -18,7 +18,6 @@
                                 :text="this.mode !== gameMode.CLASSIC"
                                 rounded
                                 outlined
-                                class="mr-5"
                                 @click="() => (this.mode = gameMode.CLASSIC)"
                             >
                                 <v-icon large> mdi-map-marker </v-icon>
@@ -48,12 +47,7 @@
                         </v-flex>
                     </v-row>
 
-                    <v-row v-if="mode === gameMode.CUSTOM_AREA">
-                        <v-autocomplete
-                            v-model="areaParams"
-                            :items="optionsArea"
-                        ></v-autocomplete>
-                    </v-row>
+                    <v-row v-if="mode === gameMode.CUSTOM_AREA"> </v-row>
 
                     <v-row>
                         <label class="card_settings__time__label">{{
@@ -91,12 +85,27 @@
                                 hide-details
                             />
                             <br />
-                            <v-select
-                                v-if="this.mode !== gameMode.COUNTRY"
-                                :label="$t('CardRoomSettings.scoreModeLabel')"
-                                v-model="scoreMode"
-                                :items="scoreModes"
-                            />
+                            <v-list-group prepend-icon="mdi-cog">
+                                <template v-slot:activator>
+                                    <v-list-item-title>
+                                        More settings
+                                    </v-list-item-title>
+                                </template>
+                                <v-select
+                                    v-if="this.mode === gameMode.CLASSIC"
+                                    :label="
+                                        $t('CardRoomSettings.scoreModeLabel')
+                                    "
+                                    v-model="scoreMode"
+                                    :items="scoreModes"
+                                />
+
+                                <v-autocomplete
+                                    label="Select Areas"
+                                    v-model="areaParams"
+                                    :items="optionsArea"
+                                ></v-autocomplete>
+                            </v-list-group>
                         </div>
                         <div>
                             <v-text-field
@@ -109,7 +118,7 @@
                             <div
                                 v-if="
                                     this.mode === gameMode.COUNTRY &&
-                                        !singlePlayer
+                                    !singlePlayer
                                 "
                             >
                                 <v-checkbox v-model="timeAttack" hide-details>
@@ -196,6 +205,8 @@
 import TimePicker from '@/components/shared/TimePicker';
 import { GAME_MODE, SCORE_MODE } from '../../../constants';
 import CardRoomMixin from './mixins/CardRoomMixin';
+import { mapActions, mapGetters } from 'vuex';
+import bbox from '@turf/bbox';
 
 export default {
     components: {
@@ -215,10 +226,14 @@ export default {
             allPanorama: false,
             scoreMode: SCORE_MODE.NORMAL,
             areaParams: null,
-            optionsArea: [
+            invalidAreas: false,
+            loadingAreas: false,
+            areas: [
                 {
                     text: 'France Régions',
+
                     value: {
+                        bbox: [-5.4517733, 41.2611155, 9.8282225, 51.3055721],
                         urlArea:
                             'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-version-simplifiee.geojson',
                         type: 'nominatim',
@@ -233,7 +248,9 @@ export default {
                 },
                 {
                     text: 'France Départements',
+
                     value: {
+                        bbox: [-5.4517733, 41.2611155, 9.8282225, 51.3055721],
                         urlArea:
                             'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
                         type: 'nominatim',
@@ -249,6 +266,12 @@ export default {
                 {
                     text: 'US States',
                     value: {
+                        bbox: [
+                            -171.79111060289117,
+                            18.916190000000142,
+                            -66.96466,
+                            71.35776357694175,
+                        ],
                         urlArea:
                             'https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/cultural/ne_110m_admin_1_states_provinces.json',
                         type: 'nominatim',
@@ -274,6 +297,17 @@ export default {
         };
     },
     computed: {
+        ...mapGetters(['areasJson']),
+        optionsArea() {
+            return this.areas.filter((a) => {
+                if (!a.value.bbox) {
+                    return true;
+                }
+                const bboxPlace = bbox(this.placeGeoJson);
+                console.log(bboxPlace, a);
+                return !a.value.bbox.some((v, index) => v > bboxPlace[index]);
+            });
+        },
         scoreModes() {
             return Object.values(SCORE_MODE).map((a) => ({
                 value: a,
@@ -296,6 +330,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['loadAreas']),
         setGeoJson(val) {
             this.$refs.mapRef.$mapPromise.then((map) => {
                 map.data.setMap(null);
@@ -314,7 +349,7 @@ export default {
                 }
             });
         },
-        setSettings() {
+        async setSettings() {
             this.$emit(
                 'setSettings',
                 this.allPanorama,
@@ -333,34 +368,47 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.settings .row {
-    margin-bottom: 1.5rem;
-    .v-select {
-        width: 15.5rem;
+#card-settings {
+    &.blur {
+        filter: blur(1px);
     }
-}
-
-.v-card__actions .v-btn {
-    color: white;
-}
-.card_settings__allow_btns {
-    display: flex;
-    flex-direction: column;
-    .v-input {
-        align-self: start;
-        margin: 0;
-        .v-messages {
-            display: contents;
+    .card_settings__readonly {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+    .settings .row {
+        margin-bottom: 1.5rem;
+        .v-select {
+            width: 15.5rem;
         }
     }
-}
-@media (max-width: 360px) {
-    .card_settings__mode__btns {
+
+    .v-card__actions .v-btn {
+        color: white;
+    }
+    .card_settings__allow_btns {
+        display: flex;
         flex-direction: column;
-        margin-top: 2rem;
-        .v-btn {
-            margin: 5px 0;
-            width: 100%;
+        .v-input {
+            align-self: start;
+            margin: 0;
+            .v-messages {
+                display: contents;
+            }
+        }
+    }
+    @media (max-width: 360px) {
+        .card_settings__mode__btns {
+            flex-direction: column;
+            margin-top: 2rem;
+            .v-btn {
+                margin: 5px 0;
+                width: 100%;
+            }
         }
     }
 }

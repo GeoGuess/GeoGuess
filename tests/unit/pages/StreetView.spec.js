@@ -1,7 +1,7 @@
 import StreetView from '@/pages/StreetView.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import createGoogleMapsMock from 'jest-google-maps-mock';
-import appInit from '../utils/appInit';
+import appInit from '../testutils/appInit';
 
 const args = appInit(createLocalVue());
 global.google = {

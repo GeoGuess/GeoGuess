@@ -1,17 +1,14 @@
 <template>
-    <v-card
-        class="map-card"
-        rounded="lg"
-    >
+    <v-card class="map-card" rounded="lg">
         <v-img
             class="white--text align-end"
             height="140px"
             gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
             :src="
                 mapLocate.imageUrl ||
-                    `https://source.unsplash.com/300x140/daily?${encodeURI(
-                        mapLocate.nameLocate
-                    )}`
+                `https://source.unsplash.com/300x140/daily?${encodeURI(
+                    mapLocate.nameLocate
+                )}`
             "
         >
             <v-card-title>{{ mapLocate.nameLocate }}</v-card-title>
@@ -24,8 +21,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 import MapDialog from '@/components/home/maps/MapDialog';
+import { getLocateString } from '../../../utils';
 export default {
     name: 'MapCard',
     components: {
@@ -38,16 +35,18 @@ export default {
         mapLocate() {
             return {
                 ...this.map,
-                nameLocate:
-                    this.map.name[this.$i18n.locale] || this.map.name['en'],
-                descriptionLocate:
-                    this.map.description[this.$i18n.locale] ||
-                    this.map.description['en'],
+                nameLocate: getLocateString(
+                    this.map,
+                    'name',
+                    this.$i18n.locale
+                ),
+                descriptionLocate: getLocateString(
+                    this.map,
+                    'description',
+                    this.$i18n.locale
+                ),
             };
         },
-    },
-    methods: {
-        ...mapActions(['loadGeoJsonFromUrl']),
     },
 };
 </script>

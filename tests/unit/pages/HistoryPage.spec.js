@@ -1,6 +1,6 @@
 import HistoryPage from '@/pages/HistoryPage.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import appInit from '../utils/appInit';
+import appInit from '../testutils/appInit';
 
 const args = appInit(createLocalVue());
 describe('Home.vue', () => {

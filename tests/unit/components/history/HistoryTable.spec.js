@@ -3,7 +3,7 @@ import homeStore from '@/store/homeStore';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import * as dependencyUtils from '../../../../src/utils';
-import appInit from '../../utils/appInit';
+import appInit from '../../testutils/appInit';
 import { csv, item } from './mock/example.js';
 
 const args = appInit(createLocalVue());
@@ -27,7 +27,9 @@ describe('HistoryTable.vue', () => {
                 homeStore: {
                     state: {
                         ...homeStore.state,
-                        history: JSON.parse('[{"multiplayer":false,"date":"2020-06-14T15:10:14.579Z","timeLimitation":0,"rounds":[{"guess":{"lat":49.35629642234583,"lng":-73.3876235},"position":{"lat":46.32492404792541,"lng":-74.2128121666204},"distance":343031},{"guess":{"lat":20.966226136901,"lng":105.91472350868774},"position":{"lat":16.45610423382063,"lng":107.5978548200058},"distance":532484},{"guess":{"lat":-1.9789104624962186,"lng":-64.70788738160854},"position":{"lat":-8.47747465683049,"lng":-70.14934638834765},"distance":941702},{"guess":{"lat":55.48785435635061,"lng":-1.5939715638887852},"position":{"lat":58.51518485516467,"lng":-6.260475420814613},"distance":439803},{"guess":{"lat":39.96452059424641,"lng":-100.91667319052173},"position":{"lat":42.04582308041186,"lng":-101.0496153025084},"distance":231958}],"score":2488978}]')
+                        history: JSON.parse(
+                            '[{"mode":"classic","multiplayer":false,"date":"2020-06-14T15:10:14.579Z","timeLimitation":0,"rounds":[{"guess":{"lat":49.35629642234583,"lng":-73.3876235},"position":{"lat":46.32492404792541,"lng":-74.2128121666204},"distance":343031},{"guess":{"lat":20.966226136901,"lng":105.91472350868774},"position":{"lat":16.45610423382063,"lng":107.5978548200058},"distance":532484},{"guess":{"lat":-1.9789104624962186,"lng":-64.70788738160854},"position":{"lat":-8.47747465683049,"lng":-70.14934638834765},"distance":941702},{"guess":{"lat":55.48785435635061,"lng":-1.5939715638887852},"position":{"lat":58.51518485516467,"lng":-6.260475420814613},"distance":439803},{"guess":{"lat":39.96452059424641,"lng":-100.91667319052173},"position":{"lat":42.04582308041186,"lng":-101.0496153025084},"distance":231958}],"score":2488978}]'
+                        ),
                     },
                     getters: homeStore.getters,
                     actions: homeStore.actions,

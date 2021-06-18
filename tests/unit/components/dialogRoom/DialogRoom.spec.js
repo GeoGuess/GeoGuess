@@ -2,7 +2,7 @@ import DialogRoom from '@/components/dialogroom/DialogRoom';
 import homeStore from '@/store/homeStore';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import appInit from '../../utils/appInit';
+import appInit from '../../testutils/appInit';
 
 const args = appInit(createLocalVue());
 const $router = {

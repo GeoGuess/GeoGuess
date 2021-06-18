@@ -174,7 +174,8 @@ import DetailsMap from '@/components/game/DetailsMap';
 import Map from '@/components/map/Map';
 import MapAreas from '@/components/map/MapAreas';
 import { GAME_MODE } from '../constants';
-import { getScore, getSelectedPos } from '../utils';
+import { getSelectedPos } from '../utils';
+import { getScore } from '../utils/game/score';
 
 export default {
     components: {

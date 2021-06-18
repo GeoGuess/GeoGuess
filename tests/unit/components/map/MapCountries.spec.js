@@ -1,6 +1,6 @@
 import MapCountries from '@/components/map/MapCountries';
 import { createLocalVue, mount } from '@vue/test-utils';
-import appInit from '../../utils/appInit';
+import appInit from '../../testutils/appInit';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 
 const args = appInit(createLocalVue());
