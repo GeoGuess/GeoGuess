@@ -24,7 +24,7 @@
                 <p>
                     <b>
                         {{ $t('HeaderGame.round') }} {{ index + 1 }} :
-                        <FlagIcon :iso-name="r.position.country" />
+                        <FlagIcon :iso-name="r.position.area" />
                     </b>
                 </p>
                 <div
@@ -153,7 +153,7 @@ export default {
         flex-direction: column;
         overflow-y: auto;
         width: 218px;
-        .result-panel__item {
+        &__item {
             display: inline-grid;
             grid-template-columns: 30px auto;
             grid-column-gap: 5px;

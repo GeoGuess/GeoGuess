@@ -42,9 +42,11 @@
                 v-for="info in infoWindowDatas"
                 :key="info.playerName"
                 class="result-panel__item"
+                :class="{ flag: showFlag }"
             >
-                <FlagIcon :iso-name="info.area" />
-                <span>{{ info.playerName }}</span>
+                <FlagIcon v-if="showFlag" :iso-name="info.area" />
+                <b>{{ info.playerName }}</b>
+                <span v-if="!showFlag">{{ info.area }}</span>
             </div>
         </div>
     </div>
@@ -232,11 +234,19 @@ export default {
         background: #f1e9d6;
         display: flex;
         flex-direction: column;
-        width: 218px;
+        width: 30%;
         .result-panel__item {
-            display: inline-grid;
-            grid-template-columns: 30px auto;
-            grid-column-gap: 5px;
+            display: grid;
+            grid-template-rows: auto auto;
+
+            &.flag {
+                display: inline-grid;
+                grid-template-columns: 30px auto;
+                grid-column-gap: 5px;
+            }
+            span {
+                margin-left: 10px;
+            }
         }
     }
     .map-content {

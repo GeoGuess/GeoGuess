@@ -4,7 +4,12 @@ module.exports = {
         node: true,
         es6: true,
     },
-    extends: ['eslint:recommended', 'plugin:vue/essential'],
+    extends: [
+        ...(process.env.NODE_ENV === 'production'
+            ? ['eslint:recommended']
+            : []),
+        'plugin:vue/essential',
+    ],
     globals: {
         launchQueue: 'readonly',
         google: 'readonly',

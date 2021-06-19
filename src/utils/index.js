@@ -150,7 +150,7 @@ export function getSelectedPos(selectedPos, gameMode) {
             };
         default:
             return {
-                country: selectedPos,
+                area: selectedPos,
             };
     }
 }

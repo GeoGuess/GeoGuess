@@ -1,7 +1,8 @@
 import axios from '@/plugins/axios';
 import { validURL } from '@/utils';
-import { isGeoJSONValid } from '../utils';
+import { getLocateString, isGeoJSONValid } from '../utils';
 import * as MutationTypes from './mutation-types';
+import i18n from '../lang';
 
 export default {
     state: () => ({
@@ -35,6 +36,82 @@ export default {
     },
 
     getters: {
+        modes() {
+            return [
+                {
+                    name: 'France Régions',
+
+                    data: {
+                        bbox: [-5.4517733, 41.2611155, 9.8282225, 51.3055721],
+                        urlArea:
+                            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-version-simplifiee.geojson',
+                        type: 'nominatim',
+                        pathKey: 'nom',
+                        nominatimResultPath: 'address.state',
+                        nominatimQueryParams: {
+                            zoom: '5',
+                            addressdetails: '1',
+                            'accept-language': 'fr',
+                        },
+                    },
+                },
+                {
+                    name: 'France Départements',
+
+                    data: {
+                        bbox: [-5.4517733, 41.2611155, 9.8282225, 51.3055721],
+                        urlArea:
+                            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
+                        type: 'nominatim',
+                        pathKey: 'nom',
+                        nominatimResultPath: 'address.county',
+                        nominatimQueryParams: {
+                            zoom: '8',
+                            addressdetails: '1',
+                            'accept-language': 'fr',
+                        },
+                    },
+                },
+                {
+                    name: 'US States',
+                    data: {
+                        bbox: [
+                            -171.79111060289117,
+                            18.916190000000142,
+                            -66.96466,
+                            71.35776357694175,
+                        ],
+                        urlArea:
+                            'https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/cultural/ne_110m_admin_1_states_provinces.json',
+                        type: 'nominatim',
+                        pathKey: 'name',
+                        nominatimResultPath: 'address.state',
+                        nominatimQueryParams: {
+                            zoom: '5',
+                            addressdetails: '1',
+                            'accept-language': 'en',
+                        },
+                    },
+                },
+                {
+                    name: 'Continent',
+                    data: {
+                        urlArea:
+                            'https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json',
+                        type: 'polygon',
+                        pathKey: 'CONTINENT',
+                    },
+                },
+            ].map((map) => ({
+                ...map,
+                nameLocate: getLocateString(map, 'name', i18n.locale),
+                descriptionLocate: getLocateString(
+                    map,
+                    'description',
+                    i18n.locale
+                ),
+            }));
+        },
         geoJsonString(state) {
             if (!state.geojson) {
                 return '';
@@ -51,7 +128,15 @@ export default {
             return isGeoJSONValid(state.geojson);
         },
         maps(state) {
-            return state.listMaps;
+            return state.listMaps.map((map) => ({
+                ...map,
+                nameLocate: getLocateString(map, 'name', i18n.locale),
+                descriptionLocate: getLocateString(
+                    map,
+                    'description',
+                    i18n.locale
+                ),
+            }));
         },
         nbPlaceVisits(state) {
             return state.history.reduce(

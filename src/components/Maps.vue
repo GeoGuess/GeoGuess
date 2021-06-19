@@ -606,8 +606,8 @@ export default {
     &.container-map--full {
         transition: none;
         opacity: 1;
-        --active-width: 65vw;
-        --inactive-width: 65vw;
+        --active-width: 85vw;
+        --inactive-width: 85vw;
         position: relative;
         margin: auto;
         .container-map_controls {

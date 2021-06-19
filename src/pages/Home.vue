@@ -21,31 +21,26 @@
             </v-btn>
         </section>
 
-        <section>
-            <v-sheet class="mx-auto" elevation="8" mstyle="width: 100vw">
-                <v-slide-group class="pa-4" active-class="success" show-arrows>
-                    <v-slide-item v-for="n in 15" :key="n">
-                        <v-card class="ma-4" height="200" width="100">
-                            <v-row
-                                class="fill-height"
-                                align="center"
-                                justify="center"
-                            >
-                                <v-scale-transition>
-                                    <v-icon
-                                        color="white"
-                                        size="48"
-                                        v-text="'mdi-close-circle-outline'"
-                                    ></v-icon>
-                                </v-scale-transition>
-                            </v-row>
-                        </v-card>
-                    </v-slide-item>
-                </v-slide-group>
-            </v-sheet>
+        <h2>Areas</h2>
+        <section style="max-width: 100vw">
+            <v-slide-group show-arrows>
+                <v-slide-item
+                    v-for="(mode, index) in modes"
+                    :key="index"
+                    class="ma-4"
+                >
+                    <HomeCard :data="mode" type="area" />
+                </v-slide-item>
+            </v-slide-group>
         </section>
+        <h2>Maps</h2>
         <section id="maps">
-            <MapCard v-for="(map, index) in maps" :key="index" :map="map" />
+            <HomeCard
+                v-for="(map, index) in maps"
+                :key="index"
+                :data="map"
+                type="map"
+            />
         </section>
     </ContentPage>
 </template>
@@ -53,13 +48,13 @@
 <script>
 import SearchBox from '@/components/home/SearchBox';
 import ContentPage from '@/components/page/ContentPage';
-import MapCard from '@/components/home/maps/MapCard';
+import HomeCard from '@/components/home/card/HomeCard';
 import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
         ContentPage,
         SearchBox,
-        MapCard,
+        HomeCard,
     },
     mounted() {
         if (this.$route.params && this.$route.params.partyParams) {
@@ -91,7 +86,7 @@ export default {
     },
     methods: { ...mapActions(['getListMaps']) },
     computed: {
-        ...mapGetters(['maps']),
+        ...mapGetters(['maps', 'modes']),
     },
 };
 </script>

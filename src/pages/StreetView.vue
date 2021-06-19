@@ -100,7 +100,7 @@ import {
 
 import { AREA_MODE, GAME_MODE, SCORE_MODE } from '../constants';
 
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
 
@@ -225,6 +225,12 @@ export default {
         ...mapGetters(['areasJson']),
     },
     async mounted() {
+        if (
+            (this.areaParams && this.areaParams.urlArea) ||
+            this.mode === GAME_MODE.COUNTRY
+        ) {
+            await this.loadAreas(this.areaParams.urlArea);
+        }
         await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(
             this.$refs.streetView
@@ -373,6 +379,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['loadAreas']),
         loadStreetView() {
             const service = new google.maps.StreetViewService();
             let radius, position;
@@ -502,7 +509,6 @@ export default {
                                     area.properties[this.areaParams.pathKey];
                             }
                         }
-
                         this.area = areaCode;
 
                         if (this.multiplayer) {
