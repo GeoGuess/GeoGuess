@@ -40,16 +40,38 @@
         />
 
         <div class="search-box__btns">
-            <DialogRoom single-player :place="place" :geo-json="geoJson" />
+            <v-btn
+                class="search-box__btns__btn"
+                rounded
+                color="primary"
+                large
+                @click="openDialogRoom()"
+            >
+                {{
+                    $t('DialogRoom.singlePlayer')
+                }}
+            </v-btn>
+            
+            <v-btn
+                class="search-box__btns__btn"
+                rounded
+                color="secondary"
+                large
+                @click="openDialogRoom(false)"
+            >
+                {{
+                    $t('DialogRoom.withFriends')
+                }}
+            </v-btn>
+            <DialogRoom  />
 
-            <DialogRoom :place="place" :geo-json="geoJson" />
         </div>
     </div>
 </template>
 <script>
 import DialogCustomMap from '@/components/home/DialogCustomMap';
 import DialogRoom from '@/components/dialogroom/DialogRoom';
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 export default {
     components: {
         DialogRoom,
@@ -101,7 +123,19 @@ export default {
     mounted() {
         this.loadHistory();
     },
-    methods: mapActions(['loadHistory']),
+    methods: {
+        ...mapActions(['loadHistory']),
+        ...mapActions('settingsStore', ['openDialogRoom']),
+        openDialog() {
+                this.dialogRoom = true;
+                if(this.geoJson){
+                    this[SETTINGS_SET_GEOJSON](this.geoJson);
+                }else{
+                    this.loadPlaceGeoJSON(this.place);
+                }
+           
+        },
+    }
 };
 </script>
 <style lang="scss">
@@ -121,6 +155,11 @@ export default {
     .search-box__btns {
         display: flex;
         justify-content: space-around;
+        &__btn{
+            width: 40%;
+            padding: 0 5em;
+            font-size: 1.1rem;            
+        }
     }
 }
 @media (max-width: 410px) {

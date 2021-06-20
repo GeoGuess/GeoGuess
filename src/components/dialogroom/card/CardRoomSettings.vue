@@ -15,45 +15,34 @@
                         >
                             <v-btn
                                 id="modeClassicBtn"
-                                :text="this.mode !== gameMode.CLASSIC"
+                                :text="gameSettings.modeSelected !== gameMode.CLASSIC"
                                 rounded
                                 outlined
-                                @click="() => (this.mode = gameMode.CLASSIC)"
+                                @click="() => (setGameSettings({modeSelected: gameMode.CLASSIC}))"
                             >
                                 <v-icon large> mdi-map-marker </v-icon>
                                 <span>{{ $t('modes.classic') }}</span>
                             </v-btn>
                             <v-btn
                                 id="modeCountryBtn"
-                                :text="this.mode !== gameMode.COUNTRY"
+                                :text="gameSettings.modeSelected !== gameMode.COUNTRY"
                                 rounded
                                 outlined
-                                @click="() => (this.mode = gameMode.COUNTRY)"
+                                @click="() => (setGameSettings({modeSelected: gameMode.COUNTRY}))"
                             >
                                 <v-icon large> mdi-flag </v-icon>
                                 <span>{{ $t('modes.country') }}</span>
                             </v-btn>
-                            <v-btn
-                                id="modeCountryBtn"
-                                :text="mode !== gameMode.CUSTOM_AREA"
-                                rounded
-                                outlined
-                                @click="() => (mode = gameMode.CUSTOM_AREA)"
-                            >
-                                <v-icon large> mdi-shape-polygon-plus </v-icon>
-                                <span>Area </span>
-                                <!--  TODO: Custom Area Label  -->
-                            </v-btn>
                         </v-flex>
                     </v-row>
 
-                    <v-row v-if="mode === gameMode.CUSTOM_AREA"> </v-row>
+                    <v-row v-if="gameSettings.modeSelected === gameMode.CUSTOM_AREA"> </v-row>
 
                     <v-row>
                         <label class="card_settings__time__label">{{
                             $t('CardRoomTime.title')
                         }}</label>
-                        <TimePicker v-model="timeLimitation" />
+                        <TimePicker :value="gameSettings.time" @input="(time)=>setGameSettings({time})" />
                     </v-row>
 
                     <v-row
@@ -62,23 +51,27 @@
                     >
                         <div>
                             <v-checkbox
-                                v-model="zoomControl"
+                                :input-value="gameSettings.zoomControl" 
+                                @change="(zoomControl)=>setGameSettings({zoomControl})" 
                                 :label="$t('CardRoomSettings.allowZoom')"
                                 hide-details
                             />
                             <v-checkbox
-                                v-model="moveControl"
+                                :input-value="gameSettings.moveControl" 
+                                @change="(moveControl)=>setGameSettings({moveControl})" 
                                 :label="$t('CardRoomSettings.allowMove')"
                                 hide-details
                             />
                             <v-checkbox
-                                v-model="panControl"
+                                :input-value="gameSettings.panControl" 
+                                @change="(panControl)=>setGameSettings({panControl})" 
                                 :label="$t('CardRoomSettings.allowPan')"
                                 hide-details
                             />
                             <br />
                             <v-checkbox
-                                v-model="allPanorama"
+                                :input-value="gameSettings.allPanorama"
+                                @change="(allPanorama)=>setGameSettings({allPanorama})" 
                                 :label="
                                     $t('CardRoomSettings.includePhotopheres')
                                 "
@@ -92,17 +85,19 @@
                                     </v-list-item-title>
                                 </template>
                                 <v-select
-                                    v-if="this.mode === gameMode.CLASSIC"
+                                    v-if="gameSettings.modeSelected === gameMode.CLASSIC"
                                     :label="
                                         $t('CardRoomSettings.scoreModeLabel')
                                     "
-                                    v-model="scoreMode"
+                                    :input-value="gameSettings.scoreMode"
+                                    @change="(scoreMode)=>setGameSettings({scoreMode})" 
                                     :items="scoreModes"
                                 />
 
                                 <v-autocomplete
                                     label="Select Areas"
-                                    v-model="areaParams"
+                                    :value="gameSettings.areaParams"
+                                    @input="(areaParams)=>setGameSettings({areaParams})" 
                                     :items="optionsArea"
                                 ></v-autocomplete>
                             </v-list-group>
@@ -111,17 +106,20 @@
                             <v-text-field
                                 v-if="!singlePlayer"
                                 :label="$t('CardRoomSettings.countDownLabel')"
-                                v-model="countdown"
+                                :value="gameSettings.countdown"
+                                @input="(countdown)=>setGameSettings({countdown})" 
                                 hide-details
                                 type="number"
                             />
                             <div
                                 v-if="
-                                    this.mode === gameMode.COUNTRY &&
+                                    gameSettings.modeSelected === gameMode.COUNTRY &&
                                         !singlePlayer
                                 "
                             >
-                                <v-checkbox v-model="timeAttack" hide-details>
+                                <v-checkbox 
+                                    :input-value="gameSettings.timeAttack"
+                                    @change="(timeAttack)=>setGameSettings({timeAttack})" hide-details>
                                     <template #label>
                                         {{
                                             $t(
@@ -194,7 +192,7 @@
                 depressed
                 color="#43B581"
                 :disabled="loadingGeoJson"
-                @click="setSettings"
+                @click="onClickNext"
             >
                 {{ $t('next') }}
             </v-btn>
@@ -205,27 +203,18 @@
 import TimePicker from '@/components/shared/TimePicker';
 import { GAME_MODE, SCORE_MODE } from '../../../constants';
 import CardRoomMixin from './mixins/CardRoomMixin';
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapState, mapMutations } from 'vuex';
 import bbox from '@turf/bbox';
+import {SETTINGS_SET_GAME_SETTINGS} from '@/store/mutation-types';
 
 export default {
     components: {
         TimePicker,
     },
     mixins: [CardRoomMixin],
-    props: ['singlePlayer', 'placeGeoJson', 'loadingGeoJson'],
+    props: ['singlePlayer'],
     data() {
         return {
-            mode: GAME_MODE.CLASSIC,
-            timeAttack: false,
-            timeLimitation: 0,
-            zoomControl: true,
-            moveControl: true,
-            panControl: true,
-            countdown: 0,
-            allPanorama: false,
-            scoreMode: SCORE_MODE.NORMAL,
-            areaParams: null,
             invalidAreas: false,
             loadingAreas: false,
             areas: [
@@ -298,6 +287,11 @@ export default {
     },
     computed: {
         ...mapGetters(['areasJson']),
+        ...mapState('settingsStore', [
+            'gameSettings',
+            'loadingGeoJson',
+            'placeGeoJson'
+        ]),
         optionsArea() {
             return this.areas.filter((a) => {
                 if (!a.value.bbox) {
@@ -329,7 +323,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['loadAreas']),
+        ...mapMutations('settingsStore', {
+           setGameSettings: SETTINGS_SET_GAME_SETTINGS
+        }),
+        ...mapActions('settingsStore', ['setSettings']),
         setGeoJson(val) {
             this.$refs.mapRef.$mapPromise.then((map) => {
                 map.data.setMap(null);
@@ -348,20 +345,8 @@ export default {
                 }
             });
         },
-        async setSettings() {
-            this.$emit(
-                'setSettings',
-                this.allPanorama,
-                this.timeLimitation,
-                this.mode,
-                this.timeAttack,
-                this.zoomControl,
-                this.moveControl,
-                this.panControl,
-                +this.countdown,
-                this.scoreMode,
-                this.areaParams
-            );
+        onClickNext() {
+            this.setSettings();
         },
     },
 };

@@ -20,8 +20,8 @@
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
-
-        <h2>Areas</h2>
+        <v-container>
+            <h2>Areas</h2></v-container>
         <section style="max-width: 100vw">
             <v-slide-group show-arrows>
                 <v-slide-item
@@ -33,7 +33,7 @@
                 </v-slide-item>
             </v-slide-group>
         </section>
-        <h2>Maps</h2>
+        <v-container><h2>Maps</h2></v-container>
         <section id="maps">
             <HomeCard
                 v-for="(map, index) in maps"

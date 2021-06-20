@@ -229,7 +229,7 @@ export default {
             (this.areaParams && this.areaParams.urlArea) ||
             this.mode === GAME_MODE.COUNTRY
         ) {
-            await this.loadAreas(this.areaParams.urlArea);
+            await this.loadAreas(this.areaParams && this.areaParams.urlArea);
         }
         await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(

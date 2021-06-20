@@ -27,7 +27,7 @@
         "streamerModeDetails": "URLs and room names are hidden",
         "HomeCardMode": {
             "map": "Map",
-            "area": "area"
+            "area": "Area"
         }
     },
     "StreetView": {
