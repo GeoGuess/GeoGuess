@@ -10,6 +10,7 @@ export default {
         loadingGeoJson: false,
         errorMessage: null,
         listMaps: [],
+        listAreas: [],
         history: [],
         streamerMode: !!localStorage.getItem('streamerMode'),
     }),
@@ -17,8 +18,9 @@ export default {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
             state.geojson = geojson;
         },
-        [MutationTypes.HOME_SET_LISTMAPS](state, listMaps) {
-            state.listMaps = listMaps;
+        [MutationTypes.HOME_SET_LISTS](state, lists) {
+            state.listMaps = lists.maps;
+            state.listAreas = lists.areas;
         },
         [MutationTypes.HOME_SET_HISTORY](state, history) {
             state.history = history;
@@ -37,82 +39,6 @@ export default {
     },
 
     getters: {
-        areasList() {
-            return [
-                {
-                    name: 'France Régions',
-
-                    data: {
-                        bbox: [-5.4517733, 41.2611155, 9.8282225, 51.3055721],
-                        urlArea:
-                            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-version-simplifiee.geojson',
-                        type: 'nominatim',
-                        pathKey: 'nom',
-                        nominatimResultPath: 'address.state',
-                        nominatimQueryParams: {
-                            zoom: '5',
-                            addressdetails: '1',
-                            'accept-language': 'fr',
-                        },
-                    },
-                },
-                {
-                    name: 'France Départements',
-
-                    data: {
-                        bbox: [-5.4517733, 41.2611155, 9.8282225, 51.3055721],
-                        urlArea:
-                            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
-                        type: 'nominatim',
-                        pathKey: 'nom',
-                        nominatimResultPath: 'address.county',
-                        nominatimQueryParams: {
-                            zoom: '8',
-                            addressdetails: '1',
-                            'accept-language': 'fr',
-                        },
-                    },
-                },
-                {
-                    name: 'US States',
-                    data: {
-                        bbox: [
-                            -171.79111060289117,
-                            18.916190000000142,
-                            -66.96466,
-                            71.35776357694175,
-                        ],
-                        urlArea:
-                            'https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/cultural/ne_110m_admin_1_states_provinces.json',
-                        type: 'nominatim',
-                        pathKey: 'name',
-                        nominatimResultPath: 'address.state',
-                        nominatimQueryParams: {
-                            zoom: '5',
-                            addressdetails: '1',
-                            'accept-language': 'en',
-                        },
-                    },
-                },
-                {
-                    name: 'Continent',
-                    data: {
-                        urlArea:
-                            'https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json',
-                        type: 'polygon',
-                        pathKey: 'CONTINENT',
-                    },
-                },
-            ].map((map) => ({
-                ...map,
-                nameLocate: getLocateString(map, 'name', i18n.locale),
-                descriptionLocate: getLocateString(
-                    map,
-                    'description',
-                    i18n.locale
-                ),
-            }));
-        },
         geoJsonString(state) {
             if (!state.geojson) {
                 return '';
@@ -130,6 +56,17 @@ export default {
         },
         maps(state) {
             return state.listMaps.map((map) => ({
+                ...map,
+                nameLocate: getLocateString(map, 'name', i18n.locale),
+                descriptionLocate: getLocateString(
+                    map,
+                    'description',
+                    i18n.locale
+                ),
+            }));
+        },
+        areasList(state) {
+            return state.listAreas.map((map) => ({
                 ...map,
                 nameLocate: getLocateString(map, 'name', i18n.locale),
                 descriptionLocate: getLocateString(
@@ -230,7 +167,7 @@ export default {
             commit(MutationTypes.HOME_SET_GEOJSON, obj);
         },
         async getListMaps({ commit }) {
-            const maps = await axios
+            const data = await axios
                 .get(
                     process.env.VUE_APP_LIST_MAPS_JSON_URL ||
                         'https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/maps.json',
@@ -240,9 +177,9 @@ export default {
                         },
                     }
                 )
-                .then((res) => res.data.maps);
+                .then((res) => res.data);
 
-            commit(MutationTypes.HOME_SET_LISTMAPS, maps);
+            commit(MutationTypes.HOME_SET_LISTS, data);
         },
         loadHistory({ commit }) {
             const history = localStorage.getItem('history')
