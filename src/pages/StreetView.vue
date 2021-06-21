@@ -449,7 +449,7 @@ export default {
         },
         async checkStreetView(data, status) {
             // Generate random streetview until the valid one is generated
-            if (status === 'OK' && data.location) {
+            if (status === 'OK' && data && data.location) {
                 let isInGeoJSONResult;
                 if (this.placeGeoJson != null) {
                     isInGeoJSONResult = isInGeoJSON(
@@ -490,7 +490,7 @@ export default {
                             areaCode = await getAreaCodeNameFromLatLng(
                                 this.randomLatLng,
                                 this.loadStreetView,
-                                this.areaParams.data
+                                this.areaParams && this.areaParams.data
                             );
                         } else {
                             const area = this.areasJson.features.find((f) =>
@@ -509,7 +509,9 @@ export default {
                             } else {
                                 areaCode =
                                     area.properties[
-                                        this.areaParams.data.pathKey
+                                        this.areaParams
+                                            ? this.areaParams.data.pathKey
+                                            : 'iso_a2'
                                     ];
                             }
                         }
@@ -651,7 +653,9 @@ export default {
                             this.$refs.mapContainer.selectRandomLocation(
                                 getRandomArea(
                                     this.areasJson,
-                                    this.areaParams.data.pathKey
+                                    this.areaParams
+                                        ? this.areaParams.data.pathKey
+                                        : 'iso_a2'
                                 )
                             );
                         } else {

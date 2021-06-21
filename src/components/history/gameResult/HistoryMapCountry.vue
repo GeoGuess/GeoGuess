@@ -37,7 +37,7 @@
                         :style="`color: ${
                             strokeColors[index % strokeColors.length]
                         }`"
-                    >{{ playerName }}</span
+                        >{{ playerName }}</span
                     >
                 </div>
             </div>
@@ -66,19 +66,19 @@ export default {
             ],
         };
     },
-    methods: { ...mapActions(['loadCountries']) },
+    methods: { ...mapActions(['loadAreas']) },
     computed: {
-        ...mapGetters(['countriesJson']),
+        ...mapGetters(['areasJson']),
     },
     watch: {
-        countriesJson(val) {
+        areasJson(val) {
             if (!val || !val.features) {
                 return;
             }
         },
     },
     async mounted() {
-        await this.loadCountries();
+        await this.loadAreas();
         await this.$gmapApiPromiseLazy();
         this.$refs.mapRef.$mapPromise.then((map) => {
             if (!this.item.multiplayer) {
@@ -93,7 +93,7 @@ export default {
                             fillColor: '#1D4ED8',
                         },
                     });
-                    const geojsonCountry = this.countriesJson.features.find(
+                    const geojsonCountry = this.areasJson.features.find(
                         (j) => j.properties.iso_a2 === r.guess
                     );
                     p.addGeoJson(geojsonCountry);
@@ -114,7 +114,7 @@ export default {
                                 fillColor: this.strokeColors[i],
                             },
                         });
-                        const geojsonCountry = this.countriesJson.features.find(
+                        const geojsonCountry = this.areasJson.features.find(
                             (j) =>
                                 j.properties.iso_a2 ===
                                 r.players[playerName].guess

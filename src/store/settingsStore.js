@@ -236,7 +236,7 @@ export default {
                         timeLimitation: state.gameSettings.time,
                         difficulty: difficulty,
                         placeGeoJson: rootState.homeStore.geojson,
-                        bboxObj: bboxObj,
+                        ...(bboxObj && { bboxObj: bboxObj }),
                     },
                     (error) => {
                         if (!error) {
