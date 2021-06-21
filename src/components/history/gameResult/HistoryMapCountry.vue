@@ -37,7 +37,7 @@
                         :style="`color: ${
                             strokeColors[index % strokeColors.length]
                         }`"
-                        >{{ playerName }}</span
+                    >{{ playerName }}</span
                     >
                 </div>
             </div>
