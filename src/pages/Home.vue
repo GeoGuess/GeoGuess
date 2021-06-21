@@ -20,12 +20,11 @@
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
-        <v-container>
-            <h2>Areas</h2></v-container>
+        <v-container> <h2>Areas</h2></v-container>
         <section style="max-width: 100vw">
             <v-slide-group show-arrows>
                 <v-slide-item
-                    v-for="(mode, index) in modes"
+                    v-for="(mode, index) in areasList"
                     :key="index"
                     class="ma-4"
                 >
@@ -86,7 +85,7 @@ export default {
     },
     methods: { ...mapActions(['getListMaps']) },
     computed: {
-        ...mapGetters(['maps', 'modes']),
+        ...mapGetters(['maps', 'areasList']),
     },
 };
 </script>

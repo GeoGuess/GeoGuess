@@ -15,20 +15,36 @@
                         >
                             <v-btn
                                 id="modeClassicBtn"
-                                :text="gameSettings.modeSelected !== gameMode.CLASSIC"
+                                :text="
+                                    gameSettings.modeSelected !==
+                                    gameMode.CLASSIC
+                                "
                                 rounded
                                 outlined
-                                @click="() => (setGameSettings({modeSelected: gameMode.CLASSIC}))"
+                                @click="
+                                    () =>
+                                        setGameSettings({
+                                            modeSelected: gameMode.CLASSIC,
+                                        })
+                                "
                             >
                                 <v-icon large> mdi-map-marker </v-icon>
                                 <span>{{ $t('modes.classic') }}</span>
                             </v-btn>
                             <v-btn
                                 id="modeCountryBtn"
-                                :text="gameSettings.modeSelected !== gameMode.COUNTRY"
+                                :text="
+                                    gameSettings.modeSelected !==
+                                    gameMode.COUNTRY
+                                "
                                 rounded
                                 outlined
-                                @click="() => (setGameSettings({modeSelected: gameMode.COUNTRY}))"
+                                @click="
+                                    () =>
+                                        setGameSettings({
+                                            modeSelected: gameMode.COUNTRY,
+                                        })
+                                "
                             >
                                 <v-icon large> mdi-flag </v-icon>
                                 <span>{{ $t('modes.country') }}</span>
@@ -36,13 +52,21 @@
                         </v-flex>
                     </v-row>
 
-                    <v-row v-if="gameSettings.modeSelected === gameMode.CUSTOM_AREA"> </v-row>
+                    <v-row
+                        v-if="
+                            gameSettings.modeSelected === gameMode.CUSTOM_AREA
+                        "
+                    >
+                    </v-row>
 
                     <v-row>
                         <label class="card_settings__time__label">{{
                             $t('CardRoomTime.title')
                         }}</label>
-                        <TimePicker :value="gameSettings.time" @input="(time)=>setGameSettings({time})" />
+                        <TimePicker
+                            :value="gameSettings.time"
+                            @input="(time) => setGameSettings({ time })"
+                        />
                     </v-row>
 
                     <v-row
@@ -51,27 +75,39 @@
                     >
                         <div>
                             <v-checkbox
-                                :input-value="gameSettings.zoomControl" 
-                                @change="(zoomControl)=>setGameSettings({zoomControl})" 
+                                :input-value="gameSettings.zoomControl"
+                                @change="
+                                    (zoomControl) =>
+                                        setGameSettings({ zoomControl })
+                                "
                                 :label="$t('CardRoomSettings.allowZoom')"
                                 hide-details
                             />
                             <v-checkbox
-                                :input-value="gameSettings.moveControl" 
-                                @change="(moveControl)=>setGameSettings({moveControl})" 
+                                :input-value="gameSettings.moveControl"
+                                @change="
+                                    (moveControl) =>
+                                        setGameSettings({ moveControl })
+                                "
                                 :label="$t('CardRoomSettings.allowMove')"
                                 hide-details
                             />
                             <v-checkbox
-                                :input-value="gameSettings.panControl" 
-                                @change="(panControl)=>setGameSettings({panControl})" 
+                                :input-value="gameSettings.panControl"
+                                @change="
+                                    (panControl) =>
+                                        setGameSettings({ panControl })
+                                "
                                 :label="$t('CardRoomSettings.allowPan')"
                                 hide-details
                             />
                             <br />
                             <v-checkbox
                                 :input-value="gameSettings.allPanorama"
-                                @change="(allPanorama)=>setGameSettings({allPanorama})" 
+                                @change="
+                                    (allPanorama) =>
+                                        setGameSettings({ allPanorama })
+                                "
                                 :label="
                                     $t('CardRoomSettings.includePhotopheres')
                                 "
@@ -85,19 +121,28 @@
                                     </v-list-item-title>
                                 </template>
                                 <v-select
-                                    v-if="gameSettings.modeSelected === gameMode.CLASSIC"
+                                    v-if="
+                                        gameSettings.modeSelected ===
+                                        gameMode.CLASSIC
+                                    "
                                     :label="
                                         $t('CardRoomSettings.scoreModeLabel')
                                     "
                                     :input-value="gameSettings.scoreMode"
-                                    @change="(scoreMode)=>setGameSettings({scoreMode})" 
+                                    @change="
+                                        (scoreMode) =>
+                                            setGameSettings({ scoreMode })
+                                    "
                                     :items="scoreModes"
                                 />
 
                                 <v-autocomplete
                                     label="Select Areas"
                                     :value="gameSettings.areaParams"
-                                    @input="(areaParams)=>setGameSettings({areaParams})" 
+                                    @input="
+                                        (areaParams) =>
+                                            setGameSettings({ areaParams })
+                                    "
                                     :items="optionsArea"
                                 ></v-autocomplete>
                             </v-list-group>
@@ -107,19 +152,27 @@
                                 v-if="!singlePlayer"
                                 :label="$t('CardRoomSettings.countDownLabel')"
                                 :value="gameSettings.countdown"
-                                @input="(countdown)=>setGameSettings({countdown})" 
+                                @input="
+                                    (countdown) =>
+                                        setGameSettings({ countdown })
+                                "
                                 hide-details
                                 type="number"
                             />
                             <div
                                 v-if="
-                                    gameSettings.modeSelected === gameMode.COUNTRY &&
-                                        !singlePlayer
+                                    gameSettings.modeSelected ===
+                                        gameMode.COUNTRY && !singlePlayer
                                 "
                             >
-                                <v-checkbox 
+                                <v-checkbox
                                     :input-value="gameSettings.timeAttack"
-                                    @change="(timeAttack)=>setGameSettings({timeAttack})" hide-details>
+                                    @change="
+                                        (timeAttack) =>
+                                            setGameSettings({ timeAttack })
+                                    "
+                                    hide-details
+                                >
                                     <template #label>
                                         {{
                                             $t(
@@ -205,7 +258,7 @@ import { GAME_MODE, SCORE_MODE } from '../../../constants';
 import CardRoomMixin from './mixins/CardRoomMixin';
 import { mapActions, mapGetters, mapState, mapMutations } from 'vuex';
 import bbox from '@turf/bbox';
-import {SETTINGS_SET_GAME_SETTINGS} from '@/store/mutation-types';
+import { SETTINGS_SET_GAME_SETTINGS } from '@/store/mutation-types';
 
 export default {
     components: {
@@ -217,89 +270,31 @@ export default {
         return {
             invalidAreas: false,
             loadingAreas: false,
-            areas: [
-                {
-                    text: 'France Régions',
-
-                    value: {
-                        bbox: [-5.4517733, 41.2611155, 9.8282225, 51.3055721],
-                        urlArea:
-                            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-version-simplifiee.geojson',
-                        type: 'nominatim',
-                        pathKey: 'nom',
-                        nominatimResultPath: 'address.state',
-                        nominatimQueryParams: {
-                            zoom: '5',
-                            addressdetails: '1',
-                            'accept-language': 'fr',
-                        },
-                    },
-                },
-                {
-                    text: 'France Départements',
-
-                    value: {
-                        bbox: [-5.4517733, 41.2611155, 9.8282225, 51.3055721],
-                        urlArea:
-                            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
-                        type: 'nominatim',
-                        pathKey: 'nom',
-                        nominatimResultPath: 'address.county',
-                        nominatimQueryParams: {
-                            zoom: '8',
-                            addressdetails: '1',
-                            'accept-language': 'fr',
-                        },
-                    },
-                },
-                {
-                    text: 'US States',
-                    value: {
-                        bbox: [
-                            -171.79111060289117,
-                            18.916190000000142,
-                            -66.96466,
-                            71.35776357694175,
-                        ],
-                        urlArea:
-                            'https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/cultural/ne_110m_admin_1_states_provinces.json',
-                        type: 'nominatim',
-                        pathKey: 'name',
-                        nominatimResultPath: 'address.state',
-                        nominatimQueryParams: {
-                            zoom: '5',
-                            addressdetails: '1',
-                            'accept-language': 'en',
-                        },
-                    },
-                },
-                {
-                    text: 'Continent',
-                    value: {
-                        urlArea:
-                            'https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json',
-                        type: 'polygon',
-                        pathKey: 'CONTINENT',
-                    },
-                },
-            ],
         };
     },
     computed: {
-        ...mapGetters(['areasJson']),
-        ...mapState('settingsStore', [
-            'gameSettings',
-            'loadingGeoJson',
-            'placeGeoJson'
-        ]),
+        ...mapGetters(['areasJson', 'areasList']),
+        ...mapState({
+            loadingGeoJson: (state) => state.homeStore.loadingGeoJson,
+            placeGeoJson: (state) => state.homeStore.geojson,
+        }),
+        ...mapState('settingsStore', ['gameSettings']),
         optionsArea() {
-            return this.areas.filter((a) => {
-                if (!a.value.bbox) {
-                    return true;
-                }
-                const bboxPlace = bbox(this.placeGeoJson);
-                return !a.value.bbox.some((v, index) => v > bboxPlace[index]);
-            });
+            return this.areasList
+                .filter((a) => {
+                    if (!a.data.bbox) {
+                        return true;
+                    }
+                    if (this.placeGeoJson) {
+                        const bboxPlace = bbox(this.placeGeoJson);
+                        return a.data.bbox.every((v, index) =>
+                            index < 2
+                                ? v <= bboxPlace[index]
+                                : v >= bboxPlace[index]
+                        );
+                    }
+                })
+                .map((a) => ({ text: a.nameLocate, value: a }));
         },
         scoreModes() {
             return Object.values(SCORE_MODE).map((a) => ({
@@ -324,7 +319,7 @@ export default {
     },
     methods: {
         ...mapMutations('settingsStore', {
-           setGameSettings: SETTINGS_SET_GAME_SETTINGS
+            setGameSettings: SETTINGS_SET_GAME_SETTINGS,
         }),
         ...mapActions('settingsStore', ['setSettings']),
         setGeoJson(val) {

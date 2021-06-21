@@ -27,10 +27,9 @@ export default {
     },
 
     actions: {
-        async loadAreas(
-            { commit, state },
-            urlAreas = process.env.BASE_URL + 'resources/countries.geo.json'
-        ) {
+        async loadAreas({ commit, state }, url) {
+            const urlAreas =
+                url || process.env.BASE_URL + 'resources/countries.geo.json';
             if (
                 state.urlAreas === urlAreas &&
                 state.areas &&

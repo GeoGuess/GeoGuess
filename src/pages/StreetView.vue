@@ -37,8 +37,8 @@
                         :nb-round="nbRound"
                         :countdown="countdown"
                         :score-mode="scoreMode"
-                        :areasGeoJsonUrl="areaParams && areaParams.urlArea"
-                        :pathKey="areaParams && areaParams.pathKey"
+                        :areasGeoJsonUrl="areaParams && areaParams.data.urlArea"
+                        :pathKey="areaParams && areaParams.data.pathKey"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -226,10 +226,12 @@ export default {
     },
     async mounted() {
         if (
-            (this.areaParams && this.areaParams.urlArea) ||
+            (this.areaParams && this.areaParams.data.urlArea) ||
             this.mode === GAME_MODE.COUNTRY
         ) {
-            await this.loadAreas(this.areaParams && this.areaParams.urlArea);
+            await this.loadAreas(
+                this.areaParams && this.areaParams.data.urlArea
+            );
         }
         await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(
@@ -483,12 +485,12 @@ export default {
                         let areaCode;
                         if (
                             this.mode === GAME_MODE.COUNTRY ||
-                            this.areaParams.type === AREA_MODE.NOMINATIM
+                            this.areaParams.data.type === AREA_MODE.NOMINATIM
                         ) {
                             areaCode = await getAreaCodeNameFromLatLng(
                                 this.randomLatLng,
                                 this.loadStreetView,
-                                this.areaParams
+                                this.areaParams.data
                             );
                         } else {
                             const area = this.areasJson.features.find((f) =>
@@ -506,7 +508,9 @@ export default {
                                 return;
                             } else {
                                 areaCode =
-                                    area.properties[this.areaParams.pathKey];
+                                    area.properties[
+                                        this.areaParams.data.pathKey
+                                    ];
                             }
                         }
                         this.area = areaCode;
@@ -647,7 +651,7 @@ export default {
                             this.$refs.mapContainer.selectRandomLocation(
                                 getRandomArea(
                                     this.areasJson,
-                                    this.areaParams.pathKey
+                                    this.areaParams.data.pathKey
                                 )
                             );
                         } else {

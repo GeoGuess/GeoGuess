@@ -7,9 +7,9 @@ import i18n from '../lang';
 export default {
     state: () => ({
         geojson: null,
+        loadingGeoJson: false,
+        errorMessage: null,
         listMaps: [],
-        openDialogSinglePlayer: false,
-        openDialogMultiPlayer: false,
         history: [],
         streamerMode: !!localStorage.getItem('streamerMode'),
     }),
@@ -20,12 +20,6 @@ export default {
         [MutationTypes.HOME_SET_LISTMAPS](state, listMaps) {
             state.listMaps = listMaps;
         },
-        [MutationTypes.HOME_SET_SINGLEPLAYER](state, status) {
-            state.openDialogSinglePlayer = status;
-        },
-        [MutationTypes.HOME_SET_MULTIPLAYER](state, status) {
-            state.openDialogMultiPlayer = status;
-        },
         [MutationTypes.HOME_SET_HISTORY](state, history) {
             state.history = history;
         },
@@ -33,10 +27,17 @@ export default {
             state.streamerMode = streamerMode;
             localStorage.setItem('streamerMode', streamerMode);
         },
+
+        [MutationTypes.HOME_SET_STATUS_GEOJSON](state, status) {
+            state.loadingGeoJson = status;
+        },
+        [MutationTypes.HOME_SET_GEOJSON_ERROR](state, error) {
+            state.errorMessage = error;
+        },
     },
 
     getters: {
-        modes() {
+        areasList() {
             return [
                 {
                     name: 'France Régions',
@@ -147,6 +148,43 @@ export default {
     },
 
     actions: {
+        loadPlaceGeoJSON({ commit, state }, place) {
+            if (place != null && place != '') {
+                if (state.loadingGeoJson) {
+                    return;
+                }
+                commit(MutationTypes.HOME_SET_STATUS_GEOJSON, true);
+
+                commit(MutationTypes.HOME_SET_GEOJSON, null);
+
+                axios
+                    .get(
+                        `https://nominatim.openstreetmap.org/search/${encodeURIComponent(
+                            place.toLowerCase()
+                        )}?format=geojson&limit=1&polygon_geojson=1`
+                    )
+                    .then((res) => {
+                        if (
+                            res &&
+                            res.status === 200 &&
+                            res.data.features.length > 0
+                        ) {
+                            commit(
+                                MutationTypes.HOME_SET_GEOJSON,
+                                res.data.features[0]
+                            );
+                            return;
+                        }
+                        commit(
+                            MutationTypes.HOME_SET_GEOJSON_ERROR,
+                            'No Found Location'
+                        );
+                    })
+                    .finally(() => {
+                        commit(MutationTypes.HOME_SET_STATUS_GEOJSON, false);
+                    });
+            }
+        },
         async loadGeoJsonFromUrl({ commit }, url) {
             if (validURL(url)) {
                 // if gist url get raw
@@ -205,18 +243,6 @@ export default {
                 .then((res) => res.data.maps);
 
             commit(MutationTypes.HOME_SET_LISTMAPS, maps);
-        },
-        playSinglePlayer({ commit }) {
-            commit(MutationTypes.HOME_SET_SINGLEPLAYER, true);
-        },
-        playMultiPlayer({ commit }) {
-            commit(MutationTypes.HOME_SET_MULTIPLAYER, true);
-        },
-        resetSinglePlayer({ commit }) {
-            commit(MutationTypes.HOME_SET_SINGLEPLAYER, false);
-        },
-        resetMultiPlayer({ commit }) {
-            commit(MutationTypes.HOME_SET_MULTIPLAYER, false);
         },
         loadHistory({ commit }) {
             const history = localStorage.getItem('history')

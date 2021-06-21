@@ -16,9 +16,9 @@
                 gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
                 :src="
                     data.imageUrl ||
-                        `https://source.unsplash.com/500x230/daily?${encodeURI(
-                            data.nameLocate
-                        )}`
+                    `https://source.unsplash.com/500x230/daily?${encodeURI(
+                        data.nameLocate
+                    )}`
                 "
             >
                 <v-card-title>{{ data.nameLocate }}</v-card-title>
@@ -48,7 +48,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
+import { SETTINGS_SET_GAME_SETTINGS } from '../../../store/mutation-types';
 export default {
     props: {
         data: Object,
@@ -63,13 +64,14 @@ export default {
         };
     },
     methods: {
-        ...mapActions([
-            'loadGeoJsonFromUrl',
-            'playSinglePlayer',
-            'playMultiPlayer',
-        ]),
+        ...mapMutations('settingsStore', {
+            setGameSettings: SETTINGS_SET_GAME_SETTINGS,
+        }),
+        ...mapActions('settingsStore', ['openDialogRoom']),
+        ...mapActions(['loadGeoJsonFromUrl']),
         setMap() {
             if (this.type === 'area') {
+                this.setGameSettings({ areaParams: this.data });
                 this.loadGeoJsonFromUrl(this.data.data.urlArea);
             } else {
                 this.loadGeoJsonFromUrl(this.data.url);
@@ -78,11 +80,11 @@ export default {
         },
         onClickSinglePlayer() {
             this.setMap();
-            this.playSinglePlayer();
+            this.openDialogRoom(true);
         },
         onClickMultiPlayer() {
             this.setMap();
-            this.playMultiPlayer();
+            this.openDialogRoom(false);
         },
     },
 };

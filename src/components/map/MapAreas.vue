@@ -218,7 +218,11 @@ export default {
             this.allowSelect = false;
         },
         fitBounds() {
-            this.map.setZoom(2);
+            if (this.bbox) {
+                this.centerOnBbox();
+            } else {
+                this.map.setZoom(2);
+            }
         },
     },
 };
