@@ -66,7 +66,7 @@
 <script>
 import DialogCustomMap from '@/components/home/DialogCustomMap';
 import DialogRoom from '@/components/dialogroom/DialogRoom';
-import { mapActions, mapGetters, mapMutations } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
         DialogRoom,

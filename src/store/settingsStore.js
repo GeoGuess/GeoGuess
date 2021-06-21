@@ -1,4 +1,3 @@
-import axios from '@/plugins/axios';
 import * as MutationTypes from './mutation-types';
 import { GAME_MODE, SCORE_MODE } from '../constants';
 import i18n from '../lang';

@@ -16,9 +16,9 @@
                 gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
                 :src="
                     data.imageUrl ||
-                    `https://source.unsplash.com/500x230/daily?${encodeURI(
-                        data.nameLocate
-                    )}`
+                        `https://source.unsplash.com/500x230/daily?${encodeURI(
+                            data.nameLocate
+                        )}`
                 "
             >
                 <v-card-title>{{ data.nameLocate }}</v-card-title>

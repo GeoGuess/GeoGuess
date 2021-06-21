@@ -20,7 +20,7 @@
 import CardRoomName from '@/components/dialogroom/card/CardRoomName';
 import CardRoomSettings from '@/components/dialogroom/card/CardRoomSettings';
 import CardRoomPlayerName from '@/components/dialogroom/card/CardRoomPlayerName';
-import { mapState, mapActions, mapMutations } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
     components: {
