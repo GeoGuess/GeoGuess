@@ -16,13 +16,13 @@
                     </v-layout>
                 </v-layout>
             </v-container>
-            <v-btn id="btnMaps" href="#maps" large fab color="secondary" dark>
+            <v-btn id="btnMaps" href="#areas" large fab color="secondary" dark>
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
-        <v-container> <h2>Areas</h2></v-container>
-        <section style="max-width: 100vw">
-            <v-slide-group show-arrows>
+        <v-container id="areas"> <h2>Areas</h2></v-container>
+        <section class="sliders-container">
+            <v-slide-group show-arrows="always">
                 <v-slide-item
                     v-for="(mode, index) in areasList"
                     :key="index"
@@ -143,6 +143,9 @@ export default {
             left: 0;
             right: 0;
         }
+    }
+    .sliders-container{
+        max-width: 100vw
     }
     #maps {
         padding: 3rem 15px;
