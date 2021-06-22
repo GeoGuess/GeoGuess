@@ -149,6 +149,13 @@ export default {
         [MutationTypes.SETTINGS_SET_PLAYERS](state, players) {
             state.players = players;
         },
+        [MutationTypes.SETTINGS_RESET](state){
+            state.room = null;
+            state.roomName = '';
+            state.playerNumber = 0;
+            state.roomErrorMessage = null;
+            state.players = [];
+        }
     },
 
     getters: {
@@ -158,14 +165,12 @@ export default {
     },
 
     actions: {
-        closeDialogRoom({ state, commit }) {
+        closeDialogRoom({ state, commit }, cleanRoom = true) {
             commit(MutationTypes.SETTINGS_SET_OPEN_DIALOG_ROOM, false);
 
-            commit(MutationTypes.SETTINGS_SET_ROOM_ERROR, '');
-
-            // // Remove the room
-            if (state.room != null) {
-                if (state.playerNumber == 1) {
+            // Remove the room
+            if (state.room != null && cleanRoom) {
+                if (state.playerNumber === 1) {
                     // Remove the entire node if the player is the first player
                     state.room.remove();
                 } else {
@@ -175,6 +180,8 @@ export default {
                         .remove();
                 }
             }
+            
+            commit(MutationTypes.SETTINGS_RESET);
         },
         openDialogRoom({ commit }, isSinglePlayer = true) {
             commit(MutationTypes.SETTINGS_SET_MODE_DIALOG_ROOM, isSinglePlayer);
@@ -307,7 +314,7 @@ export default {
                 },
             });
 
-            dispatch('closeDialogRoom');
+           dispatch('closeDialogRoom', false);
         },
     },
 };
