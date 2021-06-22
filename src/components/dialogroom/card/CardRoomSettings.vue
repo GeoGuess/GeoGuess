@@ -52,13 +52,6 @@
                         </v-flex>
                     </v-row>
 
-                    <v-row
-                        v-if="
-                            gameSettings.modeSelected === gameMode.CUSTOM_AREA
-                        "
-                    >
-                    </v-row>
-
                     <v-row>
                         <label class="card_settings__time__label">{{
                             $t('CardRoomTime.title')
@@ -161,8 +154,8 @@
                             />
                             <div
                                 v-if="
-                                    gameSettings.modeSelected ===
-                                        gameMode.COUNTRY && !singlePlayer
+                                    gameSettings.modeSelected !==
+                                        gameMode.CLASSIC && !singlePlayer
                                 "
                             >
                                 <v-checkbox
