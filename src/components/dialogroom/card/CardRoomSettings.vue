@@ -147,7 +147,9 @@
                                 :value="gameSettings.countdown"
                                 @input="
                                     (countdown) =>
-                                        setGameSettings({ countdown })
+                                        setGameSettings({
+                                            countdown: +countdown,
+                                        })
                                 "
                                 hide-details
                                 type="number"
@@ -159,10 +161,14 @@
                                 "
                             >
                                 <v-checkbox
-                                    :input-value="gameSettings.timeAttack"
+                                    :input-value="
+                                        gameSettings.timeAttackSelected
+                                    "
                                     @change="
-                                        (timeAttack) =>
-                                            setGameSettings({ timeAttack })
+                                        (timeAttackSelected) =>
+                                            setGameSettings({
+                                                timeAttackSelected,
+                                            })
                                     "
                                     hide-details
                                 >

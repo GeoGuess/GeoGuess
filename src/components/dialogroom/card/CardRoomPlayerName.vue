@@ -18,7 +18,7 @@
                         <v-text-field
                             id="inputPlayerName"
                             :value="name"
-                            @input="(n)=>setPlayerName(n)"
+                            @input="(n) => setPlayerName(n)"
                             maxlength="10"
                             autofocus
                             :label="$t('CardRoomPlayerName.input')"
@@ -80,15 +80,15 @@ import { mapState, mapActions } from 'vuex';
 import CardRoomMixin from './mixins/CardRoomMixin';
 export default {
     mixins: [CardRoomMixin],
-    props: {
-        room: {
-            type: Object,
-            required: true,
-        },
-    },
     computed: {
-        ...mapState('settingsStore', ['playerNumber', 'roomName', 'players','name', 'invalidName']),
-  
+        ...mapState('settingsStore', [
+            'playerNumber',
+            'roomName',
+            'players',
+            'name',
+            'invalidName',
+        ]),
+
         ...mapState({
             streamerMode: (state) => state.homeStore.streamerMode,
         }),
@@ -96,16 +96,8 @@ export default {
             return window.origin + '/room/' + this.roomName;
         },
     },
-    // mounted() {
-
-    //     this.room.on('value', (snapshot) => {
-    //         if (snapshot.hasChild('size') && snapshot.hasChild('streetView')) {
-    //             this.$emit('start');
-    //         }
-    //     });
-    // },
     methods: {
-        ...mapActions('settingsStore',['startGame', 'setPlayerName']),
+        ...mapActions('settingsStore', ['startGame', 'setPlayerName']),
         copy() {
             this.$copyText(this.roomUrl, this.$refs.roomUrl);
         },

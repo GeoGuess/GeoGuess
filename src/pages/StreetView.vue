@@ -38,7 +38,9 @@
                         :countdown="countdown"
                         :score-mode="scoreMode"
                         :areasGeoJsonUrl="areaParams && areaParams.data.urlArea"
-                        :pathKey="areaParams && areaParams.data.pathKey"
+                        :pathKey="
+                            areaParams ? areaParams.data.pathKey : 'iso_a2'
+                        "
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"

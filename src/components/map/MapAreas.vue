@@ -248,9 +248,6 @@ export default {
                 grid-template-columns: 30px auto;
                 grid-column-gap: 5px;
             }
-            span {
-                margin-left: 10px;
-            }
         }
     }
     .map-content {

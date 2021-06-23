@@ -23,7 +23,7 @@ export class GameSettings {
         this.allPanorama = _allPanorama;
         this.time = _timeLimitation;
         this.modeSelected = _mode;
-        this.timeAttack = _timeAttack;
+        this.timeAttackSelected = _timeAttack;
         this.zoomControl = _zoomControl;
         this.moveControl = _moveControl;
         this.panControl = _panControl;
@@ -149,13 +149,13 @@ export default {
         [MutationTypes.SETTINGS_SET_PLAYERS](state, players) {
             state.players = players;
         },
-        [MutationTypes.SETTINGS_RESET](state){
+        [MutationTypes.SETTINGS_RESET](state) {
             state.room = null;
             state.roomName = '';
             state.playerNumber = 0;
             state.roomErrorMessage = null;
             state.players = [];
-        }
+        },
     },
 
     getters: {
@@ -169,18 +169,21 @@ export default {
             commit(MutationTypes.SETTINGS_SET_OPEN_DIALOG_ROOM, false);
 
             // Remove the room
-            if (state.room != null && cleanRoom) {
-                if (state.playerNumber === 1) {
-                    // Remove the entire node if the player is the first player
-                    state.room.remove();
-                } else {
-                    // Remove only the player's name node if the player isn't the first player
-                    state.room
-                        .child('playerName/player' + this.playerNumber)
-                        .remove();
+            if (state.room != null) {
+                state.room.off();
+                if (cleanRoom) {
+                    if (state.playerNumber === 1) {
+                        // Remove the entire node if the player is the first player
+                        state.room.remove();
+                    } else {
+                        // Remove only the player's name node if the player isn't the first player
+                        state.room
+                            .child('playerName/player' + this.playerNumber)
+                            .remove();
+                    }
                 }
             }
-            
+
             commit(MutationTypes.SETTINGS_RESET);
         },
         openDialogRoom({ commit }, isSinglePlayer = true) {
@@ -213,7 +216,6 @@ export default {
                     snapshot.hasChild('streetView')
                 ) {
                     dispatch('startGame');
-                    state.room.off();
                 }
             });
         },
@@ -287,7 +289,9 @@ export default {
                         difficulty: snapshot.child('difficulty').val(),
                         bboxObj: snapshot.child('bboxObj').val(),
                         modeSelected: snapshot.child('modeSelected').val(),
-                        timeAttackSelected: snapshot.child('timeAttack').val(),
+                        timeAttackSelected: snapshot
+                            .child('timeAttackSelected')
+                            .val(),
                         zoomControl: snapshot.child('zoomControl').val(),
                         moveControl: snapshot.child('moveControl').val(),
                         panControl: snapshot.child('panControl').val(),
@@ -296,6 +300,7 @@ export default {
                         scoreMode: snapshot.child('scoreMode').val(),
                         areaParams: snapshot.child('areaParams').val(),
                     };
+
                     dispatch('startGameMultiplayer', gameParams);
                 });
             }
@@ -314,7 +319,7 @@ export default {
                 },
             });
 
-           dispatch('closeDialogRoom', false);
+            dispatch('closeDialogRoom', false);
         },
     },
 };
