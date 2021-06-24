@@ -8,7 +8,12 @@
 // const $router = {
 //     push: jest.fn(),
 // };
-// describe('DialogRoom.vue', () => {
+describe('DialogRoom.vue', () => {
+    
+    it('test singlePlayer', () => {
+        expect(true).toBeTruthy();
+
+    });
 //     let store;
 //     beforeEach(() => {
 //         store = new Vuex.Store({
@@ -78,4 +83,4 @@
 
 //         expect(wrapper.vm.currentComponent).toEqual('roomName');
 //     });
-// });
+});

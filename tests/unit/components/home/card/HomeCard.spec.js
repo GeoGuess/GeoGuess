@@ -7,7 +7,7 @@ const args = appInit(createLocalVue());
 describe('MapDialog.vue', () => {
     let store;
 
-    it('open dialog hist', () => {
+    it('render', () => {
         const data = {
             name: {
                 en: 'Biggest City',
@@ -32,11 +32,7 @@ describe('MapDialog.vue', () => {
             },
         });
 
-        const mapLocate = wrapper.vm.mapLocate;
 
-        expect(mapLocate.descriptionLocate).toEqual(map.description.en);
-
-        expect(mapLocate.nameLocate).toEqual(map.name.en);
 
         expect(wrapper).toMatchSnapshot();
     });

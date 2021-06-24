@@ -38,17 +38,18 @@ exports[`homeStore.js isValidGeoJson true 2`] = `
 
 exports[`homeStore.js mutations 1`] = `
 Object {
+  "errorMessage": null,
   "geojson": Object {
     "type": "Point",
   },
   "history": Array [],
+  "listAreas": undefined,
   "listMaps": Array [
     Object {
       "name": "Hello",
     },
   ],
-  "openDialogMultiPlayer": true,
-  "openDialogSinglePlayer": true,
+  "loadingGeoJson": false,
   "streamerMode": false,
 }
 `;

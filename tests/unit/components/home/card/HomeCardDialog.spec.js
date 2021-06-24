@@ -23,7 +23,10 @@ describe('HomeCardDialog.vue', () => {
                     actions,
                 },
                 homeStore:{
-                    loadGeoJsonFromUrl
+                    actions:{
+
+                        loadGeoJsonFromUrl
+                    }
                 }
             },
         });
