@@ -509,12 +509,10 @@ export default {
                                 this.loadStreetView();
                                 return;
                             } else {
-                                areaCode =
-                                    area.properties[
-                                        this.areaParams
+                                const key = this.areaParams && this.areaParams.data
                                             ? this.areaParams.data.pathKey
-                                            : 'iso_a2'
-                                    ];
+                                            : 'iso_a2';
+                                areaCode = area.properties[key];
                             }
                         }
                         this.area = areaCode;

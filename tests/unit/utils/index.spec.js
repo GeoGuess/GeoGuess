@@ -147,6 +147,6 @@ describe('utils/index.js', () => {
         };
 
         const res2 = await getAreaCodeNameFromLatLng(gps2, () => {});
-        expect(res2).toBeUndefined();
+        expect(res2).toBeNull();
     });
 });
