@@ -29,8 +29,18 @@
                 :properties="randomFeatureProperties"
             />
         </div>
+
         <div class="container-map_controls">
             <div class="container-map_btns">
+
+                <v-btn
+                    fab
+                    x-small
+                    @click="showNotepad"
+                >
+                    <v-icon dark> mdi-file-document-edit </v-icon>
+                </v-btn>
+
                 <v-btn
                     id="btnDown"
                     fab
@@ -85,6 +95,7 @@
             :bbox="bbox"
             @setSeletedPos="setSeletedPos"
         />
+        <textarea class="container-map_notepad" v-show="isNotepadVisible" spellcheck="false" v-if="!printMapFull" ref="refNotepad"/>
         <div class="container-map_controls_guess">
             <button
                 v-if="
@@ -216,6 +227,7 @@ export default {
             dialogSummary: false,
             activeMap: false,
             size: 2,
+            isNotepadVisible: false,
             pinActive: false,
             printMapFull: false,
             countdownStarted: false,
@@ -416,6 +428,14 @@ export default {
         hideMap() {
             this.isMakeGuessButtonClicked = false;
         },
+        showNotepad() {
+            this.isNotepadVisible = !this.isNotepadVisible;
+            if (this.isNotepadVisible) {
+                setTimeout(() => {
+                    this.$refs.refNotepad.focus();
+                });
+            }
+        },
         selectLocation() {
             this.calculateDistance();
 
@@ -517,8 +537,6 @@ export default {
             this.$emit('calculateDistance', this.distance, this.point);
         },
         startNextRound() {
-            // eslint-disable-next-line no-debugger
-            debugger;
             this.$refs.map.startNextRound();
             this.startTime = new Date();
         },
@@ -534,6 +552,7 @@ export default {
             this.isSelected = false;
             this.isNextButtonVisible = false;
             this.countdownStarted = false;
+            this.isNotepadVisible = false;
 
             if (this.$viewport.width < 450) {
                 // Hide the map if the player is on mobile
@@ -636,6 +655,22 @@ export default {
         display: flex;
         flex-direction: row-reverse;
     }
+
+    .container-map_notepad {
+        position: absolute;
+        background-color: #fafafa;
+        resize: none;
+        left: var(--width);
+        margin-left: 10px;
+        transition: 0.3s;
+        width: 300px;
+        height: calc(100% - 74px);
+        top: 30px;
+        border-radius: 3px;
+        outline: none;
+        padding: 5px;
+        box-shadow:  0px 2px 8px 0px rgba(99, 99, 99, 0.2);
+    }
 }
 
 #make-guess-button,
@@ -711,6 +746,9 @@ button.w-50 {
         display: flex;
         flex-direction: column;
         .container-map_controls {
+            display: none;
+        }
+        .container-map_notepad {
             display: none;
         }
         #map {
