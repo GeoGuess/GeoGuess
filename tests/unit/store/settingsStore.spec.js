@@ -1,5 +1,3 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
 import { GAME_MODE } from '../../../src/constants';
 import * as MutationTypes from '../../../src/store/mutation-types';
 const { default: settingsStore, GameSettings } = require('../../../src/store/settingsStore');
