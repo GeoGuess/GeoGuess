@@ -91,6 +91,10 @@ export default {
                                 });
 
                                 state.currentComponent = 'settings';
+                                 // Open Modal
+                                if (!state.isOpenDialogRoom) {
+                                    state.isOpenDialogRoom = true;
+                                }
                             }
                         }
                     );
@@ -104,10 +108,16 @@ export default {
                             (error) => {
                                 if (!error) {
                                     state.currentComponent = 'playerName';
+                                    // Open Modal
+                                    if (!state.isOpenDialogRoom) {
+                                        state.isOpenDialogRoom = true;
+                                    }
                                 }
                             }
                         );
                 }
+                
+               
             });
         },
         [MutationTypes.SETTINGS_SET_ROOM_ERROR](state, error) {
@@ -193,6 +203,7 @@ export default {
 
         searchRoom({ commit, dispatch, state }, roomName) {
        
+            commit(MutationTypes.SETTINGS_SET_MODE_DIALOG_ROOM, false);
             if (roomName == '') {
                 commit(
                     MutationTypes.SETTINGS_SET_ROOM_ERROR,
@@ -202,11 +213,6 @@ export default {
                 commit(MutationTypes.SETTINGS_SET_ROOM, roomName);
             }
             
-            // Open Modal
-            if (!state.isOpenDialogRoom) {
-                commit(MutationTypes.SETTINGS_SET_OPEN_DIALOG_ROOM, true);
-            }
-
             state.room.on('value', (snapshot) => {
                 if (snapshot.child('playerName').exists())
                     state.players = Object.values(
