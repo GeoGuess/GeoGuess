@@ -192,9 +192,7 @@ export default {
         },
 
         searchRoom({ commit, dispatch, state }, roomName) {
-            if (!state.isOpenDialogRoom) {
-                dispatch('openDialogRoom', false);
-            }
+       
             if (roomName == '') {
                 commit(
                     MutationTypes.SETTINGS_SET_ROOM_ERROR,
@@ -203,6 +201,12 @@ export default {
             } else {
                 commit(MutationTypes.SETTINGS_SET_ROOM, roomName);
             }
+            
+            // Open Modal
+            if (!state.isOpenDialogRoom) {
+                commit(MutationTypes.SETTINGS_SET_OPEN_DIALOG_ROOM, true);
+            }
+
             state.room.on('value', (snapshot) => {
                 if (snapshot.child('playerName').exists())
                     state.players = Object.values(
