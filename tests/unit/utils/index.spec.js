@@ -5,6 +5,7 @@ const {
     getLocateString,
     isGeoJSONValid,
     getAreaCodeNameFromLatLng,
+    getSelectedPos
 } = require('../../../src/utils');
 
 describe('utils/index.js', () => {
@@ -148,5 +149,11 @@ describe('utils/index.js', () => {
 
         const res2 = await getAreaCodeNameFromLatLng(gps2, () => {});
         expect(res2).toBeNull();
+    });
+
+    
+    it('getSelectedPos', ()=>{
+        expect(getSelectedPos( {lat:()=> 0, lng:()=>1}, 'classic')).toEqual({latitude: 0, longitude:1});
+        expect(getSelectedPos('FR','country')).toEqual({area: 'FR'});
     });
 });

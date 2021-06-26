@@ -21,7 +21,7 @@ import './commands';
 Cypress.on('uncaught:exception', (err) => {
     // returning false here prevents Cypress from
     // failing the test
-    if (err.message.includes('STREETVIEW_GET_PANORAMA: ZERO_RESULTS')) {
+    if (err.message.includes('STREETVIEW_GET_PANORAMA')) {
         return false;
     }
 });

@@ -138,6 +138,32 @@ describe('homeStore.js', () => {
     //
     // ACTIONS
     //
+    it('loadPlaceGeoJSON not call', async () => {
+        await homeStore.actions.loadPlaceGeoJSON(
+            { commit: jest.fn(),state: {loadingGeoJson: true} },
+            'Nantes'
+        );
+        expect(axios.get).not.toBeCalledWith(`https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1`);
+    });
+
+    it('loadPlaceGeoJSON', async () => {
+        const commit = jest.fn();
+        await homeStore.actions.loadPlaceGeoJSON(
+            { commit,state: {loadingGeoJson: false} },
+            'Nantes'
+        );
+        expect(axios.get).toBeCalledWith(`https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1`);
+
+        expect(commit).toBeCalledWith(
+            MutationTypes.HOME_SET_STATUS_GEOJSON,
+            true
+        );
+        expect(commit).toBeCalledWith(
+            MutationTypes.HOME_SET_GEOJSON,
+            null
+        );
+        
+    });
 
     it('loadGeoJsonFromUrl', async () => {
         const commit = jest.fn();
