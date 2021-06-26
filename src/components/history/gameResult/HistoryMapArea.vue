@@ -58,7 +58,6 @@
 
 <script>
 import FlagIcon from '@/components/shared/FlagIcon';
-import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'HistoryMapArea',
     components: {
