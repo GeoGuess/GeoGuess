@@ -128,7 +128,8 @@
         "scoreModes": {
             "normal": "normal",
             "time": "time"
-        }
+        },
+        "selectAreas": "Select Areas"
     },
     "CardRoomDifficulty": {
         "title": "Set a difficulty level.",
@@ -146,7 +147,7 @@
     "Footer": { "under": "under", "privacyPolicy": "Privacy Policy" },
     "urlCopied": "Url copied",
     "DetailsMap": { "moreInfo": "More information" },
-    "modes": { "classic": "Classic", "country": "Pick country" },
+    "modes": { "classic": "Classic", "country": "Pick country", "custom_area": "Pick" },
     "Demo": {
         "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
         "btn": "Join Us"

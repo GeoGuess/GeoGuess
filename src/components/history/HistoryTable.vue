@@ -96,15 +96,15 @@
                             :rounds="item.rounds"
                         />
                     </div>
-                    <HistoryMapCountry
-                        v-if="item.gameMode === $t('modes.country')"
-                        :item="item"
-                    />
                     <HistoryMapClassic
-                        v-else-if="item.gameMode === $t('modes.classic')"
+                        v-if="item.gameMode === $t('modes.classic')"
                         :item="item"
                     />
-                    <p v-else>in progress</p>
+                    <HistoryMapArea
+                        v-else
+                        :is-country="item.gameMode === $t('modes.country')"
+                        :item="item"
+                    />
                 </td>
             </template>
         </v-data-table>
@@ -117,13 +117,13 @@
 import { mapActions, mapState } from 'vuex';
 import { download } from '../../utils';
 import HistoryMapClassic from './gameResult/HistoryMapClassic';
-import HistoryMapCountry from './gameResult/HistoryMapCountry';
+import HistoryMapArea from './gameResult/HistoryMapArea';
 import HistoryTimeDetail from './gameResult/HistoryTimeDetail';
 export default {
     name: 'HistoryTable',
     components: {
         HistoryMapClassic,
-        HistoryMapCountry,
+        HistoryMapArea,
         HistoryTimeDetail,
     },
     data() {

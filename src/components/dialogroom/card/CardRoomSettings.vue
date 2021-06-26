@@ -130,7 +130,7 @@
                                 />
 
                                 <v-autocomplete
-                                    label="Select Areas"
+                                    :label="$t('CardRoomSettings.selectAreas')"
                                     :value="gameSettings.areaParams"
                                     @input="
                                         (areaParams) =>
