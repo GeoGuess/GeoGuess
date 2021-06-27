@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 place visited | 1 place visited | {count} places visited",
+        "placeVisited": "0 locais visitados | 1 local visitado | {count} lugares visitados",
         "historyBtn": "HISTÓRICO",
         "about": "SOBRE",
         "searchBar": {
@@ -23,8 +23,8 @@
         "limitation": "LIMITAÇÃO",
         "limitationDescription": "Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.                Se o mapa não carregar, significa que as cotas do dia foram excedidas                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência.                 O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.",
         "play": "Jogar",
-        "streamerModeActivate": "Streamer mode activate",
-        "streamerModeDetails": "URLs and room names are hidden"
+        "streamerModeActivate": "Modo streamer ativado",
+        "streamerModeDetails": "URLs e nomes de salas estão ocultos"
     },
     "StreetView": {
         "nearby": {
@@ -104,9 +104,9 @@
     },
     "CardRoomPlayerName": {
         "title": "Sala:",
-        "input": "Type a player name.",
+        "input": "Digite um nome de jogador.",
         "anonymousPlayerName": "Anônimo 🕵",
-        "players": "1 player | {count} players"
+        "players": "1 jogador | {count} jogadores"
     },
     "CardRoomSize": {
         "title": "Defina o tamanho da sala."
@@ -124,11 +124,11 @@
         "allowMove": "Permitir movimento",
         "allowZoom": "Permitir Zoom",
         "allowPan": "Permitir Visão Panorâmica",
-        "countDownLabel": "CountDown (seconds)",
-        "scoreModeLabel": "Score formula",
+        "countDownLabel": "Contagem regressiva (segundos)",
+        "scoreModeLabel": "Fórmula de pontuação",
         "scoreModes": {
             "normal": "normal",
-            "time": "time"
+            "time": "tempo"
         }
     },
     "CardRoomDifficulty": {
