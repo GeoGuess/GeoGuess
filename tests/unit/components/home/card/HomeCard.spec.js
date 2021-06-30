@@ -1,14 +1,14 @@
-import MapCard from '@/components/home/maps/MapCard.vue';
+import HomeCard from '@/components/home/card/HomeCard.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import appInit from '../../../utils/appInit';
+import appInit from '../../../testutils/appInit';
 
 const args = appInit(createLocalVue());
 
 describe('MapDialog.vue', () => {
     let store;
 
-    it('open dialog hist', () => {
-        const map = {
+    it('render', () => {
+        const data = {
             name: {
                 en: 'Biggest City',
                 fr: 'Grande Villes',
@@ -24,19 +24,15 @@ describe('MapDialog.vue', () => {
                 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=140',
             url: 'https://mapurl.geojson',
         };
-        const wrapper = shallowMount(MapCard, {
+        const wrapper = shallowMount(HomeCard, {
             ...args,
             store,
             propsData: {
-                map,
+                data,
             },
         });
 
-        const mapLocate = wrapper.vm.mapLocate;
 
-        expect(mapLocate.descriptionLocate).toEqual(map.description.en);
-
-        expect(mapLocate.nameLocate).toEqual(map.name.en);
 
         expect(wrapper).toMatchSnapshot();
     });

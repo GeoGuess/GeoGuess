@@ -1,6 +1,6 @@
 import Maps from '@/components/Maps';
 import { createLocalVue, mount } from '@vue/test-utils';
-import appInit from '../utils/appInit';
+import appInit from '../testutils/appInit';
 
 const args = appInit(createLocalVue());
 

@@ -3,12 +3,12 @@ const {
     isInGeoJSON,
     getCountdownText,
     getLocateString,
-    getScore,
     isGeoJSONValid,
-    getCountryCodeNameFromLatLng
-} = require('../../src/utils');
+    getAreaCodeNameFromLatLng,
+    getSelectedPos
+} = require('../../../src/utils');
 
-describe('utils.js', () => {
+describe('utils/index.js', () => {
     it('validURL', () => {
         expect(validURL('')).toBeFalsy();
         expect(validURL('ftp://helllo.com')).toBeFalsy();
@@ -88,98 +88,72 @@ describe('utils.js', () => {
         expect(getLocateString(object, 'date', 'ar')).toEqual('');
     });
 
-    it('getScore', () => {
-        expect(getScore(20, 2000, 0, 'time')).toEqual(5000);
-        expect(getScore(100, 2000, 0, 'time')).toEqual(5000);
-        expect(getScore(100, 2000, 1000, 'time')).toEqual(4999);
-
-        expect(getScore(20, 2000, 0, 'normal')).toEqual(5000);
-        expect(getScore(200000, 2, 0, 'normal')).toEqual(0);
-        expect(getScore(20, 2000, 0, 'normal')).toEqual(5000);
-
-    });
-
     it('isGeoJSON Valid', () => {
         const geoTrue = {
-            "type": "FeatureCollection",
-            "features": [
-              {
-                "type": "Feature",
-                "properties": {},
-                "geometry": {
-                  "type": "Polygon",
-                  "coordinates": [
-                    [
-                      [                      
-                        0,
-                        40
-                      ],
-                      [
-                        -4,
-                        3
-                      ],
-                      [
-                        19,
-                        14
-                      ],
-                      [
-                        0,
-                        40
-                      ]
-                    ]
-                  ]
-                }
-              }
-            ]
-          };
+            type: 'FeatureCollection',
+            features: [
+                {
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                        type: 'Polygon',
+                        coordinates: [
+                            [
+                                [0, 40],
+                                [-4, 3],
+                                [19, 14],
+                                [0, 40],
+                            ],
+                        ],
+                    },
+                },
+            ],
+        };
         expect(isGeoJSONValid(geoTrue)).toBeTruthy();
-
     });
     it('isGeoJSON Invalid', () => {
         const geo = {
-            "type": "FeatureCollection",
-            "features": [
-              {
-                "type": "Feature",
-                "geometry": {
+            type: 'FeatureCollection',
+            features: [
+                {
+                    type: 'Feature',
+                    geometry: {
+                        type: 'LineString',
 
-                    "type": "LineString",
-                  
-                    "coordinates": [
-                  
-                      [-117.49389, 40.73069],
-                  
-                      [-115.98877, 37.95294]
-                  
-                    ] 
-                  
-                  }
-                }
-            ]
-          };
+                        coordinates: [
+                            [-117.49389, 40.73069],
+
+                            [-115.98877, 37.95294],
+                        ],
+                    },
+                },
+            ],
+        };
         expect(isGeoJSONValid(geo)).toBeFalsy();
-        
+
         expect(isGeoJSONValid({})).toBeFalsy();
-
     });
-    
-    it('getCountryCodeNameFromLatLng', async () => {
 
-        const gps ={
+    it('getAreaCodeNameFromLatLng', async () => {
+        const gps = {
             lat: () => 47.040182144806664,
             lng: () => -0.703125,
         };
-        const res = await getCountryCodeNameFromLatLng(gps, ()=>{});
+        const res = await getAreaCodeNameFromLatLng(gps, () => {});
         expect(res).toEqual('FR');
-        
-        const gps2 ={
+
+        const gps2 = {
             lat: () => 0,
             lng: () => 0,
         };
-        
-        const res2 = await getCountryCodeNameFromLatLng(gps2, ()=>{});
-        expect(res2).toBeUndefined();
 
+        const res2 = await getAreaCodeNameFromLatLng(gps2, () => {});
+        expect(res2).toBeNull();
     });
 
+    
+    it('getSelectedPos', ()=>{
+        expect(getSelectedPos( {lat:()=> 0, lng:()=>1}, 'classic')).toEqual({latitude: 0, longitude:1});
+        expect(getSelectedPos('FR','country')).toEqual({area: 'FR'});
+    });
 });

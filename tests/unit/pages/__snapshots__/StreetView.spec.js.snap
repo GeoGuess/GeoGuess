@@ -8,7 +8,7 @@ exports[`StreetView.vue methods startTimer 1`] = `
       <v-overlay-stub color="#212121" dark="true" opacity="1" zindex="5"></v-overlay-stub>
       <div id="street-view"></div>
       <div id="game-interface--overlay">
-        <maps-stub scoremode="normal" countdown="0" nbround="5" mode="classic" difficulty="2000" timelimitation="0" points="0" score="0" round="1"></maps-stub>
+        <maps-stub pathkey="iso_a2" scoremode="normal" countdown="0" nbround="5" mode="classic" difficulty="2000" timelimitation="0" points="0" score="0" round="1"></maps-stub>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@ exports[`StreetView.vue methods startTimer hasTimerStarted 1`] = `
       <v-overlay-stub color="#212121" dark="true" opacity="1" zindex="5"></v-overlay-stub>
       <div id="street-view"></div>
       <div id="game-interface--overlay">
-        <maps-stub scoremode="normal" countdown="0" nbround="5" mode="classic" difficulty="2000" timelimitation="0" points="0" score="0" round="1"></maps-stub>
+        <maps-stub pathkey="iso_a2" scoremode="normal" countdown="0" nbround="5" mode="classic" difficulty="2000" timelimitation="0" points="0" score="0" round="1"></maps-stub>
       </div>
     </div>
   </div>
@@ -54,7 +54,7 @@ exports[`StreetView.vue methods startTimer hasTimerStarted 2`] = `
       <v-overlay-stub color="#212121" dark="true" opacity="1" zindex="5"></v-overlay-stub>
       <div id="street-view"></div>
       <div id="game-interface--overlay">
-        <maps-stub scoremode="normal" countdown="0" nbround="5" mode="classic" difficulty="2000" timelimitation="0" points="0" score="0" round="1"></maps-stub>
+        <maps-stub pathkey="iso_a2" scoremode="normal" countdown="0" nbround="5" mode="classic" difficulty="2000" timelimitation="0" points="0" score="0" round="1"></maps-stub>
       </div>
     </div>
   </div>

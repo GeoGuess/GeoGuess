@@ -36,8 +36,13 @@ exports[`SearchBox.vue test search Input 1`] = `
   </div>
   <dialogcustommap-stub></dialogcustommap-stub>
   <div class="search-box__btns">
-    <dialogroom-stub place="" singleplayer="true"></dialogroom-stub>
-    <dialogroom-stub place=""></dialogroom-stub>
+    <v-btn-stub color="primary" rounded="true" tag="button" activeclass="" large="true" type="button" class="search-box__btns__btn">
+      Single Player
+    </v-btn-stub>
+    <v-btn-stub color="secondary" rounded="true" tag="button" activeclass="" large="true" type="button" class="search-box__btns__btn">
+      With Friends
+    </v-btn-stub>
+    <dialogroom-stub></dialogroom-stub>
   </div>
 </div>
 `;

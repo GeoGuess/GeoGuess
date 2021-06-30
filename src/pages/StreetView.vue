@@ -14,7 +14,7 @@
 
             <div id="game-interface">
                 <v-overlay :value="!isReady && multiplayer" opacity="1" />
-                <div id="street-view" />
+                <div id="street-view" ref="streetView" />
 
                 <div id="game-interface--overlay">
                     <Maps
@@ -32,11 +32,15 @@
                         :time-limitation="timeLimitation"
                         :bbox="bbox"
                         :mode="mode"
-                        :country="country"
+                        :area="area"
                         :time-attack="timeAttack"
                         :nb-round="nbRound"
                         :countdown="countdown"
                         :score-mode="scoreMode"
+                        :areasGeoJsonUrl="areaParams && areaParams.data.urlArea"
+                        :pathKey="
+                            areaParams ? areaParams.data.pathKey : 'iso_a2'
+                        "
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -87,17 +91,18 @@ import DialogMessage from '@/components/DialogMessage';
 
 import randomPositionInPolygon from 'random-position-in-polygon';
 import * as turfModel from '@turf/helpers';
+import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import bbox from '@turf/bbox';
 import {
     isInGeoJSON,
-    getCountryCodeNameFromLatLng,
-    getRandomCountry,
+    getAreaCodeNameFromLatLng,
+    getRandomArea,
     getMaxDistanceBbox,
 } from '../utils';
 
-import { GAME_MODE, SCORE_MODE } from '../constants';
+import { AREA_MODE, GAME_MODE, SCORE_MODE } from '../constants';
 
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
 
@@ -178,10 +183,13 @@ export default {
             default: SCORE_MODE.NORMAL,
             type: String,
         },
+        areaParams: {
+            type: Object,
+        },
     },
     data() {
         return {
-            country: null,
+            area: null,
             randomLatLng: null,
             randomLat: null,
             randomLng: null,
@@ -216,12 +224,20 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(['countriesJson']),
+        ...mapGetters(['areasJson']),
     },
     async mounted() {
+        if (
+            (this.areaParams && this.areaParams.data.urlArea) ||
+            this.mode === GAME_MODE.COUNTRY
+        ) {
+            await this.loadAreas(
+                this.areaParams && this.areaParams.data.urlArea
+            );
+        }
         await this.$gmapApiPromiseLazy();
         this.panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('street-view')
+            this.$refs.streetView
         );
 
         if (this.playerNumber == 1 || !this.multiplayer) {
@@ -278,9 +294,9 @@ export default {
                                 this.randomLat,
                                 this.randomLng
                             );
-                            this.country = snapshot
+                            this.area = snapshot
                                 .child(
-                                    'streetView/round' + this.round + '/country'
+                                    'streetView/round' + this.round + '/area'
                                 )
                                 .val();
                             this.isVisibleDialog = snapshot
@@ -367,6 +383,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['loadAreas']),
         loadStreetView() {
             const service = new google.maps.StreetViewService();
             let radius, position;
@@ -432,9 +449,9 @@ export default {
                 properties: null,
             };
         },
-        checkStreetView(data, status) {
+        async checkStreetView(data, status) {
             // Generate random streetview until the valid one is generated
-            if (status === 'OK' && data.location) {
+            if (status === 'OK' && data && data.location) {
                 let isInGeoJSONResult;
                 if (this.placeGeoJson != null) {
                     isInGeoJSONResult = isInGeoJSON(
@@ -462,28 +479,57 @@ export default {
                     this.cptNotFoundLocation = 0;
                     this.setPosition(data);
 
-                    if (this.mode === GAME_MODE.COUNTRY) {
-                        getCountryCodeNameFromLatLng(
-                            this.randomLatLng,
-                            this.loadStreetView
-                        ).then((c) => {
-                            this.country = c;
+                    if (
+                        [GAME_MODE.COUNTRY, GAME_MODE.CUSTOM_AREA].includes(
+                            this.mode
+                        )
+                    ) {
+                        let areaCode;
+                        if (
+                            this.mode === GAME_MODE.COUNTRY ||
+                           ( this.areaParams && this.areaParams.data.type === AREA_MODE.NOMINATIM)
+                        ) {
+                            areaCode = await getAreaCodeNameFromLatLng(
+                                this.randomLatLng,
+                                this.loadStreetView,
+                                this.areaParams && this.areaParams.data
+                            );
+                        } else {
+                            const area = this.areasJson.features.find((f) =>
+                                booleanPointInPolygon(
+                                    [
+                                        this.randomLatLng.lng(),
+                                        this.randomLatLng.lat(),
+                                    ],
+                                    f
+                                )
+                            );
 
-                            if (this.multiplayer) {
-                                // Put the streetview's location into firebase
-                                this.room
-                                    .child('streetView/round' + this.round)
-                                    .set({
-                                        latitude: this.randomLatLng.lat(),
-                                        longitude: this.randomLatLng.lng(),
-                                        roundInfo:
-                                            this.randomFeatureProperties ||
-                                            null,
-                                        country: c,
-                                        warning: this.isVisibleDialog,
-                                    });
+                            if (!area) {
+                                this.loadStreetView();
+                                return;
+                            } else {
+                                const key = this.areaParams
+                                            ? this.areaParams.data.pathKey
+                                            : 'iso_a2';
+                                areaCode = area.properties[key];
                             }
-                        });
+                        }
+                        this.area = areaCode;
+
+                        if (this.multiplayer) {
+                            // Put the streetview's location into firebase
+                            this.room
+                                .child('streetView/round' + this.round)
+                                .set({
+                                    latitude: this.randomLatLng.lat(),
+                                    longitude: this.randomLatLng.lng(),
+                                    roundInfo:
+                                        this.randomFeatureProperties || null,
+                                    area: areaCode,
+                                    warning: this.isVisibleDialog,
+                                });
+                        }
                     } else {
                         if (this.multiplayer) {
                             // Put the streetview's location into firebase
@@ -599,9 +645,18 @@ export default {
                 } else {
                     this.timerInProgress = false;
                     if (!this.hasLocationSelected) {
-                        if (this.mode === GAME_MODE.COUNTRY) {
+                        if (
+                            [GAME_MODE.COUNTRY, GAME_MODE.CUSTOM_AREA].includes(
+                                this.mode
+                            )
+                        ) {
                             this.$refs.mapContainer.selectRandomLocation(
-                                getRandomCountry(this.countriesJson)
+                                getRandomArea(
+                                    this.areasJson,
+                                    this.areaParams
+                                        ? this.areaParams.data.pathKey
+                                        : 'iso_a2'
+                                )
                             );
                         } else {
                             // Set a random location if the player didn't select a location in time
@@ -655,7 +710,7 @@ export default {
 
             // Reset
             this.randomLatLng = null;
-            this.country = null;
+            this.area = null;
             this.overlay = false;
             this.hasTimerStarted = false;
             this.hasLocationSelected = false;

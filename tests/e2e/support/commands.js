@@ -143,7 +143,7 @@ Cypress.Commands.add('createRoom', (id, time = 0, mode = 'classic') => {
         },
         timeLimitation: time,
         difficulty: 2000,
-        mode: mode,
+        modeSelected: mode,
         size: 2,
         createdAt: firebase.database.ServerValue.TIMESTAMP,
         round1: {

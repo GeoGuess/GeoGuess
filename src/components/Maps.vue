@@ -87,12 +87,15 @@
             :bbox="bbox"
             @setSeletedPos="setSeletedPos"
         />
-        <MapCountries
-            v-if="this.mode === 'country'"
+        <MapAreas
+            v-if="this.mode !== 'classic'"
             id="map"
             ref="map"
-            :country="country"
+            :area="area"
+            :areasGeoJsonUrl="areasGeoJsonUrl"
+            :pathKey="pathKey"
             :bbox="bbox"
+            :showFlag="this.mode === 'country'"
             @setSeletedPos="setSeletedPos"
         />
         <textarea class="container-map_notepad" v-show="isNotepadVisible" spellcheck="false" v-if="!printMapFull" ref="refNotepad"/>
@@ -180,16 +183,17 @@ import 'firebase/database';
 import DialogSummary from '@/components/DialogSummary';
 import DetailsMap from '@/components/game/DetailsMap';
 import Map from '@/components/map/Map';
-import MapCountries from '@/components/map/MapCountries';
+import MapAreas from '@/components/map/MapAreas';
 import { GAME_MODE } from '../constants';
-import { getScore, getSelectedPos } from '../utils';
+import { getSelectedPos } from '../utils';
+import { getScore } from '../utils/game/score';
 
 export default {
     components: {
         DialogSummary,
         DetailsMap,
         Map,
-        MapCountries,
+        MapAreas,
     },
     props: [
         'randomLatLng',
@@ -205,11 +209,13 @@ export default {
         'difficulty',
         'bbox',
         'mode',
-        'country',
+        'area',
         'timeAttack',
         'nbRound',
         'countdown',
         'scoreMode',
+        'areasGeoJsonUrl',
+        'pathKey',
     ],
     data() {
         return {
@@ -274,8 +280,7 @@ export default {
                                 .child('guess')
                                 .forEach(
                                     (guess) =>
-                                        guess.child('country').val() ===
-                                        this.country
+                                        guess.child('area').val() === this.area
                                 )) ||
                         // Allow players to move on to the next round when every players guess locations
                         snapshot.child('guess').numChildren() ===
@@ -304,7 +309,7 @@ export default {
                                     lng: lng,
                                 });
                             } else {
-                                posGuess = childSnapshot.child('country').val();
+                                posGuess = childSnapshot.child('area').val();
                             }
 
                             const playerName = snapshot
@@ -312,12 +317,7 @@ export default {
                                 .child(childSnapshot.key)
                                 .val();
                             const roundValues = snapshot
-                                .child(
-                                    'round' +
-                                        this.round +
-                                        '/player' +
-                                        j 
-                                )
+                                .child('round' + this.round + '/player' + j)
                                 .exportVal();
 
                             const { points, distance } = roundValues;
@@ -352,7 +352,7 @@ export default {
                         this.game.rounds.push({
                             position: {
                                 ...this.randomLatLng.toJSON(),
-                                country: this.country,
+                                area: this.area,
                             },
                             players,
                         });
@@ -462,8 +462,8 @@ export default {
                     false,
                     this.setSeletedPos
                 );
-                this.$refs.map.fitBounds();
                 this.printMapFull = true;
+                this.$refs.map.fitBounds();
                 if (this.round >= this.nbRound) {
                     this.isSummaryButtonVisible = true;
                 } else {
@@ -495,8 +495,10 @@ export default {
         },
         calculateDistance() {
             const timePassed = new Date() - this.startTime;
-            if (this.mode === GAME_MODE.COUNTRY) {
-                this.point = +(this.country === this.selectedPos);
+            if (
+                [GAME_MODE.COUNTRY, GAME_MODE.CUSTOM_AREA].includes(this.mode)
+            ) {
+                this.point = +(this.area === this.selectedPos);
                 this.distance = null;
             } else {
                 this.distance = Math.floor(
@@ -526,7 +528,7 @@ export default {
             } else {
                 this.game.rounds.push({
                     guess: this.selectedPos,
-                    country: this.country,
+                    area: this.area,
                     position: this.randomLatLng,
                     distance: this.distance,
                     points: this.point,
@@ -625,8 +627,8 @@ export default {
     &.container-map--full {
         transition: none;
         opacity: 1;
-        --active-width: 65vw;
-        --inactive-width: 65vw;
+        --active-width: 85vw;
+        --inactive-width: 85vw;
         position: relative;
         margin: auto;
         .container-map_controls {

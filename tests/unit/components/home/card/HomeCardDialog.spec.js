@@ -1,35 +1,42 @@
-import MapDialog from '@/components/home/maps/MapDialog.vue';
+import HomeCardDialog from '@/components/home/card/HomeCardDialog.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import appInit from '../../../utils/appInit';
+import appInit from '../../../testutils/appInit';
 import Vuex from 'vuex';
-import homeStore from '../../../../../src/store/homeStore';
+import settingsStore from '../../../../../src/store/settingsStore';
 
 const args = appInit(createLocalVue());
 
-describe('MapDialog.vue', () => {
-    let store, actions;
+describe('HomeCardDialog.vue', () => {
+    let store, actions, loadGeoJsonFromUrl;
     beforeEach(() => {
         actions = {
-            playMultiPlayer: jest.fn(),
-            playSinglePlayer: jest.fn(),
-            loadGeoJsonFromUrl: jest.fn(),
+            openDialogRoom: jest.fn(),
         };
+        loadGeoJsonFromUrl = jest.fn();
         store = new Vuex.Store({
             modules: {
-                homeStore: {
-                    state: homeStore.state,
-                    getters: homeStore.getters,
+                settingsStore: {
+                    namespaced: true,
+                    state: settingsStore.state,
+                    getters: settingsStore.getters,
+                    mutations: settingsStore.mutations,
                     actions,
                 },
+                homeStore:{
+                    actions:{
+
+                        loadGeoJsonFromUrl
+                    }
+                }
             },
         });
     });
     it('methods', () => {
-        const wrapper = shallowMount(MapDialog, {
+        const wrapper = shallowMount(HomeCardDialog, {
             ...args,
             store,
             propsData: {
-                mapLocate: {
+                data: {
                     name: {
                         en: 'Biggest City',
                         fr: 'Grande Villes',
@@ -54,8 +61,8 @@ describe('MapDialog.vue', () => {
         wrapper.vm.onClickSinglePlayer();
 
         expect(wrapper.vm.visible).toEqual(false);
-        expect(actions.playSinglePlayer).toBeCalled();
-        expect(actions.loadGeoJsonFromUrl).toBeCalledWith(
+        expect(actions.openDialogRoom).toBeCalled();
+        expect(loadGeoJsonFromUrl).toBeCalledWith(
             expect.anything(),
             'https://mapurl.geojson'
         );
@@ -65,9 +72,9 @@ describe('MapDialog.vue', () => {
 
         expect(wrapper.vm.visible).toEqual(false);
 
-        expect(actions.playMultiPlayer).toBeCalled();
+        expect(actions.openDialogRoom).toBeCalled();
 
-        expect(actions.loadGeoJsonFromUrl).toBeCalledTimes(2);
+        expect(loadGeoJsonFromUrl).toBeCalledTimes(2);
 
         expect(wrapper).toMatchSnapshot();
     });

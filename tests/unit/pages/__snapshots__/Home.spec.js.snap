@@ -13,10 +13,19 @@ exports[`Home.vue test mounted 1`] = `
         </v-layout-stub>
       </v-layout-stub>
     </v-container-stub>
-    <v-btn-stub color="secondary" dark="true" tag="button" activeclass="" href="#maps" large="true" fab="true" type="button" id="btnMaps">
+    <v-btn-stub color="secondary" dark="true" tag="button" activeclass="" href="#areas" large="true" fab="true" type="button" id="btnMaps">
       <v-icon-stub>mdi-arrow-down</v-icon-stub>
     </v-btn-stub>
   </section>
+  <v-container-stub id="areas" tag="div">
+    <h2>Areas</h2>
+  </v-container-stub>
+  <section class="sliders-container">
+    <v-slide-group-stub activeclass="v-slide-item--active" tag="div" mobilebreakpoint="1264" nexticon="$next" previcon="$prev" showarrows="always"></v-slide-group-stub>
+  </section>
+  <v-container-stub tag="div">
+    <h2>Maps</h2>
+  </v-container-stub>
   <section id="maps"></section>
 </contentpage-stub>
 `;
@@ -34,10 +43,19 @@ exports[`Home.vue test mounted 2`] = `
         </v-layout-stub>
       </v-layout-stub>
     </v-container-stub>
-    <v-btn-stub color="secondary" dark="true" tag="button" activeclass="" href="#maps" large="true" fab="true" type="button" id="btnMaps">
+    <v-btn-stub color="secondary" dark="true" tag="button" activeclass="" href="#areas" large="true" fab="true" type="button" id="btnMaps">
       <v-icon-stub>mdi-arrow-down</v-icon-stub>
     </v-btn-stub>
   </section>
+  <v-container-stub id="areas" tag="div">
+    <h2>Areas</h2>
+  </v-container-stub>
+  <section class="sliders-container">
+    <v-slide-group-stub activeclass="v-slide-item--active" tag="div" mobilebreakpoint="1264" nexticon="$next" previcon="$prev" showarrows="always"></v-slide-group-stub>
+  </section>
+  <v-container-stub tag="div">
+    <h2>Maps</h2>
+  </v-container-stub>
   <section id="maps"></section>
 </contentpage-stub>
 `;

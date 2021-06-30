@@ -2,7 +2,7 @@ import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import { point } from '@turf/helpers';
 import axios from 'axios';
-import { GAME_MODE, SCORE_MODE } from './constants';
+import { GAME_MODE } from '../constants';
 
 /**
  * check in valid format url
@@ -97,22 +97,47 @@ export function getLocateString(obj, name, language, defaultLanguage = 'en') {
     }
     return '';
 }
+/**
+ * Get Area Code name From latlng with nominatim api
+ * @param {object} latLng
+ * @param {function} errorFunction
+ * @param {string} key
+ * @param {object} nominatimQueryParams
+ * @returns {string}
+ */
+export function getAreaCodeNameFromLatLng(latLng, errorFunction, areaParams) {
+    const nominatimQueryParams =
+        areaParams && areaParams.nominatimQueryParams
+            ? areaParams.nominatimQueryParams
+            : {
+                  zoom: 5,
+                  addressdetails: 1,
+                  extratags: 1,
+              };
 
-export function getCountryCodeNameFromLatLng(latLng, errorFunction) {
     return axios
         .get(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&zoom=5&addressdetails=1&format=json&extratags=1`
+            `https://nominatim.openstreetmap.org/reverse?lat=${latLng.lat()}&lon=${latLng.lng()}&format=json&${new URLSearchParams(
+                nominatimQueryParams
+            )}`
         )
-        .then(({status, data}) => {
+        .then(({ status, data }) => {
             if (status === 200 && data) {
-                if(data.extratags['ISO3166-1:alpha2'])
+                if (areaParams && areaParams.nominatimResultPath) {
+                    return areaParams.nominatimResultPath
+                        .split('.')
+                        .reduce((o, i) => o[i], data);
+                }
+
+                if (data.extratags['ISO3166-1:alpha2']) {
                     return data.extratags['ISO3166-1:alpha2'];
+                }
                 return data.address['country_code'].toUpperCase();
             }
         })
         .catch(() => {
             errorFunction();
-            return undefined;
+            return null;
         });
 }
 
@@ -125,15 +150,14 @@ export function getSelectedPos(selectedPos, gameMode) {
             };
         default:
             return {
-                country: selectedPos,
+                area: selectedPos,
             };
     }
 }
 
-export function getRandomCountry(countries) {
-    return countries.features[
-        Math.floor(Math.random() * countries.features.length)
-    ].properties['iso_a2'];
+export function getRandomArea(areas, pathKey = 'iso_a2') {
+    return areas.features[Math.floor(Math.random() * areas.features.length)]
+        .properties[pathKey];
 }
 
 export function getMaxDistanceBbox(bbox) {
@@ -167,34 +191,5 @@ export function download(data, filename, type) {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
         }, 0);
-    }
-}
-
-export function getScore(distance, difficulty, time, mode) {
-    switch (mode) {
-        case SCORE_MODE.TIME:
-            return Math.round(
-                getScoreNormal(distance, difficulty) * Math.exp(-time / 6000000)
-            );
-
-        default:
-            return getScoreNormal(distance, difficulty);
-    }
-}
-
-function getScoreNormal(distance, difficulty) {
-    if (distance < 50) {
-        return 5000;
-    } else {
-        const point = Math.round(
-            5000 * Math.exp(-(distance / 1000 / difficulty))
-        );
-
-        if (point > 5000) {
-            return 5000;
-        } else if (point < 0) {
-            return 0;
-        }
-        return point;
     }
 }

@@ -45,7 +45,7 @@ jobs:
       run: npm ci
 
     - name: Linter
-      run: npm run lint -- --no-fix
+      run: NODE_ENV=production npm run lint -- --no-fix
 
     - name: Run unit tests
       run: npm run test:unit

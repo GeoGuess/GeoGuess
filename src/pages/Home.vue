@@ -16,12 +16,30 @@
                     </v-layout>
                 </v-layout>
             </v-container>
-            <v-btn id="btnMaps" href="#maps" large fab color="secondary" dark>
+            <v-btn id="btnMaps" href="#areas" large fab color="secondary" dark>
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
+        <v-container id="areas"> <h2>Areas</h2></v-container>
+        <section class="sliders-container">
+            <v-slide-group show-arrows="always">
+                <v-slide-item
+                    v-for="(mode, index) in areasList"
+                    :key="index"
+                    class="ma-4"
+                >
+                    <HomeCard :data="mode" type="area" />
+                </v-slide-item>
+            </v-slide-group>
+        </section>
+        <v-container><h2>Maps</h2></v-container>
         <section id="maps">
-            <MapCard v-for="(map, index) in maps" :key="index" :map="map" />
+            <HomeCard
+                v-for="(map, index) in maps"
+                :key="index"
+                :data="map"
+                type="map"
+            />
         </section>
     </ContentPage>
 </template>
@@ -29,13 +47,14 @@
 <script>
 import SearchBox from '@/components/home/SearchBox';
 import ContentPage from '@/components/page/ContentPage';
-import MapCard from '@/components/home/maps/MapCard';
+import HomeCard from '@/components/home/card/HomeCard';
 import { mapActions, mapGetters } from 'vuex';
+import { GAME_MODE } from '../constants';
 export default {
     components: {
         ContentPage,
         SearchBox,
-        MapCard,
+        HomeCard,
     },
     mounted() {
         if (this.$route.params && this.$route.params.partyParams) {
@@ -43,19 +62,20 @@ export default {
                 .split(',')
                 .map((val) => parseFloat(val));
 
-            if (params.length === 12) {
+            if (params.length >= 12 && params.length % 2 === 0) {
                 const difficulty = params[0];
                 const timeLimitation = params[1];
-                const rounds = [
-                    params.slice(2, 4),
-                    params.slice(4, 6),
-                    params.slice(6, 8),
-                    params.slice(8, 10),
-                    params.slice(10, 12),
-                ];
+                const rounds = new Array((params.length - 2) / 2)
+                    .fill(0)
+                    .map((_, round) => {
+                        const index = (round + 1) * 2;
+                        return params.slice(index, index + 2);
+                    });
+
                 this.$router.push({
                     name: 'street-view',
                     params: {
+                        modeSelected: GAME_MODE.CLASSIC,
                         time: timeLimitation,
                         difficulty: difficulty,
                         roundsPredefined: rounds,
@@ -67,7 +87,7 @@ export default {
     },
     methods: { ...mapActions(['getListMaps']) },
     computed: {
-        ...mapGetters(['maps']),
+        ...mapGetters(['maps', 'areasList']),
     },
 };
 </script>
@@ -125,6 +145,9 @@ export default {
             left: 0;
             right: 0;
         }
+    }
+    .sliders-container {
+        max-width: 100vw;
     }
     #maps {
         padding: 3rem 15px;

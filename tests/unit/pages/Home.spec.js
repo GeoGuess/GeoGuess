@@ -1,6 +1,6 @@
 import Home from '@/pages/Home.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import appInit from '../utils/appInit';
+import appInit from '../testutils/appInit';
 import Vuex from 'vuex';
 import homeStore from '../../../src/store/homeStore';
 
@@ -46,7 +46,7 @@ describe('Home.vue', () => {
         const partyParams =
             'MjAwMCwzMDAsMzkuOTgyOTgxMzM0MTE0MDIsMjMuNjE4NDQ1MjIxOTg0OTgsNzAuMDAxNDM5OTEwOTEwNDUsMTkuNTYwMjI5NzM3Njk5MTcsNTguNDEyNzQ4MTQ2ODQ3MzIsNi45MTI3OTk3MzYzODg2NjYsNjIuMzQxODY2Njg2NDkxNTQsLTYuMjYxNDk1MTQyNDk0MjI2LDY3LjA5OTY2MzkwODQ4Mzc2LDE5LjUxMjI4NDk3NTUwODY0';
         const wrapper = shallowMount(Home, {
-            args,
+            ...args,
             store,
             mocks: {
                 $route: {
@@ -61,6 +61,7 @@ describe('Home.vue', () => {
             name: 'street-view',
             params: {
                 time: 300,
+                modeSelected: 'classic',
                 difficulty: 2000,
                 roundsPredefined: [
                     [39.98298133411402, 23.61844522198498],

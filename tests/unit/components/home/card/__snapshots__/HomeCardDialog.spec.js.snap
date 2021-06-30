@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MapDialog.vue methods 1`] = `
+exports[`HomeCardDialog.vue methods 1`] = `
 <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
   <v-card-stub loaderheight="4" tag="div">
     <v-img-stub height="230px" gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)" options="[object Object]" position="center center" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=140" transition="fade-transition" class="white--text align-end">

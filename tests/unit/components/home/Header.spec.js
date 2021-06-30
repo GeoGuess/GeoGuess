@@ -2,7 +2,7 @@ import Header from '@/components/page/Header.vue';
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
 import homeStore from '@/store/homeStore';
 import * as MutationTypes from '@/store/mutation-types';
-import appInit from '../../utils/appInit';
+import appInit from '../../testutils/appInit';
 import Vuex from 'vuex';
 
 const args = appInit(createLocalVue());
@@ -17,9 +17,9 @@ describe('Header.vue', () => {
                     state: homeStore.state,
                     getters: homeStore.getters,
                     actions: homeStore.actions,
-                    mutations:{
-                        [MutationTypes.HOME_SET_STREAMER_MODE]: setStreamerModeStore
-                    }
+                    mutations: {
+                        [MutationTypes.HOME_SET_STREAMER_MODE]: setStreamerModeStore,
+                    },
                 },
             },
         });
@@ -47,7 +47,6 @@ describe('Header.vue', () => {
         expect(localStorage.getItem('language')).toEqual('fr');
     });
 
-    
     it('changeStreamerMode method', () => {
         const wrapper = shallowMount(Header, {
             ...args,

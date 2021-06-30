@@ -24,7 +24,11 @@
         "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quotas has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Play",
         "streamerModeActivate": "Streamer mode activate",
-        "streamerModeDetails": "URLs and room names are hidden"
+        "streamerModeDetails": "URLs and room names are hidden",
+        "HomeCardMode": {
+            "map": "Map",
+            "area": "Area"
+        }
     },
     "StreetView": {
         "nearby": {
@@ -118,13 +122,14 @@
         "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
         "allowMove": "Allow Move",
         "allowZoom": "Allow Zoom",
-        "allowPan": "Allow Pan", 
-        "countDownLabel": "CountDown (seconds)",       
+        "allowPan": "Allow Pan",
+        "countDownLabel": "CountDown (seconds)",
         "scoreModeLabel": "Score formula",
         "scoreModes": {
             "normal": "normal",
             "time": "time"
-        }
+        },
+        "selectAreas": "Select Areas"
     },
     "CardRoomDifficulty": {
         "title": "Set a difficulty level.",
@@ -142,7 +147,7 @@
     "Footer": { "under": "under", "privacyPolicy": "Privacy Policy" },
     "urlCopied": "Url copied",
     "DetailsMap": { "moreInfo": "More information" },
-    "modes": { "classic": "Classic", "country": "Pick country" },
+    "modes": { "classic": "Classic", "country": "Pick country", "custom_area": "Pick" },
     "Demo": {
         "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
         "btn": "Join Us"

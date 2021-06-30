@@ -26,7 +26,7 @@ jest.mock('@/plugins/axios', () => {
                     data = responseTls;
                     break;
                 case 'https://listmaps.gejson':
-                    data = { maps: [] };
+                    data = { maps: [] ,  areas: [] };
                     break;
             }
 
@@ -57,19 +57,13 @@ describe('homeStore.js', () => {
         expect(state.geojson).toEqual(geojson);
 
         expect(state.listMaps).toHaveLength(0);
-        homeStore.mutations[MutationTypes.HOME_SET_LISTMAPS](state, [
+        homeStore.mutations[MutationTypes.HOME_SET_LISTS](state, {
+            maps:[
             { name: 'Hello' },
-        ]);
+        ]});
         expect(state.listMaps).toHaveLength(1);
 
-        expect(state.openDialogSinglePlayer).toEqual(false);
-        homeStore.mutations[MutationTypes.HOME_SET_SINGLEPLAYER](state, true);
-
-        expect(state.openDialogSinglePlayer).toEqual(true);
-
-        expect(state.openDialogMultiPlayer).toEqual(false);
-        homeStore.mutations[MutationTypes.HOME_SET_MULTIPLAYER](state, true);
-        expect(state.openDialogMultiPlayer).toEqual(true);
+     
 
         expect(state).toMatchSnapshot();
     });
@@ -144,6 +138,32 @@ describe('homeStore.js', () => {
     //
     // ACTIONS
     //
+    it('loadPlaceGeoJSON not call', async () => {
+        await homeStore.actions.loadPlaceGeoJSON(
+            { commit: jest.fn(),state: {loadingGeoJson: true} },
+            'Nantes'
+        );
+        expect(axios.get).not.toBeCalledWith(`https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1`);
+    });
+
+    it('loadPlaceGeoJSON', async () => {
+        const commit = jest.fn();
+        await homeStore.actions.loadPlaceGeoJSON(
+            { commit,state: {loadingGeoJson: false} },
+            'Nantes'
+        );
+        expect(axios.get).toBeCalledWith(`https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1`);
+
+        expect(commit).toBeCalledWith(
+            MutationTypes.HOME_SET_STATUS_GEOJSON,
+            true
+        );
+        expect(commit).toBeCalledWith(
+            MutationTypes.HOME_SET_GEOJSON,
+            null
+        );
+        
+    });
 
     it('loadGeoJsonFromUrl', async () => {
         const commit = jest.fn();
@@ -202,44 +222,11 @@ describe('homeStore.js', () => {
         );
 
         expect(commit).toBeCalledWith(
-            MutationTypes.HOME_SET_LISTMAPS,
-            expect.any(Array)
+            MutationTypes.HOME_SET_LISTS,
+            expect.any(Object)
         );
     });
 
-    it('playSinglePlayer', () => {
-        const commit = jest.fn();
-        homeStore.actions.playSinglePlayer({ commit });
-
-        expect(commit).toBeCalledWith(
-            MutationTypes.HOME_SET_SINGLEPLAYER,
-            true
-        );
-    });
-    it('playMultiPlayer', () => {
-        const commit = jest.fn();
-        homeStore.actions.playMultiPlayer({ commit });
-
-        expect(commit).toBeCalledWith(MutationTypes.HOME_SET_MULTIPLAYER, true);
-    });
-    it('resetSinglePlayer', () => {
-        const commit = jest.fn();
-        homeStore.actions.resetSinglePlayer({ commit });
-
-        expect(commit).toBeCalledWith(
-            MutationTypes.HOME_SET_SINGLEPLAYER,
-            false
-        );
-    });
-    it('resetMultiPlayer', () => {
-        const commit = jest.fn();
-        homeStore.actions.resetMultiPlayer({ commit });
-
-        expect(commit).toBeCalledWith(
-            MutationTypes.HOME_SET_MULTIPLAYER,
-            false
-        );
-    });
 
     it('loadHistory', () => {
         localStorage.setItem(

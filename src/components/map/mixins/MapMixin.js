@@ -8,8 +8,6 @@ export const MapMixin = {
     },
     methods: {
         centerOnBbox() {
-            // eslint-disable-next-line no-debugger
-            debugger;
             if (this.map && this.bbox) {
                 this.map.fitBounds({
                     east: this.bbox[2],
