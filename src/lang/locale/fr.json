@@ -24,7 +24,11 @@
         "limitationDescription": "Actuellement, j'ai fixé un quota par jour afin que le coût du jeu ne soit pas élevé.            Si la carte ne se charge pas, cela signifie que le quota a été dépassé.            Il est réinitialisé à minuit (heure du pacifique). Désolé pour le dérangement.             Le jeu est open source, ainsi il vous est possible de créer votre propre jeu pour y jouer sans limite.",
         "play": "Jouer",
         "streamerModeActivate": "Mode Streamer activé",
-        "streamerModeDetails": "Les URLs et les noms des salles sont masqués"
+        "streamerModeDetails": "Les URLs et les noms des salles sont masqués",
+        "HomeCardMode": {
+            "map": "Map",
+            "area": "Area"
+        }
     },
     "StreetView": {
         "nearby": {
@@ -129,7 +133,8 @@
         "scoreModes": {
             "normal": "normal",
             "time": "temps"
-        }
+        },
+        "selectAreas": "Select Areas"
     },
     "CardRoomDifficulty": {
         "title": "Saisir la difficulté.",
@@ -154,7 +159,8 @@
     },
     "modes": {
         "classic": "Classique",
-        "country": "Pays"
+        "country": "Pays",
+        "custom_area": "Pick"
     },
     "Demo": {
         "message": "Tu souhaites contribuer au projet et le rendre meilleur, ton aide est la bienvenue :  Traduction 🔠, Créateur de carte 🌍, Code 💻, Idée 💡, Beta test 👀.",
