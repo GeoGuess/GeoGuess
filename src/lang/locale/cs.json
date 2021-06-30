@@ -24,7 +24,11 @@
         "limitationDescription": "Tato hra má nastavená omezení počtu her za den, abych snížil náklady na provoz. Pokud se mapa nenačítá, nebo se načte v režimu negativu (špatné barvy), znamená to, že dnešení limit her byl již naplněn. Limit se resetuje o půlnoci amerického času (Pacific Time - tj. v 8 hodin ráno našeho zimního času, popř. 9 hodin ráno našeho letního času). Za tuto nepříjemnost se omlouvám. Hra je poskytována open source, takže je možné hostovat vlastní kopii a hrát bez jakýchkoliv denních omezení.",
         "play": "Hrát",
         "streamerModeActivate": "Streamer mode activate",
-        "streamerModeDetails": "URLs and room names are hidden"
+        "streamerModeDetails": "URLs and room names are hidden",
+        "HomeCardMode": {
+            "map": "Map",
+            "area": "Area"
+        }
     },
     "StreetView": {
         "nearby": {
@@ -129,7 +133,8 @@
         "scoreModes": {
             "normal": "normal",
             "time": "time"
-        }
+        },
+        "selectAreas": "Select Areas"
     },
     "CardRoomDifficulty": {
         "title": "Zvol obtížnost hry (ovlivňuje bodování).",
@@ -154,7 +159,8 @@
     },
     "modes": {
         "classic": "Klasická hra",
-        "country": "Hádej zemi"
+        "country": "Hádej zemi",
+        "custom_area": "Pick"
     },
     "Demo": {
         "message": "Pokud chcete přispět k projektu a zlepšit jej, Vaše pomoc je velmi vítána: Překlad 🔠, Mapy 🌍, Kód 💻, Nápady 💡, Beta testy 👀.",
