@@ -24,7 +24,11 @@
         "limitationDescription": "För nuvarande sätter jag begränsningar per dag för att kostnadena för spelet inte ska bli för höga.             Om kartan inte laddar innebär det att den åtkomliga mängden har förbrukats.              Den kommer att återställas vid midnatt Pacific Time(UTC-8) Ursäktar för besvären.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Spela",
         "streamerModeActivate": "Aktivera streamerläge",
-        "streamerModeDetails": "URLer och rumsnamn göms"
+        "streamerModeDetails": "URLer och rumsnamn göms",
+        "HomeCardMode": {
+            "map": "Map",
+            "area": "Area"
+        }
     },
     "StreetView": {
         "nearby": {
@@ -129,7 +133,8 @@
         "scoreModes": {
             "normal": "normal",
             "time": "tid"
-        }
+        },
+        "selectAreas": "Select Areas"
     },
     "CardRoomDifficulty": {
         "title": "Sätt en svårighetsgrad.",
@@ -154,7 +159,8 @@
     },
     "modes": {
         "classic": "Klassiskt",
-        "country": "Välj land"
+        "country": "Välj land",
+        "custom_area": "Pick"
     },
     "Demo": {
         "message": "Om du vill bidra till ett projekt och göra det bättre är din hjälp väldigt välkommen :  Översättning 🔠, Kartor 🌍, Kod 💻, Idéer 💡, Betatestning 👀.",
