@@ -24,7 +24,11 @@
         "limitationDescription": "Şu anda oyunun maliyetinin yüksek olmaması için günlük kota belirledim.            Eğer harita yüklenmediyse o günkü kota aşılmış anlamına gelir.            Kota, Pasifik Saatine göre gece yarısı sıfırlanacaktır. Rahatsızlıktan dolayı üzgünüm.             Oyun açık kaynak kodlu olduğundan dolayı kendi oyun sunucunuzu kurabilir ve sınırsızca oynayabilirsiniz.",
         "play": "Oyna",
         "streamerModeActivate": "Yayıncı modu aktif",
-        "streamerModeDetails": "Bağlantılar ve oda isimleri artık gizli"
+        "streamerModeDetails": "Bağlantılar ve oda isimleri artık gizli",
+        "HomeCardMode": {
+            "map": "Map",
+            "area": "Area"
+        }
     },
     "StreetView": {
         "nearby": {
@@ -129,7 +133,8 @@
         "scoreModes": {
             "normal": "normal",
             "time": "zaman"
-        }
+        },
+        "selectAreas": "Select Areas"
     },
     "CardRoomDifficulty": {
         "title": "Zorluk seviyesi seç.",
@@ -154,7 +159,8 @@
     },
     "modes": {
         "classic": "Klasik",
-        "country": "Ülke seç"
+        "country": "Ülke seç",
+        "custom_area": "Pick"
     },
     "Demo": {
         "message": "Eğer bir projede katkınızın bulunmasını istiyorsanız kapımız her zaman açık : Çeviri🔠, Haritacı 🌍, Yazılımcı 💻, Fikir 💡, Beta test 👀.",
