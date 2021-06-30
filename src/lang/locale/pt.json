@@ -24,7 +24,11 @@
         "limitationDescription": "Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.                Se o mapa não carregar, significa que as cotas do dia foram excedidas                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência.                 O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.",
         "play": "Jogar",
         "streamerModeActivate": "Modo streamer ativado",
-        "streamerModeDetails": "URLs e nomes de salas estão ocultos"
+        "streamerModeDetails": "URLs e nomes de salas estão ocultos",
+        "HomeCardMode": {
+            "map": "Map",
+            "area": "Area"
+        }
     },
     "StreetView": {
         "nearby": {
@@ -129,7 +133,8 @@
         "scoreModes": {
             "normal": "normal",
             "time": "tempo"
-        }
+        },
+        "selectAreas": "Select Areas"
     },
     "CardRoomDifficulty": {
         "title": "Defina a dificuldade.",
@@ -154,7 +159,8 @@
     },
     "modes": {
         "classic": "Clássico",
-        "country": "Escolha o país"
+        "country": "Escolha o país",
+        "custom_area": "Pick"
     },
     "Demo": {
         "message": "Se você quer contribuir com o projeto e torná-lo cada vez melhor, sua ajuda é muito bem-vinda: Tradução 🔠, Criador de mapas 🌍, Desenvolvimento 💻, Ideias 💡, Beta test 👀.",
