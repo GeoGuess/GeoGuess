@@ -26,8 +26,8 @@
         "streamerModeActivate": "Mode Streamer activé",
         "streamerModeDetails": "Les URLs et les noms des salles sont masqués",
         "HomeCardMode": {
-            "map": "Map",
-            "area": "Area"
+            "map": "Carte",
+            "area": "Zone"
         }
     },
     "StreetView": {
@@ -134,7 +134,7 @@
             "normal": "normal",
             "time": "temps"
         },
-        "selectAreas": "Select Areas"
+        "selectAreas": "Sélectionner les zones"
     },
     "CardRoomDifficulty": {
         "title": "Saisir la difficulté.",
@@ -160,7 +160,7 @@
     "modes": {
         "classic": "Classique",
         "country": "Pays",
-        "custom_area": "Pick"
+        "custom_area": "Cibler"
     },
     "Demo": {
         "message": "Tu souhaites contribuer au projet et le rendre meilleur, ton aide est la bienvenue :  Traduction 🔠, Créateur de carte 🌍, Code 💻, Idée 💡, Beta test 👀.",
