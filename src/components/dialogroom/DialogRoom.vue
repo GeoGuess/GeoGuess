@@ -21,10 +21,12 @@ import CardRoomName from '@/components/dialogroom/card/CardRoomName';
 import CardRoomSettings from '@/components/dialogroom/card/CardRoomSettings';
 import CardRoomPlayerName from '@/components/dialogroom/card/CardRoomPlayerName';
 import { mapState, mapActions } from 'vuex';
+import CardRoomMap from './card/CardRoomMap.vue';
 
 export default {
     components: {
         roomName: CardRoomName,
+        settingsMap: CardRoomMap,
         settings: CardRoomSettings,
         playerName: CardRoomPlayerName,
     },

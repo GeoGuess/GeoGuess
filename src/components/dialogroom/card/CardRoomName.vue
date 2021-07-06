@@ -8,9 +8,11 @@
                 <v-row>
                     <v-col cols="12">
                         <v-text-field
+                            :loading="loadRoom"
+                            :disabled="loadRoom"
                             :type="streamerMode ? 'password' : 'text'"
                             id="inputRoomName"
-                            v-model="roomName"
+                            v-model="roomInputValue"
                             maxlength="10"
                             autofocus
                             :error-messages="roomErrorMessage"
@@ -25,7 +27,12 @@
             <v-btn dark depressed color="#FF5252" @click="cancel">
                 {{ $t('cancel') }}
             </v-btn>
-            <v-btn dark depressed color="#43B581" @click="searchRoom(roomName)">
+            <v-btn
+                dark
+                depressed
+                color="#43B581"
+                @click="searchRoom(roomNameText)"
+            >
                 {{ $t('next') }}
             </v-btn>
         </v-card-actions>
@@ -39,15 +46,26 @@ export default {
     mixins: [CardRoomMixin],
     data() {
         return {
-            roomName: '',
+            roomNameText: '',
         };
     },
-    computed: {    
-        ...mapState('settingsStore', ['roomErrorMessage']),
-  
+    computed: {
         ...mapState({
             streamerMode: (state) => state.homeStore.streamerMode,
         }),
+        ...mapState('settingsStore', [
+            'roomErrorMessage',
+            'loadRoom',
+            'roomName',
+        ]),
+        roomInputValue: {
+            get: function () {
+                return this.loadRoom ? this.roomName : this.roomNameText;
+            },
+            set: function (newValue) {
+                this.roomNameText = newValue;
+            },
+        },
     },
     methods: {
         ...mapActions('settingsStore', ['searchRoom']),

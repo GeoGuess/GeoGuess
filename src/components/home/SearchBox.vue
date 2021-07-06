@@ -2,28 +2,6 @@
     <div class="search-box">
         <h2>{{ $tc('Home.placeVisited', nbPlaceVisits) }}</h2>
         <div class="search-box__search-bar">
-            <v-combobox
-                v-model="place"
-                :items="items"
-                :search-input.sync="search"
-                id="search-input"
-                :loading="isLoading"
-                autofocus
-                :placeholder="
-                    isValidGeoJson
-                        ? $t('Home.searchBar.customLoaded')
-                        : $t('Home.searchBar.enterCity')
-                "
-                :disabled="isValidGeoJson"
-                :persistent-hint="isValidGeoJson"
-                :background-color="isValidGeoJson ? 'primary' : 'secondary'"
-                append-icon="mdi-magnify"
-                dark
-                rounded
-                height="50"
-                full-width
-            />
-
             <v-btn
                 icon
                 class="btn-customs"
@@ -74,58 +52,22 @@ export default {
     },
     data() {
         return {
-            place: '',
             dialog: false,
-            entries: [],
-            isLoading: false,
-            search: '',
             dialogCustom: false,
         };
     },
 
     computed: {
-        ...mapGetters(['isValidGeoJson', 'geoJson', 'nbPlaceVisits']),
-        items() {
-            return this.entries.map((entry) => entry.properties.name);
-        },
+        ...mapGetters(['nbPlaceVisits']),
     },
 
-    watch: {
-        geoJson(val) {
-            if (val !== null) {
-                this.place = '';
-            }
-        },
-        search(val) {
-            // Items have already been requested
-            if (!val) return;
-
-            this.isLoading = true;
-
-            this.axios
-                .get(`https://photon.komoot.io/api/?q=${encodeURI(val)}`)
-                .then((res) => {
-                    if (res.status === 200 && res.data && res.data.features) {
-                        this.entries = res.data.features.filter(
-                            (node) => node.properties.osm_type === 'R'
-                        );
-                    }
-                })
-                .catch(() => {})
-                .finally(() => (this.isLoading = false));
-        },
-    },
     mounted() {
         this.loadHistory();
     },
     methods: {
-        ...mapActions(['loadHistory', 'loadPlaceGeoJSON']),
+        ...mapActions(['loadHistory']),
         ...mapActions('settingsStore', ['openDialogRoom']),
         openDialog(isSinglePlayer) {
-            if (this.place) {
-                this.loadPlaceGeoJSON(this.place);
-            }
-
             this.openDialogRoom(isSinglePlayer);
         },
     },
