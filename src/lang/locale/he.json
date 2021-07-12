@@ -1,29 +1,29 @@
 {
     "Home": {
-        "placeVisited": "0 place visited | 1 place visited | {count} places visited",
-        "historyBtn": "HISTORY",
-        "about": "ABOUT",
+        "placeVisited": "0 מקומות שביקרתם בהם | מקום אחד שביקרתם בו | {count} מקומות שביקרתם בהם",
+        "historyBtn": "היסטוריה",
+        "about": "אודות",
         "searchBar": {
-            "customLoaded": "Custom map has been loaded",
-            "enterCity": "Enter city, state or country"
+            "customLoaded": "המפה בהתאמה האישית מוכנה",
+            "enterCity": "הזנו שם של עיר, מחוז או מדינה"
         },
         "aboutDescriptions": {
-            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer game with your friends up to five friends.                  The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start.",
-            "2": "This game was forked from "
+            "1": "ג'יאוגס הוא משחק חינמי של התמצאות בשטח, ללא פרסומות.                  מטרת המשחק היא לנחש את מיקומם של 5 מקומות אקראיים בעולם בדיוק מירבי.                  אתם יכולים לשתף את הניקוד שלכם ברשתות חברתיות כמו פייסבוק וטוויטר.                  אתם יכולים לשחק במחשק מרובה משתתפים עם עד 5 חברים. השחקן הראשון יוצר את החדר ומחליט על גודלו. שאר השחקנים כותבים את שם החדר שנקבע מראש והמשחק יתחיל.",
+            "2": "המשחק הזה פוצל מ "
         },
-        "customMap": "CUSTOMS MAP",
+        "customMap": "מפה מותאמת אישית",
         "customMapDescriptions": {
-            "1": "You can limit random locations to city, state, or country with the search bar.",
-            "2": "In the multiplayer, the first player fixes the location.",
-            "3": "Furthermore, you can make your customs map with ",
-            "4": "file.",
-            "5": "Insert the content of the GeoJson map with the button :",
-            "6": "Customs Map selection : "
+            "1": "תוכלו לבחור עיר, מחוז או מדינה ספציפיים למשחק באמצעות סרגל החיפוש.",
+            "2": "במשחק מרובה משתתפים, השחקן הראשון בוחר את המיקום.",
+            "3": "בנוסף לכך, אתם יכולים להכין מפה משלכם באמצעות ",
+            "4": "קובץ.",
+            "5": "הזינו את תוכנה של מפת ה-GeoJson עם הכפתור:",
+            "6": "בחירת מפה מותאמת אישית: "
         },
-        "limitation": "LIMITATION",
-        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quotas has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
-        "play": "Play",
-        "streamerModeActivate": "Streamer mode activate",
+        "limitation": "הגבלה",
+        "limitationDescription": "נכון לעכשיו אנחנו מגדיר מספר מוגבל של משחקים ליום כך שהעלות להפעלת המשחק הזה לא יכולה להיות גבוהה מדי.             אם המפה לא נטענת, פירוש הדבר שמספר המשחקים היומי נגמר.             מספר המשחקים יתאפס בחצות (שעון האוקיינוס השקט). מצטערים על אי הנוחות.             המשחק הזה הוא קוד פתוח, כך שתוכל לבנות שרת משחק משלך ולשחק את המשחק הזה ללא הגבלה.",
+        "play": "התחל משחק",
+        "streamerModeActivate": "הפעלת מצב שידור חי",
         "streamerModeDetails": "URLs and room names are hidden",
         "HomeCardMode": {
             "map": "Map",
