@@ -24,149 +24,149 @@
         "limitationDescription": "נכון לעכשיו אנחנו מגדיר מספר מוגבל של משחקים ליום כך שהעלות להפעלת המשחק הזה לא יכולה להיות גבוהה מדי.             אם המפה לא נטענת, פירוש הדבר שמספר המשחקים היומי נגמר.             מספר המשחקים יתאפס בחצות (שעון האוקיינוס השקט). מצטערים על אי הנוחות.             המשחק הזה הוא קוד פתוח, כך שתוכל לבנות שרת משחק משלך ולשחק את המשחק הזה ללא הגבלה.",
         "play": "התחל משחק",
         "streamerModeActivate": "הפעלת מצב שידור חי",
-        "streamerModeDetails": "URLs and room names are hidden",
+        "streamerModeDetails": "כתובות אתרים ושמות חדרים מוסתרים",
         "HomeCardMode": {
-            "map": "Map",
-            "area": "Area"
+            "map": "מפה",
+            "area": "אזור"
         }
     },
     "StreetView": {
         "nearby": {
-            "title": "Nearby Position",
-            "message": "Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉"
+            "title": "מיקום סמוך",
+            "message": "למרבה הצער, לא הצלחנו למצוא מיקום אקראי במיקום המוגדר. עם זאת, מצאנו אחד בקרבת מקום 😉"
         },
-        "waitForOtherPlayers": "Waiting for other players...",
-        "redirectToHomePage": "Redirect to Home Page...",
-        "exitGame": "You are forced to exit the game. Redirect to home page after 5 seconds...",
-        "waitForOtherPlayersToFinish": "Waiting for other players to finish the game...",
-        "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+        "waitForOtherPlayers": "מחכים לעוד שחקנים...",
+        "redirectToHomePage": "הנך מופנה לדף הבית...",
+        "exitGame": "נאלצתם לצאת מהמשחק. תופנו לדף הבית בעוד 5 שניות...",
+        "waitForOtherPlayersToFinish": "מחכים לשאר השחקנים לסיים את המשחק...",
+        "confirmExit": "אתם בטוחים שתרצו לצאת מהמשחק?",
+        "countdownAlert": "הספירה לאחור החלה: נותרו {count} שניות | הספירה לאחור החלה: נותרו {count} שניות "
     },
     "Maps": {
-        "makeGuess": "MAKE GUESS",
-        "guess": "GUESS",
-        "nextRound": "NEXT ROUND",
-        "viewSummary": "VIEW SUMMARY",
-        "exit": "EXIT",
-        "reset": "RESET",
-        "playAgain": "PLAY AGAIN",
+        "makeGuess": "נחשו",
+        "guess": "שלח ניחוש",
+        "nextRound": "סיבוב הבא",
+        "viewSummary": "הראה את תקציר המשחק",
+        "exit": "צא",
+        "reset": "התחל מחדש",
+        "playAgain": "שחק שוב",
         "infoWindow": {
-            "Distance": "Distance",
-            "Points": "Points"
+            "Distance": "מרחק",
+            "Points": "נקודות"
         }
     },
     "Header": {
-        "language": "Language",
-        "about": "About",
-        "limitation": "Limitation",
-        "contact": "Contact"
+        "language": "שפה",
+        "about": "אודות",
+        "limitation": "הגבלה",
+        "contact": "צור קשר"
     },
     "HeaderGame": {
-        "room": "ROOM",
-        "round": "ROUND",
-        "distance": "DISTANCE",
-        "kmaway": "{value} km away",
-        "score": "SCORE"
+        "room": "חדר",
+        "round": "סיבוב",
+        "distance": "מרחק",
+        "kmaway": "{value} ק\"מ",
+        "score": "ניקוד"
     },
-    "next": "NEXT",
-    "cancel": "CANCEL",
+    "next": "הבא",
+    "cancel": "בטל",
     "DialogCustomMap": {
-        "title": "Custom Map",
-        "invalid": "Invalid GeoJSON",
-        "text": "Text",
-        "url": "Url",
-        "file": "File",
-        "edit": "Edit Map",
-        "fileLabel": "Select GeoJSON file",
-        "OK": "OK",
-        "download": "Download GeoJSON"
+        "title": "מפה מותאמת אישית",
+        "invalid": "GeoJSON לא תקין",
+        "text": "כיתוב",
+        "url": "קישור",
+        "file": "קובץ",
+        "edit": "ערוך מפה",
+        "fileLabel": "בחר קובץ GeoJSON",
+        "OK": "בסדר",
+        "download": "הורד קובץ GeoJSON"
     },
     "History": {
-        "title": "History",
-        "date": "Date",
-        "mode": "Mode",
-        "time": "Time",
-        "distance": "Distance",
-        "points": "Points",
-        "rank": "Rank",
-        "search": "Search",
-        "exportGeoSave": "Export GeoSave",
-        "importGeoSave": "Import GeoSave",
-        "exportCSV": "Export CSV",
-        "total": "Total"
+        "title": "היסטוריה",
+        "date": "תאריך",
+        "mode": "מצב משחק",
+        "time": "זמן",
+        "distance": "מרחק",
+        "points": "נקודות",
+        "rank": "דירוג",
+        "search": "חיפוש",
+        "exportGeoSave": "יצא GeoSave",
+        "importGeoSave": "יבא GeoSave",
+        "exportCSV": "יצא CSV",
+        "total": "סה\"כ"
     },
     "DialogRoom": {
-        "singlePlayer": "Single Player",
-        "withFriends": "With Friends",
-        "invalidRoomName": "Invalid name. Please try another.",
-        "inProgress": "The first player is creating the room right now. Please wait and try again.",
-        "roomIsFull": "This room is already full. Please try another.",
-        "alreadyStarted": "This room has aldready started.  Please try another."
+        "singlePlayer": "שחקן יחיד",
+        "withFriends": "רב משתתפים",
+        "invalidRoomName": "שם לא זמין. נא לבחור שם אחר.",
+        "inProgress": "השחקן הראשון יוצר את החדר עכשיו. אנא המתן ונסה שוב.",
+        "roomIsFull": "החדר הזה כבר מלא. אנא נסה למצוא חדר אחר.",
+        "alreadyStarted": "משחק זה כבר התחיל. אנא חפש חדר אחר."
     },
     "CardRoomName": {
-        "title": "Type a room name to create a new room or join a existing room"
+        "title": "הקלד שם חדר כדי ליצור חדר חדש או להצטרף לחדר קיים"
     },
     "CardRoomPlayerName": {
-        "title": "Room:",
-        "input": "Type a player name.",
-        "anonymousPlayerName": "Anonymous 🕵",
-        "players": "1 player | {count} players"
+        "title": "חדר:",
+        "input": "כתוב את שם השחקן.",
+        "anonymousPlayerName": "אנונימי 🕵",
+        "players": "שחקן אחד | {count} שחקנים"
     },
     "CardRoomSize": {
-        "title": "Set a room size."
+        "title": "קבע את גודל החדר."
     },
     "CardRoomTime": {
-        "title": "Set a time limitation.",
-        "infinite": "Infinite"
+        "title": "הגבלת זמן",
+        "infinite": "ללא הגבלה"
     },
     "CardRoomSettings": {
-        "title": "Game Settings",
-        "modeLabel": "Select game mode",
-        "includePhotopheres": "Include Photospheres",
-        "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
-        "allowMove": "Allow Move",
-        "allowZoom": "Allow Zoom",
-        "allowPan": "Allow Pan",
-        "countDownLabel": "CountDown (seconds)",
-        "scoreModeLabel": "Score formula",
+        "title": "הגדרות משחק",
+        "modeLabel": "בחר מצב משחק",
+        "includePhotopheres": "כלול תמונות לא נעות",
+        "timeAttackLabel": "מתקפת זמן",
+        "timeattackInfos": "במצב מתקפת זמן, אך ורק השחקן שמנחש את המדינה ראשון זוכה בנקודה.",
+        "allowMove": "אפשר תזוזה",
+        "allowZoom": "אפשר הגדלה והקטנה של התמונה",
+        "allowPan": "אפשר שינוי זווית ראייה",
+        "countDownLabel": "ספירה לאחור (שניות)",
+        "scoreModeLabel": "נוסחת הניקוד",
         "scoreModes": {
-            "normal": "normal",
-            "time": "time"
+            "normal": "רגיל",
+            "time": "זמן"
         },
-        "selectAreas": "Select Areas"
+        "selectAreas": "בחר אזורים"
     },
     "CardRoomDifficulty": {
-        "title": "Set a difficulty level.",
-        "easy": "easy (world)",
-        "medium": "medium (country)",
-        "hard": "hard (city)"
+        "title": "בחר רמת קושי.",
+        "easy": "קל (העולם)",
+        "medium": "בינוני (מדינה)",
+        "hard": "קשה (עיר)"
     },
     "DialogSummary": {
-        "summaryMsgSinglePoints": "Your score is <strong>{points}</strong> points! ",
-        "summaryMsgSingleDistance": "You are <strong>{distance}</strong> km away!",
-        "summaryMsgMultiPoints": "<strong>{playerName}</strong> score is <strong>{points}</strong> ! ",
-        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km away)",
-        "viewDetails": "View details"
+        "summaryMsgSinglePoints": "הניקוד שלך הוא <strong>{points}</strong> נקודות! ",
+        "summaryMsgSingleDistance": "אתה נמצא במרחק של <strong>{distance}</strong> ק\"מ מהתשובה!",
+        "summaryMsgMultiPoints": "הניקוד של <strong>{playerName}</strong> הוא <strong>{points}</strong>! ",
+        "summaryMsgMultiDistance": "(מרחק של <strong>{distance}</strong> ק\"מ)",
+        "viewDetails": "הראה פרטים"
     },
     "Footer": {
-        "under": "under",
-        "privacyPolicy": "Privacy Policy"
+        "under": "בכפוף ל",
+        "privacyPolicy": "תקנות הגנת הפרטיות"
     },
-    "urlCopied": "Url copied",
+    "urlCopied": "קישור הועתק",
     "DetailsMap": {
-        "moreInfo": "More information"
+        "moreInfo": "עוד מידע"
     },
     "modes": {
-        "classic": "Classic",
-        "country": "Pick country",
-        "custom_area": "Pick"
+        "classic": "קלאסי",
+        "country": "בחר מדינה",
+        "custom_area": "בחר"
     },
     "Demo": {
-        "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
-        "btn": "Join Us"
+        "message": "אם ברצונך לתרום לפרויקט ולהיטיב אותו, עזרתך מבורכת מאוד: תרגום 🔠, יוצר מפות 🌍, מתכנת 💻, יוצר רעיונות 💡, בדיקת גרסאות בטא 👀.",
+        "btn": "הצטרף אלינו"
     },
-    "OK": "OK",
-    "yes": "yes",
-    "no": "no"
+    "OK": "בסדר",
+    "yes": "כן",
+    "no": "לא"
 }
