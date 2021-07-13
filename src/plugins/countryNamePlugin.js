@@ -5,6 +5,8 @@ countries.registerLocale(require(`i18n-iso-countries/langs/cs.json`));
 countries.registerLocale(require(`i18n-iso-countries/langs/ru.json`));
 countries.registerLocale(require(`i18n-iso-countries/langs/pt.json`));
 countries.registerLocale(require(`i18n-iso-countries/langs/de.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/sv.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/tr.json`));
 countries.registerLocale(require(`i18n-iso-countries/langs/ja.json`));
 
 export default {
