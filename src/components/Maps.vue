@@ -697,7 +697,10 @@ export default {
     width: 75%;
 }
 
-#reset-button {
+#reset-button { 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     width: 25%;
     background-color: #ff5e5e;
 }

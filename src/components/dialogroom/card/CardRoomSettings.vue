@@ -110,7 +110,7 @@
                             <v-list-group prepend-icon="mdi-cog">
                                 <template v-slot:activator>
                                     <v-list-item-title>
-                                        More settings
+                                        {{$t('CardRoomSettings.moreSettings')}}
                                     </v-list-item-title>
                                 </template>
                                 <v-select
