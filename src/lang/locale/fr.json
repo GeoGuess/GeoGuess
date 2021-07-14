@@ -30,8 +30,8 @@
             "area": "Zone"
         },
         "Sections": {
-            "areasTitle": "Areas",
-            "mapsTitle": "Maps"
+            "areasTitle": "Zones",
+            "mapsTitle": "Cartes"
         }
     },
     "StreetView": {
@@ -140,7 +140,7 @@
             "time": "temps"
         },
         "selectAreas": "Sélectionner les zones",
-        "moreSettings": "More settings"
+        "moreSettings": "Paramètres avancés"
     },
     "CardRoomDifficulty": {
         "title": "Saisir la difficulté.",
