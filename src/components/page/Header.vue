@@ -81,7 +81,7 @@
 </template>
 <script>
 import About from '@/components/page/About';
-import { languages } from '../../lang';
+import { languages, RTL_LANGUAGES } from '../../lang';
 import { mapMutations, mapState } from 'vuex';
 import * as MutationTypes from '@/store/mutation-types';
 
@@ -118,8 +118,10 @@ export default {
             }
         },
         switchLanguage(language) {
+
             this.$i18n.locale = language;
             this.$vuetify.lang.current = language;
+            this.$vuetify.rtl = RTL_LANGUAGES.includes(language);
             this.saveLanguage(language);
         },
         saveLanguage(language) {
