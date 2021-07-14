@@ -28,6 +28,10 @@
         "HomeCardMode": {
             "map": "Karta",
             "area": "Yta"
+        },
+        "Sections": {
+            "areasTitle": "Areas",
+            "mapsTitle": "Maps"
         }
     },
     "StreetView": {
@@ -89,6 +93,7 @@
         "distance": "Distans",
         "points": "Poäng",
         "rank": "Rank",
+        "actions": "Actions",
         "search": "Sök",
         "exportGeoSave": "Exportera GeoSave",
         "importGeoSave": "Importera GeoSave",
@@ -134,7 +139,8 @@
             "normal": "normal",
             "time": "tid"
         },
-        "selectAreas": "Välj ytor"
+        "selectAreas": "Välj ytor",
+        "moreSettings": "More settings"
     },
     "CardRoomDifficulty": {
         "title": "Sätt en svårighetsgrad.",

@@ -28,6 +28,10 @@
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
+        },
+        "Sections": {
+            "areasTitle": "Areas",
+            "mapsTitle": "Maps"
         }
     },
     "StreetView": {
@@ -89,6 +93,7 @@
         "distance": "Distance",
         "points": "Points",
         "rank": "Rank",
+        "actions": "Actions",
         "search": "Search",
         "exportGeoSave": "Export GeoSave",
         "importGeoSave": "Import GeoSave",
@@ -134,7 +139,8 @@
             "normal": "normal",
             "time": "time"
         },
-        "selectAreas": "Select Areas"
+        "selectAreas": "Select Areas",
+        "moreSettings": "More settings"
     },
     "CardRoomDifficulty": {
         "title": "Set a difficulty level.",
