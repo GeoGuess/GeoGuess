@@ -28,6 +28,10 @@
         "HomeCardMode": {
             "map": "מפה",
             "area": "אזור"
+        },
+        "Sections": {
+            "areasTitle": "Areas",
+            "mapsTitle": "Maps"
         }
     },
     "StreetView": {
@@ -89,6 +93,7 @@
         "distance": "מרחק",
         "points": "נקודות",
         "rank": "דירוג",
+        "actions": "Actions",
         "search": "חיפוש",
         "exportGeoSave": "יצא GeoSave",
         "importGeoSave": "יבא GeoSave",
@@ -134,7 +139,8 @@
             "normal": "רגיל",
             "time": "זמן"
         },
-        "selectAreas": "בחר אזורים"
+        "selectAreas": "בחר אזורים",
+        "moreSettings": "More settings"
     },
     "CardRoomDifficulty": {
         "title": "בחר רמת קושי.",
