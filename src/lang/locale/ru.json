@@ -28,6 +28,10 @@
         "HomeCardMode": {
             "map": "Карта",
             "area": "Площадь"
+        },
+        "Sections": {
+            "areasTitle": "Areas",
+            "mapsTitle": "Maps"
         }
     },
     "StreetView": {
@@ -89,6 +93,7 @@
         "distance": "Дистанция",
         "points": "Очки",
         "rank": "Ранк",
+        "actions": "Actions",
         "search": "Поиск",
         "exportGeoSave": "Экспортировать GeoSave",
         "importGeoSave": "Импортировать GeoSave",
@@ -134,7 +139,8 @@
             "normal": "обычный",
             "time": "время"
         },
-        "selectAreas": "Выбрать область"
+        "selectAreas": "Выбрать область",
+        "moreSettings": "More settings"
     },
     "CardRoomDifficulty": {
         "title": "Установите уровень сложности.",
