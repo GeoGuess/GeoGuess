@@ -30,8 +30,8 @@
             "area": "אזור"
         },
         "Sections": {
-            "areasTitle": "Areas",
-            "mapsTitle": "Maps"
+            "areasTitle": "אזורים",
+            "mapsTitle": "מפות"
         }
     },
     "StreetView": {
@@ -93,7 +93,7 @@
         "distance": "מרחק",
         "points": "נקודות",
         "rank": "דירוג",
-        "actions": "Actions",
+        "actions": "פעולות",
         "search": "חיפוש",
         "exportGeoSave": "יצא GeoSave",
         "importGeoSave": "יבא GeoSave",
@@ -140,7 +140,7 @@
             "time": "זמן"
         },
         "selectAreas": "בחר אזורים",
-        "moreSettings": "More settings"
+        "moreSettings": "הגדרות נוספות"
     },
     "CardRoomDifficulty": {
         "title": "בחר רמת קושי.",
