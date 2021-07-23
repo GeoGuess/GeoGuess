@@ -2,7 +2,7 @@
 
 exports[`SearchBox.vue test search Input 1`] = `
 <div class="search-box">
-  <h2>0 place visited</h2>
+  <h2>0 visited place</h2>
   <div class="search-box__search-bar">
     <v-combobox-stub dark="true" errorcount="1" errormessages="" messages="" rules="" successmessages="" value="" appendicon="mdi-magnify" backgroundcolor="secondary" height="50" id="search-input" loaderheight="2" autofocus="true" clearicon="$clear" fullwidth="true" placeholder="Enter city, state or country" rounded="true" type="text" valuecomparator="function deepEqual(a, b) {
   if (a === b) return true;
