@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
+        "placeVisited": "0 place visited | 1 place visited | {count} places visited",
         "historyBtn": "HISTORIE",
         "about": "O HŘE",
         "searchBar": {
@@ -8,20 +8,20 @@
             "enterCity": "Napiš název města, regionu nebo státu (anglicky)"
         },
         "aboutDescriptions": {
-            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
+            "1": "Geoguess je jednoduchá geoguess hra zdarma a bez reklam. Hráči jsou umístěni na náhodné místo na světě a musí se pokusit podle svého okolí uhádnout, kde se nachází na mapě. Hra se skládá z pěti kol. Své skóre můžeš sdílet s ostatními na sociálních sítích Facebook a Twitter. Můžeš hrát sám, nebo s dalšími až pěti kamarády. Při hře více hráčů vytvoří jeden hráč místnost, do které se ostatní hráči připojí, aby mohli hrát spolu.",
             "2": "Tato hra je fork "
         },
         "customMap": "Vlastní mapy",
         "customMapDescriptions": {
-            "1": "You can limit random locations to cities, states, or countries with the search bar.",
+            "1": "Hru můžeš omezit na města, regiony nebo státy, aby jsi nemusel hrát po celém světě.",
             "2": "Ve hře více hráčů toto omezení zvolí první hráč.",
-            "3": "Furthermore, you can make your custom map with ",
+            "3": "Kromě toho můžeš definovat herní oblast pomocí souboru ve formátu ",
             "4": ".",
             "5": "Obsah souboru GeoJSON vlož pomocí tlačítka :",
             "6": "Na výběr je také z několika předpřipravených map : "
         },
         "limitation": "OMEZENÍ",
-        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
+        "limitationDescription": "Tato hra má nastavená omezení počtu her za den, abych snížil náklady na provoz. Pokud se mapa nenačítá, nebo se načte v režimu negativu (špatné barvy), znamená to, že dnešení limit her byl již naplněn. Limit se resetuje o půlnoci amerického času (Pacific Time - tj. v 8 hodin ráno našeho zimního času, popř. 9 hodin ráno našeho letního času). Za tuto nepříjemnost se omlouvám. Hra je poskytována open source, takže je možné hostovat vlastní kopii a hrát bez jakýchkoliv denních omezení.",
         "play": "Hrát",
         "streamerModeActivate": "Streamer mode activate",
         "streamerModeDetails": "URLs and room names are hidden",
@@ -40,8 +40,8 @@
             "message": "Bohužel se nám nepodařilo najít vhodné místo na žádaných souřadnicích. Ale našli jsme vhodné místo o kousek vedle 😉"
         },
         "waitForOtherPlayers": "Čekám na ostatní hráče...",
-        "redirectToHomePage": "Redirecting to Home Page...",
-        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
+        "redirectToHomePage": "Přesměruji na úvodní stránku...",
+        "exitGame": "Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...",
         "waitForOtherPlayersToFinish": "Počkej prosím, až ostatní hráči dokončí hru...",
         "confirmExit": "Opravdu chceš opustit aktuální hru? Ukončíš tím hru pro všechny hráče!",
         "countdownAlert": "Odpočítávání začalo: zbývá {count} sekund | Odpočítávání začalo: zbývá {count} sekund"
@@ -121,7 +121,7 @@
         "title": "Zvol počet hráčů."
     },
     "CardRoomTime": {
-        "title": "Set a time limit.",
+        "title": "Zvol časový limit kola.",
         "infinite": "Bez omezení"
     },
     "CardRoomSettings": {
