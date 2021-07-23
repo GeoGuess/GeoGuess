@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 besuchte Orte | 1 besuchte Stelle | {count} besuchte Orte",
+        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "HISTORIE",
         "about": "ÜBER",
         "searchBar": {
@@ -8,20 +8,20 @@
             "enterCity": "Geben Sie eine Stadt, Region oder ein Land ein"
         },
         "aboutDescriptions": {
-            "1": "Geoguess ist ein kostenloses, werbefreies Spiel. Die Spieler werden in fünf Runden zu zufälligen Positionen in der Welt gesetzt und müssen erraten, an welchen Positionen sie sich befinden. Dabei treten Sie gegeneinander an. Du kannst deine Punktzahl in sozialen Netzwerken wie Facebook und Twitter teilen. Der erste Spieler erstellt einen Raum und entscheidet über seine Größe. Nach der Erstellung können andere Spieler den Raum gemeinsam betreten.",
+            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
             "2": "Dieses Spiel wurde geforkt von "
         },
         "customMap": "BENUTZERDEFINIERTE KARTEN",
         "customMapDescriptions": {
-            "1": "Du kannst die zufälligen Positionen auf eine Stadt, eine Region oder ein Land beschränken, indem du die Suchleiste benutzt.",
+            "1": "You can limit random locations to cities, states, or countries with the search bar.",
             "2": "Im Mehrspielermodus legt der erste Spieler den Ort fest.",
-            "3": "Außerdem kannst du mit ",
+            "3": "Furthermore, you can make your custom map with ",
             "4": "datei.",
             "5": "Füge den Inhalt der Datei mit dieser Schaltfläche ein:",
             "6": "Eine Auswahl an benutzerdefinierten Karten : "
         },
         "limitation": "LIMITIERUNG",
-        "limitationDescription": "Derzeit habe ich eine Quote pro Tag festgelegt, damit die Kosten des Spiels gering bleiben.            Wenn die Karte nicht geladen wird, bedeutet dies, dass das Kontingent überschritten wurde.            Es wird um Mitternacht (pazifische Zeit) zurückgesetzt. Ich bitte um Entschuldigung für die Unannehmlichkeiten.            Das Spiel ist Open Source, so dass du einen eigenen Server erstellen kannst, um ohne Kontigente spielen zu können.",
+        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Spielen",
         "streamerModeActivate": "Streamer-Modus aktivieren",
         "streamerModeDetails": "URLs und Raumnamen sind versteckt",
@@ -40,8 +40,8 @@
             "message": "Leider konnten wir beim definierten Ort keine passende Location finden. Wir haben jedoch eine Location in der Nähe gefunden 😉"
         },
         "waitForOtherPlayers": "Warte auf weitere Spieler...",
-        "redirectToHomePage": "Weiterleitung zur Homepage...",
-        "exitGame": "Du musst das Spiel beenden. Umleitung zur Startseite in 5 Sekunden...",
+        "redirectToHomePage": "Redirecting to Home Page...",
+        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
         "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden...",
         "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen möchtest? Das Spiel wird dadurch abgebrochen!",
         "countdownAlert": "Countdown gestartet: {count} Sekunde verbleibend | Countdown gestartet: {count} Sekunden verbleibend"
@@ -121,7 +121,7 @@
         "title": "Lege die Größe des Raumes fest."
     },
     "CardRoomTime": {
-        "title": "Lege die maximale Zeit pro Runde fest.",
+        "title": "Set a time limit.",
         "infinite": "Unendlich"
     },
     "CardRoomSettings": {
