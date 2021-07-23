@@ -51,6 +51,13 @@
                 type="image"
             />
         </v-card-text>
+
+        <v-radio-group v-model="type" row>
+            <v-radio :label="$t('DialogCustomMap.text')" value="text" />
+            <v-radio :label="$t('DialogCustomMap.url')" value="url" />
+            <v-radio :label="$t('DialogCustomMap.file')" value="file" />
+            <v-radio :label="$t('DialogCustomMap.edit')" value="edit" />
+        </v-radio-group>
         <v-card-actions>
             <div class="flex-grow-1" />
             <v-btn dark depressed color="#FF5252" @click="cancel">
