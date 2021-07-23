@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
+        "placeVisited": "0 lieu visité | 1 lieu visité | {count} lieux visités",
         "historyBtn": "Historique",
         "about": "A PROPOS",
         "searchBar": {
@@ -8,20 +8,20 @@
             "enterCity": "Saisissez une ville, une région ou un pays"
         },
         "aboutDescriptions": {
-            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
+            "1": "GeoGuess est un jeu gratuit sans publicité.                  Les joueurs s'affrontent en 5 manches pour deviner la plus proche position d'où ils ont été placés aléatoirement.                 Vous pouvez partager votre score sur les réseaux Sociaux comme Facebook et Twitter.                 Vous pouvez jouer avec vos amis en multijoueurs.                 Le premier joueur crée une salle et décide de sa taille. Une fois créée, les autres joueurs pourront rejoindre la salle à partir de son nom et jouer tous ensemble.",
             "2": "Ce jeu est issu de "
         },
         "customMap": "CARTE PERSONNALISÉE",
         "customMapDescriptions": {
-            "1": "You can limit random locations to cities, states, or countries with the search bar.",
+            "1": "Vous pouvez limiter les positions aléatoires à une ville, région ou pays via la barre de recherche.",
             "2": "Dans le mode multijoueur, le premier joueur définit l'emplacement.",
-            "3": "Furthermore, you can make your custom map with ",
+            "3": "Par ailleurs, il vous est possible de créer vos propres cartes avec ",
             "4": "fichier.",
             "5": "Insérer le contenu du fichier via le bouton :",
             "6": "Une sélection de cartes personnalisées : "
         },
         "limitation": "LIMITATION",
-        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
+        "limitationDescription": "Actuellement, j'ai fixé un quota par jour afin que le coût du jeu ne soit pas élevé.            Si la carte ne se charge pas, cela signifie que le quota a été dépassé.            Il est réinitialisé à minuit (heure du pacifique). Désolé pour le dérangement.             Le jeu est open source, ainsi il vous est possible de créer votre propre jeu pour y jouer sans limite.",
         "play": "Jouer",
         "streamerModeActivate": "Mode Streamer activé",
         "streamerModeDetails": "Les URLs et les noms des salles sont masqués",
@@ -40,8 +40,8 @@
             "message": "Malheureusement, nous n'avons pu trouver une position à l'emplacement défini. Toutefois, nous en avons trouvé une proche 😉"
         },
         "waitForOtherPlayers": "En attente des autres joueurs...",
-        "redirectToHomePage": "Redirecting to Home Page...",
-        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
+        "redirectToHomePage": "Redirection vers la page d'accueil...",
+        "exitGame": "Vous êtes forcé de quitter le jeu. Redirection vers la page d'accueil dans 5 secondes...",
         "waitForOtherPlayersToFinish": "En attente des autres joueurs pour finir la partie...",
         "confirmExit": "Êtes-vous sûr de vouloir quitter la partie en cours ? Cela annulera la partie !",
         "countdownAlert": "Compte à rebours lancé : {count} seconde restante | Compte à rebours lancé : {count} secondes restantes"
@@ -121,7 +121,7 @@
         "title": "Saisir la taille de la salle."
     },
     "CardRoomTime": {
-        "title": "Set a time limit.",
+        "title": "Saisir le temps maximum par manche.",
         "infinite": "Infini"
     },
     "CardRoomSettings": {
