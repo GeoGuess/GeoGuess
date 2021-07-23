@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 place visited | 1 place visited | {count} places visited",
+        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "歴史",
         "about": "このサイトについて",
         "searchBar": {
@@ -8,20 +8,20 @@
             "enterCity": "都市名、州や県、国名を入力してください"
         },
         "aboutDescriptions": {
-            "1": "Geoguess は無料で気軽に遊べる地図を使ったゲームです。        プレーヤーは5ラウンドでランダムに出された場所の正確な場所を推測して競います。        友達と遊ぶ時は最初に部屋を作る人が部屋の名前を決めて部屋を作り、他の人が部屋に入るだけで一緒に遊ぶことができます。",
+            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
             "2": "このゲームは以下からフォークされました "
         },
         "customMap": "カスタムマップ",
         "customMapDescriptions": {
-            "1": "検索バーで都市、都道府県、国にランダムな場所を制限できます。",
+            "1": "You can limit random locations to cities, states, or countries with the search bar.",
             "2": "マルチプレイヤーでは、最初のプレイヤーが場所を修正します。",
-            "3": "さらに、あなたはあなたの習慣地図を作ることができます ",
+            "3": "Furthermore, you can make your custom map with ",
             "4": "ファイル",
             "5": "以下のボタンでGeoJsonマップの内容を挿入します:",
             "6": "カスタムマップ選択: "
         },
         "limitation": "制限",
-        "limitationDescription": "地図とストリートビューを表示させるのにお金がかかるため制限をかけています。        1日の制限を超えると地図が正しくロードされなくなります。         制限は太平洋標準時での深夜にリセットされます。        このサイトはオープンソースなので制限なく遊びたい方は自分でゲームをセットアップすることもできます。",
+        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "プレイ",
         "streamerModeActivate": "Streamer mode activate",
         "streamerModeDetails": "URLs and room names are hidden",
@@ -40,8 +40,8 @@
             "message": "残念ながら、定義された場所にランダムな位置を見つけることができませんでした。しかし、私たちは近くに見つけました 😉"
         },
         "waitForOtherPlayers": "他のプレーヤーを待っています...",
-        "redirectToHomePage": "ホーム画面にリダイレクトします...",
-        "exitGame": "ゲームを強制終了しました。5秒後にリダイレクトします...",
+        "redirectToHomePage": "Redirecting to Home Page...",
+        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
         "waitForOtherPlayersToFinish": "他のプレーヤーが終了するのを待っています...",
         "confirmExit": "Are you sure to leave the current game? This will abort the game!",
         "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
@@ -121,7 +121,7 @@
         "title": "部屋の人数を選択して下さい。"
     },
     "CardRoomTime": {
-        "title": "1ラウンドの制限時間を選択して下さい。",
+        "title": "Set a time limit.",
         "infinite": "無制限"
     },
     "CardRoomSettings": {
