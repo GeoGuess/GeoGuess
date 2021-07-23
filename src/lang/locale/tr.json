@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
+        "placeVisited": "0 yer gezildi | 1 yer gezildi | {count} yer gezildi",
         "historyBtn": "GEÇMİŞ",
         "about": "HAKKINDA",
         "searchBar": {
@@ -8,20 +8,20 @@
             "enterCity": "Bir şehir, bölge veya ülke girin"
         },
         "aboutDescriptions": {
-            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
+            "1": "Geoguess reklamsız ve bedava bir yer tahmin etme oyunudur. Oyuncular beş tur içinde rastgele verilen konumlara en yakın tahmini vermeye çalışır. Skorunuzu, Facebook ve Twitter gibi sosyal medyalardan diğer insanlarla paylaşabilirsiniz. Oyunu en fazla 5 arkadaşınızla çok oyunculu bir şekilde oynayabilirsiniz. İlk oyuncu odayı kurar ve oda boyutunu seçer. Diğer oyunculular ilk oyuncunun kurduğu odanın ismini yazarak oyuna girer ve oyun başlar.",
             "2": "Bu oyun şuradan alıntılandı --> "
         },
         "customMap": "ÖZEL HARİTA",
         "customMapDescriptions": {
-            "1": "You can limit random locations to cities, states, or countries with the search bar.",
+            "1": "Rastgele konumları, arama çubuğunda şehir, bölge ya da ülke olarak sınırlandırabilirsiniz.",
             "2": "Çok oyunculu modunda, ilk oyuncu konumu düzenleyebilir.",
-            "3": "Furthermore, you can make your custom map with ",
+            "3": "Dahası, özel haritalarınızı ",
             "4": "dosyası ile yapabilirsiniz.",
             "5": "GeoJson haritasının içeriğini aşağıdaki düğme ile ekleyin :",
             "6": "Özel harita örnekleri : "
         },
         "limitation": "KISITLAMA",
-        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
+        "limitationDescription": "Şu anda oyunun maliyetinin yüksek olmaması için günlük kota belirledim.            Eğer harita yüklenmediyse o günkü kota aşılmış anlamına gelir.            Kota, Pasifik Saatine göre gece yarısı sıfırlanacaktır. Rahatsızlıktan dolayı üzgünüm.             Oyun açık kaynak kodlu olduğundan dolayı kendi oyun sunucunuzu kurabilir ve sınırsızca oynayabilirsiniz.",
         "play": "Oyna",
         "streamerModeActivate": "Yayıncı modu aktif",
         "streamerModeDetails": "Bağlantılar ve oda isimleri artık gizli",
@@ -40,8 +40,8 @@
             "message": "Ne yazık ki, belirtilen konumda rastgele yer bulamadık. Ancak, ona yakın bir yer bulduk 😉"
         },
         "waitForOtherPlayers": "Diğer oyuncular bekleniyor...",
-        "redirectToHomePage": "Redirecting to Home Page...",
-        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
+        "redirectToHomePage": "Ana sayfaya yönlendiriliyor...",
+        "exitGame": "Oyundan çıkılmak zorunda kalındı. 5 saniye içinde ana sayfaya yönlendiriliyor...",
         "waitForOtherPlayersToFinish": "Diğer oyuncuların oyunu bitirmesi bekleniyor...",
         "confirmExit": "Şu anki oyundan çıkmak istediğine emin misin? Bu oyunu iptal edecek!",
         "countdownAlert": "Geri sayım başladı : {count} saniye kaldı | Geri sayım başladı : {count} saniye kaldı"
@@ -121,7 +121,7 @@
         "title": "Oda boyutunu belirle."
     },
     "CardRoomTime": {
-        "title": "Set a time limit.",
+        "title": "Bir zaman sınırlaması ayarlayın.",
         "infinite": "Sınırsız"
     },
     "CardRoomSettings": {
