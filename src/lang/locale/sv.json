@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 platser besökta | 1 plats besökt | {count} platser besökta",
+        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "HISTORIK",
         "about": "OM",
         "searchBar": {
@@ -8,20 +8,20 @@
             "enterCity": "Ange stad, region eller land"
         },
         "aboutDescriptions": {
-            "1": "Geoguess är ett gratis geoguess-spel utan reklam.                  Spelare tävlar om hur nära de kan gissa slumpmässiga platser på fem rundor.                 Du kan dela resultatet med andra på sociala medier som Facebook och Twitter.                 Du kan spela flerpersonsspel med upp till fem vänner.                  Den första spelaren skapar ett rum och bestämmer rumstorleken. Andra spelare skriver samma rumsnamn som den första spelaren skapade och spelet kommer att starta.",
+            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
             "2": "Spelet har forkats från "
         },
         "customMap": "EGNA KARTOR",
         "customMapDescriptions": {
-            "1": "Du kan begränsa slumpmässiga platser till stad, region eller land med sökfältet.",
+            "1": "You can limit random locations to cities, states, or countries with the search bar.",
             "2": "I flerspelarläge bestäms platsen från var den första spelaren hamnar.",
-            "3": "Dessutom kan du göra en egen karta med en ",
+            "3": "Furthermore, you can make your custom map with ",
             "4": "-fil.",
             "5": "Infoga innehållet av GeoJson-kartan med knappen: ",
             "6": "Egen kartväljning : "
         },
         "limitation": "BEGRÄNSNING",
-        "limitationDescription": "För nuvarande sätter jag begränsningar per dag för att kostnadena för spelet inte ska bli för höga.             Om kartan inte laddar innebär det att den åtkomliga mängden har förbrukats.              Den kommer att återställas vid midnatt Pacific Time(UTC-8) Ursäktar för besvären.             This game is open source so you can build your own game server and play this game unlimitedly.",
+        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Spela",
         "streamerModeActivate": "Aktivera streamerläge",
         "streamerModeDetails": "URLer och rumsnamn göms",
@@ -40,8 +40,8 @@
             "message": "Tyvärr kunde vi inte hitta en slumpmässig plats i det definerade området. Vi har däremot hittat en i närheten 😉"
         },
         "waitForOtherPlayers": "Väntar på andra spelare...",
-        "redirectToHomePage": "Omdirigera till startsidan...",
-        "exitGame": "Du har tvingats avbryta spelet. Omdirigerar till startsidan om 5 sekunder...",
+        "redirectToHomePage": "Redirecting to Home Page...",
+        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
         "waitForOtherPlayersToFinish": "Väntar på andra spelare att slutföra spelet...",
         "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet? Detta kommer att avbryta spelet!",
         "countdownAlert": "Nedräkning startad: {count} sekunder kvar | Nedräkning startad: {count} sekunder kvar"
@@ -121,7 +121,7 @@
         "title": "Sätt en rumsstorlek."
     },
     "CardRoomTime": {
-        "title": "Sätt en tidsbegränsning.",
+        "title": "Set a time limit.",
         "infinite": "Oändlig"
     },
     "CardRoomSettings": {
