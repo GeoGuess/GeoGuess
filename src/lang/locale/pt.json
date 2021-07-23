@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 locais visitados | 1 local visitado | {count} lugares visitados",
+        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "HISTÓRICO",
         "about": "SOBRE",
         "searchBar": {
@@ -8,20 +8,20 @@
             "enterCity": "Insira uma cidade, estado ou país"
         },
         "aboutDescriptions": {
-            "1": "Geoguess é um jogo grátis e sem anúncios                  Os jogadores competem em 5 rodadas para adivinhar a posição mais próxima dos locais em que foram colocados aleatoriamente.                  Você pode compartilhar sua pontuação em redes sociais como Facebook e Twitter.                 Você pode jogar com seus amigos no modo multiplayer.                 O primeiro jogador cria uma sala e decide seu tamanho. Uma vez criado, outros jogadores poderão entrar na sala usando o nome criado pelo primeiro jogador.",
+            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
             "2": "Este jogo foi desenvolvido com base no "
         },
         "customMap": "MAPAS PERSONALIZADOS",
         "customMapDescriptions": {
-            "1": "Você pode limitar as posições aleatórias a uma cidade, região ou país por meio da barra de pesquisa.",
+            "1": "You can limit random locations to cities, states, or countries with the search bar.",
             "2": "No modo multiplayer, o primeiro jogador define o local.",
-            "3": "Furthermore, you can make your customs map with ",
+            "3": "Furthermore, you can make your custom map with ",
             "4": "arquivo.",
             "5": "Insira o conteúdo do mapa no formato GeoJson com o botão:",
             "6": "Exemplos de mapas personalizados: "
         },
         "limitation": "LIMITAÇÃO",
-        "limitationDescription": "Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.                Se o mapa não carregar, significa que as cotas do dia foram excedidas                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência.                 O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.",
+        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Jogar",
         "streamerModeActivate": "Modo streamer ativado",
         "streamerModeDetails": "URLs e nomes de salas estão ocultos",
@@ -40,8 +40,8 @@
             "message": "Infelizmente, não foi possível encontrar uma posição aleatória no local definido. No entanto, encontramos um próximo 😉"
         },
         "waitForOtherPlayers": "Esperando por outros jogadores...",
-        "redirectToHomePage": "Redirecionando para a página inicial...",
-        "exitGame": "Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...",
+        "redirectToHomePage": "Redirecting to Home Page...",
+        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
         "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida...",
         "confirmExit": "Tem certeza que quer sair da partida atual? Isso cancelará a partida!",
         "countdownAlert": "Contagem regressiva iniciada: {count} segundos restantes | Contagem regressiva iniciada: {count} segundos restantes"
@@ -121,7 +121,7 @@
         "title": "Defina o tamanho da sala."
     },
     "CardRoomTime": {
-        "title": "Defina o tempo limite.",
+        "title": "Set a time limit.",
         "infinite": "Infinito"
     },
     "CardRoomSettings": {
