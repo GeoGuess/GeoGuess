@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 place visited | 1 place visited | {count} places visited",
+        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "HISTORY",
         "about": "ABOUT",
         "searchBar": {
@@ -40,8 +40,8 @@
             "message": "Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉"
         },
         "waitForOtherPlayers": "Waiting for other players...",
-        "redirectToHomePage": "Redirect to Home Page...",
-        "exitGame": "You are forced to exit the game. Redirect to home page after 5 seconds...",
+        "redirectToHomePage": "Redirecting to Home Page...",
+        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
         "waitForOtherPlayersToFinish": "Waiting for other players to finish the game...",
         "confirmExit": "Are you sure to leave the current game? This will abort the game!",
         "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
@@ -116,7 +116,7 @@
     },
     "CardRoomSize": { "title": "Set a room size." },
     "CardRoomTime": {
-        "title": "Set a time limitation.",
+        "title": "Set a time limit.",
         "infinite": "Infinite"
     },
     "CardRoomSettings": {
