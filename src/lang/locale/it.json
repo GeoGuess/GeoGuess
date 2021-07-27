@@ -8,19 +8,19 @@
             "enterCity": "Inserisci la città, lo stato o il paese"
         },
         "aboutDescriptions": {
-            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
-            "2": "This game was forked from "
+            "1": "Geoguess è un gioco gratuito e senza annunci. Il giocatore deve indovinare dove si trova, in posizioni caricate casualmente, in una partita a cinque round. È possibile condividere il punteggio con altre persone tramite social media come Facebook o Twitter. Puoi giocare in multiplayer con massimo cinque amici. Il primo giocatore crea una stanza e decide il numero di giocatori. Gli altri giocatori digitano il nome della stanza creata dal primo giocatore e il gioco inizierà.",
+            "2": "Questo gioco è stato forgiato da "
         },
-        "customMap": "CUSTOMS MAP",
+        "customMap": "MAPPE PERSONALIZZATE",
         "customMapDescriptions": {
-            "1": "You can limit random locations to cities, states, or countries with the search bar.",
-            "2": "In the multiplayer, the first player fixes the location.",
-            "3": "Furthermore, you can make your custom map with ",
+            "1": "Puoi limitare le posizioni casuali alle città, agli stati o ai paesi attraverso la barra di ricerca.",
+            "2": "Nel multiplayer, il primo giocatore fissa la posizione.",
+            "3": "Inoltre, puoi creare la tua mappa personalizzata con ",
             "4": "file.",
-            "5": "Insert the content of the GeoJson map with the button :",
-            "6": "Customs Map selection : "
+            "5": "Inserisci il contenuto della mappa GeoJson con il pulsante :",
+            "6": "Selezione Mappe Personalizzate : "
         },
-        "limitation": "LIMITATION",
+        "limitation": "LIMITAZIONI",
         "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Play",
         "streamerModeActivate": "Streamer mode activate",
