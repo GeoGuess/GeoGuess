@@ -10,10 +10,11 @@ import pt from './locale/pt.json';
 import ru from './locale/ru.json';
 import sv from './locale/sv.json';
 import tr from './locale/tr.json';
+import it from './locale/it.json';
 
 Vue.use(VueI18n);
 
-const translations = { en, ja, fr, cs, de, ru, pt, sv, tr, he };
+const translations = { en, ja, fr, cs, de, ru, pt, sv, tr, he, it };
 export const RTL_LANGUAGES = ['he'];
 export const languages = [
     {
@@ -39,6 +40,10 @@ export const languages = [
     {
         text: 'Deutsch',
         value: 'de',
+    },
+    {
+        text: 'Italiano',
+        value: 'it',
     },
     {
         text: 'Svenska',
