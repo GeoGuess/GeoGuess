@@ -9,6 +9,7 @@ countries.registerLocale(require(`i18n-iso-countries/langs/sv.json`));
 countries.registerLocale(require(`i18n-iso-countries/langs/tr.json`));
 countries.registerLocale(require(`i18n-iso-countries/langs/ja.json`));
 countries.registerLocale(require(`i18n-iso-countries/langs/he.json`));
+countries.registerLocale(require(`i18n-iso-countries/langs/it.json`));
 
 export default {
     install(Vue) {
