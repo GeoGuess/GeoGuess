@@ -156,6 +156,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "Andrea Cortesi",
+      "name": "raccort",
+      "avatar_url": "https://crowdin-static.downloads.crowdin.com/avatar/13144827/large/a3efba5b13184b1e1318c2e06b0d3004.png",
+      "profile": "https://crowdin.com/profile/raccort",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
