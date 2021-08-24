@@ -55,10 +55,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #card-title {
     font-size: 16px;
     font-weight: 500;
     opacity: 0.9;
+}
+#card-roomname {
+    .v-card__actions {
+        gap: 8px;
+        padding: 16px;
+        .v-btn {
+            color: white;
+        }
+    }
 }
 </style>

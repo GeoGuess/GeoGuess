@@ -365,8 +365,12 @@ export default {
         }
     }
 
-    .v-card__actions .v-btn {
-        color: white;
+    .v-card__actions {
+        gap: 8px;
+        padding: 16px;
+        .v-btn {
+            color: white;
+        }
     }
     .card_settings__allow_btns {
         display: flex;

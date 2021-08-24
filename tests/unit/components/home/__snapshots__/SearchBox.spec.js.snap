@@ -30,7 +30,7 @@ exports[`SearchBox.vue test search Input 1`] = `
 }" nodatatext="$vuetify.noDataText" items="" itemcolor="primary" itemdisabled="disabled" itemtext="text" itemvalue="value" menuprops="[object Object]" returnobject="true" allowoverflow="true" filter="function _default(item, queryText, itemText) {
         return itemText.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1;
       }" searchinput="" delimiters=""></v-combobox-stub>
-    <v-btn-stub color="primary" height="50" tag="button" activeclass="" icon="true" type="button" class="btn-customs">
+    <v-btn-stub color="primary" height="50" width="50" tag="button" activeclass="" icon="true" type="button" class="btn-customs">
       <v-icon-stub>mdi-map-plus</v-icon-stub>
     </v-btn-stub>
   </div>
