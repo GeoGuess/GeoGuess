@@ -241,6 +241,7 @@
             </v-btn>
             <v-btn
                 id="btnNextSettings"
+                dark
                 depressed
                 color="#43B581"
                 :disabled="loadingGeoJson"
@@ -365,9 +366,6 @@ export default {
         }
     }
 
-    .v-card__actions .v-btn {
-        color: white;
-    }
     .card_settings__allow_btns {
         display: flex;
         flex-direction: column;

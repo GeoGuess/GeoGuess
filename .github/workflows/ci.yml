@@ -6,6 +6,19 @@ on:
   pull_request:
 
 jobs:
+  checksecret:
+    name: check if MY_SECRET is set in github secrets
+    runs-on: ubuntu-latest
+    outputs:
+      is_MY_SECRET_set: ${{ steps.checksecret_job.outputs.is_MY_SECRET_set }}
+    steps:
+      - name: Check whether unity activation requests should be done
+        id: checksecret_job
+        env:
+            MY_SECRET: ${{ secrets.GMAP_API_KEY }}
+        run: |
+            echo "is_MY_SECRET_set: ${{ env.MY_SECRET != '' }}"
+            echo "::set-output name=is_MY_SECRET_set::${{ env.MY_SECRET != '' }}"
   integration:
     env:
       VUE_APP_API_KEY: YOUR_GOOGLE_MAPS_API_KEY
@@ -63,8 +76,38 @@ jobs:
         name: ${{ matrix.os }}-node-v${{ matrix.node }}-build
         path: dist
 
+
+  cypress-chrome-firefox-simple:
+    needs: [checksecret, integration]
+    if: needs.checksecret.outputs.is_MY_SECRET_set == 'false'
+    runs-on: ubuntu-16.04
+    name: E2E on Ubuntu
+    strategy:
+      fail-fast: false
+      matrix:
+        browsers: [chrome, firefox]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: cypress-io/github-action@v2
+        with:
+          start: npm run serve
+          wait-on: 'http://localhost:8080'
+          record: true
+          parallel: true
+          group: ${{matrix.browsers}}
+          tag: ${{ github.event_name }}
+          browser: ${{matrix.browsers}}
+          spec: |
+            tests/e2e/specs/homePage.test.js
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+
+
+
   cypress-chrome-firefox:
-    needs: integration
+    needs: [checksecret, integration]
+    if: needs.checksecret.outputs.is_MY_SECRET_set == 'true'
     env:
       VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
       VUE_APP_FIREBASE_API_KEY:  ${{ secrets.VUE_APP_FIREBASE_API_KEY }}

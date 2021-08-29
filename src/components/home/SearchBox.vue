@@ -29,6 +29,7 @@
                 class="btn-customs"
                 color="primary"
                 height="50"
+                width="50"
                 @click="dialogCustom = !dialogCustom"
             >
                 <v-icon>mdi-map-plus</v-icon>
@@ -148,6 +149,7 @@ export default {
     .search-box__btns {
         display: flex;
         justify-content: space-around;
+        width: calc(100% - 50px);
         &__btn {
             width: 40%;
             padding: 0 5em;
