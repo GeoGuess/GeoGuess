@@ -69,7 +69,7 @@
                             <b>{{ player }}</b
                             ><br />
                             <b>{{ $t('Maps.infoWindow.Distance') }} : </b >
-                            {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.players[player].distance / 100)  }} <br />
+                            {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.players[player].distance / 1000)  }} <br />
                             <b>
                                 {{ $t('Maps.infoWindow.Points') }}
                                 :
