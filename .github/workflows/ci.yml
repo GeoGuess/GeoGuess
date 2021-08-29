@@ -63,8 +63,37 @@ jobs:
         name: ${{ matrix.os }}-node-v${{ matrix.node }}-build
         path: dist
 
+
+  cypress-chrome-firefox-simple:
+    runs-on: ubuntu-16.04
+    name: E2E on Ubuntu
+    if: ${{ !secrets.GMAP_API_KEY }}
+    strategy:
+      fail-fast: false
+      matrix:
+        browsers: [chrome, firefox]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: cypress-io/github-action@v2
+        with:
+          start: npm run serve
+          wait-on: 'http://localhost:8080'
+          record: true
+          parallel: true
+          group: ${{matrix.browsers}}
+          tag: ${{ github.event_name }}
+          browser: ${{matrix.browsers}}
+          spec: |
+            tests/e2e/specs/homePage.test.js
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+
+
+
   cypress-chrome-firefox:
     needs: integration
+    if: ${{ secrets.GMAP_API_KEY }}
     env:
       VUE_APP_API_KEY:  ${{ secrets.GMAP_API_KEY }}
       VUE_APP_FIREBASE_API_KEY:  ${{ secrets.VUE_APP_FIREBASE_API_KEY }}
