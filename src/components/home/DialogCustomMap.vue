@@ -44,12 +44,20 @@
                                 <v-btn
                                     class="mt-6 mr-auto ml-auto"
                                     color="secondary"
-                                    @click="saveGeoJson"
+                                    @click="downloadGeoJson"
                                 >
                                     <v-icon left dark>
                                         mdi-cloud-download
                                     </v-icon>
                                     {{ $t('DialogCustomMap.download') }}
+                                </v-btn>
+                                <v-btn
+                                    class="mt-6 mr-auto ml-auto"
+                                    color="secondary"
+                                    @click="saveGeoJson"
+                                >
+                                    <v-icon left dark> mdi-save </v-icon>
+                                    Save
                                 </v-btn>
                             </v-row>
                         </div>
@@ -88,6 +96,7 @@
                             type="text"
                             :rules="rulesUrl"
                         />
+
                         <v-textarea
                             v-else
                             :error="isValidGeoJson !== null && !isValidGeoJson"
@@ -141,7 +150,12 @@ export default {
         },
     },
     methods: {
-        ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setGeoJsonString']),
+        ...mapActions([
+            'loadGeoJsonFromUrl',
+            'setGeoJson',
+            'setGeoJsonString',
+            'saveGeoJson',
+        ]),
         checkIfStringGeoJsonValid(string) {
             try {
                 return isGeoJSONValid(JSON.parse(string));
@@ -160,7 +174,7 @@ export default {
                 map.data.toGeoJson((geoJson) => this.setGeoJson(geoJson));
             });
         },
-        saveGeoJson() {
+        downloadGeoJson() {
             download(
                 this.geoJsonString,
                 'geoguessMap_' + new Date().toISOString() + '.geojson',

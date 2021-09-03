@@ -7,7 +7,7 @@
         </v-card-title>
 
         <v-card-text>
-            <v-row>
+            <v-row class="search-bar">
                 <v-combobox
                     v-model="place"
                     :items="items"
@@ -22,13 +22,14 @@
                     :disabled="isValidGeoJson"
                     :persistent-hint="isValidGeoJson"
                     :background-color="isValidGeoJson ? 'primary' : 'secondary'"
-                    append-icon="mdi-magnify"
                     dark
                     rounded
-                    height="20"
+                    height="15"
                     full-width
                 />
-                <v-btn @click="loadPlaceGeoJSON(place)"> Load MAP </v-btn>
+                <v-btn @click="loadPlaceGeoJSON(place)" color="dark" dark>
+                    Load MAP
+                </v-btn>
             </v-row>
             <GmapMap
                 ref="mapRef"
@@ -47,23 +48,17 @@
             <v-skeleton-loader
                 v-if="loadingGeoJson"
                 class="mx-auto"
-                style="width: 100%; height: 400px"
+                width="100%"
+                height="400"
                 type="image"
             />
         </v-card-text>
-
-        <v-radio-group v-model="type" row>
-            <v-radio :label="$t('DialogCustomMap.text')" value="text" />
-            <v-radio :label="$t('DialogCustomMap.url')" value="url" />
-            <v-radio :label="$t('DialogCustomMap.file')" value="file" />
-            <v-radio :label="$t('DialogCustomMap.edit')" value="edit" />
-        </v-radio-group>
         <v-card-actions>
             <div class="flex-grow-1" />
             <v-btn dark depressed color="#FF5252" @click="cancel">
                 {{ $t('cancel') }}
             </v-btn>
-            <v-btn id="btnStart" dark depressed color="#43B581">
+            <v-btn id="btnStart" dark depressed color="#43B581" @click="next">
                 {{ $t('next') }}
             </v-btn>
         </v-card-actions>
@@ -71,8 +66,8 @@
 </template>
 
 <script>
-import bbox from '@turf/bbox';
-import { mapActions, mapGetters, mapState } from 'vuex';
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
+import { SETTINGS_SET_STEP_DIALOG_ROOM } from '../../../store/mutation-types';
 import CardRoomMixin from './mixins/CardRoomMixin';
 export default {
     mixins: [CardRoomMixin],
@@ -129,6 +124,9 @@ export default {
     },
 
     methods: {
+        ...mapMutations('settingsStore', {
+            setStepDialogRoom: SETTINGS_SET_STEP_DIALOG_ROOM,
+        }),
         ...mapActions(['loadPlaceGeoJSON']),
         setGeoJson(val) {
             this.$refs.mapRef.$mapPromise.then((map) => {
@@ -148,6 +146,17 @@ export default {
                 }
             });
         },
+        next() {
+            this.setStepDialogRoom('settings');
+        },
     },
 };
 </script>
+
+<style lang="scss" scoped>
+.search-bar {
+    column-gap: 2rem;
+    align-items: baseline;
+    padding: 0 1rem;
+}
+</style>

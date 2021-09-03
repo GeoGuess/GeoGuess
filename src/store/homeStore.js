@@ -3,6 +3,7 @@ import { validURL } from '@/utils';
 import { getLocateString, isGeoJSONValid } from '../utils';
 import * as MutationTypes from './mutation-types';
 import i18n from '../lang';
+import db from '../plugins/IndexDBService';
 
 export default {
     state: () => ({
@@ -159,6 +160,7 @@ export default {
         setGeoJson({ commit }, geojson) {
             commit(MutationTypes.HOME_SET_GEOJSON, geojson);
         },
+        saveGeoJson({ state }) {},
         setGeoJsonString({ commit }, geojson) {
             let obj = null;
             if (geojson !== '') {

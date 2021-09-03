@@ -96,7 +96,7 @@ export default {
                                         firebase.database.ServerValue.TIMESTAMP,
                                 });
                                 state.loadRoom = false;
-                                state.currentComponent = 'settings';
+                                state.currentComponent = 'settingsMap';
                             }
                         }
                     );

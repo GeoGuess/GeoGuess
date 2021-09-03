@@ -1,21 +1,6 @@
 <template>
     <div class="search-box">
         <h2>{{ $tc('Home.placeVisited', nbPlaceVisits) }}</h2>
-        <div class="search-box__search-bar">
-            <v-btn
-                icon
-                class="btn-customs"
-                color="primary"
-                height="50"
-                @click="dialogCustom = !dialogCustom"
-            >
-                <v-icon>mdi-map-plus</v-icon>
-            </v-btn>
-        </div>
-        <DialogCustomMap
-            :visibility="dialogCustom"
-            @change-visibility="dialogCustom = !dialogCustom"
-        />
 
         <div class="search-box__btns">
             <v-btn
@@ -38,6 +23,21 @@
                 {{ $t('DialogRoom.withFriends') }}
             </v-btn>
             <DialogRoom />
+        </div>
+        <div class="search-box__mapmenu">
+            <v-btn
+                text
+                class="btn-customs"
+                color="primary"
+                height="50"
+                @click="dialogCustom = !dialogCustom"
+            >
+                <v-icon>mdi-map-plus</v-icon> Create Map
+            </v-btn>
+            <DialogCustomMap
+                :visibility="dialogCustom"
+                @change-visibility="dialogCustom = !dialogCustom"
+            />
         </div>
     </div>
 </template>
@@ -78,16 +78,12 @@ export default {
     h2 {
         text-align: center;
     }
-    .search-box__search-bar {
-        display: flex;
-        .btn-customs {
-            margin-top: 18px;
-        }
-    }
+
     .v-input {
         font-size: 1.2rem !important;
     }
-    .search-box__btns {
+    &__btns {
+        margin-top: 1.125rem;
         display: flex;
         justify-content: space-around;
         &__btn {
@@ -95,6 +91,10 @@ export default {
             padding: 0 5em;
             font-size: 1.1rem;
         }
+    }
+    &__mapmenu {
+        text-align: center;
+        margin-top: 3rem;
     }
 }
 @media (max-width: 410px) {
@@ -104,15 +104,8 @@ export default {
             width: 95% !important;
             margin: auto !important;
         }
-        .search-box__search-bar {
-            flex-direction: column;
-            width: 100%;
-            margin: auto;
-            .btn-customs {
-                margin: 0 auto;
-            }
-        }
         .search-box__btns {
+            margin-top: 0;
             flex-direction: column;
             .v-btn {
                 width: 80%;
