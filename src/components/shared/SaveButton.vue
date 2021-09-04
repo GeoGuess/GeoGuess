@@ -11,7 +11,7 @@
     </v-btn>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { VBtn } from 'vuetify/lib';
 
 export default {
@@ -22,7 +22,6 @@ export default {
     }),
     watch: {
         loading(loading, wasLoading) {
-            console.log(loading, wasLoading);
             if (!loading && wasLoading) {
                 this.success = true;
                 setTimeout(() => {

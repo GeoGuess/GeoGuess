@@ -9,6 +9,7 @@
         <v-card-text>
             <v-row class="search-bar">
                 <v-combobox
+                    id="search-input"
                     v-model="place"
                     :items="items"
                     :search-input.sync="search"
@@ -21,7 +22,12 @@
                     height="15"
                     full-width
                 />
-                <v-btn @click="loadPlaceGeoJSON(place)" color="dark" dark>
+                <v-btn
+                    @click="loadPlaceGeoJSON(place)"
+                    color="dark"
+                    dark
+                    id="loadBtn"
+                >
                     Load MAP
                 </v-btn>
             </v-row>
@@ -52,7 +58,14 @@
             <v-btn dark depressed color="#FF5252" @click="cancel">
                 {{ $t('cancel') }}
             </v-btn>
-            <v-btn id="btnStart" dark depressed color="#43B581" @click="next">
+            <v-btn
+                id="btnStart"
+                dark
+                depressed
+                color="#43B581"
+                @click="next"
+                :disabled="loadingGeoJson"
+            >
                 {{ $t('next') }}
             </v-btn>
         </v-card-actions>

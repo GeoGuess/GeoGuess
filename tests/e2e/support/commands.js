@@ -45,11 +45,6 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
         },
     });
 
-    if (place) {
-        cy.get('#search-input').type(place);
-        cy.get('.home-page__traveler-img').click();
-    }
-
     const btnWithFriends = cy.get('.search-box__btns .v-btn.secondary');
     btnWithFriends.contains('With Friends');
     if (multiplayer) {
@@ -72,6 +67,14 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
     btnSinglePlayer.contains('Single Player');
     if (!multiplayer) btnSinglePlayer.click();
 
+    if (place) {
+        cy.get('#search-input').type(place).click();
+        cy.get('#loadBtn').click();
+
+        cy.wait('@getGeoJson');
+    }
+    cy.get('.v-card__actions .v-btn:last-of-type').contains('NEXT').click();
+
     expect(cy.get('#modeClassicBtn')).to.exist;
     expect(cy.get('#modeCountryBtn')).to.exist;
     if (mode === 'country') {
@@ -88,9 +91,6 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
         cy.get('.time-input__minute input')
             .should('have.value', 5)
             .type('{backspace}0{enter}');
-    }
-    if (place) {
-        cy.wait('@getGeoJson');
     }
     card.get('#btnNextSettings:not([disabled="disabled"])')
         .contains('NEXT')
