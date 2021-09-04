@@ -3,25 +3,36 @@ import { validURL } from '@/utils';
 import { getLocateString, isGeoJSONValid } from '../utils';
 import * as MutationTypes from './mutation-types';
 import i18n from '../lang';
-import db from '../plugins/IndexDBService';
+import IndexedDBService from '../plugins/IndexedDBService';
+import { GeoMap, GeoMapCustom } from '../models/GeoMap';
 
 export default {
     state: () => ({
-        geojson: null,
+        map: new GeoMapCustom(),
         loadingGeoJson: false,
         errorMessage: null,
         listMaps: [],
         listAreas: [],
+        customsMaps: [],
         history: [],
         streamerMode: !!localStorage.getItem('streamerMode'),
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
-            state.geojson = geojson;
+            state.map.geojson = geojson;
+        },
+        [MutationTypes.HOME_SET_NAME_GEOJSON](state, name) {
+            state.map.name = name;
+        },
+        [MutationTypes.HOME_SET_MAP](state, map) {
+            state.map = map;
         },
         [MutationTypes.HOME_SET_LISTS](state, lists) {
             state.listMaps = lists.maps;
             state.listAreas = lists.areas;
+        },
+        [MutationTypes.HOME_SET_LISTS_CUSTOMMAPS](state, customsMaps) {
+            state.customsMaps = customsMaps;
         },
         [MutationTypes.HOME_SET_HISTORY](state, history) {
             state.history = history;
@@ -41,30 +52,28 @@ export default {
 
     getters: {
         geoJsonString(state) {
-            if (!state.geojson) {
+            if (!state.map.geojson) {
                 return '';
             }
-            return JSON.stringify(state.geojson, null, 2);
+            return JSON.stringify(state.map.geojson, null, 2);
         },
         geoJson(state) {
-            return state.geojson;
+            return state.map.geojson;
         },
         isValidGeoJson(state) {
-            if (!state.geojson) {
+            if (!state.map.geojson) {
                 return null;
             }
-            return isGeoJSONValid(state.geojson);
+            return isGeoJSONValid(state.map.geojson);
         },
         maps(state) {
-            return state.listMaps.map((map) => ({
-                ...map,
-                nameLocate: getLocateString(map, 'name', i18n.locale),
-                descriptionLocate: getLocateString(
-                    map,
-                    'description',
-                    i18n.locale
-                ),
-            }));
+            return state.customsMaps
+                .map((map) => Object.assign(new GeoMapCustom(), map))
+                .concat(
+                    state.listMaps.map((map) =>
+                        Object.assign(new GeoMap(), map)
+                    )
+                );
         },
         areasList(state) {
             return state.listAreas.map((map) => ({
@@ -107,10 +116,8 @@ export default {
                             res.status === 200 &&
                             res.data.features.length > 0
                         ) {
-                            commit(
-                                MutationTypes.HOME_SET_GEOJSON,
-                                res.data.features[0]
-                            );
+                            let feature = res.data.features[0];
+                            commit(MutationTypes.HOME_SET_GEOJSON, feature);
                             return;
                         }
                         commit(
@@ -157,10 +164,15 @@ export default {
                 commit(MutationTypes.HOME_SET_GEOJSON, geojson);
             }
         },
+        setMapLoaded({ commit }, map) {
+            commit(MutationTypes.HOME_SET_MAP, map);
+        },
         setGeoJson({ commit }, geojson) {
             commit(MutationTypes.HOME_SET_GEOJSON, geojson);
         },
-        saveGeoJson({ state }) {},
+        async saveGeoJson({ state }) {
+            return await state.map.save();
+        },
         setGeoJsonString({ commit }, geojson) {
             let obj = null;
             if (geojson !== '') {
@@ -182,6 +194,14 @@ export default {
                 .then((res) => res.data);
 
             commit(MutationTypes.HOME_SET_LISTS, data);
+        },
+        async getListMapsCustoms({ commit }) {
+            const customsMap = await Promise.resolve(
+                IndexedDBService.loadDb().then(async () => {
+                    return await IndexedDBService.getAllMaps();
+                })
+            );
+            commit(MutationTypes.HOME_SET_LISTS_CUSTOMMAPS, customsMap);
         },
         loadHistory({ commit }) {
             const history = localStorage.getItem('history')

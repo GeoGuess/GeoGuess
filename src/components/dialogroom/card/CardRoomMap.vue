@@ -14,14 +14,8 @@
                     :search-input.sync="search"
                     :loading="isLoading"
                     autofocus
-                    :placeholder="
-                        isValidGeoJson
-                            ? $t('Home.searchBar.customLoaded')
-                            : $t('Home.searchBar.enterCity')
-                    "
-                    :disabled="isValidGeoJson"
-                    :persistent-hint="isValidGeoJson"
-                    :background-color="isValidGeoJson ? 'primary' : 'secondary'"
+                    :placeholder="$t('Home.searchBar.enterCity')"
+                    background-color="secondary"
                     dark
                     rounded
                     height="15"
@@ -70,6 +64,7 @@ import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
 import { SETTINGS_SET_STEP_DIALOG_ROOM } from '../../../store/mutation-types';
 import CardRoomMixin from './mixins/CardRoomMixin';
 export default {
+    name: 'CardRoomMap',
     mixins: [CardRoomMixin],
     data() {
         return {
@@ -113,8 +108,8 @@ export default {
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
-        if (this.placeGeoJson) {
-            this.setGeoJson(this.placeGeoJson);
+        if (this.geoJson) {
+            this.setGeoJson(this.geoJson);
         }
 
         this.$refs.mapRef.$mapPromise.then((map) => {

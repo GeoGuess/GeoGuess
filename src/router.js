@@ -26,6 +26,14 @@ export default new Router({
             component: Home,
         },
         {
+            path: '/custom',
+            name: 'home custom',
+            component: Home,
+            props: () => ({
+                dialogCustomOpen: true,
+            }),
+        },
+        {
             path: '/game/:partyParams',
             name: 'party',
             component: Home,

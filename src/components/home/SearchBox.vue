@@ -36,7 +36,7 @@
             </v-btn>
             <DialogCustomMap
                 :visibility="dialogCustom"
-                @change-visibility="dialogCustom = !dialogCustom"
+                @change-visibility="changeDialogCustom"
             />
         </div>
     </div>
@@ -50,13 +50,20 @@ export default {
         DialogRoom,
         DialogCustomMap,
     },
+    props: {
+        dialogCustomOpen: Boolean,
+    },
     data() {
         return {
             dialog: false,
-            dialogCustom: false,
+            dialogCustom: this.dialogCustomOpen,
         };
     },
-
+    watch: {
+        dialogCustomOpen(v) {
+            this.dialogCustom = v;
+        },
+    },
     computed: {
         ...mapGetters(['nbPlaceVisits']),
     },
@@ -69,6 +76,11 @@ export default {
         ...mapActions('settingsStore', ['openDialogRoom']),
         openDialog(isSinglePlayer) {
             this.openDialogRoom(isSinglePlayer);
+        },
+        changeDialogCustom() {
+            this.dialogCustom = !this.dialogCustom;
+
+            this.$router.push(this.dialogCustom ? '/custom' : '/');
         },
     },
 };

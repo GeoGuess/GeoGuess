@@ -11,7 +11,7 @@
                     </div>
                     <v-layout class="home-page__main__content">
                         <div class="box">
-                            <SearchBox />
+                            <SearchBox :dialogCustomOpen="dialogCustomOpen" />
                         </div>
                     </v-layout>
                 </v-layout>
@@ -56,6 +56,9 @@ export default {
         SearchBox,
         HomeCard,
     },
+    props: {
+        dialogCustomOpen: Boolean,
+    },
     mounted() {
         if (this.$route.params && this.$route.params.partyParams) {
             const params = atob(this.$route.params.partyParams)
@@ -83,9 +86,11 @@ export default {
                 });
             }
         }
+
         this.getListMaps();
+        this.getListMapsCustoms();
     },
-    methods: { ...mapActions(['getListMaps']) },
+    methods: { ...mapActions(['getListMaps', 'getListMapsCustoms']) },
     computed: {
         ...mapGetters(['maps', 'areasList']),
     },

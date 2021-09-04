@@ -51,14 +51,36 @@
                                     </v-icon>
                                     {{ $t('DialogCustomMap.download') }}
                                 </v-btn>
-                                <v-btn
-                                    class="mt-6 mr-auto ml-auto"
+                            </v-row>
+                            <v-row class="mt-8" align="stretch">
+                                <v-text-field
+                                    placeholder="Europa"
+                                    label="Map Name"
+                                    :value="mapName"
+                                    @input="setMapName"
+                                    filled
+                                    :loading="loadingSave"
+                                />
+
+                                <SaveButton
+                                    class="ml-2 mt-2"
                                     color="secondary"
-                                    @click="saveGeoJson"
+                                    @click="saveMap"
+                                    :disabled="
+                                        mapName === '' ||
+                                            !geoJson ||
+                                            isValidGeoJson === false
+                                    "
+                                    :loading="loadingSave"
                                 >
-                                    <v-icon left dark> mdi-save </v-icon>
+                                    <v-icon left dark>
+                                        mdi-content-save
+                                    </v-icon>
                                     Save
-                                </v-btn>
+                                </SaveButton>
+                            </v-row>
+                            <v-row>
+                                <v-btn @click="clean"> Clean </v-btn>
                             </v-row>
                         </div>
                     </v-col>
@@ -124,13 +146,21 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
 import { validURL } from '@/utils';
 import { download, isGeoJSONValid } from '../../utils';
+import { HOME_SET_NAME_GEOJSON } from '../../store/mutation-types';
+import { GeoMapCustom } from '../../models/GeoMap';
+import SaveButton from '@/components/shared/SaveButton';
 
 export default {
     name: 'DialogCustomMap',
-    props: ['visibility'],
+    components: {
+        SaveButton,
+    },
+    props: {
+        visibility: Boolean,
+    },
     data() {
         return {
             rulesUrl: [(value) => validURL(value)],
@@ -141,10 +171,14 @@ export default {
             initMap: false,
             editMap: false,
             loading: false,
+            loadingSave: false,
         };
     },
     computed: {
         ...mapGetters(['geoJsonString', 'isValidGeoJson', 'geoJson']),
+        ...mapState({
+            mapName: (state) => state.homeStore.map.name,
+        }),
         placeholderGeoJson() {
             return this.loading ? '' : geoJsonExample;
         },
@@ -155,7 +189,12 @@ export default {
             'setGeoJson',
             'setGeoJsonString',
             'saveGeoJson',
+            'setMapLoaded',
+            'getListMapsCustoms',
         ]),
+        ...mapMutations({
+            setMapName: HOME_SET_NAME_GEOJSON,
+        }),
         checkIfStringGeoJsonValid(string) {
             try {
                 return isGeoJSONValid(JSON.parse(string));
@@ -163,7 +202,6 @@ export default {
                 return false;
             }
         },
-
         onChangeTextArea(e) {
             this.setGeoJsonString(e);
         },
@@ -180,6 +218,16 @@ export default {
                 'geoguessMap_' + new Date().toISOString() + '.geojson',
                 'application/vnd.geo+json'
             );
+        },
+        async saveMap() {
+            this.loadingSave = true;
+            await this.saveGeoJson();
+            this.getListMapsCustoms();
+            this.loadingSave = false;
+        },
+        clean() {
+            this.setMapLoaded(new GeoMapCustom());
+            this.url = '';
         },
     },
     watch: {

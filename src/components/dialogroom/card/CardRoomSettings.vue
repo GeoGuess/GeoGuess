@@ -17,7 +17,7 @@
                                 id="modeClassicBtn"
                                 :text="
                                     gameSettings.modeSelected !==
-                                    gameMode.CLASSIC
+                                        gameMode.CLASSIC
                                 "
                                 rounded
                                 outlined
@@ -35,7 +35,7 @@
                                 id="modeCountryBtn"
                                 :text="
                                     gameSettings.modeSelected !==
-                                    gameMode.COUNTRY
+                                        gameMode.COUNTRY
                                 "
                                 rounded
                                 outlined
@@ -116,7 +116,7 @@
                                 <v-select
                                     v-if="
                                         gameSettings.modeSelected ===
-                                        gameMode.CLASSIC
+                                            gameMode.CLASSIC
                                     "
                                     :label="
                                         $t('CardRoomSettings.scoreModeLabel')

@@ -9,6 +9,7 @@ import VueClipboard from 'vue-clipboard2';
 import App from './App.vue';
 import i18n from './lang';
 import CountryNamePlugin from './plugins/countryNamePlugin';
+import IndexedDBService from './plugins/IndexedDBService';
 import vuetify from './plugins/vuetify';
 import './registerServiceWorker';
 import router from './router';
