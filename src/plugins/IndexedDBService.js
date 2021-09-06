@@ -10,6 +10,7 @@ class IndexedDBService {
             let request = window.indexedDB.open('geoguess', 1);
 
             request.onerror = (e) => {
+                // eslint-disable-next-line no-console
                 console.log('Error opening db', e);
                 reject('Error');
             };
@@ -20,6 +21,7 @@ class IndexedDBService {
             };
 
             request.onupgradeneeded = (e) => {
+                // eslint-disable-next-line no-console
                 console.log('onupgradeneeded');
                 const db = e.target.result;
                 db.createObjectStore('maps', {
@@ -49,6 +51,7 @@ class IndexedDBService {
             };
 
             request.onerror = (e) => {
+                // eslint-disable-next-line no-console
                 console.log('Error getting maps', e);
                 reject('Error');
             };
@@ -62,6 +65,7 @@ class IndexedDBService {
             let request = store.add(map);
 
             request.onerror = (e) => {
+                // eslint-disable-next-line no-console
                 console.log('Error adding map', e);
                 reject('Error');
             };
@@ -78,6 +82,7 @@ class IndexedDBService {
             let request = store.delete(map.id);
 
             request.onerror = (e) => {
+                // eslint-disable-next-line no-console
                 console.log('Error deleting map', e);
                 reject('Error');
             };
@@ -94,6 +99,7 @@ class IndexedDBService {
             let request = store.put(map);
 
             request.onerror = (e) => {
+                // eslint-disable-next-line no-console
                 console.log('Error updating map', e);
                 reject('Error');
             };
