@@ -172,7 +172,7 @@ export default {
     },
 
     actions: {
-        closeDialogRoom({ state, commit }, cleanRoom = true) {
+        closeDialogRoom({ state, commit, dispatch }, cleanRoom = true) {
             commit(MutationTypes.SETTINGS_SET_OPEN_DIALOG_ROOM, false);
 
             // Remove the room
@@ -191,6 +191,7 @@ export default {
                 }
             }
 
+            dispatch('setMapLoaded', new Map(), { root: true });
             commit(MutationTypes.SETTINGS_RESET);
         },
         openDialogRoom({ commit }, isSinglePlayer = true) {
@@ -228,8 +229,8 @@ export default {
         setSettings({ commit, state, rootState, dispatch }) {
             let difficulty = 2000;
             let bboxObj;
-            if (rootState.homeStore.geojson) {
-                bboxObj = bbox(rootState.homeStore.geojson);
+            if (rootState.homeStore.map.geojson) {
+                bboxObj = bbox(rootState.homeStore.map.geojson);
 
                 difficulty = getMaxDistanceBbox(bboxObj) / 10;
             }
@@ -239,7 +240,7 @@ export default {
                     params: {
                         ...state.gameSettings,
                         difficulty: difficulty,
-                        placeGeoJson: rootState.homeStore.geojson,
+                        placeGeoJson: rootState.homeStore.map.geojson,
                         bboxObj: bboxObj,
                     },
                 });
@@ -250,7 +251,7 @@ export default {
                         ...state.gameSettings,
                         timeLimitation: state.gameSettings.time,
                         difficulty: difficulty,
-                        placeGeoJson: rootState.homeStore.geojson,
+                        placeGeoJson: rootState.homeStore.map.geojson,
                         ...(bboxObj && { bboxObj: bboxObj }),
                     },
                     (error) => {
@@ -280,7 +281,7 @@ export default {
                 gameParams = {
                     ...state.gameSettings,
                     difficulty: state.difficulty,
-                    placeGeoJson: rootState.homeStore.geojson,
+                    placeGeoJson: rootState.homeStore.map.geojson,
                     bboxObj: state.bboxObj,
                 };
                 // Set flag started
@@ -320,7 +321,7 @@ export default {
                     roomName: state.roomName,
                     playerName: state.name,
                     playerNumber: state.playerNumber,
-                    placeGeoJson: rootState.homeStore.geojson,
+                    placeGeoJson: rootState.homeStore.map.geojson,
                     multiplayer: true,
                 },
             });

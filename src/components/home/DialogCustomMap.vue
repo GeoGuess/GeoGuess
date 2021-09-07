@@ -14,11 +14,33 @@
             </v-card-title>
             <v-card-text>
                 <v-row no-gutters class="dialog-customs__row">
-                    <v-col md="5" sm="12" class="mr-6">
+                    <v-col md="6" sm="12" class="mr-6">
+                        <v-row class="mt-2 mr-3 ml-1" align="stretch">
+                            <v-text-field
+                                placeholder="My favorite place"
+                                label="Map Name"
+                                :value="mapName"
+                                @input="setMapName"
+                                filled
+                                :loading="loadingSave"
+                            />
+
+                            <SaveButton
+                                class="ml-2 mt-2"
+                                color="dark"
+                                :dark="!isSaveAllowed"
+                                @click="saveMap"
+                                :disabled="isSaveAllowed"
+                                :loading="loadingSave"
+                            >
+                                <v-icon left dark> mdi-content-save </v-icon>
+                                Save
+                            </SaveButton>
+                        </v-row>
                         <v-skeleton-loader
                             v-if="loading"
                             class="mx-auto"
-                            height="500"
+                            height="550"
                             type="image"
                         />
                         <div v-else>
@@ -35,7 +57,7 @@
                                 :center="{ lat: 10, lng: 10 }"
                                 :zoom="1"
                                 map-type-id="roadmap"
-                                style="width: 100%; height: 500px"
+                                style="width: 100%; height: 530px"
                                 :options="{
                                     gestureHandling: 'greedy',
                                 }"
@@ -44,6 +66,7 @@
                                 <v-btn
                                     class="mt-6 mr-auto ml-auto"
                                     color="secondary"
+                                    small
                                     @click="downloadGeoJson"
                                 >
                                     <v-icon left dark>
@@ -51,36 +74,6 @@
                                     </v-icon>
                                     {{ $t('DialogCustomMap.download') }}
                                 </v-btn>
-                            </v-row>
-                            <v-row class="mt-8" align="stretch">
-                                <v-text-field
-                                    placeholder="Europa"
-                                    label="Map Name"
-                                    :value="mapName"
-                                    @input="setMapName"
-                                    filled
-                                    :loading="loadingSave"
-                                />
-
-                                <SaveButton
-                                    class="ml-2 mt-2"
-                                    color="secondary"
-                                    @click="saveMap"
-                                    :disabled="
-                                        mapName === '' ||
-                                            !geoJson ||
-                                            isValidGeoJson === false
-                                    "
-                                    :loading="loadingSave"
-                                >
-                                    <v-icon left dark>
-                                        mdi-content-save
-                                    </v-icon>
-                                    Save
-                                </SaveButton>
-                            </v-row>
-                            <v-row>
-                                <v-btn @click="clean"> Clean </v-btn>
                             </v-row>
                         </div>
                     </v-col>
@@ -137,6 +130,7 @@
             </v-card-text>
             <v-card-actions>
                 <div class="flex-grow-1" />
+                <v-btn @click="clean" color="error"> Clean </v-btn>
                 <v-btn dark color="primary" @click="$emit('change-visibility')">
                     {{ $t('DialogCustomMap.OK') }}
                 </v-btn>
@@ -181,6 +175,13 @@ export default {
         }),
         placeholderGeoJson() {
             return this.loading ? '' : geoJsonExample;
+        },
+        isSaveAllowed() {
+            return (
+                this.mapName === '' ||
+                !this.geoJson ||
+                this.isValidGeoJson === false
+            );
         },
     },
     methods: {

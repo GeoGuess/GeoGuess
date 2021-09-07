@@ -115,12 +115,13 @@ export default {
             width: 100%;
             background: url('../assets/home/world.svg');
             background-size: cover;
+            background-position: top;
             .home-page__main__layout {
-                height: calc(100vh - 100px);
+                height: calc(70vh - 100px);
                 flex-wrap: nowrap;
                 justify-items: end;
                 .box {
-                    margin: 28vh auto;
+                    margin: 16vh auto;
                     width: 35vw;
                     max-width: 100%;
                 }
@@ -129,16 +130,14 @@ export default {
                     min-width: 65%;
                 }
                 .home-page__traveler-container {
-                    position: relative;
                     height: auto;
                     width: 100%;
                     max-width: 50vw;
+                    display: flex;
+                    justify-content: flex-start;
                     .home-page__traveler-img {
-                        position: absolute;
-                        bottom: 0;
-                        width: 100%;
-                        max-width: 772px;
-                        max-height: 814px;
+                        max-width: 30vw;
+                        max-height: 60vh;
                     }
                 }
             }
@@ -146,7 +145,7 @@ export default {
         #btnMaps {
             position: absolute;
             margin: auto;
-            bottom: 4rem;
+            bottom: 0.4rem;
             left: 0;
             right: 0;
         }

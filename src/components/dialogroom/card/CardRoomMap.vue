@@ -1,9 +1,7 @@
 <template>
     <v-card id="card-playername">
         <v-card-title>
-            <span id="card-title">
-                {{ $t('CardRoomPlayerName.title') }}
-            </span>
+            <span id="card-title"> Define your map </span>
         </v-card-title>
 
         <v-card-text>
@@ -21,19 +19,20 @@
                     rounded
                     height="15"
                     full-width
+                    @input="loadPlaceGeoJSON"
                 />
                 <v-btn
                     @click="loadPlaceGeoJSON(place)"
                     color="dark"
                     dark
                     id="loadBtn"
+                    :loading="loadingGeoJson"
                 >
                     Load MAP
                 </v-btn>
             </v-row>
             <GmapMap
                 ref="mapRef"
-                :class="{ 'd-none': loadingGeoJson }"
                 :center="{ lat: 10, lng: 10 }"
                 :zoom="1"
                 map-type-id="roadmap"
@@ -44,18 +43,11 @@
                     gestureHandling: 'greedy',
                 }"
             />
-
-            <v-skeleton-loader
-                v-if="loadingGeoJson"
-                class="mx-auto"
-                width="100%"
-                height="400"
-                type="image"
-            />
         </v-card-text>
         <v-card-actions>
+            <v-btn plain v-if="geoJson" @click="reset">Reset</v-btn>
             <div class="flex-grow-1" />
-            <v-btn dark depressed color="#FF5252" @click="cancel">
+            <v-btn dark depressed color="error" @click="cancel">
                 {{ $t('cancel') }}
             </v-btn>
             <v-btn
@@ -116,13 +108,13 @@ export default {
                 .finally(() => (this.isLoading = false));
         },
         geoJson(val) {
-            this.setGeoJson(val);
+            this.addGeoJson(val);
         },
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
         if (this.geoJson) {
-            this.setGeoJson(this.geoJson);
+            this.addGeoJson(this.geoJson);
         }
 
         this.$refs.mapRef.$mapPromise.then((map) => {
@@ -135,8 +127,8 @@ export default {
         ...mapMutations('settingsStore', {
             setStepDialogRoom: SETTINGS_SET_STEP_DIALOG_ROOM,
         }),
-        ...mapActions(['loadPlaceGeoJSON']),
-        setGeoJson(val) {
+        ...mapActions(['loadPlaceGeoJSON', 'setGeoJson']),
+        addGeoJson(val) {
             this.$refs.mapRef.$mapPromise.then((map) => {
                 map.data.setMap(null);
                 let data = new google.maps.Data({
@@ -151,8 +143,14 @@ export default {
                         south: val.bbox[1],
                         west: val.bbox[0],
                     });
+                } else {
+                    map.setZoom(1);
                 }
             });
+        },
+        reset() {
+            this.place = '';
+            this.setGeoJson(null);
         },
         next() {
             this.setStepDialogRoom('settings');
@@ -166,5 +164,6 @@ export default {
     column-gap: 2rem;
     align-items: baseline;
     padding: 0 1rem;
+    margin-bottom: 1rem;
 }
 </style>
