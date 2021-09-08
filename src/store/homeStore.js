@@ -95,6 +95,19 @@ export default {
     },
 
     actions: {
+        setStreamerMode({ dispatch, commit }, value) {
+            commit(MutationTypes.HOME_SET_STREAMER_MODE, value);
+            dispatch(
+                'alertStore/setAlert',
+                value && {
+                    title: 'Home.streamerModeActivate',
+                    subtitle: 'Home.streamerModeDetails',
+                    color: 'streamerMode',
+                    icon: 'mdi-twitch',
+                },
+                { root: true }
+            );
+        },
         loadPlaceGeoJSON({ commit, state }, place) {
             if (place != null && place != '') {
                 if (state.loadingGeoJson) {
@@ -170,8 +183,17 @@ export default {
         setGeoJson({ commit }, geojson) {
             commit(MutationTypes.HOME_SET_GEOJSON, geojson);
         },
-        async saveGeoJson({ state }) {
-            return await state.map.save();
+        async saveGeoJson({ state, dispatch }) {
+            await state.map.save();
+            dispatch('getListMapsCustoms');
+            dispatch(
+                'alertStore/setAlert',
+                {
+                    title: 'Map saved 🎉',
+                    subtitle: 'You will find it in your map lists',
+                },
+                { root: true }
+            );
         },
         setGeoJsonString({ commit }, geojson) {
             let obj = null;

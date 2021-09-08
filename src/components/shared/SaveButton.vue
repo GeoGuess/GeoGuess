@@ -26,7 +26,7 @@ export default {
                 this.success = true;
                 setTimeout(() => {
                     this.success = false;
-                }, 2000);
+                }, 3000);
             }
         },
     },

@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import homeStore from './homeStore';
 import areaStore from './areaStore';
 import settingsStore from './settingsStore';
-
+import alertStore from './alertStore';
 
 Vue.use(Vuex);
 
@@ -12,5 +12,6 @@ export default new Vuex.Store({
         homeStore,
         areaStore,
         settingsStore,
+        alertStore,
     },
 });

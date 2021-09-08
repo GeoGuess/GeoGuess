@@ -223,7 +223,6 @@ export default {
         async saveMap() {
             this.loadingSave = true;
             await this.saveGeoJson();
-            this.getListMapsCustoms();
             this.loadingSave = false;
         },
         clean() {
