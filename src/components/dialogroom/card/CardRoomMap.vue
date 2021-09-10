@@ -1,7 +1,7 @@
 <template>
     <v-card id="card-playername">
         <v-card-title>
-            <span id="card-title"> Define your map </span>
+            <span id="card-title"> {{ $t('CardRoomMap.title') }} </span>
         </v-card-title>
 
         <v-card-text>
@@ -28,7 +28,7 @@
                     id="loadBtn"
                     :loading="loadingGeoJson"
                 >
-                    Load MAP
+                    {{ $t('CardRoomMap.loadBtn') }}
                 </v-btn>
             </v-row>
             <GmapMap
@@ -45,7 +45,9 @@
             />
         </v-card-text>
         <v-card-actions>
-            <v-btn plain v-if="geoJson" @click="reset">Reset</v-btn>
+            <v-btn plain v-if="geoJson" @click="reset">{{
+                $t('CardRoomMap.reset')
+            }}</v-btn>
             <div class="flex-grow-1" />
             <v-btn dark depressed color="error" @click="cancel">
                 {{ $t('cancel') }}

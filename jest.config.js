@@ -12,6 +12,6 @@ module.exports = {
         '!src/registerServiceWorker.js',
     ],
     transformIgnorePatterns: [
-        'node_modules/(?!gmap-vue|axios-cache-adapter|cache-control-esm)',
+        'node_modules/(?!gmap-vue|axios-cache-adapter|cache-control-esm|vuetify)',
     ],
 };

@@ -115,15 +115,6 @@ exports[`Header.vue open dialog about 1`] = `
     </div>
   </header>
   <!---->
-  <transition-stub name="slide-x-reverse-transition" id="alertStreamerMode">
-    <div role="alert" class="v-alert v-sheet theme--dark streamerMode" style="display: none;">
-      <div class="v-alert__wrapper"><i aria-hidden="true" class="v-icon notranslate v-alert__icon mdi mdi-twitch theme--dark"></i>
-        <div class="v-alert__content">
-          <h4>Streamer mode activate</h4>
-          <p>URLs and room names are hidden</p>
-        </div><button type="button" class="v-alert__dismissible v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--small" aria-label="Close"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-close-circle theme--dark"></i></span></button>
-      </div>
-    </div>
-  </transition-stub>
+  <!---->
 </div>
 `;

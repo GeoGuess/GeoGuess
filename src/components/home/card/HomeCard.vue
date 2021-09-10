@@ -6,9 +6,9 @@
             gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
             :src="
                 data.imageUrl ||
-                    `https://source.unsplash.com/500x230/weekly?${encodeURI(
-                        data.nameLocate
-                    )}`
+                `https://source.unsplash.com/500x230/weekly?${encodeURI(
+                    data.nameLocate
+                )}`
             "
         >
             <v-menu v-if="data.custom">
@@ -27,10 +27,14 @@
                 </template>
                 <v-list>
                     <v-list-item @click="editMap">
-                        <v-list-item-title>Edit </v-list-item-title>
+                        <v-list-item-title>
+                            {{ $t('Home.HomeCard.edit') }}
+                        </v-list-item-title>
                     </v-list-item>
                     <v-list-item @click="deleteMap">
-                        <v-list-item-title>Delete </v-list-item-title>
+                        <v-list-item-title>
+                            {{ $t('Home.HomeCard.delete') }}
+                        </v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>

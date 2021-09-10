@@ -189,8 +189,8 @@ export default {
             dispatch(
                 'alertStore/setAlert',
                 {
-                    title: 'Map saved 🎉',
-                    subtitle: 'You will find it in your map lists',
+                    title: 'Home.mapSavedAlert.title',
+                    subtitle: 'Home.mapSavedAlert.subtitle',
                 },
                 { root: true }
             );

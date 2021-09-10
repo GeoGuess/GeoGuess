@@ -17,8 +17,10 @@
                     <v-col md="6" sm="12" class="mr-6">
                         <v-row class="mt-2 mr-3 ml-1" align="stretch">
                             <v-text-field
-                                placeholder="My favorite place"
-                                label="Map Name"
+                                :placeholder="
+                                    $t('DialogCustomMap.inputName.placeholder')
+                                "
+                                :label="$t('DialogCustomMap.inputName.label')"
                                 :value="mapName"
                                 @input="setMapName"
                                 filled
@@ -34,7 +36,7 @@
                                 :loading="loadingSave"
                             >
                                 <v-icon left dark> mdi-content-save </v-icon>
-                                Save
+                                {{ $t('DialogCustomMap.save') }}
                             </SaveButton>
                         </v-row>
                         <v-skeleton-loader
