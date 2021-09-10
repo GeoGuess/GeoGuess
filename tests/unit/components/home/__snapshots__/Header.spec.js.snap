@@ -55,12 +55,22 @@ exports[`Header.vue changeStreamerMode method 1`] = `
             </v-list-item-stub>
             <v-list-item-stub activeclass="" tag="div">
               <v-list-item-title-stub>
+                Italiano
+              </v-list-item-title-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" tag="div">
+              <v-list-item-title-stub>
                 Svenska
               </v-list-item-title-stub>
             </v-list-item-stub>
             <v-list-item-stub activeclass="" tag="div">
               <v-list-item-title-stub>
                 Türkçe
+              </v-list-item-title-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" tag="div">
+              <v-list-item-title-stub>
+                עִבְרִית
               </v-list-item-title-stub>
             </v-list-item-stub>
             <v-list-item-stub activeclass="" tag="div">

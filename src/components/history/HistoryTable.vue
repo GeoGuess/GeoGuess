@@ -185,7 +185,7 @@ export default {
                     hide: true,
                 },
                 {
-                    text: 'Actions',
+                    text: this.$t('History.actions'),
                     value: 'actions',
                     sortable: false,
                 },

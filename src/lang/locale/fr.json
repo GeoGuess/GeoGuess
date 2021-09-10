@@ -26,8 +26,12 @@
         "streamerModeActivate": "Mode Streamer activé",
         "streamerModeDetails": "Les URLs et les noms des salles sont masqués",
         "HomeCardMode": {
-            "map": "Map",
-            "area": "Area"
+            "map": "Carte",
+            "area": "Zone"
+        },
+        "Sections": {
+            "areasTitle": "Zones",
+            "mapsTitle": "Cartes"
         }
     },
     "StreetView": {
@@ -48,7 +52,7 @@
         "nextRound": "MANCHE SUIVANTE",
         "viewSummary": "VOIR LE RÉSUMÉ",
         "exit": "QUITTER",
-        "reset": "RÉINIT.",
+        "reset": "RÉINITIALISER",
         "playAgain": "REJOUER",
         "infoWindow": {
             "Distance": "Distance",
@@ -89,6 +93,7 @@
         "distance": "Distance",
         "points": "Points",
         "rank": "Classement",
+        "actions": "Actions",
         "search": "Rechercher",
         "exportGeoSave": "Exporter en GeoSave",
         "importGeoSave": "Import une GeoSave",
@@ -134,7 +139,8 @@
             "normal": "normal",
             "time": "temps"
         },
-        "selectAreas": "Select Areas"
+        "selectAreas": "Sélectionner les zones",
+        "moreSettings": "Paramètres avancés"
     },
     "CardRoomDifficulty": {
         "title": "Saisir la difficulté.",
@@ -160,7 +166,7 @@
     "modes": {
         "classic": "Classique",
         "country": "Pays",
-        "custom_area": "Pick"
+        "custom_area": "Cibler"
     },
     "Demo": {
         "message": "Tu souhaites contribuer au projet et le rendre meilleur, ton aide est la bienvenue :  Traduction 🔠, Créateur de carte 🌍, Code 💻, Idée 💡, Beta test 👀.",

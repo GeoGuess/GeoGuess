@@ -26,8 +26,12 @@
         "streamerModeActivate": "Aktivera streamerläge",
         "streamerModeDetails": "URLer och rumsnamn göms",
         "HomeCardMode": {
-            "map": "Map",
-            "area": "Area"
+            "map": "Karta",
+            "area": "Yta"
+        },
+        "Sections": {
+            "areasTitle": "Areas",
+            "mapsTitle": "Maps"
         }
     },
     "StreetView": {
@@ -89,6 +93,7 @@
         "distance": "Distans",
         "points": "Poäng",
         "rank": "Rank",
+        "actions": "Actions",
         "search": "Sök",
         "exportGeoSave": "Exportera GeoSave",
         "importGeoSave": "Importera GeoSave",
@@ -134,7 +139,8 @@
             "normal": "normal",
             "time": "tid"
         },
-        "selectAreas": "Select Areas"
+        "selectAreas": "Välj ytor",
+        "moreSettings": "More settings"
     },
     "CardRoomDifficulty": {
         "title": "Sätt en svårighetsgrad.",
@@ -160,7 +166,7 @@
     "modes": {
         "classic": "Klassiskt",
         "country": "Välj land",
-        "custom_area": "Pick"
+        "custom_area": "Välj"
     },
     "Demo": {
         "message": "Om du vill bidra till ett projekt och göra det bättre är din hjälp väldigt välkommen :  Översättning 🔠, Kartor 🌍, Kod 💻, Idéer 💡, Betatestning 👀.",

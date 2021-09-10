@@ -20,7 +20,7 @@
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
-        <v-container id="areas"> <h2>Areas</h2></v-container>
+        <v-container id="areas"> <h2>{{$t('Home.Sections.areasTitle')}}</h2></v-container>
         <section class="sliders-container">
             <v-slide-group show-arrows="always">
                 <v-slide-item
@@ -32,7 +32,7 @@
                 </v-slide-item>
             </v-slide-group>
         </section>
-        <v-container><h2>Maps</h2></v-container>
+        <v-container><h2>{{$t('Home.Sections.mapsTitle')}}</h2></v-container>
         <section id="maps">
             <HomeCard
                 v-for="(map, index) in maps"
@@ -98,6 +98,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.v-application--is-rtl .home-page__traveler-img{
+    transform: scaleX(-1)
+
+}
 .home-page {
     .demo-alert {
         position: absolute;

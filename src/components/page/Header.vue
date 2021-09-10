@@ -105,6 +105,7 @@ export default {
         switchLanguage(language) {
             this.$i18n.locale = language;
             this.$vuetify.lang.current = language;
+            this.$vuetify.rtl = RTL_LANGUAGES.includes(language);
             this.saveLanguage(language);
         },
         saveLanguage(language) {

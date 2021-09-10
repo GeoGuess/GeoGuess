@@ -4,6 +4,7 @@
         persistent
         :fullscreen="$viewport.width < 450"
         max-width="800"
+        content-class="dialog-room"
     >
         <component
             :is="currentComponent"
@@ -56,3 +57,11 @@ export default {
     },
 };
 </script>
+<style lang="scss">
+.dialog-room {
+    .v-card__actions {
+        gap: .5rem;
+        padding: 1rem;
+    }
+}
+</style>

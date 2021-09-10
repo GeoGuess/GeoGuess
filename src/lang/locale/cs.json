@@ -28,6 +28,10 @@
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
+        },
+        "Sections": {
+            "areasTitle": "Areas",
+            "mapsTitle": "Maps"
         }
     },
     "StreetView": {
@@ -89,6 +93,7 @@
         "distance": "Vzdálenost",
         "points": "Skóre",
         "rank": "Umístění",
+        "actions": "Actions",
         "search": "Vyhledávání",
         "exportGeoSave": "Exportuj GeoSave",
         "importGeoSave": "Importuj GeoSave",
@@ -134,7 +139,8 @@
             "normal": "normal",
             "time": "time"
         },
-        "selectAreas": "Select Areas"
+        "selectAreas": "Select Areas",
+        "moreSettings": "More settings"
     },
     "CardRoomDifficulty": {
         "title": "Zvol obtížnost hry (ovlivňuje bodování).",

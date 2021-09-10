@@ -98,6 +98,7 @@ export default {
         margin-top: 1.125rem;
         display: flex;
         justify-content: space-around;
+        width: calc(100% - 50px);
         &__btn {
             width: 40%;
             padding: 0 5em;

@@ -147,6 +147,34 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "ElectableRuby31",
+      "name": "ElectableRuby31",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81558780?v=4",
+      "profile": "https://github.com/ElectableRuby31",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Andrea Cortesi",
+      "name": "raccort",
+      "avatar_url": "https://crowdin-static.downloads.crowdin.com/avatar/13144827/large/a3efba5b13184b1e1318c2e06b0d3004.png",
+      "profile": "https://crowdin.com/profile/raccort",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "johnebgood",
+      "name": "johnebgood",
+      "avatar_url": "https://avatars.githubusercontent.com/u/663211?v=4",
+      "profile": "https://securitylive.com",
+      "contributions": [
+        "ideas",
+        "financial"
+      ]
     }
   ],
   "contributorsPerLine": 7,

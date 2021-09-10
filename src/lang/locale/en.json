@@ -1,6 +1,6 @@
 {
     "Home": {
-        "placeVisited": "0 place visited | 1 place visited | {count} places visited",
+        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "HISTORY",
         "about": "ABOUT",
         "searchBar": {
@@ -8,26 +8,30 @@
             "enterCity": "Enter city, state or country"
         },
         "aboutDescriptions": {
-            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer game with your friends up to five friends.                  The first player creates a room and decide the room size. Other players type the same room name as the first player created and the game will start.",
+            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
             "2": "This game was forked from "
         },
         "customMap": "CUSTOMS MAP",
         "customMapDescriptions": {
-            "1": "You can limit random locations to city, state, or country with the search bar.",
+            "1": "You can limit random locations to cities, states, or countries with the search bar.",
             "2": "In the multiplayer, the first player fixes the location.",
-            "3": "Furthermore, you can make your customs map with ",
+            "3": "Furthermore, you can make your custom map with ",
             "4": "file.",
             "5": "Insert the content of the GeoJson map with the button :",
             "6": "Customs Map selection : "
         },
         "limitation": "LIMITATION",
-        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quotas has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
+        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Play",
         "streamerModeActivate": "Streamer mode activate",
         "streamerModeDetails": "URLs and room names are hidden",
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
+        },
+        "Sections": {
+            "areasTitle": "Areas",
+            "mapsTitle": "Maps"
         }
     },
     "StreetView": {
@@ -36,8 +40,8 @@
             "message": "Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉"
         },
         "waitForOtherPlayers": "Waiting for other players...",
-        "redirectToHomePage": "Redirect to Home Page...",
-        "exitGame": "You are forced to exit the game. Redirect to home page after 5 seconds...",
+        "redirectToHomePage": "Redirecting to Home Page...",
+        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
         "waitForOtherPlayersToFinish": "Waiting for other players to finish the game...",
         "confirmExit": "Are you sure to leave the current game? This will abort the game!",
         "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
@@ -86,6 +90,7 @@
         "distance": "Distance",
         "points": "Points",
         "rank": "Rank",
+        "actions": "Actions",
         "search": "Search",
         "exportGeoSave": "Export GeoSave",
         "importGeoSave": "Import GeoSave",
@@ -111,7 +116,7 @@
     },
     "CardRoomSize": { "title": "Set a room size." },
     "CardRoomTime": {
-        "title": "Set a time limitation.",
+        "title": "Set a time limit.",
         "infinite": "Infinite"
     },
     "CardRoomSettings": {
@@ -129,7 +134,8 @@
             "normal": "normal",
             "time": "time"
         },
-        "selectAreas": "Select Areas"
+        "selectAreas": "Select Areas",
+        "moreSettings": "More settings"
     },
     "CardRoomDifficulty": {
         "title": "Set a difficulty level.",
