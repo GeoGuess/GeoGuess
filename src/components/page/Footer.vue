@@ -3,17 +3,15 @@
         <div class="footer__container">
             <div class="footer__logo">
                 <v-btn
-                    class="ml-4 mr-4"
                     icon
                     color="#FFFFFF"
                     href="https://github.com/GeoGuess/Geoguess"
                 >
                     <v-icon size="30">
-                        mdi-github-circle
+                        mdi-github
                     </v-icon>
                 </v-btn>
                 <v-btn
-                    class="ml-4 mr-4"
                     icon
                     color="#FFFFFF"
                     href="https://discord.gg/9GXm6RT"
@@ -23,7 +21,6 @@
                     </v-icon>
                 </v-btn>
                 <v-btn
-                    class="ml-4 mr-4"
                     icon
                     color="#FFFFFF"
                     href="https://twitter.com/BilelJegham"
@@ -33,7 +30,7 @@
                     </v-icon>
                 </v-btn>
             </div>
-            <div>
+            <div class="licence">
                 <p>
                     {{ version }} - {{ $t('Footer.under') }}
                     <a
@@ -79,12 +76,16 @@ footer {
         a {
             font-weight: bold;
         }
+      
+    }
+    .footer__logo{
+        width: 20%;
     }
 }
-@media (max-width: 350px) {
-    .footer__logo .v-btn.ml-4 {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+
+@media (max-width: 430px) {
+    footer .footer__container div.licence{
+        display: none;
     }
 }
 </style>

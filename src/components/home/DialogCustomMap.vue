@@ -15,7 +15,7 @@
             <v-card-text>
                 <v-row no-gutters class="dialog-customs__row">
                     <v-col md="6" sm="12" class="mr-6">
-                        <v-row class="mt-2 mr-3 ml-1" align="stretch">
+                        <v-row class="mt-2 mr-3 ml-1 mb-5" align="stretch">
                             <v-text-field
                                 :placeholder="
                                     $t('DialogCustomMap.inputName.placeholder')
@@ -25,10 +25,11 @@
                                 @input="setMapName"
                                 filled
                                 :loading="loadingSave"
+                                hide-details
                             />
 
                             <SaveButton
-                                class="ml-2 mt-2"
+                                class="ml-2 mt-2 "
                                 color="dark"
                                 :dark="!isSaveAllowed"
                                 @click="saveMap"

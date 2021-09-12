@@ -125,7 +125,7 @@ export default {
                 flex-wrap: nowrap;
                 justify-items: end;
                 .box {
-                    margin: 16vh auto;
+                    margin: auto;
                     width: 35vw;
                     max-width: 100%;
                 }
