@@ -1,7 +1,7 @@
 import HomeCard from '@/components/home/card/HomeCard.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../../testutils/appInit';
-import {GeoMapCustom} from '@/models/GeoMap'
+import {GeoMapCustom} from '@/models/GeoMap';
 
 const args = appInit(createLocalVue());
 const data = {
@@ -49,7 +49,7 @@ describe('HomeCard.vue', () => {
             },
         });
 
-        wrapper.vm.deleteMap()
+        wrapper.vm.deleteMap();
 
         expect(spy).toBeCalled();
     });
