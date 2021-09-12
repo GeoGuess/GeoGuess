@@ -73,7 +73,7 @@
 </template>
 <script>
 import About from '@/components/page/About';
-import { languages } from '../../lang';
+import { languages, RTL_LANGUAGES } from '../../lang';
 import { mapActions, mapState } from 'vuex';
 import HeaderAlert from './HeaderAlert.vue';
 

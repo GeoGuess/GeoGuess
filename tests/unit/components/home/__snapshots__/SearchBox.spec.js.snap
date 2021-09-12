@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBox.vue test search Input 1`] = `
+exports[`SearchBox.vue render 1`] = `
 <div class="search-box">
   <h2>0 visited place</h2>
   <div class="search-box__btns">

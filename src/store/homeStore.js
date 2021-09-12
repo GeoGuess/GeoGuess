@@ -52,7 +52,7 @@ export default {
 
     getters: {
         geoJsonString(state) {
-            if (!state.map.geojson) {
+           if (!state.map || !state.map.geojson) {
                 return '';
             }
             return JSON.stringify(state.map.geojson, null, 2);
@@ -61,7 +61,7 @@ export default {
             return state.map.geojson;
         },
         isValidGeoJson(state) {
-            if (!state.map.geojson) {
+           if (!state.map || !state.map.geojson) {
                 return null;
             }
             return isGeoJSONValid(state.map.geojson);

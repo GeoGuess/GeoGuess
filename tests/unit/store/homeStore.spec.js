@@ -79,7 +79,7 @@ describe('homeStore.js', () => {
             },
             type: 'Feature',
         };
-        expect(homeStore.getters.isValidGeoJson({ map })).toEqual(false);
+        expect(homeStore.getters.isValidGeoJson({ map })).toEqual(true);
     });
     it('isValidGeoJson expect features', () => {
         const map = new GeoMapCustom();
