@@ -14,6 +14,7 @@ describe('Home.vue', () => {
     beforeEach(() => {
         actions = {
             getListMaps: jest.fn(),
+            getListMapsCustoms: jest.fn(),
         };
         store = new Vuex.Store({
             modules: {
@@ -39,6 +40,7 @@ describe('Home.vue', () => {
         expect($router.push).not.toBeCalled();
 
         expect(actions.getListMaps).toBeCalled();
+        expect(actions.getListMapsCustoms).toBeCalled();
 
         expect(wrapper).toMatchSnapshot();
     });
@@ -74,6 +76,7 @@ describe('Home.vue', () => {
         });
 
         expect(actions.getListMaps).toBeCalled();
+        expect(actions.getListMapsCustoms).toBeCalled();
 
         expect(wrapper).toMatchSnapshot();
     });
