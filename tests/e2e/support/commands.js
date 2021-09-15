@@ -67,13 +67,18 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
     btnSinglePlayer.contains('Single Player');
     if (!multiplayer) btnSinglePlayer.click();
 
+    const cardMap = cy.get('#card-map');
     if (place) {
-        cy.get('#search-input').type(place).click();
-        cy.get('#loadBtn').click();
+        cardMap.get('#search-input').type(place).click();
+        cardMap.get('#loadBtn').click();
 
         cy.wait('@getGeoJson');
     }
-    cy.get('.v-card__actions .v-btn:last-of-type').contains('NEXT').click();
+
+    cardMap
+        .get('.v-card__actions .v-btn:last-of-type')
+        .contains('NEXT')
+        .click();
 
     expect(cy.get('#modeClassicBtn')).to.exist;
     expect(cy.get('#modeCountryBtn')).to.exist;
@@ -81,7 +86,7 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
         cy.get('#modeCountryBtn').click();
     }
     const card = cy.get('.v-card');
-    card.contains('.card_settings__time__label', 'Set a time limitation.');
+    card.contains('.card_settings__time__label', 'Set a time limit.');
 
     if (time) {
         cy.get('.time-picker .v-slider--horizontal').click('center');

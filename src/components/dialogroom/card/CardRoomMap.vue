@@ -1,5 +1,5 @@
 <template>
-    <v-card id="card-playername">
+    <v-card id="card-map">
         <v-card-title>
             <span id="card-title"> {{ $t('CardRoomMap.title') }} </span>
         </v-card-title>
