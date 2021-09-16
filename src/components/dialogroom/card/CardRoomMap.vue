@@ -53,6 +53,7 @@
                 {{ $t('cancel') }}
             </v-btn>
             <v-btn
+                id="btnStart"
                 dark
                 depressed
                 color="#43B581"
