@@ -81,14 +81,11 @@ jobs:
     needs: [checksecret, integration]
     if: needs.checksecret.outputs.is_MY_SECRET_set == 'false'
     runs-on: ubuntu-16.04
-    container:
-      image: cypress/browsers:node12.16.1-chrome80-ff73
-      options: --user 1001
     name: E2E Simple on Ubuntu
     strategy:
       fail-fast: false
       matrix:
-        browsers: [chrome, firefox]
+        browsers: [chrome]
     steps:
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
@@ -121,15 +118,12 @@ jobs:
       VUE_APP_FIREBASE_PROJECT_ID:  ${{ secrets.VUE_APP_FIREBASE_PROJECT_ID }}
       VUE_APP_STORAGE_BUCKET:  ${{ secrets.VUE_APP_STORAGE_BUCKET }}
     runs-on: ubuntu-16.04
-    container:
-      image: cypress/browsers:node12.16.1-chrome80-ff73
-      options: --user 1001
     name: E2E on Ubuntu
     strategy:
       fail-fast: false
       matrix:
         containers: [1, 2, 3, 4]
-        browsers: [chrome, firefox]
+        browsers: [chrome]
     steps:
       - uses: actions/checkout@v1
       - uses: cypress-io/github-action@v2
