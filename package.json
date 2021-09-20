@@ -27,7 +27,7 @@
         "vue": "^2.6.12",
         "vue-axios": "^3.2.0",
         "vue-clipboard2": "^0.3.1",
-        "vue-country-flag": "^2.0.3",
+        "vue-country-flag": "^2.2.0",
         "vue-i18n": "^8.22.2",
         "vue-router": "^3.4.9",
         "vuetify": "^2.4.0",
