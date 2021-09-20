@@ -32,6 +32,7 @@ export default new Vuetify({
                 beige: '#ded3af',
                 darkGreen: '#4F665A',
                 streamerMode: '#9146ff',
+                error: '#ff5252',
             },
         },
     },

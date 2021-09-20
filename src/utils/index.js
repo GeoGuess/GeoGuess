@@ -64,7 +64,7 @@ export function isGeoJSONValid(geojson) {
     try {
         let obj = geojson;
         if (obj.type === 'FeatureCollection' && obj.features) {
-            obj.features.map((f) => {
+            obj.features.forEach((f) => {
                 if (
                     !['Point', 'Polygon', 'MultiPolygon'].includes(
                         f.geometry.type
@@ -73,6 +73,15 @@ export function isGeoJSONValid(geojson) {
                     throw new Error('Not Point Polygon MultiPolygon');
                 }
             });
+            return true;
+        } else if (obj.type === 'Feature') {
+            if (
+                !['Point', 'Polygon', 'MultiPolygon'].includes(
+                    obj.geometry.type
+                )
+            ) {
+                throw new Error('Not Point Polygon MultiPolygon');
+            }
             return true;
         } else {
             return false;

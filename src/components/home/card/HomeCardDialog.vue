@@ -16,7 +16,7 @@
                 gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
                 :src="
                     data.imageUrl ||
-                        `https://source.unsplash.com/500x230/daily?${encodeURI(
+                        `https://source.unsplash.com/500x230/weekly?${encodeURI(
                             data.nameLocate
                         )}`
                 "
@@ -68,13 +68,17 @@ export default {
             setGameSettings: SETTINGS_SET_GAME_SETTINGS,
         }),
         ...mapActions('settingsStore', ['openDialogRoom']),
-        ...mapActions(['loadGeoJsonFromUrl']),
+        ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setMapLoaded']),
         setMap() {
             if (this.type === 'area') {
                 this.setGameSettings({ areaParams: this.data });
                 this.loadGeoJsonFromUrl(this.data.data.urlArea);
             } else {
-                this.loadGeoJsonFromUrl(this.data.url);
+                if (this.data.custom) {
+                    this.setMapLoaded(this.data);
+                } else {
+                    this.loadGeoJsonFromUrl(this.data.url);
+                }
             }
             this.visible = false;
         },

@@ -1,7 +1,9 @@
 import MapAreas from '@/components/map/MapAreas';
 import { createLocalVue, mount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
+import Vuex from 'vuex';
 import createGoogleMapsMock from 'jest-google-maps-mock';
+import areaStore from '../../../../src/store/areaStore';
 
 const args = appInit(createLocalVue());
 global.google = {
@@ -20,9 +22,23 @@ global.google = {
     },
 };
 describe('MapAreas.vue', () => {
+    let store;
+    beforeEach(() => {
+        store = new Vuex.Store({
+            modules: {
+                areaStore: {
+                    getters: areaStore.getters,
+                    actions: {
+                        loadAreas: jest.fn(),
+                    },
+                },
+            },
+        });
+    });
     it('test methods', () => {
         const wrapper = mount(MapAreas, {
             ...args,
+            store,
             propsData: {
                 bbox: [0, 10, 20, 30],
                 area: 'FR',

@@ -38,10 +38,8 @@ exports[`homeStore.js isValidGeoJson true 2`] = `
 
 exports[`homeStore.js mutations 1`] = `
 Object {
+  "customsMaps": Array [],
   "errorMessage": null,
-  "geojson": Object {
-    "type": "Point",
-  },
   "history": Array [],
   "listAreas": undefined,
   "listMaps": Array [
@@ -50,6 +48,14 @@ Object {
     },
   ],
   "loadingGeoJson": false,
+  "map": GeoMapCustom {
+    "custom": true,
+    "geojson": Object {
+      "type": "Point",
+    },
+    "id": undefined,
+    "name": "",
+  },
   "streamerMode": false,
 }
 `;

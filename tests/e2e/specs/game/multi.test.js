@@ -35,7 +35,7 @@ describe('Multiplayer', () => {
         card.get('#card-roomname .v-card__actions .v-btn:last-of-type').click();
 
         const cardPlayer = cy.get('#card-playername');
-        cardPlayer.get('#inputPlayerName').type('Tata');
+        cardPlayer.get('#inputPlayerName').type('T');
 
         cy.contains('#roundLabel', 1 + ' / 5');
 

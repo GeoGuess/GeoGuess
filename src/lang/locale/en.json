@@ -25,6 +25,14 @@
         "play": "Play",
         "streamerModeActivate": "Streamer mode activate",
         "streamerModeDetails": "URLs and room names are hidden",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
@@ -80,7 +88,12 @@
         "edit": "Edit Map",
         "fileLabel": "Select GeoJSON file",
         "OK": "OK",
-        "download": "Download GeoJSON"
+        "download": "Download GeoJSON",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "History",
@@ -119,6 +132,11 @@
         "title": "Set a time limit.",
         "infinite": "Infinite"
     },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
+    },
     "CardRoomSettings": {
         "title": "Game Settings",
         "modeLabel": "Select game mode",
@@ -153,7 +171,11 @@
     "Footer": { "under": "under", "privacyPolicy": "Privacy Policy" },
     "urlCopied": "Url copied",
     "DetailsMap": { "moreInfo": "More information" },
-    "modes": { "classic": "Classic", "country": "Pick country", "custom_area": "Pick" },
+    "modes": {
+        "classic": "Classic",
+        "country": "Pick country",
+        "custom_area": "Pick"
+    },
     "Demo": {
         "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
         "btn": "Join Us"

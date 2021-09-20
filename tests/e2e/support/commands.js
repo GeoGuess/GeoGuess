@@ -45,11 +45,6 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
         },
     });
 
-    if (place) {
-        cy.get('#search-input').type(place);
-        cy.get('.home-page__traveler-img').click();
-    }
-
     const btnWithFriends = cy.get('.search-box__btns .v-btn.secondary');
     btnWithFriends.contains('With Friends');
     if (multiplayer) {
@@ -72,13 +67,26 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
     btnSinglePlayer.contains('Single Player');
     if (!multiplayer) btnSinglePlayer.click();
 
+    const cardMap = cy.get('#card-map');
+    if (place) {
+        cardMap.get('#search-input').type(place).click();
+        cardMap.get('#loadBtn').click();
+
+        cy.wait('@getGeoJson');
+    }
+
+    cardMap
+        .get('.v-card__actions .v-btn:last-of-type')
+        .contains('NEXT')
+        .click();
+
     expect(cy.get('#modeClassicBtn')).to.exist;
     expect(cy.get('#modeCountryBtn')).to.exist;
     if (mode === 'country') {
         cy.get('#modeCountryBtn').click();
     }
     const card = cy.get('.v-card');
-    card.contains('.card_settings__time__label', 'Set a time limitation.');
+    card.contains('.card_settings__time__label', 'Set a time limit.');
 
     if (time) {
         cy.get('.time-picker .v-slider--horizontal').click('center');
@@ -88,9 +96,6 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
         cy.get('.time-input__minute input')
             .should('have.value', 5)
             .type('{backspace}0{enter}');
-    }
-    if (place) {
-        cy.wait('@getGeoJson');
     }
     card.get('#btnNextSettings:not([disabled="disabled"])')
         .contains('NEXT')

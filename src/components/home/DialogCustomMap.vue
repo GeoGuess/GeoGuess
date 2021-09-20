@@ -14,11 +14,36 @@
             </v-card-title>
             <v-card-text>
                 <v-row no-gutters class="dialog-customs__row">
-                    <v-col md="5" sm="12" class="mr-6">
+                    <v-col md="6" sm="12" class="mr-6">
+                        <v-row class="mt-2 mr-3 ml-1 mb-5" align="stretch">
+                            <v-text-field
+                                :placeholder="
+                                    $t('DialogCustomMap.inputName.placeholder')
+                                "
+                                :label="$t('DialogCustomMap.inputName.label')"
+                                :value="mapName"
+                                @input="setMapName"
+                                filled
+                                :loading="loadingSave"
+                                hide-details
+                            />
+
+                            <SaveButton
+                                class="ml-2 mt-2 "
+                                color="dark"
+                                :dark="!isSaveAllowed"
+                                @click="saveMap"
+                                :disabled="isSaveAllowed"
+                                :loading="loadingSave"
+                            >
+                                <v-icon left dark> mdi-content-save </v-icon>
+                                {{ $t('DialogCustomMap.save') }}
+                            </SaveButton>
+                        </v-row>
                         <v-skeleton-loader
                             v-if="loading"
                             class="mx-auto"
-                            height="500"
+                            height="550"
                             type="image"
                         />
                         <div v-else>
@@ -35,7 +60,7 @@
                                 :center="{ lat: 10, lng: 10 }"
                                 :zoom="1"
                                 map-type-id="roadmap"
-                                style="width: 100%; height: 500px"
+                                style="width: 100%; height: 530px"
                                 :options="{
                                     gestureHandling: 'greedy',
                                 }"
@@ -44,7 +69,8 @@
                                 <v-btn
                                     class="mt-6 mr-auto ml-auto"
                                     color="secondary"
-                                    @click="saveGeoJson"
+                                    small
+                                    @click="downloadGeoJson"
                                 >
                                     <v-icon left dark>
                                         mdi-cloud-download
@@ -88,6 +114,7 @@
                             type="text"
                             :rules="rulesUrl"
                         />
+
                         <v-textarea
                             v-else
                             :error="isValidGeoJson !== null && !isValidGeoJson"
@@ -106,6 +133,7 @@
             </v-card-text>
             <v-card-actions>
                 <div class="flex-grow-1" />
+                <v-btn @click="clean" color="error"> Clean </v-btn>
                 <v-btn dark color="primary" @click="$emit('change-visibility')">
                     {{ $t('DialogCustomMap.OK') }}
                 </v-btn>
@@ -115,13 +143,21 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
 import { validURL } from '@/utils';
 import { download, isGeoJSONValid } from '../../utils';
+import { HOME_SET_NAME_GEOJSON } from '../../store/mutation-types';
+import { GeoMapCustom } from '../../models/GeoMap';
+import SaveButton from '@/components/shared/SaveButton';
 
 export default {
     name: 'DialogCustomMap',
-    props: ['visibility'],
+    components: {
+        SaveButton,
+    },
+    props: {
+        visibility: Boolean,
+    },
     data() {
         return {
             rulesUrl: [(value) => validURL(value)],
@@ -132,16 +168,37 @@ export default {
             initMap: false,
             editMap: false,
             loading: false,
+            loadingSave: false,
         };
     },
     computed: {
         ...mapGetters(['geoJsonString', 'isValidGeoJson', 'geoJson']),
+        ...mapState({
+            mapName: (state) => state.homeStore.map.name,
+        }),
         placeholderGeoJson() {
             return this.loading ? '' : geoJsonExample;
         },
+        isSaveAllowed() {
+            return (
+                this.mapName === '' ||
+                !this.geoJson ||
+                this.isValidGeoJson === false
+            );
+        },
     },
     methods: {
-        ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setGeoJsonString']),
+        ...mapActions([
+            'loadGeoJsonFromUrl',
+            'setGeoJson',
+            'setGeoJsonString',
+            'saveGeoJson',
+            'setMapLoaded',
+            'getListMapsCustoms',
+        ]),
+        ...mapMutations({
+            setMapName: HOME_SET_NAME_GEOJSON,
+        }),
         checkIfStringGeoJsonValid(string) {
             try {
                 return isGeoJSONValid(JSON.parse(string));
@@ -149,7 +206,6 @@ export default {
                 return false;
             }
         },
-
         onChangeTextArea(e) {
             this.setGeoJsonString(e);
         },
@@ -160,12 +216,21 @@ export default {
                 map.data.toGeoJson((geoJson) => this.setGeoJson(geoJson));
             });
         },
-        saveGeoJson() {
+        downloadGeoJson() {
             download(
                 this.geoJsonString,
                 'geoguessMap_' + new Date().toISOString() + '.geojson',
                 'application/vnd.geo+json'
             );
+        },
+        async saveMap() {
+            this.loadingSave = true;
+            await this.saveGeoJson();
+            this.loadingSave = false;
+        },
+        clean() {
+            this.setMapLoaded(new GeoMapCustom());
+            this.url = '';
         },
     },
     watch: {

@@ -47,18 +47,4 @@ describe('Header.vue', () => {
         expect(localStorage.getItem('language')).toEqual('fr');
     });
 
-    it('changeStreamerMode method', () => {
-        const wrapper = shallowMount(Header, {
-            ...args,
-            store,
-        });
-        expect(wrapper.vm.showAlertStreamerMode).toEqual(false);
-        wrapper.vm.changeStreamerMode(true);
-        expect(wrapper.vm.showAlertStreamerMode).toEqual(true);
-        expect(wrapper).toMatchSnapshot();
-        expect(setStreamerModeStore).toBeCalledWith(expect.anything(), true);
-        wrapper.vm.changeStreamerMode(false);
-        expect(wrapper.vm.showAlertStreamerMode).toEqual(false);
-        expect(setStreamerModeStore).toBeCalledWith(expect.anything(), false);
-    });
 });

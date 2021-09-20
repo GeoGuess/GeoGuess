@@ -3,24 +3,36 @@ import { validURL } from '@/utils';
 import { getLocateString, isGeoJSONValid } from '../utils';
 import * as MutationTypes from './mutation-types';
 import i18n from '../lang';
+import IndexedDBService from '../plugins/IndexedDBService';
+import { GeoMap, GeoMapCustom } from '../models/GeoMap';
 
 export default {
     state: () => ({
-        geojson: null,
+        map: new GeoMapCustom(),
         loadingGeoJson: false,
         errorMessage: null,
         listMaps: [],
         listAreas: [],
+        customsMaps: [],
         history: [],
         streamerMode: !!localStorage.getItem('streamerMode'),
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
-            state.geojson = geojson;
+            state.map.geojson = geojson;
+        },
+        [MutationTypes.HOME_SET_NAME_GEOJSON](state, name) {
+            state.map.name = name;
+        },
+        [MutationTypes.HOME_SET_MAP](state, map) {
+            state.map = map;
         },
         [MutationTypes.HOME_SET_LISTS](state, lists) {
             state.listMaps = lists.maps;
             state.listAreas = lists.areas;
+        },
+        [MutationTypes.HOME_SET_LISTS_CUSTOMMAPS](state, customsMaps) {
+            state.customsMaps = customsMaps;
         },
         [MutationTypes.HOME_SET_HISTORY](state, history) {
             state.history = history;
@@ -40,30 +52,28 @@ export default {
 
     getters: {
         geoJsonString(state) {
-            if (!state.geojson) {
+           if (!state.map || !state.map.geojson) {
                 return '';
             }
-            return JSON.stringify(state.geojson, null, 2);
+            return JSON.stringify(state.map.geojson, null, 2);
         },
         geoJson(state) {
-            return state.geojson;
+            return state.map.geojson;
         },
         isValidGeoJson(state) {
-            if (!state.geojson) {
+           if (!state.map || !state.map.geojson) {
                 return null;
             }
-            return isGeoJSONValid(state.geojson);
+            return isGeoJSONValid(state.map.geojson);
         },
         maps(state) {
-            return state.listMaps.map((map) => ({
-                ...map,
-                nameLocate: getLocateString(map, 'name', i18n.locale),
-                descriptionLocate: getLocateString(
-                    map,
-                    'description',
-                    i18n.locale
-                ),
-            }));
+            return state.customsMaps
+                .map((map) => Object.assign(new GeoMapCustom(), map))
+                .concat(
+                    state.listMaps.map((map) =>
+                        Object.assign(new GeoMap(), map)
+                    )
+                );
         },
         areasList(state) {
             return state.listAreas.map((map) => ({
@@ -85,6 +95,19 @@ export default {
     },
 
     actions: {
+        setStreamerMode({ dispatch, commit }, value) {
+            commit(MutationTypes.HOME_SET_STREAMER_MODE, value);
+            dispatch(
+                'alertStore/setAlert',
+                value && {
+                    title: 'Home.streamerModeActivate',
+                    subtitle: 'Home.streamerModeDetails',
+                    color: 'streamerMode',
+                    icon: 'mdi-twitch',
+                },
+                { root: true }
+            );
+        },
         loadPlaceGeoJSON({ commit, state }, place) {
             if (place != null && place != '') {
                 if (state.loadingGeoJson) {
@@ -106,10 +129,8 @@ export default {
                             res.status === 200 &&
                             res.data.features.length > 0
                         ) {
-                            commit(
-                                MutationTypes.HOME_SET_GEOJSON,
-                                res.data.features[0]
-                            );
+                            let feature = res.data.features[0];
+                            commit(MutationTypes.HOME_SET_GEOJSON, feature);
                             return;
                         }
                         commit(
@@ -156,8 +177,23 @@ export default {
                 commit(MutationTypes.HOME_SET_GEOJSON, geojson);
             }
         },
+        setMapLoaded({ commit }, map) {
+            commit(MutationTypes.HOME_SET_MAP, map);
+        },
         setGeoJson({ commit }, geojson) {
             commit(MutationTypes.HOME_SET_GEOJSON, geojson);
+        },
+        async saveGeoJson({ state, dispatch }) {
+            await state.map.save();
+            dispatch('getListMapsCustoms');
+            dispatch(
+                'alertStore/setAlert',
+                {
+                    title: 'Home.mapSavedAlert.title',
+                    subtitle: 'Home.mapSavedAlert.subtitle',
+                },
+                { root: true }
+            );
         },
         setGeoJsonString({ commit }, geojson) {
             let obj = null;
@@ -180,6 +216,14 @@ export default {
                 .then((res) => res.data);
 
             commit(MutationTypes.HOME_SET_LISTS, data);
+        },
+        async getListMapsCustoms({ commit }) {
+            const customsMap = await Promise.resolve(
+                IndexedDBService.loadDb().then(async () => {
+                    return await IndexedDBService.getAllMaps();
+                })
+            );
+            commit(MutationTypes.HOME_SET_LISTS_CUSTOMMAPS, customsMap);
         },
         loadHistory({ commit }) {
             const history = localStorage.getItem('history')

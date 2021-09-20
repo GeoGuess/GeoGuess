@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardRoomMap.vue test search Input 1`] = `
+<v-card-stub loaderheight="4" tag="div" id="card-map">
+  <v-card-title-stub><span id="card-title"> Define your map </span></v-card-title-stub>
+  <v-card-text-stub>
+    <v-row-stub tag="div" class="search-bar">
+      <v-combobox-stub dark="true" errorcount="1" errormessages="" messages="" rules="" successmessages="" value="" appendicon="$dropdown" backgroundcolor="secondary" height="15" id="search-input" loaderheight="2" autofocus="true" clearicon="$clear" fullwidth="true" placeholder="Enter city, state or country" rounded="true" type="text" valuecomparator="function deepEqual(a, b) {
+          if (a === b) return true;
+
+          if (a instanceof Date &amp;&amp; b instanceof Date &amp;&amp; a.getTime() !== b.getTime()) {
+            // If the values are Date, compare them as timestamps
+            return false;
+          }
+
+          if (a !== Object(a) || b !== Object(b)) {
+            // If the values aren't objects, they were already checked for equality
+            return false;
+          }
+
+          var props = Object.keys(a);
+
+          if (props.length !== Object.keys(b).length) {
+            // Different number of props, don't bother to check
+            return false;
+          }
+
+          return props.every(function (p) {
+            return deepEqual(a[p], b[p]);
+          });
+        }" nodatatext="$vuetify.noDataText" items="" itemcolor="primary" itemdisabled="disabled" itemtext="text" itemvalue="value" menuprops="[object Object]" returnobject="true" allowoverflow="true" filter="function _default(item, queryText, itemText) {
+                return itemText.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1;
+              }" searchinput="" delimiters=""></v-combobox-stub>
+      <v-btn-stub color="dark" dark="true" tag="button" activeclass="" type="button" id="loadBtn">
+        Load MAP
+      </v-btn-stub>
+    </v-row-stub>
+    <gmapmap-stub center="[object Object]" zoom="1" maptypeid="roadmap" options="[object Object]" style="width: 100%; height: 400px;"></gmapmap-stub>
+  </v-card-text-stub>
+  <v-card-actions-stub>
+    <!---->
+    <div class="flex-grow-1"></div>
+    <v-btn-stub color="error" dark="true" tag="button" activeclass="" depressed="true" type="button">
+      CANCEL
+    </v-btn-stub>
+    <v-btn-stub color="#43B581" dark="true" tag="button" activeclass="" depressed="true" type="button" id="btnStart">
+      NEXT
+    </v-btn-stub>
+  </v-card-actions-stub>
+</v-card-stub>
+`;
