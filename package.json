@@ -25,7 +25,7 @@
         "random-position-in-polygon": "^1.0.4",
         "register-service-worker": "^1.7.2",
         "vue": "^2.6.12",
-        "vue-axios": "^3.2.0",
+        "vue-axios": "^3.3.7",
         "vue-clipboard2": "^0.3.1",
         "vue-country-flag": "^2.0.3",
         "vue-i18n": "^8.22.2",
