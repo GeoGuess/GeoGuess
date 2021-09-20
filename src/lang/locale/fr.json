@@ -25,6 +25,14 @@
         "play": "Jouer",
         "streamerModeActivate": "Mode Streamer activé",
         "streamerModeDetails": "Les URLs et les noms des salles sont masqués",
+        "mapSavedAlert": {
+            "title": "Carte sauvegardée 🎉",
+            "subtitle": "Vous la trouverez dans vos listes de cartes"
+        },
+        "HomeCard": {
+            "edit": "Éditer",
+            "delete": "Supprimer"
+        },
         "HomeCardMode": {
             "map": "Carte",
             "area": "Zone"
@@ -83,7 +91,12 @@
         "edit": "Editer la carte",
         "fileLabel": "Selectionner un fichier GeoJSON",
         "OK": "OK",
-        "download": "Télécharger GeoJSON"
+        "download": "Télécharger GeoJSON",
+        "save": "enregistrer",
+        "inputName": {
+            "label": "Nom de la carte",
+            "placeholder": "Mon lieu favori"
+        }
     },
     "History": {
         "title": "Historique",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "Saisir le temps maximum par manche.",
         "infinite": "Infini"
+    },
+    "CardRoomMap": {
+        "title": "Définissez votre carte",
+        "loadBtn": "Load MAP",
+        "reset": "Réinitialiser"
     },
     "CardRoomSettings": {
         "title": "Paramètre de la partie",

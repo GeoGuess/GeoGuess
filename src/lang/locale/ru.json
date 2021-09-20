@@ -25,6 +25,14 @@
         "play": "Играть",
         "streamerModeActivate": "Режим стримера активирован",
         "streamerModeDetails": "Ссылки и названия комнат скрыты",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Карта",
             "area": "Площадь"
@@ -83,7 +91,12 @@
         "edit": "Редактировать карту",
         "fileLabel": "Выбрать GeoJSON файл",
         "OK": "Подтвердить",
-        "download": "Скачать GeoJSON"
+        "download": "Скачать GeoJSON",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "История",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "Установите ограничение по времени.",
         "infinite": "Бесконечность"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "Настройки комнаты",

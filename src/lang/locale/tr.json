@@ -25,6 +25,14 @@
         "play": "Oyna",
         "streamerModeActivate": "Yayıncı modu aktif",
         "streamerModeDetails": "Bağlantılar ve oda isimleri artık gizli",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
@@ -83,7 +91,12 @@
         "edit": "Haritayı Düzenle",
         "fileLabel": "GeoJSON dosyası seç",
         "OK": "Onayla",
-        "download": "GeoJSON İndir"
+        "download": "GeoJSON İndir",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "Geçmiş",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "Bir zaman sınırlaması ayarlayın.",
         "infinite": "Sınırsız"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "Oyun Ayarları",

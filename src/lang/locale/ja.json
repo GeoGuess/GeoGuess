@@ -25,6 +25,14 @@
         "play": "プレイ",
         "streamerModeActivate": "Streamer mode activate",
         "streamerModeDetails": "URLs and room names are hidden",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
@@ -83,7 +91,12 @@
         "edit": "Edit Map",
         "fileLabel": "Select GeoJSON file",
         "OK": "OK",
-        "download": "Download GeoJSON"
+        "download": "Download GeoJSON",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "History",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "1ラウンドの制限時間を選択して下さい。",
         "infinite": "無制限"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "Game Settings",
