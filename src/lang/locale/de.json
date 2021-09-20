@@ -25,6 +25,14 @@
         "play": "Spielen",
         "streamerModeActivate": "Streamer-Modus aktivieren",
         "streamerModeDetails": "URLs und Raumnamen sind versteckt",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
@@ -83,7 +91,12 @@
         "edit": "Karte bearbeiten",
         "fileLabel": "GeoJSON-Datei auswählen",
         "OK": "Okay",
-        "download": "GeoJSON herunterladen"
+        "download": "GeoJSON herunterladen",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "Historie",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "Lege die maximale Zeit pro Runde fest.",
         "infinite": "Unendlich"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "Spieleinstellungen",
