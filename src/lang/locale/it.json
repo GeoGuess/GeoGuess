@@ -25,6 +25,14 @@
         "play": "Gioca",
         "streamerModeActivate": "Modalità streamer attivata",
         "streamerModeDetails": "URL e nomi delle stanze nascosti",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Mappa",
             "area": "Zona"
@@ -83,7 +91,12 @@
         "edit": "Modifica Mappa",
         "fileLabel": "Seleziona il file GeoJSON",
         "OK": "OK",
-        "download": "Scarica GeoJSON"
+        "download": "Scarica GeoJSON",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "Storia",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "Imposta un limite di tempo.",
         "infinite": "Infinito"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "Impostazioni di gioco",
