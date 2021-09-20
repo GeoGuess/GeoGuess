@@ -48,7 +48,7 @@
         "eslint-config-prettier": "^6.15.0",
         "eslint-plugin-cypress": "^2.11.2",
         "eslint-plugin-prettier": "^3.3.0",
-        "eslint-plugin-vue": "^5.0.0",
+        "eslint-plugin-vue": "^7.18.0",
         "jest-google-maps-mock": "^1.0.3",
         "prettier": "2.1.2",
         "react-is": "^16.13.1",
