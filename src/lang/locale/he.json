@@ -25,6 +25,14 @@
         "play": "התחל משחק",
         "streamerModeActivate": "הפעלת מצב שידור חי",
         "streamerModeDetails": "כתובות אתרים ושמות חדרים מוסתרים",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "מפה",
             "area": "אזור"
@@ -83,7 +91,12 @@
         "edit": "ערוך מפה",
         "fileLabel": "בחר קובץ GeoJSON",
         "OK": "בסדר",
-        "download": "הורד קובץ GeoJSON"
+        "download": "הורד קובץ GeoJSON",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "היסטוריה",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "הגבלת זמן",
         "infinite": "ללא הגבלה"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "הגדרות משחק",
