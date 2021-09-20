@@ -7,4 +7,8 @@ updates:
   - package-ecosystem: npm
     directory: "/"
     schedule:
+      interval: daily      
+  - package-ecosystem: npm
+    directory: "/functions/"
+    schedule:
       interval: daily
