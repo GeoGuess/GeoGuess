@@ -26,12 +26,12 @@
         "streamerModeActivate": "Mode Streamer activé",
         "streamerModeDetails": "Les URLs et les noms des salles sont masqués",
         "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
+            "title": "Carte sauvegardée 🎉",
+            "subtitle": "Vous la trouverez dans vos listes de cartes"
         },
         "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete"
+            "edit": "Éditer",
+            "delete": "Supprimer"
         },
         "HomeCardMode": {
             "map": "Carte",
@@ -92,10 +92,10 @@
         "fileLabel": "Selectionner un fichier GeoJSON",
         "OK": "OK",
         "download": "Télécharger GeoJSON",
-        "save": "save",
+        "save": "enregistrer",
         "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
+            "label": "Nom de la carte",
+            "placeholder": "Mon lieu favori"
         }
     },
     "History": {
@@ -138,9 +138,9 @@
         "infinite": "Infini"
     },
     "CardRoomMap": {
-        "title": "Define your map",
+        "title": "Définissez votre carte",
         "loadBtn": "Load MAP",
-        "reset": "Reset"
+        "reset": "Réinitialiser"
     },
     "CardRoomSettings": {
         "title": "Paramètre de la partie",
