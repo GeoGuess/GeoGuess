@@ -25,6 +25,14 @@
         "play": "Spela",
         "streamerModeActivate": "Aktivera streamerläge",
         "streamerModeDetails": "URLer och rumsnamn göms",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Karta",
             "area": "Yta"
@@ -83,7 +91,12 @@
         "edit": "Redigera karta",
         "fileLabel": "Välj GeoJSON-fil",
         "OK": "OK",
-        "download": "Ladda ner GeoJSON"
+        "download": "Ladda ner GeoJSON",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "Historik",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "Sätt en tidsbegränsning.",
         "infinite": "Oändlig"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "Spelinställningar",
