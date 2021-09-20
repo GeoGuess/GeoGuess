@@ -25,6 +25,14 @@
         "play": "Hrát",
         "streamerModeActivate": "Streamer mode activate",
         "streamerModeDetails": "URLs and room names are hidden",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
@@ -83,7 +91,12 @@
         "edit": "Upravit Mapu",
         "fileLabel": "Zvol GeoJSON soubor",
         "OK": "OK",
-        "download": "Stáhni GeoJSON"
+        "download": "Stáhni GeoJSON",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "Historie",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "Zvol časový limit kola.",
         "infinite": "Bez omezení"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "Nastavení hry",
