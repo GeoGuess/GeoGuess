@@ -25,6 +25,14 @@
         "play": "Jogar",
         "streamerModeActivate": "Modo streamer ativado",
         "streamerModeDetails": "URLs e nomes de salas estão ocultos",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
         "HomeCardMode": {
             "map": "Map",
             "area": "Area"
@@ -83,7 +91,12 @@
         "edit": "Editar o mapa",
         "fileLabel": "Selecione um arquivo GeoJSON",
         "OK": "OK",
-        "download": "Baixar GeoJSON"
+        "download": "Baixar GeoJSON",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
     },
     "History": {
         "title": "Histórico",
@@ -123,6 +136,11 @@
     "CardRoomTime": {
         "title": "Defina o tempo limite.",
         "infinite": "Infinito"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
     },
     "CardRoomSettings": {
         "title": "Configurações da partida",
