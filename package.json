@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "@turf/bbox": "^6.5.0",
-        "@turf/boolean-point-in-polygon": "^6.0.1",
+        "@turf/boolean-point-in-polygon": "^6.5.0",
         "@turf/distance": "^6.0.1",
         "@turf/helpers": "^6.1.4",
         "axios": "^0.21.1",
