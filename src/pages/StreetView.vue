@@ -487,7 +487,9 @@ export default {
                         let areaCode;
                         if (
                             this.mode === GAME_MODE.COUNTRY ||
-                           ( this.areaParams && this.areaParams.data.type === AREA_MODE.NOMINATIM)
+                            (this.areaParams &&
+                                this.areaParams.data.type ===
+                                    AREA_MODE.NOMINATIM)
                         ) {
                             areaCode = await getAreaCodeNameFromLatLng(
                                 this.randomLatLng,
@@ -510,8 +512,8 @@ export default {
                                 return;
                             } else {
                                 const key = this.areaParams
-                                            ? this.areaParams.data.pathKey
-                                            : 'iso_a2';
+                                    ? this.areaParams.data.pathKey
+                                    : 'iso_a2';
                                 areaCode = area.properties[key];
                             }
                         }
