@@ -80,7 +80,7 @@ jobs:
   cypress-chrome-firefox-simple:
     needs: [checksecret, integration]
     if: needs.checksecret.outputs.is_MY_SECRET_set == 'false'
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     name: E2E Simple on Ubuntu
     strategy:
       fail-fast: false
@@ -117,7 +117,7 @@ jobs:
       VUE_APP_FIREBASE_MESSAGING_SENDER_ID:  ${{ secrets.VUE_APP_FIREBASE_MESSAGING_SENDER_ID }}
       VUE_APP_FIREBASE_PROJECT_ID:  ${{ secrets.VUE_APP_FIREBASE_PROJECT_ID }}
       VUE_APP_STORAGE_BUCKET:  ${{ secrets.VUE_APP_STORAGE_BUCKET }}
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     name: E2E on Ubuntu
     strategy:
       fail-fast: false
