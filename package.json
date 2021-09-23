@@ -17,7 +17,7 @@
         "@turf/distance": "^6.0.1",
         "@turf/helpers": "^6.1.4",
         "axios": "^0.21.1",
-        "axios-cache-adapter": "^2.5.0",
+        "axios-cache-adapter": "^2.7.3",
         "core-js": "^2.6.12",
         "firebase": "^8.2.6",
         "gmap-vue": "^1.5.0",
