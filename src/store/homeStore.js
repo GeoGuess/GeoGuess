@@ -15,7 +15,7 @@ export default {
         listAreas: [],
         customsMaps: [],
         history: [],
-        streamerMode: !!localStorage.getItem('streamerMode'),
+        streamerMode: localStorage.getItem('streamerMode') === 'true',
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {

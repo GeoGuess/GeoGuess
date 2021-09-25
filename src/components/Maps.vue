@@ -301,7 +301,6 @@ export default {
 
                         // Put markers and draw polylines on the map
                         let i = 0;
-                        let j = 1;
                         let players = {};
                         snapshot.child('guess').forEach((childSnapshot) => {
                             let posGuess;
@@ -325,7 +324,7 @@ export default {
                                 .child(childSnapshot.key)
                                 .val();
                             const roundValues = snapshot
-                                .child('round' + this.round + '/player' + j)
+                                .child('round' + this.round + '/' + childSnapshot.key)
                                 .exportVal();
 
                             const { points, distance } = roundValues;
@@ -354,7 +353,6 @@ export default {
                                 posGuess
                             );
                             i++;
-                            j++;
                         });
                         this.$refs.map.fitBounds();
                         this.game.rounds.push({

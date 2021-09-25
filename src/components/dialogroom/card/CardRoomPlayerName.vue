@@ -8,7 +8,7 @@
         </v-card-title>
 
         <v-card-subtitle ref="roomUrl" class="pb-0">
-            <span :class="{ blur: streamerMode }">{{ roomUrl }}</span>
+            <span :class="{ blur: streamerMode }">{{ roomUrl }} </span>
             <v-icon small @click="copy"> mdi-content-copy </v-icon>
         </v-card-subtitle>
         <v-card-text>
@@ -18,7 +18,7 @@
                         <v-text-field
                             id="inputPlayerName"
                             :value="name"
-                            @input="(n) => setPlayerName(n)"
+                            @input="setPlayerName"
                             maxlength="10"
                             autofocus
                             :label="$t('CardRoomPlayerName.input')"
@@ -88,7 +88,6 @@ export default {
             'name',
             'invalidName',
         ]),
-
         ...mapState({
             streamerMode: (state) => state.homeStore.streamerMode,
         }),
