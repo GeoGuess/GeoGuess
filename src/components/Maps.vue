@@ -32,12 +32,7 @@
 
         <div class="container-map_controls">
             <div class="container-map_btns">
-
-                <v-btn
-                    fab
-                    x-small
-                    @click="showNotepad"
-                >
+                <v-btn fab x-small @click="showNotepad">
                     <v-icon dark> mdi-file-document-edit </v-icon>
                 </v-btn>
 
@@ -98,7 +93,13 @@
             :showFlag="this.mode === 'country'"
             @setSeletedPos="setSeletedPos"
         />
-        <textarea class="container-map_notepad" v-show="isNotepadVisible" spellcheck="false" v-if="!printMapFull" ref="refNotepad"/>
+        <textarea
+            class="container-map_notepad"
+            v-show="isNotepadVisible"
+            spellcheck="false"
+            v-if="!printMapFull"
+            ref="refNotepad"
+        />
         <div class="container-map_controls_guess">
             <button
                 v-if="
@@ -265,12 +266,20 @@ export default {
         this.game.mode = this.mode;
         this.game.timeAttack = this.timeAttack;
         this.game.playerName = this.playerName;
+        let size = 0;
 
         if (this.roomName) {
             this.room = firebase.database().ref(this.roomName);
+
             this.room.on('value', (snapshot) => {
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
+                    size = snapshot.child('size').val();
+                    if (size === 1) {
+                        this.room.onDisconnect().remove();
+                    } else {
+                        this.room.onDisconnect().update({ size: size - 1 });
+                    }
                     if (
                         // If Time Attack and 1st true guess finish round
                         (this.timeAttack &&
@@ -283,8 +292,7 @@ export default {
                                         guess.child('area').val() === this.area
                                 )) ||
                         // Allow players to move on to the next round when every players guess locations
-                        snapshot.child('guess').numChildren() ===
-                            snapshot.child('size').val()
+                        snapshot.child('guess').numChildren() === size
                     ) {
                         this.game.timeLimitation = this.timeLimitation;
                         this.isNextStreetViewReady = false;
@@ -671,7 +679,7 @@ export default {
         border-radius: 3px;
         outline: none;
         padding: 5px;
-        box-shadow:  0px 2px 8px 0px rgba(99, 99, 99, 0.2);
+        box-shadow: 0px 2px 8px 0px rgba(99, 99, 99, 0.2);
     }
 }
 
@@ -697,7 +705,7 @@ export default {
     width: 75%;
 }
 
-#reset-button { 
+#reset-button {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
