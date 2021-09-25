@@ -19,7 +19,7 @@
         "axios": "^0.21.1",
         "axios-cache-adapter": "^2.7.3",
         "core-js": "^2.6.12",
-        "firebase": "^8.2.6",
+        "firebase": "^9.1.0",
         "gmap-vue": "^1.5.0",
         "i18n-iso-countries": "^6.8.0",
         "random-position-in-polygon": "^1.0.5",
@@ -28,7 +28,7 @@
         "vue-axios": "^3.2.0",
         "vue-clipboard2": "^0.3.1",
         "vue-country-flag": "^2.2.0",
-        "vue-i18n": "^8.22.2",
+        "vue-i18n": "^8.26.1",
         "vue-router": "^3.4.9",
         "vuetify": "^2.4.0",
         "vuex": "^3.6.2"
