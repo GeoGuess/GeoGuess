@@ -269,16 +269,17 @@ export default {
             }
         },
 
-        setPlayerName({ commit }, playerName) {
+        setPlayerName({ commit, state }, playerName) {
             if (playerName === '') {
                 commit(
                     MutationTypes.SETTINGS_SET_PLAYER_NAME,
-                    i18n.t('CardRoomPlayerName.anonymousPlayerName')
+                    i18n.t('CardRoomPlayerName.anonymousPlayerName') +' '+ state.playerNumber
                 );
+            }else{
+                localStorage.setItem('playerName', playerName);
+                commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName);
             }
 
-            localStorage.setItem('playerName', playerName);
-            commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName);
         },
         startGame({ state, dispatch, rootState }) {
             let gameParams = {};
