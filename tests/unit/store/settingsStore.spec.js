@@ -1,4 +1,3 @@
-import i18n from '@/lang';
 jest.mock('@/lang', ()=>{
     return {
         t: (k)=> k
