@@ -50,7 +50,7 @@ export default {
         // SETTINGS
         gameSettings: new GameSettings(),
         players: [],
-        name: '',
+        name: localStorage.getItem('playerName') || '',
         invalidName: false,
     }),
     mutations: {
@@ -78,15 +78,19 @@ export default {
                 const playerNumber = numberOfPlayers + 1;
 
                 state.playerNumber = playerNumber;
+                const name = state.name === '' ? i18n.t(
+                                'CardRoomPlayerName.anonymousPlayerName'
+                            ) + playerNumber : state.name;
 
+                state.room.child('playerName/player'+playerNumber).onDisconnect().remove();
+
+                
                 if (numberOfPlayers === 0) {
                     // Put the tentative player's name into the room node
                     // So that other player can't enter as the first player while the player decide the name and room size
                     state.room.child('playerName').update(
                         {
-                            player1: i18n.t(
-                                'CardRoomPlayerName.anonymousPlayerName'
-                            ),
+                            player1: name,
                         },
                         (error) => {
                             if (!error) {
@@ -105,8 +109,7 @@ export default {
                     state.room
                         .child('playerName/player' + playerNumber)
                         .set(
-                            i18n.t('CardRoomPlayerName.anonymousPlayerName') +
-                                playerNumber,
+                            name,
                             (error) => {
                                 if (!error) {
                                     state.loadRoom = false;
@@ -251,7 +254,7 @@ export default {
                         ...state.gameSettings,
                         timeLimitation: state.gameSettings.time,
                         difficulty: difficulty,
-                        placeGeoJson: rootState.homeStore.map.geojson,
+                        ...(rootState.homeStore.map.geojson && {placeGeoJson: rootState.homeStore.map.geojson}),
                         ...(bboxObj && { bboxObj: bboxObj }),
                     },
                     (error) => {
@@ -266,14 +269,17 @@ export default {
             }
         },
 
-        setPlayerName({ commit }, playerName) {
+        setPlayerName({ commit, state }, playerName) {
             if (playerName === '') {
                 commit(
                     MutationTypes.SETTINGS_SET_PLAYER_NAME,
-                    i18n.t('CardRoomPlayerName.anonymousPlayerName')
+                    i18n.t('CardRoomPlayerName.anonymousPlayerName') +' '+ state.playerNumber
                 );
+            }else{
+                localStorage.setItem('playerName', playerName);
+                commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName);
             }
-            commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName);
+
         },
         startGame({ state, dispatch, rootState }) {
             let gameParams = {};
