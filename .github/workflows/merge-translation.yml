@@ -1,20 +1,15 @@
-name: Merge Translation
+name: Translation
 
 on:
-  pull_request_target:
+  pull_request:
 
 jobs:
-  merge-me:
+  add-label:
     if: ${{ github.event.pull_request.title == 'New Crowdin updates' && github.actor == 'BilelJegham' }}
-    name: Merge
+    name: Add Label
     runs-on: ubuntu-latest
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: translation
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Merge me!
-        uses: ridedott/merge-me-action@v2
-        with:
-          GITHUB_LOGIN: 'BilelJegham'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
