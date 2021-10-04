@@ -139,7 +139,7 @@
     },
     "CardRoomMap": {
         "title": "Définissez votre carte",
-        "loadBtn": "Load MAP",
+        "loadBtn": "Charger la carte",
         "reset": "Réinitialiser"
     },
     "CardRoomSettings": {
