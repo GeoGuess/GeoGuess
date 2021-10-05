@@ -612,7 +612,8 @@ export default {
                 }
             }, 50);
 
-            this.panorama.setPano(data.location.pano);
+            if(data && data.location)
+                this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,
                 pitch: 0,
