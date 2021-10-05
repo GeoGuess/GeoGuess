@@ -71,8 +71,8 @@ export default {
         ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setMapLoaded']),
         setMap() {
             if (this.type === 'area') {
-                this.setGameSettings({ areaParams: this.data });
                 this.loadGeoJsonFromUrl(this.data.data.urlArea);
+                this.setGameSettings({ areaParams: this.data });
             } else {
                 if (this.data.custom) {
                     this.setMapLoaded(this.data);
