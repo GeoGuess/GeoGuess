@@ -165,6 +165,7 @@ export default {
             state.playerNumber = 0;
             state.roomErrorMessage = null;
             state.players = [];
+            state.gameSettings = new GameSettings();
         },
     },
 

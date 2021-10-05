@@ -19,7 +19,10 @@ export default {
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
-            state.map.geojson = geojson;
+            const map = new GeoMapCustom();
+            map.name = state.map.name;
+            map.geojson = geojson;
+            state.map = map;
         },
         [MutationTypes.HOME_SET_NAME_GEOJSON](state, name) {
             state.map.name = name;
