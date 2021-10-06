@@ -92,6 +92,7 @@
         "fileLabel": "Selectionner un fichier GeoJSON",
         "OK": "OK",
         "download": "Télécharger GeoJSON",
+        "Clean": "Clean",
         "save": "enregistrer",
         "inputName": {
             "label": "Nom de la carte",

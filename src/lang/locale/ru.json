@@ -26,12 +26,12 @@
         "streamerModeActivate": "Режим стримера активирован",
         "streamerModeDetails": "Ссылки и названия комнат скрыты",
         "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
+            "title": "Карта сохранена 🎉",
+            "subtitle": "Вы найдете это в ваших списках карт"
         },
         "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete"
+            "edit": "Редактировать",
+            "delete": "Удалить"
         },
         "HomeCardMode": {
             "map": "Карта",
@@ -92,10 +92,11 @@
         "fileLabel": "Выбрать GeoJSON файл",
         "OK": "Подтвердить",
         "download": "Скачать GeoJSON",
-        "save": "save",
+        "Clean": "Clean",
+        "save": "сохранить",
         "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
+            "label": "Название карты",
+            "placeholder": "Добавить в избранные"
         }
     },
     "History": {
@@ -138,9 +139,9 @@
         "infinite": "Бесконечность"
     },
     "CardRoomMap": {
-        "title": "Define your map",
-        "loadBtn": "Load MAP",
-        "reset": "Reset"
+        "title": "Определите вашу карту",
+        "loadBtn": "Загрузить Карту",
+        "reset": "Сбросить"
     },
     "CardRoomSettings": {
         "title": "Настройки комнаты",

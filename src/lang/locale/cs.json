@@ -92,6 +92,7 @@
         "fileLabel": "Zvol GeoJSON soubor",
         "OK": "OK",
         "download": "Stáhni GeoJSON",
+        "Clean": "Clean",
         "save": "save",
         "inputName": {
             "label": "Map Name",
