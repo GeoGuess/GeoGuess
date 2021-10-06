@@ -92,6 +92,7 @@
         "fileLabel": "GeoJSON dosyası seç",
         "OK": "Onayla",
         "download": "GeoJSON İndir",
+        "Clean": "Clean",
         "save": "save",
         "inputName": {
             "label": "Map Name",
