@@ -1,0 +1,41 @@
+name: CI mutation
+
+on:
+    workflow_dispatch:
+
+jobs:
+
+    mutation:
+        env:
+            VUE_APP_API_KEY: YOUR_GOOGLE_MAPS_API_KEY
+            VUE_APP_FIREBASE_API_KEY: YOUR_FIREBASE_API_KEY
+            VUE_APP_FIREBASE_PROJECT_ID: YOUR_FIREBASE_PROJECT_ID
+            VUE_APP_FIREBASE_MESSAGING_SENDER_ID: YOUR_FIREBASE_MESSAGING_SENDER_ID
+            VUE_APP_FIREBASE_APP_ID: YOUR_FIREBASE_APP_ID
+            VUE_APP_FIREBASE_MEASUREMENT_ID: YOUR_FIREBASE_MEASUREMENT_ID
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set git to use LF
+              run: |
+                  git config --global core.autocrlf false
+                  git config --global core.eol lf
+            - uses: actions/checkout@v2.3.4
+            - uses: actions/cache@v2.1.6
+              id: cache
+              with:
+                  path: ~/.npm
+                  key: ubuntu-latest-node-v12-deps-${{ hashFiles('**/package-lock.json') }}
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Run unit tests
+              run: npm run test:mutation
+              env:
+                  STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+
+
+            - name: Upload artifact
+              uses: actions/upload-artifact@v2.2.4
+              with:
+                  name: Reports
+                  path: reports
