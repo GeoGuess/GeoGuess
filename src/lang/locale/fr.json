@@ -7,6 +7,9 @@
             "customLoaded": "Une carte personnalisée a été chargée",
             "enterCity": "Saisissez une ville, une région ou un pays"
         },
+        "searchMap": {
+            "placeholder": "Nom de la carte"
+        },
         "aboutDescriptions": {
             "1": "GeoGuess est un jeu gratuit sans publicité.                  Les joueurs s'affrontent en 5 manches pour deviner la plus proche position d'où ils ont été placés aléatoirement.                 Vous pouvez partager votre score sur les réseaux Sociaux comme Facebook et Twitter.                 Vous pouvez jouer avec vos amis en multijoueurs.                 Le premier joueur crée une salle et décide de sa taille. Une fois créée, les autres joueurs pourront rejoindre la salle à partir de son nom et jouer tous ensemble.",
             "2": "Ce jeu est issu de "
@@ -29,6 +32,7 @@
             "title": "Carte sauvegardée 🎉",
             "subtitle": "Vous la trouverez dans vos listes de cartes"
         },
+        "searchTitle": "Découvrir les cartes de la communauté",
         "HomeCard": {
             "edit": "Éditer",
             "delete": "Supprimer"

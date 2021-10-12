@@ -20,25 +20,25 @@
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
-        <v-container id="areas"> <h2>{{$t('Home.Sections.areasTitle')}}</h2></v-container>
-        <section class="sliders-container">
-            <v-slide-group show-arrows="always">
-                <v-slide-item
-                    v-for="(mode, index) in areasList"
-                    :key="index"
-                    class="ma-4"
-                >
-                    <HomeCard :data="mode" type="area" />
-                </v-slide-item>
-            </v-slide-group>
-        </section>
-        <v-container><h2>{{$t('Home.Sections.mapsTitle')}}</h2></v-container>
+
+        <v-container class="home-page__search">
+            <h2 class="home-page__search-title">
+                {{ $t('Home.searchTitle') }}
+            </h2>
+            <v-text-field
+                class="home-page__search-input"
+                v-model="search"
+                clearable
+                :placeholder="$t('Home.searchMap.placeholder')"
+                prepend-inner-icon="mdi-map-marker"
+            />
+        </v-container>
         <section id="maps">
             <HomeCard
-                v-for="(map, index) in maps"
+                v-for="(item, index) in filteredList"
                 :key="index"
-                :data="map"
-                type="map"
+                :data="item"
+                :type="item.constructor.name === 'GeoMap' ? 'map' : 'area'"
             />
         </section>
     </ContentPage>
@@ -48,6 +48,7 @@
 import SearchBox from '@/components/home/SearchBox';
 import ContentPage from '@/components/page/ContentPage';
 import HomeCard from '@/components/home/card/HomeCard';
+import { GeoMap } from '../models/GeoMap';
 import { mapActions, mapGetters } from 'vuex';
 import { GAME_MODE } from '../constants';
 export default {
@@ -59,6 +60,9 @@ export default {
     props: {
         dialogCustomOpen: Boolean,
     },
+    data: () => ({
+        search: '',
+    }),
     mounted() {
         if (this.$route.params && this.$route.params.partyParams) {
             const params = atob(this.$route.params.partyParams)
@@ -93,14 +97,31 @@ export default {
     methods: { ...mapActions(['getListMaps', 'getListMapsCustoms']) },
     computed: {
         ...mapGetters(['maps', 'areasList']),
+        allContents() {
+            const allContents = [...this.maps, ...this.areasList];
+            for (let i = allContents.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [allContents[i], allContents[j]] = [
+                    allContents[j],
+                    allContents[i],
+                ];
+            }
+            return allContents;
+        },
+        filteredList() {
+            return this.allContents.filter((map) => {
+                return map.nameLocate
+                    .toLowerCase()
+                    .includes(this.search.toLowerCase());
+            });
+        },
     },
 };
 </script>
 
 <style scoped lang="scss">
-.v-application--is-rtl .home-page__traveler-img{
-    transform: scaleX(-1)
-
+.v-application--is-rtl .home-page__traveler-img {
+    transform: scaleX(-1);
 }
 .home-page {
     .demo-alert {
@@ -152,6 +173,23 @@ export default {
             bottom: 0.4rem;
             left: 0;
             right: 0;
+        }
+    }
+    .home-page__search {
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.856);
+        border-radius: 8px;
+        margin: 100px auto 0 auto;
+        &-title {
+            color: #468f69;
+            font-weight: 400;
+        }
+        &-input {
+            width: 60%;
         }
     }
     .sliders-container {
