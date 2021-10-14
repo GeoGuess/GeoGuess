@@ -136,7 +136,7 @@ export function getAreaCodeNameFromLatLng(latLng, errorFunction, areaParams) {
                     const areaName = getValueInObjectWithPath(data, areaParams.nominatimResultPath);
 
                     if(areaName === undefined && areaParams.nominatimFallbackResultPath)
-				        return getValueInObjectWithPath(data, areaParams.nominatimFallbackResultPath);
+                      return getValueInObjectWithPath(data, areaParams.nominatimFallbackResultPath);
 
                     return areaName;
                 }
