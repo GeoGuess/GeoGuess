@@ -5,7 +5,8 @@ const {
     getLocateString,
     isGeoJSONValid,
     getAreaCodeNameFromLatLng,
-    getSelectedPos
+    getSelectedPos,
+    getValueInObjectWithPath,
 } = require('../../../src/utils');
 
 describe('utils/index.js', () => {
@@ -156,4 +157,45 @@ describe('utils/index.js', () => {
         expect(getSelectedPos( {lat:()=> 0, lng:()=>1}, 'classic')).toEqual({latitude: 0, longitude:1});
         expect(getSelectedPos('FR','country')).toEqual({area: 'FR'});
     });
+
+    it('getValueInObjectWithPath: should return undefined', ()=>{
+        const object = {
+            a: {
+                b: {
+                    c: 'Hello',
+                },
+            },
+        };
+
+        expect(getValueInObjectWithPath(object, 'a.a.c')).toBeUndefined();
+    });
+    
+    it('getValueInObjectWithPath: should return value', ()=>{
+          const object = {
+            a: {
+                b: {
+                    c: {
+                        d: {
+                            e: {
+                                f: {
+                                    g: {
+                                        h: {
+                                            i: {
+                                                j: {
+                                                    k: 'Hello',
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        };
+        
+        expect(getValueInObjectWithPath(object, 'a.b.c.d.e.f.g.h.i.j.k')).toEqual('Hello');
+    });
+    
 });
