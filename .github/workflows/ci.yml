@@ -37,7 +37,7 @@ jobs:
       run: |
         git config --global core.autocrlf false
         git config --global core.eol lf
-    - uses: actions/checkout@v2.3.4
+    - uses: actions/checkout@v2.3.5
     - uses: actions/cache@v2.1.6
       id: cache
       if: matrix.os != 'windows-latest'
@@ -87,7 +87,7 @@ jobs:
       matrix:
         browsers: [chrome]
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.3.5
       - uses: cypress-io/github-action@v2
         with:
           start: npm run serve
@@ -124,7 +124,7 @@ jobs:
         containers: [1, 2, 3, 4]
         browsers: [chrome]
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.3.5
       - uses: cypress-io/github-action@v2
         with:
           start: npm run serve
@@ -158,7 +158,7 @@ jobs:
   #       run: |
   #         git config --global core.autocrlf false
   #         git config --global core.eol lf
-  #     - uses: actions/checkout@v2.3.4
+  #     - uses: actions/checkout@v2.3.5
   #     - uses: cypress-io/github-action@v2
   #       with:
   #         start: npm run serve
