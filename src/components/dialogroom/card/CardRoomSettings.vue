@@ -294,11 +294,6 @@ export default {
             return GAME_MODE;
         },
     },
-    watch: {
-        placeGeoJson(val) {
-            this.setGeoJson(val);
-        },
-    },
     async mounted() {
         await this.$gmapApiPromiseLazy();
     },
