@@ -26,12 +26,12 @@
         "streamerModeActivate": "Streamer-Modus aktivieren",
         "streamerModeDetails": "URLs und Raumnamen sind versteckt",
         "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
+            "title": "Karte gespeichert 🎉",
+            "subtitle": "Du findest es in deinen Kartenlisten"
         },
         "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete"
+            "edit": "Bearbeiten",
+            "delete": "Löschen"
         },
         "HomeCardMode": {
             "map": "Map",
@@ -92,11 +92,11 @@
         "fileLabel": "GeoJSON-Datei auswählen",
         "OK": "Okay",
         "download": "GeoJSON herunterladen",
-        "Clean": "Clean",
-        "save": "save",
+        "Clean": "Bereinigen",
+        "save": "speichern",
         "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
+            "label": "Kartenname",
+            "placeholder": "Mein Lieblingsort"
         }
     },
     "History": {
@@ -139,8 +139,8 @@
         "infinite": "Unendlich"
     },
     "CardRoomMap": {
-        "title": "Define your map",
-        "loadBtn": "Load MAP",
+        "title": "Gestalte deine Karte",
+        "loadBtn": "Karte laden",
         "reset": "Reset"
     },
     "CardRoomSettings": {

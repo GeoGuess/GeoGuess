@@ -92,7 +92,7 @@
         "fileLabel": "Выбрать GeoJSON файл",
         "OK": "Подтвердить",
         "download": "Скачать GeoJSON",
-        "Clean": "Clean",
+        "Clean": "Очистить",
         "save": "сохранить",
         "inputName": {
             "label": "Название карты",
