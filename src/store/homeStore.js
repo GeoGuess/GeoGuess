@@ -209,7 +209,7 @@ export default {
             const data = await axios
                 .get(
                     process.env.VUE_APP_LIST_MAPS_JSON_URL ||
-                        'https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/maps.json',
+                        'https://maps.geoguess.games/maps.json',
                     {
                         cache: {
                             maxAge: 1000,
