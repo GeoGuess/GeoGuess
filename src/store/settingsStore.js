@@ -136,6 +136,12 @@ export default {
                 ...settings,
             };
         },
+        [MutationTypes.SETTINGS_SET_DIFFICULTY](state, difficulty){
+            state.difficulty = difficulty;
+        },
+        [MutationTypes.SETTINGS_SET_BBOX](state, bbox){
+            state.bboxObj = bbox;
+        },
         [MutationTypes.SETTINGS_SET_OPEN_DIALOG_ROOM](state, open) {
             state.isOpenDialogRoom = open;
         },
@@ -235,15 +241,17 @@ export default {
             let bboxObj;
             if (rootState.homeStore.map.geojson) {
                 bboxObj = bbox(rootState.homeStore.map.geojson);
+                commit(MutationTypes.SETTINGS_SET_BBOX, bboxObj);
 
                 difficulty = getMaxDistanceBbox(bboxObj) / 10;
             }
+            commit(MutationTypes.SETTINGS_SET_DIFFICULTY, difficulty);
             if (!state.room) {
                 router.push({
                     name: 'street-view',
                     params: {
                         ...state.gameSettings,
-                        difficulty: difficulty,
+                        difficulty,
                         placeGeoJson: rootState.homeStore.map.geojson,
                         bboxObj: bboxObj,
                     },
@@ -254,7 +262,7 @@ export default {
                     {
                         ...state.gameSettings,
                         timeLimitation: state.gameSettings.time,
-                        difficulty: difficulty,
+                        difficulty,
                         ...(rootState.homeStore.map.geojson && {placeGeoJson: rootState.homeStore.map.geojson}),
                         ...(bboxObj && { bboxObj: bboxObj }),
                     },
