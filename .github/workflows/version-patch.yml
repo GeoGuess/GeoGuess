@@ -11,4 +11,4 @@ jobs:
       - run: git config --global user.name 'GitHub Actions Bot'
       - run: git config --global user.email '<>'
       - run: npm version patch
-      - run: git push
+      - run: git push --tags
