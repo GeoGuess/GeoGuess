@@ -24,12 +24,33 @@
     <title>GeoGuess</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+      html{
+        overflow-y: auto !important;
+      }
+      .d-none{
+        display: none !important;
+      }
+      #alert-update{
+        position: fixed;
+        bottom: 0;
+        right: 5%;
+        width:90% ;
+        background-color: #2196f3;
+        border-color: #2196f3;
+        font-family: 'Roboto', sans-serif;
+      }
+      </style>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but geoguess-master doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but GeoGuess doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+    <div role="alert" id="alert-update" class="v-alert v-sheet theme--dark elevation-3 v-alert--prominent info d-none">
+      <div class="v-alert__wrapper"><i aria-hidden="true" class="v-icon notranslate v-alert__icon mdi mdi-information theme--dark"></i>
+        <div class="v-alert__content"><div class="row align-center"><div class="grow col">A new version is available. Click on the button to obtain it.</div>
+        <div class="shrink col"><button type="button" id="reload-btn" class="v-btn v-btn--contained theme--dark v-size--default"><span class="v-btn__content">Update</span></button></div></div></div></div></div>
     <!-- built files will be auto injected -->
   </body>
 </html>

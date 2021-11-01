@@ -3,7 +3,7 @@
         <router-view />
         <v-alert
             v-model="updateAvailable"
-            id="alert-update"
+            id="alertUpdate"
             dark
             type="info"
             elevation="3"
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#alert-update{
+#alertUpdate{
     position: fixed;
     bottom: 2%;
     right: 5%;
