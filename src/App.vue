@@ -1,14 +1,71 @@
 <template>
     <v-app>
         <router-view />
+
+        <v-alert
+            v-model="updateAvailable"
+            id="alert-update"
+            dark
+            type="info"
+            elevation="3"
+            prominent
+            dismissible
+        >
+            <v-row align="center">
+                <v-col class="grow">
+                    A new version is available. Click on the button to obtain it.
+                </v-col>
+                <v-col class="shrink">
+                    <v-btn @click="refreshApp">Update</v-btn>
+                </v-col>
+            </v-row>
+        </v-alert>
     </v-app>
 </template>
 
 <script>
 export default {
     name: 'App',
-    data: () => ({
-        //
-    }),
+    data() {
+        return {
+            refreshing: false,
+            registration: null,
+            updateAvailable: false
+        };
+    },
+    created() {
+        // Listen for our custom event from the SW registration
+        document.addEventListener('swUpdated', this.setUpdate, { once: true });
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => { 
+            // Prevent multiple refreshes
+            if (this.refreshing) return;
+            this.refreshing = true;
+
+            window.location.reload();
+        });
+    },
+    methods:{
+        setUpdate(event) {
+            this.registration = event.detail;
+            this.updateAvailable = true;
+        },
+
+        refreshApp() {
+            this.updateAvailable = false;
+            if (!this.registration || !this.registration.waiting) 
+                return;
+            this.registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+        },
+    }
 };
 </script>
+
+<style lang="scss" scoped>
+#alert-update{
+    position: fixed;
+    bottom: 2%;
+    right: 5%;
+    width: 90%;
+}
+</style>
