@@ -34,6 +34,7 @@
                     fullscreenControl: false,
                     mapTypeControl: false,
                     streetViewControl: false,
+                    draggableCursor: 'crosshair'
                 }"
             />
         </div>
