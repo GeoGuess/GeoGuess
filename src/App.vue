@@ -1,7 +1,6 @@
 <template>
     <v-app>
         <router-view />
-
         <v-alert
             v-model="updateAvailable"
             id="alert-update"
