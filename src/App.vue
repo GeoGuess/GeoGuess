@@ -13,10 +13,10 @@
         >
             <v-row align="center">
                 <v-col class="grow">
-                    A new version is available. Click on the button to obtain it.
+                    {{$t('AlertUpdate.label')}}
                 </v-col>
                 <v-col class="shrink">
-                    <v-btn @click="refreshApp">Update</v-btn>
+                    <v-btn @click="refreshApp">{{$t('AlertUpdate.btn')}}</v-btn>
                 </v-col>
             </v-row>
         </v-alert>
