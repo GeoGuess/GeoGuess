@@ -22,7 +22,7 @@ global.File = class MockFile {
     }
 };
 
-export default function appInit(VueInstance) {
+export default function appInit(VueInstance, useRouter = true) {
     const updateSizes = (obj = {}) => {
         obj.width = window.innerWidth;
         obj.height = window.innerHeight;
@@ -43,15 +43,18 @@ export default function appInit(VueInstance) {
     });
     Vue.use(countryNamePlugin);
 
-    VueInstance.use(Router);
+    if(useRouter)
+        VueInstance.use(Router);
+
     VueInstance.use(VueI18n);
     VueInstance.use(Vuetify);
     VueInstance.config.productionTip = false;
-
+    
     return {
         Vue,
+        localVue: VueInstance,
         i18n,
-        router: new Router(),
+        ...(useRouter && {router: new Router()}),
         vuetify: new Vuetify({
             lang: {
                 locales: { en },

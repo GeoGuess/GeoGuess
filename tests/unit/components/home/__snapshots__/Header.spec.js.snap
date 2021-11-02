@@ -3,12 +3,11 @@
 exports[`Header.vue open dialog about 1`] = `
 <div>
   <header class="header v-sheet theme--light v-toolbar v-app-bar" style="height: 100px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;">
-    <div class="v-toolbar__content" style="height: 100px;">
-      <router-link to="/"><img src="@/assets/geoguessLogo.png" class="header__logo"> <img src="@/../public/img/icons/android-icon-72x72.png" class="header__logo-min"></router-link>
+    <div class="v-toolbar__content" style="height: 100px;"><a href="#/" aria-current="page" class="router-link-exact-active router-link-active"><img src="@/assets/geoguessLogo.png" class="header__logo"> <img src="@/../public/img/icons/android-icon-72x72.png" class="header__logo-min"></a>
       <div class="flex-grow-1"></div> <button type="button" class="v-app-bar__nav-icon header__nav-icon v-btn v-btn--icon v-btn--round theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-menu theme--light"></i></span></button>
-      <nav class="header__nav"><button type="button" class="v-btn v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content"><router-link to="/history">
+      <nav class="header__nav"><button type="button" class="v-btn v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content"><a href="#/history" class="">
                     HISTORY
-                </router-link></span></button>
+                </a></span></button>
         <div class="header__nav__btns"><button type="button" class="v-btn v-btn--text theme--light v-size--default" id="aboutBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-circle theme--light" style="font-size: 30px;"></i></span></button> <button type="button" class="v-btn v-btn--text theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--light" style="font-size: 30px;"></i></span></button>
           <div class="v-menu"><button type="button" class="v-btn v-btn--text theme--light v-size--default" id="languageBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-translate theme--light" style="font-size: 30px;"></i></span></button>
             <!---->
