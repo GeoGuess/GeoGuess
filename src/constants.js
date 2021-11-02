@@ -12,3 +12,11 @@ export const AREA_MODE = {
     NOMINATIM: 'nominatim',
     POLYGON: 'polygon',
 };
+
+export const STROKE_COLORS = [
+   '#b71c1c',
+   '#33691e',
+   '#f57f17',
+   '#880e4f',
+   '#01579b',   
+];

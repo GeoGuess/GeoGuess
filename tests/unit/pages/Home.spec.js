@@ -4,7 +4,7 @@ import appInit from '../testutils/appInit';
 import Vuex from 'vuex';
 import homeStore from '../../../src/store/homeStore';
 
-const args = appInit(createLocalVue());
+const args = appInit(createLocalVue(), false);
 const $router = {
     push: jest.fn(),
 };

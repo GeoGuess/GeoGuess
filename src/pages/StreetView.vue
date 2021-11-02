@@ -16,7 +16,19 @@
                 <v-overlay :value="!isReady && multiplayer" opacity="1" />
                 <div id="street-view" ref="streetView" />
 
-                <div id="game-interface--overlay">
+
+                <div id="game-interface__overlay">
+                    <v-tooltip top>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn class="resetBtn" rounded dark fab 
+                                   v-bind="attrs"
+                                   v-on="on"
+                                   @click="resetLocation" >
+                                <v-icon>mdi-crosshairs-gps</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>{{ $t('Maps.reset') }}</span>
+                    </v-tooltip>
                     <Maps
                         ref="mapContainer"
                         :random-lat-lng="randomLatLng"
@@ -41,7 +53,6 @@
                         :pathKey="
                             areaParams ? areaParams.data.pathKey : 'iso_a2'
                         "
-                        @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
                         @goToNextRound="goToNextRound"
@@ -810,13 +821,26 @@ export default {
     width: 100%;
     top: 0;
     left: 0;
-    #game-interface--overlay {
+
+    &__overlay {
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         right: 0;
         display: flex;
+        .resetBtn{
+            position: absolute;
+            bottom: 200px;
+            right: 5px;
+            z-index: 10;
+            @media (max-width: 450px) {
+                &{
+                    bottom: 250px;
+                }
+            }
+
+        }
     }
 }
 

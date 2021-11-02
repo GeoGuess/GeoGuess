@@ -144,14 +144,15 @@
                                 />
 
                                 <v-autocomplete
+                                    v-if="optionsArea.length > 0"
                                     :label="$t('CardRoomSettings.selectAreas')"
                                     :value="gameSettings.areaParams"
+                                    :items="optionsArea"
                                     @input="
                                         (areaParams) =>
                                             setGameSettings({ areaParams })
                                     "
-                                    :items="optionsArea"
-                                ></v-autocomplete>
+                                />
                             </v-list-group>
                         </div>
                         <div>

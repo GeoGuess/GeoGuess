@@ -15,12 +15,9 @@ exports[`Maps.vue test methods goToNextRound (true | false) 1`] = `
       <div class="vue-map-hidden"></div>
     </div>
   </div>
-  <!----> <textarea spellcheck="false" class="container-map_notepad" style="display: none;"></textarea>
-  <div class="container-map_controls_guess"><button id="reset-button">
-      RESET
-    </button> <button id="guess-button" disabled="disabled">
-      GUESS
-    </button></div>
+  <!----> <textarea spellcheck="false" class="container-map_notepad" style="display: none;"></textarea> <button id="guess-button" disabled="disabled">
+    GUESS
+  </button>
   <!---->
   <!---->
   <!---->
@@ -45,12 +42,9 @@ exports[`Maps.vue test methods goToNextRound (true | false) 2`] = `
       <div class="vue-map-hidden"></div>
     </div>
   </div>
-  <!----> <textarea spellcheck="false" class="container-map_notepad" style="display: none;"></textarea>
-  <div class="container-map_controls_guess"><button id="reset-button">
-      RESET
-    </button> <button id="guess-button" disabled="disabled">
-      GUESS
-    </button></div>
+  <!----> <textarea spellcheck="false" class="container-map_notepad" style="display: none;"></textarea> <button id="guess-button" disabled="disabled">
+    GUESS
+  </button>
   <!---->
   <!---->
   <!---->

@@ -100,37 +100,23 @@
             v-if="!printMapFull"
             ref="refNotepad"
         />
-        <div class="container-map_controls_guess">
-            <button
-                v-if="
-                    !isNextButtonVisible &&
-                        !isSummaryButtonVisible &&
-                        ($viewport.width > 450 || isMakeGuessButtonClicked)
-                "
-                id="reset-button"
-                :disabled="isGuessButtonClicked || (!!this.room && !isReady)"
-                @click="resetLocation"
-            >
-                {{ $t('Maps.reset') }}
-            </button>
-            <button
-                v-if="
-                    !isNextButtonVisible &&
-                        !isSummaryButtonVisible &&
-                        ($viewport.width > 450 || isMakeGuessButtonClicked)
-                "
-                id="guess-button"
-                :disabled="
-                    randomLatLng == null ||
-                        selectedPos == null ||
-                        isGuessButtonClicked ||
-                        (!!this.room && !isReady)
-                "
-                @click="selectLocation"
-            >
-                {{ $t('Maps.guess') }}
-            </button>
-        </div>
+        <button
+            v-if="
+                !isNextButtonVisible &&
+                    !isSummaryButtonVisible &&
+                    ($viewport.width > 450 || isMakeGuessButtonClicked)
+            "
+            id="guess-button"
+            :disabled="
+                randomLatLng == null ||
+                    selectedPos == null ||
+                    isGuessButtonClicked ||
+                    (!!this.room && !isReady)
+            "
+            @click="selectLocation"
+        >
+            {{ $t('Maps.guess') }}
+        </button>
         <button
             v-if="isNextButtonVisible"
             id="next-button"
@@ -688,7 +674,8 @@ export default {
 #reset-button,
 #play-again-button {
     border: none;
-    border-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     opacity: 0.8;
     color: white;
     font-size: 16px;
@@ -698,10 +685,6 @@ export default {
     z-index: 999;
 }
 
-#make-guess-button,
-#guess-button {
-    width: 75%;
-}
 
 #reset-button {
     overflow: hidden;
@@ -798,13 +781,7 @@ button.w-50 {
         bottom: 0;
         width: 100%;
     }
-    #guess-button {
-        width: 75%;
-    }
 
-    #reset-button {
-        width: 25%;
-    }
 
     #hide-map-button {
         position: absolute;
