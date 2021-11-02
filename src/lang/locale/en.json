@@ -183,5 +183,9 @@
     },
     "OK": "OK",
     "yes": "yes",
-    "no": "no"
+    "no": "no",
+    "AlertUpdate":{
+        "label": "A new version is available. Click on the button to obtain it.",
+        "btn": "Update"
+    }
 }

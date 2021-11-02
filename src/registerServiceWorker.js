@@ -19,12 +19,11 @@ if (process.env.NODE_ENV === 'production') {
         updatefound() {
             console.log('New content is downloading.');
         },
-        updated() {
+        updated(registration) {
             console.log('New content is available; please refresh.');
-            document
-                .getElementById('reload-btn')
-                .addEventListener('click', () => window.location.reload());
-            document.getElementById('alert-update').classList.remove('d-none');
+            document.dispatchEvent(
+                new CustomEvent('swUpdated', { detail: registration })
+            );
         },
         offline() {
             console.log(

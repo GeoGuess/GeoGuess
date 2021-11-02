@@ -31,7 +31,7 @@
                 </v-btn>
             </div>
             <div class="licence">
-                <p>
+                <p class="mb-0">
                     {{ version }} - {{ $t('Footer.under') }}
                     <a
                         href="https://github.com/GeoGuess/Geoguess/blob/master/LICENSE"
@@ -61,25 +61,22 @@ footer {
     background: #7fad94;
     .footer__container {
         padding: 0.5rem 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        & > div {
-            display: flex;
-            & > p,
-            a {
-                margin: auto;
-                color: #484848;
-            }
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        align-items: center;
+        p, a {
+            color: #484848;
         }
-
         a {
             font-weight: bold;
-        }
-      
+        }      
     }
-    .footer__logo{
-        width: 20%;
+    .footer__logo{        
+        display: grid;
+        grid-template-columns: repeat(3, minmax(36px, 1fr));
+        justify-items: center;
+        column-gap: 2rem;
     }
 }
 

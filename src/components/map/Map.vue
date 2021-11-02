@@ -10,11 +10,13 @@
                 fullscreenControl: false,
                 mapTypeControl: false,
                 streetViewControl: false,
+                draggableCursor: 'crosshair'
             }"
         />
     </div>
 </template>
 <script>
+import { STROKE_COLORS } from '../../constants';
 import MapMixin from './mixins/MapMixin';
 export default {
     name: 'Map',
@@ -25,13 +27,7 @@ export default {
             marker: [],
             markers: [],
             polylines: [],
-            strokeColors: [
-                '#F44336',
-                '#76FF03',
-                '#FFEB3B',
-                '#FF4081',
-                '#18FFFF',
-            ],
+            strokeColors: STROKE_COLORS,
         };
     },
     async mounted() {
@@ -47,8 +43,10 @@ export default {
             let info = {};
             if (isRandomLocation) {
                 info = {
-                    icon:
-                        window.location.origin + '/img/icons/favicon-16x16.png',
+                    icon: {
+                        url: window.location.origin + '/img/icons/favicon-16x16.png',
+                        anchor: new google.maps.Point(8,8),
+                    }
                 };
             }
             if (label) {
@@ -105,9 +103,22 @@ export default {
             );
         },
         drawPolyline(selectedLatLng, i = 0, randomLatLng) {
+            const lineSymbol = {
+                path: "M 0,-1 0,1",
+                strokeOpacity: 1,
+                scale: 2,
+            };
             const polyline = new google.maps.Polyline({
                 path: [selectedLatLng, randomLatLng],
+                strokeOpacity: 0,
                 strokeColor: this.strokeColors[i % this.strokeColors.length],
+                icons: [
+                    {
+                        icon: lineSymbol,
+                        offset: "0",
+                        repeat: "10px",
+                    },
+                ],
             });
             polyline.setMap(this.map);
             this.polylines.push(polyline);
