@@ -195,7 +195,7 @@
     "yes": "כן",
     "no": "לא",
     "AlertUpdate": {
-        "label": "A new version is available. Click on the button to obtain it.",
-        "btn": "Update"
+        "label": "גרסה חדשה מהניילונים זמינה. לחצו כאן כדי לקבל אותה.",
+        "btn": "עדכון"
     }
 }
