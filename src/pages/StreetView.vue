@@ -833,13 +833,10 @@ export default {
             position: absolute;
             bottom: 200px;
             right: 5px;
-            z-index: 10;
+            z-index: 1;
             @media (max-width: 450px) {
-                &{
-                    bottom: 250px;
-                }
+                bottom: 250px;
             }
-
         }
     }
 }
