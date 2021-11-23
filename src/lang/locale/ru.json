@@ -195,7 +195,7 @@
     "yes": "Да",
     "no": "нет",
     "AlertUpdate": {
-        "label": "A new version is available. Click on the button to obtain it.",
-        "btn": "Update"
+        "label": "Доступна новая версия. Нажмите на кнопку, чтобы получить ее.",
+        "btn": "Обновить"
     }
 }
