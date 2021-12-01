@@ -92,7 +92,7 @@
         "fileLabel": "GeoJSON-Datei auswählen",
         "OK": "Okay",
         "download": "GeoJSON herunterladen",
-        "Clean": "Bereinigen",
+        "Clean": "Löschen",
         "save": "speichern",
         "inputName": {
             "label": "Kartenname",
@@ -195,7 +195,7 @@
     "yes": "ja",
     "no": "nein",
     "AlertUpdate": {
-        "label": "A new version is available. Click on the button to obtain it.",
+        "label": "Eine neue Version ist verfügbar. Klicke auf die Schaltfläche, um sie zu installieren.",
         "btn": "Update"
     }
 }
