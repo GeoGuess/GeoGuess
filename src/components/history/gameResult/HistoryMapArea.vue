@@ -58,6 +58,7 @@
 
 <script>
 import FlagIcon from '@/components/shared/FlagIcon';
+import { STROKE_COLORS } from '../../../constants';
 export default {
     name: 'HistoryMapArea',
     components: {
@@ -66,14 +67,7 @@ export default {
     props: ['item', 'isCountry'],
     data() {
         return {
-            strokeColors: [
-                '#F44336',
-                '#76FF03',
-                '#FFEB3B',
-                '#FF4081',
-                '#18FFFF',
-                '#18FFFF',
-            ],
+            strokeColors: STROKE_COLORS,
         };
     },
 };

@@ -26,12 +26,12 @@
         "streamerModeActivate": "Aktivera streamerläge",
         "streamerModeDetails": "URLer och rumsnamn göms",
         "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
+            "title": "Karta sparad 🎉",
+            "subtitle": "Du kan hitta den i din kartlista"
         },
         "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete"
+            "edit": "Redigera",
+            "delete": "Radera"
         },
         "HomeCardMode": {
             "map": "Karta",
@@ -92,10 +92,11 @@
         "fileLabel": "Välj GeoJSON-fil",
         "OK": "OK",
         "download": "Ladda ner GeoJSON",
-        "save": "save",
+        "Clean": "Rensa",
+        "save": "spara",
         "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
+            "label": "Kartnamn",
+            "placeholder": "Min favoritplats"
         }
     },
     "History": {
@@ -138,9 +139,9 @@
         "infinite": "Oändlig"
     },
     "CardRoomMap": {
-        "title": "Define your map",
-        "loadBtn": "Load MAP",
-        "reset": "Reset"
+        "title": "Definiera din karta",
+        "loadBtn": "Ladda KARTA",
+        "reset": "Återställ"
     },
     "CardRoomSettings": {
         "title": "Spelinställningar",
@@ -192,5 +193,9 @@
     },
     "OK": "OK",
     "yes": "ja",
-    "no": "nej"
+    "no": "nej",
+    "AlertUpdate": {
+        "label": "A new version is available. Click on the button to obtain it.",
+        "btn": "Update"
+    }
 }

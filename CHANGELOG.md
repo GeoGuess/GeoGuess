@@ -1,5 +1,101 @@
 # Changelog
 
+## [v0.7.0](https://github.com/Geoguess/Geoguess/tree/v0.7.0) (2021-10-06)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.7.0-alpha.1...v0.7.0)
+
+**Implemented enhancements:**
+
+- \[FEAT\] UX: home feedback [\#209](https://github.com/GeoGuess/Geoguess/issues/209)
+- \[FEAT\] Save PlayerName [\#186](https://github.com/GeoGuess/Geoguess/issues/186)
+
+**Fixed bugs:**
+
+- \[BUG\] Map Preview wasn't loaded [\#273](https://github.com/GeoGuess/Geoguess/issues/273)
+- \[BUG\] incorrect distance displayed on history map in multi players mode [\#213](https://github.com/GeoGuess/Geoguess/issues/213)
+
+**Merged pull requests:**
+
+- chore\(deps-dev\): bump eslint-plugin-vue from 7.18.0 to 7.19.1 [\#278](https://github.com/GeoGuess/Geoguess/pull/278) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump vue-cli-plugin-vuetify from 2.4.2 to 2.4.3 [\#277](https://github.com/GeoGuess/Geoguess/pull/277) ([dependabot[bot]](https://github.com/apps/dependabot))
+- New Crowdin updates [\#276](https://github.com/GeoGuess/Geoguess/pull/276) ([BilelJegham](https://github.com/BilelJegham))
+- fix: \#273 Map Preview [\#275](https://github.com/GeoGuess/Geoguess/pull/275) ([BilelJegham](https://github.com/BilelJegham))
+- chore\(deps\): bump vue-i18n from 8.26.3 to 8.26.5 [\#272](https://github.com/GeoGuess/Geoguess/pull/272) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump vue-i18n from 8.26.1 to 8.26.3 [\#271](https://github.com/GeoGuess/Geoguess/pull/271) ([dependabot[bot]](https://github.com/apps/dependabot))
+- New Crowdin updates [\#270](https://github.com/GeoGuess/Geoguess/pull/270) ([BilelJegham](https://github.com/BilelJegham))
+- chore\(deps\): bump vuetify from 2.5.8 to 2.5.9 [\#269](https://github.com/GeoGuess/Geoguess/pull/269) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump vue-cli-plugin-vuetify from 0.6.3 to 2.4.2 [\#267](https://github.com/GeoGuess/Geoguess/pull/267) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump vue-router from 3.4.9 to 3.5.2 [\#266](https://github.com/GeoGuess/Geoguess/pull/266) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump prettier from 2.1.2 to 2.4.1 [\#265](https://github.com/GeoGuess/Geoguess/pull/265) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump random-position-in-polygon from 1.0.5 to 1.0.6 [\#263](https://github.com/GeoGuess/Geoguess/pull/263) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump eslint-plugin-cypress from 2.11.2 to 2.12.1 [\#261](https://github.com/GeoGuess/Geoguess/pull/261) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump react-is from 16.13.1 to 17.0.2 [\#260](https://github.com/GeoGuess/Geoguess/pull/260) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump axios from 0.21.1 to 0.21.4 [\#259](https://github.com/GeoGuess/Geoguess/pull/259) ([dependabot[bot]](https://github.com/apps/dependabot))
+- feat: \#186 Save Player Name [\#256](https://github.com/GeoGuess/Geoguess/pull/256) ([BilelJegham](https://github.com/BilelJegham))
+- chore\(deps-dev\): bump vuetify-loader from 1.6.0 to 1.7.3 [\#253](https://github.com/GeoGuess/Geoguess/pull/253) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump vue-clipboard2 from 0.3.1 to 0.3.3 [\#252](https://github.com/GeoGuess/Geoguess/pull/252) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump vue-i18n from 8.22.2 to 8.26.1 [\#251](https://github.com/GeoGuess/Geoguess/pull/251) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump @turf/distance from 6.0.1 to 6.5.0 [\#250](https://github.com/GeoGuess/Geoguess/pull/250) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump cypress from 8.4.0 to 8.4.1 [\#248](https://github.com/GeoGuess/Geoguess/pull/248) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump sass from 1.41.1 to 1.42.1 [\#247](https://github.com/GeoGuess/Geoguess/pull/247) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump axios-cache-adapter from 2.5.0 to 2.7.3 [\#246](https://github.com/GeoGuess/Geoguess/pull/246) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump vuex from 3.6.0 to 3.6.2 [\#245](https://github.com/GeoGuess/Geoguess/pull/245) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump random-position-in-polygon from 1.0.4 to 1.0.5 [\#244](https://github.com/GeoGuess/Geoguess/pull/244) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump @vue/cli-plugin-pwa from 3.12.1 to 4.5.13 [\#243](https://github.com/GeoGuess/Geoguess/pull/243) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Feature/\#205 handle user quit [\#242](https://github.com/GeoGuess/Geoguess/pull/242) ([BilelJegham](https://github.com/BilelJegham))
+- chore\(deps-dev\): bump @vue/cli-plugin-eslint from 3.12.1 to 4.5.13 [\#240](https://github.com/GeoGuess/Geoguess/pull/240) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump vue and vue-template-compiler [\#239](https://github.com/GeoGuess/Geoguess/pull/239) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump jest-google-maps-mock from 1.0.3 to 1.0.7 [\#238](https://github.com/GeoGuess/Geoguess/pull/238) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump @turf/boolean-point-in-polygon from 6.3.0 to 6.5.0 [\#237](https://github.com/GeoGuess/Geoguess/pull/237) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump eslint-plugin-prettier from 3.3.0 to 3.4.1 [\#235](https://github.com/GeoGuess/Geoguess/pull/235) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump vue-country-flag from 2.0.3 to 2.2.0 [\#233](https://github.com/GeoGuess/Geoguess/pull/233) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump i18n-iso-countries from 6.4.0 to 6.8.0 [\#232](https://github.com/GeoGuess/Geoguess/pull/232) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump @turf/bbox from 6.3.0 to 6.5.0 [\#231](https://github.com/GeoGuess/Geoguess/pull/231) ([dependabot[bot]](https://github.com/apps/dependabot))
+- New Crowdin updates [\#230](https://github.com/GeoGuess/Geoguess/pull/230) ([BilelJegham](https://github.com/BilelJegham))
+- chore\(deps-dev\): bump firebase-functions-test from 0.1.7 to 0.3.2 in /functions [\#229](https://github.com/GeoGuess/Geoguess/pull/229) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump firebase-functions from 3.7.0 to 3.15.7 in /functions [\#228](https://github.com/GeoGuess/Geoguess/pull/228) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump firebase-admin from 8.12.1 to 8.13.0 in /functions [\#227](https://github.com/GeoGuess/Geoguess/pull/227) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump sass from 1.30.0 to 1.41.1 [\#226](https://github.com/GeoGuess/Geoguess/pull/226) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump eslint-plugin-vue from 5.2.3 to 7.18.0 [\#225](https://github.com/GeoGuess/Geoguess/pull/225) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps-dev\): bump @babel/core from 7.12.10 to 7.15.5 [\#224](https://github.com/GeoGuess/Geoguess/pull/224) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump actions/upload-artifact from 1 to 2.2.4 [\#221](https://github.com/GeoGuess/Geoguess/pull/221) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump actions/checkout from 1 to 2.3.4 [\#220](https://github.com/GeoGuess/Geoguess/pull/220) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump actions/cache from 1 to 2.1.6 [\#219](https://github.com/GeoGuess/Geoguess/pull/219) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump codecov/codecov-action from 1 to 2.1.0 [\#218](https://github.com/GeoGuess/Geoguess/pull/218) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Feature/card room map [\#215](https://github.com/GeoGuess/Geoguess/pull/215) ([BilelJegham](https://github.com/BilelJegham))
+- fix: \#213 history distance multiplayer infowindow [\#214](https://github.com/GeoGuess/Geoguess/pull/214) ([BilelJegham](https://github.com/BilelJegham))
+- style changes - padding margin [\#212](https://github.com/GeoGuess/Geoguess/pull/212) ([rynzlery](https://github.com/rynzlery))
+- docs: add johnebgood as a contributor for ideas, financial [\#210](https://github.com/GeoGuess/Geoguess/pull/210) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+
+## [v0.7.0-alpha.1](https://github.com/Geoguess/Geoguess/tree/v0.7.0-alpha.1) (2021-07-30)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.7.0-alpha.0...v0.7.0-alpha.1)
+
+**Merged pull requests:**
+
+- Feature/add italian [\#207](https://github.com/GeoGuess/Geoguess/pull/207) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#203](https://github.com/GeoGuess/Geoguess/pull/203) ([BilelJegham](https://github.com/BilelJegham))
+- Fix english typos [\#202](https://github.com/GeoGuess/Geoguess/pull/202) ([RemDelaporteMathurin](https://github.com/RemDelaporteMathurin))
+
+## [v0.7.0-alpha.0](https://github.com/Geoguess/Geoguess/tree/v0.7.0-alpha.0) (2021-07-14)
+
+[Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.6.2...v0.7.0-alpha.0)
+
+**Implemented enhancements:**
+
+- \[FEAT\] New modes like country mode \(states mode, continent mode, ...\) [\#188](https://github.com/GeoGuess/Geoguess/issues/188)
+
+**Merged pull requests:**
+
+- New Crowdin updates [\#201](https://github.com/GeoGuess/Geoguess/pull/201) ([BilelJegham](https://github.com/BilelJegham))
+- docs: add ElectableRuby31 as a contributor for translation [\#200](https://github.com/GeoGuess/Geoguess/pull/200) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- New Crowdin updates [\#199](https://github.com/GeoGuess/Geoguess/pull/199) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#198](https://github.com/GeoGuess/Geoguess/pull/198) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#196](https://github.com/GeoGuess/Geoguess/pull/196) ([BilelJegham](https://github.com/BilelJegham))
+- A notepad feature [\#195](https://github.com/GeoGuess/Geoguess/pull/195) ([dimfort](https://github.com/dimfort))
+- Feature/\#188 state mode [\#194](https://github.com/GeoGuess/Geoguess/pull/194) ([BilelJegham](https://github.com/BilelJegham))
+- New Crowdin updates [\#189](https://github.com/GeoGuess/Geoguess/pull/189) ([BilelJegham](https://github.com/BilelJegham))
+
 ## [v0.6.2](https://github.com/Geoguess/Geoguess/tree/v0.6.2) (2021-05-19)
 
 [Full Changelog](https://github.com/Geoguess/Geoguess/compare/v0.6.1...v0.6.2)

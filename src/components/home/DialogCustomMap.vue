@@ -133,7 +133,7 @@
             </v-card-text>
             <v-card-actions>
                 <div class="flex-grow-1" />
-                <v-btn @click="clean" color="error"> Clean </v-btn>
+                <v-btn @click="clean" color="error"> {{ $t('DialogCustomMap.Clean') }} </v-btn>
                 <v-btn dark color="primary" @click="$emit('change-visibility')">
                     {{ $t('DialogCustomMap.OK') }}
                 </v-btn>

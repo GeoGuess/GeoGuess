@@ -26,12 +26,12 @@
         "streamerModeActivate": "הפעלת מצב שידור חי",
         "streamerModeDetails": "כתובות אתרים ושמות חדרים מוסתרים",
         "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
+            "title": "המפה נשמרה 🎉",
+            "subtitle": "אתה תמצא אותה ברשימת המפות שלך"
         },
         "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete"
+            "edit": "ערוך",
+            "delete": "מחק"
         },
         "HomeCardMode": {
             "map": "מפה",
@@ -92,10 +92,11 @@
         "fileLabel": "בחר קובץ GeoJSON",
         "OK": "בסדר",
         "download": "הורד קובץ GeoJSON",
-        "save": "save",
+        "Clean": "נקה",
+        "save": "שמור",
         "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
+            "label": "שם המפה",
+            "placeholder": "המיקום המועדף עליי"
         }
     },
     "History": {
@@ -138,9 +139,9 @@
         "infinite": "ללא הגבלה"
     },
     "CardRoomMap": {
-        "title": "Define your map",
-        "loadBtn": "Load MAP",
-        "reset": "Reset"
+        "title": "הגדר את המפה שלך",
+        "loadBtn": "טען מפה",
+        "reset": "אתחל"
     },
     "CardRoomSettings": {
         "title": "הגדרות משחק",
@@ -192,5 +193,9 @@
     },
     "OK": "בסדר",
     "yes": "כן",
-    "no": "לא"
+    "no": "לא",
+    "AlertUpdate": {
+        "label": "גרסה חדשה מהניילונים זמינה. לחצו כאן כדי לקבל אותה.",
+        "btn": "עדכון"
+    }
 }

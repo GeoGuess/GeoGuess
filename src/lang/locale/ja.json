@@ -92,6 +92,7 @@
         "fileLabel": "Select GeoJSON file",
         "OK": "OK",
         "download": "Download GeoJSON",
+        "Clean": "Clean",
         "save": "save",
         "inputName": {
             "label": "Map Name",
@@ -192,5 +193,9 @@
     },
     "OK": "OK",
     "yes": "yes",
-    "no": "no"
+    "no": "no",
+    "AlertUpdate": {
+        "label": "A new version is available. Click on the button to obtain it.",
+        "btn": "Update"
+    }
 }

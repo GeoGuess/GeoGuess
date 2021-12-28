@@ -34,6 +34,7 @@
                     fullscreenControl: false,
                     mapTypeControl: false,
                     streetViewControl: false,
+                    draggableCursor: 'crosshair'
                 }"
             />
         </div>
@@ -245,8 +246,9 @@ export default {
 
             &.flag {
                 display: inline-grid;
-                grid-template-columns: 30px auto;
+                grid-template-columns: 42px auto;
                 grid-column-gap: 5px;
+                align-items: center;
             }
         }
     }

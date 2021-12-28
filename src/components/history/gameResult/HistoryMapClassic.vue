@@ -34,6 +34,20 @@
                             lng: r.guess.lng,
                         },
                     ]"
+                    :options="{
+                        strokeOpacity: 0,
+                        icons: [
+                            {
+                                icon: {
+                                    path: 'M 0,-1 0,1',
+                                    strokeOpacity: 1,
+                                    scale: 2,
+                                },
+                                offset: '0',
+                                repeat: '10px',
+                            },
+                        ],
+                    }"
                 />
                 <GmapMarker
                     :icon="icon"
@@ -88,6 +102,18 @@
                         :options="{
                             strokeColor:
                                 strokeColors[indexP % strokeColors.length],
+                            strokeOpacity: 0,
+                            icons: [
+                                {
+                                    icon: {
+                                        path: 'M 0,-1 0,1',
+                                        strokeOpacity: 1,
+                                        scale: 2,
+                                    },
+                                    offset: '0',
+                                    repeat: '10px',
+                                },
+                            ],
                         }"
                     />
                 </div>
@@ -101,6 +127,7 @@
 </template>
 
 <script>
+import { STROKE_COLORS } from '../../../constants';
 export default {
     name: 'HistoryMapClassic',
     props: ['item'],
@@ -112,15 +139,11 @@ export default {
                     height: -42,
                 },
             },
-            strokeColors: [
-                '#F44336',
-                '#76FF03',
-                '#FFEB3B',
-                '#FF4081',
-                '#18FFFF',
-                '#18FFFF',
-            ],
-            icon: window.location.origin + '/img/icons/favicon-16x16.png',
+            strokeColors: STROKE_COLORS,
+            icon: {
+                url: window.location.origin + '/img/icons/favicon-16x16.png',
+                anchor: new google.maps.Point(8,8),
+            }
         };
     },
 };

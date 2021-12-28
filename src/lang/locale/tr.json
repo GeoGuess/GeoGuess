@@ -26,12 +26,12 @@
         "streamerModeActivate": "Yayıncı modu aktif",
         "streamerModeDetails": "Bağlantılar ve oda isimleri artık gizli",
         "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
+            "title": "Harita Kaydedildi",
+            "subtitle": "Harita listelerinizde bulabilirsiniz"
         },
         "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete"
+            "edit": "Düzenle",
+            "delete": "Sil"
         },
         "HomeCardMode": {
             "map": "Map",
@@ -92,10 +92,11 @@
         "fileLabel": "GeoJSON dosyası seç",
         "OK": "Onayla",
         "download": "GeoJSON İndir",
-        "save": "save",
+        "Clean": "Temizle",
+        "save": "kaydet",
         "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
+            "label": "Harita İsmi",
+            "placeholder": "Favori Mekanlara Ekle"
         }
     },
     "History": {
@@ -138,9 +139,9 @@
         "infinite": "Sınırsız"
     },
     "CardRoomMap": {
-        "title": "Define your map",
-        "loadBtn": "Load MAP",
-        "reset": "Reset"
+        "title": "Haritanızı Tanımlayın",
+        "loadBtn": "Harita Yükle",
+        "reset": "Sıfırla"
     },
     "CardRoomSettings": {
         "title": "Oyun Ayarları",
@@ -192,5 +193,9 @@
     },
     "OK": "Onayla",
     "yes": "evet",
-    "no": "hayır"
+    "no": "hayır",
+    "AlertUpdate": {
+        "label": "Yeni bir sürüm mevcut. Güncellemek için butona tıklayın.",
+        "btn": "Güncelle"
+    }
 }

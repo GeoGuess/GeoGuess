@@ -49,6 +49,20 @@
                                 <v-icon large> mdi-flag </v-icon>
                                 <span>{{ $t('modes.country') }}</span>
                             </v-btn>
+
+                            <v-btn
+                                id="modeCustomAreaBtn"
+                                v-if="gameSettings.modeSelected === gameMode.CUSTOM_AREA"
+                                :text="
+                                    gameSettings.modeSelected !==
+                                        gameMode.CUSTOM_AREA
+                                "
+                                rounded
+                                outlined
+                            >
+                                <v-icon large> mdi-flag-checkered </v-icon>
+                                <span>{{ $t('modes.custom_area') }}</span>
+                            </v-btn>
                         </v-flex>
                     </v-row>
 
@@ -130,14 +144,15 @@
                                 />
 
                                 <v-autocomplete
+                                    v-if="optionsArea.length > 0"
                                     :label="$t('CardRoomSettings.selectAreas')"
                                     :value="gameSettings.areaParams"
+                                    :items="optionsArea"
                                     @input="
                                         (areaParams) =>
                                             setGameSettings({ areaParams })
                                     "
-                                    :items="optionsArea"
-                                ></v-autocomplete>
+                                />
                             </v-list-group>
                         </div>
                         <div>
@@ -208,30 +223,6 @@
                         </div>
                     </v-row>
                 </v-col>
-                <v-col
-                    :class="{
-                        'd-none': !loadingGeoJson && !placeGeoJson,
-                    }"
-                >
-                    <GmapMap
-                        ref="mapRef"
-                        :class="{ 'd-none': loadingGeoJson }"
-                        :center="{ lat: 10, lng: 10 }"
-                        :zoom="1"
-                        map-type-id="roadmap"
-                        style="width: 350px; max-width: 100%; height: 250px"
-                        :options="{
-                            gestureHandling: 'greedy',
-                        }"
-                    />
-
-                    <v-skeleton-loader
-                        v-if="loadingGeoJson"
-                        class="mx-auto"
-                        style="width: 100%; height: 250px"
-                        type="image"
-                    />
-                </v-col>
             </v-row>
         </v-card-text>
         <v-card-actions>
@@ -244,7 +235,6 @@
                 dark
                 depressed
                 color="#43B581"
-                :disabled="loadingGeoJson"
                 @click="onClickNext"
             >
                 {{ $t('next') }}
@@ -275,8 +265,7 @@ export default {
     computed: {
         ...mapGetters(['areasJson', 'areasList']),
         ...mapState({
-            loadingGeoJson: (state) => state.homeStore.loadingGeoJson,
-            placeGeoJson: (state) => state.homeStore.geojson,
+            placeGeoJson: (state) => state.homeStore.map.geojson,
         }),
         ...mapState('settingsStore', ['gameSettings']),
         optionsArea() {
@@ -306,40 +295,14 @@ export default {
             return GAME_MODE;
         },
     },
-    watch: {
-        placeGeoJson(val) {
-            this.setGeoJson(val);
-        },
-    },
     async mounted() {
         await this.$gmapApiPromiseLazy();
-        if (this.placeGeoJson) {
-            this.setGeoJson(this.placeGeoJson);
-        }
     },
     methods: {
         ...mapMutations('settingsStore', {
             setGameSettings: SETTINGS_SET_GAME_SETTINGS,
         }),
         ...mapActions('settingsStore', ['setSettings']),
-        setGeoJson(val) {
-            this.$refs.mapRef.$mapPromise.then((map) => {
-                map.data.setMap(null);
-                let data = new google.maps.Data({
-                    map: map,
-                });
-                if (val) data.addGeoJson(val);
-                map.data = data;
-                if (val && val.bbox) {
-                    map.fitBounds({
-                        east: val.bbox[2],
-                        north: val.bbox[3],
-                        south: val.bbox[1],
-                        west: val.bbox[0],
-                    });
-                }
-            });
-        },
         onClickNext() {
             this.setSettings();
         },

@@ -19,7 +19,10 @@ export default {
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
-            state.map.geojson = geojson;
+            const map = new GeoMapCustom();
+            map.name = state.map.name;
+            map.geojson = geojson;
+            state.map = map;
         },
         [MutationTypes.HOME_SET_NAME_GEOJSON](state, name) {
             state.map.name = name;
@@ -206,7 +209,7 @@ export default {
             const data = await axios
                 .get(
                     process.env.VUE_APP_LIST_MAPS_JSON_URL ||
-                        'https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/maps.json',
+                        'https://maps.geoguess.games/maps.json',
                     {
                         cache: {
                             maxAge: 1000,
