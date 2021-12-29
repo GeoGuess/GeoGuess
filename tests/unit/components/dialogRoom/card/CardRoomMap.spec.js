@@ -64,15 +64,15 @@ jest.mock('@/plugins/axios', () => {
                 data: responseTls,
             })
         ),
+        post: jest.fn(),
     };
 });
 import CardRoomMap from '@/components/dialogroom/card/CardRoomMap';
+import axios from '@/plugins/axios';
 import homeStore from '@/store/homeStore';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
+import VueAxios from 'vue-axios/dist/vue-axios.common.min';
 import Vuex from 'vuex';
-import Vue from 'vue';
-import axios from '@/plugins/axios';
-import VueAxios from 'vue-axios';
 import appInit from '../../../testutils/appInit';
 
 const args = appInit(createLocalVue());
@@ -90,23 +90,28 @@ describe('CardRoomMap.vue', () => {
         });
     });
   
-    it('test search Input', () => {
-        Vue.use(VueAxios, axios);
-        const wrapper = shallowMount(CardRoomMap, { ...args, store, axios });
-        wrapper.setData({ search: 'Toulouse' });
+    it('test search Input', async () => {
+        args.localVue.use(VueAxios, axios);
+        const wrapper = shallowMount(CardRoomMap, { 
+            ...args,
+             store,
+              axios,
+              localVue: args.localVue,
+         });
+        await wrapper.setData({ search: 'Toulouse' });
 
         expect(wrapper.exists('#search-input'));
-        wrapper.vm.$nextTick(() => {
-            expect(wrapper.vm.search).toEqual('Toulouse');
-            expect(axios.get).toBeCalledWith(
-                'https://photon.komoot.io/api/?q=Toulouse'
-            );
-            wrapper.vm.$nextTick(() => {
-                expect(wrapper.vm.entries).toHaveLength(2);
-                expect(wrapper.vm.items).toHaveLength(2);
-                expect(wrapper.vm.items[0]).toEqual('Toulouse');
-            });
-        });
+        await wrapper.vm.$nextTick(() => {});
+        expect(wrapper.vm.search).toEqual('Toulouse');
+        const spy = jest.spyOn(wrapper.vm.axios,'get');
+        expect(spy).toBeCalledWith(
+            'https://photon.komoot.io/api/?q=Toulouse'
+        );
+        await wrapper.vm.$nextTick(() => {});
+        expect(wrapper.vm.entries).toHaveLength(2);
+        expect(wrapper.vm.items).toHaveLength(2);
+        expect(wrapper.vm.items[0]).toEqual('Toulouse');
+        
 
         expect(wrapper).toMatchSnapshot();
     });

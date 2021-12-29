@@ -49,7 +49,7 @@ export default function appInit(VueInstance, useRouter = true) {
     VueInstance.use(VueI18n);
     VueInstance.use(Vuetify);
     VueInstance.config.productionTip = false;
-    
+
     return {
         Vue,
         localVue: VueInstance,
