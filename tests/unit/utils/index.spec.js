@@ -169,13 +169,13 @@ describe('utils/index.js', () => {
                 "accept-language": "es"
             }
         });
-        expect(res).toEqual('México');
+        expect(res).toEqual('Ciudad de México');
     });
     
     it('getAreaCodeNameFromLatLng: should return undefined if not value', async () => {
         const gps = {
             lat: () => 19.250617647058824,
-            lng: () => -99.07219999999
+            lng: () => -909.07219999999
         };
         const res = await getAreaCodeNameFromLatLng(gps, () => {}, {
             "bbox": [-33.8689056,5.2693306,-73.9830625,-28.6289646],
