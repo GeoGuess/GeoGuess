@@ -42,7 +42,7 @@
         "@vue/test-utils": "^1.1.2",
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.2.3",
-        "cypress": "^9.0.0",
+        "cypress": "^9.2.0",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.15.0",
         "eslint-plugin-cypress": "^2.12.1",
