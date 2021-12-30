@@ -101,13 +101,13 @@ describe('CardRoomMap.vue', () => {
         await wrapper.setData({ search: 'Toulouse' });
 
         expect(wrapper.exists('#search-input'));
-        await wrapper.vm.$nextTick(() => {});
+        await wrapper.vm.$nextTick();
         expect(wrapper.vm.search).toEqual('Toulouse');
         const spy = jest.spyOn(wrapper.vm.axios,'get');
         expect(spy).toBeCalledWith(
             'https://photon.komoot.io/api/?q=Toulouse'
         );
-        await wrapper.vm.$nextTick(() => {});
+        await wrapper.vm.$nextTick();
         expect(wrapper.vm.entries).toHaveLength(2);
         expect(wrapper.vm.items).toHaveLength(2);
         expect(wrapper.vm.items[0]).toEqual('Toulouse');
