@@ -39,7 +39,9 @@
         },
         "Sections": {
             "areasTitle": "Areas",
-            "mapsTitle": "Maps"
+            "mapsTitle": "Maps",
+            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
+            "barrelRoll": "do a barrel roll"
         }
     },
     "StreetView": {
