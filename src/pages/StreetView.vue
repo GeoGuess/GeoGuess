@@ -831,11 +831,11 @@ export default {
         display: flex;
         .resetBtn{
             position: absolute;
-            bottom: 200px;
-            right: 5px;
+            bottom: 22px;
+            right: 70px;
             z-index: 1;
             @media (max-width: 450px) {
-                bottom: 250px;
+                bottom: 65px;
             }
         }
     }
