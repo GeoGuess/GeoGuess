@@ -1,6 +1,6 @@
+import i18n from '../lang';
 import IndexedDBService from '../plugins/IndexedDBService';
 import { getLocateString } from '../utils';
-import i18n from '../lang';
 
 export class GeoMap {
     constructor() {
@@ -10,8 +10,14 @@ export class GeoMap {
     get nameLocate() {
         return getLocateString(this, 'name', i18n.locale);
     }
+
     get descriptionLocate() {
         return getLocateString(this, 'description', i18n.locale);
+    }
+
+    get imageSrc() {
+        return this.imageUrl ||
+            `https://source.unsplash.com/500x230/weekly?${encodeURI(getLocateString(this, 'name', 'en'))}`;
     }
 }
 

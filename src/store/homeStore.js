@@ -1,10 +1,10 @@
 import axios from '@/plugins/axios';
 import { validURL } from '@/utils';
+import i18n from '../lang';
+import { GeoMap, GeoMapCustom } from '../models/GeoMap';
+import IndexedDBService from '../plugins/IndexedDBService';
 import { getLocateString, isGeoJSONValid } from '../utils';
 import * as MutationTypes from './mutation-types';
-import i18n from '../lang';
-import IndexedDBService from '../plugins/IndexedDBService';
-import { GeoMap, GeoMapCustom } from '../models/GeoMap';
 
 export default {
     state: () => ({
@@ -81,6 +81,8 @@ export default {
         areasList(state) {
             return state.listAreas.map((map) => ({
                 ...map,
+                imageSrc: map.imageUrl ||
+                        `https://source.unsplash.com/500x230/weekly?${encodeURI(getLocateString(map, 'name', 'en'))}`,
                 nameLocate: getLocateString(map, 'name', i18n.locale),
                 descriptionLocate: getLocateString(
                     map,

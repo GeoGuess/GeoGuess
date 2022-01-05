@@ -14,12 +14,7 @@
                 class="white--text align-end"
                 height="230px"
                 gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
-                :src="
-                    data.imageUrl ||
-                        `https://source.unsplash.com/500x230/weekly?${encodeURI(
-                            data.nameLocate
-                        )}`
-                "
+                :src="data.imageSrc"
             >
                 <v-card-title>{{ data.nameLocate }}</v-card-title>
             </v-img>

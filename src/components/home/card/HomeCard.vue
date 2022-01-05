@@ -4,12 +4,7 @@
             class="white--text align-end"
             height="140px"
             gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
-            :src="
-                data.imageUrl ||
-                    `https://source.unsplash.com/500x230/weekly?${encodeURI(
-                        data.nameLocate
-                    )}`
-            "
+            :src="data.imageSrc"
         >
             <v-menu v-if="data.custom">
                 <template v-slot:activator="{ on, attrs }">
