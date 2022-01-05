@@ -59,13 +59,15 @@ export default {
             dialogCustom: this.dialogCustomOpen,
         };
     },
+
+    computed: {
+        ...mapGetters(['nbPlaceVisits']),
+    },
+
     watch: {
         dialogCustomOpen(v) {
             this.dialogCustom = v;
         },
-    },
-    computed: {
-        ...mapGetters(['nbPlaceVisits']),
     },
 
     mounted() {

@@ -16,45 +16,24 @@
                     </v-layout>
                 </v-layout>
             </v-container>
-            <v-btn id="btnMaps" href="#areas" large fab color="secondary" dark>
+            <v-btn id="btnMaps" href="#maps-container" large fab color="secondary" dark>
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
-        <v-container id="areas"> <h2>{{$t('Home.Sections.areasTitle')}}</h2></v-container>
-        <section class="sliders-container">
-            <v-slide-group show-arrows="always">
-                <v-slide-item
-                    v-for="(mode, index) in areasList"
-                    :key="index"
-                    class="ma-4"
-                >
-                    <HomeCard :data="mode" type="area" />
-                </v-slide-item>
-            </v-slide-group>
-        </section>
-        <v-container><h2>{{$t('Home.Sections.mapsTitle')}}</h2></v-container>
-        <section id="maps">
-            <HomeCard
-                v-for="(map, index) in maps"
-                :key="index"
-                :data="map"
-                type="map"
-            />
-        </section>
+        <MapsContainer />
     </ContentPage>
 </template>
 
 <script>
 import SearchBox from '@/components/home/SearchBox';
 import ContentPage from '@/components/page/ContentPage';
-import HomeCard from '@/components/home/card/HomeCard';
-import { mapActions, mapGetters } from 'vuex';
 import { GAME_MODE } from '../constants';
+import MapsContainer from '@/components/home/MapsContainer.vue';
 export default {
     components: {
         ContentPage,
         SearchBox,
-        HomeCard,
+        MapsContainer,
     },
     props: {
         dialogCustomOpen: Boolean,
@@ -86,13 +65,6 @@ export default {
                 });
             }
         }
-
-        this.getListMaps();
-        this.getListMapsCustoms();
-    },
-    methods: { ...mapActions(['getListMaps', 'getListMapsCustoms']) },
-    computed: {
-        ...mapGetters(['maps', 'areasList']),
     },
 };
 </script>
@@ -154,17 +126,7 @@ export default {
             right: 0;
         }
     }
-    .sliders-container {
-        max-width: 100vw;
-    }
-    #maps {
-        padding: 3rem 15px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        column-gap: 30px;
-        row-gap: 1.5rem;
-        justify-items: center;
-    }
+    
 }
 @media (max-width: 1300px) and (min-width: 600px) {
     .home-page
@@ -190,13 +152,6 @@ export default {
     }
 }
 
-@media (max-width: 330px) {
-    .home-page #maps {
-        grid-auto-columns: 90%;
-        column-gap: 0;
-        padding: 3rem 10px;
-    }
-}
 
 @media (max-height: 550px) {
     .home-page
