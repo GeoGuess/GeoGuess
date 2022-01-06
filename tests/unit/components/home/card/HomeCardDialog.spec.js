@@ -1,8 +1,8 @@
 import HomeCardDialog from '@/components/home/card/HomeCardDialog.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import appInit from '../../../testutils/appInit';
 import Vuex from 'vuex';
 import settingsStore from '../../../../../src/store/settingsStore';
+import appInit from '../../../testutils/appInit';
 
 const args = appInit(createLocalVue());
 
@@ -51,7 +51,7 @@ describe('HomeCardDialog.vue', () => {
                     descriptionLocate:
                         'Une liste de plus de 40 villes : PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…',
                     author: 'BilelJegham',
-                    imageUrl:
+                    imageSrc:
                         'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=140',
                     url: 'https://mapurl.geojson',
                 },

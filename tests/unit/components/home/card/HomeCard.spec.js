@@ -1,7 +1,7 @@
 import HomeCard from '@/components/home/card/HomeCard.vue';
+import { GeoMapCustom } from '@/models/GeoMap';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../../testutils/appInit';
-import {GeoMapCustom} from '@/models/GeoMap';
 
 const args = appInit(createLocalVue());
 const data = {
@@ -16,7 +16,7 @@ const data = {
             'List of 40 biggest cities of the world: PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…',
     },
     author: 'BilelJegham',
-    imageUrl:
+    imageSrc:
         'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=140',
     url: 'https://mapurl.geojson',
 };
