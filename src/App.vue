@@ -35,14 +35,14 @@ export default {
     created() {
         // Listen for our custom event from the SW registration
         document.addEventListener('swUpdated', this.setUpdate, { once: true });
+        if(navigator.serviceWorker)
+            navigator.serviceWorker.addEventListener('controllerchange', () => { 
+                // Prevent multiple refreshes
+                if (this.refreshing) return;
+                this.refreshing = true;
 
-        navigator.serviceWorker.addEventListener('controllerchange', () => { 
-            // Prevent multiple refreshes
-            if (this.refreshing) return;
-            this.refreshing = true;
-
-            window.location.reload();
-        });
+                window.location.reload();
+            });
     },
     methods:{
         setUpdate(event) {
