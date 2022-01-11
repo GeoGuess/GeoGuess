@@ -253,7 +253,8 @@ export default {
                         ...state.gameSettings,
                         difficulty,
                         placeGeoJson: rootState.homeStore.map.geojson,
-                        bboxObj: bboxObj,
+                        bboxObj: bboxObj,                        
+                        ...(rootState.homeStore.map ? {mapDetails: rootState.homeStore.map.details} : undefined)
                     },
                 });
                 dispatch('closeDialogRoom');

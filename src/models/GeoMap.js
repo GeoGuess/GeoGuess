@@ -19,6 +19,15 @@ export class GeoMap {
         return this.imageUrl ||
             `https://source.unsplash.com/500x230/weekly?${encodeURI(getLocateString(this, 'name', 'en'))}`;
     }
+    
+    get details(){
+        return {
+            custom: !!this.custom,
+            id: this.id,
+            name: this.name,
+        };
+    }
+
 }
 
 export class GeoMapCustom extends GeoMap {

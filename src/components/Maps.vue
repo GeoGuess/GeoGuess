@@ -157,6 +157,7 @@
             :points="points"
             :game="game"
             :multiplayer="!!this.room"
+            :mapDetails="this.mapDetails"
             @finishGame="finishGame"
             @playAgain="goToNextRound(true)"
         />
@@ -203,6 +204,7 @@ export default {
         'scoreMode',
         'areasGeoJsonUrl',
         'pathKey',
+        'mapDetails',
     ],
     data() {
         return {

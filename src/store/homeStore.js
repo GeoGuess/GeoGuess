@@ -97,6 +97,15 @@ export default {
                 0
             );
         },
+
+        getMaxScoreMap: (state) => (map) =>{
+            return state.history.reduce((acc, {score, mapDetails})=>{
+                if(mapDetails && mapDetails.id === map.id && acc < score){
+                    return score;
+                }
+                return acc;
+            }, 0);
+        }
     },
 
     actions: {

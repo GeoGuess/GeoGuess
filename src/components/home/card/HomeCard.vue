@@ -35,7 +35,7 @@
             </v-menu>
 
             <v-card-title>
-                {{ data.nameLocate }}
+                {{ data.nameLocate }} {{maxScore}}
             </v-card-title>
         </v-img>
         <v-card-actions class="map-card__actions">
@@ -48,7 +48,7 @@
 
 <script>
 import HomeCardDialog from '@/components/home/card/HomeCardDialog';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'HomeCard',
     components: {
@@ -60,6 +60,13 @@ export default {
             type: String,
             validator: (v) => ['map', 'area'].includes(v),
         },
+    },
+    computed: {
+        ...mapGetters(['getMaxScoreMap']),
+        maxScore(){
+            console.log(this.getMaxScoreMap);
+            return this.getMaxScoreMap(this.data);
+        }
     },
     methods: {
         ...mapActions(['getListMapsCustoms', 'setMapLoaded']),
