@@ -1,0 +1,22 @@
+{
+    "name": "@geoguess/geoguess-scripts",
+    "description": "Utilities scripts for geoguess",
+    "scripts": {
+        "start": "node clean-rooms.js"
+    },
+    "dependencies": {
+        "firebase-admin": "^10.0.0",
+        "yargs": "^16.2.0"
+    },
+    "bin": {
+        "clean-rooms": "./clean-rooms.js"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GeoGuess/GeoGuess.git"
+    },
+    "version": "0.0.2"
+}
