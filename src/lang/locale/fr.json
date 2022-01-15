@@ -40,8 +40,8 @@
         "Sections": {
             "areasTitle": "Zones",
             "mapsTitle": "Cartes",
-            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-            "barrelRoll": "do a barrel roll"
+            "pleaseSelectLabel": "Vous semblez perdu, veuillez sélectionner un critère ou vous pouvez ",
+            "barrelRoll": "faîtes un tonneau"
         }
     },
     "StreetView": {
