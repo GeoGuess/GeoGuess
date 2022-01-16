@@ -3,6 +3,7 @@
         "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "HISTORY",
         "about": "ABOUT",
+        "createMap": "Create Map",
         "searchBar": {
             "customLoaded": "Custom map has been loaded",
             "enterCity": "Enter city, state or country"
@@ -31,7 +32,12 @@
         },
         "HomeCard": {
             "edit": "Edit",
-            "delete": "Delete"
+            "delete": "Delete",
+            "medal":{
+                "gold": "Gold",
+                "silver": "Silver",
+                "bronze": "Bronze"
+            }
         },
         "HomeCardMode": {
             "map": "Map",

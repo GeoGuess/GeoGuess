@@ -22,6 +22,46 @@ export function validURL(str) {
 }
 
 /**
+ * Return geojson from url
+ * @param {string} url 
+ * @returns geojson 
+ */
+export async function getGeoJsonFromUrl(url) {
+    if (validURL(url)) {
+        // if gist url get raw
+        if (RegExp('^(https?://)?gist.github.com/').test(url)) {
+            let urlSplit = url.split('/');
+            if (
+                urlSplit.length > 3 &&
+                urlSplit[urlSplit.length - 1] !== 'raw'
+            ) {
+                urlSplit[urlSplit.length - 3] =
+                    'gist.githubusercontent.com';
+                urlSplit.push('raw');
+                url = urlSplit.join('/');
+            }
+        }
+        const geojson = await axios
+            .get(url)
+            .then((res) => {
+                if (res.status === 200 && res.data) {
+                    if (typeof res.data === 'object') {
+                        return res.data;
+                    } else {
+                        return JSON.parse(res.data);
+                    }
+                }
+            })
+            .catch((err) => {
+                // eslint-disable-next-line no-console
+                console.log(err);
+            });
+        
+        return geojson;
+    }
+}
+
+/**
  * Search if point is in GeoJSON
  * @param {Point} point
  * @param {FeatureCollection} geoJSON

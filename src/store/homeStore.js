@@ -1,9 +1,8 @@
 import axios from '@/plugins/axios';
-import { validURL } from '@/utils';
 import i18n from '../lang';
 import { GeoMap, GeoMapCustom } from '../models/GeoMap';
 import IndexedDBService from '../plugins/IndexedDBService';
-import { getLocateString, isGeoJSONValid } from '../utils';
+import { getGeoJsonFromUrl, getLocateString, isGeoJSONValid } from '@/utils';
 import * as MutationTypes from './mutation-types';
 
 export default {
@@ -73,8 +72,11 @@ export default {
             return state.customsMaps
                 .map((map) => Object.assign(new GeoMapCustom(), map))
                 .concat(
-                    state.listMaps.map((map) =>
-                        Object.assign(new GeoMap(), map)
+                    state.listMaps.map((map, i) =>
+                        Object.assign(new GeoMap(), {
+                            ...map,
+                            id: i,
+                        })
                     )
                 );
         },
@@ -99,9 +101,9 @@ export default {
         },
 
         getMaxScoreMap: (state) => (map) =>{
-            return state.history.reduce((acc, {score, mapDetails})=>{
-                if(mapDetails && mapDetails.id === map.id && acc < score){
-                    return score;
+            return state.history.reduce((acc, {points, mapDetails})=>{
+                if(mapDetails && mapDetails.id === map.id && acc < points){
+                    return points;
                 }
                 return acc;
             }, 0);
@@ -145,6 +147,15 @@ export default {
                         ) {
                             let feature = res.data.features[0];
                             commit(MutationTypes.HOME_SET_GEOJSON, feature);
+                            /**
+                             *                             
+        mapDetails(){
+            if(this.placeGeoJson && this.placeGeoJson.properties){
+                return this.placeGeoJson.properties;
+            }
+            return undefined;
+        },
+                             */
                             return;
                         }
                         commit(
@@ -157,37 +168,17 @@ export default {
                     });
             }
         },
-        async loadGeoJsonFromUrl({ commit }, url) {
-            if (validURL(url)) {
-                // if gist url get raw
-                if (RegExp('^(https?://)?gist.github.com/').test(url)) {
-                    let urlSplit = url.split('/');
-                    if (
-                        urlSplit.length > 3 &&
-                        urlSplit[urlSplit.length - 1] !== 'raw'
-                    ) {
-                        urlSplit[urlSplit.length - 3] =
-                            'gist.githubusercontent.com';
-                        urlSplit.push('raw');
-                        url = urlSplit.join('/');
-                    }
-                }
-                const geojson = await axios
-                    .get(url)
-                    .then((res) => {
-                        if (res.status === 200 && res.data) {
-                            if (typeof res.data === 'object') {
-                                return res.data;
-                            } else {
-                                return JSON.parse(res.data);
-                            }
-                        }
-                    })
-                    .catch((err) => {
-                        // eslint-disable-next-line no-console
-                        console.log(err);
-                    });
+        async loadMap({ commit }, map) {
+            const geojson = await getGeoJsonFromUrl(map.url);
+            if (geojson) {
+                map.geojson = geojson;
+                commit(MutationTypes.HOME_SET_MAP, map);
+            }
 
+        },
+        async loadGeoJsonFromUrl({ commit }, url) {
+            const geojson = await getGeoJsonFromUrl(url);
+            if (geojson) {
                 commit(MutationTypes.HOME_SET_GEOJSON, geojson);
             }
         },

@@ -152,7 +152,7 @@ export default {
     .maps {
         padding: 3rem 15px;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
         column-gap: 30px;
         row-gap: 1.5rem;
         justify-items: center;

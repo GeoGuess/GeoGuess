@@ -24,7 +24,7 @@ export class GeoMap {
         return {
             custom: !!this.custom,
             id: this.id,
-            name: this.name,
+            name: this.nameLocate,
         };
     }
 
