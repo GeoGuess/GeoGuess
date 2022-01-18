@@ -1,0 +1,203 @@
+{
+    "Home": {
+        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
+        "historyBtn": "HISTORY",
+        "about": "ABOUT",
+        "searchBar": {
+            "customLoaded": "Custom map has been loaded",
+            "enterCity": "Enter city, state or country"
+        },
+        "aboutDescriptions": {
+            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
+            "2": "This game was forked from "
+        },
+        "customMap": "CUSTOMS MAP",
+        "customMapDescriptions": {
+            "1": "You can limit random locations to cities, states, or countries with the search bar.",
+            "2": "In the multiplayer, the first player fixes the location.",
+            "3": "Furthermore, you can make your custom map with ",
+            "4": "file.",
+            "5": "Insert the content of the GeoJson map with the button :",
+            "6": "Customs Map selection : "
+        },
+        "limitation": "LIMITATION",
+        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
+        "play": "Play",
+        "streamerModeActivate": "Streamer mode activate",
+        "streamerModeDetails": "URLs and room names are hidden",
+        "mapSavedAlert": {
+            "title": "Map saved 🎉",
+            "subtitle": "You will find it in your map lists"
+        },
+        "HomeCard": {
+            "edit": "Edit",
+            "delete": "Delete"
+        },
+        "HomeCardMode": {
+            "map": "Map",
+            "area": "Area"
+        },
+        "Sections": {
+            "areasTitle": "Areas",
+            "mapsTitle": "Maps",
+            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
+            "barrelRoll": "do a barrel roll"
+        }
+    },
+    "StreetView": {
+        "nearby": {
+            "title": "Nearby Position",
+            "message": "Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉"
+        },
+        "waitForOtherPlayers": "Waiting for other players...",
+        "redirectToHomePage": "Redirecting to Home Page...",
+        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
+        "waitForOtherPlayersToFinish": "Waiting for other players to finish the game...",
+        "confirmExit": "Are you sure to leave the current game? This will abort the game!",
+        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+    },
+    "Maps": {
+        "makeGuess": "MAKE GUESS",
+        "guess": "GUESS",
+        "nextRound": "NEXT ROUND",
+        "viewSummary": "VIEW SUMMARY",
+        "exit": "EXIT",
+        "reset": "RESET",
+        "playAgain": "PLAY AGAIN",
+        "infoWindow": {
+            "Distance": "Distance",
+            "Points": "Points"
+        }
+    },
+    "Header": {
+        "language": "Language",
+        "about": "About",
+        "limitation": "Limitation",
+        "contact": "Contact"
+    },
+    "HeaderGame": {
+        "room": "ROOM",
+        "round": "ROUND",
+        "distance": "DISTANCE",
+        "kmaway": "{value} km away",
+        "score": "SCORE"
+    },
+    "next": "NEXT",
+    "cancel": "CANCEL",
+    "DialogCustomMap": {
+        "title": "Custom Map",
+        "invalid": "Invalid GeoJSON",
+        "text": "Text",
+        "url": "Url",
+        "file": "File",
+        "edit": "Edit Map",
+        "fileLabel": "Select GeoJSON file",
+        "OK": "OK",
+        "download": "Download GeoJSON",
+        "Clean": "Clean",
+        "save": "save",
+        "inputName": {
+            "label": "Map Name",
+            "placeholder": "My favorite place"
+        }
+    },
+    "History": {
+        "title": "History",
+        "date": "Date",
+        "mode": "Mode",
+        "time": "Time",
+        "distance": "Distance",
+        "points": "Points",
+        "rank": "Rank",
+        "actions": "Actions",
+        "search": "Search",
+        "exportGeoSave": "Export GeoSave",
+        "importGeoSave": "Import GeoSave",
+        "exportCSV": "Export CSV",
+        "total": "Total"
+    },
+    "DialogRoom": {
+        "singlePlayer": "Single Player",
+        "withFriends": "With Friends",
+        "invalidRoomName": "Invalid name. Please try another.",
+        "inProgress": "The first player is creating the room right now. Please wait and try again.",
+        "roomIsFull": "This room is already full. Please try another.",
+        "alreadyStarted": "This room has aldready started.  Please try another."
+    },
+    "CardRoomName": {
+        "title": "Type a room name to create a new room or join a existing room"
+    },
+    "CardRoomPlayerName": {
+        "title": "Room:",
+        "input": "Type a player name.",
+        "anonymousPlayerName": "Anonymous 🕵",
+        "players": "1 player | {count} players"
+    },
+    "CardRoomSize": {
+        "title": "Set a room size."
+    },
+    "CardRoomTime": {
+        "title": "Set a time limit.",
+        "infinite": "Infinite"
+    },
+    "CardRoomMap": {
+        "title": "Define your map",
+        "loadBtn": "Load MAP",
+        "reset": "Reset"
+    },
+    "CardRoomSettings": {
+        "title": "Game Settings",
+        "modeLabel": "Select game mode",
+        "includePhotopheres": "Include Photospheres",
+        "timeAttackLabel": "TimeAttack",
+        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
+        "allowMove": "Allow Move",
+        "allowZoom": "Allow Zoom",
+        "allowPan": "Allow Pan",
+        "countDownLabel": "CountDown (seconds)",
+        "scoreModeLabel": "Score formula",
+        "scoreModes": {
+            "normal": "normal",
+            "time": "time"
+        },
+        "selectAreas": "Select Areas",
+        "moreSettings": "More settings"
+    },
+    "CardRoomDifficulty": {
+        "title": "Set a difficulty level.",
+        "easy": "easy (world)",
+        "medium": "medium (country)",
+        "hard": "hard (city)"
+    },
+    "DialogSummary": {
+        "summaryMsgSinglePoints": "Your score is <strong>{points}</strong> points! ",
+        "summaryMsgSingleDistance": "You are <strong>{distance}</strong> km away!",
+        "summaryMsgMultiPoints": "<strong>{playerName}</strong> score is <strong>{points}</strong> ! ",
+        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km away)",
+        "viewDetails": "View details"
+    },
+    "Footer": {
+        "under": "under",
+        "privacyPolicy": "Privacy Policy"
+    },
+    "urlCopied": "Url copied",
+    "DetailsMap": {
+        "moreInfo": "More information"
+    },
+    "modes": {
+        "classic": "Classic",
+        "country": "Pick country",
+        "custom_area": "Pick"
+    },
+    "Demo": {
+        "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
+        "btn": "Join Us"
+    },
+    "OK": "OK",
+    "yes": "yes",
+    "no": "no",
+    "AlertUpdate": {
+        "label": "A new version is available. Click on the button to obtain it.",
+        "btn": "Update"
+    }
+}
