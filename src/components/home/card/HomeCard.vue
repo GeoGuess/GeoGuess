@@ -6,7 +6,7 @@
             gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)"
             :src="data.imageSrc"
         >
-            <v-menu>
+            <v-menu v-if="data.type === 'custom'">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn
                         icon
@@ -72,6 +72,8 @@
 <script>
 import HomeCardDialog from '@/components/home/card/HomeCardDialog';
 import { mapActions, mapGetters } from 'vuex';
+import { GeoMapType } from '../../../models/GeoMap';
+import { getMedals } from '@/utils/game/medals';
 
 export default {
     name: 'HomeCard',
@@ -94,22 +96,13 @@ export default {
             return undefined;           
         },
         colorMedal(){
-            if(this.maxScore > 24000){
-                return 'gold';
-            }
-            if(this.maxScore > 20000){
-                return 'silver';
-            }
-            if(this.maxScore > 15000){
-                return 'bronze';
-            }
-            return undefined;
+          return getMedals(this.maxScore);
         }
     },
     methods: {
         ...mapActions(['getListMapsCustoms', 'setMapLoaded']),
         async deleteMap() {
-            if (this.type === 'map' && this.data.custom) {
+            if (this.type === 'map' && this.data.type === GeoMapType.Custom) {
                 await this.data.delete();
                 this.getListMapsCustoms();
             }

@@ -339,10 +339,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-card,
-.v-data-table {
-    background-color: #f1e9d6 !important;
-}
 #historyTable {
     h2 {
         font-weight: 500;

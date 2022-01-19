@@ -1,8 +1,8 @@
 import axios from '@/plugins/axios';
-import i18n from '../lang';
-import { GeoMap, GeoMapCustom } from '../models/GeoMap';
-import IndexedDBService from '../plugins/IndexedDBService';
 import { getGeoJsonFromUrl, getLocateString, isGeoJSONValid } from '@/utils';
+import i18n from '../lang';
+import { GeoMap, GeoMapCustom, GeoMapOSM, GeoMapType } from '../models/GeoMap';
+import IndexedDBService from '../plugins/IndexedDBService';
 import * as MutationTypes from './mutation-types';
 
 export default {
@@ -102,7 +102,16 @@ export default {
 
         getMaxScoreMap: (state) => (map) =>{
             return state.history.reduce((acc, {points, mapDetails})=>{
-                if(mapDetails && mapDetails.id === map.id && acc < points){
+                if(mapDetails && mapDetails.id && mapDetails.id === map.id && acc < points){
+                    return points;
+                }
+                return acc;
+            }, 0);
+        },
+
+        getMaxScoreOsm: (state) => ({osmId, osmType}) =>{
+            return state.history.reduce((acc, {points, mapDetails})=>{
+                if(mapDetails && mapDetails.type === GeoMapType.OSM && mapDetails.osmId === osmId && mapDetails.osmType === osmType && acc < points){
                     return points;
                 }
                 return acc;
@@ -137,7 +146,7 @@ export default {
                     .get(
                         `https://nominatim.openstreetmap.org/search/${encodeURIComponent(
                             place.toLowerCase()
-                        )}?format=geojson&limit=1&polygon_geojson=1`
+                        )}?format=geojson&limit=1&polygon_geojson=1`// TODO : add &accept-language=en 
                     )
                     .then((res) => {
                         if (
@@ -146,16 +155,14 @@ export default {
                             res.data.features.length > 0
                         ) {
                             let feature = res.data.features[0];
-                            commit(MutationTypes.HOME_SET_GEOJSON, feature);
-                            /**
-                             *                             
-        mapDetails(){
-            if(this.placeGeoJson && this.placeGeoJson.properties){
-                return this.placeGeoJson.properties;
-            }
-            return undefined;
-        },
-                             */
+                            const map = new GeoMapOSM(
+                                feature.properties.display_name, 
+                                feature.properties.osm_id,
+                                feature.properties.osm_type,
+                                feature
+                            );
+                            commit(MutationTypes.HOME_SET_MAP, map);
+
                             return;
                         }
                         commit(

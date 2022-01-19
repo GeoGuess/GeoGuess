@@ -33,3 +33,13 @@ export default {
     background-color: #ded3af;
 }
 </style>
+
+<style lang="scss" scoped>
+.page .content {
+    background: #f1e9d6;
+    margin: 2.5% 5%;
+    border-radius: 5px;
+    padding: 2%;
+}
+</style>
+

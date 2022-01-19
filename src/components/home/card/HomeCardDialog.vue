@@ -69,7 +69,7 @@ export default {
                 this.loadGeoJsonFromUrl(this.data.data.urlArea);
                 this.setGameSettings({ areaParams: this.data });
             } else {
-                if (this.data.custom) {
+                if (this.data.type === 'map') {
                     this.setMapLoaded(this.data);
                 } else {
                     this.loadMap(this.data);
