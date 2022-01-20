@@ -39,7 +39,9 @@
         },
         "Sections": {
             "areasTitle": "אזורים",
-            "mapsTitle": "מפות"
+            "mapsTitle": "מפות",
+            "pleaseSelectLabel": "נדמה שאיבדת את הדרך, אנא בחר סוג או שתוכל ",
+            "barrelRoll": "do a barrel roll"
         }
     },
     "StreetView": {
