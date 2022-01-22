@@ -91,7 +91,7 @@ export default {
         ...mapGetters(['getMaxScoreMap']),
         maxScore(){
             if(this.type === 'map'){
-                return this.getMaxScoreMap(this.data)+50000;
+                return this.getMaxScoreMap(this.data);
             }
             return undefined;           
         },
@@ -135,6 +135,9 @@ export default {
         top: -10px;
         right: -60px;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        &--platine{
+            background: linear-gradient(45deg, #468f69 0%, #fcc200 100%);
+        }
         &--gold{
             background: #fcc200;
         }

@@ -34,6 +34,7 @@
             "edit": "Edit",
             "delete": "Delete",
             "medal":{
+                "platine": "Platine",
                 "gold": "Gold",
                 "silver": "Silver",
                 "bronze": "Bronze"

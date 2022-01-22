@@ -1,7 +1,7 @@
 <template>
     <ContentPage>
-        <div class="content">
-            <WorldCountries />
+        <div class="content content--no-background mt-5 mb-0 pa-0">
+            <WorldCountries class="m-auto" :countries="countriesData" />
         </div>
         <div class="content">
             <v-text-field
@@ -19,6 +19,7 @@
                 sort-by="maxScore"
                 sort-desc
                 disable-pagination
+                @click:row="onClickRow"
             >
                 <template v-slot:item.name="{ item }">
                     <div  class="country-col">
@@ -57,7 +58,7 @@ export default {
     data(){
           return {
             search: '',
-            medalcolors: { gold: '#fcc200', silver: '#b8b8b8', bronze: '#CC8E34', none: ''},
+            medalcolors: { platine: '#468f69', gold: '#fcc200', silver: '#b8b8b8', bronze: '#CC8E34', none: ''},
             headers: [
                 {
                     text: 'Country',
@@ -667,7 +668,7 @@ export default {
     computed: {
         ...mapGetters(['getMaxScoreOsm']),
         items(){
-            return this.medals.map((medal, i)=>{
+            return this.medals.map((medal)=>{
               const maxScore = this.getMaxScoreOsm(medal);
               return {
                 ...medal,
@@ -676,13 +677,26 @@ export default {
                 medal: getMedals(maxScore)
               };
             });
+        },
+        countriesData(){
+            return this.items.reduce((acc, item)=>{
+              if(item.medal) 
+                acc[item.iso_a2] = item.medal;
+              return acc;
+            }, {});
         }
     },
     mounted(){
         this.loadHistory();
     },
     methods:{
-        ...mapActions(['loadHistory']),
+        ...mapActions(['loadHistory', 'loadPlaceGeoJSON']),
+        ...mapActions('settingsStore', ['openDialogRoom']),
+        onClickRow({osmId}){
+            this.loadPlaceGeoJSON({osmId});
+            this.openDialogRoom(true);
+            this.$router.push({name: 'home'});
+        }
     }
 };
 </script>

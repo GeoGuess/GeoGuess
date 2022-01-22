@@ -133,21 +133,28 @@ export default {
                 { root: true }
             );
         },
-        loadPlaceGeoJSON({ commit, state }, place) {
-            if (place != null && place != '') {
+        loadPlaceGeoJSON({ commit, state }, payload) {
+            let place, osmId;
+            if(typeof payload === 'string'){
+                place = payload;
+            }else{
+                place = payload.place;
+                osmId = payload.osmId;
+            }
+
+            if ((place != null && place != '') || osmId) {
                 if (state.loadingGeoJson) {
                     return;
                 }
                 commit(MutationTypes.HOME_SET_STATUS_GEOJSON, true);
 
                 commit(MutationTypes.HOME_SET_GEOJSON, null);
-
+                const url =
+                    osmId ?
+                        `https://nominatim.openstreetmap.org/lookup?osm_ids=R${osmId}&format=geojson&polygon_geojson=1`
+                    : `https://nominatim.openstreetmap.org/search/${encodeURIComponent(place.toLowerCase())}?format=geojson&limit=1&polygon_geojson=1`;// TODO : add &accept-language=en 
                 axios
-                    .get(
-                        `https://nominatim.openstreetmap.org/search/${encodeURIComponent(
-                            place.toLowerCase()
-                        )}?format=geojson&limit=1&polygon_geojson=1`// TODO : add &accept-language=en 
-                    )
+                    .get(url)
                     .then((res) => {
                         if (
                             res &&

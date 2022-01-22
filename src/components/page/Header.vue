@@ -16,10 +16,11 @@
                 @click="menuMobile = !menuMobile"
             ></v-app-bar-nav-icon>
             <nav class="header__nav" :class="{ visible: menuMobile }">
-                <v-btn id="historyBtn" text>
-                    <router-link to="/history">
-                        {{ $t('Home.historyBtn') }}
-                    </router-link>
+                <v-btn id="historyBtn" text link to="/history">
+                    {{ $t('Home.historyBtn') }}
+                </v-btn>
+                <v-btn id="historyBtn" text link to="/medals">        
+                    Medals
                 </v-btn>
                 <div class="header__nav__btns">
                     <v-btn id="aboutBtn" text @click="aboutDialog = true">
