@@ -1,6 +1,5 @@
 import axios from '@/plugins/axios';
 import { getGeoJsonFromUrl, getLocateString, isGeoJSONValid } from '@/utils';
-import Vue from 'vue';
 import i18n from '../lang';
 import { GeoMap, GeoMapCustom, GeoMapOSM, GeoMapType } from '../models/GeoMap';
 import IndexedDBService from '../plugins/IndexedDBService';

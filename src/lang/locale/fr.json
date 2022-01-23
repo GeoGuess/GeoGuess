@@ -39,7 +39,9 @@
         },
         "Sections": {
             "areasTitle": "Zones",
-            "mapsTitle": "Cartes"
+            "mapsTitle": "Cartes",
+            "pleaseSelectLabel": "Vous semblez perdu, veuillez sélectionner un critère ou vous pouvez ",
+            "barrelRoll": "faîtes un tonneau"
         }
     },
     "StreetView": {
