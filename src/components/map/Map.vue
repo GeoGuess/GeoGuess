@@ -10,7 +10,8 @@
                 fullscreenControl: false,
                 mapTypeControl: false,
                 streetViewControl: false,
-                draggableCursor: 'crosshair'
+                draggableCursor: 'crosshair',
+                clickableIcons: false
             }"
         />
     </div>

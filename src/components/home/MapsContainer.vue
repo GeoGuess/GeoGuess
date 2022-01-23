@@ -145,6 +145,11 @@ export default {
         > div{
             margin: 0 0.5rem;
         }
+        
+        @media (max-width: 700px) {
+            margin-right: auto;
+            width: 90%;
+        }
     }
     .sliders-container {
         max-width: 100vw;

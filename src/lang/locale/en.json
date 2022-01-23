@@ -34,7 +34,7 @@
             "edit": "Edit",
             "delete": "Delete",
             "medal":{
-                "platine": "Platine",
+                "platinum": "Platinum",
                 "gold": "Gold",
                 "silver": "Silver",
                 "bronze": "Bronze"
@@ -109,6 +109,7 @@
         "title": "History",
         "date": "Date",
         "mode": "Mode",
+        "mapName": "Map Name",
         "time": "Time",
         "distance": "Distance",
         "points": "Points",

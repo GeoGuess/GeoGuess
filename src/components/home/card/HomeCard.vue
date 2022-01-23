@@ -33,7 +33,7 @@
                     </v-list-item>
                 </v-list>
             </v-menu>
-            <template v-if="colorMedal" >      
+            <template v-if="colorMedal && type === 'map'" >
                 <div class="map-card__medal-banner" :class="`map-card__medal-banner--${colorMedal}`">
                     <v-tooltip top>
                         <template v-slot:activator="{ on, attrs }">
@@ -135,7 +135,7 @@ export default {
         top: -10px;
         right: -60px;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-        &--platine{
+        &--platinum{
             background: linear-gradient(45deg, #468f69 0%, #fcc200 100%);
         }
         &--gold{
