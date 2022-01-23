@@ -1,5 +1,6 @@
 import axios from '@/plugins/axios';
 import { getGeoJsonFromUrl, getLocateString, isGeoJSONValid } from '@/utils';
+import Vue from 'vue';
 import i18n from '../lang';
 import { GeoMap, GeoMapCustom, GeoMapOSM, GeoMapType } from '../models/GeoMap';
 import IndexedDBService from '../plugins/IndexedDBService';
@@ -151,8 +152,9 @@ export default {
                 commit(MutationTypes.HOME_SET_GEOJSON, null);
                 const url =
                     osmId ?
-                        `https://nominatim.openstreetmap.org/lookup?osm_ids=R${osmId}&format=geojson&polygon_geojson=1`
-                    : `https://nominatim.openstreetmap.org/search/${encodeURIComponent(place.toLowerCase())}?format=geojson&limit=1&polygon_geojson=1`;// TODO : add &accept-language=en 
+                        `https://nominatim.openstreetmap.org/lookup?osm_ids=R${osmId}&format=geojson&polygon_geojson=1&accept-language=en`
+                    : `https://nominatim.openstreetmap.org/search/${encodeURIComponent(place.toLowerCase())}?format=geojson&limit=1&polygon_geojson=1`;
+                    // TODO : add &accept-language=en 
                 axios
                     .get(url)
                     .then((res) => {
@@ -188,7 +190,6 @@ export default {
                 map.geojson = geojson;
                 commit(MutationTypes.HOME_SET_MAP, map);
             }
-
         },
         async loadGeoJsonFromUrl({ commit }, url) {
             const geojson = await getGeoJsonFromUrl(url);

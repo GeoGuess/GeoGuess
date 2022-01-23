@@ -1,7 +1,7 @@
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import { point } from '@turf/helpers';
-import axios from 'axios';
+import axios from '@/plugins/axios';
 import { GAME_MODE } from '../constants';
 
 /**
@@ -28,21 +28,8 @@ export function validURL(str) {
  */
 export async function getGeoJsonFromUrl(url) {
     if (validURL(url)) {
-        // if gist url get raw
-        if (RegExp('^(https?://)?gist.github.com/').test(url)) {
-            let urlSplit = url.split('/');
-            if (
-                urlSplit.length > 3 &&
-                urlSplit[urlSplit.length - 1] !== 'raw'
-            ) {
-                urlSplit[urlSplit.length - 3] =
-                    'gist.githubusercontent.com';
-                urlSplit.push('raw');
-                url = urlSplit.join('/');
-            }
-        }
-        const geojson = await axios
-            .get(url)
+        return await axios
+            .get(formatUrlGeoJSON(url))
             .then((res) => {
                 if (res.status === 200 && res.data) {
                     if (typeof res.data === 'object') {
@@ -57,9 +44,26 @@ export async function getGeoJsonFromUrl(url) {
                 console.log(err);
             });
         
-        return geojson;
     }
 }
+
+function formatUrlGeoJSON(url){
+    // if gist url get raw
+    if (/^(https?:\/\/)?gist.github.com\//.test(url)) {
+        let urlSplit = url.split('/');
+        if (
+            urlSplit.length > 3 &&
+            urlSplit[urlSplit.length - 1] !== 'raw'
+        ) {
+            urlSplit[urlSplit.length - 3] =
+                'gist.githubusercontent.com';
+            urlSplit.push('raw');
+            return url = urlSplit.join('/');
+        }
+    }
+    return url;
+}
+
 
 /**
  * Search if point is in GeoJSON

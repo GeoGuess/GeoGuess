@@ -156,8 +156,8 @@
             :player-name="playerName"
             :points="points"
             :game="game"
-            :multiplayer="!!this.room"
-            :mapDetails="this.mapDetails"
+            :multiplayer="!!room"
+            :mapDetails="mapDetails"
             @finishGame="finishGame"
             @playAgain="goToNextRound(true)"
         />
