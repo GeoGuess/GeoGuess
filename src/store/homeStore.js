@@ -72,11 +72,8 @@ export default {
             return state.customsMaps
                 .map((map) => Object.assign(new GeoMapCustom(), map))
                 .concat(
-                    state.listMaps.map((map, i) =>
-                        Object.assign(new GeoMap(), {
-                            ...map,
-                            id: i,
-                        })
+                    state.listMaps.map((map,i) =>
+                        Object.assign(new GeoMap(),map)
                     )
                 );
         },
@@ -102,7 +99,7 @@ export default {
 
         getMaxScoreMap: (state) => (map) =>{
             return state.history.reduce((acc, {points, mapDetails})=>{
-                if(mapDetails && mapDetails.id && mapDetails.id === map.id && acc < points){
+                if(mapDetails && mapDetails.id && mapDetails.id === map.id && mapDetails.type === map.type && acc < points){
                     return points;
                 }
                 return acc;
@@ -239,7 +236,7 @@ export default {
         async getListMapsCustoms({ commit }) {
             const customsMap = await Promise.resolve(
                 IndexedDBService.loadDb().then(async () => {
-                    return await IndexedDBService.getAllMaps();
+                    return IndexedDBService.getAllMaps();
                 })
             );
             commit(MutationTypes.HOME_SET_LISTS_CUSTOMMAPS, customsMap);

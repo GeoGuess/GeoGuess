@@ -15,8 +15,8 @@ jest.mock('@/plugins/IndexedDBService',()=>{
         list,
     };
 });
+import { GeoMap, GeoMapCustom, GeoMapOSM } from '@/models/GeoMap';
 import IndexedDBService from '@/plugins/IndexedDBService';
-import {GeoMap, GeoMapCustom} from '@/models/GeoMap';
 describe('GeoMap.js', () => {
     it('GeoMap nameLocate', () => {
 
@@ -47,6 +47,19 @@ describe('GeoMap.js', () => {
 
     });
 
+
+    it('GeoMap details should return object', () => {
+
+        let gMap = new GeoMap();
+
+        expect(gMap.details).toEqual({
+            id: undefined,
+            type: 'default',
+            name: '',
+        });
+
+    });
+
     it('GeoMapCustom save delete', async () => {
 
         let gMapCustom = new GeoMapCustom();
@@ -64,4 +77,18 @@ describe('GeoMap.js', () => {
         expect(IndexedDBService.list[2].m).toEqual('deleteMap');
         
     });
+
+    it('GeoMapOSM should crea', () => {
+
+        let gMap = new GeoMapOSM('Map', 123, 'relation', {});
+
+        expect(gMap.details).toEqual({
+            type: 'osm',
+            osmType: 'relation',
+            osmId:  123,
+            name: 'Map',
+        });
+
+    });
+
 });

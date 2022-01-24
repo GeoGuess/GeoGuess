@@ -136,6 +136,73 @@ describe('homeStore.js', () => {
         expect(homeStore.getters.geoJsonString({})).toEqual('');
     });
 
+    it('getMaxScoreMap should return max score for map id 1', ()=>{
+        const state = {
+            history: [
+                {
+                    date: "2020-06-14T15:10:14.579Z",
+                    mapDetails:{
+                        id: 1,
+                        name: 'map1',
+                        type: 'default'
+                    },
+                    points: 12
+                },
+                {
+                    date: "2020-06-14T15:10:14.579Z",
+                    points: 122
+                },
+                {
+                    date: "2020-06-14T15:10:14.579Z",
+                    mapDetails:{
+                        id: 1,
+                        name: 'map1',
+                        type: 'default'
+                    },
+                    points: 102
+                },
+            ]
+        };
+
+        expect(homeStore.getters.getMaxScoreMap(state)({id:1, type: 'default'})).toEqual(102);
+
+    });
+
+    it('getMaxScoreOsm should return max score for osm 123', ()=>{
+        const state = {
+            history: [
+                {
+                    date: "2020-06-14T15:10:14.579Z",
+                    mapDetails:{
+                        osmId: 123,
+                        osmType: 'relation',
+                        name: 'map1',
+                        type: 'osm'
+                    },
+                    points: 12
+                },
+                {
+                    date: "2020-06-14T15:10:14.579Z",
+                    points: 122
+                },
+                {
+                    date: "2020-06-14T15:10:14.579Z",
+                    mapDetails:{
+                        osmId: 123,
+                        osmType: 'relation',
+                        name: 'map1',
+                        type: 'osm'
+                    },
+                    points: 102
+                },
+            ]
+        };
+
+        expect(homeStore.getters.getMaxScoreOsm(state)({osmId:123, osmType: 'relation', type: 'osm'})).toEqual(102);
+
+    });
+
+
     //
     // ACTIONS
     //
