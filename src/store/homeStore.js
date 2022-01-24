@@ -72,7 +72,7 @@ export default {
             return state.customsMaps
                 .map((map) => Object.assign(new GeoMapCustom(), map))
                 .concat(
-                    state.listMaps.map((map,i) =>
+                    state.listMaps.map((map) =>
                         Object.assign(new GeoMap(),map)
                     )
                 );
