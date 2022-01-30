@@ -3,7 +3,7 @@ export function getMedals(score) {
     if(score == 25000){
         return 'platinum';
     }
-    if(score > 24500){
+    if(score > 24000){
         return 'gold';
     }
     if(score > 20000){
