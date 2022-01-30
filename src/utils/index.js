@@ -1,7 +1,7 @@
+import axios from '@/plugins/axios';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import { point } from '@turf/helpers';
-import axios from '@/plugins/axios';
 import { GAME_MODE } from '../constants';
 
 /**
@@ -28,7 +28,7 @@ export function validURL(str) {
  */
 export async function getGeoJsonFromUrl(url) {
     if (validURL(url)) {
-        return await axios
+        return axios
             .get(formatUrlGeoJSON(url))
             .then((res) => {
                 if (res.status === 200 && res.data) {
@@ -58,7 +58,7 @@ function formatUrlGeoJSON(url){
             urlSplit[urlSplit.length - 3] =
                 'gist.githubusercontent.com';
             urlSplit.push('raw');
-            return url = urlSplit.join('/');
+            return urlSplit.join('/');
         }
     }
     return url;
