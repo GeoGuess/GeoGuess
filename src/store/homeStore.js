@@ -133,7 +133,7 @@ export default {
                 { root: true }
             );
         },
-        loadPlaceGeoJSON({ commit, state }, payload) {
+        async loadPlaceGeoJSON({ commit, state }, payload) {
             let place, osmId;
             if(typeof payload === 'string'){
                 place = payload;
@@ -154,7 +154,7 @@ export default {
                         `https://nominatim.openstreetmap.org/lookup?osm_ids=R${osmId}&format=geojson&polygon_geojson=1&accept-language=en`
                     : `https://nominatim.openstreetmap.org/search/${encodeURIComponent(place.toLowerCase())}?format=geojson&limit=1&polygon_geojson=1`;
                     // TODO : add &accept-language=en 
-                axios
+                return axios
                     .get(url)
                     .then((res) => {
                         if (

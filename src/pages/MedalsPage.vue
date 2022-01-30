@@ -134,11 +134,10 @@ export default {
     },
     methods:{
         ...mapActions(['loadHistory', 'loadPlaceGeoJSON']),
-        ...mapActions('settingsStore', ['openDialogRoom']),
-        onClickRow({osmId}){
-            this.loadPlaceGeoJSON({osmId});
-            this.openDialogRoom(true);
-            this.$router.push({name: 'home'});
+        ...mapActions('settingsStore', ['setSettings']),
+        async onClickRow({osmId}){
+            await this.loadPlaceGeoJSON({osmId});
+            this.setSettings();
         },
         selectCountry(codeCountry){
             const iso_a2 = codeCountry.toUpperCase();
