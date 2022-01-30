@@ -296,12 +296,12 @@ export default {
                 }
                 launchParams.files[0].getFile().then((f) => {
                     this.loading = true;
-                    this.$emit('change-visibility');
                     f.text()
                         .then((content) => {
+                            this.$emit('change-visibility');
                             return this.setGeoJsonString(content);
                         })
-                        .then(() => {
+                        .finally(() => {
                             this.loading = false;
                         });
                 });
