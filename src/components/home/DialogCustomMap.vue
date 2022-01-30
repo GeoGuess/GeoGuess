@@ -298,7 +298,6 @@ export default {
                     this.loading = true;
                     f.text()
                         .then((content) => {
-                            this.$emit('change-visibility');
                             return this.setGeoJsonString(content);
                         })
                         .finally(() => {

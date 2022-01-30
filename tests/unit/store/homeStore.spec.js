@@ -17,6 +17,12 @@ jest.mock('@/plugins/axios', () => {
             state: 'Occitania',
         },
     };
+    const reponseNte = {
+        "type":"FeatureCollection","licence":"Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "features":[
+            {"type":"Feature","properties":{"place_id":281995451,"osm_type":"relation","osm_id":59874,"display_name":"Nantes, Loire-Atlantique, Pays de la Loire, France métropolitaine, France","place_rank":16,"category":"boundary","type":"administrative","importance":0.7430886552278881,"icon":"https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png"},
+            "bbox":[-1.6418115,47.1805856,-1.4788443,47.2958583],"geometry":{"type":"Polygon","coordinates":[]}}
+        ]};
     return {
         get: jest.fn((url) => {
             let data;
@@ -27,6 +33,9 @@ jest.mock('@/plugins/axios', () => {
                     break;
                 case 'https://listmaps.gejson':
                     data = { maps: [], areas: [] };
+                    break;
+                case 'https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1':
+                    data = reponseNte;
                     break;
             }
 
@@ -216,7 +225,7 @@ describe('homeStore.js', () => {
         );
     });
 
-    it('loadPlaceGeoJSON', async () => {
+    it('loadPlaceGeoJSON: should commit GeoJSON', async () => {
         const commit = jest.fn();
         await homeStore.actions.loadPlaceGeoJSON(
             { commit, state: { loadingGeoJson: false } },
