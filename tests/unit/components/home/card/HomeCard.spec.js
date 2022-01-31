@@ -2,6 +2,7 @@ import HomeCard from '@/components/home/card/HomeCard.vue';
 import { GeoMapCustom } from '@/models/GeoMap';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../../testutils/appInit';
+import Vuex from 'vuex';
 
 const args = appInit(createLocalVue());
 const data = {
@@ -23,6 +24,18 @@ const data = {
 describe('HomeCard.vue', () => {
     let store;
 
+    beforeAll(() => {
+        store = new Vuex.Store({
+            modules: {
+                homeStore:{
+                    getters:{
+                        getMaxScoreMap: () => () => 0,
+                    }
+                }
+            },
+        });
+    });
+
     it('render', () => {
 
         const wrapper = shallowMount(HomeCard, {
@@ -38,6 +51,7 @@ describe('HomeCard.vue', () => {
     
     
     it('deleteMap', () => {   
+        
         const map = new GeoMapCustom();
         const spy= jest.spyOn(map,'delete');
         const wrapper = shallowMount(HomeCard, {

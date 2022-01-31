@@ -1,9 +1,10 @@
-import Home from '@/pages/Home';
-import { GAME_MODE } from './constants';
-import StreetView from '@/pages/StreetView';
 import HistoryPage from '@/pages/HistoryPage';
+import Home from '@/pages/Home';
+import MedalsPage from '@/pages/MedalsPage';
+import StreetView from '@/pages/StreetView';
 import Vue from 'vue';
 import Router from 'vue-router';
+import { GAME_MODE } from './constants';
 
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
@@ -47,6 +48,11 @@ export default new Router({
             path: '/history',
             name: 'History',
             component: HistoryPage,
+        },
+        {
+            path: '/medals',
+            name: 'Medals',
+            component: MedalsPage,
         },
         {
             path: '/street-view/:modeSelected/:time',
