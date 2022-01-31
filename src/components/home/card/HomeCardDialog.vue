@@ -63,16 +63,16 @@ export default {
             setGameSettings: SETTINGS_SET_GAME_SETTINGS,
         }),
         ...mapActions('settingsStore', ['openDialogRoom']),
-        ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setMapLoaded']),
+        ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setMapLoaded', 'loadMap']),
         setMap() {
             if (this.type === 'area') {
                 this.loadGeoJsonFromUrl(this.data.data.urlArea);
                 this.setGameSettings({ areaParams: this.data });
             } else {
-                if (this.data.custom) {
+                if (this.data.type === 'custom') {
                     this.setMapLoaded(this.data);
                 } else {
-                    this.loadGeoJsonFromUrl(this.data.url);
+                    this.loadMap(this.data);
                 }
             }
             this.visible = false;

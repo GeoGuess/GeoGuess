@@ -2,9 +2,10 @@
 
 exports[`HomeCard.vue render 1`] = `
 <v-card-stub loaderheight="4" tag="div" width="200" rounded="lg" class="map-card">
-  <v-img-stub height="140px" gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)" options="[object Object]" position="center center" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=140" transition="fade-transition" class="white--text align-end">
+  <v-img-stub height="150px" gradient="rgba(0,0,0,0), rgba(0,0,0,0.8)" options="[object Object]" position="center center" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=140" transition="fade-transition" class="white--text align-end">
     <!---->
-    <v-card-title-stub tag="div">
+    <!---->
+    <v-card-title-stub tag="div" class="map-card__title">
 
     </v-card-title-stub>
   </v-img-stub>

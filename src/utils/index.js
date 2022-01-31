@@ -1,7 +1,7 @@
+import axios from '@/plugins/axios';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import { point } from '@turf/helpers';
-import axios from 'axios';
 import { GAME_MODE } from '../constants';
 
 /**
@@ -20,6 +20,50 @@ export function validURL(str) {
     ); // fragment locator
     return !!pattern.test(str);
 }
+
+/**
+ * Return geojson from url
+ * @param {string} url 
+ * @returns geojson 
+ */
+export async function getGeoJsonFromUrl(url) {
+    if (validURL(url)) {
+        return axios
+            .get(formatUrlGeoJSON(url))
+            .then((res) => {
+                if (res.status === 200 && res.data) {
+                    if (typeof res.data === 'object') {
+                        return res.data;
+                    } else {
+                        return JSON.parse(res.data);
+                    }
+                }
+            })
+            .catch((err) => {
+                // eslint-disable-next-line no-console
+                console.log(err);
+            });
+        
+    }
+}
+
+function formatUrlGeoJSON(url){
+    // if gist url get raw
+    if (/^(https?:\/\/)?gist.github.com\//.test(url)) {
+        let urlSplit = url.split('/');
+        if (
+            urlSplit.length > 3 &&
+            urlSplit[urlSplit.length - 1] !== 'raw'
+        ) {
+            urlSplit[urlSplit.length - 3] =
+                'gist.githubusercontent.com';
+            urlSplit.push('raw');
+            return urlSplit.join('/');
+        }
+    }
+    return url;
+}
+
 
 /**
  * Search if point is in GeoJSON

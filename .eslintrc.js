@@ -27,6 +27,7 @@ module.exports = {
         semi: ['error', 'always'],
         'vue/html-indent': ['warn', 4],        
         "vue/multi-word-component-names": 'off',
+        'vue/valid-v-slot': 'off',
     },
     overrides: [
         {

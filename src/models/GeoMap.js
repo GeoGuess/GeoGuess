@@ -2,9 +2,16 @@ import i18n from '../lang';
 import IndexedDBService from '../plugins/IndexedDBService';
 import { getLocateString } from '../utils';
 
+export const GeoMapType = {
+    Default: 'default',
+    Custom: 'custom',
+    OSM: 'osm'
+};
+
 export class GeoMap {
     constructor() {
         this.geojson = null;
+        this.type = GeoMapType.Default;
     }
 
     get nameLocate() {
@@ -19,6 +26,35 @@ export class GeoMap {
         return this.imageUrl ||
             `https://source.unsplash.com/500x230/weekly?${encodeURI(getLocateString(this, 'name', 'en'))}`;
     }
+    
+    get details(){
+        return {
+            type: this.type,
+            id: this.id,
+            name: this.nameLocate,
+        };
+    }
+
+}
+
+export class GeoMapOSM extends GeoMap {
+    constructor(name, osmId, osmType, geojson) {
+        super();
+        this.name = name;
+        this.osmId = osmId;
+        this.osmType = osmType;
+        this.geojson = geojson;
+        this.type = GeoMapType.OSM;
+    }
+
+    get details(){
+        return {
+            type: this.type,
+            osmType: this.osmType,
+            osmId: this.osmId,
+            name: this.name,
+        };
+    }
 }
 
 export class GeoMapCustom extends GeoMap {
@@ -26,7 +62,7 @@ export class GeoMapCustom extends GeoMap {
         super();
         this.name = '';
         this.id = undefined;
-        this.custom = true;
+        this.type = GeoMapType.Custom;
     }
     get nameLocate() {
         return this.name;
