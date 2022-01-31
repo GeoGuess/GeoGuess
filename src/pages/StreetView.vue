@@ -53,6 +53,8 @@
                         :pathKey="
                             areaParams ? areaParams.data.pathKey : 'iso_a2'
                         "
+                        :mapDetails="mapDetails"
+                        @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
                         @goToNextRound="goToNextRound"
@@ -197,6 +199,11 @@ export default {
         areaParams: {
             type: Object,
         },
+        mapDetails:{
+            type: Object,
+            required: false,
+            default: undefined
+        }
     },
     data() {
         return {

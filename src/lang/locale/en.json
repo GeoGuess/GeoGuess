@@ -2,7 +2,9 @@
     "Home": {
         "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "HISTORY",
+        "medalsBtn": "MEDALS",
         "about": "ABOUT",
+        "createMap": "Create Map",
         "searchBar": {
             "customLoaded": "Custom map has been loaded",
             "enterCity": "Enter city, state or country"
@@ -31,7 +33,13 @@
         },
         "HomeCard": {
             "edit": "Edit",
-            "delete": "Delete"
+            "delete": "Delete",
+            "medal":{
+                "platinum": "Platinum",
+                "gold": "Gold",
+                "silver": "Silver",
+                "bronze": "Bronze"
+            }
         },
         "HomeCardMode": {
             "map": "Map",
@@ -102,6 +110,7 @@
         "title": "History",
         "date": "Date",
         "mode": "Mode",
+        "mapName": "Map Name",
         "time": "Time",
         "distance": "Distance",
         "points": "Points",

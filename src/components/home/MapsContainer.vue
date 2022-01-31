@@ -145,6 +145,11 @@ export default {
         > div{
             margin: 0 0.5rem;
         }
+        
+        @media (max-width: 700px) {
+            margin-right: auto;
+            width: 90%;
+        }
     }
     .sliders-container {
         max-width: 100vw;
@@ -152,7 +157,7 @@ export default {
     .maps {
         padding: 3rem 15px;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
         column-gap: 30px;
         row-gap: 1.5rem;
         justify-items: center;

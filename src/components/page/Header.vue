@@ -16,23 +16,24 @@
                 @click="menuMobile = !menuMobile"
             ></v-app-bar-nav-icon>
             <nav class="header__nav" :class="{ visible: menuMobile }">
-                <v-btn id="historyBtn" text>
-                    <router-link to="/history">
-                        {{ $t('Home.historyBtn') }}
-                    </router-link>
+                <v-btn id="historyBtn" text link to="/history">
+                    {{ $t('Home.historyBtn') }}
+                </v-btn>
+                <v-btn id="historyBtn" text link to="/medals">
+                    {{ $t('Home.medalsBtn') }}
                 </v-btn>
                 <div class="header__nav__btns">
-                    <v-btn id="aboutBtn" text @click="aboutDialog = true">
+                    <v-btn id="aboutBtn" icon @click="aboutDialog = true">
                         <v-icon size="30"> mdi-help-circle </v-icon>
                     </v-btn>
-                    <v-btn text @click="changeStreamerMode(!streamerMode)">
+                    <v-btn icon @click="changeStreamerMode(!streamerMode)">
                         <v-icon size="30">
                             mdi-eye{{ streamerMode ? '-off' : '' }}
                         </v-icon>
                     </v-btn>
                     <v-menu>
                         <template v-slot:activator="{ on }">
-                            <v-btn id="languageBtn" text v-on="on">
+                            <v-btn id="languageBtn" icon v-on="on">
                                 <v-icon size="30"> mdi-translate </v-icon>
                             </v-btn>
                         </template>
@@ -122,9 +123,14 @@ export default {
     .header__nav,
     .header__nav__btns {
         display: flex;
+        align-items: center;        
         & > div {
             margin: 0 1.5rem;
         }
+    }
+    .header__nav__btns .v-btn{
+        color: rgba(0, 0, 0, 0.87);
+        margin: 0.25rem;
     }
     .v-btn {
         a {
@@ -134,18 +140,18 @@ export default {
         font-size: 1.2rem;
     }
     .header__logo {
-        height: 6rem;
+        height: 5rem;
         width: auto;
     }
     .header__logo-min {
         display: none;
     }
     .header__nav-icon {
-        visibility: hidden;
+       display: none;
     }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 840px) {
     .header {
         .header__logo {
             display: none;
@@ -167,12 +173,14 @@ export default {
             border-bottom-right-radius: 0.3125rem;
             max-width: 100%;
             flex-direction: row;
+            flex-wrap: wrap;
+            overflow-y: auto;
             .header__nav__btns {
                 margin: 0;
             }
         }
         .header__nav-icon {
-            visibility: visible;
+            display: flex;
         }
     }
 }

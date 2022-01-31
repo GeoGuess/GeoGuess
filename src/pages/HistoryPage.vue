@@ -1,6 +1,6 @@
 <template>
     <ContentPage>
-        <div class="history__content">
+        <div class="content">
             <HistoryTable />
         </div>
     </ContentPage>
@@ -17,11 +17,3 @@ export default {
     },
 };
 </script>
-<style lang="scss">
-.history__content {
-    background: #f1e9d6;
-    margin: 2.5% 5%;
-    border-radius: 5px;
-    padding: 2%;
-}
-</style>

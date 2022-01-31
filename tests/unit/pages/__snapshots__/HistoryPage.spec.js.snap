@@ -2,7 +2,7 @@
 
 exports[`Home.vue test mounted 1`] = `
 <contentpage-stub>
-  <div class="history__content">
+  <div class="content">
     <historytable-stub></historytable-stub>
   </div>
 </contentpage-stub>
