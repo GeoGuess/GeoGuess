@@ -8,7 +8,7 @@ exports[`Header.vue open dialog about 1`] = `
       <nav class="header__nav"><a href="#/history" class="v-btn v-btn--router v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content">
                 HISTORY
             </span></a> <a href="#/medals" class="v-btn v-btn--router v-btn--text theme--light v-size--default" id="historyBtn"><span class="v-btn__content">
-                Medals
+                MEDALS
             </span></a>
         <div class="header__nav__btns"><button type="button" class="v-btn v-btn--icon v-btn--round theme--light v-size--default" id="aboutBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-help-circle theme--light" style="font-size: 30px;"></i></span></button> <button type="button" class="v-btn v-btn--icon v-btn--round theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--light" style="font-size: 30px;"></i></span></button>
           <div class="v-menu"><button type="button" class="v-btn v-btn--icon v-btn--round theme--light v-size--default" id="languageBtn"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-translate theme--light" style="font-size: 30px;"></i></span></button>

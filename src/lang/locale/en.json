@@ -2,6 +2,7 @@
     "Home": {
         "placeVisited": "0 visited place | 1 visited place | {count} visited places",
         "historyBtn": "HISTORY",
+        "medalsBtn": "MEDALS",
         "about": "ABOUT",
         "createMap": "Create Map",
         "searchBar": {
