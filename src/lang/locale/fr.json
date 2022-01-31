@@ -2,9 +2,9 @@
     "Home": {
         "placeVisited": "0 lieu visité | 1 lieu visité | {count} lieux visités",
         "historyBtn": "Historique",
-        "medalsBtn": "MEDALS",
+        "medalsBtn": "MEDAILLES",
         "about": "A PROPOS",
-        "createMap": "Create Map",
+        "createMap": "Créer une carte",
         "searchBar": {
             "customLoaded": "Une carte personnalisée a été chargée",
             "enterCity": "Saisissez une ville, une région ou un pays"
@@ -35,9 +35,9 @@
             "edit": "Éditer",
             "delete": "Supprimer",
             "medal": {
-                "platinum": "Platinum",
-                "gold": "Gold",
-                "silver": "Silver",
+                "platinum": "Platine",
+                "gold": "Or",
+                "silver": "Argent",
                 "bronze": "Bronze"
             }
         },
@@ -113,7 +113,7 @@
         "title": "Historique",
         "date": "Date",
         "mode": "Mode",
-        "mapName": "Map Name",
+        "mapName": "Nom de la carte",
         "time": "Temps",
         "distance": "Distance",
         "points": "Points",
