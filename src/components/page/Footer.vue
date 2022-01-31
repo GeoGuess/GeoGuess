@@ -29,6 +29,15 @@
                         mdi-twitter
                     </v-icon>
                 </v-btn>
+                <v-btn
+                    icon
+                    color="#FFFFFF"
+                    href="https://www.instagram.com/geoguess.games/"
+                >
+                    <v-icon size="30">
+                        mdi-instagram
+                    </v-icon>
+                </v-btn>
             </div>
             <div class="licence">
                 <p class="mb-0">
@@ -74,9 +83,9 @@ footer {
     }
     .footer__logo{        
         display: grid;
-        grid-template-columns: repeat(3, minmax(36px, 1fr));
+        grid-template-columns: repeat(4, minmax(36px, 1fr));
         justify-items: center;
-        column-gap: 2rem;
+        column-gap: 1.5rem;
     }
 }
 

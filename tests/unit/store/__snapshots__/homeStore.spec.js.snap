@@ -49,12 +49,12 @@ Object {
   ],
   "loadingGeoJson": false,
   "map": GeoMapCustom {
-    "custom": true,
     "geojson": Object {
       "type": "Point",
     },
     "id": undefined,
     "name": "",
+    "type": "custom",
   },
   "streamerMode": false,
 }

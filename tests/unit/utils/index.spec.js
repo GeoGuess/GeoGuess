@@ -169,7 +169,7 @@ describe('utils/index.js', () => {
                 "accept-language": "es"
             }
         });
-        expect(res).toEqual('Ciudad de México');
+        expect(res).toEqual('México');
     });
     
     it('getAreaCodeNameFromLatLng: should return undefined if not value', async () => {

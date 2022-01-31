@@ -142,7 +142,7 @@ export default {
             strokeColors: STROKE_COLORS,
             icon: {
                 url: window.location.origin + '/img/icons/favicon-16x16.png',
-                anchor: new google.maps.Point(8,8),
+                anchor: { x: 8, y: 8 },
             }
         };
     },

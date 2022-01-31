@@ -1,9 +1,8 @@
 import axios from '@/plugins/axios';
-import { validURL } from '@/utils';
+import { getGeoJsonFromUrl, getLocateString, isGeoJSONValid } from '@/utils';
 import i18n from '../lang';
-import { GeoMap, GeoMapCustom } from '../models/GeoMap';
+import { GeoMap, GeoMapCustom, GeoMapOSM, GeoMapType } from '../models/GeoMap';
 import IndexedDBService from '../plugins/IndexedDBService';
-import { getLocateString, isGeoJSONValid } from '../utils';
 import * as MutationTypes from './mutation-types';
 
 export default {
@@ -74,7 +73,7 @@ export default {
                 .map((map) => Object.assign(new GeoMapCustom(), map))
                 .concat(
                     state.listMaps.map((map) =>
-                        Object.assign(new GeoMap(), map)
+                        Object.assign(new GeoMap(),map)
                     )
                 );
         },
@@ -97,6 +96,24 @@ export default {
                 0
             );
         },
+
+        getMaxScoreMap: (state) => (map) =>{
+            return state.history.reduce((acc, {points, mapDetails})=>{
+                if(mapDetails && mapDetails.id && mapDetails.id === map.id && mapDetails.type === map.type && acc < points){
+                    return points;
+                }
+                return acc;
+            }, 0);
+        },
+
+        getMaxScoreOsm: (state) => ({osmId, osmType}) =>{
+            return state.history.reduce((acc, {points, mapDetails})=>{
+                if(mapDetails && mapDetails.type === GeoMapType.OSM && mapDetails.osmId === osmId && mapDetails.osmType === osmType && acc < points){
+                    return points;
+                }
+                return acc;
+            }, 0);
+        }
     },
 
     actions: {
@@ -113,21 +130,29 @@ export default {
                 { root: true }
             );
         },
-        loadPlaceGeoJSON({ commit, state }, place) {
-            if (place != null && place != '') {
+        async loadPlaceGeoJSON({ commit, state }, payload) {
+            let place, osmId;
+            if(typeof payload === 'string'){
+                place = payload;
+            }else{
+                place = payload.place;
+                osmId = payload.osmId;
+            }
+
+            if ((place != null && place != '') || osmId) {
                 if (state.loadingGeoJson) {
                     return;
                 }
                 commit(MutationTypes.HOME_SET_STATUS_GEOJSON, true);
 
                 commit(MutationTypes.HOME_SET_GEOJSON, null);
-
-                axios
-                    .get(
-                        `https://nominatim.openstreetmap.org/search/${encodeURIComponent(
-                            place.toLowerCase()
-                        )}?format=geojson&limit=1&polygon_geojson=1`
-                    )
+                const url =
+                    osmId ?
+                        `https://nominatim.openstreetmap.org/lookup?osm_ids=R${osmId}&format=geojson&polygon_geojson=1&accept-language=en`
+                    : `https://nominatim.openstreetmap.org/search/${encodeURIComponent(place.toLowerCase())}?format=geojson&limit=1&polygon_geojson=1`;
+                    // TODO : add &accept-language=en 
+                return axios
+                    .get(url)
                     .then((res) => {
                         if (
                             res &&
@@ -135,7 +160,14 @@ export default {
                             res.data.features.length > 0
                         ) {
                             let feature = res.data.features[0];
-                            commit(MutationTypes.HOME_SET_GEOJSON, feature);
+                            const map = new GeoMapOSM(
+                                feature.properties.display_name, 
+                                feature.properties.osm_id,
+                                feature.properties.osm_type,
+                                feature
+                            );
+                            commit(MutationTypes.HOME_SET_MAP, map);
+
                             return;
                         }
                         commit(
@@ -148,37 +180,16 @@ export default {
                     });
             }
         },
+        async loadMap({ commit }, map) {
+            const geojson = await getGeoJsonFromUrl(map.url);
+            if (geojson) {
+                map.geojson = geojson;
+                commit(MutationTypes.HOME_SET_MAP, map);
+            }
+        },
         async loadGeoJsonFromUrl({ commit }, url) {
-            if (validURL(url)) {
-                // if gist url get raw
-                if (RegExp('^(https?://)?gist.github.com/').test(url)) {
-                    let urlSplit = url.split('/');
-                    if (
-                        urlSplit.length > 3 &&
-                        urlSplit[urlSplit.length - 1] !== 'raw'
-                    ) {
-                        urlSplit[urlSplit.length - 3] =
-                            'gist.githubusercontent.com';
-                        urlSplit.push('raw');
-                        url = urlSplit.join('/');
-                    }
-                }
-                const geojson = await axios
-                    .get(url)
-                    .then((res) => {
-                        if (res.status === 200 && res.data) {
-                            if (typeof res.data === 'object') {
-                                return res.data;
-                            } else {
-                                return JSON.parse(res.data);
-                            }
-                        }
-                    })
-                    .catch((err) => {
-                        // eslint-disable-next-line no-console
-                        console.log(err);
-                    });
-
+            const geojson = await getGeoJsonFromUrl(url);
+            if (geojson) {
                 commit(MutationTypes.HOME_SET_GEOJSON, geojson);
             }
         },
@@ -225,7 +236,7 @@ export default {
         async getListMapsCustoms({ commit }) {
             const customsMap = await Promise.resolve(
                 IndexedDBService.loadDb().then(async () => {
-                    return await IndexedDBService.getAllMaps();
+                    return IndexedDBService.getAllMaps();
                 })
             );
             commit(MutationTypes.HOME_SET_LISTS_CUSTOMMAPS, customsMap);
