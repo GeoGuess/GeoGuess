@@ -2,7 +2,9 @@
     "Home": {
         "placeVisited": "0 locais visitados | 1 local visitado | {count} lugares visitados",
         "historyBtn": "HISTÓRICO",
+        "medalsBtn": "MEDALS",
         "about": "SOBRE",
+        "createMap": "Create Map",
         "searchBar": {
             "customLoaded": "O mapa personalizado foi carregado",
             "enterCity": "Insira uma cidade, estado ou país"
@@ -31,7 +33,13 @@
         },
         "HomeCard": {
             "edit": "Edit",
-            "delete": "Delete"
+            "delete": "Delete",
+            "medal": {
+                "platinum": "Platinum",
+                "gold": "Gold",
+                "silver": "Silver",
+                "bronze": "Bronze"
+            }
         },
         "HomeCardMode": {
             "map": "Map",
@@ -105,6 +113,7 @@
         "title": "Histórico",
         "date": "Data",
         "mode": "Modo",
+        "mapName": "Map Name",
         "time": "Tempo",
         "distance": "Distância",
         "points": "Pontos",
