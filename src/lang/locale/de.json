@@ -4,7 +4,7 @@
         "historyBtn": "HISTORIE",
         "medalsBtn": "MEDALS",
         "about": "ÜBER",
-        "createMap": "Create Map",
+        "createMap": "Karte erstellen",
         "searchBar": {
             "customLoaded": "Eine benutzerdefinierte Karte wurde geladen",
             "enterCity": "Geben Sie eine Stadt, Region oder ein Land ein"
@@ -35,9 +35,9 @@
             "edit": "Bearbeiten",
             "delete": "Löschen",
             "medal": {
-                "platinum": "Platinum",
+                "platinum": "Platin",
                 "gold": "Gold",
-                "silver": "Silver",
+                "silver": "Silber",
                 "bronze": "Bronze"
             }
         },
@@ -48,7 +48,7 @@
         "Sections": {
             "areasTitle": "Areas",
             "mapsTitle": "Maps",
-            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
+            "pleaseSelectLabel": "Sie scheinen verloren zu sein, bitte wählen Sie einen Typ oder Sie können ",
             "barrelRoll": "do a barrel roll"
         }
     },
@@ -113,7 +113,7 @@
         "title": "Historie",
         "date": "Datum",
         "mode": "Modus",
-        "mapName": "Map Name",
+        "mapName": "Kartenname",
         "time": "Zeit",
         "distance": "Distanz",
         "points": "Punkte",
