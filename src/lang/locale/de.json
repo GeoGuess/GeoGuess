@@ -2,7 +2,7 @@
     "Home": {
         "placeVisited": "0 besuchte Orte | 1 besuchte Stelle | {count} besuchte Orte",
         "historyBtn": "HISTORIE",
-        "medalsBtn": "MEDALS",
+        "medalsBtn": "MEDAILLEN",
         "about": "ÜBER",
         "createMap": "Karte erstellen",
         "searchBar": {
@@ -49,7 +49,7 @@
             "areasTitle": "Areas",
             "mapsTitle": "Maps",
             "pleaseSelectLabel": "Sie scheinen verloren zu sein, bitte wählen Sie einen Typ oder Sie können ",
-            "barrelRoll": "do a barrel roll"
+            "barrelRoll": "mache eine Fassrolle"
         }
     },
     "StreetView": {
