@@ -158,7 +158,7 @@ export function getLocateString(obj, name, language, defaultLanguage = 'en') {
  * @param {object} nominatimQueryParams
  * @returns {string}
  */
-export function getAreaCodeNameFromLatLng(latLng, errorFunction, areaParams) {
+export function getAreaCodeNameFromLatLng(latLng, areaParams) {
     const nominatimQueryParams =
         areaParams && areaParams.nominatimQueryParams
             ? areaParams.nominatimQueryParams
@@ -190,11 +190,7 @@ export function getAreaCodeNameFromLatLng(latLng, errorFunction, areaParams) {
                 }
                 return data.address['country_code'].toUpperCase();
             }
-        })
-        .catch(() => {
-            errorFunction();
-            return null;
-        });
+        });  
 }
 
 export function getValueInObjectWithPath(obj, path) {

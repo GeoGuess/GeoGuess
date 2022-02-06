@@ -18,7 +18,8 @@ export class GameSettings {
         _panControl = true,
         _countdown = 0,
         _scoreMode = SCORE_MODE.NORMAL,
-        _areaParams = null
+        _areaParams = null,
+        _optimiseStreetView = true,
     ) {
         this.allPanorama = _allPanorama;
         this.time = _timeLimitation;
@@ -30,6 +31,7 @@ export class GameSettings {
         this.countdown = _countdown;
         this.scoreMode = _scoreMode;
         this.areaParams = _areaParams;
+        this.optimiseStreetView = _optimiseStreetView;
     }
 }
 
@@ -321,6 +323,7 @@ export default {
                         allPanorama: snapshot.child('allPanorama').val(),
                         scoreMode: snapshot.child('scoreMode').val(),
                         areaParams: snapshot.child('areaParams').val(),
+                        optimiseStreetView: snapshot.child('optimiseStreetView').val(),
                     };
 
                     dispatch('startGameMultiplayer', gameParams);

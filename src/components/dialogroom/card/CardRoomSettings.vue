@@ -120,6 +120,17 @@
                                 "
                                 hide-details
                             />
+                            <v-checkbox
+                                :input-value="gameSettings.optimiseStreetView"
+                                @change="
+                                    (optimiseStreetView) =>
+                                        setGameSettings({ optimiseStreetView })
+                                "
+                                :label="
+                                    $('CardRoomSettings.optimiseStreetView')
+                                "
+                                hide-details
+                            />     
                             <br />
                             <v-list-group prepend-icon="mdi-cog">
                                 <template v-slot:activator>

@@ -140,7 +140,7 @@ describe('utils/index.js', () => {
             lat: () => 47.040182144806664,
             lng: () => -0.703125,
         };
-        const res = await getAreaCodeNameFromLatLng(gps, () => {});
+        const res = await getAreaCodeNameFromLatLng(gps);
         expect(res).toEqual('FR');
 
         const gps2 = {
@@ -148,7 +148,7 @@ describe('utils/index.js', () => {
             lng: () => 0,
         };
 
-        const res2 = await getAreaCodeNameFromLatLng(gps2, () => {});
+        const res2 = await getAreaCodeNameFromLatLng(gps2);
         expect(res2).toBeNull();
     });
 
@@ -157,7 +157,7 @@ describe('utils/index.js', () => {
             lat: () => 19.250617647058824,
             lng: () => -99.07219999999
         };
-        const res = await getAreaCodeNameFromLatLng(gps, () => {}, {
+        const res = await getAreaCodeNameFromLatLng(gps, {
             "bbox": [-33.8689056,5.2693306,-73.9830625,-28.6289646],
             "urlArea": "https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/public/geojson/areas/mexico_states.geojson",
             "type": "nominatim",
@@ -177,7 +177,7 @@ describe('utils/index.js', () => {
             lat: () => 19.250617647058824,
             lng: () => -909.07219999999
         };
-        const res = await getAreaCodeNameFromLatLng(gps, () => {}, {
+        const res = await getAreaCodeNameFromLatLng(gps, {
             "bbox": [-33.8689056,5.2693306,-73.9830625,-28.6289646],
             "urlArea": "https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/public/geojson/areas/mexico_states.geojson",
             "type": "nominatim",
