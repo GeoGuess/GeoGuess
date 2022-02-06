@@ -2,7 +2,9 @@
     "Home": {
         "placeVisited": "0 platser besökta | 1 plats besökt | {count} platser besökta",
         "historyBtn": "HISTORIK",
+        "medalsBtn": "MEDALS",
         "about": "OM",
+        "createMap": "Create Map",
         "searchBar": {
             "customLoaded": "Egen karta har laddats",
             "enterCity": "Ange stad, region eller land"
@@ -31,7 +33,13 @@
         },
         "HomeCard": {
             "edit": "Redigera",
-            "delete": "Radera"
+            "delete": "Radera",
+            "medal": {
+                "platinum": "Platinum",
+                "gold": "Gold",
+                "silver": "Silver",
+                "bronze": "Bronze"
+            }
         },
         "HomeCardMode": {
             "map": "Karta",
@@ -105,6 +113,7 @@
         "title": "Historik",
         "date": "Datum",
         "mode": "Läge",
+        "mapName": "Map Name",
         "time": "Tid",
         "distance": "Distans",
         "points": "Poäng",
