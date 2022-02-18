@@ -38,7 +38,7 @@
         "@vue/cli-plugin-eslint": "^4.5.15",
         "@vue/cli-plugin-pwa": "^4.5.15",
         "@vue/cli-plugin-unit-jest": "^4.5.15",
-        "@vue/cli-service": "^4.5.15",
+        "@vue/cli-service": "^5.0.1",
         "@vue/test-utils": "^1.1.2",
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.2.3",
