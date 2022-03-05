@@ -21,6 +21,7 @@ class StreetViewService {
         this.placeGeoJson = placeGeoJson;
         this.roundsPredefined = roundsPredefined;
         this.service = new google.maps.StreetViewService();
+        this.alreadyVisited=[];
     }
 
     async getStreetView(cptNotFoundLocation = 0) {
@@ -30,7 +31,13 @@ class StreetViewService {
             const positions = this.roundsPredefined[this.round - 1];
             position = new google.maps.LatLng(positions[0], positions[1]);
         } else {
-            const randomPos = this.__getRandomLatLng();
+            let randomPos;
+            do{
+                randomPos = this._getRandomLatLng();
+            } while(this.alreadyVisited.includes(randomPos.position.toString()));
+
+            this.alreadyVisited.push(randomPos.position.toString());
+            
             radius = randomPos.radius;
             position = randomPos.position;
             randomFeatureProperties = randomPos.properties;
@@ -112,7 +119,7 @@ class StreetViewService {
             let position,
                 radius,
                 properties = null;
-            if (this.placeGeoJson.type === 'FeatureCollection') {
+            if (this.placeGeoJson.type === 'FeatureCollection') {  
                 let randInt = Math.floor(
                     Math.random() * this.placeGeoJson.features.length
                 );
@@ -204,5 +211,6 @@ class StreetViewService {
         }
     }
 }
+
 
 export default StreetViewService;

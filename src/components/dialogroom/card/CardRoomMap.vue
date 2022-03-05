@@ -43,6 +43,16 @@
                     gestureHandling: 'greedy',
                 }"
             />
+            <v-row justify="space-around">
+                <v-alert
+                    v-if="!canPlayGeoJSON"
+                    right
+                    icon="mdi-alert"
+                    color="warning"
+                >
+                    {{ $t('CardRoomMap.cantPlayGeoJson') }}
+                </v-alert>
+            </v-row>
         </v-card-text>
         <v-card-actions>
             <v-btn plain v-if="geoJson" @click="reset">{{
@@ -58,7 +68,7 @@
                 depressed
                 color="#43B581"
                 @click="next"
-                :disabled="loadingGeoJson"
+                :disabled="loadingGeoJson || !canPlayGeoJSON"
             >
                 {{ $t('next') }}
             </v-btn>
@@ -82,13 +92,25 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(['isValidGeoJson', 'geoJson']),
+        ...mapGetters([ 'geoJson']),
         ...mapState({
             loadingGeoJson: (state) => state.homeStore.loadingGeoJson,
         }),
         items() {
             return this.entries.map((entry) => entry.properties.name);
         },
+        // If map have enough point, return false
+        canPlayGeoJSON(){
+            if(
+                this.geoJson &&
+                 Array.isArray(this.geoJson.features) && 
+                 this.geoJson.features.length < 5 &&
+                  this.geoJson.features.every(feature => feature.geometry.type === 'Point')
+            ){
+                return false;
+            }
+            return true;
+        }
     },
     watch: {
         search(val) {
