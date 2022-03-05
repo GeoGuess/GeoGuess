@@ -127,7 +127,7 @@
                                         setGameSettings({ optimiseStreetView })
                                 "
                                 :label="
-                                    $('CardRoomSettings.optimiseStreetView')
+                                    $t('CardRoomSettings.optimiseStreetView')
                                 "
                                 hide-details
                             />     
