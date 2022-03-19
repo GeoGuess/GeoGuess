@@ -6,8 +6,8 @@
         "about": "ACERCA DE",
         "createMap": "Crear un mapa",
         "searchBar": {
-            "customLoaded": "Custom map has been loaded",
-            "enterCity": "Enter city, state or country"
+            "customLoaded": "Se ha cargado un mapa personalizado",
+            "enterCity": "Introduce una ciudad, un estado o un país"
         },
         "aboutDescriptions": {
             "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
