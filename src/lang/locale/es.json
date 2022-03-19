@@ -1,10 +1,10 @@
 {
     "Home": {
-        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
-        "historyBtn": "HISTORY",
-        "medalsBtn": "MEDALS",
-        "about": "ABOUT",
-        "createMap": "Create Map",
+        "placeVisited": "0 lugares visitados | 1 lugar visitado | {count} lugares visitados",
+        "historyBtn": "HISTORIAL",
+        "medalsBtn": "MEDALLAS",
+        "about": "ACERCA DE",
+        "createMap": "Crear un mapa",
         "searchBar": {
             "customLoaded": "Custom map has been loaded",
             "enterCity": "Enter city, state or country"
