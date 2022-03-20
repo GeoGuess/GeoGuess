@@ -11,16 +11,16 @@
         },
         "aboutDescriptions": {
             "1": "Geoguess es un juego gratuito sin publicidad.                  Los jugadores se enfrentan en 5 partidas en las que gana quien se acerque más a la posición de una ubicación aleatoria.                 Puedes compartir tu puntuación por redes sociales como Facebook o Twitter.                 Puedes jugar en multijugador con hasta 5 amigos.                  El primer jugador crea una sala y decide el tamaño de la sala. Los demás jugadores pueden unirse introduciendo el nombre de la sala creada por el primer jugador para empezar a jugar.",
-            "2": "This game was forked from "
+            "2": "El juego es una bifurcación de "
         },
-        "customMap": "CUSTOMS MAP",
+        "customMap": "MAPAS PERSONALIZADOS",
         "customMapDescriptions": {
-            "1": "You can limit random locations to cities, states, or countries with the search bar.",
-            "2": "In the multiplayer, the first player fixes the location.",
-            "3": "Furthermore, you can make your custom map with ",
-            "4": "file.",
-            "5": "Insert the content of the GeoJson map with the button :",
-            "6": "Customs Map selection : "
+            "1": "Puedes limitar las localizaciones aleatorias a ciudades, estados o países con la barra de búsqueda.",
+            "2": "En multijugador es el primer jugador el que define la localización.",
+            "3": "Además, puedes crear tus propios mapas personalizados con ",
+            "4": "archivo.",
+            "5": "Sube el contenido del archivo GeoJSON con el botón:",
+            "6": "Selección de mapas personalizados: "
         },
         "limitation": "LIMITATION",
         "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
