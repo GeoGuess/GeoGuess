@@ -10,7 +10,7 @@
             "enterCity": "Introduce una ciudad, un estado o un país"
         },
         "aboutDescriptions": {
-            "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
+            "1": "Geoguess es un juego gratuito sin publicidad.                  Los jugadores se enfrentan en 5 partidas en las que gana quien se acerque más a la posición de una ubicación aleatoria.                 Puedes compartir tu puntuación por redes sociales como Facebook o Twitter.                 Puedes jugar en multijugador con hasta 5 amigos.                  El primer jugador crea una sala y decide el tamaño de la sala. Los demás jugadores pueden unirse introduciendo el nombre de la sala creada por el primer jugador para empezar a jugar.",
             "2": "This game was forked from "
         },
         "customMap": "CUSTOMS MAP",
