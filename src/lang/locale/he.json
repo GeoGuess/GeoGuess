@@ -2,7 +2,9 @@
     "Home": {
         "placeVisited": "0 מקומות שביקרתם בהם | מקום אחד שביקרתם בו | {count} מקומות שביקרתם בהם",
         "historyBtn": "היסטוריה",
+        "medalsBtn": "MEDALS",
         "about": "אודות",
+        "createMap": "Create Map",
         "searchBar": {
             "customLoaded": "המפה בהתאמה האישית מוכנה",
             "enterCity": "הזנו שם של עיר, מחוז או מדינה"
@@ -31,7 +33,13 @@
         },
         "HomeCard": {
             "edit": "ערוך",
-            "delete": "מחק"
+            "delete": "מחק",
+            "medal": {
+                "platinum": "Platinum",
+                "gold": "Gold",
+                "silver": "Silver",
+                "bronze": "Bronze"
+            }
         },
         "HomeCardMode": {
             "map": "מפה",
@@ -105,6 +113,7 @@
         "title": "היסטוריה",
         "date": "תאריך",
         "mode": "מצב משחק",
+        "mapName": "Map Name",
         "time": "זמן",
         "distance": "מרחק",
         "points": "נקודות",
