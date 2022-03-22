@@ -54,7 +54,7 @@
         "react-is": "^17.0.2",
         "sass": "1.32",
         "sass-loader": "^8.0.2",
-        "vue-cli-plugin-vuetify": "^2.4.5",
+        "vue-cli-plugin-vuetify": "^2.4.8",
         "vue-template-compiler": "^2.6.14",
         "vuetify-loader": "^1.7.3"
     },
