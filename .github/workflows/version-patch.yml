@@ -7,7 +7,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
       - run: git config --global user.name 'GitHub Actions Bot'
       - run: git config --global user.email '<>'
       - run: npm version patch
