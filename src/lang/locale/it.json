@@ -2,9 +2,9 @@
     "Home": {
         "placeVisited": "0 luoghi visitati | 1 luogo visitato | {count} luoghi visitati",
         "historyBtn": "CRONOLOGIA",
-        "medalsBtn": "MEDALS",
+        "medalsBtn": "MEDAGLIE",
         "about": "INFO",
-        "createMap": "Create Map",
+        "createMap": "Crea mappa",
         "searchBar": {
             "customLoaded": "Mappa personalizzata caricata",
             "enterCity": "Inserisci città, stato o paese"
@@ -35,10 +35,10 @@
             "edit": "Modifica",
             "delete": "Elimina",
             "medal": {
-                "platinum": "Platinum",
-                "gold": "Gold",
-                "silver": "Silver",
-                "bronze": "Bronze"
+                "platinum": "Platino",
+                "gold": "Oro",
+                "silver": "Argento",
+                "bronze": "Bronzo"
             }
         },
         "HomeCardMode": {
@@ -113,7 +113,7 @@
         "title": "Storia",
         "date": "Data",
         "mode": "Modalità",
-        "mapName": "Map Name",
+        "mapName": "Nome mappa",
         "time": "Tempo",
         "distance": "Distanza",
         "points": "Punti",
