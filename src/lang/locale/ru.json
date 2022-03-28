@@ -2,9 +2,9 @@
     "Home": {
         "placeVisited": "0 посещенных мест | 1 посещено | {count} посещенных",
         "historyBtn": "ИСТОРИЯ",
-        "medalsBtn": "MEDALS",
+        "medalsBtn": "МЕДАЛИ",
         "about": "ПРО ПРОЕКТ",
-        "createMap": "Create Map",
+        "createMap": "Создать карту",
         "searchBar": {
             "customLoaded": "Пользовательская карта загружена",
             "enterCity": "Введите страну, штат, город"
@@ -35,10 +35,10 @@
             "edit": "Редактировать",
             "delete": "Удалить",
             "medal": {
-                "platinum": "Platinum",
-                "gold": "Gold",
-                "silver": "Silver",
-                "bronze": "Bronze"
+                "platinum": "Платина",
+                "gold": "Золото",
+                "silver": "Серебро",
+                "bronze": "Бронза"
             }
         },
         "HomeCardMode": {
@@ -48,7 +48,7 @@
         "Sections": {
             "areasTitle": "Areas",
             "mapsTitle": "Maps",
-            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
+            "pleaseSelectLabel": "Похоже, вы потерялись, выберите тип или вы можете ",
             "barrelRoll": "do a barrel roll"
         }
     },
