@@ -22,7 +22,7 @@
             "5": "Sube el contenido del archivo GeoJSON con el botón:",
             "6": "Selección de mapas personalizados: "
         },
-        "limitation": "LIMITATION",
+        "limitation": "LIMITACIONES",
         "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Play",
         "streamerModeActivate": "Streamer mode activate",
