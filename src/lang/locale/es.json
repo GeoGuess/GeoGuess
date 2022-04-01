@@ -150,63 +150,63 @@
         "infinite": "Infinito"
     },
     "CardRoomMap": {
-        "title": "Define your map",
-        "loadBtn": "Load MAP",
-        "reset": "Reset"
+        "title": "Definir mapa",
+        "loadBtn": "Cargar MAPA",
+        "reset": "Reiniciar"
     },
     "CardRoomSettings": {
-        "title": "Game Settings",
-        "modeLabel": "Select game mode",
-        "includePhotopheres": "Include Photospheres",
+        "title": "Opciones de partida",
+        "modeLabel": "Seleccionar modo de juego",
+        "includePhotopheres": "Incluir Fotoesferas",
         "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
-        "allowMove": "Allow Move",
-        "allowZoom": "Allow Zoom",
-        "allowPan": "Allow Pan",
-        "countDownLabel": "CountDown (seconds)",
-        "scoreModeLabel": "Score formula",
+        "timeattackInfos": "En modo TimeAttack, sólo el jugador que adivina el país primero obtiene el punto. ¡Sé rápido y gana!",
+        "allowMove": "Permitir Movimiento",
+        "allowZoom": "Permitir Zoom",
+        "allowPan": "Permitir Rotar",
+        "countDownLabel": "Cuenta atrás (segundos)",
+        "scoreModeLabel": "Fórmula de puntuación",
         "scoreModes": {
             "normal": "normal",
-            "time": "time"
+            "time": "tiempo"
         },
-        "selectAreas": "Select Areas",
-        "moreSettings": "More settings"
+        "selectAreas": "Seleccionar Áreas",
+        "moreSettings": "Opciones avanzadas"
     },
     "CardRoomDifficulty": {
-        "title": "Set a difficulty level.",
-        "easy": "easy (world)",
-        "medium": "medium (country)",
-        "hard": "hard (city)"
+        "title": "Establecer nivel de dificultad.",
+        "easy": "fácil (mundo)",
+        "medium": "medio (país)",
+        "hard": "difícil (ciudad)"
     },
     "DialogSummary": {
-        "summaryMsgSinglePoints": "Your score is <strong>{points}</strong> points! ",
-        "summaryMsgSingleDistance": "You are <strong>{distance}</strong> km away!",
-        "summaryMsgMultiPoints": "<strong>{playerName}</strong> score is <strong>{points}</strong> ! ",
-        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km away)",
-        "viewDetails": "View details"
+        "summaryMsgSinglePoints": "¡Tu puntuación es de <strong>{points}</strong> puntos! ",
+        "summaryMsgSingleDistance": "¡Estás a <strong>{distance}</strong> km de distancia!",
+        "summaryMsgMultiPoints": "¡<strong>{playerName}</strong> tiene <strong>{points}</strong> puntos! ",
+        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km de distancia)",
+        "viewDetails": "Ver detalles"
     },
     "Footer": {
-        "under": "under",
-        "privacyPolicy": "Privacy Policy"
+        "under": "bajo",
+        "privacyPolicy": "Política de Privacidad"
     },
-    "urlCopied": "Url copied",
+    "urlCopied": "URL copiado",
     "DetailsMap": {
-        "moreInfo": "More information"
+        "moreInfo": "Más información"
     },
     "modes": {
-        "classic": "Classic",
-        "country": "Pick country",
-        "custom_area": "Pick"
+        "classic": "Clásico",
+        "country": "Elegir país",
+        "custom_area": "Seleccionar"
     },
     "Demo": {
-        "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
-        "btn": "Join Us"
+        "message": "Si quieres contribuir al proyecto y mejorarlo, tu ayuda es bienvenida :  Traducción 🔠, Creación de mapas 🌍, Código 💻, Ideas 💡, Beta test 👀.",
+        "btn": "Únete"
     },
     "OK": "OK",
-    "yes": "yes",
+    "yes": "sí",
     "no": "no",
     "AlertUpdate": {
-        "label": "A new version is available. Click on the button to obtain it.",
-        "btn": "Update"
+        "label": "Hay disponible una nueva versión. Haga clic en el botón para obtenerla.",
+        "btn": "Actualizar"
     }
 }
