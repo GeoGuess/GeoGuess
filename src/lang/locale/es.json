@@ -23,131 +23,131 @@
             "6": "Selección de mapas personalizados: "
         },
         "limitation": "LIMITACIONES",
-        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
-        "play": "Play",
-        "streamerModeActivate": "Streamer mode activate",
-        "streamerModeDetails": "URLs and room names are hidden",
+        "limitationDescription": "Actualmente establezco cuotas diarias para que el coste del juego no sea demasiado alto.             Si el mapa no se carga, quiere decir que se ha excedido el límite diario de la cuota.             Se reestablecerá a medianoche (hora del Pacífico). Disculpe las molestias.             Este juego es código abierto, por lo que es posible crear tu propio servidor del juego y jugar sin límite.",
+        "play": "Jugar",
+        "streamerModeActivate": "Activar modo streamer",
+        "streamerModeDetails": "Las URLs y los nombres de las salas están ocultos",
         "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
+            "title": "Mapa guardado 🎉",
+            "subtitle": "Lo encontrarás en tu lista de mapas"
         },
         "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete",
+            "edit": "Editar",
+            "delete": "Eliminar",
             "medal": {
-                "platinum": "Platinum",
-                "gold": "Gold",
-                "silver": "Silver",
-                "bronze": "Bronze"
+                "platinum": "Platino",
+                "gold": "Oro",
+                "silver": "Plata",
+                "bronze": "Bronce"
             }
         },
         "HomeCardMode": {
-            "map": "Map",
-            "area": "Area"
+            "map": "Mapa",
+            "area": "Área"
         },
         "Sections": {
-            "areasTitle": "Areas",
-            "mapsTitle": "Maps",
-            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-            "barrelRoll": "do a barrel roll"
+            "areasTitle": "Áreas",
+            "mapsTitle": "Mapas",
+            "pleaseSelectLabel": "Pareces perdido, por favor, selecciona un tipo o puedes ",
+            "barrelRoll": "hacer una vuelta de barril"
         }
     },
     "StreetView": {
         "nearby": {
-            "title": "Nearby Position",
-            "message": "Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉"
+            "title": "Posición Cercana",
+            "message": "Desafortunadamente, no hemos podido encontrar una posición aleatoria en la ubicación definida. Sin embargo, hemos encontrado una cercana 😉"
         },
-        "waitForOtherPlayers": "Waiting for other players...",
-        "redirectToHomePage": "Redirecting to Home Page...",
-        "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
-        "waitForOtherPlayersToFinish": "Waiting for other players to finish the game...",
-        "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-        "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+        "waitForOtherPlayers": "Esperando a otros jugadores...",
+        "redirectToHomePage": "Redireccionando a la página de inicio...",
+        "exitGame": "Estás obligado a salir del juego. Redireccionando a la página de inicio después de 5 segundos...",
+        "waitForOtherPlayersToFinish": "Esperando a que otros jugadores terminen la partida...",
+        "confirmExit": "¿Estás seguro de abandonar la partida actual? ¡Esto anulará la partida!",
+        "countdownAlert": "Cuenta atrás iniciada: {count} segundo restante | Cuenta atrás iniciada: {count} segundos restantes"
     },
     "Maps": {
-        "makeGuess": "MAKE GUESS",
-        "guess": "GUESS",
-        "nextRound": "NEXT ROUND",
-        "viewSummary": "VIEW SUMMARY",
-        "exit": "EXIT",
-        "reset": "RESET",
-        "playAgain": "PLAY AGAIN",
+        "makeGuess": "ADIVINAR",
+        "guess": "ADIVINAR",
+        "nextRound": "SIGUIENTE RONDA",
+        "viewSummary": "VER RESUMEN",
+        "exit": "SALIR",
+        "reset": "REINICIAR",
+        "playAgain": "JUGAR OTRA VEZ",
         "infoWindow": {
-            "Distance": "Distance",
-            "Points": "Points"
+            "Distance": "Distancia",
+            "Points": "Puntos"
         }
     },
     "Header": {
-        "language": "Language",
-        "about": "About",
-        "limitation": "Limitation",
-        "contact": "Contact"
+        "language": "Idioma",
+        "about": "Acerca de",
+        "limitation": "Limitaciones",
+        "contact": "Contacto"
     },
     "HeaderGame": {
-        "room": "ROOM",
-        "round": "ROUND",
-        "distance": "DISTANCE",
-        "kmaway": "{value} km away",
-        "score": "SCORE"
+        "room": "SALA",
+        "round": "RONDA",
+        "distance": "DISTANCIA",
+        "kmaway": "{value} km de distancia",
+        "score": "PUNTUACIÓN"
     },
-    "next": "NEXT",
-    "cancel": "CANCEL",
+    "next": "SIGUIENTE",
+    "cancel": "CANCELAR",
     "DialogCustomMap": {
-        "title": "Custom Map",
-        "invalid": "Invalid GeoJSON",
-        "text": "Text",
-        "url": "Url",
-        "file": "File",
-        "edit": "Edit Map",
-        "fileLabel": "Select GeoJSON file",
+        "title": "Mapa Personalizado",
+        "invalid": "GeoJSON no válido",
+        "text": "Texto",
+        "url": "URL",
+        "file": "Archivo",
+        "edit": "Editar Mapa",
+        "fileLabel": "Seleccionar archivo GeoJSON",
         "OK": "OK",
-        "download": "Download GeoJSON",
-        "Clean": "Clean",
-        "save": "save",
+        "download": "Descargar GeoJSON",
+        "Clean": "Borrar",
+        "save": "guardar",
         "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
+            "label": "Nombre del Mapa",
+            "placeholder": "Mi lugar favorito"
         }
     },
     "History": {
-        "title": "History",
-        "date": "Date",
-        "mode": "Mode",
-        "mapName": "Map Name",
-        "time": "Time",
-        "distance": "Distance",
-        "points": "Points",
-        "rank": "Rank",
-        "actions": "Actions",
-        "search": "Search",
-        "exportGeoSave": "Export GeoSave",
-        "importGeoSave": "Import GeoSave",
-        "exportCSV": "Export CSV",
+        "title": "Historial",
+        "date": "Fecha",
+        "mode": "Modo",
+        "mapName": "Nombre del Mapa",
+        "time": "Tiempo",
+        "distance": "Distancia",
+        "points": "Puntos",
+        "rank": "Clasificación",
+        "actions": "Acciones",
+        "search": "Buscar",
+        "exportGeoSave": "Exportar en GeoSave",
+        "importGeoSave": "Importar un GeoSave",
+        "exportCSV": "Exportar como CSV",
         "total": "Total"
     },
     "DialogRoom": {
-        "singlePlayer": "Single Player",
-        "withFriends": "With Friends",
-        "invalidRoomName": "Invalid name. Please try another.",
-        "inProgress": "The first player is creating the room right now. Please wait and try again.",
-        "roomIsFull": "This room is already full. Please try another.",
-        "alreadyStarted": "This room has aldready started.  Please try another."
+        "singlePlayer": "Un jugador",
+        "withFriends": "Con amigos",
+        "invalidRoomName": "Nombre no válido. Prueba con otro.",
+        "inProgress": "El primer jugador está creando la sala en este momento. Por favor, espera e inténtalo de nuevo.",
+        "roomIsFull": "Esta sala ya está llena. Por favor, prueba en otra.",
+        "alreadyStarted": "La partida ha comenzado. Por favor, prueba con otra."
     },
     "CardRoomName": {
-        "title": "Type a room name to create a new room or join a existing room"
+        "title": "Escriba el nombre de una sala para crear una sala o únase a una sala ya existente"
     },
     "CardRoomPlayerName": {
-        "title": "Room:",
-        "input": "Type a player name.",
-        "anonymousPlayerName": "Anonymous 🕵",
-        "players": "1 player | {count} players"
+        "title": "Sala:",
+        "input": "Escribe el nombre de un jugador.",
+        "anonymousPlayerName": "Anónimo 🕵",
+        "players": "1 jugador | {count} jugadores"
     },
     "CardRoomSize": {
-        "title": "Set a room size."
+        "title": "Establecer un tamaño de sala."
     },
     "CardRoomTime": {
-        "title": "Set a time limit.",
-        "infinite": "Infinite"
+        "title": "Establecer un límite de tiempo.",
+        "infinite": "Infinito"
     },
     "CardRoomMap": {
         "title": "Define your map",
