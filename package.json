@@ -6,7 +6,8 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "test": "npm run lint && npm run test:unit && npm run test:e2e",
-        "test:unit": "cross-env NODE_OPTIONS=--unhandled-rejections=warn  vue-cli-service test:unit",
+        "test:unit": "cross-env NODE_OPTIONS=--unhandled-rejections=warn vue-cli-service test:unit",
+        "test:mutation": "cross-env BABEL_ENV=test VUE_CLI_TRANSPILE_BABEL_RUNTIME=true VUE_CLI_BABEL_TARGET_NODE=true VUE_CLI_BABEL_TRANSPILE_MODULES=true stryker run",
         "test:e2e": "cypress run",
         "cypress": "cypress",
         "lint": "vue-cli-service lint"
@@ -34,6 +35,8 @@
     },
     "devDependencies": {
         "@babel/core": "^7.17.8",
+        "@stryker-mutator/core": "^5.4.1",
+        "@stryker-mutator/jest-runner": "^5.4.1",
         "@vue/cli-plugin-babel": "^3.12.1",
         "@vue/cli-plugin-eslint": "^4.5.17",
         "@vue/cli-plugin-pwa": "^4.5.15",
