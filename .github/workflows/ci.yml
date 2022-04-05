@@ -65,7 +65,7 @@ jobs:
 
     - name: Code coverage
       if:  matrix.os == 'ubuntu-latest'
-      uses: codecov/codecov-action@v2.1.0
+      uses: codecov/codecov-action@v3
 
     - name: Build
       run: npm run build
