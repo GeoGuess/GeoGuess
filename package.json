@@ -34,7 +34,7 @@
         "vuex": "^3.6.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.17.8",
+        "@babel/core": "^7.17.9",
         "@stryker-mutator/core": "^5.4.1",
         "@stryker-mutator/jest-runner": "^5.4.1",
         "@vue/cli-plugin-babel": "^3.12.1",
@@ -53,7 +53,7 @@
         "eslint-plugin-prettier": "^3.4.1",
         "eslint-plugin-vue": "^8.5.0",
         "jest-google-maps-mock": "^1.0.7",
-        "prettier": "2.5.1",
+        "prettier": "2.6.2",
         "react-is": "^17.0.2",
         "sass": "1.32",
         "sass-loader": "^8.0.2",
