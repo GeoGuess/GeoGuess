@@ -7,7 +7,7 @@
         "build": "vue-cli-service build",
         "test": "npm run lint && npm run test:unit && npm run test:e2e",
         "test:unit": "cross-env NODE_OPTIONS=--unhandled-rejections=warn vue-cli-service test:unit",
-        "test:mutation": "cross-env BABEL_ENV=test VUE_CLI_TRANSPILE_BABEL_RUNTIME=true VUE_CLI_BABEL_TARGET_NODE=true VUE_CLI_BABEL_TRANSPILE_MODULES=true stryker run",
+        "test:mutation": "cross-env NODE_OPTIONS=--unhandled-rejections=warn BABEL_ENV=test VUE_CLI_TRANSPILE_BABEL_RUNTIME=true VUE_CLI_BABEL_TARGET_NODE=true VUE_CLI_BABEL_TRANSPILE_MODULES=true stryker run",
         "test:e2e": "cypress run",
         "cypress": "cypress",
         "lint": "vue-cli-service lint"
