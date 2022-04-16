@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  geoguess:
+    build: .
+    # image:
+    environment:
+      #- VUE_APP_PUBLIC_PATH=/
+      - VUE_APP_API_KEY=myapi
+      #- VUE_APP_FIREBASE_API_KEY=myapi
+      #- VUE_APP_FIREBASE_PROJECT_ID=myid
+      #- VUE_APP_FIREBASE_MESSAGING_SENDER_ID=senderid
+      #- VUE_APP_FIREBASE_APP_ID=appid
+      #- VUE_APP_FIREBASE_MEASUREMENT_ID=measurment
+      #- VUE_APP_FIREBASE_AUTH_DOMAIN=auth
+      #- VUE_APP_FIREBASE_DATABASE_URL=db
+      #- VUE_APP_STORAGE_BUCKET=bucket
+    ports:
+      - 3000:80
