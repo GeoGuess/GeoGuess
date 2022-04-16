@@ -1,11 +1,13 @@
-FROM node:lts-alpine
+FROM node:lts-alpine as builder
 
-RUN npm install -g http-server
 WORKDIR /app
 COPY package*.json ./
-RUN apk add python3 make g++
+RUN apk add --no-cache python3 make g++
 RUN npm install
 COPY . .
 RUN npm run build
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+
+FROM nginx:stable-alpine as production
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
