@@ -175,10 +175,19 @@
         "ideas",
         "financial"
       ]
+    },
+    {
+      "login": "jae1911",
+      "name": "Jae Lo Presti",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76598503?v=4",
+      "profile": "https://jae.fi",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "projectName": "Geoguess",
+  "projectName": "GeoGuess",
   "projectOwner": "GeoGuess",
   "repoType": "github",
   "repoHost": "https://github.com",
