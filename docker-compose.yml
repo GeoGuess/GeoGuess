@@ -16,4 +16,4 @@ services:
       #- VUE_APP_FIREBASE_DATABASE_URL=db
       #- VUE_APP_STORAGE_BUCKET=bucket
     ports:
-      - 3000:8080
+      - 3000:80
