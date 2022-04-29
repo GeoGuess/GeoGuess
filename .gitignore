@@ -28,3 +28,5 @@ yarn-error.log*
 
 /tests/e2e/screenshots
 /tests/e2e/videos
+
+stryker-tmp

@@ -166,10 +166,10 @@ describe('utils/index.js', () => {
             "nominatimFallbackResultPath": "display_name",
             "nominatimQueryParams": {
                 "zoom": "5",
-                "accept-language": "es"
+                "accept-language": "en"
             }
         });
-        expect(res).toContain('México');
+        expect(res).toEqual('Mexico City');
     });
     
     it('getAreaCodeNameFromLatLng: should return null if not value', async () => {

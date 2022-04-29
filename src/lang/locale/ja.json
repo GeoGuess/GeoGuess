@@ -2,7 +2,9 @@
     "Home": {
         "placeVisited": "0 place visited | 1 place visited | {count} places visited",
         "historyBtn": "歴史",
+        "medalsBtn": "MEDALS",
         "about": "このサイトについて",
+        "createMap": "Create Map",
         "searchBar": {
             "customLoaded": "カスタムマップが読み込まれました",
             "enterCity": "都市名、州や県、国名を入力してください"
@@ -31,7 +33,13 @@
         },
         "HomeCard": {
             "edit": "Edit",
-            "delete": "Delete"
+            "delete": "Delete",
+            "medal": {
+                "platinum": "Platinum",
+                "gold": "Gold",
+                "silver": "Silver",
+                "bronze": "Bronze"
+            }
         },
         "HomeCardMode": {
             "map": "Map",
@@ -105,6 +113,7 @@
         "title": "History",
         "date": "Date",
         "mode": "Mode",
+        "mapName": "Map Name",
         "time": "Time",
         "distance": "Distance",
         "points": "Points",

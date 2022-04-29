@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "mutator": {
+    "plugins": []
+  },
+  "tempDirName_comment": "Jest doesn't play nice with the default (.stryker-tmp).",
+  "tempDirName": "stryker-tmp",
+  "testRunner": "jest",
+  "coverageAnalysis": "off",
+  "reporters": [
+    "progress",
+    "clear-text",
+    "html",
+    "dashboard"
+  ],
+  "dashboard": {}
+}
