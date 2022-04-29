@@ -43,8 +43,8 @@ class StreetViewService {
             randomFeatureProperties = randomPos.properties;
         }
 
-        return new Promise(async (resolve) => {
-            await this.service.getPanorama(
+        return new Promise((resolve) => {
+            this.service.getPanorama(
                 {
                     location: position,
                     preference: 'nearest',
