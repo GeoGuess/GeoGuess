@@ -175,21 +175,23 @@ export function getAreaCodeNameFromLatLng(latLng, areaParams) {
             )}`
         )
         .then(({ status, data }) => {
-            if (status === 200 && data) {
-                if (areaParams && areaParams.nominatimResultPath) {
-                    const areaName = getValueInObjectWithPath(data, areaParams.nominatimResultPath);
+            if (status !== 200 || !data || data.error)
+                return null;
 
-                    if(areaName === undefined && areaParams.nominatimFallbackResultPath)
-                      return getValueInObjectWithPath(data, areaParams.nominatimFallbackResultPath);
+            if (areaParams && areaParams.nominatimResultPath) {
+                const areaName = getValueInObjectWithPath(data, areaParams.nominatimResultPath);
 
-                    return areaName;
-                }
+                if(areaName === undefined && areaParams.nominatimFallbackResultPath)
+                  return getValueInObjectWithPath(data, areaParams.nominatimFallbackResultPath);
 
-                if (data.extratags['ISO3166-1:alpha2']) {
-                    return data.extratags['ISO3166-1:alpha2'];
-                }
-                return data.address['country_code'].toUpperCase();
+                return areaName;
             }
+
+            if (data.extratags['ISO3166-1:alpha2']) {
+                return data.extratags['ISO3166-1:alpha2'];
+            }
+            return data.address['country_code'].toUpperCase();
+         
         });  
 }
 

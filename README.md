@@ -11,6 +11,7 @@
 [![DeepScan grade](https://deepscan.io/api/teams/6533/projects/15869/branches/324468/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=6533&pid=15869&bid=324468)
 [![codecov](https://codecov.io/gh/GeoGuess/Geoguess/branch/master/graph/badge.svg?token=J94E3GE4SL)](https://codecov.io/gh/GeoGuess/Geoguess)
 [![Crowdin](https://badges.crowdin.net/geoguess/localized.svg)](https://translate.geoguess.games/project/geoguess)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FGeoGuess%2FGeoGuess%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/GeoGuess/GeoGuess/master)
 
 > Demo : https://demo.geoguess.games
 

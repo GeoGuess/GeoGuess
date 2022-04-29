@@ -169,10 +169,10 @@ describe('utils/index.js', () => {
                 "accept-language": "es"
             }
         });
-        expect(res).toEqual('México');
+        expect(res).toContain('México');
     });
     
-    it('getAreaCodeNameFromLatLng: should return undefined if not value', async () => {
+    it('getAreaCodeNameFromLatLng: should return null if not value', async () => {
         const gps = {
             lat: () => 19.250617647058824,
             lng: () => -909.07219999999
@@ -188,7 +188,7 @@ describe('utils/index.js', () => {
                 "accept-language": "es"
             }
         });
-        expect(res).toBeUndefined();
+        expect(res).toBeNull();
     });
 
     

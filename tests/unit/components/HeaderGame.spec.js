@@ -28,6 +28,8 @@ describe('HeaderGame.vue', () => {
             },
         });
 
+        wrapper.vm.startTimer();
+
         expect(wrapper.vm.startedAt.getTime()).toBeLessThanOrEqual(
             new Date().getTime()
         );

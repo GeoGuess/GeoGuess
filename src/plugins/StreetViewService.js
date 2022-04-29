@@ -157,17 +157,13 @@ class StreetViewService {
     }
 
     _checkStreetView(data) {
-        if (
+        return !(
             (this.settingsPanorama.optimiseStreetView &&
                 !/^\xA9 (?:\d+ )?Google$/.test(data.copyright)) ||
             !data.imageDate ||
             data.links.length < 2 ||
             data.g.length !== 0
-        ) {
-            return false;
-        }
-
-        return true;
+        );
     }
 
     async _getAreaCode(data){

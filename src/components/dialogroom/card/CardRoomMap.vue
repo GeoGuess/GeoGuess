@@ -101,15 +101,12 @@ export default {
         },
         // If map have enough point, return false
         canPlayGeoJSON(){
-            if(
+            return !(
                 this.geoJson &&
-                 Array.isArray(this.geoJson.features) && 
-                 this.geoJson.features.length < 5 &&
-                  this.geoJson.features.every(feature => feature.geometry.type === 'Point')
-            ){
-                return false;
-            }
-            return true;
+                Array.isArray(this.geoJson.features) && 
+                this.geoJson.features.length < 5 &&
+                this.geoJson.features.every(feature => feature.geometry.type === 'Point')
+            );
         }
     },
     watch: {
