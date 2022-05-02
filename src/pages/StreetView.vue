@@ -408,7 +408,7 @@ export default {
                 );
             }
 
-            let {panorama, roundInfo, warning, area} = await this.streetViewService.getStreetView();
+            let {panorama, roundInfo, warning, area} = await this.streetViewService.getStreetView(this.round);
             this.randomLatLng = panorama.location.latLng;
             this.randomFeatureProperties = roundInfo;
             this.area = area;

@@ -24,11 +24,11 @@ class StreetViewService {
         this.alreadyVisited=[];
     }
 
-    async getStreetView(cptNotFoundLocation = 0) {
+    async getStreetView(round, cptNotFoundLocation = 0) {
         let radius, position, randomFeatureProperties;
         if (this.roundsPredefined) {
             radius = 50;
-            const positions = this.roundsPredefined[this.round - 1];
+            const positions = this.roundsPredefined[round - 1];
             position = new google.maps.LatLng(positions[0], positions[1]);
         } else {
             let randomPos;
@@ -60,10 +60,11 @@ class StreetViewService {
                         !data.location ||
                         !this._checkStreetView(data)
                     ) {
-                        resolve(await this.getStreetView());
+                        resolve(await this.getStreetView(round));
                     } else {
                         resolve(
                             await this._getResponseStreetViewService(
+                                round,
                                 data,
                                 cptNotFoundLocation,
                                 randomFeatureProperties
@@ -76,6 +77,7 @@ class StreetViewService {
     }
 
     async _getResponseStreetViewService(
+        round,
         data,
         cptNotFoundLocation,
         randomFeatureProperties
@@ -91,7 +93,7 @@ class StreetViewService {
             );
         }
         if (isInGeoJSONResult === false && cptNotFoundLocation < 3) {
-            return this.getStreetView(cptNotFoundLocation + 1);
+            return this.getStreetView(round, cptNotFoundLocation + 1);
         } else {
             // If 3 times Street View does not find location in the polygon placeGeoJson print warning message
             if (isInGeoJSONResult === false) {
@@ -101,7 +103,7 @@ class StreetViewService {
             try{
                 areaCode = await this._getAreaCode(data);
             }catch(err){
-                return this.getStreetView();
+                return this.getStreetView(round);
             }
             
             return {
@@ -146,8 +148,8 @@ class StreetViewService {
         }
 
         // Generate a random latitude and longitude
-        let lat = Math.random() * 170 - 85;
-        let lng = Math.random() * 360 - 180;
+        const lat = Math.random() * 170 - 85;
+        const lng = Math.random() * 360 - 180;
 
         return {
             radius: 100000,
@@ -158,11 +160,14 @@ class StreetViewService {
 
     _checkStreetView(data) {
         return !(
-            (this.settingsPanorama.optimiseStreetView &&
-                !/^\xA9 (?:\d+ )?Google$/.test(data.copyright)) ||
-            !data.imageDate ||
-            data.links.length < 2 ||
-            data.g.length !== 0
+            (this.settingsPanorama.optimiseStreetView && 
+                (
+                    !/^\xA9 (?:\d+ )?Google$/.test(data.copyright) ||
+                    !data.imageDate ||
+                    data.links.length < 2 ||
+                    data.g.length !== 0
+                )
+            )
         );
     }
 
