@@ -7,6 +7,7 @@ class GoogleMockService{
     }
 
     getPanorama(){
+        return true;
     }
 }
 

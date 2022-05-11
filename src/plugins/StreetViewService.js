@@ -160,14 +160,13 @@ class StreetViewService {
 
     _checkStreetView(data) {
         return !(
-            (this.settingsPanorama.optimiseStreetView && 
+            this.settingsPanorama.optimiseStreetView && 
                 (
                     !/^\xA9 (?:\d+ )?Google$/.test(data.copyright) ||
                     !data.imageDate ||
                     data.links.length < 2 ||
                     data.g.length !== 0
                 )
-            )
         );
     }
 
