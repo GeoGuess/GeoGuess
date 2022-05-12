@@ -165,7 +165,7 @@ class StreetViewService {
                     !/^\xA9 (?:\d+ )?Google$/.test(data.copyright) ||
                     !data.imageDate ||
                     data.links.length < 2 ||
-                    data.g.length !== 0
+                    (Array.isArray(data.g) && data.g.length !== 0)
                 )
         );
     }

@@ -167,7 +167,8 @@
             "time": "time"
         },
         "selectAreas": "Select Areas",
-        "moreSettings": "More settings"
+        "moreSettings": "More settings",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Set a difficulty level.",
