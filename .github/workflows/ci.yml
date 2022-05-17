@@ -67,14 +67,6 @@ jobs:
       if:  matrix.os == 'ubuntu-latest'
       uses: codecov/codecov-action@v3
 
-
-    - name: SonarCloud Scan
-      if:  matrix.os == 'ubuntu-latest'
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
-
     - name: Build
       run: npm run build
 
