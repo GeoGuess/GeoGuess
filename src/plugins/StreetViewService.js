@@ -50,8 +50,8 @@ class StreetViewService {
                     preference: 'nearest',
                     radius,
                     source: this.settingsPanorama.allPanorama
-                        ? 'default'
-                        : 'outdoor',
+                        ? google.maps.StreetViewSource.DEFAULT
+                        : google.maps.StreetViewSource.OUTDOOR,
                 },
                 async (data, status) => {
                     if (
