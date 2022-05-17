@@ -255,11 +255,9 @@ export default {
             this.$refs.streetView
         );
 
-        if (this.playerNumber == 1 || !this.multiplayer) {
-            await this.loadStreetView();
-        }
 
         if (!this.multiplayer) {
+            await this.loadStreetView();
             this.$refs.mapContainer.startNextRound();
 
             if (this.timeLimitation != 0) {
@@ -273,7 +271,13 @@ export default {
             if (!this.roomName) {
                 this.exitGame();
             }
+
             this.room = firebase.database().ref(this.roomName);
+
+            if (this.playerNumber === 1) {
+                await this.loadStreetView();
+            }
+
             this.room.child('active').set(true);
             this.room.on('value', (snapshot) => {
                 // Check if the room is already removed

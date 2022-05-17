@@ -82,7 +82,7 @@ class StreetViewService {
         cptNotFoundLocation,
         randomFeatureProperties
     ) {
-        let isInGeoJSONResult, isVisibleDialog;
+        let isInGeoJSONResult, isVisibleDialog = false;
         if (this.placeGeoJson != null) {
             isInGeoJSONResult = isInGeoJSON(
                 turfModel.point([
