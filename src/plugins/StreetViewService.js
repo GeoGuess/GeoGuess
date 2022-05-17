@@ -21,7 +21,7 @@ class StreetViewService {
         this.placeGeoJson = placeGeoJson;
         this.roundsPredefined = roundsPredefined;
         this.service = new google.maps.StreetViewService();
-        this.alreadyVisited=[];
+        this.alreadyVisited = [];
     }
 
     async getStreetView(round, cptNotFoundLocation = 0) {
@@ -50,8 +50,8 @@ class StreetViewService {
                     preference: 'nearest',
                     radius,
                     source: this.settingsPanorama.allPanorama
-                        ? google.maps.StreetViewSource.DEFAULT
-                        : google.maps.StreetViewSource.OUTDOOR,
+                        ? 'default'
+                        : 'outdoor',
                 },
                 async (data, status) => {
                     if (
