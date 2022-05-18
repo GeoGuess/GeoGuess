@@ -152,12 +152,14 @@
     "CardRoomMap": {
         "title": "Definisci la tua mappa",
         "loadBtn": "Carica MAPPA",
-        "reset": "Reimposta"
+        "reset": "Reimposta",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "Impostazioni di gioco",
         "modeLabel": "Seleziona una modalità di gioco",
         "includePhotopheres": "Includi Fotosfere",
+        "optimizeStreetView": "StreetView Optimize (only official)",
         "timeAttackLabel": "Sfida a tempo",
         "timeattackInfos": "Nella modalità Sfida a Tempo solo il giocatore che indovina il paese per primo ottiene il punto. Sii veloce e vinci!",
         "allowMove": "Consenti Spostamenti",
@@ -170,7 +172,8 @@
             "time": "tempo"
         },
         "selectAreas": "Seleziona Aree",
-        "moreSettings": "Altre impostazioni"
+        "moreSettings": "Altre impostazioni",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Imposta un livello di difficoltà.",
