@@ -79,9 +79,6 @@ export default {
             return this.mode !== GAME_MODE.COUNTRY;
         },
     },
-    mounted() {
-        this.startTimer();
-    },
     methods: {
         startTimer() {
             if (this.remainingTime != 0) {

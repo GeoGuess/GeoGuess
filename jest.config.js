@@ -5,7 +5,7 @@ module.exports = {
         'src/**/*.{js,vue}',
         'src/utils/*',
         '!**/node_modules/**',
-        '!src/plugins/*',
+        '!src/plugins/vuetify.js',
         '!src/lang/*',
         '!src/router.js',
         '!src/main.js',

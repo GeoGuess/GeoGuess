@@ -158,7 +158,7 @@ export function getLocateString(obj, name, language, defaultLanguage = 'en') {
  * @param {object} nominatimQueryParams
  * @returns {string}
  */
-export function getAreaCodeNameFromLatLng(latLng, errorFunction, areaParams) {
+export function getAreaCodeNameFromLatLng(latLng, areaParams) {
     const nominatimQueryParams =
         areaParams && areaParams.nominatimQueryParams
             ? areaParams.nominatimQueryParams
@@ -175,26 +175,24 @@ export function getAreaCodeNameFromLatLng(latLng, errorFunction, areaParams) {
             )}`
         )
         .then(({ status, data }) => {
-            if (status === 200 && data) {
-                if (areaParams && areaParams.nominatimResultPath) {
-                    const areaName = getValueInObjectWithPath(data, areaParams.nominatimResultPath);
+            if (status !== 200 || !data || data.error)
+                return null;
 
-                    if(areaName === undefined && areaParams.nominatimFallbackResultPath)
-                      return getValueInObjectWithPath(data, areaParams.nominatimFallbackResultPath);
+            if (areaParams && areaParams.nominatimResultPath) {
+                const areaName = getValueInObjectWithPath(data, areaParams.nominatimResultPath);
 
-                    return areaName;
-                }
+                if(areaName === undefined && areaParams.nominatimFallbackResultPath)
+                  return getValueInObjectWithPath(data, areaParams.nominatimFallbackResultPath);
 
-                if (data.extratags['ISO3166-1:alpha2']) {
-                    return data.extratags['ISO3166-1:alpha2'];
-                }
-                return data.address['country_code'].toUpperCase();
+                return areaName;
             }
-        })
-        .catch(() => {
-            errorFunction();
-            return null;
-        });
+
+            if (data.extratags['ISO3166-1:alpha2']) {
+                return data.extratags['ISO3166-1:alpha2'];
+            }
+            return data.address['country_code'].toUpperCase();
+         
+        });  
 }
 
 export function getValueInObjectWithPath(obj, path) {

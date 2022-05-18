@@ -30,6 +30,7 @@
                 hide-details
             ></v-text-field>
             <v-data-table
+                class="medal-table"
                 :headers="headers"
                 :items="items"
                 :search="search"
@@ -169,6 +170,7 @@ export default {
 .country-col{
   display: flex;
   align-items: center;
+  cursor: pointer;
   .flag-icon{
     transform: scale(0.8);
     margin-right: 0.7rem;

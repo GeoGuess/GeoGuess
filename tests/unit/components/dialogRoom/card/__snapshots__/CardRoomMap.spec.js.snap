@@ -36,6 +36,9 @@ exports[`CardRoomMap.vue test search Input 1`] = `
       </v-btn-stub>
     </v-row-stub>
     <gmapmap-stub center="[object Object]" zoom="1" maptypeid="roadmap" options="[object Object]" style="width: 100%; height: 400px;"></gmapmap-stub>
+    <v-row-stub tag="div" justify="space-around">
+      <!---->
+    </v-row-stub>
   </v-card-text-stub>
   <v-card-actions-stub tag="div">
     <!---->
