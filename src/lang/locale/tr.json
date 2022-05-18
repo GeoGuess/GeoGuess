@@ -152,12 +152,14 @@
     "CardRoomMap": {
         "title": "Haritanızı Tanımlayın",
         "loadBtn": "Harita Yükle",
-        "reset": "Sıfırla"
+        "reset": "Sıfırla",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "Oyun Ayarları",
         "modeLabel": "Oyun modu seç",
         "includePhotopheres": "Fotoğraf kürelerini dahil et",
+        "optimizeStreetView": "StreetView Optimize (only official)",
         "timeAttackLabel": "ZamanYarışı",
         "timeattackInfos": "Zaman yarışı modunda, sadece ülkeyi ilk doğru tahmin eden oyuncu puan alır. Çabuk olun ve kazanın!",
         "allowMove": "Hareket Etmeye İzin Ver",
@@ -170,7 +172,8 @@
             "time": "zaman"
         },
         "selectAreas": "Select Areas",
-        "moreSettings": "More settings"
+        "moreSettings": "More settings",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Zorluk seviyesi seç.",
