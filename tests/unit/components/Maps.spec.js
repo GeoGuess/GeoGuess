@@ -46,7 +46,6 @@ describe('Maps.vue', () => {
             expect(wrapper.vm.$refs.map.removePolylines).toBeCalled();
 
             expect(stub).toBeCalledWith(value);
-            expect(wrapper).toMatchSnapshot();
         });
     });
 });

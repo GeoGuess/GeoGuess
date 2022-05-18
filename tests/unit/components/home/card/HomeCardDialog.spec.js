@@ -73,6 +73,5 @@ describe('HomeCardDialog.vue', () => {
 
         expect(loadMap).toBeCalledTimes(2);
 
-        expect(wrapper).toMatchSnapshot();
     });
 });
