@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DialogRoom.vue render 1`] = `
-<v-dialog-stub opendelay="0" closedelay="0" openonclick="true" contentclass="dialog-room" maxwidth="800" origin="center center" persistent="true" retainfocus="true" transition="dialog-transition">
+<v-dialog-stub contentclass="dialog-room" opendelay="0" closedelay="0" openonclick="true" maxwidth="800" origin="center center" persistent="true" retainfocus="true" transition="dialog-transition">
   <settingsmap-stub single-player="true" current-component="settingsMap" room-name=""></settingsmap-stub>
 </v-dialog-stub>
 `;

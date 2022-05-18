@@ -30,7 +30,7 @@
         "vue-country-flag": "^2.3.2",
         "vue-i18n": "^8.27.0",
         "vue-router": "^3.5.3",
-        "vuetify": "^2.6.2",
+        "vuetify": "^2.6.6",
         "vuex": "^3.6.0"
     },
     "devDependencies": {
@@ -46,7 +46,7 @@
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.2.3",
         "cross-env": "^7.0.3",
-        "cypress": "^9.5.0",
+        "cypress": "^9.6.1",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.15.0",
         "eslint-plugin-cypress": "^2.12.1",
