@@ -152,12 +152,14 @@
     "CardRoomMap": {
         "title": "Definir mapa",
         "loadBtn": "Cargar MAPA",
-        "reset": "Reiniciar"
+        "reset": "Reiniciar",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "Opciones de partida",
         "modeLabel": "Seleccionar modo de juego",
         "includePhotopheres": "Incluir Fotoesferas",
+        "optimizeStreetView": "StreetView Optimize (only official)",
         "timeAttackLabel": "TimeAttack",
         "timeattackInfos": "En modo TimeAttack, sólo el jugador que adivina el país primero obtiene el punto. ¡Sé rápido y gana!",
         "allowMove": "Permitir Movimiento",
@@ -170,7 +172,8 @@
             "time": "tiempo"
         },
         "selectAreas": "Seleccionar Áreas",
-        "moreSettings": "Opciones avanzadas"
+        "moreSettings": "Opciones avanzadas",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Establecer nivel de dificultad.",
