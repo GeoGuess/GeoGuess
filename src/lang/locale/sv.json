@@ -152,12 +152,14 @@
     "CardRoomMap": {
         "title": "Definiera din karta",
         "loadBtn": "Ladda KARTA",
-        "reset": "Återställ"
+        "reset": "Återställ",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "Spelinställningar",
         "modeLabel": "Välj spelläge",
         "includePhotopheres": "Inkludera Fotoklot",
+        "optimizeStreetView": "StreetView Optimize (only official)",
         "timeAttackLabel": "TimeAttack",
         "timeattackInfos": "I TimeAttack-läge är det bara spelaren som gissar landet först som får poänget. Var snabb och vinn!",
         "allowMove": "Tillåt förflyttning",
@@ -170,7 +172,8 @@
             "time": "tid"
         },
         "selectAreas": "Välj ytor",
-        "moreSettings": "More settings"
+        "moreSettings": "More settings",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Sätt en svårighetsgrad.",
