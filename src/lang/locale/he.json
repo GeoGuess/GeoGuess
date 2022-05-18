@@ -152,12 +152,14 @@
     "CardRoomMap": {
         "title": "הגדר את המפה שלך",
         "loadBtn": "טען מפה",
-        "reset": "אתחל"
+        "reset": "אתחל",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "הגדרות משחק",
         "modeLabel": "בחר מצב משחק",
         "includePhotopheres": "כלול תמונות לא נעות",
+        "optimizeStreetView": "StreetView Optimize (only official)",
         "timeAttackLabel": "מתקפת זמן",
         "timeattackInfos": "במצב מתקפת זמן, אך ורק השחקן שמנחש את המדינה ראשון זוכה בנקודה.",
         "allowMove": "אפשר תזוזה",
@@ -170,7 +172,8 @@
             "time": "זמן"
         },
         "selectAreas": "בחר אזורים",
-        "moreSettings": "הגדרות נוספות"
+        "moreSettings": "הגדרות נוספות",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "בחר רמת קושי.",
