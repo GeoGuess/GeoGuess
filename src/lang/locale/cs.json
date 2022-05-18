@@ -152,12 +152,14 @@
     "CardRoomMap": {
         "title": "Define your map",
         "loadBtn": "Load MAP",
-        "reset": "Reset"
+        "reset": "Reset",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "Nastavení hry",
         "modeLabel": "Zvol herní režim",
         "includePhotopheres": "Zahrnout fotosféry",
+        "optimizeStreetView": "StreetView Optimize (only official)",
         "timeAttackLabel": "TimeAttack",
         "timeattackInfos": "V režimu TimeAttack dostane bod pouze první hráč, který správně uhádne zemi. Buď nejrychlejší a vyhraj!",
         "allowMove": "Povolit Pohyb",
@@ -170,7 +172,8 @@
             "time": "time"
         },
         "selectAreas": "Select Areas",
-        "moreSettings": "More settings"
+        "moreSettings": "More settings",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Zvol obtížnost hry (ovlivňuje bodování).",
