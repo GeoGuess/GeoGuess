@@ -153,7 +153,7 @@
         "title": "Definisci la tua mappa",
         "loadBtn": "Carica MAPPA",
         "reset": "Reimposta",
-        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+        "cantPlayGeoJson": "GeoJSON non valido, è necessario avere più di 5 posizioni."
     },
     "CardRoomSettings": {
         "title": "Impostazioni di gioco",
