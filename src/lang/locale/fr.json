@@ -153,13 +153,12 @@
         "title": "Définissez votre carte",
         "loadBtn": "Charger la carte",
         "reset": "Réinitialiser",
-        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+        "cantPlayGeoJson": "GeoJSON invalide, vous devez avoir plus de 5 positions."
     },
     "CardRoomSettings": {
         "title": "Paramètre de la partie",
         "modeLabel": "Choisissez le mode de jeu",
         "includePhotopheres": "Inclure les Photosphères",
-        "optimizeStreetView": "StreetView Optimize (only official)",
         "timeAttackLabel": "TimeAttack",
         "timeattackInfos": "Dans le mode TimeAttack, seulement le premier joueur qui devine le pays récupère le point. Sois rapide et gagne!",
         "allowMove": "Autoriser les déplacements",
@@ -173,7 +172,7 @@
         },
         "selectAreas": "Sélectionner les zones",
         "moreSettings": "Paramètres avancés",
-        "optimiseStreetView": "StreetView Optimize (only official)"
+        "optimiseStreetView": "StreetView Optimiser (uniquement officiel)"
     },
     "CardRoomDifficulty": {
         "title": "Saisir la difficulté.",
