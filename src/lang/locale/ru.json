@@ -152,7 +152,8 @@
     "CardRoomMap": {
         "title": "Определите вашу карту",
         "loadBtn": "Загрузить Карту",
-        "reset": "Сбросить"
+        "reset": "Сбросить",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "Настройки комнаты",
@@ -170,7 +171,8 @@
             "time": "время"
         },
         "selectAreas": "Выбрать область",
-        "moreSettings": "More settings"
+        "moreSettings": "More settings",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Установите уровень сложности.",
