@@ -33,7 +33,7 @@ class StreetViewService {
         } else {
             let randomPos;
             do{
-                randomPos = this._getRandomLatLng();
+                randomPos = this.getRandomLatLng();
             } while(this.alreadyVisited.includes(randomPos.position.toString()));
 
             this.alreadyVisited.push(randomPos.position.toString());
@@ -116,7 +116,7 @@ class StreetViewService {
     }
     
 
-    _getRandomLatLng() {
+    getRandomLatLng() {
         if (this.placeGeoJson != null) {
             let position,
                 radius,

@@ -114,18 +114,18 @@ describe('StreetViewService', ()=>{
         expect(res).toBeFalsy();
     });
 
-    it('_getRandomLatLng should return random lat lng without properties', () => {
+    it('getRandomLatLng should return random lat lng without properties', () => {
 
         const streetviewServiceObj = new StreetViewService();
 
-        const res = streetviewServiceObj._getRandomLatLng();
+        const res = streetviewServiceObj.getRandomLatLng();
         expect(res.properties).toBeNull();
         expect(res.position).toBeDefined();
         expect(res.radius).toBeDefined();
 
     });
 
-    it('_getRandomLatLng should return lat lng from GeoJson', () => {
+    it('getRandomLatLng should return lat lng from GeoJson', () => {
 
         const streetviewServiceObj = new StreetViewService({}, {}, {
             type: 'FeatureCollection',
@@ -142,7 +142,7 @@ describe('StreetViewService', ()=>{
         });
 
 
-        const res = streetviewServiceObj._getRandomLatLng();
+        const res = streetviewServiceObj.getRandomLatLng();
         expect(res.properties).toEqual({
             title: 'hello'
         });
