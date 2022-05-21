@@ -159,7 +159,6 @@
         "title": "Game Settings",
         "modeLabel": "Select game mode",
         "includePhotopheres": "Include Photospheres",
-        "optimizeStreetView": "StreetView Optimize (only official)",
         "timeAttackLabel": "TimeAttack",
         "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
         "allowMove": "Allow Move",
