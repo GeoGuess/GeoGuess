@@ -34,7 +34,6 @@ describe('Header.vue', () => {
         expect(wrapper.vm.aboutDialog).toEqual(false);
         aboutBtn.trigger('click');
         expect(wrapper.vm.aboutDialog).toEqual(true);
-        expect(wrapper).toMatchSnapshot();
     });
 
     it('switchLanguage method', () => {

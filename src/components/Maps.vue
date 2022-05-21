@@ -558,6 +558,7 @@ export default {
             this.printMapFull = false;
             this.$refs.map.removeMarkers();
             this.$refs.map.removePolylines();
+            this.$refs.map.centerOnBbox();
 
             // Replace the streetview with the next one
             this.$emit('goToNextRound', isPlayAgain);

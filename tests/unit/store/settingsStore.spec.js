@@ -26,6 +26,7 @@ describe('settingsStore.js', () => {
         settingsStore.mutations[MutationTypes.SETTINGS_SET_GAME_SETTINGS](state, {modeSelected: 'country'});
         expect(state.gameSettings.areaParams).toBeNull();
         expect(state.gameSettings.modeSelected).toEqual('country');
+        expect(state.gameSettings.optimiseStreetView).toBeTruthy();
 
     });
 
