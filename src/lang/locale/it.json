@@ -152,7 +152,8 @@
     "CardRoomMap": {
         "title": "Definisci la tua mappa",
         "loadBtn": "Carica MAPPA",
-        "reset": "Reimposta"
+        "reset": "Reimposta",
+        "cantPlayGeoJson": "GeoJSON non valido, è necessario avere più di 5 posizioni."
     },
     "CardRoomSettings": {
         "title": "Impostazioni di gioco",
@@ -170,7 +171,8 @@
             "time": "tempo"
         },
         "selectAreas": "Seleziona Aree",
-        "moreSettings": "Altre impostazioni"
+        "moreSettings": "Altre impostazioni",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Imposta un livello di difficoltà.",

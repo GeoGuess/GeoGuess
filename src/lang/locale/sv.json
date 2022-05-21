@@ -152,7 +152,8 @@
     "CardRoomMap": {
         "title": "Definiera din karta",
         "loadBtn": "Ladda KARTA",
-        "reset": "Återställ"
+        "reset": "Återställ",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "Spelinställningar",
@@ -170,7 +171,8 @@
             "time": "tid"
         },
         "selectAreas": "Välj ytor",
-        "moreSettings": "More settings"
+        "moreSettings": "More settings",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Sätt en svårighetsgrad.",

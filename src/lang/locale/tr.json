@@ -152,7 +152,8 @@
     "CardRoomMap": {
         "title": "Haritanızı Tanımlayın",
         "loadBtn": "Harita Yükle",
-        "reset": "Sıfırla"
+        "reset": "Sıfırla",
+        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
     },
     "CardRoomSettings": {
         "title": "Oyun Ayarları",
@@ -170,7 +171,8 @@
             "time": "zaman"
         },
         "selectAreas": "Select Areas",
-        "moreSettings": "More settings"
+        "moreSettings": "More settings",
+        "optimiseStreetView": "StreetView Optimize (only official)"
     },
     "CardRoomDifficulty": {
         "title": "Zorluk seviyesi seç.",

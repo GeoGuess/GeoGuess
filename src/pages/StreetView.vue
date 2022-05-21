@@ -254,7 +254,15 @@ export default {
         this.panorama = new google.maps.StreetViewPanorama(
             this.$refs.streetView
         );
-
+  
+        if (!this.streetViewService) {
+            this.streetViewService = new StreetViewService(
+                { allPanorama: this.allPanorama, optimiseStreetView: this.optimiseStreetView },
+                { mode: this.mode, areaParams: this.areaParams, areasJson: this.areasJson },
+                this.placeGeoJson,
+                this.roundsPredefined
+            );
+        }
 
         if (!this.multiplayer) {
             await this.loadStreetView();
@@ -403,15 +411,6 @@ export default {
     methods: {
         ...mapActions(['loadAreas']),
         async loadStreetView() {
-            if(!this.streetViewService){
-                this.streetViewService = new StreetViewService(
-                    {allPanorama: this.allPanorama, optimiseStreetView: this.optimiseStreetView},
-                    { mode: this.mode, areaParams: this.areaParams, areasJson: this.areasJson },
-                    this.placeGeoJson,
-                    this.roundsPredefined
-                );
-            }
-
             let {panorama, roundInfo, warning, area} = await this.streetViewService.getStreetView(this.round);
             this.randomLatLng = panorama.location.latLng;
             this.randomFeatureProperties = roundInfo;
@@ -544,7 +543,7 @@ export default {
                         } else {
                             // Set a random location if the player didn't select a location in time
                             this.$refs.mapContainer.selectRandomLocation(
-                                this.getRandomLatLng().position
+                                this.streetViewService.getRandomLatLng().position
                             );
                         }
                     }
