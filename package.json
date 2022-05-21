@@ -39,7 +39,7 @@
         "@stryker-mutator/jest-runner": "^5.6.1",
         "@vue/cli-plugin-babel": "^3.12.1",
         "@vue/cli-plugin-eslint": "^4.5.17",
-        "@vue/cli-plugin-pwa": "^4.5.15",
+        "@vue/cli-plugin-pwa": "^5.0.4",
         "@vue/cli-plugin-unit-jest": "^4.5.15",
         "@vue/cli-service": "^4.5.15",
         "@vue/test-utils": "^1.1.2",
