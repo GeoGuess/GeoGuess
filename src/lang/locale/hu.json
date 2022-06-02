@@ -1,7 +1,7 @@
 {
     "Home": {
-        "placeVisited": "0 visited place | 1 visited place | {count} visited places",
-        "historyBtn": "HISTORY",
+        "placeVisited": "0 látogatott hely | 1 látogatott hely | {count} látogatott hely",
+        "historyBtn": "ELŐZMÉNYEK",
         "medalsBtn": "MEDALS",
         "about": "ABOUT",
         "createMap": "Create Map",
