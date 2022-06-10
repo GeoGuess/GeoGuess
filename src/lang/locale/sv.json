@@ -153,7 +153,7 @@
         "title": "Definiera din karta",
         "loadBtn": "Ladda KARTA",
         "reset": "Återställ",
-        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+        "cantPlayGeoJson": "Ogiltig GeoJSON, du måste ha fler än 5 positioner."
     },
     "CardRoomSettings": {
         "title": "Spelinställningar",
