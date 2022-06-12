@@ -4,7 +4,7 @@
         "historyBtn": "歴史",
         "medalsBtn": "MEDALS",
         "about": "このサイトについて",
-        "createMap": "Create Map",
+        "createMap": "地図を作成",
         "searchBar": {
             "customLoaded": "カスタムマップが読み込まれました",
             "enterCity": "都市名、州や県、国名を入力してください"
@@ -28,16 +28,16 @@
         "streamerModeActivate": "Streamer mode activate",
         "streamerModeDetails": "URLs and room names are hidden",
         "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
+            "title": "マップを保存しました 🎉",
+            "subtitle": "地図リストに表示されます"
         },
         "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete",
+            "edit": "編集",
+            "delete": "削除",
             "medal": {
                 "platinum": "Platinum",
-                "gold": "Gold",
-                "silver": "Silver",
+                "gold": "ゴールド",
+                "silver": "シルバー",
                 "bronze": "Bronze"
             }
         },
@@ -48,8 +48,8 @@
         "Sections": {
             "areasTitle": "Areas",
             "mapsTitle": "Maps",
-            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-            "barrelRoll": "do a barrel roll"
+            "pleaseSelectLabel": "失われたようです。タイプを選択するか、可能です。 ",
+            "barrelRoll": "バレルロールを使って"
         }
     },
     "StreetView": {
@@ -102,18 +102,18 @@
         "fileLabel": "Select GeoJSON file",
         "OK": "OK",
         "download": "Download GeoJSON",
-        "Clean": "Clean",
-        "save": "save",
+        "Clean": "クリーンアップ",
+        "save": "保存",
         "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
+            "label": "地図名",
+            "placeholder": "お気に入りの場所"
         }
     },
     "History": {
         "title": "History",
         "date": "Date",
         "mode": "Mode",
-        "mapName": "Map Name",
+        "mapName": "地図名",
         "time": "Time",
         "distance": "Distance",
         "points": "Points",
@@ -150,10 +150,10 @@
         "infinite": "無制限"
     },
     "CardRoomMap": {
-        "title": "Define your map",
-        "loadBtn": "Load MAP",
+        "title": "地図を定義する",
+        "loadBtn": "MAP を読み込む",
         "reset": "Reset",
-        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+        "cantPlayGeoJson": "ジオJSONが無効です。5つ以上のポジションが必要です。"
     },
     "CardRoomSettings": {
         "title": "Game Settings",
@@ -172,7 +172,7 @@
         },
         "selectAreas": "Select Areas",
         "moreSettings": "More settings",
-        "optimiseStreetView": "StreetView Optimize (only official)"
+        "optimiseStreetView": "StreetViewの最適化 (公式のみ)"
     },
     "CardRoomDifficulty": {
         "title": "Set a difficulty level.",
@@ -208,7 +208,7 @@
     "yes": "yes",
     "no": "no",
     "AlertUpdate": {
-        "label": "A new version is available. Click on the button to obtain it.",
-        "btn": "Update"
+        "label": "新しいバージョンが利用可能です。ボタンをクリックして入手してください。",
+        "btn": "更新"
     }
 }
