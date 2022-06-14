@@ -1,5 +1,5 @@
 import MapsContainer from "@/components/home/MapsContainer.vue";
-import homeStore from '@/store/homeStore';
+import homeStore from '@/store/modules/home.store';
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Vuex from "vuex";
 import appInit from "../../testutils/appInit";

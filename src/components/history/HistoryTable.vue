@@ -132,7 +132,14 @@ export default {
             dialog: false,
             url: '',
             search: '',
-            headers: [
+        };
+    },
+    computed: {
+        ...mapState({
+            history: (state) => state.homeStore.history,
+        }),
+        headers() {
+            return[
                 {
                     text: this.$t('History.date'),
                     value: 'dateString',
@@ -193,13 +200,8 @@ export default {
                     text: '',
                     value: 'data-table-expand',
                 },
-            ],
-        };
-    },
-    computed: {
-        ...mapState({
-            history: (state) => state.homeStore.history,
-        }),
+            ];
+        },
         items() {
             return this.history.map((g, index) => ({
                 ...g,

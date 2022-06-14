@@ -69,7 +69,7 @@ firebase.initializeApp(firebaseConfig);
 if (firebaseConfig.measurementId) firebase.analytics();
 
 new Vue({
-    vuetify,
+    vuetify: vuetify(i18n),
     router,
     i18n,
     store,

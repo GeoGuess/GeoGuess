@@ -1,7 +1,6 @@
 import HistoryPage from '@/pages/HistoryPage';
 import Home from '@/pages/Home';
 import MedalsPage from '@/pages/MedalsPage';
-import StreetView from '@/pages/StreetView';
 import Vue from 'vue';
 import Router from 'vue-router';
 import { GAME_MODE } from './constants';
@@ -57,7 +56,7 @@ export default new Router({
         {
             path: '/street-view/:modeSelected/:time',
             name: 'street-view',
-            component: StreetView,
+            component: import('@/pages/StreetView'),
             props: (route) => ({
                 multiplayer: false,
                 ...route.params,
@@ -85,7 +84,7 @@ export default new Router({
         {
             path: '/street-view/with-friends',
             name: 'with-friends',
-            component: StreetView,
+            component: import('@/pages/StreetView'),
             props: (route) => ({
                 multiplayer: true,
                 ...route.params,

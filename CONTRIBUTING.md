@@ -49,29 +49,9 @@ npm run build
 ## Transalation
 > Update translation : https://translate.geoguess.games/
 
-- [ ] Add translation file in `src/lang/locale` following `en.json`
+- [ ] Add translation file in `src/lang/locale` following `en.json` 
 
 - [ ] Add the language in :
-    * `src/lang/index.js` 
-```js
-import ru from './locale/ru.json'; // 1
-
-Vue.use(VueI18n);
-
-const translations = {en, ja, fr, cs, de, ru}; // 2
-
-
-export const languages = [
-    {
-        text: 'English',
-        value: 'en',
-    },
-    {// 3
-        text: 'русский',
-        value: 'ru',
-    }
-];
-```
 
     * `src/plugins/vuetify.js`
 ```js
@@ -86,12 +66,3 @@ export default new Vuetify({
 
 ```
 
-
-    * `src/plugins/countryNamePlugin.js`
-
-```js
-import countries from 'i18n-iso-countries';
-countries.registerLocale(require(`i18n-iso-countries/langs/en.json`));
-countries.registerLocale(require(`i18n-iso-countries/langs/ru.json`));
-
-```
