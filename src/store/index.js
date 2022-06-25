@@ -12,7 +12,7 @@ function loadModules() {
 		.reduce(
 			(m, { key, name }) => ({
 				...m,
-				[`${name}Store`]: context(key).default,
+				[`${name}Store`]: localContext(key).default,
 			}),
 			{},
 		);
