@@ -4,20 +4,20 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 // Load all modules.
 function loadModules() {
-	const context = require.context('./modules', false, /([a-z_]+)\.js$/i);
+	const localContext = require.context('./modules', false, /([a-z_]+)\.js$/i);
 
-	const modules = context
+	const modules = localContext
 		.keys()
 		.map((key) => ({ key, name: key.match(/([a-z_]+)(.store)?\.js$/i)[1] }))
 		.reduce(
-			(modules, { key, name }) => ({
-				...modules,
+			(m, { key, name }) => ({
+				...m,
 				[`${name}Store`]: context(key).default,
 			}),
 			{},
 		);
 
-	return { context, modules };
+	return { context: localContext, modules };
 }
 
 const { context, modules } = loadModules();

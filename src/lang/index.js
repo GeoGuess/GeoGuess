@@ -6,7 +6,7 @@ function loadTranslations() {
         return {};
 	const context = require.context('./locale', false, /([a-z_]+)\.json$/i);
 
-	const translations = context
+	return context
 		.keys()
 		.map((key) => ({ key, name: key.match(/([a-z_]+)\.json$/i)[1] }))
 		.reduce(
@@ -17,7 +17,6 @@ function loadTranslations() {
 			{},
 		);
 
-	return translations;
 }
 
 export const translations = loadTranslations();
