@@ -8,6 +8,7 @@ module.exports = {
         '!src/plugins/vuetify.js',
         '!src/lang/*',
         '!src/router.js',
+        '!src/store/index.js',
         '!src/main.js',
         '!src/registerServiceWorker.js',
     ],

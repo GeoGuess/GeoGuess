@@ -1,5 +1,5 @@
 import axios from '@/plugins/axios';
-import * as MutationTypes from './mutation-types';
+import * as MutationTypes from '../mutation-types';
 
 export default {
     state: () => ({
