@@ -5,6 +5,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import { GAME_MODE } from './constants';
 
+const StreetView = () => import('@/pages/StreetView');
+
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
     return originalPush.call(this, location).catch((err) => err);
@@ -56,7 +58,7 @@ export default new Router({
         {
             path: '/street-view/:modeSelected/:time',
             name: 'street-view',
-            component: import('@/pages/StreetView'),
+            component: StreetView,
             props: (route) => ({
                 multiplayer: false,
                 ...route.params,
@@ -84,7 +86,7 @@ export default new Router({
         {
             path: '/street-view/with-friends',
             name: 'with-friends',
-            component: import('@/pages/StreetView'),
+            component: StreetView,
             props: (route) => ({
                 multiplayer: true,
                 ...route.params,
