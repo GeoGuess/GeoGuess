@@ -25,9 +25,9 @@
                     @change="changeMinute"
                 />
                 <p>:</p>
-
+                
                 <v-text-field
-                    :value="getSeconds()"
+                    :value="secondsValue"
                     type="number"
                     class="time-input__second"
                     @change="changeSecond"
@@ -59,7 +59,9 @@ export default {
             // Tape in input second
             this.$emit('input', Math.floor(this.value / 60) * 60 + parseInt(s)); // Get number minutes and add seconds
         },
-        getSeconds() {
+    },
+    computed: {
+        secondsValue() {
             // Get the value in seconds
             let out = (this.value % 60).toString();
 
