@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg)](#-contribution)
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg)](#-contribution)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -82,6 +82,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://crowdin.com/profile/raccort"><img src="https://crowdin-static.downloads.crowdin.com/avatar/13144827/large/a3efba5b13184b1e1318c2e06b0d3004.png?s=100" width="100px;" alt=""/><br /><sub><b>raccort</b></sub></a><br /><a href="#translation-Andrea Cortesi" title="Translation">🌍</a></td>
     <td align="center"><a href="https://securitylive.com"><img src="https://avatars.githubusercontent.com/u/663211?v=4?s=100" width="100px;" alt=""/><br /><sub><b>johnebgood</b></sub></a><br /><a href="#ideas-johnebgood" title="Ideas, Planning, & Feedback">🤔</a> <a href="#financial-johnebgood" title="Financial">💵</a></td>
     <td align="center"><a href="https://jae.fi"><img src="https://avatars.githubusercontent.com/u/76598503?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jae Lo Presti</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=jae1911" title="Code">💻</a></td>
+    <td align="center"><a href="https://eliteasian123.github.io/"><img src="https://avatars.githubusercontent.com/u/29520859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>EliteAsian</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=EliteAsian123" title="Code">💻</a></td>
   </tr>
 </table>
 
