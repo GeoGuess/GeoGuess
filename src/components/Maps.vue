@@ -107,12 +107,7 @@
                     ($viewport.width > 450 || isMakeGuessButtonClicked)
             "
             id="guess-button"
-            :disabled="
-                randomLatLng == null ||
-                    selectedPos == null ||
-                    isGuessButtonClicked ||
-                    (!!this.room && !isReady)
-            "
+            :disabled="!canGuess()"
             @click="selectLocation"
         >
             {{ $t('Maps.guess') }}
@@ -430,6 +425,35 @@ export default {
                 });
             }
         },
+        onKeyPress(e) {
+            // If space or enter is pressed...
+            if (e.keyCode !== 13 && e.keyCode !== 32) {
+                return;
+            }
+            
+            // Go to next round if we can...
+            if (this.isNextButtonVisible) {
+                this.goToNextRound(false);
+                return;
+            }
+            // ...otherwise try to guess
+
+            if (!this.canGuess()) {
+                return;
+            }
+            
+            if (!this.activeMap) {
+                return;
+            }
+
+            this.selectLocation();
+        },
+        canGuess() {
+            return this.randomLatLng != null &&
+                this.selectedPos != null &&
+                !this.isGuessButtonClicked &&
+                (!this.room || this.isReady);
+        },
         selectLocation() {
             this.calculateDistance();
 
@@ -571,6 +595,12 @@ export default {
                     .set(true);
             this.$emit('finishGame');
         },
+    },
+    created() {
+        document.addEventListener('keypress', this.onKeyPress);
+    },
+    beforeDestroy() {
+        document.removeEventListener('keypress', this.onKeyPress);
     },
 };
 </script>
