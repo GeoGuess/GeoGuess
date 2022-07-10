@@ -107,7 +107,7 @@
                     ($viewport.width > 450 || isMakeGuessButtonClicked)
             "
             id="guess-button"
-            :disabled="!canGuess()"
+            :disabled="!canGuess"
             @click="selectLocation"
         >
             {{ $t('Maps.guess') }}
@@ -240,6 +240,12 @@ export default {
                     return false;
                 }
             }
+        },
+        canGuess() {
+            return this.randomLatLng != null &&
+                this.selectedPos != null &&
+                !this.isGuessButtonClicked &&
+                (!this.room || this.isReady);
         },
     },
     async mounted() {
@@ -436,23 +442,23 @@ export default {
                 this.goToNextRound(false);
                 return;
             }
+            
+            // Open summary dialog if we can...
+            if (this.isSummaryButtonVisible) {
+                this.dialogSummary = true;
+                return;
+            }
+            
             // ...otherwise try to guess
 
-            if (!this.canGuess()) {
+            if (!this.canGuess) {
                 return;
             }
             
             if (!this.activeMap) {
                 return;
             }
-
             this.selectLocation();
-        },
-        canGuess() {
-            return this.randomLatLng != null &&
-                this.selectedPos != null &&
-                !this.isGuessButtonClicked &&
-                (!this.room || this.isReady);
         },
         selectLocation() {
             this.calculateDistance();
