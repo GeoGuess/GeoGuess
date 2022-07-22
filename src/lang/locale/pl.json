@@ -25,7 +25,7 @@
         "limitation": "OGRANICZENIA",
         "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
         "play": "Graj",
-        "streamerModeActivate": "Streamer mode activate",
+        "streamerModeActivate": "Aktywuj tryb streamera",
         "streamerModeDetails": "Linki URL i nazwy pokoi są ukryte",
         "mapSavedAlert": {
             "title": "Mapa zapisana 🎉",
@@ -48,8 +48,8 @@
         "Sections": {
             "areasTitle": "Obszary",
             "mapsTitle": "Mapy",
-            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-            "barrelRoll": "do a barrel roll"
+            "pleaseSelectLabel": "Wygląda na to, że się zgubiłeś, proszę wybierz tryb lub możesz ",
+            "barrelRoll": "zrób beczkę"
         }
     },
     "StreetView": {
@@ -79,7 +79,7 @@
     },
     "Header": {
         "language": "Język",
-        "about": "About",
+        "about": "O GeoGuess",
         "limitation": "Ograniczenia",
         "contact": "Kontakt"
     },
