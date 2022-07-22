@@ -23,7 +23,7 @@
             "6": "Wybór mapy niestandardowej : "
         },
         "limitation": "OGRANICZENIA",
-        "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
+        "limitationDescription": "Aktualnie ustawiłem limit na dzień, żeby koszt utrzymania gry nie był zbyt wysoki.             Jeśli mapa się nie ładuję, to oznacza że limit został przekroczony w tym dniu.             Limit zresetuję się o północy czasu pacyficznego. Przepraszamy za niedogodności.             Ta gra jest open source, to oznacza że możesz uruchomić swój serwer, i grać bez ograniczeń.",
         "play": "Graj",
         "streamerModeActivate": "Aktywuj tryb streamera",
         "streamerModeDetails": "Linki URL i nazwy pokoi są ukryte",
@@ -163,7 +163,7 @@
         "timeattackInfos": "W trybie TimeAttack tylko gracz, który odgadnie kraj jako pierwszy, dostaje punkt. Bądź szybki i wygraj!",
         "allowMove": "Zezwól na poruszanie",
         "allowZoom": "Zezwól na przybliżanie",
-        "allowPan": "Allow Pan",
+        "allowPan": "Zezwól na panowanie",
         "countDownLabel": "Odliczanie (sekundy)",
         "scoreModeLabel": "Punktacja",
         "scoreModes": {
