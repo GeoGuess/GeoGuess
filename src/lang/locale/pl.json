@@ -1,0 +1,214 @@
+{
+    "Home": {
+        "placeVisited": "0 odwiedzonych miejsc | 1 odwiedzone miejsce | {count} odwiedzonych miejsc",
+        "historyBtn": "HISTORIA",
+        "medalsBtn": "MEDALE",
+        "about": "O",
+        "createMap": "Stwórz mapę",
+        "searchBar": {
+            "customLoaded": "Niestandardowa mapa została załadowana",
+            "enterCity": "Wprowadź miasto, region lub kraj"
+        },
+        "aboutDescriptions": {
+            "1": "Geoguess jest darmową grą bez reklam.                  Gracze rywalizują o to aby zgadnąc losową lokację przez pięć rund.                 Możesz podzielić się swoim wynikiem z innymi ludźmi przez  media społecznościowe takie jak Facebook or Twitter.                 Możesz grać razem z przyjaciółmi, maksymalnie w pięć osób.                  Pierwszt gracz tworzy pokój i decyduję o jego wielkości. Inni graczę wpisują tą samą nazwę pokoju jaką wybrał pierwszy gracz, i gra się rozpocznie.",
+            "2": "Ta gra została zforkowana z "
+        },
+        "customMap": "NIESTANDARDOWE MAPY",
+        "customMapDescriptions": {
+            "1": "Możesz ograniczyć losowe lokalizacje do miast, stanów lub krajów w pasku wyszukiwania.",
+            "2": "W trybie wieloosobowym pierwszy gracz ustala lokację.",
+            "3": "Ponadto możesz utworzyć własną niestandardową mapę z ",
+            "4": "plik.",
+            "5": "Wprowadź zawartość mapy GeoJson tym przyciskiem :",
+            "6": "Wybór mapy niestandardowej : "
+        },
+        "limitation": "OGRANICZENIA",
+        "limitationDescription": "Aktualnie ustawiłem limit na dzień, żeby koszt utrzymania gry nie był zbyt wysoki.             Jeśli mapa się nie ładuję, to oznacza że limit został przekroczony w tym dniu.             Limit zresetuję się o północy czasu pacyficznego. Przepraszamy za niedogodności.             Ta gra jest open source, to oznacza że możesz uruchomić swój serwer, i grać bez ograniczeń.",
+        "play": "Graj",
+        "streamerModeActivate": "Aktywuj tryb streamera",
+        "streamerModeDetails": "Linki URL i nazwy pokoi są ukryte",
+        "mapSavedAlert": {
+            "title": "Mapa zapisana 🎉",
+            "subtitle": "Znajdziesz to w twojej liście map"
+        },
+        "HomeCard": {
+            "edit": "Edytuj",
+            "delete": "Usuń",
+            "medal": {
+                "platinum": "Platyna",
+                "gold": "Złoto",
+                "silver": "Srebro",
+                "bronze": "Brąz"
+            }
+        },
+        "HomeCardMode": {
+            "map": "Mapa",
+            "area": "Obszar"
+        },
+        "Sections": {
+            "areasTitle": "Obszary",
+            "mapsTitle": "Mapy",
+            "pleaseSelectLabel": "Wygląda na to, że się zgubiłeś, proszę wybierz tryb lub możesz ",
+            "barrelRoll": "zrób beczkę"
+        }
+    },
+    "StreetView": {
+        "nearby": {
+            "title": "Pobliska Pozycja",
+            "message": "Niestety, nie mogliśmy znaleźć losowej pozycji w określonej lokacji. Jednakże znaleźliśmy jedną w pobliżu 😉"
+        },
+        "waitForOtherPlayers": "Oczekiwanie na pozostałych graczy...",
+        "redirectToHomePage": "Przekierowuje do strony głównej...",
+        "exitGame": "Jesteś zmuszony do opuszczenia gry. Przekierowuje do strony głównej za 5 sekund...",
+        "waitForOtherPlayersToFinish": "Oczekiwanie na pozostałych graczy do skończenia gry...",
+        "confirmExit": "Jesteś pewny, że chcesz opuścić bieżącą grę? To przerwie grę!",
+        "countdownAlert": "Odliczanie rozpoczęte : pozostało {count} sekund | Odliczanie rozpoczęte : pozostało {count} sekund"
+    },
+    "Maps": {
+        "makeGuess": "ZGADNIJ",
+        "guess": "ZGADUJ",
+        "nextRound": "NASTĘPNA RUNDA",
+        "viewSummary": "POKARZ PODSUMOWANIE",
+        "exit": "WYJDŹ",
+        "reset": "ANULUJ",
+        "playAgain": "ZAGRAJ PONOWNIE",
+        "infoWindow": {
+            "Distance": "Dystans",
+            "Points": "Punkty"
+        }
+    },
+    "Header": {
+        "language": "Język",
+        "about": "O GeoGuess",
+        "limitation": "Ograniczenia",
+        "contact": "Kontakt"
+    },
+    "HeaderGame": {
+        "room": "POKÓJ",
+        "round": "RUNDA",
+        "distance": "DYSTANS",
+        "kmaway": "{value} km dalej",
+        "score": "WYNIK"
+    },
+    "next": "NASTĘPNY",
+    "cancel": "ANULUJ",
+    "DialogCustomMap": {
+        "title": "Niestandardowa mapa",
+        "invalid": "Nieprawidłowy GeoJSON",
+        "text": "Tekst",
+        "url": "Url",
+        "file": "Plik",
+        "edit": "Edytuj Mapę",
+        "fileLabel": "Wybierz plik GeoJSON",
+        "OK": "OK",
+        "download": "Pobierz GeoJSON",
+        "Clean": "Wyczyść",
+        "save": "zapisz",
+        "inputName": {
+            "label": "Nazwa mapy",
+            "placeholder": "Moje ulubione miejsca"
+        }
+    },
+    "History": {
+        "title": "Historia",
+        "date": "Data",
+        "mode": "Tryb",
+        "mapName": "Nazwa mapy",
+        "time": "Czas",
+        "distance": "Dystans",
+        "points": "Punkty",
+        "rank": "Ranga",
+        "actions": "Akcje",
+        "search": "Szukaj",
+        "exportGeoSave": "Eksportuj GeoSave",
+        "importGeoSave": "Importuj GeoSave",
+        "exportCSV": "Eksportuj CSV",
+        "total": "Razem"
+    },
+    "DialogRoom": {
+        "singlePlayer": "Gra jednoosobowa",
+        "withFriends": "Gra z przyjaciółmi",
+        "invalidRoomName": "Nieprawidłowa nazwa. Spróbuj ponownie.",
+        "inProgress": "Pierwszy gracz w tej chwili tworzy pokój. Proszę poczekać i spróbować ponownie.",
+        "roomIsFull": "Ten pokój jest pełny. Proszę spróbować dołączyć do innego.",
+        "alreadyStarted": "Ten pokój już zaczął grę. Proszę spróbować dołączyć do innego."
+    },
+    "CardRoomName": {
+        "title": "Wpisz nazwę pokoju, aby stworzyć nowy pokój, lub dołączyć do istniejącego"
+    },
+    "CardRoomPlayerName": {
+        "title": "Pokój:",
+        "input": "Wpisz nazwę gracza.",
+        "anonymousPlayerName": "Anonimowy 🕵",
+        "players": "1 gracz | {count} graczy"
+    },
+    "CardRoomSize": {
+        "title": "Ustaw rozmiar pokoju."
+    },
+    "CardRoomTime": {
+        "title": "Ustaw limit czasu.",
+        "infinite": "Nieskończony"
+    },
+    "CardRoomMap": {
+        "title": "Określ swoją mapę",
+        "loadBtn": "Załaduj MAPĘ",
+        "reset": "Resetuj",
+        "cantPlayGeoJson": "Nieprawidłowy GeoJSON, musisz mieć więcej niż 5 lokacji."
+    },
+    "CardRoomSettings": {
+        "title": "Ustawienia Gry",
+        "modeLabel": "Wybierz tryb gry",
+        "includePhotopheres": "Uwzględnij zdjęcia sferyczne",
+        "timeAttackLabel": "AtakCzasu",
+        "timeattackInfos": "W trybie TimeAttack tylko gracz, który odgadnie kraj jako pierwszy, dostaje punkt. Bądź szybki i wygraj!",
+        "allowMove": "Zezwól na poruszanie",
+        "allowZoom": "Zezwól na przybliżanie",
+        "allowPan": "Zezwól na panowanie",
+        "countDownLabel": "Odliczanie (sekundy)",
+        "scoreModeLabel": "Punktacja",
+        "scoreModes": {
+            "normal": "normalna",
+            "time": "czas"
+        },
+        "selectAreas": "Wybierz Obszary",
+        "moreSettings": "Więcej ustawień",
+        "optimiseStreetView": "Optymalizacja StreetView (tylko oficjalna)"
+    },
+    "CardRoomDifficulty": {
+        "title": "Ustaw poziom trudności.",
+        "easy": "łatwy (świat)",
+        "medium": "średni (kraj)",
+        "hard": "ciężki (miasto)"
+    },
+    "DialogSummary": {
+        "summaryMsgSinglePoints": "Twój wynik to <strong>{points}</strong> punktów! ",
+        "summaryMsgSingleDistance": "Jesteś <strong>{distance}</strong> km dalej!",
+        "summaryMsgMultiPoints": "Wynik gracza <strong>{playerName}</strong> to <strong>{points}</strong> ! ",
+        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km dalej)",
+        "viewDetails": "Pokaż szczegóły"
+    },
+    "Footer": {
+        "under": "pod",
+        "privacyPolicy": "Polityka prywatności"
+    },
+    "urlCopied": "Skopiowano adres Url",
+    "DetailsMap": {
+        "moreInfo": "Więcej informacji"
+    },
+    "modes": {
+        "classic": "Klasyczny",
+        "country": "Wybierz kraj",
+        "custom_area": "Wybierz"
+    },
+    "Demo": {
+        "message": "Jeśli chcesz przyczynić się do projektu i uczynić go lepszym, Twoja pomoc jest mile widziana: Tłumacz 🔠, Mapper 🌍, Programista 💻, Pomysłodawca 💡, Beta tester 👀.",
+        "btn": "Dołącz do nas"
+    },
+    "OK": "OK",
+    "yes": "tak",
+    "no": "nie",
+    "AlertUpdate": {
+        "label": "Nowa wersja jest dostępna. Kliknij na przycisk, aby ją uzyskać.",
+        "btn": "Aktualizuj"
+    }
+}
