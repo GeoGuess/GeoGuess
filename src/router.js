@@ -1,10 +1,11 @@
 import HistoryPage from '@/pages/HistoryPage';
 import Home from '@/pages/Home';
 import MedalsPage from '@/pages/MedalsPage';
-import StreetView from '@/pages/StreetView';
 import Vue from 'vue';
 import Router from 'vue-router';
 import { GAME_MODE } from './constants';
+
+const StreetView = () => import('@/pages/StreetView');
 
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {

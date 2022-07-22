@@ -7,8 +7,9 @@
                 max="600"
                 min="0"
                 step="30"
+                ticks
                 hide-details
-                @change="changeAll"
+                @input="changeAll"
             />
         </v-row>
         <v-row>
@@ -24,9 +25,9 @@
                     @change="changeMinute"
                 />
                 <p>:</p>
-
+                
                 <v-text-field
-                    :value="this.value % 60"
+                    :value="secondsValue"
                     type="number"
                     class="time-input__second"
                     @change="changeSecond"
@@ -57,6 +58,19 @@ export default {
         changeSecond(s) {
             // Tape in input second
             this.$emit('input', Math.floor(this.value / 60) * 60 + parseInt(s)); // Get number minutes and add seconds
+        },
+    },
+    computed: {
+        secondsValue() {
+            // Get the value in seconds
+            let out = (this.value % 60).toString();
+
+            // Pad seconds with 0 if the number is one digit
+            if (out.length < 2) {
+                out = '0' + out;
+            }
+
+            return out;
         },
     },
 };

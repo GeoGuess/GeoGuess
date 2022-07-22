@@ -3,7 +3,7 @@ import { createLocalVue, mount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
 import Vuex from 'vuex';
 import createGoogleMapsMock from 'jest-google-maps-mock';
-import areaStore from '../../../../src/store/areaStore';
+import areaStore from '@/store/modules/area.store';
 
 const args = appInit(createLocalVue());
 global.google = {

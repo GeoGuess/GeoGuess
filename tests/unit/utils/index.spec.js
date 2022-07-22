@@ -169,7 +169,7 @@ describe('utils/index.js', () => {
                 "accept-language": "en"
             }
         });
-        expect(res).toEqual('Mexico City');
+        expect(res).toContain('Mexico');
     });
     
     it('getAreaCodeNameFromLatLng: should return null if not value', async () => {

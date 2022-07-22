@@ -4,10 +4,9 @@ jest.mock('@/lang', ()=>{
     };
 });
 
-import { GAME_MODE } from '../../../src/constants';
-import * as MutationTypes from '../../../src/store/mutation-types';
-
-const { default: settingsStore, GameSettings } = require('../../../src/store/settingsStore');
+import { GAME_MODE } from '@/constants';
+import * as MutationTypes from '@/store/mutation-types';
+import { default as settingsStore, GameSettings } from '@/store/modules/settings.store';
 
 describe('settingsStore.js', () => {
     it('SETTINGS_SET_GAME_SETTINGS', ()=>{

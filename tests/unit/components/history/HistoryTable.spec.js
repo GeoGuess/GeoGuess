@@ -1,5 +1,5 @@
 import HistoryTable from '@/components/history/HistoryTable.vue';
-import homeStore from '@/store/homeStore';
+import homeStore from '@/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import * as dependencyUtils from '../../../../src/utils';

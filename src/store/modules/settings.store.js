@@ -1,11 +1,11 @@
 import bbox from '@turf/bbox';
 import firebase from 'firebase/app';
 import 'firebase/database';
-import { GAME_MODE, SCORE_MODE } from '../constants';
-import i18n from '../lang';
-import router from '../router';
-import { getMaxDistanceBbox } from '../utils';
-import * as MutationTypes from './mutation-types';
+import { GAME_MODE, SCORE_MODE } from '../../constants';
+import i18n from '../../lang';
+import router from '../../router';
+import { getMaxDistanceBbox } from '../../utils';
+import * as MutationTypes from '../mutation-types';
 
 export class GameSettings {
     constructor(
