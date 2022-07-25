@@ -2,9 +2,9 @@
     "Home": {
         "placeVisited": "0 yer gezildi | 1 yer gezildi | {count} yer gezildi",
         "historyBtn": "GEÇMİŞ",
-        "medalsBtn": "MEDALS",
+        "medalsBtn": "MADALYALAR",
         "about": "HAKKINDA",
-        "createMap": "Create Map",
+        "createMap": "Harita Oluştur",
         "searchBar": {
             "customLoaded": "Özel harita yüklendi",
             "enterCity": "Bir şehir, bölge veya ülke girin"
@@ -35,10 +35,10 @@
             "edit": "Düzenle",
             "delete": "Sil",
             "medal": {
-                "platinum": "Platinum",
-                "gold": "Gold",
-                "silver": "Silver",
-                "bronze": "Bronze"
+                "platinum": "Platin",
+                "gold": "Altın",
+                "silver": "Gümüş",
+                "bronze": "Bronz"
             }
         },
         "HomeCardMode": {
@@ -113,7 +113,7 @@
         "title": "Geçmiş",
         "date": "Tarih",
         "mode": "Mod",
-        "mapName": "Map Name",
+        "mapName": "Harita İsmi",
         "time": "Zaman",
         "distance": "Mesafe",
         "points": "Puanlar",
