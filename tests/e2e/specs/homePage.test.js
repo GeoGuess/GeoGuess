@@ -11,10 +11,10 @@ describe('HomePage', () => {
         cy.get('.search-box__btns .v-btn.primary').contains('Single Player');
         cy.get('#languageBtn').click();
         cy.get('#menuLanguage').contains('English');
-        cy.get('#menuLanguage').contains('Français');
+        cy.get('#menuLanguage').contains('français');
 
         cy.get(
-            '#menuLanguage .v-list-item__title:contains("Français")'
+            '#menuLanguage .v-list-item__title:contains("français")'
         ).click();
 
         cy.get('.search-box__btns .v-btn.primary').contains('Un joueur');
