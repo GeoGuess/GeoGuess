@@ -9,7 +9,7 @@
                 step="30"
                 ticks
                 hide-details
-                @input="changeAll"
+                @change="changeAll"
             />
         </v-row>
         <v-row>
