@@ -204,6 +204,17 @@ describe('homeStore.js', () => {
                     },
                     points: 102
                 },
+                {
+                    date: "2020-06-14T15:10:14.579Z",
+                    mapDetails:{
+                        osmId: 123,
+                        osmType: 'relation',
+                        name: 'map1',
+                        type: 'osm'
+                    },
+                    points: 999,
+                    nbRound: 1
+                },
             ]
         };
 

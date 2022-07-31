@@ -165,6 +165,11 @@ export default {
                     export: true,
                 },
                 {
+                    text: this.$t('History.nbRound'),
+                    value: 'nbRound',
+                    export: true,
+                },
+                {
                     text: this.$t('History.distance'),
                     value: 'score',
                     export: true,
