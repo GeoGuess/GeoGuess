@@ -109,6 +109,7 @@ describe('HistoryTable.vue', () => {
 
     it('test exportCsv method', () => {
         const wrapper = shallowMount(HistoryTable, { ...args, store });
+        // eslint-disable-next-line no-import-assign
         dependencyUtils.download = jest.fn();
         wrapper.setData({ history: [item] });
 
