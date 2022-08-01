@@ -122,7 +122,6 @@ Cypress.Commands.add('setPositionGuess', (isMobile) => {
         if ($body.find('.dismissButton').length > 0) {
             cy.get('div#container-map .dismissButton').click();
             cy.wait(500);
-            cy.get('div#container-map').click('center');
         }
     });
 
