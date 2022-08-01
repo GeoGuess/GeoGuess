@@ -66,7 +66,7 @@
                         </v-flex>
                     </v-row>
 
-                    <v-row>
+                    <v-row class="mb-0">
                         <label class="card_settings__time__label">{{
                             $t('CardRoomTime.title')
                         }}</label>
@@ -78,9 +78,9 @@
 
                     <v-row
                         align="center"
-                        class="card_settings__allow_btns d-flex justify-space-around flex-row"
+                        class="d-flex justify-space-around flex-row mb-0 mt-0"
                     >
-                        <div>
+                        <v-col>
                             <v-checkbox
                                 :input-value="gameSettings.zoomControl"
                                 @change="
@@ -130,43 +130,9 @@
                                     $t('CardRoomSettings.optimiseStreetView')
                                 "
                                 hide-details
-                            />     
-                            <br />
-                            <v-list-group prepend-icon="mdi-cog">
-                                <template v-slot:activator>
-                                    <v-list-item-title>
-                                        {{$t('CardRoomSettings.moreSettings')}}
-                                    </v-list-item-title>
-                                </template>
-                                <v-select
-                                    v-if="
-                                        gameSettings.modeSelected ===
-                                            gameMode.CLASSIC
-                                    "
-                                    :label="
-                                        $t('CardRoomSettings.scoreModeLabel')
-                                    "
-                                    :input-value="gameSettings.scoreMode"
-                                    @change="
-                                        (scoreMode) =>
-                                            setGameSettings({ scoreMode })
-                                    "
-                                    :items="scoreModes"
-                                />
-
-                                <v-autocomplete
-                                    v-if="optionsArea.length > 0"
-                                    :label="$t('CardRoomSettings.selectAreas')"
-                                    :value="gameSettings.areaParams"
-                                    :items="optionsArea"
-                                    @input="
-                                        (areaParams) =>
-                                            setGameSettings({ areaParams })
-                                    "
-                                />
-                            </v-list-group>
-                        </div>
-                        <div>
+                            /> 
+                        </v-col>
+                        <v-col>
                             <v-text-field
                                 v-if="!singlePlayer"
                                 :label="$t('CardRoomSettings.countDownLabel')"
@@ -231,7 +197,59 @@
                                     </template>
                                 </v-checkbox>
                             </div>
-                        </div>
+                        </v-col>
+                    </v-row>
+                    <v-row 
+                        class="mb-0 mt-0"
+                        align="center"
+                    >
+                        <v-col>
+                            <v-list-group prepend-icon="mdi-cog">
+                                <template v-slot:activator>
+                                    <v-list-item-title>
+                                        {{$t('CardRoomSettings.moreSettings')}}
+                                    </v-list-item-title>
+                                </template>
+                                <v-text-field
+                                    type="number"
+                                    :disabled="gameSettings.timeAttackSelected"
+                                    :label="$t('CardRoomSettings.nbRound')"
+                                    :value="gameSettings.timeAttackSelected ? 10 : gameSettings.nbRoundSelected"
+                                    min="1"
+                                    @input="
+                                        (nbRoundSelected) => 
+                                            setGameSettings({ nbRoundSelected: +nbRoundSelected })
+                                    "
+                                />
+                                <v-select
+                                    v-if="
+                                        gameSettings.modeSelected ===
+                                            gameMode.CLASSIC
+                                    "
+                                    :label="
+                                        $t('CardRoomSettings.scoreModeLabel')
+                                    "
+                                    :input-value="gameSettings.scoreMode"
+                                    :items="scoreModes"
+                                    @change="
+                                        (scoreMode) =>
+                                            setGameSettings({ scoreMode })
+                                    "
+                                />
+
+                                <v-autocomplete
+                                    v-if="optionsArea.length > 0"
+                                    :label="$t('CardRoomSettings.selectAreas')"
+                                    :value="gameSettings.areaParams"
+                                    :items="optionsArea"
+                                    @input="
+                                        (areaParams) =>
+                                            setGameSettings({ areaParams })
+                                    "
+                                />
+                            </v-list-group>
+                        </v-col>
+                        <v-col/>
                     </v-row>
                 </v-col>
             </v-row>
@@ -340,9 +358,6 @@ export default {
         }
     }
 
-    .card_settings__allow_btns {
-        display: flex;
-        flex-direction: column;
         .v-input {
             align-self: start;
             margin: 0;
@@ -350,7 +365,7 @@ export default {
                 display: contents;
             }
         }
-    }
+    
     @media (max-width: 360px) {
         .card_settings__mode__btns {
             flex-direction: column;

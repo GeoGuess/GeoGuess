@@ -153,6 +153,7 @@
             :game="game"
             :multiplayer="!!room"
             :mapDetails="mapDetails"
+            :nb-round="nbRound"
             @finishGame="finishGame"
             @playAgain="goToNextRound(true)"
         />

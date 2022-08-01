@@ -20,6 +20,7 @@ export class GameSettings {
         _scoreMode = SCORE_MODE.NORMAL,
         _areaParams = null,
         _optimiseStreetView = true,
+        _nbRound = 5,
     ) {
         this.allPanorama = _allPanorama;
         this.time = _timeLimitation;
@@ -32,6 +33,7 @@ export class GameSettings {
         this.scoreMode = _scoreMode;
         this.areaParams = _areaParams;
         this.optimiseStreetView = _optimiseStreetView;
+        this.nbRoundSelected = _nbRound;
     }
 }
 
@@ -324,6 +326,7 @@ export default {
                         scoreMode: snapshot.child('scoreMode').val(),
                         areaParams: snapshot.child('areaParams').val(),
                         optimiseStreetView: snapshot.child('optimiseStreetView').val(),
+                        nbRoundSelected: snapshot.child('nbRoundSelected').val(),
                     };
 
                     dispatch('startGameMultiplayer', gameParams);

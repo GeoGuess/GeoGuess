@@ -101,7 +101,8 @@ export default {
         'multiplayer',
         'game',
         'mode',
-        'mapDetails'
+        'mapDetails',
+        'nbRound',
     ],
     computed: {
         showDistance() {
@@ -132,6 +133,7 @@ export default {
                           (text) => text.playerName === this.playerName
                       ) + 1
                     : undefined,
+                nbRound: this.nbRound,
                 mapDetails: this.mapDetails
             });
             localStorage.setItem('history', JSON.stringify(history));

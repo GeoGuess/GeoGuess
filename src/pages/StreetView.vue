@@ -203,7 +203,12 @@ export default {
             type: Object,
             required: false,
             default: undefined
-        }
+        },
+        nbRoundSelected: {
+            type: Number,
+            required: false,
+            default: 5,
+        },
     },
     data() {
         return {
@@ -218,7 +223,7 @@ export default {
             timeLimitation: this.time,
             mode: this.modeSelected,
             timeAttack: this.timeAttackSelected,
-            nbRound: this.timeAttackSelected ? 10 : 5,
+            nbRound: this.timeAttackSelected ? 10 : this.nbRoundSelected,
             remainingTime: 0,
             endTime: null,
             hasTimerStarted: false,

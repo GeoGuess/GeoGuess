@@ -107,8 +107,8 @@ export default {
         },
 
         getMaxScoreOsm: (state) => ({osmId, osmType}) =>{
-            return state.history.reduce((acc, {points, mapDetails})=>{
-                if(mapDetails && mapDetails.type === GeoMapType.OSM && mapDetails.osmId === osmId && mapDetails.osmType === osmType && acc < points){
+            return state.history.reduce((acc, {points, mapDetails, nbRound})=>{
+                if(!nbRound || nbRound === 5 && mapDetails && mapDetails.type === GeoMapType.OSM && mapDetails.osmId === osmId && mapDetails.osmType === osmType && acc < points){
                     return points;
                 }
                 return acc;
