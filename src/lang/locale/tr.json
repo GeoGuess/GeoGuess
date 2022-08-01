@@ -1,214 +1,216 @@
 {
-    "Home": {
-        "placeVisited": "0 yer gezildi | 1 yer gezildi | {count} yer gezildi",
-        "historyBtn": "GEÇMİŞ",
-        "medalsBtn": "MADALYALAR",
-        "about": "HAKKINDA",
-        "createMap": "Harita Oluştur",
-        "searchBar": {
-            "customLoaded": "Özel harita yüklendi",
-            "enterCity": "Bir şehir, bölge veya ülke girin"
-        },
-        "aboutDescriptions": {
-            "1": "Geoguess reklamsız ve bedava bir yer tahmin etme oyunudur. Oyuncular beş tur içinde rastgele verilen konumlara en yakın tahmini vermeye çalışır. Skorunuzu, Facebook ve Twitter gibi sosyal medyalardan diğer insanlarla paylaşabilirsiniz. Oyunu en fazla 5 arkadaşınızla çok oyunculu bir şekilde oynayabilirsiniz. İlk oyuncu odayı kurar ve oda boyutunu seçer. Diğer oyunculular ilk oyuncunun kurduğu odanın ismini yazarak oyuna girer ve oyun başlar.",
-            "2": "Bu oyun şuradan alıntılandı --> "
-        },
-        "customMap": "ÖZEL HARİTA",
-        "customMapDescriptions": {
-            "1": "Rastgele konumları, arama çubuğunda şehir, bölge ya da ülke olarak sınırlandırabilirsiniz.",
-            "2": "Çok oyunculu modunda, ilk oyuncu konumu düzenleyebilir.",
-            "3": "Dahası, özel haritalarınızı ",
-            "4": "dosyası ile yapabilirsiniz.",
-            "5": "GeoJson haritasının içeriğini aşağıdaki düğme ile ekleyin :",
-            "6": "Özel harita örnekleri : "
-        },
-        "limitation": "KISITLAMA",
-        "limitationDescription": "Şu anda oyunun maliyetinin yüksek olmaması için günlük kota belirledim.            Eğer harita yüklenmediyse o günkü kota aşılmış anlamına gelir.            Kota, Pasifik Saatine göre gece yarısı sıfırlanacaktır. Rahatsızlıktan dolayı üzgünüm.             Oyun açık kaynak kodlu olduğundan dolayı kendi oyun sunucunuzu kurabilir ve sınırsızca oynayabilirsiniz.",
-        "play": "Oyna",
-        "streamerModeActivate": "Yayıncı modu aktif",
-        "streamerModeDetails": "Bağlantılar ve oda isimleri artık gizli",
-        "mapSavedAlert": {
-            "title": "Harita Kaydedildi",
-            "subtitle": "Harita listelerinizde bulabilirsiniz"
-        },
-        "HomeCard": {
-            "edit": "Düzenle",
-            "delete": "Sil",
-            "medal": {
-                "platinum": "Platin",
-                "gold": "Altın",
-                "silver": "Gümüş",
-                "bronze": "Bronz"
-            }
-        },
-        "HomeCardMode": {
-            "map": "Map",
-            "area": "Area"
-        },
-        "Sections": {
-            "areasTitle": "Areas",
-            "mapsTitle": "Maps",
-            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-            "barrelRoll": "do a barrel roll"
-        }
+  "Home": {
+    "placeVisited": "0 yer gezildi | 1 yer gezildi | {count} yer gezildi",
+    "historyBtn": "GEÇMİŞ",
+    "medalsBtn": "MADALYALAR",
+    "about": "HAKKINDA",
+    "createMap": "Harita Oluştur",
+    "searchBar": {
+      "customLoaded": "Özel harita yüklendi",
+      "enterCity": "Bir şehir, bölge veya ülke girin"
     },
-    "StreetView": {
-        "nearby": {
-            "title": "Yakındaki Konum",
-            "message": "Ne yazık ki, belirtilen konumda rastgele yer bulamadık. Ancak, ona yakın bir yer bulduk 😉"
-        },
-        "waitForOtherPlayers": "Diğer oyuncular bekleniyor...",
-        "redirectToHomePage": "Ana sayfaya yönlendiriliyor...",
-        "exitGame": "Oyundan çıkılmak zorunda kalındı. 5 saniye içinde ana sayfaya yönlendiriliyor...",
-        "waitForOtherPlayersToFinish": "Diğer oyuncuların oyunu bitirmesi bekleniyor...",
-        "confirmExit": "Şu anki oyundan çıkmak istediğine emin misin? Bu oyunu iptal edecek!",
-        "countdownAlert": "Geri sayım başladı : {count} saniye kaldı | Geri sayım başladı : {count} saniye kaldı"
+    "aboutDescriptions": {
+      "1": "Geoguess reklamsız ve bedava bir yer tahmin etme oyunudur. Oyuncular beş tur içinde rastgele verilen konumlara en yakın tahmini vermeye çalışır. Skorunuzu, Facebook ve Twitter gibi sosyal medyalardan diğer insanlarla paylaşabilirsiniz. Oyunu en fazla 5 arkadaşınızla çok oyunculu bir şekilde oynayabilirsiniz. İlk oyuncu odayı kurar ve oda boyutunu seçer. Diğer oyunculular ilk oyuncunun kurduğu odanın ismini yazarak oyuna girer ve oyun başlar.",
+      "2": "Bu oyun şuradan alıntılandı --> "
     },
-    "Maps": {
-        "makeGuess": "TAHMİN ET",
-        "guess": "TAHMİN",
-        "nextRound": "SONRAKİ TUR",
-        "viewSummary": "ÖZETİ GÖRÜNTÜLE",
-        "exit": "ÇIKIŞ",
-        "reset": "SIFIRLA",
-        "playAgain": "TEKRAR OYNA",
-        "infoWindow": {
-            "Distance": "Mesafe",
-            "Points": "Puanlar"
-        }
+    "customMap": "ÖZEL HARİTA",
+    "customMapDescriptions": {
+      "1": "Rastgele konumları, arama çubuğunda şehir, bölge ya da ülke olarak sınırlandırabilirsiniz.",
+      "2": "Çok oyunculu modunda, ilk oyuncu konumu düzenleyebilir.",
+      "3": "Dahası, özel haritalarınızı ",
+      "4": "dosyası ile yapabilirsiniz.",
+      "5": "GeoJson haritasının içeriğini aşağıdaki düğme ile ekleyin :",
+      "6": "Özel harita örnekleri : "
     },
-    "Header": {
-        "language": "Dil",
-        "about": "Hakkında",
-        "limitation": "Kısıtlama",
-        "contact": "İletişim"
+    "limitation": "KISITLAMA",
+    "limitationDescription": "Şu anda oyunun maliyetinin yüksek olmaması için günlük kota belirledim.            Eğer harita yüklenmediyse o günkü kota aşılmış anlamına gelir.            Kota, Pasifik Saatine göre gece yarısı sıfırlanacaktır. Rahatsızlıktan dolayı üzgünüm.             Oyun açık kaynak kodlu olduğundan dolayı kendi oyun sunucunuzu kurabilir ve sınırsızca oynayabilirsiniz.",
+    "play": "Oyna",
+    "streamerModeActivate": "Yayıncı modu aktif",
+    "streamerModeDetails": "Bağlantılar ve oda isimleri artık gizli",
+    "mapSavedAlert": {
+      "title": "Harita Kaydedildi",
+      "subtitle": "Harita listelerinizde bulabilirsiniz"
     },
-    "HeaderGame": {
-        "room": "ODA",
-        "round": "TUR",
-        "distance": "MESAFE",
-        "kmaway": "{value} km uzak",
-        "score": "PUAN"
+    "HomeCard": {
+      "edit": "Düzenle",
+      "delete": "Sil",
+      "medal": {
+        "platinum": "Platin",
+        "gold": "Altın",
+        "silver": "Gümüş",
+        "bronze": "Bronz"
+      }
     },
-    "next": "SONRAKİ",
-    "cancel": "İPTAL",
-    "DialogCustomMap": {
-        "title": "Özel Harita",
-        "invalid": "Geçersiz GeoJSON",
-        "text": "Yazı",
-        "url": "Bağlantı",
-        "file": "Dosya",
-        "edit": "Haritayı Düzenle",
-        "fileLabel": "GeoJSON dosyası seç",
-        "OK": "Onayla",
-        "download": "GeoJSON İndir",
-        "Clean": "Temizle",
-        "save": "kaydet",
-        "inputName": {
-            "label": "Harita İsmi",
-            "placeholder": "Favori Mekanlara Ekle"
-        }
+    "HomeCardMode": {
+      "map": "Map",
+      "area": "Area"
     },
-    "History": {
-        "title": "Geçmiş",
-        "date": "Tarih",
-        "mode": "Mod",
-        "mapName": "Harita İsmi",
-        "time": "Zaman",
-        "distance": "Mesafe",
-        "points": "Puanlar",
-        "rank": "Rütbe",
-        "actions": "Actions",
-        "search": "Ara",
-        "exportGeoSave": "GeoSave'i Dışarı Aktar",
-        "importGeoSave": "GeoSave'i İçeri Aktar",
-        "exportCSV": "CSV Olarak Dışarı Aktar",
-        "total": "Toplam"
-    },
-    "DialogRoom": {
-        "singlePlayer": "Tek Oyunculu",
-        "withFriends": "Arkadaşlarınla Oyna",
-        "invalidRoomName": "Geçersiz İsim. Lütfen başka bir tane deneyin.",
-        "inProgress": "İlk oyuncu şu anda odayı kuruyor. Lütfen bekleyin ve tekrar deneyin.",
-        "roomIsFull": "Bu oda dolu. Lütfen başka bir tane deneyin.",
-        "alreadyStarted": "Bu oda çoktan başladı. Lütfen başka bir tane deneyin."
-    },
-    "CardRoomName": {
-        "title": "Yeni oda açmak için bir oda ismi yazın veya var olan bir odaya katılın"
-    },
-    "CardRoomPlayerName": {
-        "title": "Oda:",
-        "input": "Oyuncu ismi yazın.",
-        "anonymousPlayerName": "Anonim 🕵",
-        "players": "1 oyuncu | {count} oyuncu"
-    },
-    "CardRoomSize": {
-        "title": "Oda boyutunu belirle."
-    },
-    "CardRoomTime": {
-        "title": "Bir zaman sınırlaması ayarlayın.",
-        "infinite": "Sınırsız"
-    },
-    "CardRoomMap": {
-        "title": "Haritanızı Tanımlayın",
-        "loadBtn": "Harita Yükle",
-        "reset": "Sıfırla",
-        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
-    },
-    "CardRoomSettings": {
-        "title": "Oyun Ayarları",
-        "modeLabel": "Oyun modu seç",
-        "includePhotopheres": "Fotoğraf kürelerini dahil et",
-        "timeAttackLabel": "ZamanYarışı",
-        "timeattackInfos": "Zaman yarışı modunda, sadece ülkeyi ilk doğru tahmin eden oyuncu puan alır. Çabuk olun ve kazanın!",
-        "allowMove": "Hareket Etmeye İzin Ver",
-        "allowZoom": "Yakınlaştırmaya İzin Ver",
-        "allowPan": "Kaydırmaya İzin Ver",
-        "countDownLabel": "Geri Sayım (saniyeler)",
-        "scoreModeLabel": "Puan Formülü",
-        "scoreModes": {
-            "normal": "normal",
-            "time": "zaman"
-        },
-        "selectAreas": "Select Areas",
-        "moreSettings": "More settings",
-        "optimiseStreetView": "StreetView Optimize (only official)"
-    },
-    "CardRoomDifficulty": {
-        "title": "Zorluk seviyesi seç.",
-        "easy": "kolay (dünya)",
-        "medium": "orta (ülke)",
-        "hard": "zor (şehir)"
-    },
-    "DialogSummary": {
-        "summaryMsgSinglePoints": "Skorun <strong>{points}</strong> puan! ",
-        "summaryMsgSingleDistance": "<strong>{distance}</strong> km uzaktasın!",
-        "summaryMsgMultiPoints": "<strong>{playerName}</strong> skoru <strong>{points}</strong> ! ",
-        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km uzak)",
-        "viewDetails": "Detayları görüntüle"
-    },
-    "Footer": {
-        "under": "altındadır",
-        "privacyPolicy": "Gizlilik Politikası"
-    },
-    "urlCopied": "Bağlantı kopyalandı",
-    "DetailsMap": {
-        "moreInfo": "Daha fazla bilgi"
-    },
-    "modes": {
-        "classic": "Klasik",
-        "country": "Ülke seç",
-        "custom_area": "Pick"
-    },
-    "Demo": {
-        "message": "Eğer bir projede katkınızın bulunmasını istiyorsanız kapımız her zaman açık : Çeviri🔠, Haritacı 🌍, Yazılımcı 💻, Fikir 💡, Beta test 👀.",
-        "btn": "Bize Katılın"
-    },
-    "OK": "Onayla",
-    "yes": "evet",
-    "no": "hayır",
-    "AlertUpdate": {
-        "label": "Yeni bir sürüm mevcut. Güncellemek için butona tıklayın.",
-        "btn": "Güncelle"
+    "Sections": {
+      "areasTitle": "Areas",
+      "mapsTitle": "Maps",
+      "pleaseSelectLabel": "You seems lost, please select a type or you can ",
+      "barrelRoll": "do a barrel roll"
     }
+  },
+  "StreetView": {
+    "nearby": {
+      "title": "Yakındaki Konum",
+      "message": "Ne yazık ki, belirtilen konumda rastgele yer bulamadık. Ancak, ona yakın bir yer bulduk 😉"
+    },
+    "waitForOtherPlayers": "Diğer oyuncular bekleniyor...",
+    "redirectToHomePage": "Ana sayfaya yönlendiriliyor...",
+    "exitGame": "Oyundan çıkılmak zorunda kalındı. 5 saniye içinde ana sayfaya yönlendiriliyor...",
+    "waitForOtherPlayersToFinish": "Diğer oyuncuların oyunu bitirmesi bekleniyor...",
+    "confirmExit": "Şu anki oyundan çıkmak istediğine emin misin? Bu oyunu iptal edecek!",
+    "countdownAlert": "Geri sayım başladı : {count} saniye kaldı | Geri sayım başladı : {count} saniye kaldı"
+  },
+  "Maps": {
+    "makeGuess": "TAHMİN ET",
+    "guess": "TAHMİN",
+    "nextRound": "SONRAKİ TUR",
+    "viewSummary": "ÖZETİ GÖRÜNTÜLE",
+    "exit": "ÇIKIŞ",
+    "reset": "SIFIRLA",
+    "playAgain": "TEKRAR OYNA",
+    "infoWindow": {
+      "Distance": "Mesafe",
+      "Points": "Puanlar"
+    }
+  },
+  "Header": {
+    "language": "Dil",
+    "about": "Hakkında",
+    "limitation": "Kısıtlama",
+    "contact": "İletişim"
+  },
+  "HeaderGame": {
+    "room": "ODA",
+    "round": "TUR",
+    "distance": "MESAFE",
+    "kmaway": "{value} km uzak",
+    "score": "PUAN"
+  },
+  "next": "SONRAKİ",
+  "cancel": "İPTAL",
+  "DialogCustomMap": {
+    "title": "Özel Harita",
+    "invalid": "Geçersiz GeoJSON",
+    "text": "Yazı",
+    "url": "Bağlantı",
+    "file": "Dosya",
+    "edit": "Haritayı Düzenle",
+    "fileLabel": "GeoJSON dosyası seç",
+    "OK": "Onayla",
+    "download": "GeoJSON İndir",
+    "Clean": "Temizle",
+    "save": "kaydet",
+    "inputName": {
+      "label": "Harita İsmi",
+      "placeholder": "Favori Mekanlara Ekle"
+    }
+  },
+  "History": {
+    "title": "Geçmiş",
+    "date": "Tarih",
+    "mode": "Mod",
+    "mapName": "Harita İsmi",
+    "time": "Zaman",
+    "distance": "Mesafe",
+    "points": "Puanlar",
+    "rank": "Rütbe",
+    "actions": "Actions",
+    "search": "Ara",
+    "exportGeoSave": "GeoSave'i Dışarı Aktar",
+    "importGeoSave": "GeoSave'i İçeri Aktar",
+    "exportCSV": "CSV Olarak Dışarı Aktar",
+    "total": "Toplam",
+    "nbRound": "Nb Rounds"
+  },
+  "DialogRoom": {
+    "singlePlayer": "Tek Oyunculu",
+    "withFriends": "Arkadaşlarınla Oyna",
+    "invalidRoomName": "Geçersiz İsim. Lütfen başka bir tane deneyin.",
+    "inProgress": "İlk oyuncu şu anda odayı kuruyor. Lütfen bekleyin ve tekrar deneyin.",
+    "roomIsFull": "Bu oda dolu. Lütfen başka bir tane deneyin.",
+    "alreadyStarted": "Bu oda çoktan başladı. Lütfen başka bir tane deneyin."
+  },
+  "CardRoomName": {
+    "title": "Yeni oda açmak için bir oda ismi yazın veya var olan bir odaya katılın"
+  },
+  "CardRoomPlayerName": {
+    "title": "Oda:",
+    "input": "Oyuncu ismi yazın.",
+    "anonymousPlayerName": "Anonim 🕵",
+    "players": "1 oyuncu | {count} oyuncu"
+  },
+  "CardRoomSize": {
+    "title": "Oda boyutunu belirle."
+  },
+  "CardRoomTime": {
+    "title": "Bir zaman sınırlaması ayarlayın.",
+    "infinite": "Sınırsız"
+  },
+  "CardRoomMap": {
+    "title": "Haritanızı Tanımlayın",
+    "loadBtn": "Harita Yükle",
+    "reset": "Sıfırla",
+    "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+  },
+  "CardRoomSettings": {
+    "title": "Oyun Ayarları",
+    "modeLabel": "Oyun modu seç",
+    "includePhotopheres": "Fotoğraf kürelerini dahil et",
+    "timeAttackLabel": "ZamanYarışı",
+    "timeattackInfos": "Zaman yarışı modunda, sadece ülkeyi ilk doğru tahmin eden oyuncu puan alır. Çabuk olun ve kazanın!",
+    "allowMove": "Hareket Etmeye İzin Ver",
+    "allowZoom": "Yakınlaştırmaya İzin Ver",
+    "allowPan": "Kaydırmaya İzin Ver",
+    "countDownLabel": "Geri Sayım (saniyeler)",
+    "scoreModeLabel": "Puan Formülü",
+    "scoreModes": {
+      "normal": "normal",
+      "time": "zaman"
+    },
+    "selectAreas": "Select Areas",
+    "moreSettings": "More settings",
+    "optimiseStreetView": "StreetView Optimize (only official)",
+    "nbRound": "Number of rounds"
+  },
+  "CardRoomDifficulty": {
+    "title": "Zorluk seviyesi seç.",
+    "easy": "kolay (dünya)",
+    "medium": "orta (ülke)",
+    "hard": "zor (şehir)"
+  },
+  "DialogSummary": {
+    "summaryMsgSinglePoints": "Skorun <strong>{points}</strong> puan! ",
+    "summaryMsgSingleDistance": "<strong>{distance}</strong> km uzaktasın!",
+    "summaryMsgMultiPoints": "<strong>{playerName}</strong> skoru <strong>{points}</strong> ! ",
+    "summaryMsgMultiDistance": "(<strong>{distance}</strong> km uzak)",
+    "viewDetails": "Detayları görüntüle"
+  },
+  "Footer": {
+    "under": "altındadır",
+    "privacyPolicy": "Gizlilik Politikası"
+  },
+  "urlCopied": "Bağlantı kopyalandı",
+  "DetailsMap": {
+    "moreInfo": "Daha fazla bilgi"
+  },
+  "modes": {
+    "classic": "Klasik",
+    "country": "Ülke seç",
+    "custom_area": "Pick"
+  },
+  "Demo": {
+    "message": "Eğer bir projede katkınızın bulunmasını istiyorsanız kapımız her zaman açık : Çeviri🔠, Haritacı 🌍, Yazılımcı 💻, Fikir 💡, Beta test 👀.",
+    "btn": "Bize Katılın"
+  },
+  "OK": "Onayla",
+  "yes": "evet",
+  "no": "hayır",
+  "AlertUpdate": {
+    "label": "Yeni bir sürüm mevcut. Güncellemek için butona tıklayın.",
+    "btn": "Güncelle"
+  }
 }
