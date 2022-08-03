@@ -124,7 +124,7 @@
     "importGeoSave": "Import GeoSave",
     "exportCSV": "Export CSV",
     "total": "Total",
-    "nbRound": "Nb Rounds"
+    "nbRound": "ラウンドなし"
   },
   "DialogRoom": {
     "singlePlayer": "一人で遊ぶ",
@@ -174,7 +174,7 @@
     "selectAreas": "Select Areas",
     "moreSettings": "More settings",
     "optimiseStreetView": "StreetViewの最適化 (公式のみ)",
-    "nbRound": "Number of rounds"
+    "nbRound": "ラウンド数"
   },
   "CardRoomDifficulty": {
     "title": "Set a difficulty level.",
