@@ -1,214 +1,216 @@
 {
-    "Home": {
-        "placeVisited": "0 locais visitados | 1 local visitado | {count} lugares visitados",
-        "historyBtn": "HISTÓRICO",
-        "medalsBtn": "MEDALS",
-        "about": "SOBRE",
-        "createMap": "Create Map",
-        "searchBar": {
-            "customLoaded": "O mapa personalizado foi carregado",
-            "enterCity": "Insira uma cidade, estado ou país"
-        },
-        "aboutDescriptions": {
-            "1": "Geoguess é um jogo grátis e sem anúncios                  Os jogadores competem em 5 rodadas para adivinhar a posição mais próxima dos locais em que foram colocados aleatoriamente.                  Você pode compartilhar sua pontuação em redes sociais como Facebook e Twitter.                 Você pode jogar com seus amigos no modo multiplayer.                 O primeiro jogador cria uma sala e decide seu tamanho. Uma vez criado, outros jogadores poderão entrar na sala usando o nome criado pelo primeiro jogador.",
-            "2": "Este jogo foi desenvolvido com base no "
-        },
-        "customMap": "MAPAS PERSONALIZADOS",
-        "customMapDescriptions": {
-            "1": "Você pode limitar as posições aleatórias a uma cidade, região ou país por meio da barra de pesquisa.",
-            "2": "No modo multiplayer, o primeiro jogador define o local.",
-            "3": "Furthermore, you can make your customs map with ",
-            "4": "arquivo.",
-            "5": "Insira o conteúdo do mapa no formato GeoJson com o botão:",
-            "6": "Exemplos de mapas personalizados: "
-        },
-        "limitation": "LIMITAÇÃO",
-        "limitationDescription": "Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.                Se o mapa não carregar, significa que as cotas do dia foram excedidas                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência.                 O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.",
-        "play": "Jogar",
-        "streamerModeActivate": "Modo streamer ativado",
-        "streamerModeDetails": "URLs e nomes de salas estão ocultos",
-        "mapSavedAlert": {
-            "title": "Map saved 🎉",
-            "subtitle": "You will find it in your map lists"
-        },
-        "HomeCard": {
-            "edit": "Edit",
-            "delete": "Delete",
-            "medal": {
-                "platinum": "Platinum",
-                "gold": "Gold",
-                "silver": "Silver",
-                "bronze": "Bronze"
-            }
-        },
-        "HomeCardMode": {
-            "map": "Map",
-            "area": "Area"
-        },
-        "Sections": {
-            "areasTitle": "Areas",
-            "mapsTitle": "Maps",
-            "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-            "barrelRoll": "do a barrel roll"
-        }
+  "Home": {
+    "placeVisited": "0 locais visitados | 1 local visitado | {count} lugares visitados",
+    "historyBtn": "HISTÓRICO",
+    "medalsBtn": "MEDALS",
+    "about": "SOBRE",
+    "createMap": "Create Map",
+    "searchBar": {
+      "customLoaded": "O mapa personalizado foi carregado",
+      "enterCity": "Insira uma cidade, estado ou país"
     },
-    "StreetView": {
-        "nearby": {
-            "title": "Posição aproximada",
-            "message": "Infelizmente, não foi possível encontrar uma posição aleatória no local definido. No entanto, encontramos um próximo 😉"
-        },
-        "waitForOtherPlayers": "Esperando por outros jogadores...",
-        "redirectToHomePage": "Redirecionando para a página inicial...",
-        "exitGame": "Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...",
-        "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida...",
-        "confirmExit": "Tem certeza que quer sair da partida atual? Isso cancelará a partida!",
-        "countdownAlert": "Contagem regressiva iniciada: {count} segundos restantes | Contagem regressiva iniciada: {count} segundos restantes"
+    "aboutDescriptions": {
+      "1": "Geoguess é um jogo grátis e sem anúncios                  Os jogadores competem em 5 rodadas para adivinhar a posição mais próxima dos locais em que foram colocados aleatoriamente.                  Você pode compartilhar sua pontuação em redes sociais como Facebook e Twitter.                 Você pode jogar com seus amigos no modo multiplayer.                 O primeiro jogador cria uma sala e decide seu tamanho. Uma vez criado, outros jogadores poderão entrar na sala usando o nome criado pelo primeiro jogador.",
+      "2": "Este jogo foi desenvolvido com base no "
     },
-    "Maps": {
-        "makeGuess": "TENTAR ADIVINHAR",
-        "guess": "ADVINHE",
-        "nextRound": "PROXIMA RODADA",
-        "viewSummary": "VER RESUMO",
-        "exit": "SAIR",
-        "reset": "REINICIAR",
-        "playAgain": "JOGAR NOVAMENTE",
-        "infoWindow": {
-            "Distance": "Distância",
-            "Points": "Pontos"
-        }
+    "customMap": "MAPAS PERSONALIZADOS",
+    "customMapDescriptions": {
+      "1": "Você pode limitar as posições aleatórias a uma cidade, região ou país por meio da barra de pesquisa.",
+      "2": "No modo multiplayer, o primeiro jogador define o local.",
+      "3": "Furthermore, you can make your customs map with ",
+      "4": "arquivo.",
+      "5": "Insira o conteúdo do mapa no formato GeoJson com o botão:",
+      "6": "Exemplos de mapas personalizados: "
     },
-    "Header": {
-        "language": "Idioma",
-        "about": "Sobre",
-        "limitation": "Limitação",
-        "contact": "Contato"
+    "limitation": "LIMITAÇÃO",
+    "limitationDescription": "Atualmente estabeleço uma cota por dia para que o custo do jogo não seja alto.                Se o mapa não carregar, significa que as cotas do dia foram excedidas                Sempre à meia-noite(horário do Pacífico) as cotas são reiniciadas. Desculpe pela inconveniência.                 O jogo é open source, então você pode criar sua propria versão deste jogo para jogar sem limites.",
+    "play": "Jogar",
+    "streamerModeActivate": "Modo streamer ativado",
+    "streamerModeDetails": "URLs e nomes de salas estão ocultos",
+    "mapSavedAlert": {
+      "title": "Map saved 🎉",
+      "subtitle": "You will find it in your map lists"
     },
-    "HeaderGame": {
-        "room": "SALA",
-        "round": "RODADA",
-        "distance": "DISTÂNCIA",
-        "kmaway": "{value} km",
-        "score": "PONTOS"
+    "HomeCard": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "medal": {
+        "platinum": "Platinum",
+        "gold": "Gold",
+        "silver": "Silver",
+        "bronze": "Bronze"
+      }
     },
-    "next": "PRÓXIMO",
-    "cancel": "CANCELAR",
-    "DialogCustomMap": {
-        "title": "Mapa Personalizado",
-        "invalid": "GeoJSON inválido",
-        "text": "Texto",
-        "url": "Url",
-        "file": "Arquivo",
-        "edit": "Editar o mapa",
-        "fileLabel": "Selecione um arquivo GeoJSON",
-        "OK": "OK",
-        "download": "Baixar GeoJSON",
-        "Clean": "Clean",
-        "save": "save",
-        "inputName": {
-            "label": "Map Name",
-            "placeholder": "My favorite place"
-        }
+    "HomeCardMode": {
+      "map": "Map",
+      "area": "Area"
     },
-    "History": {
-        "title": "Histórico",
-        "date": "Data",
-        "mode": "Modo",
-        "mapName": "Map Name",
-        "time": "Tempo",
-        "distance": "Distância",
-        "points": "Pontos",
-        "rank": "Classificação",
-        "actions": "Actions",
-        "search": "Pesquisa",
-        "exportGeoSave": "Exportar GeoSave",
-        "importGeoSave": "Importar GeoSave",
-        "exportCSV": "Exportar CSV",
-        "total": "Total"
-    },
-    "DialogRoom": {
-        "singlePlayer": "Sozinho",
-        "withFriends": "Com amigos",
-        "invalidRoomName": "Nome inválido. Por favor, tente outro.",
-        "inProgress": "O primeiro jogador está criando a sala agora. Aguarde e tente novamente.",
-        "roomIsFull": "Esta sala já está cheia. Por favor, tente outra.",
-        "alreadyStarted": "Está sala já começou o jogo. Por favor, tente outra."
-    },
-    "CardRoomName": {
-        "title": "Digite o nome da sala para criar uma nova sala ou junte-se a uma sala existente"
-    },
-    "CardRoomPlayerName": {
-        "title": "Sala:",
-        "input": "Digite um nome de jogador.",
-        "anonymousPlayerName": "Anônimo 🕵",
-        "players": "1 jogador | {count} jogadores"
-    },
-    "CardRoomSize": {
-        "title": "Defina o tamanho da sala."
-    },
-    "CardRoomTime": {
-        "title": "Defina o tempo limite.",
-        "infinite": "Infinito"
-    },
-    "CardRoomMap": {
-        "title": "Define your map",
-        "loadBtn": "Load MAP",
-        "reset": "Reset",
-        "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
-    },
-    "CardRoomSettings": {
-        "title": "Configurações da partida",
-        "modeLabel": "Selecione o modo de jogo",
-        "includePhotopheres": "Incluir Photospheres",
-        "timeAttackLabel": "TimeAttack",
-        "timeattackInfos": "No modo TimeAttack, apenas o jogador que adivinhar o país primeiro ganha o ponto. Seja rápido e vença!",
-        "allowMove": "Permitir movimento",
-        "allowZoom": "Permitir Zoom",
-        "allowPan": "Permitir Visão Panorâmica",
-        "countDownLabel": "Contagem regressiva (segundos)",
-        "scoreModeLabel": "Fórmula de pontuação",
-        "scoreModes": {
-            "normal": "normal",
-            "time": "tempo"
-        },
-        "selectAreas": "Select Areas",
-        "moreSettings": "More settings",
-        "optimiseStreetView": "StreetView Optimize (only official)"
-    },
-    "CardRoomDifficulty": {
-        "title": "Defina a dificuldade.",
-        "easy": "fácil (mundo)",
-        "medium": "Médio (país)",
-        "hard": "Difícil (cidade)"
-    },
-    "DialogSummary": {
-        "summaryMsgSinglePoints": "Sua pontuação é de <strong>{points}</strong> pontos! ",
-        "summaryMsgSingleDistance": "Você está a <strong>{distance}</strong> km de distância!",
-        "summaryMsgMultiPoints": "O jogador <strong>{playerName}</strong> fez <strong>{points}</strong> pontos! ",
-        "summaryMsgMultiDistance": "(<strong>{distance}</strong> km de distância)",
-        "viewDetails": "Ver detalhes"
-    },
-    "Footer": {
-        "under": "sob a licença",
-        "privacyPolicy": "Política de Privacidade"
-    },
-    "urlCopied": "Url copiada",
-    "DetailsMap": {
-        "moreInfo": "Mais Informações"
-    },
-    "modes": {
-        "classic": "Clássico",
-        "country": "Escolha o país",
-        "custom_area": "Pick"
-    },
-    "Demo": {
-        "message": "Se você quer contribuir com o projeto e torná-lo cada vez melhor, sua ajuda é muito bem-vinda: Tradução 🔠, Criador de mapas 🌍, Desenvolvimento 💻, Ideias 💡, Beta test 👀.",
-        "btn": "Junte-se a nós"
-    },
-    "OK": "OK",
-    "yes": "Sim",
-    "no": "Não",
-    "AlertUpdate": {
-        "label": "A new version is available. Click on the button to obtain it.",
-        "btn": "Update"
+    "Sections": {
+      "areasTitle": "Areas",
+      "mapsTitle": "Maps",
+      "pleaseSelectLabel": "You seems lost, please select a type or you can ",
+      "barrelRoll": "do a barrel roll"
     }
+  },
+  "StreetView": {
+    "nearby": {
+      "title": "Posição aproximada",
+      "message": "Infelizmente, não foi possível encontrar uma posição aleatória no local definido. No entanto, encontramos um próximo 😉"
+    },
+    "waitForOtherPlayers": "Esperando por outros jogadores...",
+    "redirectToHomePage": "Redirecionando para a página inicial...",
+    "exitGame": "Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...",
+    "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida...",
+    "confirmExit": "Tem certeza que quer sair da partida atual? Isso cancelará a partida!",
+    "countdownAlert": "Contagem regressiva iniciada: {count} segundos restantes | Contagem regressiva iniciada: {count} segundos restantes"
+  },
+  "Maps": {
+    "makeGuess": "TENTAR ADIVINHAR",
+    "guess": "ADVINHE",
+    "nextRound": "PROXIMA RODADA",
+    "viewSummary": "VER RESUMO",
+    "exit": "SAIR",
+    "reset": "REINICIAR",
+    "playAgain": "JOGAR NOVAMENTE",
+    "infoWindow": {
+      "Distance": "Distância",
+      "Points": "Pontos"
+    }
+  },
+  "Header": {
+    "language": "Idioma",
+    "about": "Sobre",
+    "limitation": "Limitação",
+    "contact": "Contato"
+  },
+  "HeaderGame": {
+    "room": "SALA",
+    "round": "RODADA",
+    "distance": "DISTÂNCIA",
+    "kmaway": "{value} km",
+    "score": "PONTOS"
+  },
+  "next": "PRÓXIMO",
+  "cancel": "CANCELAR",
+  "DialogCustomMap": {
+    "title": "Mapa Personalizado",
+    "invalid": "GeoJSON inválido",
+    "text": "Texto",
+    "url": "Url",
+    "file": "Arquivo",
+    "edit": "Editar o mapa",
+    "fileLabel": "Selecione um arquivo GeoJSON",
+    "OK": "OK",
+    "download": "Baixar GeoJSON",
+    "Clean": "Clean",
+    "save": "save",
+    "inputName": {
+      "label": "Map Name",
+      "placeholder": "My favorite place"
+    }
+  },
+  "History": {
+    "title": "Histórico",
+    "date": "Data",
+    "mode": "Modo",
+    "mapName": "Map Name",
+    "time": "Tempo",
+    "distance": "Distância",
+    "points": "Pontos",
+    "rank": "Classificação",
+    "actions": "Actions",
+    "search": "Pesquisa",
+    "exportGeoSave": "Exportar GeoSave",
+    "importGeoSave": "Importar GeoSave",
+    "exportCSV": "Exportar CSV",
+    "total": "Total",
+    "nbRound": "Nb Rounds"
+  },
+  "DialogRoom": {
+    "singlePlayer": "Sozinho",
+    "withFriends": "Com amigos",
+    "invalidRoomName": "Nome inválido. Por favor, tente outro.",
+    "inProgress": "O primeiro jogador está criando a sala agora. Aguarde e tente novamente.",
+    "roomIsFull": "Esta sala já está cheia. Por favor, tente outra.",
+    "alreadyStarted": "Está sala já começou o jogo. Por favor, tente outra."
+  },
+  "CardRoomName": {
+    "title": "Digite o nome da sala para criar uma nova sala ou junte-se a uma sala existente"
+  },
+  "CardRoomPlayerName": {
+    "title": "Sala:",
+    "input": "Digite um nome de jogador.",
+    "anonymousPlayerName": "Anônimo 🕵",
+    "players": "1 jogador | {count} jogadores"
+  },
+  "CardRoomSize": {
+    "title": "Defina o tamanho da sala."
+  },
+  "CardRoomTime": {
+    "title": "Defina o tempo limite.",
+    "infinite": "Infinito"
+  },
+  "CardRoomMap": {
+    "title": "Define your map",
+    "loadBtn": "Load MAP",
+    "reset": "Reset",
+    "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+  },
+  "CardRoomSettings": {
+    "title": "Configurações da partida",
+    "modeLabel": "Selecione o modo de jogo",
+    "includePhotopheres": "Incluir Photospheres",
+    "timeAttackLabel": "TimeAttack",
+    "timeattackInfos": "No modo TimeAttack, apenas o jogador que adivinhar o país primeiro ganha o ponto. Seja rápido e vença!",
+    "allowMove": "Permitir movimento",
+    "allowZoom": "Permitir Zoom",
+    "allowPan": "Permitir Visão Panorâmica",
+    "countDownLabel": "Contagem regressiva (segundos)",
+    "scoreModeLabel": "Fórmula de pontuação",
+    "scoreModes": {
+      "normal": "normal",
+      "time": "tempo"
+    },
+    "selectAreas": "Select Areas",
+    "moreSettings": "More settings",
+    "optimiseStreetView": "StreetView Optimize (only official)",
+    "nbRound": "Number of rounds"
+  },
+  "CardRoomDifficulty": {
+    "title": "Defina a dificuldade.",
+    "easy": "fácil (mundo)",
+    "medium": "Médio (país)",
+    "hard": "Difícil (cidade)"
+  },
+  "DialogSummary": {
+    "summaryMsgSinglePoints": "Sua pontuação é de <strong>{points}</strong> pontos! ",
+    "summaryMsgSingleDistance": "Você está a <strong>{distance}</strong> km de distância!",
+    "summaryMsgMultiPoints": "O jogador <strong>{playerName}</strong> fez <strong>{points}</strong> pontos! ",
+    "summaryMsgMultiDistance": "(<strong>{distance}</strong> km de distância)",
+    "viewDetails": "Ver detalhes"
+  },
+  "Footer": {
+    "under": "sob a licença",
+    "privacyPolicy": "Política de Privacidade"
+  },
+  "urlCopied": "Url copiada",
+  "DetailsMap": {
+    "moreInfo": "Mais Informações"
+  },
+  "modes": {
+    "classic": "Clássico",
+    "country": "Escolha o país",
+    "custom_area": "Pick"
+  },
+  "Demo": {
+    "message": "Se você quer contribuir com o projeto e torná-lo cada vez melhor, sua ajuda é muito bem-vinda: Tradução 🔠, Criador de mapas 🌍, Desenvolvimento 💻, Ideias 💡, Beta test 👀.",
+    "btn": "Junte-se a nós"
+  },
+  "OK": "OK",
+  "yes": "Sim",
+  "no": "Não",
+  "AlertUpdate": {
+    "label": "A new version is available. Click on the button to obtain it.",
+    "btn": "Update"
+  }
 }
