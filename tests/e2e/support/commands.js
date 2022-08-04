@@ -91,11 +91,11 @@ Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
     if (time) {
         cy.get('.time-picker .v-slider--horizontal').click('center');
         cy.get('.time-input__second input')
-            .should('have.value', 0)
-            .type('{backspace}' + time);
-        cy.get('.time-input__minute input')
-            .should('have.value', 5)
-            .type('{backspace}0{enter}');
+            .should('have.value', '00')
+                .type('{backspace}{backspace}' + time);
+            cy.get('.time-input__minute input')
+                .should('have.value', 5)
+                .type('{backspace}0{enter}');
     }
     card.get('#btnNextSettings:not([disabled="disabled"])')
         .contains('NEXT')
@@ -122,10 +122,12 @@ Cypress.Commands.add('setPositionGuess', (isMobile) => {
         if ($body.find('.dismissButton').length > 0) {
             cy.get('div#container-map .dismissButton').click();
             cy.wait(500);
-            cy.get('div#container-map').click('center');
         }
     });
-    cy.get('div#container-map').click('center');
+
+    cy.wait(2000);
+
+    cy.get('div#container-map #map').click('center');
     cy.get('map').should('exist');
 });
 

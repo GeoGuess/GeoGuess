@@ -63,6 +63,7 @@ export default new Router({
                 multiplayer: false,
                 ...route.params,
                 time: parseInt(route.params.time, 10),
+                nbRoundSelected: route.params.nbRoundSelected ? parseInt(route.params.nbRoundSelected, 10) : 5,
             }),
             beforeEnter: (to, from, next) => {
                 let enterGame = true;
@@ -90,6 +91,7 @@ export default new Router({
             props: (route) => ({
                 multiplayer: true,
                 ...route.params,
+                nbRoundSelected: route.params.nbRoundSelected ? parseInt(route.params.nbRoundSelected, 10) : 5,
             }),
         },
     ],
