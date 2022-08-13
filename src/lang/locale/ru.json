@@ -124,7 +124,7 @@
     "importGeoSave": "Импортировать GeoSave",
     "exportCSV": "Экспортировать CSV",
     "total": "Итого",
-    "nbRound": "Nb Rounds"
+    "nbRound": "Кол-во Строк"
   },
   "DialogRoom": {
     "singlePlayer": "Одиночная игра",
