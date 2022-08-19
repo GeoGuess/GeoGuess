@@ -193,6 +193,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "itstechsupport",
+      "name": "itstechsupport",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62838020?v=4",
+      "profile": "https://github.com/itstechsupport",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
