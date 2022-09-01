@@ -174,7 +174,7 @@
     "selectAreas": "Sélectionner les zones",
     "moreSettings": "Paramètres avancés",
     "optimiseStreetView": "StreetView Optimiser (uniquement officiel)",
-    "nbRound": "Number of rounds"
+    "nbRound": "Nombre de tours"
   },
   "CardRoomDifficulty": {
     "title": "Saisir la difficulté.",
