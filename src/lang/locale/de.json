@@ -124,7 +124,7 @@
     "importGeoSave": "GeoSave importieren",
     "exportCSV": "CSV exportieren",
     "total": "Total",
-    "nbRound": "Nb Rounds"
+    "nbRound": "Nb Runden"
   },
   "DialogRoom": {
     "singlePlayer": "Einzelspieler",
@@ -174,7 +174,7 @@
     "selectAreas": "Select Areas",
     "moreSettings": "More settings",
     "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "nbRound": "Anzahl der Runden"
   },
   "CardRoomDifficulty": {
     "title": "Lege den Schwierigkeitsgrad fest.",
