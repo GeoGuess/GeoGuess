@@ -49,7 +49,7 @@
       "areasTitle": "Areas",
       "mapsTitle": "Maps",
       "pleaseSelectLabel": "Похоже, вы потерялись, выберите тип или вы можете ",
-      "barrelRoll": "do a barrel roll"
+      "barrelRoll": "Вверх"
     }
   },
   "StreetView": {
@@ -154,7 +154,7 @@
     "title": "Определите вашу карту",
     "loadBtn": "Загрузить Карту",
     "reset": "Сбросить",
-    "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+    "cantPlayGeoJson": "Недопустимый GeoJSON, у вас должно быть более 5 позиций."
   },
   "CardRoomSettings": {
     "title": "Настройки комнаты",
@@ -173,8 +173,8 @@
     },
     "selectAreas": "Выбрать область",
     "moreSettings": "More settings",
-    "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "optimiseStreetView": "Оптимизация StreetView (только официальная)",
+    "nbRound": "Количество раундов"
   },
   "CardRoomDifficulty": {
     "title": "Установите уровень сложности.",
