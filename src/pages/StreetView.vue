@@ -254,9 +254,7 @@ export default {
     computed: {
         ...mapGetters(['areasJson']),
         countdownPercentage() {
-            var percentage = (this.remainingTime * 100) / this.timeCountdown;
-            // window.console.log("Computed " + percentage + "%");
-            return percentage;
+            return (this.remainingTime * 100) / this.timeCountdown;
         }
     },
     async mounted() {
