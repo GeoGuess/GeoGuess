@@ -88,7 +88,13 @@
                 prominent
                 icon="mdi-clock-fast"
             >
-                {{ $tc('StreetView.countdownAlert', timeCountdown) }}
+                {{ $tc('StreetView.countdownAlert', remainingTime) }}
+                <v-progress-linear
+                    :active="isVisibleCountdownAlert"
+                    color="primary"
+                    v-model="countdownPercentage"
+                    rounded
+                ></v-progress-linear>
             </v-alert>
         </div>
     </div>
@@ -245,7 +251,14 @@ export default {
             streetViewService: null,
         };
     },
-    computed: mapGetters(['areasJson']),
+    computed: {
+        ...mapGetters(['areasJson']),
+        countdownPercentage() {
+            var percentage = (this.remainingTime * 100) / this.timeCountdown;
+            // window.console.log("Computed " + percentage + "%");
+            return percentage;
+        }
+    },
     async mounted() {
         if (
             (this.areaParams && this.areaParams.data.urlArea) ||
