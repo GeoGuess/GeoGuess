@@ -93,7 +93,8 @@
                     :active="isVisibleCountdownAlert"
                     color="primary"
                     v-model="countdownPercentage"
-                    rounded
+                    absolute
+                    bottom
                 ></v-progress-linear>
             </v-alert>
         </div>
@@ -254,7 +255,9 @@ export default {
     computed: {
         ...mapGetters(['areasJson']),
         countdownPercentage() {
-            return (this.remainingTime * 100) / this.timeCountdown;
+            var percentage = (this.remainingTime * 100) / this.timeCountdown;
+            // window.console.log("Computed " + percentage + "%");
+            return percentage;
         }
     },
     async mounted() {
