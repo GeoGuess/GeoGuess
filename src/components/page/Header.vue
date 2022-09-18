@@ -49,6 +49,11 @@
                             </v-list-item>
                         </v-list>
                     </v-menu>
+                    <v-btn icon @click="changeTheme(!darkTheme)">
+                        <v-icon size="30">
+                            {{ darkTheme ? 'mdi-white-balance-sunny' : 'mdi-weather-night' }} }}
+                        </v-icon>
+                    </v-btn>
                 </div>
             </nav>
             <v-dialog v-model="aboutDialog">
@@ -97,6 +102,9 @@ export default {
         demoMode() {
             return !!process.env.VUE_APP_DEMO_MODE;
         },
+        darkTheme() {
+          return this.$vuetify.theme.dark;
+        }
     },
     methods: {
         ...mapActions(['setStreamerMode']),
@@ -112,6 +120,10 @@ export default {
         saveLanguage(language) {
             localStorage.setItem('language', language);
         },
+        changeTheme(dark) {
+          this.$vuetify.theme.dark = dark;
+          localStorage.setItem('darkTheme', dark);
+        }
     },
 };
 </script>
@@ -119,7 +131,7 @@ export default {
 .header {
     z-index: 1;
     padding: 0 5%;
-    background-color: #f1e9d6 !important;
+    background-color: var(--v-header-base) !important;
     .header__nav,
     .header__nav__btns {
         display: flex;
@@ -128,10 +140,14 @@ export default {
             margin: 0 1.5rem;
         }
     }
-    .header__nav__btns .v-btn{
+    .theme--light .header__nav__btns .v-btn{
         color: rgba(0, 0, 0, 0.87);
         margin: 0.25rem;
     }
+    .theme--dark .header__nav__btns .v-btn{
+        color: rgba(196, 110, 110, 0.87);
+        margin: 0.25rem;
+     }
     .v-btn {
         a {
             text-decoration: none;

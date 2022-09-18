@@ -77,20 +77,20 @@ export default {
                 dataToDisplay +=
                     '<b>' +
                     this.$t('Maps.infoWindow.Distance') +
-                    ' : </b>' +
+                    ': </b>' +
                     new Intl.NumberFormat(this.$i18n.locale, { style: "unit", unit:"meter" }).format(distance); 
             } else {
                 dataToDisplay +=
                     '<b>' +
                     this.$t('Maps.infoWindow.Distance') +
-                    ' : </b>' +
+                    ': </b>' +
                     new Intl.NumberFormat(this.$i18n.locale, { style: "unit", unit:"kilometer" }).format(distance / 1000); 
             }
 
             dataToDisplay +=
                 '<br/><b>' +
                 this.$t('Maps.infoWindow.Points') +
-                ' : </b>' +
+                ': </b>' +
                 points;
 
             const infoWindow = new google.maps.InfoWindow({
@@ -165,5 +165,9 @@ export default {
 #mapClassic {
     width: 100%;
     height: 100%;
+}
+
+.gm-style-iw {
+  color: black;
 }
 </style>

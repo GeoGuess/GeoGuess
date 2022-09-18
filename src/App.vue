@@ -33,6 +33,10 @@ export default {
         };
     },
     created() {
+        // Set theme based on LocalStorage value
+        if(localStorage.getItem("darkTheme") === "true") {
+          this.$vuetify.theme.dark = true;
+        }
         // Listen for our custom event from the SW registration
         document.addEventListener('swUpdated', this.setUpdate, { once: true });
         if(navigator.serviceWorker)
