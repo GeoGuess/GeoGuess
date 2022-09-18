@@ -65,6 +65,7 @@ export default function vuetifyConstructor (i18n){
             options: {
                 customProperties: true,
             },
+            dark: localStorage.getItem('darkTheme') === 'true'
         },
         rtl: RTL_LANGUAGES.includes(i18n.locale),
         lang: {
