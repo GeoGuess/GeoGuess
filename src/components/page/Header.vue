@@ -182,7 +182,7 @@ export default {
             position: absolute;
             top: 6.2rem;
             right: 0rem;
-            background: #f1e9d6;
+            background: var(--v-header-base);
             padding: 1rem;
             box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%);
             border-bottom-left-radius: 0.3125rem;
