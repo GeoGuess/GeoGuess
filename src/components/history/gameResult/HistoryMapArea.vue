@@ -90,7 +90,7 @@ export default {
         }
         height: 100%;
         width: 15%;
-        background: #f1e9d6;
+        background: var(--v-card-base);
         display: flex;
         flex-direction: column;
         overflow-y: auto;

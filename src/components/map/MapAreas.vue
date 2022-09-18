@@ -237,7 +237,7 @@ export default {
     .result-panel {
         height: 100%;
         padding: 2%;
-        background: #f1e9d6;
+        background: var(--v-card-base);
         display: flex;
         flex-direction: column;
         width: 30%;
