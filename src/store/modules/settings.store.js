@@ -126,7 +126,7 @@ export default {
         },
         [MutationTypes.SETTINGS_SET_ROOM_ERROR](state, error) {
             state.roomErrorMessage = error;
-        },
+    },
         [MutationTypes.SETTINGS_SET_GAME_SETTINGS](state, settings) {
             if (settings.modeSelected) {
                 settings.areaParams = null;
@@ -283,16 +283,12 @@ export default {
         },
 
         setPlayerName({ commit, state }, playerName) {
-            if (playerName === '') {
-                commit(
-                    MutationTypes.SETTINGS_SET_PLAYER_NAME,
-                    i18n.t('CardRoomPlayerName.anonymousPlayerName') +' '+ state.playerNumber
-                );
-            }else{
+            if(playerName.length > 15) {
                 localStorage.setItem('playerName', playerName);
-                commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName);
+                commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName.substring(0, 15));
             }
-
+            localStorage.setItem('playerName', playerName);
+            commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName);
         },
         startGame({ state, dispatch, rootState }) {
             let gameParams = {};

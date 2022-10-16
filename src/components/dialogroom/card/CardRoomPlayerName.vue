@@ -19,7 +19,7 @@
                             id="inputPlayerName"
                             :value="name"
                             @input="setPlayerName"
-                            maxlength="10"
+                            maxlength="20"
                             autofocus
                             :label="$t('CardRoomPlayerName.input')"
                             :error="invalidName"
@@ -66,7 +66,7 @@
                 dark
                 depressed
                 color="#43B581"
-                :disabled="players.length < 2"
+                :disabled="players.length < 2 || !canNext"
                 @click="startGame"
             >
                 {{ $t('next') }}
@@ -94,6 +94,9 @@ export default {
         roomUrl() {
             return window.origin + '/room/' + this.roomName;
         },
+        canNext() {
+            return !this.players.some((name) => name === '');
+        }
     },
     methods: {
         ...mapActions('settingsStore', ['startGame', 'setPlayerName']),
@@ -101,6 +104,13 @@ export default {
             this.$copyText(this.roomUrl, this.$refs.roomUrl);
         },
     },
+    watch: {
+      name(text) {
+        if(text.length > 20) {
+          this.setPlayerName(text.slice(0, 10));
+        }
+      }
+    }
 };
 </script>
 
