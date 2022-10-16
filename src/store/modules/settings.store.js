@@ -282,7 +282,7 @@ export default {
             }
         },
 
-        setPlayerName({ commit, state }, playerName) {
+        setPlayerName({ commit }, playerName) {
             if(playerName.length > 15) {
                 localStorage.setItem('playerName', playerName);
                 commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName.substring(0, 15));
