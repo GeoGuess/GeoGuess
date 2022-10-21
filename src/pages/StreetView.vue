@@ -91,7 +91,7 @@
                 {{ $tc('StreetView.countdownAlert', remainingTime) }}
                 <v-progress-linear
                     :active="isVisibleCountdownAlert"
-                    color="primary"
+                    color="white"
                     v-model="countdownPercentage"
                     absolute
                     bottom
