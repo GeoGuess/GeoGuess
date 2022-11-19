@@ -11,7 +11,8 @@
                 mapTypeControl: false,
                 streetViewControl: false,
                 draggableCursor: 'crosshair',
-                clickableIcons: false
+                clickableIcons: false,
+                styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap
             }"
         />
     </div>
@@ -19,6 +20,7 @@
 <script>
 import { STROKE_COLORS } from '../../constants';
 import MapMixin from './mixins/MapMixin';
+
 export default {
     name: 'Map',
     mixins: [MapMixin],
@@ -78,13 +80,13 @@ export default {
                     '<b>' +
                     this.$t('Maps.infoWindow.Distance') +
                     ': </b>' +
-                    new Intl.NumberFormat(this.$i18n.locale, { style: "unit", unit:"meter" }).format(distance); 
+                    new Intl.NumberFormat(this.$i18n.locale, { style: "unit", unit:"meter" }).format(distance);
             } else {
                 dataToDisplay +=
                     '<b>' +
                     this.$t('Maps.infoWindow.Distance') +
                     ': </b>' +
-                    new Intl.NumberFormat(this.$i18n.locale, { style: "unit", unit:"kilometer" }).format(distance / 1000); 
+                    new Intl.NumberFormat(this.$i18n.locale, { style: "unit", unit:"kilometer" }).format(distance / 1000);
             }
 
             dataToDisplay +=
@@ -161,10 +163,12 @@ export default {
     },
 };
 </script>
+
 <style lang="scss" scoped>
 #mapClassic {
     width: 100%;
     height: 100%;
+    background-color: var(--v-gmapBg-base);
 }
 
 .gm-style-iw {

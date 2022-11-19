@@ -4,6 +4,7 @@
         :options="{
             mapTypeControl: false,
             gestureHandling: 'greedy',
+            styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
         }"
         :zoom="0"
         map-type-id="roadmap"
@@ -17,7 +18,7 @@
                 <GmapInfoWindow :options="infoOptions" :position="r.guess">
                     <p>
                         <b>{{ $t('Maps.infoWindow.Distance') }}: </b>
-                        {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.distance / 1000)  }} 
+                        {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.distance / 1000)  }}
                         <br />
                         <b>
                             {{ $t('Maps.infoWindow.Points') }}:
@@ -35,6 +36,7 @@
                     ]"
                     :options="{
                         strokeOpacity: 0,
+
                         icons: [
                             {
                                 icon: {
@@ -146,6 +148,7 @@ export default {
     },
 };
 </script>
+
 <style>
 .gm-style-iw {
   color: black;
