@@ -240,7 +240,7 @@ export default function vuetifyConstructor (i18n){
             options: {
                 customProperties: true,
             },
-            dark: localStorage.getItem('darkTheme') === 'true'
+            dark: localStorage.getItem('darkTheme') === 'true' || (process.env.VUE_APP_DEFAULT_THEME === 'dark' && localStorage.getItem('darkTheme') !== 'false'),
         },
         rtl: RTL_LANGUAGES.includes(i18n.locale),
         lang: {

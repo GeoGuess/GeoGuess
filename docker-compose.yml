@@ -6,6 +6,7 @@ services:
     # image:
     environment:
       #- VUE_APP_PUBLIC_PATH=/
+      - VUE_APP_DEFAULT_THEME=light
       - VUE_APP_API_KEY=myapi
       #- VUE_APP_FIREBASE_API_KEY=myapi
       #- VUE_APP_FIREBASE_PROJECT_ID=myid
