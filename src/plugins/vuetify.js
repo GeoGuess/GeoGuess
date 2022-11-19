@@ -178,14 +178,14 @@ export default function vuetifyConstructor (i18n){
                             ],
                         },
                         {
-                            "featureType": "administrative",
-                            "elementType": "geometry",
-                            "stylers": [
+                            featureType: "administrative",
+                            elementType: "geometry",
+                            stylers: [
                                 {
-                                    "color": "#485373"
+                                    color: "#485373"
                                 },
                                 {
-                                    "visibility": "on"
+                                    visibility: "on"
                                 }
                             ]
                         },
