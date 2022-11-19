@@ -107,7 +107,7 @@ export default {
     watch: {
       name(text) {
         if(text.length > 20) {
-          this.setPlayerName(text.slice(0, 10));
+          this.setPlayerName(text.slice(0, 20));
         }
       }
     }
