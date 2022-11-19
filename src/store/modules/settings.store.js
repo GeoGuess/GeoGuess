@@ -88,7 +88,7 @@ export default {
 
                 state.room.child('playerName/player'+playerNumber).onDisconnect().remove();
 
-                
+
                 if (numberOfPlayers === 0) {
                     // Put the tentative player's name into the room node
                     // So that other player can't enter as the first player while the player decide the name and room size
@@ -257,7 +257,7 @@ export default {
                         ...state.gameSettings,
                         difficulty,
                         placeGeoJson: rootState.homeStore.map.geojson,
-                        bboxObj: bboxObj,                        
+                        bboxObj: bboxObj,
                         ...(rootState.homeStore.map ? {mapDetails: rootState.homeStore.map.details} : undefined)
                     },
                 });
@@ -283,9 +283,9 @@ export default {
         },
 
         setPlayerName({ commit }, playerName) {
-            if(playerName.length > 15) {
+            if (playerName.length > 20) {
                 localStorage.setItem('playerName', playerName);
-                commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName.substring(0, 15));
+                commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName.slice(0, 20));
             }
             localStorage.setItem('playerName', playerName);
             commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName);
