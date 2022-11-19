@@ -224,7 +224,7 @@ export default {
             activeMap: false,
             size: 2,
             isNotepadVisible: false,
-            pinActive: false,
+            pinActive: localStorage.getItem('pinActive') === 'true',
             printMapFull: false,
             countdownStarted: false,
             game: {
@@ -260,7 +260,6 @@ export default {
         this.game.mode = this.mode;
         this.game.timeAttack = this.timeAttack;
         this.game.playerName = this.playerName;
-        this.pinActive = localStorage.getItem('pinActive') === 'true';
         let size = 0;
 
         if (this.roomName) {
