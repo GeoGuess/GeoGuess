@@ -248,6 +248,11 @@ export default {
             }
         },
     },
+    watch: {
+      pinActive() {
+        localStorage.setItem('pinActive', this.pinActive);
+      }
+    },
     async mounted() {
         await this.$gmapApiPromiseLazy();
         this.game.timeLimitation = this.timeLimitation;
@@ -255,6 +260,7 @@ export default {
         this.game.mode = this.mode;
         this.game.timeAttack = this.timeAttack;
         this.game.playerName = this.playerName;
+        this.pinActive = localStorage.getItem('pinActive') === 'true';
         let size = 0;
 
         if (this.roomName) {
