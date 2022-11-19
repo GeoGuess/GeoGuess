@@ -178,6 +178,18 @@ export default function vuetifyConstructor (i18n){
                             ],
                         },
                         {
+                            "featureType": "administrative",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#485373"
+                                },
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        },
+                        {
                             featureType: "landscape.man_made",
                             elementType: "geometry.stroke",
                             stylers: [
