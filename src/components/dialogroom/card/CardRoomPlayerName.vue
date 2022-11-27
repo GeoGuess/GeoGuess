@@ -28,8 +28,7 @@
                 </v-row>
 
                 <h3>{{ $tc('CardRoomPlayerName.players', players.length) }}</h3>
-
-                <div class="players-list">
+                <v-chip-group column>
                     <v-chip
                         v-for="(name, i) in players"
                         :key="'player' + i"
@@ -52,7 +51,7 @@
                         </v-avatar>
                         {{ name }}
                     </v-chip>
-                </div>
+                </v-chip-group>
             </v-container>
         </v-card-text>
         <v-card-actions>
@@ -103,13 +102,6 @@ export default {
         copy() {
             this.$copyText(this.roomUrl, this.$refs.roomUrl);
         },
-    },
-    watch: {
-      name(text) {
-        if(text.length > 20) {
-          this.setPlayerName(text.slice(0, 20));
-        }
-      }
     }
 };
 </script>
@@ -124,12 +116,5 @@ h3 {
     text-align: center;
     margin-bottom: 1.5rem;
     font-weight: 500;
-}
-.players-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 8.75rem);
-    column-gap: 1.875rem;
-    row-gap: 1.5rem;
-    justify-content: center;
 }
 </style>

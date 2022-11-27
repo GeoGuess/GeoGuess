@@ -54,7 +54,7 @@ export default {
         // SETTINGS
         gameSettings: new GameSettings(),
         players: [],
-        name: localStorage.getItem('playerName') || '',
+        name: localStorage.getItem('playerName')?.slice(0, 20) || i18n.t("CardRoomPlayerName.anonymousPlayerName"),
         invalidName: false,
     }),
     mutations: {
@@ -126,7 +126,7 @@ export default {
         },
         [MutationTypes.SETTINGS_SET_ROOM_ERROR](state, error) {
             state.roomErrorMessage = error;
-    },
+        },
         [MutationTypes.SETTINGS_SET_GAME_SETTINGS](state, settings) {
             if (settings.modeSelected) {
                 settings.areaParams = null;
@@ -281,14 +281,9 @@ export default {
                 );
             }
         },
-
         setPlayerName({ commit }, playerName) {
-            if (playerName.length > 20) {
-                localStorage.setItem('playerName', playerName);
-                commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName.slice(0, 20));
-            }
-            localStorage.setItem('playerName', playerName);
-            commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName);
+            localStorage.setItem('playerName', playerName.slice(0, 20));
+            commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName.slice(0, 20));
         },
         startGame({ state, dispatch, rootState }) {
             let gameParams = {};
