@@ -10,6 +10,8 @@
                 :nb-round="nbRound"
                 :remaining-time="remainingTime"
                 :mode="mode"
+                :guess-string="guessString"
+                :leaderboard-shown="leaderboardShown"
             />
 
             <div id="game-interface">
@@ -20,7 +22,7 @@
                 <div id="game-interface__overlay">
                     <v-tooltip top>
                         <template v-slot:activator="{ on, attrs }">
-                            <v-btn class="resetBtn" rounded dark fab 
+                            <v-btn class="resetBtn" rounded dark fab
                                    v-bind="attrs"
                                    v-on="on"
                                    @click="resetLocation" >
@@ -54,6 +56,8 @@
                             areaParams ? areaParams.data.pathKey : 'iso_a2'
                         "
                         :mapDetails="mapDetails"
+                        :score-leaderboard="scoreLeaderboard"
+                        :guessed-leaderboard="guessedLeaderboard"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
@@ -70,6 +74,17 @@
             :dialog-text="dialogText"
         />
         <div class="alert-container">
+            <v-alert
+                id="leaderboard-alert"
+                transition="slide-x-transition"
+                icon="mdi-scoreboard-outline"
+                width="400"
+                class="mt-2 mr-2"
+                v-if="guessString && !$vuetify.breakpoint.mobile && leaderboardShown"
+
+            >
+                {{ guessString }}
+            </v-alert>
             <v-alert
                 v-if="isVisibleDialog"
                 type="warning"
@@ -111,7 +126,7 @@ import {
 
 import { GAME_MODE, SCORE_MODE } from '../constants';
 
-import { mapActions, mapGetters } from 'vuex';
+import {mapActions, mapGetters, mapState} from 'vuex';
 
 import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
 
@@ -209,6 +224,14 @@ export default {
             required: false,
             default: 5,
         },
+        guessedLeaderboard: {
+            default: true,
+            type: Boolean,
+        },
+        scoreLeaderboard: {
+            default: true,
+            type: Boolean,
+        },
     },
     data() {
         return {
@@ -243,9 +266,16 @@ export default {
             timeCountdown: 0,
 
             streetViewService: null,
+            guessString: "",
+            leaderboardShown: this.guessedLeaderboard || this.scoreLeaderboard,
         };
     },
-    computed: mapGetters(['areasJson']),
+    computed: {
+      ...mapGetters(['areasJson']),
+      ...mapState('settingsStore', [
+        'players',
+      ]),
+    },
     async mounted() {
         if (
             (this.areaParams && this.areaParams.data.urlArea) ||
@@ -259,7 +289,7 @@ export default {
         this.panorama = new google.maps.StreetViewPanorama(
             this.$refs.streetView
         );
-  
+
         if (!this.streetViewService) {
             this.streetViewService = new StreetViewService(
                 { allPanorama: this.allPanorama, optimiseStreetView: this.optimiseStreetView },
@@ -295,6 +325,16 @@ export default {
             this.room.on('value', (snapshot) => {
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
+                    // Leaderboard
+                    if(snapshot.hasChild("guess") && snapshot.hasChild("scoreLeaderboard")) {
+                        this.guessString = Object.entries(snapshot.val().playerName).map((player) => {
+                            return `${player[1]}: ${snapshot.val().guess[player[0]] ? 'Guessed' : 'Not Guessed'} / ${snapshot.val().finalPoints[player[0]] || 0}`;
+                        }).join('\n');
+                    } else if(snapshot.hasChild("guess") && snapshot.hasChild("guessedLeaderboard")) {
+                        this.guessString = Object.entries(snapshot.val().playerName).map((player) => {
+                            return `${player[1]}: ${snapshot.val().guess[player[0]] ? 'Guessed' : 'Not Guessed'}`;
+                        }).join('\n');
+                    }
                     // Put the player into the current round node if the player is not put yet
                     if (
                         !snapshot
@@ -322,7 +362,7 @@ export default {
                                         '/longitude'
                                 )
                                 .val();
-                          
+
                             this.area = snapshot
                                 .child(
                                     'streetView/round' + this.round + '/area'
@@ -672,6 +712,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#leaderboard-alert {
+    opacity: 0.8;
+    white-space: pre-line;
+    float: right;
+    pointer-events: none;
+
+}
+
 #game-page {
     position: relative;
     height: 100%;

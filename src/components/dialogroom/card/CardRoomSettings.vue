@@ -130,7 +130,31 @@
                                     $t('CardRoomSettings.optimiseStreetView')
                                 "
                                 hide-details
-                            /> 
+                            />
+                            <br>
+                            <v-checkbox
+                                :input-value="gameSettings.scoreLeaderboard"
+                                @change="
+                                    (scoreLeaderboard) =>
+                                        setGameSettings({ scoreLeaderboard })
+                                "
+                                :label="
+                                    $t('CardRoomSettings.scoreLeaderboard')
+                                "
+                                hide-details
+                            />
+                            <v-checkbox
+                                :input-value="gameSettings.guessedLeaderboard"
+                                @change="
+                                    (guessedLeaderboard) =>
+                                        setGameSettings({ guessedLeaderboard })
+                                "
+                                :label="
+                                    $t('CardRoomSettings.guessedLeaderboard')
+                                "
+                                hide-details
+                                :disabled="gameSettings.scoreLeaderboard"
+                            />
                         </v-col>
                         <v-col>
                             <v-text-field
@@ -199,7 +223,7 @@
                             </div>
                         </v-col>
                     </v-row>
-                    <v-row 
+                    <v-row
                         class="mb-0 mt-0"
                         align="center"
                     >
@@ -217,7 +241,7 @@
                                     :value="gameSettings.timeAttackSelected ? 10 : gameSettings.nbRoundSelected"
                                     min="1"
                                     @input="
-                                        (nbRoundSelected) => 
+                                        (nbRoundSelected) =>
                                             setGameSettings({ nbRoundSelected: +nbRoundSelected })
                                     "
                                 />
@@ -365,7 +389,7 @@ export default {
                 display: contents;
             }
         }
-    
+
     @media (max-width: 360px) {
         .card_settings__mode__btns {
             flex-direction: column;

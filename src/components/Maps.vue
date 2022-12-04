@@ -206,6 +206,8 @@ export default {
         'areasGeoJsonUrl',
         'pathKey',
         'mapDetails',
+        'scoreLeaderboard',
+        'guessedLeaderboard'
     ],
     data() {
         return {
@@ -261,7 +263,6 @@ export default {
             this.room = firebase.database().ref(this.roomName);
 
             this.room.on('value', (snapshot) => {
-                // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
                     size = snapshot.child('size').val();
                     if (size === 1) {
