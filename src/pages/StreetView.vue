@@ -79,6 +79,7 @@
                 transition="slide-x-transition"
                 icon="mdi-scoreboard-outline"
                 width="400"
+                dark
                 class="mt-2 mr-2"
                 v-if="guessString && !$vuetify.breakpoint.mobile && leaderboardShown"
 

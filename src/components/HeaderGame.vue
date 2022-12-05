@@ -8,7 +8,7 @@
                 :dismissible="true"
                 @close="scoreboard = false"
             />
-            <v-btn icon @click="scoreboard = true" v-if="$vuetify.breakpoint.mobile && guessString && leaderboardShown">
+            <v-btn dark icon @click="scoreboard = true" v-if="$vuetify.breakpoint.mobile && guessString && leaderboardShown">
                 <v-icon>mdi-scoreboard-outline</v-icon>
             </v-btn>
             <div v-if="remainingTime != null && remainingTime > 0">
