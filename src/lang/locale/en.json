@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "Distance",
       "Points": "Points"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {

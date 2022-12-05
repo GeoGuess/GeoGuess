@@ -266,8 +266,8 @@ export default {
             timeCountdown: 0,
 
             streetViewService: null,
-            guessString: "",
-            leaderboardShown: this.guessedLeaderboard || this.scoreLeaderboard,
+            leaderboard: [],
+            leaderboardShown: this.guessedLeaderboard || this.scoreLeaderboard
         };
     },
     computed: {
@@ -275,6 +275,20 @@ export default {
       ...mapState('settingsStore', [
         'players',
       ]),
+      guessString() {
+        if(!this.leaderboardShown) return "";
+        if(this.scoreLeaderboard) {
+          return Object.entries(this.leaderboard)
+            .sort(([, a], [, b]) => b.score - a.score)
+            .map(([id, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")} / ${player.scoreHeader || 0}`)
+            .join('\n');
+        } else {
+          return Object.entries(this.leaderboard)
+            .sort(([, a], [, b]) => b.guessed - a.guessed)
+            .map(([id, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")}`)
+            .join('\n');
+        }
+      }
     },
     async mounted() {
         if (
@@ -326,15 +340,27 @@ export default {
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
                     // Leaderboard
-                    if(snapshot.hasChild("guess") && snapshot.hasChild("scoreLeaderboard")) {
-                        this.guessString = Object.entries(snapshot.val().playerName).map((player) => {
-                            return `${player[1]}: ${snapshot.val().guess[player[0]] ? 'Guessed' : 'Not Guessed'} / ${snapshot.val().finalPoints[player[0]] || 0}`;
-                        }).join('\n');
-                    } else if(snapshot.hasChild("guess") && snapshot.hasChild("guessedLeaderboard")) {
-                        this.guessString = Object.entries(snapshot.val().playerName).map((player) => {
-                            return `${player[1]}: ${snapshot.val().guess[player[0]] ? 'Guessed' : 'Not Guessed'}`;
-                        }).join('\n');
+                    if(this.scoreLeaderboard) {
+                        this.leaderboard = Object.entries(snapshot.val().playerName).map((player) => {
+                            return {
+                                scoreHeader: this.leaderboard.find((entity) => entity.id === player[0])?.scoreHeader || 0,
+                                score: snapshot.val()?.finalPoints?.[player[0]] || 0,
+                                name: player[1],
+                                id: player[0],
+                                guessed: !!snapshot.val()?.guess?.[player[0]],
+                            };
+                        });
+                    } else if(this.guessedLeaderboard) {
+                      this.leaderboard = Object.entries(snapshot.val().playerName).map((player) => {
+                        return {
+                          name: player[1],
+                          guessed: !!snapshot.val()?.guess?.[player[0]],
+                          id: player[0],
+                        };
+                      });
                     }
+
+
                     // Put the player into the current round node if the player is not put yet
                     if (
                         !snapshot
@@ -625,6 +651,11 @@ export default {
             this.isVisibleCountdownAlert = false;
             this.overlay = true;
             this.$refs.header.stopTimer();
+
+            // Leaderboard
+            for (let player of Object.entries(this.leaderboard)) {
+              player[1].scoreHeader = player[1].score;
+            }
         },
         async goToNextRound(playAgain = false) {
             if (playAgain) {
