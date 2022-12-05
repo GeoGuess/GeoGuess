@@ -280,12 +280,12 @@ export default {
         if(this.scoreLeaderboard) {
           return Object.entries(this.leaderboard)
             .sort(([, a], [, b]) => b.score - a.score)
-            .map(([id, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")} / ${player.scoreHeader || 0}`)
+            .map(([, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")} / ${player.scoreHeader || 0}`)
             .join('\n');
         } else {
           return Object.entries(this.leaderboard)
             .sort(([, a], [, b]) => b.guessed - a.guessed)
-            .map(([id, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")}`)
+            .map(([, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")}`)
             .join('\n');
         }
       }
