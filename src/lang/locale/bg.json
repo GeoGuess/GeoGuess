@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 посетени места | 1 посетено място | {count} посетени места",
     "historyBtn": "ИСТОРИЯ",
     "medalsBtn": "MEDALS",
     "about": "ИНФОРМАЦИЯ",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Невалидно име на стая. Проверете изписването на букви, специални символи и числа, и опитайте отново.",
     "inProgress": "Стаята се прави от грач. Моля изчакайте, и опитайте отново по-късно.",
     "roomIsFull": "Тази стая вече е пълна.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "Стаята вече е започнала игра."
   },
   "CardRoomName": {
     "title": "Въведете име на стая, за да създадете нова или да се присъедините към съществуваща стая."
