@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 locais visitados | 1 local visitado | {count} lugares visitados",
     "historyBtn": "HISTÓRICO",
     "medalsBtn": "MEDALS",
     "about": "SOBRE",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Nome inválido. Por favor, tente outro.",
     "inProgress": "O primeiro jogador está criando a sala agora. Aguarde e tente novamente.",
     "roomIsFull": "Esta sala já está cheia. Por favor, tente outra.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "Está sala já começou o jogo. Por favor, tente outra."
   },
   "CardRoomName": {
     "title": "Digite o nome da sala para criar uma nova sala ou junte-se a uma sala existente"
