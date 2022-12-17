@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 yer gezildi | 1 yer gezildi | {count} yer gezildi",
+    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
     "historyBtn": "GEÇMİŞ",
     "medalsBtn": "MADALYALAR",
     "about": "HAKKINDA",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Geçersiz İsim. Lütfen başka bir tane deneyin.",
     "inProgress": "İlk oyuncu şu anda odayı kuruyor. Lütfen bekleyin ve tekrar deneyin.",
     "roomIsFull": "Bu oda dolu. Lütfen başka bir tane deneyin.",
-    "alreadyStarted": "Bu oda çoktan başladı. Lütfen başka bir tane deneyin."
+    "alreadyStarted": "This room has already started.  Please try another."
   },
   "CardRoomName": {
     "title": "Yeni oda açmak için bir oda ismi yazın veya var olan bir odaya katılın"
