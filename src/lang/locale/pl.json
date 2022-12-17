@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 odwiedzonych miejsc | 1 odwiedzone miejsce | {count} odwiedzonych miejsc",
     "historyBtn": "HISTORIA",
     "medalsBtn": "MEDALE",
     "about": "O",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Nieprawidłowa nazwa. Spróbuj ponownie.",
     "inProgress": "Pierwszy gracz w tej chwili tworzy pokój. Proszę poczekać i spróbować ponownie.",
     "roomIsFull": "Ten pokój jest pełny. Proszę spróbować dołączyć do innego.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "Ten pokój już zaczął grę. Proszę spróbować dołączyć do innego."
   },
   "CardRoomName": {
     "title": "Wpisz nazwę pokoju, aby stworzyć nowy pokój, lub dołączyć do istniejącego"
