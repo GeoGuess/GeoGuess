@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 platser besökta | 1 plats besökt | {count} platser besökta",
     "historyBtn": "HISTORIK",
     "medalsBtn": "MEDALJER",
     "about": "OM",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Ogiltigt namn. Vänligen försök med ett annat.",
     "inProgress": "Den första spelaren skapar rummet just nu. Vänligen vänta och försök igen.",
     "roomIsFull": "Detta rum är redan fullt. Vänligen försök med ett annat.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "Detta rum har redan startat. Vänligen försök igen."
   },
   "CardRoomName": {
     "title": "Skriv ett rumsnamn för att skapa ett nytt rum eller gå med i ett redan existerande rum"
