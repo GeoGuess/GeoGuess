@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "已造访0个地点 | 已造访1个地点 | 已造访{count}个地点",
+    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
     "historyBtn": "历史",
     "medalsBtn": "奖牌",
     "about": "关于",
@@ -132,7 +132,7 @@
     "invalidRoomName": "无效名称。请换一个试试。",
     "inProgress": "第一个玩家正在创建房间。请稍后再试。",
     "roomIsFull": "这个房间已经满了。请尝试其他房间。",
-    "alreadyStarted": "这个房间已经开始了。 请尝试其他房间。"
+    "alreadyStarted": "This room has already started.  Please try another."
   },
   "CardRoomName": {
     "title": "输入房间名称，创建一个新的房间或加入一个现有的房间"
