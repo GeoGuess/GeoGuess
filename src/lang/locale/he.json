@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 מקומות שביקרתם בהם | מקום אחד שביקרתם בו | {count} מקומות שביקרתם בהם",
     "historyBtn": "היסטוריה",
     "medalsBtn": "MEDALS",
     "about": "אודות",
@@ -132,7 +132,7 @@
     "invalidRoomName": "שם לא זמין. נא לבחור שם אחר.",
     "inProgress": "השחקן הראשון יוצר את החדר עכשיו. אנא המתן ונסה שוב.",
     "roomIsFull": "החדר הזה כבר מלא. אנא נסה למצוא חדר אחר.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "משחק זה כבר התחיל. אנא חפש חדר אחר."
   },
   "CardRoomName": {
     "title": "הקלד שם חדר כדי ליצור חדר חדש או להצטרף לחדר קיים"
