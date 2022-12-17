@@ -67,15 +67,18 @@ export default {
 
 <style lang="scss">
 footer {
-    background: #7fad94;
+    background: var(--v-footer-base);
     .footer__container {
         padding: 0.5rem 0;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
         align-items: center;
-        p, a {
+        .theme--light & p, a {
             color: #484848;
+        }
+        .theme--dark & p, a {
+            color: #FFFFFF;
         }
         a {
             font-weight: bold;

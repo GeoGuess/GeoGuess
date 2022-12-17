@@ -2,7 +2,7 @@
 
 exports[`SearchBox.vue render 1`] = `
 <div class="search-box">
-  <h2>0 visited place</h2>
+  <h2>0 visited places</h2>
   <div class="search-box__btns">
     <v-btn-stub color="primary" rounded="true" tag="button" activeclass="" large="true" type="button" class="search-box__btns__btn">
       Single Player

@@ -34,8 +34,9 @@
                     fullscreenControl: false,
                     mapTypeControl: false,
                     streetViewControl: false,
-                    draggableCursor: 'crosshair',                    
-                    clickableIcons: false
+                    draggableCursor: 'crosshair',
+                    clickableIcons: false,
+                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
                 }"
             />
         </div>
@@ -237,7 +238,7 @@ export default {
     .result-panel {
         height: 100%;
         padding: 2%;
-        background: #f1e9d6;
+        background: var(--v-card-base);
         display: flex;
         flex-direction: column;
         width: 30%;

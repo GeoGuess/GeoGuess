@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited place | 1 visited place | {count} visited places",
+    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
     "historyBtn": "HISTORY",
     "medalsBtn": "MEDALS",
     "about": "ABOUT",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Invalid name. Please try another.",
     "inProgress": "The first player is creating the room right now. Please wait and try again.",
     "roomIsFull": "This room is already full. Please try another.",
-    "alreadyStarted": "This room has aldready started.  Please try another."
+    "alreadyStarted": "This room has already started.  Please try another."
   },
   "CardRoomName": {
     "title": "Type a room name to create a new room or join a existing room"

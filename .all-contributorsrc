@@ -202,6 +202,24 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "tigattack",
+      "name": "tigattack",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10629864?v=4",
+      "profile": "http://blog.tiga.tech",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Troplo",
+      "name": "Troplo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45160807?v=4",
+      "profile": "https://troplo.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
