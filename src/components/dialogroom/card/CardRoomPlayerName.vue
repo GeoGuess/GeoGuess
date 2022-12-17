@@ -19,7 +19,7 @@
                             id="inputPlayerName"
                             :value="name"
                             @input="setPlayerName"
-                            maxlength="10"
+                            maxlength="20"
                             autofocus
                             :label="$t('CardRoomPlayerName.input')"
                             :error="invalidName"
@@ -28,8 +28,7 @@
                 </v-row>
 
                 <h3>{{ $tc('CardRoomPlayerName.players', players.length) }}</h3>
-
-                <div class="players-list">
+                <v-chip-group column>
                     <v-chip
                         v-for="(name, i) in players"
                         :key="'player' + i"
@@ -52,7 +51,7 @@
                         </v-avatar>
                         {{ name }}
                     </v-chip>
-                </div>
+                </v-chip-group>
             </v-container>
         </v-card-text>
         <v-card-actions>
@@ -66,7 +65,7 @@
                 dark
                 depressed
                 color="#43B581"
-                :disabled="players.length < 2"
+                :disabled="players.length < 2 || !canNext"
                 @click="startGame"
             >
                 {{ $t('next') }}
@@ -94,13 +93,16 @@ export default {
         roomUrl() {
             return window.origin + '/room/' + this.roomName;
         },
+        canNext() {
+            return !this.players.some((name) => name === '');
+        }
     },
     methods: {
         ...mapActions('settingsStore', ['startGame', 'setPlayerName']),
         copy() {
             this.$copyText(this.roomUrl, this.$refs.roomUrl);
         },
-    },
+    }
 };
 </script>
 
@@ -114,12 +116,5 @@ h3 {
     text-align: center;
     margin-bottom: 1.5rem;
     font-weight: 500;
-}
-.players-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 8.75rem);
-    column-gap: 1.875rem;
-    row-gap: 1.5rem;
-    justify-content: center;
 }
 </style>

@@ -30,13 +30,13 @@ export default {
         z-index: 1;
         width: 100%;
     }
-    background-color: #ded3af;
+    background-color: var(--v-page-base);
 }
 </style>
 
 <style lang="scss" scoped>
 .page .content {
-    background: #f1e9d6;
+    background: var(--v-content-base);
     &--no-background {
         background: none;
     }

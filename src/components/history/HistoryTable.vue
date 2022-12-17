@@ -108,7 +108,7 @@
                 </td>
             </template>
         </v-data-table>
-        <v-btn color="primary" class="btn-export" @click="exportCsv">
+        <v-btn color="primary" class="btn-export mx-2" @click="exportCsv">
             {{ $t('History.exportCSV') }}
         </v-btn>
     </div>
