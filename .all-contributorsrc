@@ -211,6 +211,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Troplo",
+      "name": "Troplo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45160807?v=4",
+      "profile": "https://troplo.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

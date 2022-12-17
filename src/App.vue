@@ -36,7 +36,7 @@ export default {
         // Listen for our custom event from the SW registration
         document.addEventListener('swUpdated', this.setUpdate, { once: true });
         if(navigator.serviceWorker)
-            navigator.serviceWorker.addEventListener('controllerchange', () => { 
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
                 // Prevent multiple refreshes
                 if (this.refreshing) return;
                 this.refreshing = true;
@@ -52,7 +52,7 @@ export default {
 
         refreshApp() {
             this.updateAvailable = false;
-            if (!this.registration || !this.registration.waiting) 
+            if (!this.registration || !this.registration.waiting)
                 return;
             this.registration.waiting.postMessage({ type: 'SKIP_WAITING' });
         },
@@ -66,5 +66,11 @@ export default {
     bottom: 2%;
     right: 5%;
     width: 90%;
+}
+</style>
+
+<style>
+.gm-style {
+  background-color: var(--v-gmapBg-base) !important;
 }
 </style>

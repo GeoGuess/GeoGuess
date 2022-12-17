@@ -28,7 +28,7 @@ export default {
     display: flex;
 
     .world-container_svg{
-        background: #f1e9d6;
+        background: var(--v-content-base);
         border-radius: 5px;
         max-width: 100vh;
         margin: auto;

@@ -63,6 +63,7 @@
                                 style="width: 100%; height: 530px"
                                 :options="{
                                     gestureHandling: 'greedy',
+                                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
                                 }"
                             />
                             <v-row>

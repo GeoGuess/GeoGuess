@@ -6,6 +6,7 @@
             :options="{
                 mapTypeControl: false,
                 gestureHandling: 'greedy',
+                styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
             }"
             :zoom="0"
             map-type-id="roadmap"
@@ -28,7 +29,7 @@
                         <span v-else>{{ r.country || r.area || r.position.country || r.position.area}}</span>
                     </b>
                 </p>
-                <div 
+                <div
                     v-if="item.multiplayer" >
                     <div
                         v-for="(value, playerName, index) in r.players"
@@ -90,7 +91,7 @@ export default {
         }
         height: 100%;
         width: 15%;
-        background: #f1e9d6;
+        background: var(--v-card-base);
         display: flex;
         flex-direction: column;
         overflow-y: auto;

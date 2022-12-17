@@ -142,6 +142,7 @@ export default {
         width: 40%;
         margin-left: auto;
         margin-right: 2rem;
+        margin-top: 1rem;
         > div{
             margin: 0 0.5rem;
         }

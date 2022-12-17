@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-22-orange.svg)](#-contribution)
+[![All Contributors](https://img.shields.io/badge/all_contributors-23-orange.svg)](#-contribution)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -88,6 +88,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center"><a href="http://blog.tiga.tech"><img src="https://avatars.githubusercontent.com/u/10629864?v=4?s=100" width="100px;" alt="tigattack"/><br /><sub><b>tigattack</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=tigattack" title="Code">💻</a></td>
+      <td align="center"><a href="https://troplo.com"><img src="https://avatars.githubusercontent.com/u/45160807?v=4?s=100" width="100px;" alt="Troplo"/><br /><sub><b>Troplo</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=Troplo" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
