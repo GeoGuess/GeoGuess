@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 посещенных мест | 1 посещено | {count} посещенных",
     "historyBtn": "ИСТОРИЯ",
     "medalsBtn": "МЕДАЛИ",
     "about": "ПРО ПРОЕКТ",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Неверное название. Попробуйте другое.",
     "inProgress": "Прямо сейчас первый игрок создает комнату. Подождите и попробуйте еще раз.",
     "roomIsFull": "Эта комната уже заполнена. Пожалуйста, попробуйте другую.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "Игра в этой комнате уже началась. Пожалуйста, попробуйте другую."
   },
   "CardRoomName": {
     "title": "Введите название комнаты, чтобы создать новую комнату или присоединиться к существующей комнате"
