@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 luoghi visitati | 1 luogo visitato | {count} luoghi visitati",
     "historyBtn": "CRONOLOGIA",
     "medalsBtn": "MEDAGLIE",
     "about": "INFO",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Nome non valido. Provane un altro.",
     "inProgress": "Il primo giocatore sta ancora creando la stanza. Si prega di attendere e riprovare.",
     "roomIsFull": "Questa stanza è già piena. Si prega di provarne un'altra.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "Questa stanza ha già iniziato. Si prega di provarne un'altra."
   },
   "CardRoomName": {
     "title": "Crea una nuova stanza dandole un nome o entra in una stanza esistente"
