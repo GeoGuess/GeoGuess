@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 lieu visité | 1 lieu visité | {count} lieux visités",
     "historyBtn": "Historique",
     "medalsBtn": "MEDAILLES",
     "about": "A PROPOS",
@@ -124,7 +124,7 @@
     "importGeoSave": "Import une GeoSave",
     "exportCSV": "Exporter en CSV",
     "total": "Total",
-    "nbRound": "Nb Rounds"
+    "nbRound": "Nb de manches"
   },
   "DialogRoom": {
     "singlePlayer": "Un joueur",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Nom invalide. Veuillez en choisir un autre.",
     "inProgress": "Le premier joueur est en train de créer la salle. Veuillez patienter puis recommencer.",
     "roomIsFull": "La salle est déjà pleine. Essayez une autre.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "La partie a déjà commencé. Essayer une autre."
   },
   "CardRoomName": {
     "title": "Saisir le nom de la salle pour la créer, ou la rejoindre si elle existe"
