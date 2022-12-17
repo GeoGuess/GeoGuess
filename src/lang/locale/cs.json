@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 place visited | 1 place visited | {count} places visited",
+    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
     "historyBtn": "HISTORIE",
     "medalsBtn": "MEDALS",
     "about": "O HŘE",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Nevhodné jméno. Zkus se prosím pojmenovat jinak.",
     "inProgress": "První hráč právě nastavuje hru. Vydrž prosím a za chvíli to zkus znovu.",
     "roomIsFull": "Tato místnost je již plná. Zkus to prosím znovu později.",
-    "alreadyStarted": "This room has aldready started.  Please try another."
+    "alreadyStarted": "This room has already started.  Please try another."
   },
   "CardRoomName": {
     "title": "Napiš název herní mistnosti, aby jsi ji vytvořil nebo se do ní připojil"
