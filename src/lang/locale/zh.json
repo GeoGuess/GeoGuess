@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "已造访0个地点 | 已造访1个地点 | 已造访{count}个地点",
+    "placeVisited": "已造访0个地点 | 已造访1个地点 | 已造访{count} 个地点",
     "historyBtn": "历史",
     "medalsBtn": "奖牌",
     "about": "关于",

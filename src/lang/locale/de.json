@@ -132,7 +132,7 @@
     "invalidRoomName": "Ungültiger Name. Bitte versuche einen anderen.",
     "inProgress": "Der erste Spieler erstellt den Raum. Bitte warte und versuche es erneut.",
     "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen.",
-    "alreadyStarted": "Dieser Raum hat bereits begonnen. Bitte versuche einen anderen."
+    "alreadyStarted": "This room has already started.  Please try another."
   },
   "CardRoomName": {
     "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten"
