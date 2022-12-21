@@ -37,7 +37,7 @@ jobs:
         git config --global core.autocrlf false
         git config --global core.eol lf
     - uses: actions/checkout@v3
-    - uses: actions/cache@v3.0.11
+    - uses: actions/cache@v3.2.0
       id: cache
       if: matrix.os != 'windows-latest'
       with:
@@ -48,7 +48,7 @@ jobs:
       if: matrix.os == 'windows-latest'
       run: |
         echo "::set-output name=dir::$(npm config get cache)"
-    - uses: actions/cache@v3.0.11
+    - uses: actions/cache@v3.2.0
       if: matrix.os == 'windows-latest'
       with:
         path: ${{ steps.npm-cache.outputs.dir }}

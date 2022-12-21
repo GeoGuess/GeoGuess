@@ -23,7 +23,7 @@ jobs:
                   git config --global core.autocrlf false
                   git config --global core.eol lf
             - uses: actions/checkout@v3
-            - uses: actions/cache@v3.0.11
+            - uses: actions/cache@v3.2.0
               id: cache
               with:
                   path: ~/.npm
