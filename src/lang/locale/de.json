@@ -132,7 +132,7 @@
     "invalidRoomName": "Ungültiger Name. Bitte versuche einen anderen.",
     "inProgress": "Der erste Spieler erstellt den Raum. Bitte warte und versuche es erneut.",
     "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "alreadyStarted": "Dieser Raum hat bereits begonnen. Bitte versuche einen anderen."
   },
   "CardRoomName": {
     "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten"
@@ -154,7 +154,7 @@
     "title": "Gestalte deine Karte",
     "loadBtn": "Karte laden",
     "reset": "Reset",
-    "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+    "cantPlayGeoJson": "Ungültiges GeoJSON, du musst mehr als 5 Positionen haben."
   },
   "CardRoomSettings": {
     "title": "Spieleinstellungen",
@@ -173,7 +173,7 @@
     },
     "selectAreas": "Select Areas",
     "moreSettings": "More settings",
-    "optimiseStreetView": "StreetView Optimize (only official)",
+    "optimiseStreetView": "StreetView optimieren (nur offiziell)",
     "nbRound": "Anzahl der Runden"
   },
   "CardRoomDifficulty": {
