@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "0 besuchte Orte | 1 besuchter Ort| {count} besuchte Orte",
+    "placeVisited": "0 besuchte Orte | 1 besuchter Ort | {count} besuchte Orte",
     "historyBtn": "HISTORIE",
     "medalsBtn": "MEDAILLEN",
     "about": "ÜBER",
