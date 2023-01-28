@@ -124,7 +124,7 @@
     "importGeoSave": "Import une GeoSave",
     "exportCSV": "Exporter en CSV",
     "total": "Total",
-    "nbRound": "Nb Rounds"
+    "nbRound": "Nb de manches"
   },
   "DialogRoom": {
     "singlePlayer": "Un joueur",
@@ -132,7 +132,7 @@
     "invalidRoomName": "Nom invalide. Veuillez en choisir un autre.",
     "inProgress": "Le premier joueur est en train de créer la salle. Veuillez patienter puis recommencer.",
     "roomIsFull": "La salle est déjà pleine. Essayez une autre.",
-    "alreadyStarted": "La partie a déjà commencé. Essayer une autre."
+    "alreadyStarted": "La partie a déjà commencé. Essayez une autre."
   },
   "CardRoomName": {
     "title": "Saisir le nom de la salle pour la créer, ou la rejoindre si elle existe"
