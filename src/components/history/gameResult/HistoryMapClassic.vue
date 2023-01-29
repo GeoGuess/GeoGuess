@@ -4,6 +4,7 @@
         :options="{
             mapTypeControl: false,
             gestureHandling: 'greedy',
+            styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
         }"
         :zoom="0"
         map-type-id="roadmap"
@@ -16,12 +17,11 @@
                 />
                 <GmapInfoWindow :options="infoOptions" :position="r.guess">
                     <p>
-                        <b>{{ $t('Maps.infoWindow.Distance') }} : </b>
-                        {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.distance / 1000)  }} 
+                        <b>{{ $t('Maps.infoWindow.Distance') }}: </b>
+                        {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.distance / 1000)  }}
                         <br />
                         <b>
-                            {{ $t('Maps.infoWindow.Points') }}
-                            :
+                            {{ $t('Maps.infoWindow.Points') }}:
                         </b>
                         {{ r.points }}
                     </p>
@@ -36,6 +36,7 @@
                     ]"
                     :options="{
                         strokeOpacity: 0,
+
                         icons: [
                             {
                                 icon: {
@@ -85,8 +86,7 @@
                             <b>{{ $t('Maps.infoWindow.Distance') }} : </b >
                             {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.players[player].distance / 1000)  }} <br />
                             <b>
-                                {{ $t('Maps.infoWindow.Points') }}
-                                :
+                                {{ $t('Maps.infoWindow.Points') }}:
                             </b>
                             {{ r.players[player].points }}
                         </p>
@@ -148,3 +148,9 @@ export default {
     },
 };
 </script>
+
+<style>
+.gm-style-iw {
+  color: black;
+}
+</style>

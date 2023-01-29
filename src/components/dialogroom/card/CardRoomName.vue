@@ -16,7 +16,7 @@
                             maxlength="10"
                             autofocus
                             :error-messages="roomErrorMessage"
-                            @keyup.enter="searchRoom"
+                            @keyup.enter="searchRoom(roomNameText)"
                         />
                     </v-col>
                 </v-row>

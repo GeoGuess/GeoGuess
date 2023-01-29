@@ -4,29 +4,29 @@ html {
 }
 * {
     scrollbar-width: thin;
-    scrollbar-color: #1f1e1cce  #ded3af;
+    scrollbar-color: var(--v-background-base) var(--v-scrollbar-base);
   }
 
-  
+
 *::-webkit-scrollbar-track
 {
-	background-color: #ded3af;
+	background-color: var(--v-background-base);
 }
 
 *::-webkit-scrollbar
 {
 	width: 10px;
-	background-color: #ded3af;
+    background-color: var(--v-background-base);
 }
 
 *::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	background-color: #1f1e1cce;
+	background-color: var(--v-scrollbar-base);
 }
   .v-application {
     .v-card {
-        background-color: #F1E9D6 !important;
+        background-color: var(--v-card-base) !important;
     }
 }
 html, body {
@@ -56,5 +56,5 @@ html, body {
 
 .v-card,
 .v-data-table {
-    background-color: #f1e9d6 !important;
+    background-color: var(--v-card-base) !important;
 }

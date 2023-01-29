@@ -226,7 +226,7 @@ export default {
             activeMap: false,
             size: 2,
             isNotepadVisible: false,
-            pinActive: false,
+            pinActive: localStorage.getItem('pinActive') === 'true',
             printMapFull: false,
             countdownStarted: false,
             game: {
@@ -249,6 +249,11 @@ export default {
                 }
             }
         },
+    },
+    watch: {
+      pinActive() {
+        localStorage.setItem('pinActive', this.pinActive);
+      }
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
@@ -657,7 +662,7 @@ export default {
 
     .container-map_notepad {
         position: absolute;
-        background-color: #fafafa;
+        background-color: var(--v-notepad-base);
         resize: none;
         left: var(--width);
         margin-left: 10px;
@@ -669,6 +674,13 @@ export default {
         outline: none;
         padding: 5px;
         box-shadow: 0px 2px 8px 0px rgba(99, 99, 99, 0.2);
+    }
+
+    .theme--dark & .container-map_notepad {
+        color: #fff;
+    }
+    .theme--light & .container-map_notepad {
+        color: #000;
     }
 }
 

@@ -104,7 +104,14 @@
                 prominent
                 icon="mdi-clock-fast"
             >
-                {{ $tc('StreetView.countdownAlert', timeCountdown) }}
+                {{ $tc('StreetView.countdownAlert', remainingTime) }}
+                <v-progress-linear
+                    :active="isVisibleCountdownAlert"
+                    color="white"
+                    v-model="countdownPercentage"
+                    absolute
+                    bottom
+                ></v-progress-linear>
             </v-alert>
         </div>
     </div>
@@ -289,6 +296,9 @@ export default {
             .map(([, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")}`)
             .join('\n');
         }
+      },
+      countdownPercentage() {
+          return (this.remainingTime * 100) / this.timeCountdown;
       }
     },
     async mounted() {

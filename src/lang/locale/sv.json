@@ -29,7 +29,7 @@
     "streamerModeDetails": "URLer och rumsnamn göms",
     "mapSavedAlert": {
       "title": "Karta sparad 🎉",
-      "subtitle": "Du kan hitta den i din kartlista"
+      "subtitle": "Du hittar den i din kartlista"
     },
     "HomeCard": {
       "edit": "Redigera",
@@ -173,8 +173,8 @@
     },
     "selectAreas": "Välj ytor",
     "moreSettings": "More settings",
-    "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "optimiseStreetView": "StreetView-optimisering (endast officiell)",
+    "nbRound": "Antal rundor"
   },
   "CardRoomDifficulty": {
     "title": "Sätt en svårighetsgrad.",

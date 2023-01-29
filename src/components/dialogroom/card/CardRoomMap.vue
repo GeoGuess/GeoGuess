@@ -41,6 +41,7 @@
                     mapTypeControl: false,
                     fullscreenControl: false,
                     gestureHandling: 'greedy',
+                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
                 }"
             />
             <v-row justify="space-around">
@@ -103,7 +104,7 @@ export default {
         canPlayGeoJSON(){
             return !(
                 this.geoJson &&
-                Array.isArray(this.geoJson.features) && 
+                Array.isArray(this.geoJson.features) &&
                 this.geoJson.features.length < 5 &&
                 this.geoJson.features.every(feature => feature.geometry.type === 'Point')
             );

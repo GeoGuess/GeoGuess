@@ -1,6 +1,6 @@
 {
   "Home": {
-    "placeVisited": "已造访0个地点 | 已造访1个地点 | 已造访{count}个地点",
+    "placeVisited": "已造访0个地点 | 已造访1个地点 | 已造访{count} 个地点",
     "historyBtn": "历史",
     "medalsBtn": "奖牌",
     "about": "关于",
@@ -100,7 +100,7 @@
     "file": "文件",
     "edit": "编辑地图",
     "fileLabel": "选择GeoJSON文件",
-    "OK": "OK",
+    "OK": "确定",
     "download": "下载GeoJSON",
     "Clean": "清除",
     "save": "保存",
@@ -206,7 +206,7 @@
     "message": "如果你想为这个项目做出贡献，使它变得更好，我们非常欢迎你的帮助：翻译🔠，制作地图🌍，代码💻，想法💡，测试👀。",
     "btn": "加入我们"
   },
-  "OK": "OK",
+  "OK": "确定",
   "yes": "是",
   "no": "否",
   "AlertUpdate": {
