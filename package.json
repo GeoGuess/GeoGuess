@@ -56,7 +56,7 @@
     "eslint-plugin-vue": "^8.7.1",
     "jest": "^27.1.0",
     "jest-google-maps-mock": "^1.0.7",
-    "prettier": "2.8.1",
+    "prettier": "2.8.3",
     "react-is": "^18.2.0",
     "sass": "1.32",
     "sass-loader": "^8.0.2",
