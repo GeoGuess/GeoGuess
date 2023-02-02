@@ -2,9 +2,9 @@
   "Home": {
     "placeVisited": "0 visited places | 1 visited place | {count} visited places",
     "historyBtn": "Tariyx",
-    "medalsBtn": "MEDALS",
-    "about": "ABOUT",
-    "createMap": "Create Map",
+    "medalsBtn": "MEDALLAR",
+    "about": "JOBA HAQQINDA",
+    "createMap": "Karta jaratıw",
     "searchBar": {
       "customLoaded": "Custom map has been loaded",
       "enterCity": "Enter city, state or country"
@@ -18,7 +18,7 @@
       "1": "You can limit random locations to cities, states, or countries with the search bar.",
       "2": "In the multiplayer, the first player fixes the location.",
       "3": "Furthermore, you can make your custom map with ",
-      "4": "file.",
+      "4": "fayl.",
       "5": "Insert the content of the GeoJson map with the button :",
       "6": "Customs Map selection : "
     },
@@ -26,10 +26,10 @@
     "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
     "play": "Oynaw",
     "streamerModeActivate": "Streamer mode activate",
-    "streamerModeDetails": "URLs and room names are hidden",
+    "streamerModeDetails": "Bólme siltemeleri hám atları jasırılǵan",
     "mapSavedAlert": {
-      "title": "Map saved 🎉",
-      "subtitle": "You will find it in your map lists"
+      "title": "Karta saqlandı 🎉",
+      "subtitle": "Siz buni kartalardıń diziminen tabasiz"
     },
     "HomeCard": {
       "edit": "Ózgeris kiritiw",
@@ -42,12 +42,12 @@
       }
     },
     "HomeCardMode": {
-      "map": "Map",
+      "map": "Karta",
       "area": "Maydan"
     },
     "Sections": {
       "areasTitle": "Maydanlar",
-      "mapsTitle": "Maps",
+      "mapsTitle": "Kartalar",
       "pleaseSelectLabel": "You seems lost, please select a type or you can ",
       "barrelRoll": "do a barrel roll"
     }
@@ -79,7 +79,7 @@
   },
   "Header": {
     "language": "Til",
-    "about": "About",
+    "about": "Joba haqqında",
     "limitation": "Sheklewler",
     "contact": "Baylanıs"
   },
@@ -90,7 +90,7 @@
     "kmaway": "{value} km away",
     "score": "SCORE"
   },
-  "next": "NEXT",
+  "next": "KEYINGISI",
   "cancel": "BIYKARLAW",
   "DialogCustomMap": {
     "title": "Custom Map",
