@@ -4,7 +4,7 @@
     "historyBtn": "Tariyx",
     "medalsBtn": "MEDALLAR",
     "about": "JOBA HAQQINDA",
-    "createMap": "Karta jaratıw",
+    "createMap": "Kartanı jaratıw",
     "searchBar": {
       "customLoaded": "Custom map has been loaded",
       "enterCity": "Enter city, state or country"
@@ -32,7 +32,7 @@
       "subtitle": "Siz buni kartalardıń diziminen tabasiz"
     },
     "HomeCard": {
-      "edit": "Ózgeris kiritiw",
+      "edit": "Ózgeris kirgiziw",
       "delete": "Óshiriw",
       "medal": {
         "platinum": "Platinum",
@@ -98,8 +98,8 @@
     "text": "Tekst",
     "url": "Silteme",
     "file": "Fayl",
-    "edit": "Edit Map",
-    "fileLabel": "Select GeoJSON file",
+    "edit": "Kartaǵa ózgeris kirgiziw",
+    "fileLabel": "GeoJSON fayldı tańlaw",
     "OK": "MAQUL",
     "download": "Download GeoJSON",
     "Clean": "Tazalaw",
@@ -199,8 +199,8 @@
   },
   "modes": {
     "classic": "Classic",
-    "country": "Mámleketti saylań",
-    "custom_area": "Saylaw"
+    "country": "Mámleketti tańlań",
+    "custom_area": "Tańlań"
   },
   "Demo": {
     "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
