@@ -47,7 +47,7 @@
                 </v-slide-group>
             </section>
             <section
-                v-else
+                v-else-if="areasFiltered.length > 0"
                 class="maps"
             >
                 <HomeCard
@@ -57,12 +57,21 @@
                     type="area"
                 />
             </section>
+            <v-container v-if="areasFiltered.length === 0">
+                <v-alert
+                    variant="outlined"
+                    type="warning"
+                    border="left"
+                >
+                  There are no areas with this name
+                </v-alert>
+            </v-container>
         </template>
         <template 
             v-if="showMaps"
         >
             <v-container><h2>{{ $t('Home.Sections.mapsTitle') }}</h2></v-container>
-            <section class="maps">
+            <section class="maps" v-if="mapsFiltered.length > 0">
                 <HomeCard
                     v-for="(map, index) in mapsFiltered"
                     :key="index"
@@ -70,6 +79,14 @@
                     type="map"
                 />
             </section>
+            <v-container v-else>                 
+                <v-alert
+                    variant="outlined"
+                    type="warning"
+                    border="left"
+                >
+                  There are no maps with this name
+                </v-alert></v-container>
         </template>
         <p
             v-if="!showMaps && !showAreas"
