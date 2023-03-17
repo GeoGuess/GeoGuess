@@ -10,7 +10,7 @@
       "enterCity": "Introduce una ciudad, un estado o un país"
     },
     "aboutDescriptions": {
-      "1": "Geoguess es un juego gratuito sin publicidad.                  Los jugadores se enfrentan en 5 partidas en las que gana quien se acerque más a la posición de una ubicación aleatoria.                 Puedes compartir tu puntuación por redes sociales como Facebook o Twitter.                 Puedes jugar en multijugador con hasta 5 amigos.                  El primer jugador crea una sala y decide el tamaño de la sala. Los demás jugadores pueden unirse introduciendo el nombre de la sala creada por el primer jugador para empezar a jugar.",
+      "1": "Geoguess es un juego de geoguess gratuito y sin anuncios.                  Los jugadores compiten lo cerca que el jugador puede adivinar lugares al azar en cinco rondas.                 Puedes compartir la puntuación con otras personas a través de redes sociales como Facebook o Twitter.                 Puedes jugar partidas multijugador con tus amigos de hasta cinco amigos.                  El primer jugador crea una habitación y decide su tamaño. Los demás jugadores escriben el mismo nombre de habitación que ha creado el primer jugador y comienza la partida.",
       "2": "El juego es una bifurcación de "
     },
     "customMap": "MAPAS PERSONALIZADOS",
@@ -124,7 +124,7 @@
     "importGeoSave": "Importar un GeoSave",
     "exportCSV": "Exportar como CSV",
     "total": "Total",
-    "nbRound": "Nb Rounds"
+    "nbRound": "Nb rondas"
   },
   "DialogRoom": {
     "singlePlayer": "Un jugador",
@@ -154,7 +154,7 @@
     "title": "Definir mapa",
     "loadBtn": "Cargar MAPA",
     "reset": "Reiniciar",
-    "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+    "cantPlayGeoJson": "GeoJSON inválido, necesita tener más de 5 posiciones."
   },
   "CardRoomSettings": {
     "title": "Opciones de partida",
@@ -173,8 +173,8 @@
     },
     "selectAreas": "Seleccionar Áreas",
     "moreSettings": "Opciones avanzadas",
-    "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "optimiseStreetView": "StreetView Optimizar (sólo oficial)",
+    "nbRound": "Número de rondas"
   },
   "CardRoomDifficulty": {
     "title": "Establecer nivel de dificultad.",
