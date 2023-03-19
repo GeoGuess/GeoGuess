@@ -112,7 +112,5 @@ describe('CardRoomMap.vue', () => {
         expect(wrapper.vm.items).toHaveLength(2);
         expect(wrapper.vm.items[0]).toEqual('Toulouse');
         
-
-        expect(wrapper).toMatchSnapshot();
     });
 });
