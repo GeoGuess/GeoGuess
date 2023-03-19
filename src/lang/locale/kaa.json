@@ -1,13 +1,13 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 barılǵan orın |1 barılǵan orın | {count} barılǵan orın",
     "historyBtn": "Tariyx",
     "medalsBtn": "MEDALLAR",
     "about": "JOBA HAQQINDA",
     "createMap": "Kartanı jaratıw",
     "searchBar": {
       "customLoaded": "Custom map has been loaded",
-      "enterCity": "Enter city, state or country"
+      "enterCity": "Qala, shtat hám mámleketti kirgiziń"
     },
     "aboutDescriptions": {
       "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
@@ -35,10 +35,10 @@
       "edit": "Ózgeris kirgiziw",
       "delete": "Óshiriw",
       "medal": {
-        "platinum": "Platinum",
+        "platinum": "Platina",
         "gold": "Altın",
-        "silver": "Silver",
-        "bronze": "Bronze"
+        "silver": "Gúmis",
+        "bronze": "Bronza"
       }
     },
     "HomeCardMode": {
@@ -70,8 +70,8 @@
     "nextRound": "NEXT ROUND",
     "viewSummary": "VIEW SUMMARY",
     "exit": "Shıǵıw",
-    "reset": "RESET",
-    "playAgain": "PLAY AGAIN",
+    "reset": "QAYTA ORNATÍW",
+    "playAgain": "QAYTA OYNATÍW",
     "infoWindow": {
       "Distance": "Aralıq",
       "Points": "Points"
@@ -87,7 +87,7 @@
     "room": "BÓLME",
     "round": "ROUND",
     "distance": "ARALIQ",
-    "kmaway": "{value} km away",
+    "kmaway": "{value} km uzaqlıqta",
     "score": "SCORE"
   },
   "next": "KEYINGISI",
@@ -101,26 +101,26 @@
     "edit": "Kartaǵa ózgeris kirgiziw",
     "fileLabel": "GeoJSON fayldı tańlaw",
     "OK": "MAQUL",
-    "download": "Download GeoJSON",
+    "download": "GeoJSONdi júklep alıw",
     "Clean": "Tazalaw",
     "save": "saqlaw",
     "inputName": {
-      "label": "Map Name",
-      "placeholder": "My favorite place"
+      "label": "Karta ataması",
+      "placeholder": "Meniń súyikli ornm"
     }
   },
   "History": {
     "title": "Tariyx",
     "date": "Sáne",
     "mode": "Rejim",
-    "mapName": "Map Name",
+    "mapName": "Karta ataması",
     "time": "Waqıt",
     "distance": "Aralıq",
     "points": "Points",
     "rank": "Rank",
-    "actions": "Actions",
+    "actions": "Háreketler",
     "search": "Izlew",
-    "exportGeoSave": "Export GeoSave",
+    "exportGeoSave": "GeoSaveti eksport qılıw",
     "importGeoSave": "Import GeoSave",
     "exportCSV": "Export CSV",
     "total": "Jámi",
