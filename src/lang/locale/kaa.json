@@ -121,14 +121,14 @@
     "actions": "Háreketler",
     "search": "Izlew",
     "exportGeoSave": "GeoSaveti eksport qılıw",
-    "importGeoSave": "Import GeoSave",
-    "exportCSV": "Export CSV",
+    "importGeoSave": "GeoSaveti import qılıw",
+    "exportCSV": "CSVdi export qılıw",
     "total": "Jámi",
     "nbRound": "Nb Rounds"
   },
   "DialogRoom": {
     "singlePlayer": "Single Player",
-    "withFriends": "With Friends",
+    "withFriends": "Doslar menen",
     "invalidRoomName": "Invalid name. Please try another.",
     "inProgress": "The first player is creating the room right now. Please wait and try again.",
     "roomIsFull": "This room is already full. Please try another.",
@@ -195,22 +195,22 @@
   },
   "urlCopied": "Silteme kóshirip alındı",
   "DetailsMap": {
-    "moreInfo": "More information"
+    "moreInfo": "Kóbirek maǵlıwmat"
   },
   "modes": {
-    "classic": "Classic",
+    "classic": "Klassikalıq",
     "country": "Mámleketti tańlań",
     "custom_area": "Tańlań"
   },
   "Demo": {
     "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
-    "btn": "Join Us"
+    "btn": "Bizlerge qosılıń"
   },
   "OK": "MAQUL",
   "yes": "awa",
   "no": "yaq",
   "AlertUpdate": {
-    "label": "A new version is available. Click on the button to obtain it.",
+    "label": "Jańa versiyası bar. Oǵan iye bolıw ushın túymeni basıń.",
     "btn": "Jańalaw"
   }
 }
