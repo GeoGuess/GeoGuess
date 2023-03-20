@@ -153,12 +153,12 @@
   "CardRoomMap": {
     "title": "Define your map",
     "loadBtn": "Load MAP",
-    "reset": "Reset",
+    "reset": "Qayta ornatıw",
     "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
   },
   "CardRoomSettings": {
-    "title": "Game Settings",
-    "modeLabel": "Select game mode",
+    "title": "Oyın sazlawları",
+    "modeLabel": "Oyın rejimin tańlań",
     "includePhotopheres": "Include Photospheres",
     "timeAttackLabel": "TimeAttack",
     "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
