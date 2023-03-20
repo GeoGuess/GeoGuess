@@ -168,30 +168,30 @@
     "countDownLabel": "CountDown (seconds)",
     "scoreModeLabel": "Score formula",
     "scoreModes": {
-      "normal": "normal",
+      "normal": "ádettegi",
       "time": "waqıt"
     },
-    "selectAreas": "Select Areas",
-    "moreSettings": "More settings",
+    "selectAreas": "Maydanlardı tańlań",
+    "moreSettings": "Kóbirek sazlawlar",
     "optimiseStreetView": "StreetView Optimize (only official)",
     "nbRound": "Number of rounds"
   },
   "CardRoomDifficulty": {
-    "title": "Set a difficulty level.",
-    "easy": "easy (world)",
-    "medium": "medium (country)",
-    "hard": "hard (city)"
+    "title": "Qıyınshılıq dárejesin ornatıń.",
+    "easy": "ańsat (dúnya)",
+    "medium": "ortasha (mámleket)",
+    "hard": "qıyın (qala)"
   },
   "DialogSummary": {
     "summaryMsgSinglePoints": "Your score is <strong>{points}</strong> points! ",
     "summaryMsgSingleDistance": "You are <strong>{distance}</strong> km away!",
     "summaryMsgMultiPoints": "<strong>{playerName}</strong> score is <strong>{points}</strong> ! ",
     "summaryMsgMultiDistance": "(<strong>{distance}</strong> km away)",
-    "viewDetails": "View details"
+    "viewDetails": "Detallardı kóriw"
   },
   "Footer": {
-    "under": "under",
-    "privacyPolicy": "Privacy Policy"
+    "under": "astında",
+    "privacyPolicy": "Qupiyalıq siyasatı"
   },
   "urlCopied": "Silteme kóshirip alındı",
   "DetailsMap": {
