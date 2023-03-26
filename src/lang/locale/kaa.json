@@ -166,7 +166,7 @@
     "allowZoom": "Allow Zoom",
     "allowPan": "Allow Pan",
     "countDownLabel": "CountDown (seconds)",
-    "scoreModeLabel": "Score formula",
+    "scoreModeLabel": "Ball formulası",
     "scoreModes": {
       "normal": "ádettegi",
       "time": "waqıt"
@@ -174,7 +174,7 @@
     "selectAreas": "Maydanlardı tańlań",
     "moreSettings": "Kóbirek sazlawlar",
     "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "nbRound": "Raundlar sanı"
   },
   "CardRoomDifficulty": {
     "title": "Qıyınshılıq dárejesin ornatıń.",
@@ -183,10 +183,10 @@
     "hard": "qıyın (qala)"
   },
   "DialogSummary": {
-    "summaryMsgSinglePoints": "Your score is <strong>{points}</strong> points! ",
-    "summaryMsgSingleDistance": "You are <strong>{distance}</strong> km away!",
-    "summaryMsgMultiPoints": "<strong>{playerName}</strong> score is <strong>{points}</strong> ! ",
-    "summaryMsgMultiDistance": "(<strong>{distance}</strong> km away)",
+    "summaryMsgSinglePoints": "Siziń esabıńızda <strong>{points}</strong> ball! ",
+    "summaryMsgSingleDistance": "Siz <strong>{distance}</strong> km qashıqlıqtasız!",
+    "summaryMsgMultiPoints": "<strong>{playerName}</strong> ball <strong>{points}</strong>! ",
+    "summaryMsgMultiDistance": "(<strong>{distance}</strong> km qashıqlıq)",
     "viewDetails": "Detallardı kóriw"
   },
   "Footer": {
@@ -203,7 +203,7 @@
     "custom_area": "Tańlań"
   },
   "Demo": {
-    "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
+    "message": "Eger siz proektti qollap-quwatlaw hám onı rawajlandırıwdı qáleseńiz, siziń járdemińizden quwanamız: Awdarma 🔠, Karta 🌍, Kod 💻, Pikir💡, Beta test 👀.",
     "btn": "Bizlerge qosılıń"
   },
   "OK": "MAQUL",
