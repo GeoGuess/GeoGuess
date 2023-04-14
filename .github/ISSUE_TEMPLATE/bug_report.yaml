@@ -27,8 +27,9 @@ body:
           
           
   - type: textarea
-    validations:
+    attributes:
       label: To Reproduce
+    validations:
       required: true
   - type: textarea
     attributes:
