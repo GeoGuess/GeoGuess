@@ -1,25 +1,23 @@
-
+---
 name: Bug report
 description: Create a report to help us improve
 title: "[BUG]: "
-labels: ["bug"]
+labels:
+  - bug
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-        
   - type: textarea
     attributes:
       label: Describe the bug
       description: A clear and concise description of what the bug is.
     validations:
       required: true
-
-      
   - type: markdown
     attributes:
-      value: |
+      value: |+
         Steps to reproduce the behavior:
           1. Go to '...'
           2. Click on '....'
@@ -31,24 +29,21 @@ body:
   - type: textarea
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Expected behavior
       description: A clear and concise description of what you expected to happen.
     validations:
       required: true
-      
   - type: textarea
     attributes:
       label: Describe alternatives you've considered
-      description: A clear and concise description of any alternative solutions or features you've considered.
-      
+      description: A clear and concise description of any alternative solutions or
+        features you've considered.
   - type: textarea
     attributes:
       label: Screenshots
       description: If applicable, add screenshots to help explain your problem.
-   
   - type: dropdown
     id: os
     attributes:
@@ -59,10 +54,9 @@ body:
         - Android
         - Windows
         - MAC
-        - Linux    
+        - Linux
     validations:
       required: true
-
   - type: dropdown
     id: browsers
     attributes:
@@ -76,12 +70,11 @@ body:
         - Opera
     validations:
       required: true
-        
-   - type: input
+  - type: input
     id: version
     attributes:
       label: Version
-      description: What is you GeoGuess version ? 
+      description: What is you GeoGuess version ?
     validations:
       required: true
   - type: textarea
@@ -93,24 +86,22 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/GeoGuess/GeoGuess/blob/master/CODE_OF_CONDUCT.md)
+      description: By submitting this issue, you agree to follow our [Code of
+        Conduct](https://github.com/GeoGuess/GeoGuess/blob/master/CODE_OF_CONDUCT.md)
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true
-   
-          
   - type: textarea
     id: add
     attributes:
       label: Additional context
       description: Add any other context or screenshots about the feature request here.
-    
   - type: checkboxes
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/GeoGuess/GeoGuess/blob/master/CODE_OF_CONDUCT.md)
+      description: By submitting this issue, you agree to follow our [Code of
+        Conduct](https://github.com/GeoGuess/GeoGuess/blob/master/CODE_OF_CONDUCT.md)
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true
-
