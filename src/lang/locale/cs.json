@@ -210,7 +210,7 @@
   "yes": "Ano",
   "no": "Ne",
   "AlertUpdate": {
-    "label": "A new version is available. Click on the button to obtain it.",
-    "btn": "Update"
+    "label": "Nová verze je dostupná, klikněte na tlačítko pro její získání.",
+    "btn": "Aktualizovat"
   }
 }
