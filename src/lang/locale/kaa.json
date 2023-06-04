@@ -1,13 +1,13 @@
 {
   "Home": {
-    "placeVisited": "0 visited places | 1 visited place | {count} visited places",
+    "placeVisited": "0 barılǵan orın |1 barılǵan orın | {count} barılǵan orın",
     "historyBtn": "Tariyx",
     "medalsBtn": "MEDALLAR",
     "about": "JOBA HAQQINDA",
     "createMap": "Kartanı jaratıw",
     "searchBar": {
       "customLoaded": "Custom map has been loaded",
-      "enterCity": "Enter city, state or country"
+      "enterCity": "Qala, shtat hám mámleketti kirgiziń"
     },
     "aboutDescriptions": {
       "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
@@ -35,10 +35,10 @@
       "edit": "Ózgeris kirgiziw",
       "delete": "Óshiriw",
       "medal": {
-        "platinum": "Platinum",
+        "platinum": "Platina",
         "gold": "Altın",
-        "silver": "Silver",
-        "bronze": "Bronze"
+        "silver": "Gúmis",
+        "bronze": "Bronza"
       }
     },
     "HomeCardMode": {
@@ -70,8 +70,8 @@
     "nextRound": "NEXT ROUND",
     "viewSummary": "VIEW SUMMARY",
     "exit": "Shıǵıw",
-    "reset": "RESET",
-    "playAgain": "PLAY AGAIN",
+    "reset": "QAYTA ORNATÍW",
+    "playAgain": "QAYTA OYNATÍW",
     "infoWindow": {
       "Distance": "Aralıq",
       "Points": "Points"
@@ -87,7 +87,7 @@
     "room": "BÓLME",
     "round": "ROUND",
     "distance": "ARALIQ",
-    "kmaway": "{value} km away",
+    "kmaway": "{value} km uzaqlıqta",
     "score": "SCORE"
   },
   "next": "KEYINGISI",
@@ -101,34 +101,34 @@
     "edit": "Kartaǵa ózgeris kirgiziw",
     "fileLabel": "GeoJSON fayldı tańlaw",
     "OK": "MAQUL",
-    "download": "Download GeoJSON",
+    "download": "GeoJSONdi júklep alıw",
     "Clean": "Tazalaw",
     "save": "saqlaw",
     "inputName": {
-      "label": "Map Name",
-      "placeholder": "My favorite place"
+      "label": "Karta ataması",
+      "placeholder": "Meniń súyikli ornm"
     }
   },
   "History": {
     "title": "Tariyx",
     "date": "Sáne",
     "mode": "Rejim",
-    "mapName": "Map Name",
+    "mapName": "Karta ataması",
     "time": "Waqıt",
     "distance": "Aralıq",
     "points": "Points",
     "rank": "Rank",
-    "actions": "Actions",
+    "actions": "Háreketler",
     "search": "Izlew",
-    "exportGeoSave": "Export GeoSave",
-    "importGeoSave": "Import GeoSave",
-    "exportCSV": "Export CSV",
+    "exportGeoSave": "GeoSaveti eksport qılıw",
+    "importGeoSave": "GeoSaveti import qılıw",
+    "exportCSV": "CSVdi export qılıw",
     "total": "Jámi",
     "nbRound": "Nb Rounds"
   },
   "DialogRoom": {
     "singlePlayer": "Single Player",
-    "withFriends": "With Friends",
+    "withFriends": "Doslar menen",
     "invalidRoomName": "Invalid name. Please try another.",
     "inProgress": "The first player is creating the room right now. Please wait and try again.",
     "roomIsFull": "This room is already full. Please try another.",
@@ -153,12 +153,12 @@
   "CardRoomMap": {
     "title": "Define your map",
     "loadBtn": "Load MAP",
-    "reset": "Reset",
+    "reset": "Qayta ornatıw",
     "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
   },
   "CardRoomSettings": {
-    "title": "Game Settings",
-    "modeLabel": "Select game mode",
+    "title": "Oyın sazlawları",
+    "modeLabel": "Oyın rejimin tańlań",
     "includePhotopheres": "Include Photospheres",
     "timeAttackLabel": "TimeAttack",
     "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
@@ -166,51 +166,51 @@
     "allowZoom": "Allow Zoom",
     "allowPan": "Allow Pan",
     "countDownLabel": "CountDown (seconds)",
-    "scoreModeLabel": "Score formula",
+    "scoreModeLabel": "Ball formulası",
     "scoreModes": {
-      "normal": "normal",
+      "normal": "ádettegi",
       "time": "waqıt"
     },
-    "selectAreas": "Select Areas",
-    "moreSettings": "More settings",
+    "selectAreas": "Maydanlardı tańlań",
+    "moreSettings": "Kóbirek sazlawlar",
     "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "nbRound": "Raundlar sanı"
   },
   "CardRoomDifficulty": {
-    "title": "Set a difficulty level.",
-    "easy": "easy (world)",
-    "medium": "medium (country)",
-    "hard": "hard (city)"
+    "title": "Qıyınshılıq dárejesin ornatıń.",
+    "easy": "ańsat (dúnya)",
+    "medium": "ortasha (mámleket)",
+    "hard": "qıyın (qala)"
   },
   "DialogSummary": {
-    "summaryMsgSinglePoints": "Your score is <strong>{points}</strong> points! ",
-    "summaryMsgSingleDistance": "You are <strong>{distance}</strong> km away!",
-    "summaryMsgMultiPoints": "<strong>{playerName}</strong> score is <strong>{points}</strong> ! ",
-    "summaryMsgMultiDistance": "(<strong>{distance}</strong> km away)",
-    "viewDetails": "View details"
+    "summaryMsgSinglePoints": "Siziń esabıńızda <strong>{points}</strong> ball! ",
+    "summaryMsgSingleDistance": "Siz <strong>{distance}</strong> km qashıqlıqtasız!",
+    "summaryMsgMultiPoints": "<strong>{playerName}</strong> ball <strong>{points}</strong>! ",
+    "summaryMsgMultiDistance": "(<strong>{distance}</strong> km qashıqlıq)",
+    "viewDetails": "Detallardı kóriw"
   },
   "Footer": {
-    "under": "under",
-    "privacyPolicy": "Privacy Policy"
+    "under": "astında",
+    "privacyPolicy": "Qupiyalıq siyasatı"
   },
   "urlCopied": "Silteme kóshirip alındı",
   "DetailsMap": {
-    "moreInfo": "More information"
+    "moreInfo": "Kóbirek maǵlıwmat"
   },
   "modes": {
-    "classic": "Classic",
+    "classic": "Klassikalıq",
     "country": "Mámleketti tańlań",
     "custom_area": "Tańlań"
   },
   "Demo": {
-    "message": "If you want to contribute to a project and make it better, your help is very welcome :  Translation 🔠, Mapper 🌍, Code 💻, Idea 💡, Beta test 👀.",
-    "btn": "Join Us"
+    "message": "Eger siz proektti qollap-quwatlaw hám onı rawajlandırıwdı qáleseńiz, siziń járdemińizden quwanamız: Awdarma 🔠, Karta 🌍, Kod 💻, Pikir💡, Beta test 👀.",
+    "btn": "Bizlerge qosılıń"
   },
   "OK": "MAQUL",
   "yes": "awa",
   "no": "yaq",
   "AlertUpdate": {
-    "label": "A new version is available. Click on the button to obtain it.",
+    "label": "Jańa versiyası bar. Oǵan iye bolıw ushın túymeni basıń.",
     "btn": "Jańalaw"
   }
 }
