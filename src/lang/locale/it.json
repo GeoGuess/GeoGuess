@@ -48,8 +48,8 @@
     "Sections": {
       "areasTitle": "Aree",
       "mapsTitle": "Mappe",
-      "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-      "barrelRoll": "do a barrel roll"
+      "pleaseSelectLabel": "Sembri perso, per favore seleziona un tipo oppure ",
+      "barrelRoll": "fai una capriola"
     }
   },
   "StreetView": {
@@ -173,8 +173,8 @@
     },
     "selectAreas": "Seleziona Aree",
     "moreSettings": "Altre impostazioni",
-    "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "optimiseStreetView": "Ottimizza lo StreetView (solo ufficiale)",
+    "nbRound": "Numero di round"
   },
   "CardRoomDifficulty": {
     "title": "Imposta un livello di difficoltà.",
