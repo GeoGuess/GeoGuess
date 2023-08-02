@@ -108,8 +108,8 @@
                                 :label="$t('CardRoomSettings.allowPan')"
                                 hide-details
                             />
-                            <br />
                             <v-checkbox
+                                class="mt-2"
                                 :input-value="gameSettings.allPanorama"
                                 @change="
                                     (allPanorama) =>
@@ -131,8 +131,9 @@
                                 "
                                 hide-details
                             />
-                            <br>
                             <v-checkbox
+                                class="mt-2"
+                                v-if="!singlePlayer"
                                 :input-value="gameSettings.scoreLeaderboard"
                                 @change="
                                     (scoreLeaderboard) =>
@@ -144,6 +145,7 @@
                                 hide-details
                             />
                             <v-checkbox
+                                v-if="!singlePlayer"
                                 :input-value="gameSettings.guessedLeaderboard"
                                 @change="
                                     (guessedLeaderboard) =>
@@ -235,6 +237,7 @@
                                     </v-list-item-title>
                                 </template>
                                 <v-text-field
+                                    class="mt-2"
                                     type="number"
                                     :disabled="gameSettings.timeAttackSelected"
                                     :label="$t('CardRoomSettings.nbRound')"

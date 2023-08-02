@@ -34,6 +34,7 @@
                     {{ round }} / {{ nbRound }}
                 </span>
             </div>
+
             <div v-if="isDistanceVisible" class="round-score-container">
                 <span class="sub-text">{{ $t('HeaderGame.distance') }}: </span>
                 <span class="main-text">{{

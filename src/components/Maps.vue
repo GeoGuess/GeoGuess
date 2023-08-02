@@ -24,6 +24,12 @@
         "
     >
         <div class="container-map_details">
+            <div class="alert-container">
+                <Leaderboard
+                    :leaderboard-shown="leaderboardShown"
+                    :guess-string="guessString"
+                ></Leaderboard>
+            </div>
             <DetailsMap
                 v-if="printMapFull"
                 :properties="randomFeatureProperties"
@@ -176,9 +182,11 @@ import MapAreas from '@/components/map/MapAreas';
 import { GAME_MODE } from '../constants';
 import { getSelectedPos } from '../utils';
 import { getScore } from '../utils/game/score';
+import Leaderboard from "@/components/game/Leaderboard.vue";
 
 export default {
     components: {
+        Leaderboard,
         DialogSummary,
         DetailsMap,
         Map,
@@ -207,7 +215,9 @@ export default {
         'pathKey',
         'mapDetails',
         'scoreLeaderboard',
-        'guessedLeaderboard'
+        'guessedLeaderboard',
+        'leaderboardShown',
+        'guessString'
     ],
     data() {
         return {
@@ -253,6 +263,9 @@ export default {
     watch: {
       pinActive() {
         localStorage.setItem('pinActive', this.pinActive);
+      },
+      printMapFull(value) {
+        this.$emit('printMapFull', value);
       }
     },
     async mounted() {
@@ -578,11 +591,20 @@ export default {
                     .set(true);
             this.$emit('finishGame');
         },
-    },
+    }
 };
 </script>
 
 <style scoped lang="scss">
+.alert-container {
+    margin-top: 4px;
+    position: absolute;
+    right: 0;
+    .v-alert {
+        z-index: 2;
+    }
+}
+
 #container-map {
     display: flex;
     flex-direction: column;
@@ -638,6 +660,7 @@ export default {
         }
         .container-map_details {
             display: block;
+            position: relative;
         }
     }
 

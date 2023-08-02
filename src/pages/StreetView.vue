@@ -58,11 +58,14 @@
                         :mapDetails="mapDetails"
                         :score-leaderboard="scoreLeaderboard"
                         :guessed-leaderboard="guessedLeaderboard"
+                        :guess-string="guessString"
+                        :leaderboard-shown="leaderboardShown"
                         @resetLocation="resetLocation"
                         @calculateDistance="updateScore"
                         @showResult="showResult"
                         @goToNextRound="goToNextRound"
                         @finishGame="finishGame"
+                        @printMapFull="printMapFull = $event"
                     />
                 </div>
             </div>
@@ -74,18 +77,11 @@
             :dialog-text="dialogText"
         />
         <div class="alert-container">
-            <v-alert
-                id="leaderboard-alert"
-                transition="slide-x-transition"
-                icon="mdi-scoreboard-outline"
-                width="400"
-                dark
-                class="mt-2 mr-2"
-                v-if="guessString && !$vuetify.breakpoint.mobile && leaderboardShown"
-
-            >
-                {{ guessString }}
-            </v-alert>
+            <Leaderboard
+                :guess-string="guessString"
+                :leaderboard-shown="leaderboardShown"
+                v-if="!printMapFull"
+            ></Leaderboard>
             <v-alert
                 v-if="isVisibleDialog"
                 type="warning"
@@ -137,9 +133,11 @@ import { GAME_MODE, SCORE_MODE } from '../constants';
 import {mapActions, mapGetters, mapState} from 'vuex';
 
 import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
+import Leaderboard from "@/components/game/Leaderboard.vue";
 
 export default {
     components: {
+        Leaderboard,
         HeaderGame,
         Maps,
         DialogMessage,
@@ -275,7 +273,8 @@ export default {
 
             streetViewService: null,
             leaderboard: [],
-            leaderboardShown: this.guessedLeaderboard || this.scoreLeaderboard
+            leaderboardShown: this.guessedLeaderboard || this.scoreLeaderboard,
+            printMapFull: false
         };
     },
     computed: {
@@ -754,14 +753,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#leaderboard-alert {
-    opacity: 0.8;
-    white-space: pre-line;
-    float: right;
-    pointer-events: none;
-
-}
-
 #game-page {
     position: relative;
     height: 100%;
