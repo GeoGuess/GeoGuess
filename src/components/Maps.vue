@@ -597,7 +597,6 @@ export default {
 
 <style scoped lang="scss">
 .alert-container {
-    margin-top: 4px;
     position: absolute;
     right: 0;
     .v-alert {
