@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "距离",
       "Points": "分数"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "允许移动",
     "allowZoom": "允许放大",
     "allowPan": "允许环顾四周",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "倒计时 (秒)",
     "scoreModeLabel": "得分公式",
     "scoreModes": {
