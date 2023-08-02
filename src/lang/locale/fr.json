@@ -77,8 +77,8 @@
       "Points": "Points"
     },
     "leaderboard": {
-      "notGuessed": "Not Guessed",
-      "guessed": "Guessed"
+      "notGuessed": "N'a pas deviné",
+      "guessed": "A deviné"
     }
   },
   "Header": {
@@ -169,8 +169,8 @@
     "allowMove": "Autoriser les déplacements",
     "allowZoom": "Autoriser le zoom",
     "allowPan": "Autoriser les rotations",
-    "guessedLeaderboard": "Display whether players have guessed",
-    "scoreLeaderboard": "Display score leaderboard",
+    "guessedLeaderboard": "Afficher si les joueurs qui ont deviné",
+    "scoreLeaderboard": "Afficher le classement",
     "countDownLabel": "Compte à rebours (secondes)",
     "scoreModeLabel": "Formule de calcul du score",
     "scoreModes": {
