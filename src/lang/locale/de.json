@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "Distanz",
       "Points": "Punkte"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "Bewegen zulassen",
     "allowZoom": "Zoomen zulassen",
     "allowPan": "Schwenken zulassen",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "Countdown (Sekunden)",
     "scoreModeLabel": "Punkteberechnung",
     "scoreModes": {
