@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg)](#-contribution)
+[![All Contributors](https://img.shields.io/badge/all_contributors-25-orange.svg)](#-contribution)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -90,6 +90,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="http://blog.tiga.tech"><img src="https://avatars.githubusercontent.com/u/10629864?v=4?s=100" width="100px;" alt="tigattack"/><br /><sub><b>tigattack</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=tigattack" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://troplo.com"><img src="https://avatars.githubusercontent.com/u/45160807?v=4?s=100" width="100px;" alt="Troplo"/><br /><sub><b>Troplo</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=Troplo" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/66Leo66"><img src="https://avatars.githubusercontent.com/u/33322229?v=4?s=100" width="100px;" alt="Leo Li"/><br /><sub><b>Leo Li</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=66Leo66" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://electrics01.com"><img src="https://avatars.githubusercontent.com/u/103579308?v=4?s=100" width="100px;" alt="ElectricS01"/><br /><sub><b>ElectricS01</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/pulls?q=is%3Apr+reviewed-by%3AElectricS01" title="Reviewed Pull Requests">👀</a></td>
     </tr>
   </tbody>
 </table>
