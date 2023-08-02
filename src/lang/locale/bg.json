@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "Дистанция",
       "Points": "Точки"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "Позволи движение",
     "allowZoom": "Позволи увеличение",
     "allowPan": "Позволи Pan",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "Обратно броене (seconds)",
     "scoreModeLabel": "Формула за оценка",
     "scoreModes": {
