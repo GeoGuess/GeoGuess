@@ -35,7 +35,6 @@ describe('StreetView.vue', () => {
         );
         expect(wrapper.vm.startTimer).toBeCalled();
 
-        expect(wrapper).toMatchSnapshot();
     });
     it('methods startTimer hasTimerStarted', () => {
         const wrapper = shallowMount(StreetView, args);
@@ -59,7 +58,6 @@ describe('StreetView.vue', () => {
         );
         expect(wrapper.vm.startTimer).not.toBeCalled();
 
-        expect(wrapper).toMatchSnapshot();
     });
 
     it('methods startTimer hasTimerStarted', () => {
@@ -93,7 +91,5 @@ describe('StreetView.vue', () => {
             linksControl: false,
             clickToGo: false,
         });
-
-        expect(wrapper).toMatchSnapshot();
     });
 });

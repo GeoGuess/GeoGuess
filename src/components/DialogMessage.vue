@@ -13,6 +13,10 @@
                 >{{
                     dialogTitle
                 }}</span>
+                <v-spacer />
+                <v-btn v-if="dismissible" icon @click="$emit('close')">
+                    <v-icon>mdi-close</v-icon>
+                </v-btn>
             </v-card-title>
             <v-card-text>
                 <v-container>
@@ -25,13 +29,14 @@
 
 <script>
 export default {
-    props: ['dialogMessage', 'dialogTitle', 'dialogText'],
+    props: ['dialogMessage', 'dialogTitle', 'dialogText', 'dismissible'],
 };
 </script>
 
 <style scoped>
 span {
     color: #888;
+    white-space: pre-line;
 }
 
 #card-title {

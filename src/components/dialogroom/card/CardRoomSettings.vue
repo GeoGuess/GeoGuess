@@ -108,8 +108,8 @@
                                 :label="$t('CardRoomSettings.allowPan')"
                                 hide-details
                             />
-                            <br />
                             <v-checkbox
+                                class="mt-2"
                                 :input-value="gameSettings.allPanorama"
                                 @change="
                                     (allPanorama) =>
@@ -130,7 +130,33 @@
                                     $t('CardRoomSettings.optimiseStreetView')
                                 "
                                 hide-details
-                            /> 
+                            />
+                            <v-checkbox
+                                class="mt-2"
+                                v-if="!singlePlayer"
+                                :input-value="gameSettings.scoreLeaderboard"
+                                @change="
+                                    (scoreLeaderboard) =>
+                                        setGameSettings({ scoreLeaderboard })
+                                "
+                                :label="
+                                    $t('CardRoomSettings.scoreLeaderboard')
+                                "
+                                hide-details
+                            />
+                            <v-checkbox
+                                v-if="!singlePlayer"
+                                :input-value="gameSettings.guessedLeaderboard"
+                                @change="
+                                    (guessedLeaderboard) =>
+                                        setGameSettings({ guessedLeaderboard })
+                                "
+                                :label="
+                                    $t('CardRoomSettings.guessedLeaderboard')
+                                "
+                                hide-details
+                                :disabled="gameSettings.scoreLeaderboard"
+                            />
                         </v-col>
                         <v-col>
                             <v-text-field
@@ -199,7 +225,7 @@
                             </div>
                         </v-col>
                     </v-row>
-                    <v-row 
+                    <v-row
                         class="mb-0 mt-0"
                         align="center"
                     >
@@ -211,13 +237,14 @@
                                     </v-list-item-title>
                                 </template>
                                 <v-text-field
+                                    class="mt-2"
                                     type="number"
                                     :disabled="gameSettings.timeAttackSelected"
                                     :label="$t('CardRoomSettings.nbRound')"
                                     :value="gameSettings.timeAttackSelected ? 10 : gameSettings.nbRoundSelected"
                                     min="1"
                                     @input="
-                                        (nbRoundSelected) => 
+                                        (nbRoundSelected) =>
                                             setGameSettings({ nbRoundSelected: +nbRoundSelected })
                                     "
                                 />
@@ -365,7 +392,7 @@ export default {
                 display: contents;
             }
         }
-    
+
     @media (max-width: 360px) {
         .card_settings__mode__btns {
             flex-direction: column;

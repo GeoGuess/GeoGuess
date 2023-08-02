@@ -130,7 +130,7 @@ export default {
             right: 0;
         }
     }
-    
+
 }
 @media (max-width: 1300px) and (min-width: 600px) {
     .home-page

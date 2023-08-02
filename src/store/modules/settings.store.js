@@ -21,6 +21,8 @@ export class GameSettings {
         _areaParams = null,
         _optimiseStreetView = true,
         _nbRound = 5,
+        _scoreLeaderboard = true,
+        _guessedLeaderboard = true,
     ) {
         this.allPanorama = _allPanorama;
         this.time = _timeLimitation;
@@ -34,6 +36,8 @@ export class GameSettings {
         this.areaParams = _areaParams;
         this.optimiseStreetView = _optimiseStreetView;
         this.nbRoundSelected = _nbRound;
+        this.scoreLeaderboard = _scoreLeaderboard;
+        this.guessedLeaderboard = _guessedLeaderboard;
     }
 }
 
@@ -318,8 +322,9 @@ export default {
                         areaParams: snapshot.child('areaParams').val(),
                         optimiseStreetView: snapshot.child('optimiseStreetView').val(),
                         nbRoundSelected: snapshot.child('nbRoundSelected').val(),
+                        scoreLeaderboard: snapshot.child('scoreLeaderboard').val(),
+                        guessedLeaderboard: snapshot.child('guessedLeaderboard').val(),
                     };
-
                     dispatch('startGameMultiplayer', gameParams);
                 });
             }

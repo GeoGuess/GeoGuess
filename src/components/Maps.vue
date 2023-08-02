@@ -24,6 +24,12 @@
         "
     >
         <div class="container-map_details">
+            <div class="alert-container">
+                <Leaderboard
+                    :leaderboard-shown="leaderboardShown"
+                    :guess-string="guessString"
+                ></Leaderboard>
+            </div>
             <DetailsMap
                 v-if="printMapFull"
                 :properties="randomFeatureProperties"
@@ -176,9 +182,11 @@ import MapAreas from '@/components/map/MapAreas';
 import { GAME_MODE } from '../constants';
 import { getSelectedPos } from '../utils';
 import { getScore } from '../utils/game/score';
+import Leaderboard from "@/components/game/Leaderboard.vue";
 
 export default {
     components: {
+        Leaderboard,
         DialogSummary,
         DetailsMap,
         Map,
@@ -206,6 +214,10 @@ export default {
         'areasGeoJsonUrl',
         'pathKey',
         'mapDetails',
+        'scoreLeaderboard',
+        'guessedLeaderboard',
+        'leaderboardShown',
+        'guessString'
     ],
     data() {
         return {
@@ -251,6 +263,9 @@ export default {
     watch: {
       pinActive() {
         localStorage.setItem('pinActive', this.pinActive);
+      },
+      printMapFull(value) {
+        this.$emit('printMapFull', value);
       }
     },
     async mounted() {
@@ -266,7 +281,6 @@ export default {
             this.room = firebase.database().ref(this.roomName);
 
             this.room.on('value', (snapshot) => {
-                // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
                     size = snapshot.child('size').val();
                     if (size === 1) {
@@ -577,11 +591,19 @@ export default {
                     .set(true);
             this.$emit('finishGame');
         },
-    },
+    }
 };
 </script>
 
 <style scoped lang="scss">
+.alert-container {
+    position: absolute;
+    right: 0;
+    .v-alert {
+        z-index: 2;
+    }
+}
+
 #container-map {
     display: flex;
     flex-direction: column;
@@ -637,6 +659,7 @@ export default {
         }
         .container-map_details {
             display: block;
+            position: relative;
         }
     }
 
