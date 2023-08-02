@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "Distans",
       "Points": "Poäng"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "Tillåt förflyttning",
     "allowZoom": "Tillåt zoomning",
     "allowPan": "Tillåt panorering",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "Nedräkning (sekunder)",
     "scoreModeLabel": "Poängformel",
     "scoreModes": {
