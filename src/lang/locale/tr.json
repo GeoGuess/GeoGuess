@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "Mesafe",
       "Points": "Puanlar"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "Hareket Etmeye İzin Ver",
     "allowZoom": "Yakınlaştırmaya İzin Ver",
     "allowPan": "Kaydırmaya İzin Ver",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "Geri Sayım (saniyeler)",
     "scoreModeLabel": "Puan Formülü",
     "scoreModes": {

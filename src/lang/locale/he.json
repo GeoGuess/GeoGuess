@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "מרחק",
       "Points": "נקודות"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "אפשר תזוזה",
     "allowZoom": "אפשר הגדלה והקטנה של התמונה",
     "allowPan": "אפשר שינוי זווית ראייה",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "ספירה לאחור (שניות)",
     "scoreModeLabel": "נוסחת הניקוד",
     "scoreModes": {

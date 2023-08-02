@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "Distance",
       "Points": "Points"
+    },
+    "leaderboard": {
+      "notGuessed": "N'a pas deviné",
+      "guessed": "A deviné"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "Autoriser les déplacements",
     "allowZoom": "Autoriser le zoom",
     "allowPan": "Autoriser les rotations",
+    "guessedLeaderboard": "Afficher si les joueurs qui ont deviné",
+    "scoreLeaderboard": "Afficher le classement",
     "countDownLabel": "Compte à rebours (secondes)",
     "scoreModeLabel": "Formule de calcul du score",
     "scoreModes": {

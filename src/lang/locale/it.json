@@ -48,8 +48,8 @@
     "Sections": {
       "areasTitle": "Aree",
       "mapsTitle": "Mappe",
-      "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-      "barrelRoll": "do a barrel roll"
+      "pleaseSelectLabel": "Sembri perso, per favore seleziona un tipo oppure ",
+      "barrelRoll": "fai una capriola"
     }
   },
   "StreetView": {
@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "Distanza",
       "Points": "Punti"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "Consenti Spostamenti",
     "allowZoom": "Consenti Zoom",
     "allowPan": "Consenti Guardati Attorno",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "CountDown (secondi)",
     "scoreModeLabel": "Tipo Punteggio",
     "scoreModes": {
@@ -173,8 +179,8 @@
     },
     "selectAreas": "Seleziona Aree",
     "moreSettings": "Altre impostazioni",
-    "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "optimiseStreetView": "Ottimizza lo StreetView (solo ufficiale)",
+    "nbRound": "Numero di round"
   },
   "CardRoomDifficulty": {
     "title": "Imposta un livello di difficoltà.",

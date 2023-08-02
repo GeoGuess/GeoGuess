@@ -75,6 +75,10 @@
     "infoWindow": {
       "Distance": "Vzdálenost",
       "Points": "Skóre"
+    },
+    "leaderboard": {
+      "notGuessed": "Not Guessed",
+      "guessed": "Guessed"
     }
   },
   "Header": {
@@ -165,6 +169,8 @@
     "allowMove": "Povolit Pohyb",
     "allowZoom": "Povolit Zoom (přiblížení)",
     "allowPan": "Povolit Otáčení",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "CountDown (seconds)",
     "scoreModeLabel": "Score formula",
     "scoreModes": {
