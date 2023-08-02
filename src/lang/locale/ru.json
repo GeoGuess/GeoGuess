@@ -46,7 +46,7 @@
       "area": "Площадь"
     },
     "Sections": {
-      "areasTitle": "Areas",
+      "areasTitle": "Территории",
       "mapsTitle": "Maps",
       "pleaseSelectLabel": "Похоже, вы потерялись, выберите тип или вы можете ",
       "barrelRoll": "Вверх"
@@ -68,7 +68,7 @@
     "makeGuess": "Предположить догадку",
     "guess": "Угадать",
     "nextRound": "СЛЕДУЮЩИЙ РАУНД",
-    "viewSummary": "Посмтреть Сводку",
+    "viewSummary": "Посмотреть сводку",
     "exit": "Выход",
     "reset": "Рестарт",
     "playAgain": "Играть заново",
