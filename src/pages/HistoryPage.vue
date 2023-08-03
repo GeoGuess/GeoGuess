@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import ContentPage from '@/components/page/ContentPage';
-import HistoryTable from '@/components/history/HistoryTable';
+import ContentPage from '../components/page/ContentPage';
+import HistoryTable from '../components/history/HistoryTable';
 export default {
     name: 'HistoryPage',
     components: {
         HistoryTable,
-        ContentPage,
-    },
+        ContentPage
+    }
 };
 </script>

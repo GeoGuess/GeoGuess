@@ -51,7 +51,12 @@
                     </v-menu>
                     <v-btn icon @click="changeTheme(!darkTheme)">
                         <v-icon size="30">
-                            {{ darkTheme ? 'mdi-white-balance-sunny' : 'mdi-weather-night' }} }}
+                            {{
+                                darkTheme
+                                    ? 'mdi-white-balance-sunny'
+                                    : 'mdi-weather-night'
+                            }}
+                            }}
                         </v-icon>
                     </v-btn>
                 </div>
@@ -78,7 +83,7 @@
     </div>
 </template>
 <script>
-import About from '@/components/page/About';
+import About from '../../components/page/About';
 import { languages, RTL_LANGUAGES } from '../../lang';
 import { mapActions, mapState } from 'vuex';
 import HeaderAlert from './HeaderAlert.vue';
@@ -86,24 +91,24 @@ import HeaderAlert from './HeaderAlert.vue';
 export default {
     components: {
         About,
-        HeaderAlert,
+        HeaderAlert
     },
     data() {
         return {
             aboutDialog: false,
             languages,
-            menuMobile: false,
+            menuMobile: false
         };
     },
     computed: {
         ...mapState({
-            streamerMode: (state) => state.homeStore.streamerMode,
+            streamerMode: (state) => state.homeStore.streamerMode
         }),
         demoMode() {
-            return !!process.env.VUE_APP_DEMO_MODE;
+            return !!process.env.VITE_APP_DEMO_MODE;
         },
         darkTheme() {
-          return this.$vuetify.theme.dark;
+            return this.$vuetify.theme.dark;
         }
     },
     methods: {
@@ -121,10 +126,10 @@ export default {
             localStorage.setItem('language', language);
         },
         changeTheme(dark) {
-          this.$vuetify.theme.dark = dark;
-          localStorage.setItem('darkTheme', dark);
+            this.$vuetify.theme.dark = dark;
+            localStorage.setItem('darkTheme', dark);
         }
-    },
+    }
 };
 </script>
 <style lang="scss" scoped>
@@ -135,19 +140,19 @@ export default {
     .header__nav,
     .header__nav__btns {
         display: flex;
-        align-items: center;        
+        align-items: center;
         & > div {
             margin: 0 1.5rem;
         }
     }
-    .theme--light .header__nav__btns .v-btn{
+    .theme--light .header__nav__btns .v-btn {
         color: rgba(0, 0, 0, 0.87);
         margin: 0.25rem;
     }
-    .theme--dark .header__nav__btns .v-btn{
+    .theme--dark .header__nav__btns .v-btn {
         color: rgba(196, 110, 110, 0.87);
         margin: 0.25rem;
-     }
+    }
     .v-btn {
         a {
             text-decoration: none;
@@ -163,7 +168,7 @@ export default {
         display: none;
     }
     .header__nav-icon {
-       display: none;
+        display: none;
     }
 }
 

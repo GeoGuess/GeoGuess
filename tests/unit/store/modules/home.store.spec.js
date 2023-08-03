@@ -301,7 +301,7 @@ describe('homeStore.js', () => {
     it('getListMaps', async () => {
         const commit = jest.fn();
 
-        process.env.VUE_APP_LIST_MAPS_JSON_URL = 'https://listmaps.gejson';
+        process.env.VITE_APP_LIST_MAPS_JSON_URL = 'https://listmaps.gejson';
 
         await homeStore.actions.getListMaps({ commit });
         expect(axios.get).toBeCalledWith(

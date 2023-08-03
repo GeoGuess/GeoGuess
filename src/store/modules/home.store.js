@@ -221,7 +221,7 @@ export default {
         async getListMaps({ commit }) {
             const data = await axios
                 .get(
-                    process.env.VUE_APP_LIST_MAPS_JSON_URL ||
+                    process.env.VITE_APP_LIST_MAPS_JSON_URL ||
                         'https://maps.geoguess.games/maps.json',
                     {
                         cache: {

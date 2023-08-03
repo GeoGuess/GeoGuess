@@ -12,22 +12,22 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 
 const firebaseConfig = {
-    apiKey: Cypress.env('VUE_APP_FIREBASE_API_KEY'),
+    apiKey: Cypress.env('VITE_APP_FIREBASE_API_KEY'),
     authDomain:
-        Cypress.env('VUE_APP_FIREBASE_AUTH_DOMAIN') ||
-        Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') + '.firebaseapp.com',
+        Cypress.env('VITE_APP_FIREBASE_AUTH_DOMAIN') ||
+        Cypress.env('VITE_APP_FIREBASE_PROJECT_ID') + '.firebaseapp.com',
     databaseURL:
-        Cypress.env('VUE_APP_FIREBASE_DATABASE_URL') ||
+        Cypress.env('VITE_APP_FIREBASE_DATABASE_URL') ||
         'https://' +
-            Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') +
+            Cypress.env('VITE_APP_FIREBASE_PROJECT_ID') +
             '.firebaseio.com',
-    projectId: Cypress.env('VUE_APP_FIREBASE_PROJECT_ID'),
+    projectId: Cypress.env('VITE_APP_FIREBASE_PROJECT_ID'),
     storageBucket:
-        Cypress.env('VUE_APP_STORAGE_BUCKET') ||
-        Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') + '.appspot.com',
-    messagingSenderId: Cypress.env('VUE_APP_FIREBASE_MESSAGING_SENDER_ID'),
-    appId: Cypress.env('VUE_APP_FIREBASE_APP_ID'),
-    measurementId: Cypress.env('VUE_APP_FIREBASE_MEASUREMENT_ID'),
+        Cypress.env('VITE_APP_STORAGE_BUCKET') ||
+        Cypress.env('VITE_APP_FIREBASE_PROJECT_ID') + '.appspot.com',
+    messagingSenderId: Cypress.env('VITE_APP_FIREBASE_MESSAGING_SENDER_ID'),
+    appId: Cypress.env('VITE_APP_FIREBASE_APP_ID'),
+    measurementId: Cypress.env('VITE_APP_FIREBASE_MEASUREMENT_ID'),
 };
 firebase.initializeApp(firebaseConfig);
 Cypress.Commands.add('addPlayer', (id, playerNumber, playerName) => {

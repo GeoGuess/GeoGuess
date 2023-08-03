@@ -16,7 +16,14 @@
                     </v-layout>
                 </v-layout>
             </v-container>
-            <v-btn id="btnMaps" href="#maps-container" large fab color="secondary" dark>
+            <v-btn
+                id="btnMaps"
+                href="#maps-container"
+                large
+                fab
+                color="secondary"
+                dark
+            >
                 <v-icon>mdi-arrow-down</v-icon>
             </v-btn>
         </section>
@@ -25,18 +32,18 @@
 </template>
 
 <script>
-import SearchBox from '@/components/home/SearchBox';
-import ContentPage from '@/components/page/ContentPage';
+import SearchBox from '../components/home/SearchBox';
+import ContentPage from '../components/page/ContentPage';
 import { GAME_MODE } from '../constants';
-import MapsContainer from '@/components/home/MapsContainer.vue';
+import MapsContainer from '../components/home/MapsContainer.vue';
 export default {
     components: {
         ContentPage,
         SearchBox,
-        MapsContainer,
+        MapsContainer
     },
     props: {
-        dialogCustomOpen: Boolean,
+        dialogCustomOpen: Boolean
     },
     mounted() {
         if (this.$route.params && this.$route.params.partyParams) {
@@ -60,19 +67,18 @@ export default {
                         modeSelected: GAME_MODE.CLASSIC,
                         time: timeLimitation,
                         difficulty: difficulty,
-                        roundsPredefined: rounds,
-                    },
+                        roundsPredefined: rounds
+                    }
                 });
             }
         }
-    },
+    }
 };
 </script>
 
 <style scoped lang="scss">
-.v-application--is-rtl .home-page__traveler-img{
-    transform: scaleX(-1)
-
+.v-application--is-rtl .home-page__traveler-img {
+    transform: scaleX(-1);
 }
 .home-page {
     .demo-alert {
@@ -83,12 +89,12 @@ export default {
     background-color: var(--v-home-base);
     .home-page__main {
         position: relative;
-      .theme--light & .home-page__main__container {
-        background: url('../assets/home/world.svg');
-      }
-      .theme--dark & .home-page__main__container {
-        background: url('../assets/home/world-dark.svg');
-      }
+        .theme--light & .home-page__main__container {
+            background: url('../assets/home/world.svg');
+        }
+        .theme--dark & .home-page__main__container {
+            background: url('../assets/home/world-dark.svg');
+        }
         .home-page__main__container {
             font-size: 1.2rem;
             padding: 0;
@@ -130,7 +136,6 @@ export default {
             right: 0;
         }
     }
-
 }
 @media (max-width: 1300px) and (min-width: 600px) {
     .home-page
@@ -155,7 +160,6 @@ export default {
         }
     }
 }
-
 
 @media (max-height: 550px) {
     .home-page

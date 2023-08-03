@@ -1,40 +1,56 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import VueI18n from 'vue-i18n';
 
-Vue.use(Vuex);
+Vue.use(VueI18n);
+
 // Load all modules.
-function loadModules() {
-	const localContext = require.context('./modules', false, /([a-z_]+)\.js$/i);
+function loadTranslations() {
+    if (import.meta.env.MODE === 'test') return {};
 
-	const modules = localContext
-		.keys()
-		.map((key) => ({ key, name: key.match(/([a-z_]+)(.store)?\.js$/i)[1] }))
-		.reduce(
-			(m, { key, name }) => ({
-				...m,
-				[`${name}Store`]: localContext(key).default,
-			}),
-			{},
-		);
+    const modules = import.meta.glob('./locale/*.json');
 
-	return { context: localContext, modules };
+    return Object.keys(modules).reduce((translations, key) => {
+        const name = key.match(/\/([a-z_]+)\.json$/i)[1];
+        translations[name] = modules[key];
+        return translations;
+    }, {});
 }
 
-const { context, modules } = loadModules();
-const store = new Vuex.Store({
-    modules,
+export const translations = loadTranslations();
+
+export const RTL_LANGUAGES = ['he'];
+
+export const languages = Object.keys(translations).map((translation) => ({
+    text: new Intl.DisplayNames([translation], { type: 'language' }).of(
+        translation
+    ),
+    value: translation
+}));
+
+export function checkLanguage(language) {
+    return navigator.language.split('-')[0] === language.value;
+}
+
+if (!localStorage.getItem('language')) {
+    localStorage.setItem(
+        'language',
+        languages.some(checkLanguage) ? navigator.language.split('-')[0] : 'en'
+    );
+}
+
+const locale =
+    localStorage.getItem('language') != null
+        ? localStorage.getItem('language')
+        : languages.some(checkLanguage)
+        ? navigator.language.split('-')[0]
+        : 'en';
+
+const store = new VueI18n({
+    locale: locale,
+    fallbackLocale: 'en',
+    messages: translations
 });
 
-if (module.hot) {
-	// Hot reload whenever any module changes.
-	module.hot.accept(context.id, () => {
-		const { modules } = loadModules();
-
-		store.hotUpdate({
-			modules,
-		});
-	});
-}
-
+Vue.prototype.store = store;
 
 export default store;
