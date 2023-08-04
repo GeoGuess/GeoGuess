@@ -42,39 +42,36 @@
     </div>
 </template>
 <script>
-import DialogCustomMap from '@/components/home/DialogCustomMap';
-import DialogRoom from '@/components/dialogroom/DialogRoom';
+import DialogCustomMap from '../../components/home/DialogCustomMap';
+import DialogRoom from '../../components/dialogroom/DialogRoom';
 import { mapActions, mapGetters } from 'vuex';
+
 export default {
     components: {
         DialogRoom,
-        DialogCustomMap,
+        DialogCustomMap
     },
     props: {
-        dialogCustomOpen: Boolean,
+        dialogCustomOpen: Boolean
     },
     data() {
         return {
-            dialogCustom: this.dialogCustomOpen,
+            dialogCustom: this.dialogCustomOpen
         };
     },
-
     computed: {
-        ...mapGetters(['nbPlaceVisits']),
+        ...mapGetters(['nbPlaceVisits'])
     },
-
     watch: {
         dialogCustomOpen(v) {
             this.dialogCustom = v;
-        },
+        }
     },
-
     mounted() {
         this.loadHistory();
     },
     methods: {
-        ...mapActions(['loadHistory']),
-        ...mapActions('settingsStore', ['openDialogRoom']),
+        ...mapActions(['loadHistory', 'openDialogRoom']), // Map the openDialogRoom action from the root namespace
         openDialog(isSinglePlayer) {
             this.openDialogRoom(isSinglePlayer);
         },
@@ -82,8 +79,8 @@ export default {
             this.dialogCustom = !this.dialogCustom;
 
             this.$router.push(this.dialogCustom ? '/custom' : '/');
-        },
-    },
+        }
+    }
 };
 </script>
 <style lang="scss">

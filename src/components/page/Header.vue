@@ -191,10 +191,10 @@ export default {
             }
             position: absolute;
             top: 6.2rem;
-            right: 0rem;
+            right: 0;
             background: var(--v-header-base);
             padding: 1rem;
-            box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%);
+            box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%);
             border-bottom-left-radius: 0.3125rem;
             border-bottom-right-radius: 0.3125rem;
             max-width: 100%;

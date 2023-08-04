@@ -1,7 +1,7 @@
-import Header from '@/components/page/Header.vue';
+import Header from '/src/components/page/Header.vue';
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
-import homeStore from '@/store/modules/home.store';
-import * as MutationTypes from '@/store/mutation-types';
+import homeStore from '/src/store/modules/home.store';
+import * as MutationTypes from '/src/store/mutation-types';
 import appInit from '../../testutils/appInit';
 import Vuex from 'vuex';
 
@@ -18,16 +18,17 @@ describe('Header.vue', () => {
                     getters: homeStore.getters,
                     actions: homeStore.actions,
                     mutations: {
-                        [MutationTypes.HOME_SET_STREAMER_MODE]: setStreamerModeStore,
-                    },
-                },
-            },
+                        [MutationTypes.HOME_SET_STREAMER_MODE]:
+                            setStreamerModeStore
+                    }
+                }
+            }
         });
     });
     it('open dialog about', () => {
         const wrapper = mount(Header, {
             ...args,
-            store,
+            store
         });
 
         const aboutBtn = wrapper.find('#aboutBtn');
@@ -39,11 +40,10 @@ describe('Header.vue', () => {
     it('switchLanguage method', () => {
         const wrapper = shallowMount(Header, {
             ...args,
-            store,
+            store
         });
         expect(localStorage.getItem('language')).toEqual('en');
         wrapper.vm.switchLanguage('fr');
         expect(localStorage.getItem('language')).toEqual('fr');
     });
-
 });

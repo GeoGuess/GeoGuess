@@ -1,6 +1,4 @@
-
-
-import SearchBox from '@/components/home/SearchBox.vue';
+import SearchBox from '../../components/home/SearchBox.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import homeStore from '@/store/modules/home.store';
@@ -13,12 +11,11 @@ describe('SearchBox.vue', () => {
         store = new Vuex.Store({
             modules: {
                 homeStore
-            },
+            }
         });
     });
     it('render', () => {
         const wrapper = shallowMount(SearchBox, { ...args, store });
-       
 
         expect(wrapper).toMatchSnapshot();
     });

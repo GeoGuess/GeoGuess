@@ -12,7 +12,7 @@ import CountryNamePlugin from './plugins/countryNamePlugin';
 import vuetify from './plugins/vuetify';
 import './registerServiceWorker';
 import router from './router';
-import store from './store/index.js';
+import store from './store';
 
 Vue.use(VueAxios, axios);
 

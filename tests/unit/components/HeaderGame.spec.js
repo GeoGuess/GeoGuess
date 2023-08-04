@@ -1,4 +1,4 @@
-import HeaderGame from '@/components/HeaderGame';
+import HeaderGame from '/src/components/HeaderGame';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../testutils/appInit';
 
@@ -9,8 +9,8 @@ describe('HeaderGame.vue', () => {
         const wrapper = shallowMount(HeaderGame, {
             ...args,
             propsData: {
-                remainingTime: 60,
-            },
+                remainingTime: 60
+            }
         });
         expect(wrapper.vm.startedAt).toBeNull();
         expect(wrapper.vm.intervalFunction).toBeNull();
@@ -24,8 +24,8 @@ describe('HeaderGame.vue', () => {
         const wrapper = shallowMount(HeaderGame, {
             ...args,
             propsData: {
-                remainingTime: 0,
-            },
+                remainingTime: 0
+            }
         });
 
         wrapper.vm.startTimer();
@@ -43,8 +43,8 @@ describe('HeaderGame.vue', () => {
         const wrapper = shallowMount(HeaderGame, {
             ...args,
             propsData: {
-                remainingTime: 0,
-            },
+                remainingTime: 0
+            }
         });
         wrapper.vm.startTimer = spy;
 

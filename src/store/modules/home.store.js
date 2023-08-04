@@ -1,7 +1,12 @@
 import axios from '@/plugins/axios';
 import { getGeoJsonFromUrl, getLocateString, isGeoJSONValid } from '@/utils';
 import i18n from '../../lang';
-import { GeoMap, GeoMapCustom, GeoMapOSM, GeoMapType } from '../../models/GeoMap';
+import {
+    GeoMap,
+    GeoMapCustom,
+    GeoMapOSM,
+    GeoMapType
+} from '../../models/GeoMap';
 import IndexedDBService from '../../plugins/IndexedDBService';
 import * as MutationTypes from '../mutation-types';
 
@@ -14,7 +19,7 @@ export default {
         listAreas: [],
         customsMaps: [],
         history: [],
-        streamerMode: localStorage.getItem('streamerMode') === 'true',
+        streamerMode: localStorage.getItem('streamerMode') === 'true'
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
@@ -49,12 +54,12 @@ export default {
         },
         [MutationTypes.HOME_SET_GEOJSON_ERROR](state, error) {
             state.errorMessage = error;
-        },
+        }
     },
 
     getters: {
         geoJsonString(state) {
-           if (!state.map || !state.map.geojson) {
+            if (!state.map || !state.map.geojson) {
                 return '';
             }
             return JSON.stringify(state.map.geojson, null, 2);
@@ -63,7 +68,7 @@ export default {
             return state.map.geojson;
         },
         isValidGeoJson(state) {
-           if (!state.map || !state.map.geojson) {
+            if (!state.map || !state.map.geojson) {
                 return null;
             }
             return isGeoJSONValid(state.map.geojson);
@@ -73,21 +78,24 @@ export default {
                 .map((map) => Object.assign(new GeoMapCustom(), map))
                 .concat(
                     state.listMaps.map((map) =>
-                        Object.assign(new GeoMap(),map)
+                        Object.assign(new GeoMap(), map)
                     )
                 );
         },
         areasList(state) {
             return state.listAreas.map((map) => ({
                 ...map,
-                imageSrc: map.imageUrl ||
-                        `https://source.unsplash.com/500x230/weekly?${encodeURI(getLocateString(map, 'name', 'en'))}`,
+                imageSrc:
+                    map.imageUrl ||
+                    `https://source.unsplash.com/500x230/weekly?${encodeURI(
+                        getLocateString(map, 'name', 'en')
+                    )}`,
                 nameLocate: getLocateString(map, 'name', i18n.locale),
                 descriptionLocate: getLocateString(
                     map,
                     'description',
                     i18n.locale
-                ),
+                )
             }));
         },
         nbPlaceVisits(state) {
@@ -97,23 +105,42 @@ export default {
             );
         },
 
-        getMaxScoreMap: (state) => (map) =>{
-            return state.history.reduce((acc, {points, mapDetails})=>{
-                if(mapDetails && mapDetails.id && mapDetails.id === map.id && mapDetails.type === map.type && acc < points){
+        getMaxScoreMap: (state) => (map) => {
+            return state.history.reduce((acc, { points, mapDetails }) => {
+                if (
+                    mapDetails &&
+                    mapDetails.id &&
+                    mapDetails.id === map.id &&
+                    mapDetails.type === map.type &&
+                    acc < points
+                ) {
                     return points;
                 }
                 return acc;
             }, 0);
         },
 
-        getMaxScoreOsm: (state) => ({osmId, osmType}) =>{
-            return state.history.reduce((acc, {points, mapDetails, nbRound})=>{
-                if(!nbRound || nbRound === 5 && mapDetails && mapDetails.type === GeoMapType.OSM && mapDetails.osmId === osmId && mapDetails.osmType === osmType && acc < points){
-                    return points;
-                }
-                return acc;
-            }, 0);
-        }
+        getMaxScoreOsm:
+            (state) =>
+            ({ osmId, osmType }) => {
+                return state.history.reduce(
+                    (acc, { points, mapDetails, nbRound }) => {
+                        if (
+                            !nbRound ||
+                            (nbRound === 5 &&
+                                mapDetails &&
+                                mapDetails.type === GeoMapType.OSM &&
+                                mapDetails.osmId === osmId &&
+                                mapDetails.osmType === osmType &&
+                                acc < points)
+                        ) {
+                            return points;
+                        }
+                        return acc;
+                    },
+                    0
+                );
+            }
     },
 
     actions: {
@@ -125,16 +152,16 @@ export default {
                     title: 'Home.streamerModeActivate',
                     subtitle: 'Home.streamerModeDetails',
                     color: 'streamerMode',
-                    icon: 'mdi-twitch',
+                    icon: 'mdi-twitch'
                 },
                 { root: true }
             );
         },
         async loadPlaceGeoJSON({ commit, state }, payload) {
             let place, osmId;
-            if(typeof payload === 'string'){
+            if (typeof payload === 'string') {
                 place = payload;
-            }else{
+            } else {
                 place = payload.place;
                 osmId = payload.osmId;
             }
@@ -146,11 +173,12 @@ export default {
                 commit(MutationTypes.HOME_SET_STATUS_GEOJSON, true);
 
                 commit(MutationTypes.HOME_SET_GEOJSON, null);
-                const url =
-                    osmId ?
-                        `https://nominatim.openstreetmap.org/lookup?osm_ids=R${osmId}&format=geojson&polygon_geojson=1&accept-language=en`
-                    : `https://nominatim.openstreetmap.org/search/${encodeURIComponent(place.toLowerCase())}?format=geojson&limit=1&polygon_geojson=1`;
-                    // TODO : add &accept-language=en 
+                const url = osmId
+                    ? `https://nominatim.openstreetmap.org/lookup?osm_ids=R${osmId}&format=geojson&polygon_geojson=1&accept-language=en`
+                    : `https://nominatim.openstreetmap.org/search/${encodeURIComponent(
+                          place.toLowerCase()
+                      )}?format=geojson&limit=1&polygon_geojson=1`;
+                // TODO : add &accept-language=en
                 return axios
                     .get(url)
                     .then((res) => {
@@ -161,7 +189,7 @@ export default {
                         ) {
                             let feature = res.data.features[0];
                             const map = new GeoMapOSM(
-                                feature.properties.display_name, 
+                                feature.properties.display_name,
                                 feature.properties.osm_id,
                                 feature.properties.osm_type,
                                 feature
@@ -206,7 +234,7 @@ export default {
                 'alertStore/setAlert',
                 {
                     title: 'Home.mapSavedAlert.title',
-                    subtitle: 'Home.mapSavedAlert.subtitle',
+                    subtitle: 'Home.mapSavedAlert.subtitle'
                 },
                 { root: true }
             );
@@ -225,8 +253,8 @@ export default {
                         'https://maps.geoguess.games/maps.json',
                     {
                         cache: {
-                            maxAge: 1000,
-                        },
+                            maxAge: 1000
+                        }
                     }
                 )
                 .then((res) => res.data);
@@ -246,6 +274,6 @@ export default {
                 ? JSON.parse(localStorage.getItem('history'))
                 : [];
             commit(MutationTypes.HOME_SET_HISTORY, history);
-        },
-    },
+        }
+    }
 };

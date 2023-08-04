@@ -25,7 +25,6 @@ module.exports = {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         semi: ['error', 'always'],
-        'vue/html-indent': ['warn', 4],
         'vue/multi-word-component-names': 'off',
         'vue/valid-v-slot': 'off'
     },

@@ -29,7 +29,7 @@
                             />
 
                             <SaveButton
-                                class="ml-2 mt-2 "
+                                class="ml-2 mt-2"
                                 color="dark"
                                 :dark="!isSaveAllowed"
                                 @click="saveMap"
@@ -63,7 +63,9 @@
                                 style="width: 100%; height: 530px"
                                 :options="{
                                     gestureHandling: 'greedy',
-                                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+                                    styles: $vuetify.theme.dark
+                                        ? $vuetify.theme.themes.dark.gmap
+                                        : $vuetify.theme.themes.light.gmap
                                 }"
                             />
                             <v-row>
@@ -134,7 +136,9 @@
             </v-card-text>
             <v-card-actions>
                 <div class="flex-grow-1" />
-                <v-btn @click="clean" color="error"> {{ $t('DialogCustomMap.Clean') }} </v-btn>
+                <v-btn @click="clean" color="error">
+                    {{ $t('DialogCustomMap.Clean') }}
+                </v-btn>
                 <v-btn dark color="primary" @click="$emit('change-visibility')">
                     {{ $t('DialogCustomMap.OK') }}
                 </v-btn>
@@ -149,15 +153,15 @@ import { validURL } from '@/utils';
 import { download, isGeoJSONValid } from '../../utils';
 import { HOME_SET_NAME_GEOJSON } from '../../store/mutation-types';
 import { GeoMapCustom } from '../../models/GeoMap';
-import SaveButton from '@/components/shared/SaveButton';
+import SaveButton from '../../components/shared/SaveButton';
 
 export default {
     name: 'DialogCustomMap',
     components: {
-        SaveButton,
+        SaveButton
     },
     props: {
-        visibility: Boolean,
+        visibility: Boolean
     },
     data() {
         return {
@@ -169,13 +173,13 @@ export default {
             initMap: false,
             editMap: false,
             loading: false,
-            loadingSave: false,
+            loadingSave: false
         };
     },
     computed: {
         ...mapGetters(['geoJsonString', 'isValidGeoJson', 'geoJson']),
         ...mapState({
-            mapName: (state) => state.homeStore.map.name,
+            mapName: (state) => state.homeStore.map.name
         }),
         placeholderGeoJson() {
             return this.loading ? '' : geoJsonExample;
@@ -186,7 +190,7 @@ export default {
                 !this.geoJson ||
                 this.isValidGeoJson === false
             );
-        },
+        }
     },
     methods: {
         ...mapActions([
@@ -195,10 +199,10 @@ export default {
             'setGeoJsonString',
             'saveGeoJson',
             'setMapLoaded',
-            'getListMapsCustoms',
+            'getListMapsCustoms'
         ]),
         ...mapMutations({
-            setMapName: HOME_SET_NAME_GEOJSON,
+            setMapName: HOME_SET_NAME_GEOJSON
         }),
         checkIfStringGeoJsonValid(string) {
             try {
@@ -232,7 +236,7 @@ export default {
         clean() {
             this.setMapLoaded(new GeoMapCustom());
             this.url = '';
-        },
+        }
     },
     watch: {
         geoJson(v) {
@@ -244,7 +248,7 @@ export default {
                     let data = new google.maps.Data({
                         map: map,
                         style: map.data.getStyle(),
-                        controls: map.data.getControls(),
+                        controls: map.data.getControls()
                     });
                     data.addGeoJson(v);
 
@@ -276,14 +280,14 @@ export default {
                     map.data.setControls(['Point', 'Polygon']);
                     map.data.setStyle({
                         editable: true,
-                        draggable: true,
+                        draggable: true
                     });
                 } else {
                     map.data.setControls(null);
                     map.data.setStyle({});
                 }
             });
-        },
+        }
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
@@ -313,10 +317,11 @@ export default {
             this.$nextTick(() => {
                 if (this.$refs.mapRef)
                     this.$refs.mapRef.$mapPromise.then((map) => {
-                        const streetViewLayer = new google.maps.StreetViewCoverageLayer();
+                        const streetViewLayer =
+                            new google.maps.StreetViewCoverageLayer();
                         streetViewLayer.setMap(map);
                         let data = new google.maps.Data({
-                            map: map,
+                            map: map
                         });
                         if (this.geoJson) data.addGeoJson(this.geoJson);
                         map.data.setMap(null);
@@ -329,7 +334,7 @@ export default {
                     });
             });
         }
-    },
+    }
 };
 
 const geoJsonExample = `{

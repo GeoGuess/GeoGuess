@@ -22,7 +22,7 @@ export class GameSettings {
         _optimiseStreetView = true,
         _nbRound = 5,
         _scoreLeaderboard = true,
-        _guessedLeaderboard = true,
+        _guessedLeaderboard = true
     ) {
         this.allPanorama = _allPanorama;
         this.time = _timeLimitation;
@@ -58,8 +58,10 @@ export default {
         // SETTINGS
         gameSettings: new GameSettings(),
         players: [],
-        name: localStorage.getItem('playerName')?.slice(0, 20) || i18n.t("CardRoomPlayerName.anonymousPlayerName"),
-        invalidName: false,
+        name:
+            localStorage.getItem('playerName')?.slice(0, 20) ||
+            i18n.t('CardRoomPlayerName.anonymousPlayerName'),
+        invalidName: false
     }),
     mutations: {
         [MutationTypes.SETTINGS_SET_ROOM](state, roomName) {
@@ -86,26 +88,30 @@ export default {
                 const playerNumber = numberOfPlayers + 1;
 
                 state.playerNumber = playerNumber;
-                const name = state.name === '' ? i18n.t(
-                                'CardRoomPlayerName.anonymousPlayerName'
-                            ) + playerNumber : state.name;
+                const name =
+                    state.name === ''
+                        ? i18n.t('CardRoomPlayerName.anonymousPlayerName') +
+                          playerNumber
+                        : state.name;
 
-                state.room.child('playerName/player'+playerNumber).onDisconnect().remove();
-
+                state.room
+                    .child('playerName/player' + playerNumber)
+                    .onDisconnect()
+                    .remove();
 
                 if (numberOfPlayers === 0) {
                     // Put the tentative player's name into the room node
                     // So that other player can't enter as the first player while the player decide the name and room size
                     state.room.child('playerName').update(
                         {
-                            player1: name,
+                            player1: name
                         },
                         (error) => {
                             if (!error) {
                                 // Put the timestamp the room is created so the expired rooms can be removed by cloud function
                                 state.room.update({
                                     createdAt:
-                                        firebase.database.ServerValue.TIMESTAMP,
+                                        firebase.database.ServerValue.TIMESTAMP
                                 });
                                 state.loadRoom = false;
                                 state.currentComponent = 'settingsMap';
@@ -116,15 +122,12 @@ export default {
                     // Put other player's tentative name
                     state.room
                         .child('playerName/player' + playerNumber)
-                        .set(
-                            name,
-                            (error) => {
-                                if (!error) {
-                                    state.loadRoom = false;
-                                    state.currentComponent = 'playerName';
-                                }
+                        .set(name, (error) => {
+                            if (!error) {
+                                state.loadRoom = false;
+                                state.currentComponent = 'playerName';
                             }
-                        );
+                        });
                 }
             });
         },
@@ -141,13 +144,13 @@ export default {
 
             state.gameSettings = {
                 ...state.gameSettings,
-                ...settings,
+                ...settings
             };
         },
-        [MutationTypes.SETTINGS_SET_DIFFICULTY](state, difficulty){
+        [MutationTypes.SETTINGS_SET_DIFFICULTY](state, difficulty) {
             state.difficulty = difficulty;
         },
-        [MutationTypes.SETTINGS_SET_BBOX](state, bbox){
+        [MutationTypes.SETTINGS_SET_BBOX](state, bbox) {
             state.bboxObj = bbox;
         },
         [MutationTypes.SETTINGS_SET_OPEN_DIALOG_ROOM](state, open) {
@@ -180,13 +183,13 @@ export default {
             state.roomErrorMessage = null;
             state.players = [];
             state.gameSettings = new GameSettings();
-        },
+        }
     },
 
     getters: {
         areasJson(state) {
             return state.areas;
-        },
+        }
     },
 
     actions: {
@@ -262,8 +265,10 @@ export default {
                         difficulty,
                         placeGeoJson: rootState.homeStore.map.geojson,
                         bboxObj: bboxObj,
-                        ...(rootState.homeStore.map ? {mapDetails: rootState.homeStore.map.details} : undefined)
-                    },
+                        ...(rootState.homeStore.map
+                            ? { mapDetails: rootState.homeStore.map.details }
+                            : undefined)
+                    }
                 });
                 dispatch('closeDialogRoom');
             } else {
@@ -272,7 +277,7 @@ export default {
                         ...state.gameSettings,
                         timeLimitation: state.gameSettings.time,
                         difficulty,
-                        ...(bboxObj && { bboxObj: bboxObj }),
+                        ...(bboxObj && { bboxObj: bboxObj })
                     },
                     (error) => {
                         if (!error) {
@@ -287,7 +292,10 @@ export default {
         },
         setPlayerName({ commit }, playerName) {
             localStorage.setItem('playerName', playerName.slice(0, 20));
-            commit(MutationTypes.SETTINGS_SET_PLAYER_NAME, playerName.slice(0, 20));
+            commit(
+                MutationTypes.SETTINGS_SET_PLAYER_NAME,
+                playerName.slice(0, 20)
+            );
         },
         startGame({ state, dispatch, rootState }) {
             let gameParams = {};
@@ -296,12 +304,12 @@ export default {
                     ...state.gameSettings,
                     difficulty: state.difficulty,
                     placeGeoJson: rootState.homeStore.map.geojson,
-                    bboxObj: state.bboxObj,
+                    bboxObj: state.bboxObj
                 };
                 // Set flag started
                 state.room.update({
                     size: state.players.length,
-                    started: true,
+                    started: true
                 });
                 dispatch('startGameMultiplayer', gameParams);
             } else {
@@ -320,10 +328,18 @@ export default {
                         allPanorama: snapshot.child('allPanorama').val(),
                         scoreMode: snapshot.child('scoreMode').val(),
                         areaParams: snapshot.child('areaParams').val(),
-                        optimiseStreetView: snapshot.child('optimiseStreetView').val(),
-                        nbRoundSelected: snapshot.child('nbRoundSelected').val(),
-                        scoreLeaderboard: snapshot.child('scoreLeaderboard').val(),
-                        guessedLeaderboard: snapshot.child('guessedLeaderboard').val(),
+                        optimiseStreetView: snapshot
+                            .child('optimiseStreetView')
+                            .val(),
+                        nbRoundSelected: snapshot
+                            .child('nbRoundSelected')
+                            .val(),
+                        scoreLeaderboard: snapshot
+                            .child('scoreLeaderboard')
+                            .val(),
+                        guessedLeaderboard: snapshot
+                            .child('guessedLeaderboard')
+                            .val()
                     };
                     dispatch('startGameMultiplayer', gameParams);
                 });
@@ -339,11 +355,11 @@ export default {
                     playerName: state.name,
                     playerNumber: state.playerNumber,
                     placeGeoJson: rootState.homeStore.map.geojson,
-                    multiplayer: true,
-                },
+                    multiplayer: true
+                }
             });
 
             dispatch('closeDialogRoom', false);
-        },
-    },
+        }
+    }
 };
