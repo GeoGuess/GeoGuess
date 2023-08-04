@@ -222,7 +222,7 @@ export default {
 
         searchRoom({ commit, dispatch, state }, roomName) {
             commit(MutationTypes.SETTINGS_SET_MODE_DIALOG_ROOM, false);
-            if (roomName == '') {
+            if (roomName === '') {
                 commit(
                     MutationTypes.SETTINGS_SET_ROOM_ERROR,
                     i18n.t('DialogRoom.invalidRoomName')

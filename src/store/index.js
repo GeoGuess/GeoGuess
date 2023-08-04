@@ -1,29 +1,19 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import alertModule from './modules/alert.store';
+import areaModule from './modules/area.store';
+import homeModule from './modules/home.store';
+import settingsModule from './modules/settings.store';
 
 Vue.use(Vuex);
 
-// Load all modules.
-function loadModules() {
-    const modules = {};
-
-    const moduleKeys = import.meta.glob('./modules/*.js');
-    for (const path in moduleKeys) {
-        const name = path.match(/([a-z_]+)(.store)?\.js$/i)[1];
-        modules[`${name}Store`] = import(path).then((m) => m.default);
-    }
-
-    return modules;
-}
-
-const modules = loadModules();
 const store = new Vuex.Store({
-    modules
+    modules: {
+        alertStore: alertModule,
+        area: areaModule,
+        homeStore: homeModule,
+        settingsStore: settingsModule
+    }
 });
-
-if (import.meta.hot) {
-    // Hot reload whenever any module changes.
-    import.meta.hot.accept();
-}
 
 export default store;

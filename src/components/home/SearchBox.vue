@@ -42,8 +42,8 @@
     </div>
 </template>
 <script>
-import DialogCustomMap from '../../components/home/DialogCustomMap';
-import DialogRoom from '../../components/dialogroom/DialogRoom';
+import DialogCustomMap from '../../components/home/DialogCustomMap.vue';
+import DialogRoom from '../../components/dialogroom/DialogRoom.vue';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -71,7 +71,8 @@ export default {
         this.loadHistory();
     },
     methods: {
-        ...mapActions(['loadHistory', 'openDialogRoom']), // Map the openDialogRoom action from the root namespace
+        ...mapActions('settingsStore', ['openDialogRoom']),
+        ...mapActions(['loadHistory']),
         openDialog(isSinglePlayer) {
             this.openDialogRoom(isSinglePlayer);
         },

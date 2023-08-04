@@ -166,7 +166,7 @@ export default {
                 osmId = payload.osmId;
             }
 
-            if ((place != null && place != '') || osmId) {
+            if ((place != null && place !== '') || osmId) {
                 if (state.loadingGeoJson) {
                     return;
                 }
@@ -249,7 +249,7 @@ export default {
         async getListMaps({ commit }) {
             const data = await axios
                 .get(
-                    process.env.VITE_APP_LIST_MAPS_JSON_URL ||
+                    import.meta.env.VITE_APP_LIST_MAPS_JSON_URL ||
                         'https://maps.geoguess.games/maps.json',
                     {
                         cache: {

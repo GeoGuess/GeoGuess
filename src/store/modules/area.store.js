@@ -5,7 +5,7 @@ export default {
     state: () => ({
         urlAreas: null,
         areas: null,
-        loadingAreas: false,
+        loadingAreas: false
     }),
     mutations: {
         [MutationTypes.GAME_SET_AREAS](state, geojson) {
@@ -17,19 +17,20 @@ export default {
         [MutationTypes.GAME_SET_URL_AREAS](state, urlAreas) {
             state.urlAreas = urlAreas;
             state.areas = null;
-        },
+        }
     },
 
     getters: {
         areasJson(state) {
             return state.areas;
-        },
+        }
     },
 
     actions: {
         async loadAreas({ commit, state }, url) {
             const urlAreas =
-                url || process.env.BASE_URL + 'resources/countries.geo.json';
+                url ||
+                import.meta.env.BASE_URL + 'resources/countries.geo.json';
             if (
                 state.urlAreas === urlAreas &&
                 state.areas &&
@@ -53,6 +54,6 @@ export default {
                 });
 
             commit(MutationTypes.GAME_SET_AREAS, geojson);
-        },
-    },
+        }
+    }
 };

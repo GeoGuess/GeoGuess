@@ -17,6 +17,6 @@ module.exports = (on, config) => {
     //  watchOptions: {}
     // }))
 
-    config.env = process.env;
+    config.env = import.meta.env;
     return config;
 };

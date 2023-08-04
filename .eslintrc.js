@@ -5,7 +5,7 @@ module.exports = {
         es6: true
     },
     extends: [
-        ...(process.env.NODE_ENV === 'production'
+        ...(import.meta.env.NODE_ENV === 'production'
             ? ['eslint:recommended']
             : []),
         'plugin:vue/essential'
@@ -22,8 +22,10 @@ module.exports = {
     },
     plugins: ['vue', 'prettier'],
     rules: {
-        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-console':
+            import.meta.env.NODE_ENV === 'production' ? 'error' : 'warn',
+        'no-debugger':
+            import.meta.env.NODE_ENV === 'production' ? 'error' : 'off',
         semi: ['error', 'always'],
         'vue/multi-word-component-names': 'off',
         'vue/valid-v-slot': 'off'
