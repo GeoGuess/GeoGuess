@@ -6,7 +6,9 @@
             :options="{
                 mapTypeControl: false,
                 gestureHandling: 'greedy',
-                styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+                styles: $vuetify.theme.dark
+                    ? $vuetify.theme.themes.dark.gmap
+                    : $vuetify.theme.themes.light.gmap
             }"
             :zoom="0"
             map-type-id="roadmap"
@@ -25,32 +27,44 @@
                 <p>
                     <b>
                         {{ $t('HeaderGame.round') }} {{ index + 1 }} :
-                        <FlagIcon v-if="isCountry" :iso-name=" r.country || r.area || r.position.country || r.position.are" />
-                        <span v-else>{{ r.country || r.area || r.position.country || r.position.area}}</span>
+                        <FlagIcon
+                            v-if="isCountry"
+                            :iso-name="
+                                r.country ||
+                                r.area ||
+                                r.position.country ||
+                                r.position.are
+                            "
+                        />
+                        <span v-else>{{
+                            r.country ||
+                            r.area ||
+                            r.position.country ||
+                            r.position.area
+                        }}</span>
                     </b>
                 </p>
-                <div
-                    v-if="item.multiplayer" >
+                <div v-if="item.multiplayer">
                     <div
                         v-for="(value, playerName, index) in r.players"
                         :key="playerName"
                         class="result-panel__item"
-                        :class="{col: !isCountry}"
+                        :class="{ col: !isCountry }"
                     >
-                        <FlagIcon  v-if="isCountry" :iso-name="value.guess" />
+                        <FlagIcon v-if="isCountry" :iso-name="value.guess" />
                         <span
                             :style="`color: ${
                                 strokeColors[index % strokeColors.length]
                             }`"
-                        >{{ playerName }}</span>
+                            >{{ playerName }}</span
+                        >
 
-                        <em v-if="!isCountry" ><br/>{{value.guess}}</em>
+                        <em v-if="!isCountry"><br />{{ value.guess }}</em>
                     </div>
                 </div>
-                <div v-else >
-
-                    <FlagIcon  v-if="isCountry" :iso-name="r.guess" />
-                    <em v-else>{{r.guess}}</em>
+                <div v-else>
+                    <FlagIcon v-if="isCountry" :iso-name="r.guess" />
+                    <em v-else>{{ r.guess }}</em>
                 </div>
             </div>
         </div>
@@ -58,19 +72,19 @@
 </template>
 
 <script>
-import FlagIcon from '@/components/shared/FlagIcon';
+import FlagIcon from '../../../components/shared/FlagIcon.vue';
 import { STROKE_COLORS } from '../../../constants';
 export default {
     name: 'HistoryMapArea',
     components: {
-        FlagIcon,
+        FlagIcon
     },
     props: ['item', 'isCountry'],
     data() {
         return {
-            strokeColors: STROKE_COLORS,
+            strokeColors: STROKE_COLORS
         };
-    },
+    }
 };
 </script>
 <style lang="scss" scoped>
@@ -101,10 +115,10 @@ export default {
             grid-template-columns: 30px auto;
             grid-column-gap: 5px;
             width: 100%;
-            &.col{
+            &.col {
                 display: flex;
                 flex-direction: column;
-                em{
+                em {
                     margin: -10px;
                 }
             }

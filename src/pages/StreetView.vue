@@ -121,9 +121,9 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import HeaderGame from '../components/HeaderGame';
-import Maps from '../components/Maps';
-import DialogMessage from '../components/DialogMessage';
+import HeaderGame from '../components/HeaderGame.vue';
+import Maps from '../components/Maps.vue';
+import DialogMessage from '../components/DialogMessage.vue';
 
 import StreetViewService from '../plugins/StreetViewService';
 
@@ -133,7 +133,7 @@ import { GAME_MODE, SCORE_MODE } from '../constants';
 
 import { mapActions, mapGetters, mapState } from 'vuex';
 
-import ConfirmExitMixin from '../mixins/ConfirmExitMixin';
+import ConfirmExitMixin from '../mixins/ConfirmExitMixin.js';
 import Leaderboard from '../components/game/Leaderboard.vue';
 
 export default {

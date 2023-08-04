@@ -71,7 +71,7 @@ export default {
         this.loadHistory();
     },
     methods: {
-        ...mapActions('settingsStore', ['openDialogRoom']),
+        ...mapActions('settingsStore', ['openDialogRoom']), // map with settingsStore to make openDialogRoom work
         ...mapActions(['loadHistory']),
         openDialog(isSinglePlayer) {
             this.openDialogRoom(isSinglePlayer);

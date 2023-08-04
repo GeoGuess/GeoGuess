@@ -73,7 +73,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import HomeCard from '../../components/home/card/HomeCard';
+import HomeCard from '../../components/home/card/HomeCard.vue';
 
 export default {
     components: {

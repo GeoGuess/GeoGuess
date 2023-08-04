@@ -1,4 +1,4 @@
-import axios from '@/plugins/axios';
+import axios from '../../plugins/axios';
 import * as MutationTypes from '../mutation-types';
 
 export default {

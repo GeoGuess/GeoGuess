@@ -1,4 +1,4 @@
-import axios from '@/plugins/axios';
+import axios from '../plugins/axios';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import { point } from '@turf/helpers';
@@ -23,8 +23,8 @@ export function validURL(str) {
 
 /**
  * Return geojson from url
- * @param {string} url 
- * @returns geojson 
+ * @param {string} url
+ * @returns geojson
  */
 export async function getGeoJsonFromUrl(url) {
     if (validURL(url)) {
@@ -43,27 +43,21 @@ export async function getGeoJsonFromUrl(url) {
                 // eslint-disable-next-line no-console
                 console.log(err);
             });
-        
     }
 }
 
-function formatUrlGeoJSON(url){
+function formatUrlGeoJSON(url) {
     // if gist url get raw
     if (/^(https?:\/\/)?gist.github.com\//.test(url)) {
         let urlSplit = url.split('/');
-        if (
-            urlSplit.length > 3 &&
-            urlSplit[urlSplit.length - 1] !== 'raw'
-        ) {
-            urlSplit[urlSplit.length - 3] =
-                'gist.githubusercontent.com';
+        if (urlSplit.length > 3 && urlSplit[urlSplit.length - 1] !== 'raw') {
+            urlSplit[urlSplit.length - 3] = 'gist.githubusercontent.com';
             urlSplit.push('raw');
             return urlSplit.join('/');
         }
     }
     return url;
 }
-
 
 /**
  * Search if point is in GeoJSON
@@ -165,7 +159,7 @@ export function getAreaCodeNameFromLatLng(latLng, areaParams) {
             : {
                   zoom: 5,
                   addressdetails: 1,
-                  extratags: 1,
+                  extratags: 1
               };
 
     return axios
@@ -175,14 +169,22 @@ export function getAreaCodeNameFromLatLng(latLng, areaParams) {
             )}`
         )
         .then(({ status, data }) => {
-            if (status !== 200 || !data || data.error)
-                return null;
+            if (status !== 200 || !data || data.error) return null;
 
             if (areaParams && areaParams.nominatimResultPath) {
-                const areaName = getValueInObjectWithPath(data, areaParams.nominatimResultPath);
+                const areaName = getValueInObjectWithPath(
+                    data,
+                    areaParams.nominatimResultPath
+                );
 
-                if(areaName === undefined && areaParams.nominatimFallbackResultPath)
-                  return getValueInObjectWithPath(data, areaParams.nominatimFallbackResultPath);
+                if (
+                    areaName === undefined &&
+                    areaParams.nominatimFallbackResultPath
+                )
+                    return getValueInObjectWithPath(
+                        data,
+                        areaParams.nominatimFallbackResultPath
+                    );
 
                 return areaName;
             }
@@ -191,12 +193,11 @@ export function getAreaCodeNameFromLatLng(latLng, areaParams) {
                 return data.extratags['ISO3166-1:alpha2'];
             }
             return data.address['country_code'].toUpperCase();
-         
-        });  
+        });
 }
 
 export function getValueInObjectWithPath(obj, path) {
-    return path.split('.').reduce((o, i) => o ? o[i] : undefined, obj);
+    return path.split('.').reduce((o, i) => (o ? o[i] : undefined), obj);
 }
 
 export function getSelectedPos(selectedPos, gameMode) {
@@ -204,11 +205,11 @@ export function getSelectedPos(selectedPos, gameMode) {
         case GAME_MODE.CLASSIC:
             return {
                 latitude: selectedPos.lat(),
-                longitude: selectedPos.lng(),
+                longitude: selectedPos.lng()
             };
         default:
             return {
-                area: selectedPos,
+                area: selectedPos
             };
     }
 }

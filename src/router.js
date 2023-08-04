@@ -1,11 +1,11 @@
-import HistoryPage from './pages/HistoryPage';
-import Home from './pages/Home';
-import MedalsPage from './pages/MedalsPage';
+import HistoryPage from './pages/HistoryPage.vue';
+import Home from './pages/Home.vue';
+import MedalsPage from './pages/MedalsPage.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
 import { GAME_MODE } from './constants';
 
-const StreetView = () => import('./pages/StreetView');
+const StreetView = () => import('./pages/StreetView.vue');
 
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
@@ -19,41 +19,41 @@ export default new Router({
     routes: [
         {
             path: '*',
-            redirect: '/',
+            redirect: '/'
         },
         {
             path: '/',
             alias: '/index.html',
             name: 'home',
-            component: Home,
+            component: Home
         },
         {
             path: '/custom',
             name: 'home custom',
             component: Home,
             props: () => ({
-                dialogCustomOpen: true,
-            }),
+                dialogCustomOpen: true
+            })
         },
         {
             path: '/game/:partyParams',
             name: 'party',
-            component: Home,
+            component: Home
         },
         {
             path: '/room/:roomName',
             name: 'Room',
-            component: Home,
+            component: Home
         },
         {
             path: '/history',
             name: 'History',
-            component: HistoryPage,
+            component: HistoryPage
         },
         {
             path: '/medals',
             name: 'Medals',
-            component: MedalsPage,
+            component: MedalsPage
         },
         {
             path: '/street-view/:modeSelected/:time',
@@ -65,7 +65,7 @@ export default new Router({
                 time: parseInt(route.params.time, 10),
                 nbRoundSelected: route.params.nbRoundSelected
                     ? parseInt(route.params.nbRoundSelected, 10)
-                    : 5,
+                    : 5
             }),
             beforeEnter: (to, from, next) => {
                 let enterGame = true;
@@ -84,7 +84,7 @@ export default new Router({
                 } else {
                     next('/');
                 }
-            },
+            }
         },
         {
             path: '/street-view/with-friends',
@@ -95,8 +95,8 @@ export default new Router({
                 ...route.params,
                 nbRoundSelected: route.params.nbRoundSelected
                     ? parseInt(route.params.nbRoundSelected, 10)
-                    : 5,
-            }),
-        },
-    ],
+                    : 5
+            })
+        }
+    ]
 });

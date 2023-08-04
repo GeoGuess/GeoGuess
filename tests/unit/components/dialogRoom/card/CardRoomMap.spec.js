@@ -4,7 +4,7 @@ jest.mock('@/plugins/axios', () => {
             {
                 geometry: {
                     coordinates: [1.4442469, 43.6044622],
-                    type: 'Point',
+                    type: 'Point'
                 },
                 type: 'Feature',
                 properties: {
@@ -15,13 +15,13 @@ jest.mock('@/plugins/axios', () => {
                     osm_key: 'place',
                     osm_value: 'city',
                     name: 'Toulouse',
-                    state: 'Occitania',
-                },
+                    state: 'Occitania'
+                }
             },
             {
                 geometry: {
                     coordinates: [1.4455249, 43.5271458],
-                    type: 'Point',
+                    type: 'Point'
                 },
                 type: 'Feature',
                 properties: {
@@ -33,13 +33,13 @@ jest.mock('@/plugins/axios', () => {
                     osm_value: 'village',
                     postcode: '31320',
                     name: 'Vieille-Toulouse',
-                    state: 'Occitania',
-                },
+                    state: 'Occitania'
+                }
             },
             {
                 geometry: {
                     coordinates: [5.587384, 46.8232142],
-                    type: 'Point',
+                    type: 'Point'
                 },
                 type: 'Feature',
                 properties: {
@@ -51,25 +51,25 @@ jest.mock('@/plugins/axios', () => {
                     osm_value: 'village',
                     postcode: '39230',
                     name: 'Toulouse-le-Château',
-                    state: 'Bourgogne-Franche-Comté',
-                },
-            },
-        ],
+                    state: 'Bourgogne-Franche-Comté'
+                }
+            }
+        ]
     };
 
     return {
         get: jest.fn(() =>
             Promise.resolve({
                 status: 200,
-                data: responseTls,
+                data: responseTls
             })
         ),
-        post: jest.fn(),
+        post: jest.fn()
     };
 });
-import CardRoomMap from '@/components/dialogroom/card/CardRoomMap';
-import axios from '@/plugins/axios';
-import homeStore from '@/store/modules/home.store';
+import CardRoomMap from '/src/components/dialogroom/card/CardRoomMap.vue';
+import axios from '/src/plugins/axios';
+import homeStore from '/src/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import VueAxios from 'vue-axios/dist/vue-axios.common.min';
 import Vuex from 'vuex';
@@ -84,33 +84,30 @@ describe('CardRoomMap.vue', () => {
             modules: {
                 homeStore: {
                     state: homeStore.state,
-                    getters: homeStore.getters,
-                },
-            },
+                    getters: homeStore.getters
+                }
+            }
         });
     });
-  
+
     it('test search Input', async () => {
         args.localVue.use(VueAxios, axios);
-        const wrapper = shallowMount(CardRoomMap, { 
+        const wrapper = shallowMount(CardRoomMap, {
             ...args,
-             store,
-              axios,
-              localVue: args.localVue,
-         });
+            store,
+            axios,
+            localVue: args.localVue
+        });
         await wrapper.setData({ search: 'Toulouse' });
 
         expect(wrapper.exists('#search-input'));
         await wrapper.vm.$nextTick();
         expect(wrapper.vm.search).toEqual('Toulouse');
-        const spy = jest.spyOn(wrapper.vm.axios,'get');
-        expect(spy).toBeCalledWith(
-            'https://photon.komoot.io/api/?q=Toulouse'
-        );
+        const spy = jest.spyOn(wrapper.vm.axios, 'get');
+        expect(spy).toBeCalledWith('https://photon.komoot.io/api/?q=Toulouse');
         await wrapper.vm.$nextTick();
         expect(wrapper.vm.entries).toHaveLength(2);
         expect(wrapper.vm.items).toHaveLength(2);
         expect(wrapper.vm.items[0]).toEqual('Toulouse');
-        
     });
 });

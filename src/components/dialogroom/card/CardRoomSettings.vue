@@ -17,14 +17,14 @@
                                 id="modeClassicBtn"
                                 :text="
                                     gameSettings.modeSelected !==
-                                        gameMode.CLASSIC
+                                    gameMode.CLASSIC
                                 "
                                 rounded
                                 outlined
                                 @click="
                                     () =>
                                         setGameSettings({
-                                            modeSelected: gameMode.CLASSIC,
+                                            modeSelected: gameMode.CLASSIC
                                         })
                                 "
                             >
@@ -35,14 +35,14 @@
                                 id="modeCountryBtn"
                                 :text="
                                     gameSettings.modeSelected !==
-                                        gameMode.COUNTRY
+                                    gameMode.COUNTRY
                                 "
                                 rounded
                                 outlined
                                 @click="
                                     () =>
                                         setGameSettings({
-                                            modeSelected: gameMode.COUNTRY,
+                                            modeSelected: gameMode.COUNTRY
                                         })
                                 "
                             >
@@ -52,10 +52,13 @@
 
                             <v-btn
                                 id="modeCustomAreaBtn"
-                                v-if="gameSettings.modeSelected === gameMode.CUSTOM_AREA"
+                                v-if="
+                                    gameSettings.modeSelected ===
+                                    gameMode.CUSTOM_AREA
+                                "
                                 :text="
                                     gameSettings.modeSelected !==
-                                        gameMode.CUSTOM_AREA
+                                    gameMode.CUSTOM_AREA
                                 "
                                 rounded
                                 outlined
@@ -139,9 +142,7 @@
                                     (scoreLeaderboard) =>
                                         setGameSettings({ scoreLeaderboard })
                                 "
-                                :label="
-                                    $t('CardRoomSettings.scoreLeaderboard')
-                                "
+                                :label="$t('CardRoomSettings.scoreLeaderboard')"
                                 hide-details
                             />
                             <v-checkbox
@@ -166,7 +167,7 @@
                                 @input="
                                     (countdown) =>
                                         setGameSettings({
-                                            countdown: +countdown,
+                                            countdown: +countdown
                                         })
                                 "
                                 hide-details
@@ -185,7 +186,7 @@
                                     @change="
                                         (timeAttackSelected) =>
                                             setGameSettings({
-                                                timeAttackSelected,
+                                                timeAttackSelected
                                             })
                                     "
                                     hide-details
@@ -225,15 +226,14 @@
                             </div>
                         </v-col>
                     </v-row>
-                    <v-row
-                        class="mb-0 mt-0"
-                        align="center"
-                    >
+                    <v-row class="mb-0 mt-0" align="center">
                         <v-col>
                             <v-list-group prepend-icon="mdi-cog">
                                 <template v-slot:activator>
                                     <v-list-item-title>
-                                        {{$t('CardRoomSettings.moreSettings')}}
+                                        {{
+                                            $t('CardRoomSettings.moreSettings')
+                                        }}
                                     </v-list-item-title>
                                 </template>
                                 <v-text-field
@@ -241,17 +241,24 @@
                                     type="number"
                                     :disabled="gameSettings.timeAttackSelected"
                                     :label="$t('CardRoomSettings.nbRound')"
-                                    :value="gameSettings.timeAttackSelected ? 10 : gameSettings.nbRoundSelected"
+                                    :value="
+                                        gameSettings.timeAttackSelected
+                                            ? 10
+                                            : gameSettings.nbRoundSelected
+                                    "
                                     min="1"
                                     @input="
                                         (nbRoundSelected) =>
-                                            setGameSettings({ nbRoundSelected: +nbRoundSelected })
+                                            setGameSettings({
+                                                nbRoundSelected:
+                                                    +nbRoundSelected
+                                            })
                                     "
                                 />
                                 <v-select
                                     v-if="
                                         gameSettings.modeSelected ===
-                                            gameMode.CLASSIC
+                                        gameMode.CLASSIC
                                     "
                                     :label="
                                         $t('CardRoomSettings.scoreModeLabel')
@@ -276,7 +283,7 @@
                                 />
                             </v-list-group>
                         </v-col>
-                        <v-col/>
+                        <v-col />
                     </v-row>
                 </v-col>
             </v-row>
@@ -299,29 +306,29 @@
     </v-card>
 </template>
 <script>
-import TimePicker from '@/components/shared/TimePicker';
+import TimePicker from '../../../components/shared/TimePicker.vue';
 import { GAME_MODE, SCORE_MODE } from '../../../constants';
 import CardRoomMixin from './mixins/CardRoomMixin';
 import { mapActions, mapGetters, mapState, mapMutations } from 'vuex';
 import bbox from '@turf/bbox';
-import { SETTINGS_SET_GAME_SETTINGS } from '@/store/mutation-types';
+import { SETTINGS_SET_GAME_SETTINGS } from '../../../store/mutation-types.js';
 
 export default {
     components: {
-        TimePicker,
+        TimePicker
     },
     mixins: [CardRoomMixin],
     props: ['singlePlayer'],
     data() {
         return {
             invalidAreas: false,
-            loadingAreas: false,
+            loadingAreas: false
         };
     },
     computed: {
         ...mapGetters(['areasJson', 'areasList']),
         ...mapState({
-            placeGeoJson: (state) => state.homeStore.map.geojson,
+            placeGeoJson: (state) => state.homeStore.map.geojson
         }),
         ...mapState('settingsStore', ['gameSettings']),
         optionsArea() {
@@ -344,25 +351,25 @@ export default {
         scoreModes() {
             return Object.values(SCORE_MODE).map((a) => ({
                 value: a,
-                text: this.$t('CardRoomSettings.scoreModes.' + a),
+                text: this.$t('CardRoomSettings.scoreModes.' + a)
             }));
         },
         gameMode() {
             return GAME_MODE;
-        },
+        }
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
     },
     methods: {
         ...mapMutations('settingsStore', {
-            setGameSettings: SETTINGS_SET_GAME_SETTINGS,
+            setGameSettings: SETTINGS_SET_GAME_SETTINGS
         }),
         ...mapActions('settingsStore', ['setSettings']),
         onClickNext() {
             this.setSettings();
-        },
-    },
+        }
+    }
 };
 </script>
 <style lang="scss" scoped>
@@ -385,13 +392,13 @@ export default {
         }
     }
 
-        .v-input {
-            align-self: start;
-            margin: 0;
-            .v-messages {
-                display: contents;
-            }
+    .v-input {
+        align-self: start;
+        margin: 0;
+        .v-messages {
+            display: contents;
         }
+    }
 
     @media (max-width: 360px) {
         .card_settings__mode__btns {

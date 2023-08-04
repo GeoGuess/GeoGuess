@@ -14,14 +14,10 @@ export default defineConfig({
         vue(),
         eslintPlugin(),
         Components({
-            resolvers: [VuetifyResolver()],
-        }),
+            resolvers: [VuetifyResolver()]
+        })
     ],
-    resolve: {
-        alias: [{ find: /^@\/(.*)/, replacement: resolve('./src/$1') }],
-        extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
-    },
     server: {
-        port: 8080,
-    },
+        port: 8080
+    }
 });

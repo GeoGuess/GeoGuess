@@ -8,7 +8,16 @@
                 :dismissible="true"
                 @close="scoreboard = false"
             />
-            <v-btn dark icon @click="scoreboard = true" v-if="$vuetify.breakpoint.mobile && guessString && leaderboardShown">
+            <v-btn
+                dark
+                icon
+                @click="scoreboard = true"
+                v-if="
+                    $vuetify.breakpoint.mobile &&
+                    guessString &&
+                    leaderboardShown
+                "
+            >
                 <v-icon>mdi-scoreboard-outline</v-icon>
             </v-btn>
             <div v-if="remainingTime != null && remainingTime > 0">
@@ -41,7 +50,7 @@
                     $t('HeaderGame.kmaway', {
                         value: new Intl.NumberFormat($i18n.locale).format(
                             distance / 1000
-                        ),
+                        )
                     })
                 }}</span>
             </div>
@@ -55,14 +64,14 @@
 </template>
 
 <script>
-import { getCountdownText } from '@/utils';
+import { getCountdownText } from '../utils';
 import { GAME_MODE } from '../constants';
 import { mapState } from 'vuex';
-import DialogMessage from '@/components/DialogMessage.vue';
+import DialogMessage from '../components/DialogMessage.vue';
 
 export default {
     components: {
-        DialogMessage,
+        DialogMessage
     },
     props: [
         'distance',
@@ -79,24 +88,24 @@ export default {
             scoreboard: false,
             startedAt: null,
             timerText: '',
-            intervalFunction: null,
+            intervalFunction: null
         };
     },
     watch: {
         round: function () {
             this.startTimer();
-        },
+        }
     },
     computed: {
         ...mapState({
-            streamerMode: (state) => state.homeStore.streamerMode,
+            streamerMode: (state) => state.homeStore.streamerMode
         }),
         countdownText() {
             return getCountdownText(this.remainingTime);
         },
         isDistanceVisible() {
             return this.mode !== GAME_MODE.COUNTRY;
-        },
+        }
     },
     methods: {
         startTimer() {
@@ -115,8 +124,8 @@ export default {
             if (this.intervalFunction) {
                 clearInterval(this.intervalFunction);
             }
-        },
-    },
+        }
+    }
 };
 </script>
 

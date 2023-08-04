@@ -18,7 +18,7 @@
                         beige: !areaRandom,
                         green: !!areaRandom,
                         'white--text': !!areaRandom,
-                        large: !showFlag,
+                        large: !showFlag
                     }"
                 >
                     {{ areaName }}
@@ -36,7 +36,9 @@
                     streetViewControl: false,
                     draggableCursor: 'crosshair',
                     clickableIcons: false,
-                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+                    styles: $vuetify.theme.dark
+                        ? $vuetify.theme.themes.dark.gmap
+                        : $vuetify.theme.themes.light.gmap
                 }"
             />
         </div>
@@ -55,25 +57,25 @@
     </div>
 </template>
 <script type="text/javascript">
-import FlagIcon from '@/components/shared/FlagIcon';
+import FlagIcon from '../../components/shared/FlagIcon.vue';
 import { mapActions, mapGetters } from 'vuex';
 import MapMixin from './mixins/MapMixin';
 
 export default {
     mixins: [MapMixin],
     components: {
-        FlagIcon,
+        FlagIcon
     },
     props: {
         area: {
-            type: String,
+            type: String
         },
         areasGeoJsonUrl: String,
         pathKey: {
             type: String,
-            default: 'iso_a2',
+            default: 'iso_a2'
         },
-        showFlag: Boolean,
+        showFlag: Boolean
     },
     data() {
         return {
@@ -84,7 +86,7 @@ export default {
             allowSelect: true,
             areaRandom: null,
             randomPos: null,
-            infoWindowDatas: [],
+            infoWindowDatas: []
         };
     },
     computed: {
@@ -104,7 +106,7 @@ export default {
                       .getFeatureById('feature')
                       .getProperty(this.pathKey)
                 : undefined;
-        },
+        }
     },
     async mounted() {
         await this.loadAreas(this.areasGeoJsonUrl);
@@ -117,8 +119,8 @@ export default {
                         style: {
                             strokeOpacity: 0,
                             fillOpacity: 0,
-                            strokeWeight: 2,
-                        },
+                            strokeWeight: 2
+                        }
                     });
                     c.id = 'feature';
                     p.addGeoJson(c);
@@ -131,7 +133,7 @@ export default {
                         if (this.polygonSelect) {
                             this.polygonSelect.setStyle({
                                 strokeOpacity: 0,
-                                fillOpacity: 0,
+                                fillOpacity: 0
                             });
                         }
                         if (Object.is(p, this.polygonSelect)) {
@@ -142,7 +144,7 @@ export default {
                                 strokeOpacity: 0.8,
                                 fillOpacity: 0.3,
                                 strokeColor: '#1E3A8A',
-                                fillColor: '#1D4ED8',
+                                fillColor: '#1D4ED8'
                             });
 
                             this.polygonSelect = p;
@@ -168,7 +170,7 @@ export default {
                 this.areaRandom = this.area;
                 this.randomPos = new google.maps.Marker({
                     position: pos,
-                    map: this.map,
+                    map: this.map
                 });
             }
             if (this.areas[areaName]) {
@@ -176,7 +178,7 @@ export default {
                     fillOpacity: 0.3,
                     strokeOpacity: 0.8,
                     fillColor: isRandomLocation ? '#52DA42' : '#FF4081',
-                    strokeColor: isRandomLocation ? '#16A910' : '#FF4081',
+                    strokeColor: isRandomLocation ? '#16A910' : '#FF4081'
                 });
                 this.markers.push(areaName);
             }
@@ -185,13 +187,13 @@ export default {
             this.markers.forEach((areaName) => {
                 this.areas[areaName].setStyle({
                     strokeOpacity: 0,
-                    fillOpacity: 0,
+                    fillOpacity: 0
                 });
             });
             if (this.polygonSelect) {
                 this.polygonSelect.setStyle({
                     strokeOpacity: 0,
-                    fillOpacity: 0,
+                    fillOpacity: 0
                 });
             }
             if (this.randomPos) {
@@ -208,7 +210,7 @@ export default {
             if (this.polygonSelect) {
                 this.polygonSelect.setStyle({
                     strokeOpacity: 0,
-                    fillOpacity: 0,
+                    fillOpacity: 0
                 });
             }
             this.polygonSelect = null;
@@ -226,8 +228,8 @@ export default {
             } else {
                 this.map.setZoom(2);
             }
-        },
-    },
+        }
+    }
 };
 </script>
 

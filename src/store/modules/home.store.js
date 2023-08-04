@@ -1,5 +1,9 @@
-import axios from '@/plugins/axios';
-import { getGeoJsonFromUrl, getLocateString, isGeoJSONValid } from '@/utils';
+import axios from '../../plugins/axios';
+import {
+    getGeoJsonFromUrl,
+    getLocateString,
+    isGeoJSONValid
+} from '../../utils';
 import i18n from '../../lang';
 import {
     GeoMap,
