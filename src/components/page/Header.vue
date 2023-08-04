@@ -2,10 +2,15 @@
     <div>
         <v-app-bar class="header" height="100">
             <router-link to="/">
-                <img class="header__logo" src="@/assets/geoguessLogo.png" />
+                <img
+                    class="header__logo"
+                    src="/src/assets/geoguessLogo.png"
+                    alt="logo"
+                />
                 <img
                     class="header__logo-min"
-                    src="@/../public/img/icons/android-icon-72x72.png"
+                    src="/src/assets/icons/android-icon-72x72.png"
+                    alt="logo"
                 />
             </router-link>
 
@@ -105,7 +110,7 @@ export default {
             streamerMode: (state) => state.homeStore.streamerMode
         }),
         demoMode() {
-            return !!process.env.VITE_APP_DEMO_MODE;
+            return !!import.meta.env.VITE_APP_DEMO_MODE;
         },
         darkTheme() {
             return this.$vuetify.theme.dark;

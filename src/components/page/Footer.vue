@@ -7,36 +7,24 @@
                     color="#FFFFFF"
                     href="https://github.com/GeoGuess/Geoguess"
                 >
-                    <v-icon size="30">
-                        mdi-github
-                    </v-icon>
+                    <v-icon size="30"> mdi-github </v-icon>
                 </v-btn>
-                <v-btn
-                    icon
-                    color="#FFFFFF"
-                    href="https://discord.gg/9GXm6RT"
-                >
-                    <v-icon size="30">
-                        mdi-discord
-                    </v-icon>
+                <v-btn icon color="#FFFFFF" href="https://discord.gg/9GXm6RT">
+                    <v-icon size="30"> mdi-discord </v-icon>
                 </v-btn>
                 <v-btn
                     icon
                     color="#FFFFFF"
                     href="https://twitter.com/BilelJegham"
                 >
-                    <v-icon size="30">
-                        mdi-twitter
-                    </v-icon>
+                    <v-icon size="30"> mdi-twitter </v-icon>
                 </v-btn>
                 <v-btn
                     icon
                     color="#FFFFFF"
                     href="https://www.instagram.com/geoguess.games/"
                 >
-                    <v-icon size="30">
-                        mdi-instagram
-                    </v-icon>
+                    <v-icon size="30"> mdi-instagram </v-icon>
                 </v-btn>
             </div>
             <div class="licence">
@@ -44,7 +32,8 @@
                     {{ version }} - {{ $t('Footer.under') }}
                     <a
                         href="https://github.com/GeoGuess/Geoguess/blob/master/LICENSE"
-                    >MIT license</a>
+                        >MIT license</a
+                    >
                 </p>
             </div>
 
@@ -56,12 +45,13 @@
 </template>
 
 <script>
+import { version } from '../../../package.json';
 export default {
     computed: {
         version() {
-            return require('../../../package.json').version;
-        },
-    },
+            return version;
+        }
+    }
 };
 </script>
 
@@ -74,17 +64,19 @@ footer {
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
         align-items: center;
-        .theme--light & p, a {
+        .theme--light & p,
+        a {
             color: #484848;
         }
-        .theme--dark & p, a {
-            color: #FFFFFF;
+        .theme--dark & p,
+        a {
+            color: #ffffff;
         }
         a {
             font-weight: bold;
-        }      
+        }
     }
-    .footer__logo{        
+    .footer__logo {
         display: grid;
         grid-template-columns: repeat(4, minmax(36px, 1fr));
         justify-items: center;
@@ -93,7 +85,7 @@ footer {
 }
 
 @media (max-width: 430px) {
-    footer .footer__container div.licence{
+    footer .footer__container div.licence {
         display: none;
     }
 }

@@ -1,10 +1,11 @@
 {
   "name": "geoguess",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GeoGuess is an open-source geography game with Google Map StreetView.",
   "author": "Bilel Jegham and others",
   "scripts": {
     "serve": "vite serve",
+    "dev": "vite dev",
     "build": "vite build",
     "test:unit": "cross-env NODE_OPTIONS=--unhandled-rejections=warn vite test:unit",
     "test:e2e": "cypress run",

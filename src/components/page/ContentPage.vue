@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import Header from '@/components/page/Header';
-import Footer from '@/components/page/Footer';
+import Header from '../../components/page/Header';
+import Footer from '../../components/page/Footer';
 export default {
     components: {
         Header,
-        Footer,
-    },
+        Footer
+    }
 };
 </script>
 
@@ -45,4 +45,3 @@ export default {
     padding: 2%;
 }
 </style>
-
