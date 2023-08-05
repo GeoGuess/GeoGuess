@@ -11,7 +11,7 @@
     "test:e2e": "cypress run",
     "cypress": "cypress",
     "test": "npm run lint && npm run test:e2e",
-    "test:mutation": "cross-env NODE_OPTIONS=--unhandled-rejections=warn NODE_ENV=test BABEL_ENV=test VITE_CLI_TRANSPILE_BABEL_RUNTIME=true VITE_CLI_BABEL_TARGET_NODE=true VITE_CLI_BABEL_TRANSPILE_MODULES=true stryker run"
+    "test:mutation": "cross-env NODE_OPTIONS=--unhandled-rejections=warn NODE_ENV=test stryker run"
   },
   "dependencies": {
     "@turf/bbox": "^6.5.0",

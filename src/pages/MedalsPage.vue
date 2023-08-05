@@ -68,13 +68,14 @@ import ContentPage from '../components/page/ContentPage.vue';
 import { mapActions, mapGetters } from 'vuex';
 import FlagIcon from '../components/shared/FlagIcon.vue';
 import { getMedals, COUNTRIES_MEDALS_DATA } from '../utils/game/medals';
+import WorldCountries from '../components/shared/WorldCountries.vue';
 
 export default {
     name: 'MedalsPage',
     components: {
         ContentPage,
         FlagIcon,
-        WorldCountries: () => import('../components/shared/WorldCountries.vue'),
+        WorldCountries,
     },
     data() {
         return {

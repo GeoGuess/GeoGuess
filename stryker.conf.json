@@ -5,7 +5,6 @@
   },
   "tempDirName_comment": "Jest doesn't play nice with the default (.stryker-tmp).",
   "tempDirName": "stryker-tmp",
-  "testRunner": "jest",
   "coverageAnalysis": "off",
   "reporters": [
     "progress",
