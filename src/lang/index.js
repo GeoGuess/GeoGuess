@@ -1,42 +1,29 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import bgLocale from './locale/bg.json';
-import csLocale from './locale/cs.json';
-import deLocale from './locale/de.json';
-import enLocale from './locale/en.json';
-import esLocale from './locale/es.json';
-import frLocale from './locale/fr.json';
-import heLocale from './locale/he.json';
-import itLocale from './locale/it.json';
-import jaLocale from './locale/ja.json';
-import kaaLocale from './locale/kaa.json';
-import plLocale from './locale/pl.json';
-import ptLocale from './locale/pt.json';
-import ruLocale from './locale/ru.json';
-import svLocale from './locale/sv.json';
-import trLocale from './locale/tr.json';
-import zhLocale from './locale/zh.json';
+
+// Load all modules.
+export function loadTranslations() {
+  if (import.meta.env.MODE === 'test') {
+    return {};
+  }
+
+  const context = import.meta.globEager('./locale/*.json');
+
+  return Object.keys(context)
+    .map((key) => ({ key, name: key.match(/\/([a-z_]+)\.json$/i)[1] }))
+    .reduce(
+      (modules, { key, name }) => ({
+        ...modules,
+        [name]: context[key],
+      }),
+      {}
+    );
+}
+
+export const translations = loadTranslations();
 
 Vue.use(VueI18n);
 
-const translations = {
-    bg: bgLocale,
-    cs: csLocale,
-    de: deLocale,
-    en: enLocale,
-    es: esLocale,
-    fr: frLocale,
-    he: heLocale,
-    it: itLocale,
-    ja: jaLocale,
-    kaa: kaaLocale,
-    pl: plLocale,
-    pt: ptLocale,
-    ru: ruLocale,
-    sv: svLocale,
-    tr: trLocale,
-    zh: zhLocale
-};
 
 export const RTL_LANGUAGES = ['he'];
 
