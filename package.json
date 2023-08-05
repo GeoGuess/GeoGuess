@@ -7,11 +7,10 @@
     "serve": "vite serve",
     "dev": "vite dev",
     "build": "vite build",
-    "test:unit": "cross-env NODE_OPTIONS=--unhandled-rejections=warn vite test:unit",
+    "lint": "eslint .",
     "test:e2e": "cypress run",
-    "lint": "vite lint",
     "cypress": "cypress",
-    "test": "npm run lint && npm run test:unit && npm run test:e2e",
+    "test": "npm run lint && npm run test:e2e",
     "test:mutation": "cross-env NODE_OPTIONS=--unhandled-rejections=warn NODE_ENV=test BABEL_ENV=test VITE_CLI_TRANSPILE_BABEL_RUNTIME=true VITE_CLI_BABEL_TARGET_NODE=true VITE_CLI_BABEL_TRANSPILE_MODULES=true stryker run"
   },
   "dependencies": {
@@ -22,6 +21,7 @@
     "@vitejs/plugin-vue2": "^2.2.0",
     "axios": "^0.21.4",
     "axios-cache-adapter": "^2.7.3",
+    "dotenv": "^16.3.1",
     "firebase": "^8.10.1",
     "gmap-vue": "^3.5.4",
     "random-position-in-polygon": "^1.0.6",
@@ -42,7 +42,6 @@
   "devDependencies": {
     "@stryker-mutator/vitest-runner": "^7.1.1",
     "@vue/test-utils": "^1.1.2",
-    "@vue/vue2-jest": "^27.0.0-alpha.3",
     "cross-env": "^7.0.3",
     "cypress": "^12.8.1",
     "eslint": "^8.0.0",
@@ -50,8 +49,6 @@
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^8.7.1",
-    "jest": "^27.1.0",
-    "jest-google-maps-mock": "^1.0.7",
     "prettier": "3.0.0",
     "react-is": "^18.2.0",
     "sass": "1.32",
