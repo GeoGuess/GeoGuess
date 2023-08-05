@@ -34,7 +34,6 @@ describe('StreetView.vue', () => {
             endDate.getTime()
         );
         expect(wrapper.vm.startTimer).toBeCalled();
-
     });
     it('methods startTimer hasTimerStarted', () => {
         const wrapper = shallowMount(StreetView, args);
@@ -57,7 +56,6 @@ describe('StreetView.vue', () => {
             endDate.getTime()
         );
         expect(wrapper.vm.startTimer).not.toBeCalled();
-
     });
 
     it('methods startTimer hasTimerStarted', () => {

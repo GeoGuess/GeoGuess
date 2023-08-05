@@ -19,12 +19,11 @@ describe('Home.vue', () => {
             },
         });
         expect($router.push).not.toBeCalled();
-
     });
     it('test mounted', () => {
         const partyParams =
             'MjAwMCwzMDAsMzkuOTgyOTgxMzM0MTE0MDIsMjMuNjE4NDQ1MjIxOTg0OTgsNzAuMDAxNDM5OTEwOTEwNDUsMTkuNTYwMjI5NzM3Njk5MTcsNTguNDEyNzQ4MTQ2ODQ3MzIsNi45MTI3OTk3MzYzODg2NjYsNjIuMzQxODY2Njg2NDkxNTQsLTYuMjYxNDk1MTQyNDk0MjI2LDY3LjA5OTY2MzkwODQ4Mzc2LDE5LjUxMjI4NDk3NTUwODY0';
-        
+
         shallowMount(Home, {
             ...args,
             mocks: {
@@ -51,6 +50,5 @@ describe('Home.vue', () => {
                 ],
             },
         });
-
     });
 });

@@ -12,8 +12,8 @@ const store = new Vuex.Store({
         alertStore: alertModule,
         area: areaModule,
         homeStore: homeModule,
-        settingsStore: settingsModule
-    }
+        settingsStore: settingsModule,
+    },
 });
 
 export default store;

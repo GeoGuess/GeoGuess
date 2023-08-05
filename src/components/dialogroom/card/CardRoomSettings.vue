@@ -24,7 +24,7 @@
                                 @click="
                                     () =>
                                         setGameSettings({
-                                            modeSelected: gameMode.CLASSIC
+                                            modeSelected: gameMode.CLASSIC,
                                         })
                                 "
                             >
@@ -42,7 +42,7 @@
                                 @click="
                                     () =>
                                         setGameSettings({
-                                            modeSelected: gameMode.COUNTRY
+                                            modeSelected: gameMode.COUNTRY,
                                         })
                                 "
                             >
@@ -167,7 +167,7 @@
                                 @input="
                                     (countdown) =>
                                         setGameSettings({
-                                            countdown: +countdown
+                                            countdown: +countdown,
                                         })
                                 "
                                 hide-details
@@ -186,7 +186,7 @@
                                     @change="
                                         (timeAttackSelected) =>
                                             setGameSettings({
-                                                timeAttackSelected
+                                                timeAttackSelected,
                                             })
                                     "
                                     hide-details
@@ -251,7 +251,7 @@
                                         (nbRoundSelected) =>
                                             setGameSettings({
                                                 nbRoundSelected:
-                                                    +nbRoundSelected
+                                                    +nbRoundSelected,
                                             })
                                     "
                                 />
@@ -315,20 +315,20 @@ import { SETTINGS_SET_GAME_SETTINGS } from '../../../store/mutation-types.js';
 
 export default {
     components: {
-        TimePicker
+        TimePicker,
     },
     mixins: [CardRoomMixin],
     props: ['singlePlayer'],
     data() {
         return {
             invalidAreas: false,
-            loadingAreas: false
+            loadingAreas: false,
         };
     },
     computed: {
         ...mapGetters(['areasJson', 'areasList']),
         ...mapState({
-            placeGeoJson: (state) => state.homeStore.map.geojson
+            placeGeoJson: (state) => state.homeStore.map.geojson,
         }),
         ...mapState('settingsStore', ['gameSettings']),
         optionsArea() {
@@ -351,25 +351,25 @@ export default {
         scoreModes() {
             return Object.values(SCORE_MODE).map((a) => ({
                 value: a,
-                text: this.$t('CardRoomSettings.scoreModes.' + a)
+                text: this.$t('CardRoomSettings.scoreModes.' + a),
             }));
         },
         gameMode() {
             return GAME_MODE;
-        }
+        },
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
     },
     methods: {
         ...mapMutations('settingsStore', {
-            setGameSettings: SETTINGS_SET_GAME_SETTINGS
+            setGameSettings: SETTINGS_SET_GAME_SETTINGS,
         }),
         ...mapActions('settingsStore', ['setSettings']),
         onClickNext() {
             this.setSettings();
-        }
-    }
+        },
+    },
 };
 </script>
 <style lang="scss" scoped>

@@ -50,8 +50,8 @@ export default {
     computed: {
         version() {
             return version;
-        }
-    }
+        },
+    },
 };
 </script>
 

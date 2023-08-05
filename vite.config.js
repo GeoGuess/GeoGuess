@@ -14,10 +14,10 @@ export default defineConfig({
         vue(),
         eslintPlugin(),
         Components({
-            resolvers: [VuetifyResolver()]
-        })
+            resolvers: [VuetifyResolver()],
+        }),
     ],
     server: {
-        port: 8080
-    }
+        port: 8080,
+    },
 });

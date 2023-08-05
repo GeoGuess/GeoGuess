@@ -77,14 +77,14 @@ import HomeCard from '../../components/home/card/HomeCard.vue';
 
 export default {
     components: {
-        HomeCard
+        HomeCard,
     },
 
     data() {
         return {
             search: '',
             showAreas: true,
-            showMaps: true
+            showMaps: true,
         };
     },
 
@@ -101,7 +101,7 @@ export default {
                 return this.areasList;
             }
             return this.areasList.filter((area) => this.filterMethods(area));
-        }
+        },
     },
 
     mounted() {
@@ -117,8 +117,8 @@ export default {
         },
         doBarrelRoll() {
             this.$root.$el.classList.add('barrel-roll');
-        }
-    }
+        },
+    },
 };
 </script>
 

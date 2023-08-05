@@ -11,10 +11,8 @@ const data = {
         fr: 'Grande Villes',
     },
     description: {
-        fr:
-            'Une liste de plus de 40 villes : PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…',
-        en:
-            'List of 40 biggest cities of the world: PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…',
+        fr: 'Une liste de plus de 40 villes : PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…',
+        en: 'List of 40 biggest cities of the world: PARIS, KOBE OSAKA, SEOUL, HOUSTON, BARCELONA, PHILADELPHIA, SANTIAGO, LAGOS, DALLAS, NEW YORK, ISTANBUL, TOKYO, FUKUOKA, LONDON, KUALA LUMPUR, LIMA, HO CHI MINH CITY, MANILA, GUADALAJARA, MADRID, NAGOYA, SINGAPORE, JOHANNESBURG, BELO HORIZONTE, TORONTO, MEXICO CITY, MIAMI, ATLANTA, RIO DE JANEIRO, BUENOS AIRES, SAO PAULO, CHICAGO,…',
     },
     author: 'BilelJegham',
     imageSrc:
@@ -27,17 +25,16 @@ describe('HomeCard.vue', () => {
     beforeAll(() => {
         store = new Vuex.Store({
             modules: {
-                homeStore:{
-                    getters:{
+                homeStore: {
+                    getters: {
                         getMaxScoreMap: () => () => 0,
-                    }
-                }
+                    },
+                },
             },
         });
     });
 
     it('render', () => {
-
         const wrapper = shallowMount(HomeCard, {
             ...args,
             store,
@@ -48,18 +45,16 @@ describe('HomeCard.vue', () => {
 
         expect(wrapper).toMatchSnapshot();
     });
-    
-    
-    it('deleteMap', () => {   
-        
+
+    it('deleteMap', () => {
         const map = new GeoMapCustom();
-        const spy= jest.spyOn(map,'delete');
+        const spy = jest.spyOn(map, 'delete');
         const wrapper = shallowMount(HomeCard, {
             ...args,
             store,
             propsData: {
                 data: map,
-                type: 'map'
+                type: 'map',
             },
         });
 

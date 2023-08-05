@@ -4,7 +4,7 @@ jest.mock('@/plugins/axios', () => {
             {
                 geometry: {
                     coordinates: [1.4442469, 43.6044622],
-                    type: 'Point'
+                    type: 'Point',
                 },
                 type: 'Feature',
                 properties: {
@@ -15,13 +15,13 @@ jest.mock('@/plugins/axios', () => {
                     osm_key: 'place',
                     osm_value: 'city',
                     name: 'Toulouse',
-                    state: 'Occitania'
-                }
+                    state: 'Occitania',
+                },
             },
             {
                 geometry: {
                     coordinates: [1.4455249, 43.5271458],
-                    type: 'Point'
+                    type: 'Point',
                 },
                 type: 'Feature',
                 properties: {
@@ -33,13 +33,13 @@ jest.mock('@/plugins/axios', () => {
                     osm_value: 'village',
                     postcode: '31320',
                     name: 'Vieille-Toulouse',
-                    state: 'Occitania'
-                }
+                    state: 'Occitania',
+                },
             },
             {
                 geometry: {
                     coordinates: [5.587384, 46.8232142],
-                    type: 'Point'
+                    type: 'Point',
                 },
                 type: 'Feature',
                 properties: {
@@ -51,20 +51,20 @@ jest.mock('@/plugins/axios', () => {
                     osm_value: 'village',
                     postcode: '39230',
                     name: 'Toulouse-le-Château',
-                    state: 'Bourgogne-Franche-Comté'
-                }
-            }
-        ]
+                    state: 'Bourgogne-Franche-Comté',
+                },
+            },
+        ],
     };
 
     return {
         get: jest.fn(() =>
             Promise.resolve({
                 status: 200,
-                data: responseTls
+                data: responseTls,
             })
         ),
-        post: jest.fn()
+        post: jest.fn(),
     };
 });
 import CardRoomMap from '/src/components/dialogroom/card/CardRoomMap.vue';
@@ -84,9 +84,9 @@ describe('CardRoomMap.vue', () => {
             modules: {
                 homeStore: {
                     state: homeStore.state,
-                    getters: homeStore.getters
-                }
-            }
+                    getters: homeStore.getters,
+                },
+            },
         });
     });
 
@@ -96,7 +96,7 @@ describe('CardRoomMap.vue', () => {
             ...args,
             store,
             axios,
-            localVue: args.localVue
+            localVue: args.localVue,
         });
         await wrapper.setData({ search: 'Toulouse' });
 

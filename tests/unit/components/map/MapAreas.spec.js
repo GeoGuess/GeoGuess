@@ -11,15 +11,15 @@ global.google = {
         ...createGoogleMapsMock(),
         InfoWindow: jest.fn().mockImplementation(function () {
             return {
-                open: jest.fn()
+                open: jest.fn(),
             };
         }),
         Polyline: jest.fn().mockImplementation(function () {
             return {
-                setMap: jest.fn()
+                setMap: jest.fn(),
             };
-        })
-    }
+        }),
+    },
 };
 describe('MapAreas.vue', () => {
     let store;
@@ -29,10 +29,10 @@ describe('MapAreas.vue', () => {
                 areaStore: {
                     getters: areaStore.getters,
                     actions: {
-                        loadAreas: jest.fn()
-                    }
-                }
-            }
+                        loadAreas: jest.fn(),
+                    },
+                },
+            },
         });
     });
     it('test methods', () => {
@@ -41,22 +41,22 @@ describe('MapAreas.vue', () => {
             store,
             propsData: {
                 bbox: [0, 10, 20, 30],
-                area: 'FR'
-            }
+                area: 'FR',
+            },
         });
         wrapper.vm.areas.CA = new google.maps.Data({
             style: {
                 strokeOpacity: 0,
                 fillOpacity: 0,
-                strokeWeight: 2
-            }
+                strokeWeight: 2,
+            },
         });
         wrapper.vm.areas.FR = new google.maps.Data({
             style: {
                 strokeOpacity: 0,
                 fillOpacity: 0,
-                strokeWeight: 2
-            }
+                strokeWeight: 2,
+            },
         });
 
         expect(wrapper.vm.markers).toHaveLength(0);

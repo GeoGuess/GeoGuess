@@ -70,14 +70,14 @@ import { getMedals } from '../../../utils/game/medals';
 export default {
     name: 'HomeCard',
     components: {
-        HomeCardDialog
+        HomeCardDialog,
     },
     props: {
         data: Object,
         type: {
             type: String,
-            validator: (v) => ['map', 'area'].includes(v)
-        }
+            validator: (v) => ['map', 'area'].includes(v),
+        },
     },
     computed: {
         ...mapGetters(['getMaxScoreMap']),
@@ -89,7 +89,7 @@ export default {
         },
         colorMedal() {
             return getMedals(this.maxScore);
-        }
+        },
     },
     methods: {
         ...mapActions(['getListMapsCustoms', 'setMapLoaded']),
@@ -102,8 +102,8 @@ export default {
         async editMap() {
             this.setMapLoaded(this.data);
             this.$router.push('/custom');
-        }
-    }
+        },
+    },
 };
 </script>
 

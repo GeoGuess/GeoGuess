@@ -10,8 +10,8 @@ describe('SearchBox.vue', () => {
     beforeEach(() => {
         store = new Vuex.Store({
             modules: {
-                homeStore
-            }
+                homeStore,
+            },
         });
     });
     it('render', () => {

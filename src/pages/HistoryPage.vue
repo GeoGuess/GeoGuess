@@ -13,7 +13,7 @@ export default {
     name: 'HistoryPage',
     components: {
         HistoryTable,
-        ContentPage
-    }
+        ContentPage,
+    },
 };
 </script>

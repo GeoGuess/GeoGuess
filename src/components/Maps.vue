@@ -8,7 +8,7 @@
                 ? 'container-map--active'
                 : '',
             printMapFull ? 'container-map--full' : '',
-            `container-map--size-${size}`
+            `container-map--size-${size}`,
         ]"
         v-on="
             $viewport.width >= 450 // Only on tablet and desktop Issue #104
@@ -18,7 +18,7 @@
                       },
                       mouseleave: () => {
                           activeMap = false;
-                      }
+                      },
                   }
                 : {}
         "
@@ -128,7 +128,7 @@
             id="next-button"
             :disabled="!isNextButtonEnabled"
             :style="{
-                backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C'
+                backgroundColor: isNextButtonEnabled ? '#F44336' : '#B71C1C',
             }"
             @click="goToNextRound(false)"
         >
@@ -190,7 +190,7 @@ export default {
         DialogSummary,
         DetailsMap,
         Map,
-        MapAreas
+        MapAreas,
     },
     props: [
         'randomLatLng',
@@ -217,7 +217,7 @@ export default {
         'scoreLeaderboard',
         'guessedLeaderboard',
         'leaderboardShown',
-        'guessString'
+        'guessString',
     ],
     data() {
         return {
@@ -242,9 +242,9 @@ export default {
             game: {
                 multiplayer: !!this.roomName,
                 date: new Date(),
-                rounds: []
+                rounds: [],
             },
-            startTime: null
+            startTime: null,
         };
     },
     computed: {
@@ -258,7 +258,7 @@ export default {
                     return false;
                 }
             }
-        }
+        },
     },
     watch: {
         pinActive() {
@@ -266,7 +266,7 @@ export default {
         },
         printMapFull(value) {
             this.$emit('printMapFull', value);
-        }
+        },
     },
     async mounted() {
         await this.$gmapApiPromiseLazy();
@@ -321,7 +321,7 @@ export default {
                                     .val();
                                 posGuess = new google.maps.LatLng({
                                     lat: lat,
-                                    lng: lng
+                                    lng: lng,
                                 });
                             } else {
                                 posGuess = childSnapshot.child('area').val();
@@ -344,7 +344,7 @@ export default {
 
                             players[playerName] = {
                                 ...roundValues,
-                                guess: posGuess
+                                guess: posGuess,
                             };
                             this.$refs.map.drawPolyline(
                                 posGuess,
@@ -371,9 +371,9 @@ export default {
                         this.game.rounds.push({
                             position: {
                                 ...this.randomLatLng.toJSON(),
-                                area: this.area
+                                area: this.area,
                             },
-                            players
+                            players,
                         });
                         this.$refs.map.putMarker(this.randomLatLng, true);
 
@@ -398,7 +398,7 @@ export default {
                                     this.summaryTexts.push({
                                         playerName: playerName,
                                         finalScore: finalScore,
-                                        finalPoints: finalPoints
+                                        finalPoints: finalPoints,
                                     });
                                 });
 
@@ -542,7 +542,7 @@ export default {
                         ...getSelectedPos(this.selectedPos, this.mode),
                         distance: this.distance,
                         points: this.point,
-                        timePassed
+                        timePassed,
                     });
             } else {
                 this.game.rounds.push({
@@ -551,7 +551,7 @@ export default {
                     position: this.randomLatLng,
                     distance: this.distance,
                     points: this.point,
-                    timePassed
+                    timePassed,
                 });
             }
 
@@ -595,8 +595,8 @@ export default {
                     .child('isGameDone/player' + this.playerNumber)
                     .set(true);
             this.$emit('finishGame');
-        }
-    }
+        },
+    },
 };
 </script>
 

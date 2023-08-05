@@ -141,104 +141,104 @@ export default {
         Leaderboard,
         HeaderGame,
         Maps,
-        DialogMessage
+        DialogMessage,
     },
     mixins: [ConfirmExitMixin],
     props: {
         roomName: {
             default: null,
-            type: String
+            type: String,
         },
         // https://developers.google.com/maps/documentation/javascript/reference/street-view-service#StreetViewSource
         allPanorama: {
             default: false,
-            type: Boolean
+            type: Boolean,
         },
         optimiseStreetView: {
             default: true,
-            type: Boolean
+            type: Boolean,
         },
         playerNumber: {
             default: null,
-            type: Number
+            type: Number,
         },
         playerName: {
             default: null,
-            type: String
+            type: String,
         },
         placeGeoJson: {
             default: null,
-            type: Object
+            type: Object,
         },
         multiplayer: {
             default: false,
-            type: Boolean
+            type: Boolean,
         },
         time: {
             default: 0,
-            type: Number
+            type: Number,
         },
         difficulty: {
             default: 2000,
-            type: Number
+            type: Number,
         },
         bboxObj: {
             default: null,
-            type: Array
+            type: Array,
         },
         roundsPredefined: {
             default: null,
-            type: Array
+            type: Array,
         },
         modeSelected: {
             default: GAME_MODE.CLASSIC,
-            type: String
+            type: String,
         },
         panControl: {
             default: true,
-            type: Boolean
+            type: Boolean,
         },
         zoomControl: {
             default: true,
-            type: Boolean
+            type: Boolean,
         },
         moveControl: {
             default: true,
-            type: Boolean
+            type: Boolean,
         },
         timeAttackSelected: {
             default: false,
-            type: Boolean
+            type: Boolean,
         },
         countdown: {
             default: 0,
-            type: Number
+            type: Number,
         },
         scoreMode: {
             default: SCORE_MODE.NORMAL,
-            type: String
+            type: String,
         },
         areaParams: {
-            type: Object
+            type: Object,
         },
         mapDetails: {
             type: Object,
             required: false,
-            default: undefined
+            default: undefined,
         },
         nbRoundSelected: {
             type: Number,
             required: false,
-            default: 5
+            default: 5,
         },
         guessedLeaderboard: {
             default: true,
-            type: Boolean
+            type: Boolean,
         },
         scoreLeaderboard: {
             default: true,
-            type: Boolean
-        }
+            type: Boolean,
+        },
     },
     data() {
         return {
@@ -275,7 +275,7 @@ export default {
             streetViewService: null,
             leaderboard: [],
             leaderboardShown: this.guessedLeaderboard || this.scoreLeaderboard,
-            printMapFull: false
+            printMapFull: false,
         };
     },
     computed: {
@@ -311,7 +311,7 @@ export default {
         },
         countdownPercentage() {
             return (this.remainingTime * 100) / this.timeCountdown;
-        }
+        },
     },
     async mounted() {
         if (
@@ -331,12 +331,12 @@ export default {
             this.streetViewService = new StreetViewService(
                 {
                     allPanorama: this.allPanorama,
-                    optimiseStreetView: this.optimiseStreetView
+                    optimiseStreetView: this.optimiseStreetView,
                 },
                 {
                     mode: this.mode,
                     areaParams: this.areaParams,
-                    areasJson: this.areasJson
+                    areasJson: this.areasJson,
                 },
                 this.placeGeoJson,
                 this.roundsPredefined
@@ -384,7 +384,7 @@ export default {
                                     0,
                                 name: player[1],
                                 id: player[0],
-                                guessed: !!snapshot.val()?.guess?.[player[0]]
+                                guessed: !!snapshot.val()?.guess?.[player[0]],
                             };
                         });
                     } else if (this.guessedLeaderboard) {
@@ -394,7 +394,7 @@ export default {
                             return {
                                 name: player[1],
                                 guessed: !!snapshot.val()?.guess?.[player[0]],
-                                id: player[0]
+                                id: player[0],
                             };
                         });
                     }
@@ -534,7 +534,7 @@ export default {
                     longitude: this.randomLatLng.lng(),
                     roundInfo: roundInfo,
                     ...(area && { area }),
-                    warning
+                    warning,
                 });
             }
         },
@@ -545,7 +545,7 @@ export default {
                     location: this.randomLatLng,
                     preference: 'nearest',
                     radius: 50,
-                    source: this.allPanorama ? 'default' : 'outdoor'
+                    source: this.allPanorama ? 'default' : 'outdoor',
                 },
                 this.setPosition
             );
@@ -562,7 +562,7 @@ export default {
                 scrollwheel: this.zoomControl,
                 disableDoubleClickZoom: !this.zoomControl,
                 linksControl: this.moveControl,
-                clickToGo: this.moveControl
+                clickToGo: this.moveControl,
             });
             // Remove google streetview link
             if (document.querySelector('#street-view a[href^="https://maps"]'))
@@ -603,7 +603,7 @@ export default {
                 this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,
-                pitch: 0
+                pitch: 0,
             });
 
             this.panorama.setZoom(0);
@@ -775,8 +775,8 @@ export default {
         },
         onUserEventPanoramaMouse(e) {
             if (!this.panControl) e.stopPropagation();
-        }
-    }
+        },
+    },
 };
 </script>
 

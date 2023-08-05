@@ -96,25 +96,25 @@ import HeaderAlert from './HeaderAlert.vue';
 export default {
     components: {
         About,
-        HeaderAlert
+        HeaderAlert,
     },
     data() {
         return {
             aboutDialog: false,
             languages,
-            menuMobile: false
+            menuMobile: false,
         };
     },
     computed: {
         ...mapState({
-            streamerMode: (state) => state.homeStore.streamerMode
+            streamerMode: (state) => state.homeStore.streamerMode,
         }),
         demoMode() {
             return !!import.meta.env.VITE_APP_DEMO_MODE;
         },
         darkTheme() {
             return this.$vuetify.theme.dark;
-        }
+        },
     },
     methods: {
         ...mapActions(['setStreamerMode']),
@@ -133,8 +133,8 @@ export default {
         changeTheme(dark) {
             this.$vuetify.theme.dark = dark;
             localStorage.setItem('darkTheme', dark);
-        }
-    }
+        },
+    },
 };
 </script>
 <style lang="scss" scoped>

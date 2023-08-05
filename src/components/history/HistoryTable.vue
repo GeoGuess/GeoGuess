@@ -124,60 +124,60 @@ export default {
     components: {
         HistoryMapClassic,
         HistoryMapArea,
-        HistoryTimeDetail
+        HistoryTimeDetail,
     },
     data() {
         return {
             expanded: [history[history.length - 1]],
             dialog: false,
             url: '',
-            search: ''
+            search: '',
         };
     },
     computed: {
         ...mapState({
-            history: (state) => state.homeStore.history
+            history: (state) => state.homeStore.history,
         }),
         headers() {
             return [
                 {
                     text: this.$t('History.date'),
-                    value: 'dateString'
+                    value: 'dateString',
                 },
                 {
                     text: this.$t('History.mapName'),
                     value: 'mapName',
-                    export: true
+                    export: true,
                 },
                 {
                     text: this.$t('History.mode'),
                     value: 'gameMode',
-                    export: true
+                    export: true,
                 },
                 {
                     text: this.$t('History.rank'),
                     value: 'rank',
-                    export: true
+                    export: true,
                 },
                 {
                     text: this.$t('History.time'),
                     value: 'timeString',
-                    export: true
+                    export: true,
                 },
                 {
                     text: this.$t('History.nbRound'),
                     value: 'nbRound',
-                    export: true
+                    export: true,
                 },
                 {
                     text: this.$t('History.distance'),
                     value: 'score',
-                    export: true
+                    export: true,
                 },
                 {
                     text: this.$t('History.points'),
                     value: 'points',
-                    export: true
+                    export: true,
                 },
                 {
                     text: Array(10)
@@ -194,17 +194,17 @@ export default {
                             .map((r) => `${r.position.lat},${r.position.lng}`)
                             .join(','),
                     export: true,
-                    hide: true
+                    hide: true,
                 },
                 {
                     text: this.$t('History.actions'),
                     value: 'actions',
-                    sortable: false
+                    sortable: false,
                 },
                 {
                     text: '',
-                    value: 'data-table-expand'
-                }
+                    value: 'data-table-expand',
+                },
             ];
         },
         items() {
@@ -222,9 +222,9 @@ export default {
                     g.timeLimitation === 0
                         ? this.$t('CardRoomTime.infinite')
                         : g.timeLimitation / 60,
-                mapName: g.mapDetails ? g.mapDetails.name : ''
+                mapName: g.mapDetails ? g.mapDetails.name : '',
             }));
-        }
+        },
     },
     mounted() {
         this.loadHistory();
@@ -287,7 +287,7 @@ export default {
                         item.timeLimitation,
                         item.rounds.map(
                             (r) => r.position.lat + ',' + r.position.lng
-                        )
+                        ),
                     ]
                         .flat()
                         .join(',')
@@ -341,8 +341,8 @@ export default {
                 'export_' + new Date().toISOString() + '.csv',
                 'text/csv'
             );
-        }
-    }
+        },
+    },
 };
 </script>
 

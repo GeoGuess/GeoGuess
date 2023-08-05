@@ -22,8 +22,8 @@ Vue.use(VueClipboard);
 Vue.use(GmapVue, {
     load: {
         key: import.meta.env.VITE_APP_API_KEY,
-        language: localStorage.getItem('language')
-    }
+        language: localStorage.getItem('language'),
+    },
 });
 Vue.config.productionTip = false;
 
@@ -38,7 +38,7 @@ const updateSizes = (obj = {}) => {
 };
 
 Object.defineProperty(Vue.prototype, '$viewport', {
-    value: Vue.observable(updateSizes())
+    value: Vue.observable(updateSizes()),
 });
 
 window.addEventListener('resize', () => {
@@ -61,7 +61,7 @@ const firebaseConfig = {
         import.meta.env.VITE_APP_FIREBASE_PROJECT_ID + '.appspot.com',
     messagingSenderId: import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: import.meta.env.VITE_APP_FIREBASE_APP_ID,
-    measurementId: import.meta.env.VITE_APP_FIREBASE_MEASUREMENT_ID
+    measurementId: import.meta.env.VITE_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -74,5 +74,5 @@ new Vue({
     i18n,
     store,
     axios,
-    render: (h) => h(App)
+    render: (h) => h(App),
 }).$mount('#app');

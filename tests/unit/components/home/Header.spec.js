@@ -19,16 +19,16 @@ describe('Header.vue', () => {
                     actions: homeStore.actions,
                     mutations: {
                         [MutationTypes.HOME_SET_STREAMER_MODE]:
-                            setStreamerModeStore
-                    }
-                }
-            }
+                            setStreamerModeStore,
+                    },
+                },
+            },
         });
     });
     it('open dialog about', () => {
         const wrapper = mount(Header, {
             ...args,
-            store
+            store,
         });
 
         const aboutBtn = wrapper.find('#aboutBtn');
@@ -40,7 +40,7 @@ describe('Header.vue', () => {
     it('switchLanguage method', () => {
         const wrapper = shallowMount(Header, {
             ...args,
-            store
+            store,
         });
         expect(localStorage.getItem('language')).toEqual('en');
         wrapper.vm.switchLanguage('fr');

@@ -8,7 +8,7 @@
                 gestureHandling: 'greedy',
                 styles: $vuetify.theme.dark
                     ? $vuetify.theme.themes.dark.gmap
-                    : $vuetify.theme.themes.light.gmap
+                    : $vuetify.theme.themes.light.gmap,
             }"
             :zoom="0"
             map-type-id="roadmap"
@@ -77,14 +77,14 @@ import { STROKE_COLORS } from '../../../constants';
 export default {
     name: 'HistoryMapArea',
     components: {
-        FlagIcon
+        FlagIcon,
     },
     props: ['item', 'isCountry'],
     data() {
         return {
-            strokeColors: STROKE_COLORS
+            strokeColors: STROKE_COLORS,
         };
-    }
+    },
 };
 </script>
 <style lang="scss" scoped>

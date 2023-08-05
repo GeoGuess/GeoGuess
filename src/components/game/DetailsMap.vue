@@ -32,8 +32,8 @@ export default {
     methods: {
         validURL(url) {
             return validURL(url);
-        }
-    }
+        },
+    },
 };
 </script>
 

@@ -2,7 +2,7 @@ jest.mock('@/plugins/axios', () => {
     const responseTls = {
         geometry: {
             coordinates: [1.4455249, 43.5271458],
-            type: 'Point'
+            type: 'Point',
         },
         type: 'Feature',
         properties: {
@@ -14,8 +14,8 @@ jest.mock('@/plugins/axios', () => {
             osm_value: 'village',
             postcode: '31320',
             name: 'Vieille-Toulouse',
-            state: 'Occitania'
-        }
+            state: 'Occitania',
+        },
     };
     const reponseNte = {
         type: 'FeatureCollection',
@@ -34,12 +34,12 @@ jest.mock('@/plugins/axios', () => {
                     category: 'boundary',
                     type: 'administrative',
                     importance: 0.7430886552278881,
-                    icon: 'https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png'
+                    icon: 'https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png',
                 },
                 bbox: [-1.6418115, 47.1805856, -1.4788443, 47.2958583],
-                geometry: { type: 'Polygon', coordinates: [] }
-            }
-        ]
+                geometry: { type: 'Polygon', coordinates: [] },
+            },
+        ],
     };
     return {
         get: jest.fn((url) => {
@@ -59,9 +59,9 @@ jest.mock('@/plugins/axios', () => {
 
             return Promise.resolve({
                 status: 200,
-                data
+                data,
             });
-        })
+        }),
     };
 });
 
@@ -78,7 +78,7 @@ describe('homeStore.js', () => {
         const state = homeStore.state();
         expect(state.map.geojson).toBeNull();
         const geojson = {
-            type: 'Point'
+            type: 'Point',
         };
         homeStore.mutations[MutationTypes.HOME_SET_GEOJSON](state, geojson);
 
@@ -86,7 +86,7 @@ describe('homeStore.js', () => {
 
         expect(state.listMaps).toHaveLength(0);
         homeStore.mutations[MutationTypes.HOME_SET_LISTS](state, {
-            maps: [{ name: 'Hello' }]
+            maps: [{ name: 'Hello' }],
         });
         expect(state.listMaps).toHaveLength(1);
 
@@ -102,9 +102,9 @@ describe('homeStore.js', () => {
         map.geojson = {
             geometry: {
                 coordinates: [1.4442469, 43.6044622],
-                type: 'Point'
+                type: 'Point',
             },
-            type: 'Feature'
+            type: 'Feature',
         };
         expect(homeStore.getters.isValidGeoJson({ map })).toEqual(true);
     });
@@ -112,7 +112,7 @@ describe('homeStore.js', () => {
         const map = new GeoMapCustom();
 
         map.geojson = {
-            type: 'FeatureCollection'
+            type: 'FeatureCollection',
         };
 
         expect(homeStore.getters.isValidGeoJson({ map })).toEqual(false);
@@ -126,11 +126,11 @@ describe('homeStore.js', () => {
                 {
                     geometry: {
                         coordinates: [1.4442469, 43.6044622],
-                        type: 'Circle'
+                        type: 'Circle',
                     },
-                    type: 'Feature'
-                }
-            ]
+                    type: 'Feature',
+                },
+            ],
         };
 
         expect(homeStore.getters.isValidGeoJson({ map })).toEqual(false);
@@ -144,11 +144,11 @@ describe('homeStore.js', () => {
                 {
                     geometry: {
                         coordinates: [1.4442469, 43.6044622],
-                        type: 'Point'
+                        type: 'Point',
                     },
-                    type: 'Feature'
-                }
-            ]
+                    type: 'Feature',
+                },
+            ],
         };
         const state = { map };
         expect(homeStore.getters.isValidGeoJson(state)).toEqual(true);
@@ -171,24 +171,24 @@ describe('homeStore.js', () => {
                     mapDetails: {
                         id: 1,
                         name: 'map1',
-                        type: 'default'
+                        type: 'default',
                     },
-                    points: 12
+                    points: 12,
                 },
                 {
                     date: '2020-06-14T15:10:14.579Z',
-                    points: 122
+                    points: 122,
                 },
                 {
                     date: '2020-06-14T15:10:14.579Z',
                     mapDetails: {
                         id: 1,
                         name: 'map1',
-                        type: 'default'
+                        type: 'default',
                     },
-                    points: 102
-                }
-            ]
+                    points: 102,
+                },
+            ],
         };
 
         expect(
@@ -205,13 +205,13 @@ describe('homeStore.js', () => {
                         osmId: 123,
                         osmType: 'relation',
                         name: 'map1',
-                        type: 'osm'
+                        type: 'osm',
                     },
-                    points: 12
+                    points: 12,
                 },
                 {
                     date: '2020-06-14T15:10:14.579Z',
-                    points: 122
+                    points: 122,
                 },
                 {
                     date: '2020-06-14T15:10:14.579Z',
@@ -219,9 +219,9 @@ describe('homeStore.js', () => {
                         osmId: 123,
                         osmType: 'relation',
                         name: 'map1',
-                        type: 'osm'
+                        type: 'osm',
                     },
-                    points: 102
+                    points: 102,
                 },
                 {
                     date: '2020-06-14T15:10:14.579Z',
@@ -229,19 +229,19 @@ describe('homeStore.js', () => {
                         osmId: 123,
                         osmType: 'relation',
                         name: 'map1',
-                        type: 'osm'
+                        type: 'osm',
                     },
                     points: 999,
-                    nbRound: 1
-                }
-            ]
+                    nbRound: 1,
+                },
+            ],
         };
 
         expect(
             homeStore.getters.getMaxScoreOsm(state)({
                 osmId: 123,
                 osmType: 'relation',
-                type: 'osm'
+                type: 'osm',
             })
         ).toEqual(102);
     });

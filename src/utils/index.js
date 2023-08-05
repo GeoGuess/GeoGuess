@@ -159,7 +159,7 @@ export function getAreaCodeNameFromLatLng(latLng, areaParams) {
             : {
                   zoom: 5,
                   addressdetails: 1,
-                  extratags: 1
+                  extratags: 1,
               };
 
     return axios
@@ -205,11 +205,11 @@ export function getSelectedPos(selectedPos, gameMode) {
         case GAME_MODE.CLASSIC:
             return {
                 latitude: selectedPos.lat(),
-                longitude: selectedPos.lng()
+                longitude: selectedPos.lng(),
             };
         default:
             return {
-                area: selectedPos
+                area: selectedPos,
             };
     }
 }

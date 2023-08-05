@@ -5,7 +5,7 @@ export default {
     state: () => ({
         urlAreas: null,
         areas: null,
-        loadingAreas: false
+        loadingAreas: false,
     }),
     mutations: {
         [MutationTypes.GAME_SET_AREAS](state, geojson) {
@@ -17,13 +17,13 @@ export default {
         [MutationTypes.GAME_SET_URL_AREAS](state, urlAreas) {
             state.urlAreas = urlAreas;
             state.areas = null;
-        }
+        },
     },
 
     getters: {
         areasJson(state) {
             return state.areas;
-        }
+        },
     },
 
     actions: {
@@ -54,6 +54,6 @@ export default {
                 });
 
             commit(MutationTypes.GAME_SET_AREAS, geojson);
-        }
-    }
+        },
+    },
 };

@@ -3,27 +3,26 @@ import VueI18n from 'vue-i18n';
 
 // Load all modules.
 export function loadTranslations() {
-  if (import.meta.env.MODE === 'test') {
-    return {};
-  }
+    if (import.meta.env.MODE === 'test') {
+        return {};
+    }
 
-  const context = import.meta.globEager('./locale/*.json');
+    const context = import.meta.globEager('./locale/*.json');
 
-  return Object.keys(context)
-    .map((key) => ({ key, name: key.match(/\/([a-z_]+)\.json$/i)[1] }))
-    .reduce(
-      (modules, { key, name }) => ({
-        ...modules,
-        [name]: context[key],
-      }),
-      {}
-    );
+    return Object.keys(context)
+        .map((key) => ({ key, name: key.match(/\/([a-z_]+)\.json$/i)[1] }))
+        .reduce(
+            (modules, { key, name }) => ({
+                ...modules,
+                [name]: context[key],
+            }),
+            {}
+        );
 }
 
 export const translations = loadTranslations();
 
 Vue.use(VueI18n);
-
 
 export const RTL_LANGUAGES = ['he'];
 
@@ -31,7 +30,7 @@ export const languages = Object.keys(translations).map((translation) => ({
     text: new Intl.DisplayNames([translation], { type: 'language' }).of(
         translation
     ),
-    value: translation
+    value: translation,
 }));
 
 export function checkLanguage(language) {
@@ -55,7 +54,7 @@ const locale =
 const i18n = new VueI18n({
     locale: locale,
     fallbackLocale: 'en',
-    messages: translations
+    messages: translations,
 });
 
 Vue.prototype.i18n = i18n;

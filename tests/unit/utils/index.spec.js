@@ -152,52 +152,55 @@ describe('utils/index.js', () => {
         expect(res2).toBeNull();
     });
 
-     it('getAreaCodeNameFromLatLng: should return area code where need fallback', async () => {
+    it('getAreaCodeNameFromLatLng: should return area code where need fallback', async () => {
         const gps = {
             lat: () => 19.250617647058824,
-            lng: () => -99.07219999999
+            lng: () => -99.07219999999,
         };
         const res = await getAreaCodeNameFromLatLng(gps, {
-            "bbox": [-33.8689056,5.2693306,-73.9830625,-28.6289646],
-            "urlArea": "https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/public/geojson/areas/mexico_states.geojson",
-            "type": "nominatim",
-            "pathKey": "name",
-            "nominatimResultPath": "address.state",
-            "nominatimFallbackResultPath": "display_name",
-            "nominatimQueryParams": {
-                "zoom": "5",
-                "accept-language": "en"
-            }
+            bbox: [-33.8689056, 5.2693306, -73.9830625, -28.6289646],
+            urlArea:
+                'https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/public/geojson/areas/mexico_states.geojson',
+            type: 'nominatim',
+            pathKey: 'name',
+            nominatimResultPath: 'address.state',
+            nominatimFallbackResultPath: 'display_name',
+            nominatimQueryParams: {
+                zoom: '5',
+                'accept-language': 'en',
+            },
         });
         expect(res).toContain('Mexico');
     });
-    
+
     it('getAreaCodeNameFromLatLng: should return null if not value', async () => {
         const gps = {
             lat: () => 19.250617647058824,
-            lng: () => -909.07219999999
+            lng: () => -909.07219999999,
         };
         const res = await getAreaCodeNameFromLatLng(gps, {
-            "bbox": [-33.8689056,5.2693306,-73.9830625,-28.6289646],
-            "urlArea": "https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/public/geojson/areas/mexico_states.geojson",
-            "type": "nominatim",
-            "pathKey": "name",
-            "nominatimResultPath": "address.state",
-            "nominatimQueryParams": {
-                "zoom": "5",
-                "accept-language": "es"
-            }
+            bbox: [-33.8689056, 5.2693306, -73.9830625, -28.6289646],
+            urlArea:
+                'https://raw.githubusercontent.com/GeoGuess/GeoGuess-Maps/main/public/geojson/areas/mexico_states.geojson',
+            type: 'nominatim',
+            pathKey: 'name',
+            nominatimResultPath: 'address.state',
+            nominatimQueryParams: {
+                zoom: '5',
+                'accept-language': 'es',
+            },
         });
         expect(res).toBeNull();
     });
 
-    
-    it('getSelectedPos', ()=>{
-        expect(getSelectedPos( {lat:()=> 0, lng:()=>1}, 'classic')).toEqual({latitude: 0, longitude:1});
-        expect(getSelectedPos('FR','country')).toEqual({area: 'FR'});
+    it('getSelectedPos', () => {
+        expect(
+            getSelectedPos({ lat: () => 0, lng: () => 1 }, 'classic')
+        ).toEqual({ latitude: 0, longitude: 1 });
+        expect(getSelectedPos('FR', 'country')).toEqual({ area: 'FR' });
     });
 
-    it('getValueInObjectWithPath: should return undefined', ()=>{
+    it('getValueInObjectWithPath: should return undefined', () => {
         const object = {
             a: {
                 b: {
@@ -208,9 +211,9 @@ describe('utils/index.js', () => {
 
         expect(getValueInObjectWithPath(object, 'a.a.c')).toBeUndefined();
     });
-    
-    it('getValueInObjectWithPath: should return value', ()=>{
-          const object = {
+
+    it('getValueInObjectWithPath: should return value', () => {
+        const object = {
             a: {
                 b: {
                     c: {
@@ -233,8 +236,9 @@ describe('utils/index.js', () => {
                 },
             },
         };
-        
-        expect(getValueInObjectWithPath(object, 'a.b.c.d.e.f.g.h.i.j.k')).toEqual('Hello');
+
+        expect(
+            getValueInObjectWithPath(object, 'a.b.c.d.e.f.g.h.i.j.k')
+        ).toEqual('Hello');
     });
-    
 });

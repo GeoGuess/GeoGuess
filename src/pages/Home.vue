@@ -40,10 +40,10 @@ export default {
     components: {
         ContentPage,
         SearchBox,
-        MapsContainer
+        MapsContainer,
     },
     props: {
-        dialogCustomOpen: Boolean
+        dialogCustomOpen: Boolean,
     },
     mounted() {
         if (this.$route.params && this.$route.params.partyParams) {
@@ -67,12 +67,12 @@ export default {
                         modeSelected: GAME_MODE.CLASSIC,
                         time: timeLimitation,
                         difficulty: difficulty,
-                        roundsPredefined: rounds
-                    }
+                        roundsPredefined: rounds,
+                    },
                 });
             }
         }
-    }
+    },
 };
 </script>
 

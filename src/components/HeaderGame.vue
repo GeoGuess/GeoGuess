@@ -50,7 +50,7 @@
                     $t('HeaderGame.kmaway', {
                         value: new Intl.NumberFormat($i18n.locale).format(
                             distance / 1000
-                        )
+                        ),
                     })
                 }}</span>
             </div>
@@ -71,7 +71,7 @@ import DialogMessage from '../components/DialogMessage.vue';
 
 export default {
     components: {
-        DialogMessage
+        DialogMessage,
     },
     props: [
         'distance',
@@ -81,31 +81,31 @@ export default {
         'roomName',
         'nbRound',
         'guessString',
-        'leaderboardShown'
+        'leaderboardShown',
     ],
     data() {
         return {
             scoreboard: false,
             startedAt: null,
             timerText: '',
-            intervalFunction: null
+            intervalFunction: null,
         };
     },
     watch: {
         round: function () {
             this.startTimer();
-        }
+        },
     },
     computed: {
         ...mapState({
-            streamerMode: (state) => state.homeStore.streamerMode
+            streamerMode: (state) => state.homeStore.streamerMode,
         }),
         countdownText() {
             return getCountdownText(this.remainingTime);
         },
         isDistanceVisible() {
             return this.mode !== GAME_MODE.COUNTRY;
-        }
+        },
     },
     methods: {
         startTimer() {
@@ -124,8 +124,8 @@ export default {
             if (this.intervalFunction) {
                 clearInterval(this.intervalFunction);
             }
-        }
-    }
+        },
+    },
 };
 </script>
 

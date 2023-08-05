@@ -49,23 +49,23 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
         DialogRoom,
-        DialogCustomMap
+        DialogCustomMap,
     },
     props: {
-        dialogCustomOpen: Boolean
+        dialogCustomOpen: Boolean,
     },
     data() {
         return {
-            dialogCustom: this.dialogCustomOpen
+            dialogCustom: this.dialogCustomOpen,
         };
     },
     computed: {
-        ...mapGetters(['nbPlaceVisits'])
+        ...mapGetters(['nbPlaceVisits']),
     },
     watch: {
         dialogCustomOpen(v) {
             this.dialogCustom = v;
-        }
+        },
     },
     mounted() {
         this.loadHistory();
@@ -80,8 +80,8 @@ export default {
             this.dialogCustom = !this.dialogCustom;
 
             this.$router.push(this.dialogCustom ? '/custom' : '/');
-        }
-    }
+        },
+    },
 };
 </script>
 <style lang="scss">

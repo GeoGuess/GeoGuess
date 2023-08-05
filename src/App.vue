@@ -31,7 +31,7 @@ export default {
         return {
             refreshing: false,
             registration: null,
-            updateAvailable: false
+            updateAvailable: false,
         };
     },
     created() {
@@ -56,8 +56,8 @@ export default {
             this.updateAvailable = false;
             if (!this.registration || !this.registration.waiting) return;
             this.registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-        }
-    }
+        },
+    },
 };
 </script>
 

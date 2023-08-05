@@ -74,7 +74,7 @@ export default {
     components: {
         ContentPage,
         FlagIcon,
-        WorldCountries: () => import('../components/shared/WorldCountries.vue')
+        WorldCountries: () => import('../components/shared/WorldCountries.vue'),
     },
     data() {
         return {
@@ -84,12 +84,12 @@ export default {
                 gold: '#fcc200',
                 silver: '#b8b8b8',
                 bronze: '#CC8E34',
-                none: ''
+                none: '',
             },
             headers: [
                 {
                     text: 'Location',
-                    value: 'name'
+                    value: 'name',
                 },
                 {
                     text: 'Medal',
@@ -100,14 +100,14 @@ export default {
                         const bkey = keys.indexOf(b || 'none');
                         return akey - bkey;
                     },
-                    groupable: true
+                    groupable: true,
                 },
                 {
                     text: 'Max Score',
-                    value: 'maxScore'
-                }
+                    value: 'maxScore',
+                },
             ],
-            medals: COUNTRIES_MEDALS_DATA
+            medals: COUNTRIES_MEDALS_DATA,
         };
     },
     computed: {
@@ -119,7 +119,7 @@ export default {
                     ...medal,
                     name: this.$countryNameLocale(medal.iso_a2),
                     maxScore,
-                    medal: getMedals(maxScore)
+                    medal: getMedals(maxScore),
                 };
             });
         },
@@ -139,7 +139,7 @@ export default {
                 },
                 {}
             );
-        }
+        },
     },
     mounted() {
         this.loadHistory();
@@ -157,8 +157,8 @@ export default {
             if (country && country.osmId) {
                 this.onClickRow({ osmId: country.osmId });
             }
-        }
-    }
+        },
+    },
 };
 </script>
 

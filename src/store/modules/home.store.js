@@ -2,14 +2,14 @@ import axios from '../../plugins/axios';
 import {
     getGeoJsonFromUrl,
     getLocateString,
-    isGeoJSONValid
+    isGeoJSONValid,
 } from '../../utils';
 import i18n from '../../lang';
 import {
     GeoMap,
     GeoMapCustom,
     GeoMapOSM,
-    GeoMapType
+    GeoMapType,
 } from '../../models/GeoMap';
 import IndexedDBService from '../../plugins/IndexedDBService';
 import * as MutationTypes from '../mutation-types';
@@ -23,7 +23,7 @@ export default {
         listAreas: [],
         customsMaps: [],
         history: [],
-        streamerMode: localStorage.getItem('streamerMode') === 'true'
+        streamerMode: localStorage.getItem('streamerMode') === 'true',
     }),
     mutations: {
         [MutationTypes.HOME_SET_GEOJSON](state, geojson) {
@@ -58,7 +58,7 @@ export default {
         },
         [MutationTypes.HOME_SET_GEOJSON_ERROR](state, error) {
             state.errorMessage = error;
-        }
+        },
     },
 
     getters: {
@@ -99,7 +99,7 @@ export default {
                     map,
                     'description',
                     i18n.locale
-                )
+                ),
             }));
         },
         nbPlaceVisits(state) {
@@ -144,7 +144,7 @@ export default {
                     },
                     0
                 );
-            }
+            },
     },
 
     actions: {
@@ -156,7 +156,7 @@ export default {
                     title: 'Home.streamerModeActivate',
                     subtitle: 'Home.streamerModeDetails',
                     color: 'streamerMode',
-                    icon: 'mdi-twitch'
+                    icon: 'mdi-twitch',
                 },
                 { root: true }
             );
@@ -238,7 +238,7 @@ export default {
                 'alertStore/setAlert',
                 {
                     title: 'Home.mapSavedAlert.title',
-                    subtitle: 'Home.mapSavedAlert.subtitle'
+                    subtitle: 'Home.mapSavedAlert.subtitle',
                 },
                 { root: true }
             );
@@ -257,8 +257,8 @@ export default {
                         'https://maps.geoguess.games/maps.json',
                     {
                         cache: {
-                            maxAge: 1000
-                        }
+                            maxAge: 1000,
+                        },
                     }
                 )
                 .then((res) => res.data);
@@ -278,6 +278,6 @@ export default {
                 ? JSON.parse(localStorage.getItem('history'))
                 : [];
             commit(MutationTypes.HOME_SET_HISTORY, history);
-        }
-    }
+        },
+    },
 };

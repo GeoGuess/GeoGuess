@@ -5,7 +5,7 @@ import { getLocateString } from '../utils';
 export const GeoMapType = {
     Default: 'default',
     Custom: 'custom',
-    OSM: 'osm'
+    OSM: 'osm',
 };
 
 export class GeoMap {
@@ -23,18 +23,21 @@ export class GeoMap {
     }
 
     get imageSrc() {
-        return this.imageUrl ||
-            `https://source.unsplash.com/500x230/weekly?${encodeURI(getLocateString(this, 'name', 'en'))}`;
+        return (
+            this.imageUrl ||
+            `https://source.unsplash.com/500x230/weekly?${encodeURI(
+                getLocateString(this, 'name', 'en')
+            )}`
+        );
     }
-    
-    get details(){
+
+    get details() {
         return {
             type: this.type,
             id: this.id,
             name: this.nameLocate,
         };
     }
-
 }
 
 export class GeoMapOSM extends GeoMap {
@@ -47,7 +50,7 @@ export class GeoMapOSM extends GeoMap {
         this.type = GeoMapType.OSM;
     }
 
-    get details(){
+    get details() {
         return {
             type: this.type,
             osmType: this.osmType,

@@ -34,16 +34,16 @@ export default {
     props: {
         rounds: {
             type: Array,
-            required: true
+            required: true,
         },
         playerName: {
             type: String,
-            required: false
+            required: false,
         },
         index: {
             type: Number,
-            required: false
-        }
+            required: false,
+        },
     },
     methods: {
         durationToText(time) {
@@ -54,8 +54,8 @@ export default {
                 (acc, { timePassed }) => acc + Math.floor(timePassed / 1000),
                 0
             );
-        }
-    }
+        },
+    },
 };
 </script>
 

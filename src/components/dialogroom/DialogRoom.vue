@@ -29,7 +29,7 @@ export default {
         roomName: CardRoomName,
         settingsMap: CardRoomMap,
         settings: CardRoomSettings,
-        playerName: CardRoomPlayerName
+        playerName: CardRoomPlayerName,
     },
     computed: {
         ...mapState('settingsStore', [
@@ -39,8 +39,8 @@ export default {
             'loadingGeoJson',
             'placeGeoJson',
             'room',
-            'roomName'
-        ])
+            'roomName',
+        ]),
     },
     mounted() {
         if (this.$route.params.roomName) {
@@ -53,8 +53,8 @@ export default {
         ...mapActions(['loadPlaceGeoJSON']),
         cancel() {
             this.closeDialogRoom();
-        }
-    }
+        },
+    },
 };
 </script>
 <style lang="scss">

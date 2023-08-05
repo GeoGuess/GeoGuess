@@ -61,7 +61,7 @@ export default {
         name:
             localStorage.getItem('playerName')?.slice(0, 20) ||
             i18n.t('CardRoomPlayerName.anonymousPlayerName'),
-        invalidName: false
+        invalidName: false,
     }),
     mutations: {
         [MutationTypes.SETTINGS_SET_ROOM](state, roomName) {
@@ -104,14 +104,14 @@ export default {
                     // So that other player can't enter as the first player while the player decide the name and room size
                     state.room.child('playerName').update(
                         {
-                            player1: name
+                            player1: name,
                         },
                         (error) => {
                             if (!error) {
                                 // Put the timestamp the room is created so the expired rooms can be removed by cloud function
                                 state.room.update({
                                     createdAt:
-                                        firebase.database.ServerValue.TIMESTAMP
+                                        firebase.database.ServerValue.TIMESTAMP,
                                 });
                                 state.loadRoom = false;
                                 state.currentComponent = 'settingsMap';
@@ -144,7 +144,7 @@ export default {
 
             state.gameSettings = {
                 ...state.gameSettings,
-                ...settings
+                ...settings,
             };
         },
         [MutationTypes.SETTINGS_SET_DIFFICULTY](state, difficulty) {
@@ -183,13 +183,13 @@ export default {
             state.roomErrorMessage = null;
             state.players = [];
             state.gameSettings = new GameSettings();
-        }
+        },
     },
 
     getters: {
         areasJson(state) {
             return state.areas;
-        }
+        },
     },
 
     actions: {
@@ -267,8 +267,8 @@ export default {
                         bboxObj: bboxObj,
                         ...(rootState.homeStore.map
                             ? { mapDetails: rootState.homeStore.map.details }
-                            : undefined)
-                    }
+                            : undefined),
+                    },
                 });
                 dispatch('closeDialogRoom');
             } else {
@@ -277,7 +277,7 @@ export default {
                         ...state.gameSettings,
                         timeLimitation: state.gameSettings.time,
                         difficulty,
-                        ...(bboxObj && { bboxObj: bboxObj })
+                        ...(bboxObj && { bboxObj: bboxObj }),
                     },
                     (error) => {
                         if (!error) {
@@ -304,12 +304,12 @@ export default {
                     ...state.gameSettings,
                     difficulty: state.difficulty,
                     placeGeoJson: rootState.homeStore.map.geojson,
-                    bboxObj: state.bboxObj
+                    bboxObj: state.bboxObj,
                 };
                 // Set flag started
                 state.room.update({
                     size: state.players.length,
-                    started: true
+                    started: true,
                 });
                 dispatch('startGameMultiplayer', gameParams);
             } else {
@@ -339,7 +339,7 @@ export default {
                             .val(),
                         guessedLeaderboard: snapshot
                             .child('guessedLeaderboard')
-                            .val()
+                            .val(),
                     };
                     dispatch('startGameMultiplayer', gameParams);
                 });
@@ -355,11 +355,11 @@ export default {
                     playerName: state.name,
                     playerNumber: state.playerNumber,
                     placeGeoJson: rootState.homeStore.map.geojson,
-                    multiplayer: true
-                }
+                    multiplayer: true,
+                },
             });
 
             dispatch('closeDialogRoom', false);
-        }
-    }
+        },
+    },
 };

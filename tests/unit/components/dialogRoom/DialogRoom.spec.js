@@ -7,8 +7,6 @@ import appInit from '../../testutils/appInit';
 const args = appInit(createLocalVue());
 
 describe('DialogRoom.vue', () => {
-    
-
     let store;
     beforeEach(() => {
         store = new Vuex.Store({
@@ -17,16 +15,13 @@ describe('DialogRoom.vue', () => {
             },
         });
     });
-    
-    
-    it('render', () => {   
+
+    it('render', () => {
         const wrapper = shallowMount(DialogRoom, {
-                    ...args,
-                    store,
-                });
+            ...args,
+            store,
+        });
 
         expect(wrapper).toMatchSnapshot();
-
     });
-
 });
