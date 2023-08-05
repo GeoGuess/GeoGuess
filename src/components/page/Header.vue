@@ -9,7 +9,7 @@
                 />
                 <img
                     class="header__logo-min"
-                    src="/src/assets/icons/android-icon-72x72.png"
+                    src="/img/icons/android-icon-72x72.png"
                     alt="logo"
                 />
             </router-link>
