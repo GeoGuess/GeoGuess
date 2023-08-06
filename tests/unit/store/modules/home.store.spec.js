@@ -34,7 +34,7 @@ jest.mock('@/plugins/axios', () => {
                 case 'https://listmaps.gejson':
                     data = { maps: [], areas: [] };
                     break;
-                case 'https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1':
+                case 'https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1':
                     data = reponseNte;
                     break;
             }
@@ -232,7 +232,7 @@ describe('homeStore.js', () => {
             'Nantes'
         );
         expect(axios.get).not.toBeCalledWith(
-            `https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1`
+            `https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1`
         );
     });
 
@@ -243,7 +243,7 @@ describe('homeStore.js', () => {
             'Nantes'
         );
         expect(axios.get).toBeCalledWith(
-            `https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1`
+            `https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1`
         );
 
         expect(commit).toBeCalledWith(
