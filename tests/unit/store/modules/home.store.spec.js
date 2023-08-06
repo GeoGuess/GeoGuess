@@ -34,7 +34,7 @@ jest.mock('@/plugins/axios', () => {
                 case 'https://listmaps.gejson':
                     data = { maps: [], areas: [] };
                     break;
-                case 'https://nominatim.openstreetmap.org/search/nantes?format=geojson&limit=1&polygon_geojson=1':
+                case 'https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1':
                     data = reponseNte;
                     break;
             }
