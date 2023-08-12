@@ -65,10 +65,10 @@ jest.mock('@/plugins/axios', () => {
     };
 });
 
-import axios from '/src/plugins/axios';
+import axios from 'src/plugins/axios';
 import { GeoMapCustom } from '../../models/GeoMap.spec.js';
-import * as MutationTypes from '/src/store/mutation-types.js';
-import { default as homeStore } from '/src/store/modules/home.store';
+import * as MutationTypes from 'src/store/mutation-types.js';
+import { default as homeStore } from 'src/store/modules/home.store';
 
 describe('homeStore.js', () => {
     //

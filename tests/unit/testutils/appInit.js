@@ -5,9 +5,9 @@ import VueI18n from 'vue-i18n';
 import Router from 'vue-router';
 import Vuetify from 'vuetify';
 import en from 'vuetify/es5/locale/en';
-import enLocale from '@/lang/locale/en.json';
+import enLocale from 'src/lang/locale/en.json';
 import Vuex from 'vuex';
-import countryNamePlugin from '../../../src/plugins/countryNamePlugin';
+import countryNamePlugin from 'src/plugins/countryNamePlugin';
 
 global.File = class MockFile {
     constructor(parts, filename, properties) {
@@ -21,7 +21,6 @@ global.File = class MockFile {
         });
     }
 };
-
 
 export default function appInit(VueInstance, useRouter = true) {
     const updateSizes = (obj = {}) => {
@@ -44,8 +43,7 @@ export default function appInit(VueInstance, useRouter = true) {
     });
     Vue.use(countryNamePlugin);
 
-    if(useRouter)
-        VueInstance.use(Router);
+    if (useRouter) VueInstance.use(Router);
 
     VueInstance.use(VueI18n);
     VueInstance.use(Vuetify);
@@ -54,12 +52,12 @@ export default function appInit(VueInstance, useRouter = true) {
     return {
         Vue,
         localVue: VueInstance,
-        i18n:  new VueI18n({
+        i18n: new VueI18n({
             locale: 'en',
             fallbackLocale: 'en',
-            messages: {en: enLocale},
+            messages: { en: enLocale },
         }),
-        ...(useRouter && {router: new Router()}),
+        ...(useRouter && { router: new Router() }),
         vuetify: new Vuetify({
             lang: {
                 locales: { en },

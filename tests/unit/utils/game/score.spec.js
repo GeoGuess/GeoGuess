@@ -1,4 +1,4 @@
-const { getScore } = require('../../../../src/utils/game/score');
+import { getScore } from 'src/utils/game/score.js';
 
 describe('score.js', () => {
     it('getScore', () => {

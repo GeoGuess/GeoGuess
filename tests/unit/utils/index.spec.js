@@ -1,4 +1,4 @@
-const {
+import {
     validURL,
     isInGeoJSON,
     getCountdownText,
@@ -7,7 +7,7 @@ const {
     getAreaCodeNameFromLatLng,
     getSelectedPos,
     getValueInObjectWithPath,
-} = require('../../../src/utils');
+} from 'src/utils';
 
 describe('utils/index.js', () => {
     it('validURL', () => {

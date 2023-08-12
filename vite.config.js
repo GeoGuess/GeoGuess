@@ -10,6 +10,9 @@ const resolve = (file) => {
 };
 
 export default defineConfig({
+    test: {
+        globals: true,
+    },
     plugins: [
         vue(),
         eslintPlugin(),

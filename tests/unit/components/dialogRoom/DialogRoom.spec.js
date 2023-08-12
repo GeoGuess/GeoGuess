@@ -1,5 +1,5 @@
-import DialogRoom from '@/components/dialogroom/DialogRoom';
-import settingsStore from '@/store/modules/settings.store';
+import DialogRoom from 'src/components/dialogroom/DialogRoom.vue';
+import settingsStore from 'src/store/modules/settings.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import appInit from '../../testutils/appInit';

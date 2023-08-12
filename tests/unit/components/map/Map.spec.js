@@ -1,4 +1,4 @@
-import Map from '@/components/map/Map';
+import Map from 'src/components/map/Map.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
 import createGoogleMapsMock from 'jest-google-maps-mock';

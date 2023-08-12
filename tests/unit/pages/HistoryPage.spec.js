@@ -1,4 +1,4 @@
-import HistoryPage from '/src/pages/HistoryPage.vue';
+import HistoryPage from 'src/pages/HistoryPage.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../testutils/appInit';
 

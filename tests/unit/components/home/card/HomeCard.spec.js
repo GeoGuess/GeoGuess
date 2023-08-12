@@ -1,5 +1,5 @@
-import HomeCard from '@/components/home/card/HomeCard.vue';
-import { GeoMapCustom } from '@/models/GeoMap';
+import HomeCard from 'src/components/home/card/HomeCard.vue';
+import { GeoMapCustom } from 'src/models/GeoMap';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../../testutils/appInit';
 import Vuex from 'vuex';

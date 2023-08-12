@@ -8,6 +8,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "lint": "eslint .",
+    "test:unit": "cross-env NODE_OPTIONS=--unhandled-rejections=warn vitest",
     "test:e2e": "cypress run",
     "cypress": "cypress",
     "test": "npm run lint && npm run test:unit && npm run test:e2e",
@@ -24,6 +25,7 @@
     "dotenv": "^16.3.1",
     "firebase": "^8.10.1",
     "gmap-vue": "^3.5.4",
+    "jsdom": "^22.1.0",
     "random-position-in-polygon": "^1.0.6",
     "register-service-worker": "^1.7.2",
     "unplugin-vue-components": "^0.25.1",
@@ -52,6 +54,7 @@
     "prettier": "3.0.1",
     "react-is": "^18.2.0",
     "sass": "1.32",
+    "vitest": "^0.34.1",
     "vue-template-compiler": "^2.7.14"
   },
   "browserslist": [

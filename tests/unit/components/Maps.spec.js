@@ -1,4 +1,4 @@
-import Maps from '@/components/Maps';
+import Maps from 'src/components/Maps.vue';
 import { createLocalVue, mount } from '@vue/test-utils';
 import appInit from '../testutils/appInit';
 

@@ -67,9 +67,9 @@ jest.mock('@/plugins/axios', () => {
         post: jest.fn(),
     };
 });
-import CardRoomMap from '/src/components/dialogroom/card/CardRoomMap.vue';
-import axios from '/src/plugins/axios';
-import homeStore from '/src/store/modules/home.store';
+import CardRoomMap from 'src/components/dialogroom/card/CardRoomMap.vue';
+import axios from 'src/plugins/axios';
+import homeStore from 'src/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import VueAxios from 'vue-axios/dist/vue-axios.common.min';
 import Vuex from 'vuex';

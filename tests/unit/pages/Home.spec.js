@@ -1,4 +1,4 @@
-import Home from '@/pages/Home.vue';
+import Home from 'src/pages/Home.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../testutils/appInit';
 

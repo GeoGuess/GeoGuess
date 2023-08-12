@@ -1,4 +1,4 @@
-import App from '@/App';
+import App from 'src/App.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from './testutils/appInit';
 import { JSDOM } from 'jsdom';
