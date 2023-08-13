@@ -1,5 +1,5 @@
-import MapsContainer from 'src/components/home/MapsContainer.vue';
-import homeStore from 'src/store/modules/home.store';
+import MapsContainer from '/src/components/home/MapsContainer.vue';
+import homeStore from '/src/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import appInit from '../../testutils/appInit';
@@ -9,8 +9,8 @@ describe('MapsContainer', () => {
     let store, actions;
     beforeEach(() => {
         actions = {
-            getListMaps: jest.fn(),
-            getListMapsCustoms: jest.fn(),
+            getListMaps: vi.fn(),
+            getListMapsCustoms: vi.fn(),
         };
         store = new Vuex.Store({
             modules: {

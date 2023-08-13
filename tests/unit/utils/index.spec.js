@@ -7,7 +7,7 @@ import {
     getAreaCodeNameFromLatLng,
     getSelectedPos,
     getValueInObjectWithPath,
-} from 'src/utils';
+} from '/src/utils';
 
 describe('utils/index.js', () => {
     it('validURL', () => {

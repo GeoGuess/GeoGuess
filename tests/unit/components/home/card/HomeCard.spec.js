@@ -1,5 +1,5 @@
-import HomeCard from 'src/components/home/card/HomeCard.vue';
-import { GeoMapCustom } from 'src/models/GeoMap';
+import HomeCard from '/src/components/home/card/HomeCard.vue';
+import { GeoMapCustom } from '/src/models/GeoMap';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../../testutils/appInit';
 import Vuex from 'vuex';
@@ -48,7 +48,7 @@ describe('HomeCard.vue', () => {
 
     it('deleteMap', () => {
         const map = new GeoMapCustom();
-        const spy = jest.spyOn(map, 'delete');
+        const spy = vi.spyOn(map, 'delete');
         const wrapper = shallowMount(HomeCard, {
             ...args,
             store,

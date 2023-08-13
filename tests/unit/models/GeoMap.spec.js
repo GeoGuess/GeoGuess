@@ -1,4 +1,4 @@
-jest.mock('@/plugins/IndexedDBService', () => {
+vi.mock('@/plugins/IndexedDBService', () => {
     let list = [];
     return {
         addMap: (a) => {
@@ -14,8 +14,8 @@ jest.mock('@/plugins/IndexedDBService', () => {
         list,
     };
 });
-import { GeoMap, GeoMapCustom, GeoMapOSM } from 'src/models/GeoMap';
-import IndexedDBService from 'src/plugins/IndexedDBService';
+import { GeoMap, GeoMapCustom, GeoMapOSM } from '/src/models/GeoMap.js';
+import IndexedDBService from '/src/plugins/IndexedDBService';
 describe('GeoMap.js', () => {
     it('GeoMap nameLocate', () => {
         let gMap = new GeoMap();

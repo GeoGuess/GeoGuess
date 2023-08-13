@@ -1,5 +1,5 @@
 import { createLocalVue } from '@vue/test-utils';
-import countryNamePlugin from 'src/plugins/countryNamePlugin';
+import countryNamePlugin from '/src/plugins/countryNamePlugin';
 
 describe('countryNamePlugin.js', () => {
     const factory = () => {

@@ -1,4 +1,79 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DialogRoom.vue > render 1`] = `
+VueWrapper {
+  "_emitted": {
+    "hook:beforeCreate": [
+      [],
+    ],
+    "hook:beforeMount": [
+      [],
+    ],
+    "hook:created": [
+      [],
+    ],
+    "hook:mounted": [
+      [],
+    ],
+    "hook:renderTracked": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+    ],
+  },
+  "_emittedByOrder": [
+    {
+      "args": [],
+      "name": "hook:beforeCreate",
+    },
+    {
+      "args": [],
+      "name": "hook:created",
+    },
+    {
+      "args": [],
+      "name": "hook:beforeMount",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:mounted",
+    },
+  ],
+  "isFunctionalComponent": undefined,
+}
+`;
 
 exports[`DialogRoom.vue render 1`] = `
 <v-dialog-stub contentclass="dialog-room" opendelay="0" closedelay="0" openonclick="true" maxwidth="800" origin="center center" persistent="true" retainfocus="true" transition="dialog-transition">

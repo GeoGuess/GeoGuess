@@ -12,6 +12,7 @@ const resolve = (file) => {
 export default defineConfig({
     test: {
         globals: true,
+        environment: 'jsdom',
     },
     plugins: [
         vue(),

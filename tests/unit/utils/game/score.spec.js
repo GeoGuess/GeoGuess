@@ -1,4 +1,4 @@
-import { getScore } from 'src/utils/game/score.js';
+import { getScore } from '/src/utils/game/score.js';
 
 describe('score.js', () => {
     it('getScore', () => {

@@ -1,18 +1,18 @@
-import DialogCustomMap from 'src/components/home/DialogCustomMap.vue';
+import DialogCustomMap from '/src/components/home/DialogCustomMap.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
 
 import Vuex from 'vuex';
-import homeStore from 'src/store/modules/home.store';
+import homeStore from '/src/store/modules/home.store';
 
 const args = appInit(createLocalVue());
 describe('DialogCustomMap.vue', () => {
     let store, actions;
     beforeEach(() => {
         actions = {
-            loadGeoJsonFromUrl: jest.fn(),
-            setGeoJson: jest.fn(),
-            setGeoJsonString: jest.fn(),
+            loadGeoJsonFromUrl: vi.fn(),
+            setGeoJson: vi.fn(),
+            setGeoJsonString: vi.fn(),
         };
         store = new Vuex.Store({
             modules: {
@@ -57,7 +57,7 @@ describe('DialogCustomMap.vue', () => {
         });
 
         expect(wrapper.vm.rulesUrl[0]('sdsd')).toBeFalsy();
-        wrapper.vm.checkIfStringGeoJsonValid = jest.fn();
+        wrapper.vm.checkIfStringGeoJsonValid = vi.fn();
         expect(wrapper.vm.rulesTextArea[0]('abc')).toBeFalsy();
         expect(wrapper.vm.checkIfStringGeoJsonValid).toBeCalledWith('abc');
     });

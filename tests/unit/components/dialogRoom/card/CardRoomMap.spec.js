@@ -1,4 +1,4 @@
-jest.mock('@/plugins/axios', () => {
+vi.mock('@/plugins/axios', () => {
     const responseTls = {
         features: [
             {
@@ -58,18 +58,18 @@ jest.mock('@/plugins/axios', () => {
     };
 
     return {
-        get: jest.fn(() =>
+        get: vi.fn(() =>
             Promise.resolve({
                 status: 200,
                 data: responseTls,
             })
         ),
-        post: jest.fn(),
+        post: vi.fn(),
     };
 });
-import CardRoomMap from 'src/components/dialogroom/card/CardRoomMap.vue';
-import axios from 'src/plugins/axios';
-import homeStore from 'src/store/modules/home.store';
+import CardRoomMap from '/src/components/dialogroom/card/CardRoomMap.vue';
+import axios from '/src/plugins/axios';
+import homeStore from '/src/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import VueAxios from 'vue-axios/dist/vue-axios.common.min';
 import Vuex from 'vuex';
@@ -103,7 +103,7 @@ describe('CardRoomMap.vue', () => {
         expect(wrapper.exists('#search-input'));
         await wrapper.vm.$nextTick();
         expect(wrapper.vm.search).toEqual('Toulouse');
-        const spy = jest.spyOn(wrapper.vm.axios, 'get');
+        const spy = vi.spyOn(wrapper.vm.axios, 'get');
         expect(spy).toBeCalledWith('https://photon.komoot.io/api/?q=Toulouse');
         await wrapper.vm.$nextTick();
         expect(wrapper.vm.entries).toHaveLength(2);

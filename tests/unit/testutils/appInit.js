@@ -5,9 +5,9 @@ import VueI18n from 'vue-i18n';
 import Router from 'vue-router';
 import Vuetify from 'vuetify';
 import en from 'vuetify/es5/locale/en';
-import enLocale from 'src/lang/locale/en.json';
+import enLocale from '/src/lang/locale/en.json';
 import Vuex from 'vuex';
-import countryNamePlugin from 'src/plugins/countryNamePlugin';
+import countryNamePlugin from '/src/plugins/countryNamePlugin';
 
 global.File = class MockFile {
     constructor(parts, filename, properties) {

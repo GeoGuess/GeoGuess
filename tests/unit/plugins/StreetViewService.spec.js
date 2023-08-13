@@ -1,4 +1,4 @@
-import StreetViewService from 'src/plugins/StreetViewService';
+import StreetViewService from '/src/plugins/StreetViewService';
 
 class GoogleMockService {
     constructor(...args) {
@@ -42,7 +42,7 @@ describe('StreetViewService', () => {
             ]
         );
 
-        const spy = jest.spyOn(streetviewServiceObj.service, 'getPanorama');
+        const spy = vi.spyOn(streetviewServiceObj.service, 'getPanorama');
         streetviewServiceObj.getStreetView(2);
 
         expect(spy.mock.calls[0][0].location.args).toEqual([2, 3]);

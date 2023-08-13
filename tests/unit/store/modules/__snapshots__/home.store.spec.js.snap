@@ -1,4 +1,64 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`homeStore.js > isValidGeoJson true 1`] = `
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          1.4442469,
+          43.6044622,
+        ],
+        "type": "Point",
+      },
+      "type": "Feature",
+    },
+  ],
+  "type": "FeatureCollection",
+}
+`;
+
+exports[`homeStore.js > isValidGeoJson true 2`] = `
+"{
+  \\"type\\": \\"FeatureCollection\\",
+  \\"features\\": [
+    {
+      \\"geometry\\": {
+        \\"coordinates\\": [
+          1.4442469,
+          43.6044622
+        ],
+        \\"type\\": \\"Point\\"
+      },
+      \\"type\\": \\"Feature\\"
+    }
+  ]
+}"
+`;
+
+exports[`homeStore.js > mutations 1`] = `
+{
+  "customsMaps": [],
+  "errorMessage": null,
+  "history": [],
+  "listAreas": undefined,
+  "listMaps": [
+    {
+      "name": "Hello",
+    },
+  ],
+  "loadingGeoJson": false,
+  "map": GeoMapCustom {
+    "geojson": {
+      "type": "Point",
+    },
+    "id": undefined,
+    "name": "",
+    "type": "custom",
+  },
+  "streamerMode": false,
+}
+`;
 
 exports[`homeStore.js isValidGeoJson true 1`] = `
 Object {

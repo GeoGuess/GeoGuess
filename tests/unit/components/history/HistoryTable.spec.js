@@ -1,8 +1,8 @@
-import HistoryTable from 'src/components/history/HistoryTable.vue';
-import homeStore from 'src/store/modules/home.store';
+import HistoryTable from '/src/components/history/HistoryTable.vue';
+import homeStore from '/src/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import * as dependencyUtils from 'src/utils';
+import * as dependencyUtils from '/src/utils';
 import appInit from '../../testutils/appInit';
 import { csv, item } from './mock/example.js';
 
@@ -32,7 +32,7 @@ describe('HistoryTable.vue', () => {
                         ),
                     },
                     mutations: {
-                        HOME_SET_HISTORY: jest.fn(),
+                        HOME_SET_HISTORY: vi.fn(),
                     },
                     getters: homeStore.getters,
                     actions: homeStore.actions,
@@ -110,7 +110,7 @@ describe('HistoryTable.vue', () => {
     it('test exportCsv method', () => {
         const wrapper = shallowMount(HistoryTable, { ...args, store });
         // eslint-disable-next-line no-import-assign
-        dependencyUtils.download = jest.fn();
+        dependencyUtils.download = vi.fn();
         wrapper.setData({ history: [item] });
 
         wrapper.vm.exportCsv();

@@ -1,4 +1,4 @@
-jest.mock('@/plugins/axios', () => {
+vi.mock('@/plugins/axios', () => {
     const responseTls = {
         geometry: {
             coordinates: [1.4455249, 43.5271458],
@@ -42,7 +42,7 @@ jest.mock('@/plugins/axios', () => {
         ],
     };
     return {
-        get: jest.fn((url) => {
+        get: vi.fn((url) => {
             let data;
 
             switch (url) {
@@ -65,10 +65,10 @@ jest.mock('@/plugins/axios', () => {
     };
 });
 
-import axios from 'src/plugins/axios';
-import { GeoMapCustom } from '../../models/GeoMap.spec.js';
-import * as MutationTypes from 'src/store/mutation-types.js';
-import { default as homeStore } from 'src/store/modules/home.store';
+import axios from '/src/plugins/axios.js';
+import { GeoMapCustom } from '/src/models/GeoMap.js';
+import * as MutationTypes from '/src/store/mutation-types.js';
+import { default as homeStore } from '/src/store/modules/home.store';
 
 describe('homeStore.js', () => {
     //
@@ -251,7 +251,7 @@ describe('homeStore.js', () => {
     //
     it('loadPlaceGeoJSON not call', async () => {
         await homeStore.actions.loadPlaceGeoJSON(
-            { commit: jest.fn(), state: { loadingGeoJson: true } },
+            { commit: vi.fn(), state: { loadingGeoJson: true } },
             'Nantes'
         );
         expect(axios.get).not.toBeCalledWith(
@@ -260,7 +260,7 @@ describe('homeStore.js', () => {
     });
 
     it('loadPlaceGeoJSON: should commit GeoJSON', async () => {
-        const commit = jest.fn();
+        const commit = vi.fn();
         await homeStore.actions.loadPlaceGeoJSON(
             { commit, state: { loadingGeoJson: false } },
             'Nantes'
@@ -277,7 +277,7 @@ describe('homeStore.js', () => {
     });
 
     it('loadGeoJsonFromUrl', async () => {
-        const commit = jest.fn();
+        const commit = vi.fn();
         await homeStore.actions.loadGeoJsonFromUrl(
             { commit },
             'https://map.geojson'
@@ -300,7 +300,7 @@ describe('homeStore.js', () => {
     });
 
     it('setGeoJsonString', () => {
-        const commit = jest.fn();
+        const commit = vi.fn();
         homeStore.actions.setGeoJsonString({ commit }, '');
         expect(commit).toBeCalledWith(MutationTypes.HOME_SET_GEOJSON, null);
 
@@ -314,7 +314,7 @@ describe('homeStore.js', () => {
     });
 
     it('setGeoJson', () => {
-        const commit = jest.fn();
+        const commit = vi.fn();
         const obj = { type: 'Feature' };
         homeStore.actions.setGeoJson({ commit }, obj);
 
@@ -322,7 +322,7 @@ describe('homeStore.js', () => {
     });
 
     it('getListMaps', async () => {
-        const commit = jest.fn();
+        const commit = vi.fn();
 
         import.meta.env.VITE_APP_LIST_MAPS_JSON_URL = 'https://listmaps.gejson';
 
@@ -343,7 +343,7 @@ describe('homeStore.js', () => {
             'history',
             '[{"multiplayer":false,"date":"2020-06-14T15:10:14.579Z","timeLimitation":0,"rounds":[{"guess":{"lat":49.35629642234583,"lng":-73.3876235},"position":{"lat":46.32492404792541,"lng":-74.2128121666204},"distance":343031},{"guess":{"lat":20.966226136901,"lng":105.91472350868774},"position":{"lat":16.45610423382063,"lng":107.5978548200058},"distance":532484},{"guess":{"lat":-1.9789104624962186,"lng":-64.70788738160854},"position":{"lat":-8.47747465683049,"lng":-70.14934638834765},"distance":941702},{"guess":{"lat":55.48785435635061,"lng":-1.5939715638887852},"position":{"lat":58.51518485516467,"lng":-6.260475420814613},"distance":439803},{"guess":{"lat":39.96452059424641,"lng":-100.91667319052173},"position":{"lat":42.04582308041186,"lng":-101.0496153025084},"distance":231958}],"score":2488978}]'
         );
-        const commit = jest.fn();
+        const commit = vi.fn();
         homeStore.actions.loadHistory({ commit });
 
         expect(commit).toBeCalledWith(

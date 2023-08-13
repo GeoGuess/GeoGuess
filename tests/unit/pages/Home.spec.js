@@ -1,10 +1,10 @@
-import Home from 'src/pages/Home.vue';
+import Home from '/src/pages/Home.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../testutils/appInit';
 
 const args = appInit(createLocalVue(), false);
 const $router = {
-    push: jest.fn(),
+    push: vi.fn(),
 };
 
 describe('Home.vue', () => {

@@ -1,15 +1,15 @@
-jest.mock('@/lang', () => {
+vi.mock('@/lang', () => {
     return {
         t: (k) => k,
     };
 });
 
-import { GAME_MODE } from 'src/constants';
-import * as MutationTypes from 'src/store/mutation-types';
+import { GAME_MODE } from '/src/constants';
+import * as MutationTypes from '/src/store/mutation-types';
 import {
     default as settingsStore,
     GameSettings,
-} from 'src/store/modules/settings.store';
+} from '/src/store/modules/settings.store';
 
 describe('settingsStore.js', () => {
     it('SETTINGS_SET_GAME_SETTINGS', () => {
@@ -39,8 +39,8 @@ describe('settingsStore.js', () => {
     });
 
     it('setPlayerName will commit playerName', () => {
-        const spy = jest.spyOn(window.localStorage.__proto__, 'setItem');
-        const commit = jest.fn();
+        const spy = vi.spyOn(window.localStorage.__proto__, 'setItem');
+        const commit = vi.fn();
         settingsStore.actions.setPlayerName({ commit }, 'Toto');
 
         expect(commit).toBeCalledWith(

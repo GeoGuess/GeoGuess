@@ -1,4 +1,4 @@
-import StreetView from 'src/pages/StreetView.vue';
+import StreetView from '/src/pages/StreetView.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 import appInit from '../testutils/appInit';
@@ -7,12 +7,12 @@ const args = appInit(createLocalVue());
 global.google = {
     maps: {
         ...createGoogleMapsMock(),
-        StreetViewPanorama: jest.fn().mockImplementation(function () {
+        StreetViewPanorama: vi.fn().mockImplementation(function () {
             return {
-                setOptions: jest.fn(),
-                setPov: jest.fn(),
-                setPano: jest.fn(),
-                setZoom: jest.fn(),
+                setOptions: vi.fn(),
+                setPov: vi.fn(),
+                setPano: vi.fn(),
+                setZoom: vi.fn(),
             };
         }),
     },
@@ -20,7 +20,7 @@ global.google = {
 describe('StreetView.vue', () => {
     it('methods startTimer', () => {
         const wrapper = shallowMount(StreetView, args);
-        wrapper.vm.startTimer = jest.fn();
+        wrapper.vm.startTimer = vi.fn();
 
         expect(wrapper.vm.isVisibleCountdownAlert).toEqual(false);
 
@@ -37,7 +37,7 @@ describe('StreetView.vue', () => {
     });
     it('methods startTimer hasTimerStarted', () => {
         const wrapper = shallowMount(StreetView, args);
-        wrapper.vm.startTimer = jest.fn();
+        wrapper.vm.startTimer = vi.fn();
 
         wrapper.setData({
             hasTimerStarted: true,
@@ -68,7 +68,7 @@ describe('StreetView.vue', () => {
         });
 
         wrapper.vm.panorama = new google.maps.StreetViewPanorama();
-        wrapper.vm.panorama.setOptions = jest.fn();
+        wrapper.vm.panorama.setOptions = vi.fn();
 
         wrapper.vm.setPosition({
             location: {

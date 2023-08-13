@@ -1,4 +1,4 @@
-import App from 'src/App.vue';
+import App from '/src/App.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from './testutils/appInit';
 import { JSDOM } from 'jsdom';
@@ -6,8 +6,8 @@ const dom = new JSDOM();
 global.window = dom.window;
 global.document = dom.window.document;
 
-global.document.addEventListener = jest.fn();
-global.navigator.serviceWorker = { addEventListener: jest.fn() };
+global.document.addEventListener = vi.fn();
+global.navigator.serviceWorker = { addEventListener: vi.fn() };
 const args = appInit(createLocalVue());
 
 const factory = () => {
@@ -22,7 +22,7 @@ describe('App.vue', () => {
         const event = {
             detail: {
                 waiting: {
-                    postMessage: jest.fn(),
+                    postMessage: vi.fn(),
                 },
             },
         };
@@ -49,7 +49,7 @@ describe('App.vue', () => {
         wrapper.setData({
             registration: {
                 waiting: {
-                    postMessage: jest.fn(),
+                    postMessage: vi.fn(),
                 },
             },
         });

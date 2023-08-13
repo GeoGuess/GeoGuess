@@ -1,7 +1,7 @@
-import HomeCardDialog from 'src/components/home/card/HomeCardDialog.vue';
+import HomeCardDialog from '/src/components/home/card/HomeCardDialog.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import settingsStore from 'src/store/modules/settings.store';
+import settingsStore from '/src/store/modules/settings.store';
 import appInit from '../../../testutils/appInit';
 
 const args = appInit(createLocalVue());
@@ -10,9 +10,9 @@ describe('HomeCardDialog.vue', () => {
     let store, actions, loadMap;
     beforeEach(() => {
         actions = {
-            openDialogRoom: jest.fn(),
+            openDialogRoom: vi.fn(),
         };
-        loadMap = jest.fn();
+        loadMap = vi.fn();
         store = new Vuex.Store({
             modules: {
                 settingsStore: {

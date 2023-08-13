@@ -1,4 +1,4 @@
-import Maps from 'src/components/Maps.vue';
+import Maps from '/src/components/Maps.vue';
 import { createLocalVue, mount } from '@vue/test-utils';
 import appInit from '../testutils/appInit';
 
@@ -13,7 +13,7 @@ describe('Maps.vue', () => {
                     mode: 'classic',
                 },
             });
-            const stub = jest.fn();
+            const stub = vi.fn();
             wrapper.vm.$on('goToNextRound', stub);
             wrapper.setData({
                 dialogSummary: value,
@@ -25,8 +25,8 @@ describe('Maps.vue', () => {
                 countdownStarted: true,
                 printMapFull: true,
             });
-            wrapper.vm.$refs.map.removeMarkers = jest.fn();
-            wrapper.vm.$refs.map.removePolylines = jest.fn();
+            wrapper.vm.$refs.map.removeMarkers = vi.fn();
+            wrapper.vm.$refs.map.removePolylines = vi.fn();
 
             wrapper.vm.goToNextRound(value);
 
