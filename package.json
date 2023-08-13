@@ -12,7 +12,8 @@
     "test:e2e": "cypress run",
     "cypress": "cypress",
     "test": "npm run lint && npm run test:unit && npm run test:e2e",
-    "test:mutation": "cross-env NODE_OPTIONS=--unhandled-rejections=warn NODE_ENV=test stryker run"
+    "test:mutation": "cross-env NODE_OPTIONS=--unhandled-rejections=warn NODE_ENV=test stryker run",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@turf/bbox": "^6.5.0",
@@ -25,7 +26,9 @@
     "dotenv": "^16.3.1",
     "firebase": "^8.10.1",
     "gmap-vue": "^3.5.4",
+    "jest-google-maps-mock": "^1.0.7",
     "jsdom": "^22.1.0",
+    "patch-package": "^8.0.0",
     "random-position-in-polygon": "^1.0.6",
     "register-service-worker": "^1.7.2",
     "unplugin-vue-components": "^0.25.1",
