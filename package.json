@@ -57,7 +57,7 @@
     "prettier": "3.0.1",
     "react-is": "^18.2.0",
     "sass": "1.32",
-    "vitest": "^0.34.1",
+    "vitest": "^0.34.2",
     "vue-template-compiler": "^2.7.14"
   },
   "browserslist": [

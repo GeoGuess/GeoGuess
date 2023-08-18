@@ -1,4 +1,4 @@
-vi.mock('@/plugins/axios', () => {
+vi.mock('/src/plugins/axios', () => {
     const responseTls = {
         geometry: {
             coordinates: [1.4455249, 43.5271458],
@@ -42,26 +42,28 @@ vi.mock('@/plugins/axios', () => {
         ],
     };
     return {
-        get: vi.fn((url) => {
-            let data;
+        default: {
+            get: vi.fn((url) => {
+                let data;
 
-            switch (url) {
-                case 'https://map.geojson':
-                    data = responseTls;
-                    break;
-                case 'https://listmaps.gejson':
-                    data = { maps: [], areas: [] };
-                    break;
-                case 'https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1':
-                    data = reponseNte;
-                    break;
-            }
+                switch (url) {
+                    case 'https://map.geojson':
+                        data = responseTls;
+                        break;
+                    case 'https://listmaps.gejson':
+                        data = { maps: [], areas: [] };
+                        break;
+                    case 'https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1':
+                        data = reponseNte;
+                        break;
+                }
 
-            return Promise.resolve({
-                status: 200,
-                data,
-            });
-        }),
+                return Promise.resolve({
+                    status: 200,
+                    data,
+                });
+            }),
+        },
     };
 });
 

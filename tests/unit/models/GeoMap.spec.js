@@ -1,17 +1,19 @@
-vi.mock('@/plugins/IndexedDBService', () => {
+vi.mock('/src/plugins/IndexedDBService', () => {
     let list = [];
     return {
-        addMap: (a) => {
-            list.push({ m: 'addMap', v: a });
-            return 'addMap';
+        default: {
+            addMap: (a) => {
+                list.push({ m: 'addMap', v: a });
+                return 'addMap';
+            },
+            updateMap: (a) => {
+                list.push({ m: 'updateMap', v: a });
+            },
+            deleteMap: () => {
+                list.push({ m: 'deleteMap' });
+            },
+            list,
         },
-        updateMap: (a) => {
-            list.push({ m: 'updateMap', v: a });
-        },
-        deleteMap: () => {
-            list.push({ m: 'deleteMap' });
-        },
-        list,
     };
 });
 import { GeoMap, GeoMapCustom, GeoMapOSM } from '/src/models/GeoMap.js';

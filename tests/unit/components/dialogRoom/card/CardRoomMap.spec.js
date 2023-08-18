@@ -1,4 +1,4 @@
-vi.mock('@/plugins/axios', () => {
+vi.mock('/src/plugins/axios', () => {
     const responseTls = {
         features: [
             {
@@ -58,13 +58,15 @@ vi.mock('@/plugins/axios', () => {
     };
 
     return {
-        get: vi.fn(() =>
-            Promise.resolve({
-                status: 200,
-                data: responseTls,
-            })
-        ),
-        post: vi.fn(),
+        default: {
+            get: vi.fn(() =>
+                Promise.resolve({
+                    status: 200,
+                    data: responseTls,
+                })
+            ),
+            post: vi.fn(),
+        },
     };
 });
 import CardRoomMap from '/src/components/dialogroom/card/CardRoomMap.vue';
