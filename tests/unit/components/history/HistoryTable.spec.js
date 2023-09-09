@@ -2,7 +2,7 @@ import HistoryTable from '/src/components/history/HistoryTable.vue';
 import homeStore from '/src/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import { download } from '/src/utils';
+import * as dependencyUtils from '/src/utils';
 import appInit from '../../testutils/appInit';
 import { csv, item } from './mock/example.js';
 
@@ -109,12 +109,17 @@ describe('HistoryTable.vue', () => {
 
     it('test exportCsv method', () => {
         const wrapper = shallowMount(HistoryTable, { ...args, store });
-        // eslint-disable-next-line no-import-assign
-        download = vi.fn();
+        const downloadMock = vi.spyOn(dependencyUtils, 'download');
+        downloadMock.mockImplementation(() => {});
         wrapper.setData({ history: [item] });
 
         wrapper.vm.exportCsv();
 
-        expect(download).toBeCalledWith(csv, expect.any(String), 'text/csv');
+        expect(downloadMock).toHaveBeenCalledWith(
+            csv,
+            expect.any(String),
+            'text/csv'
+        );
+        downloadMock.mockRestore();
     });
 });
