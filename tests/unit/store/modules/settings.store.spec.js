@@ -4,12 +4,12 @@ vi.mock('@/lang', () => {
     };
 });
 
-import { GAME_MODE } from '/src/constants';
-import * as MutationTypes from '/src/store/mutation-types';
+import { GAME_MODE } from '@/constants.js';
+import * as MutationTypes from '@/store/mutation-types.js';
 import {
     default as settingsStore,
     GameSettings,
-} from '/src/store/modules/settings.store';
+} from '@/store/modules/settings.store.js';
 
 describe('settingsStore.js', () => {
     it('SETTINGS_SET_GAME_SETTINGS', () => {

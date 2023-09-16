@@ -67,10 +67,10 @@ vi.mock('@/plugins/axios', () => {
     };
 });
 
-import axios from '/src/plugins/axios.js';
-import { GeoMapCustom } from '/src/models/GeoMap.js';
-import * as MutationTypes from '/src/store/mutation-types.js';
-import { default as homeStore } from '/src/store/modules/home.store';
+import axios from '@/plugins/axios.js';
+import { GeoMapCustom } from '@/models/GeoMap.js';
+import * as MutationTypes from '@/store/mutation-types.js';
+import { default as homeStore } from '@/store/modules/home.store.js';
 
 describe('homeStore.js', () => {
     //

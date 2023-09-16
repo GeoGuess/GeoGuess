@@ -1,7 +1,7 @@
 import Header from '@/components/page/Header.vue';
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
-import homeStore from '@/store/modules/home.store';
-import * as MutationTypes from '@/store/mutation-types';
+import homeStore from '@/store/modules/home.store.js';
+import * as MutationTypes from '@/store/mutation-types.js';
 import appInit from '../../testutils/appInit';
 import Vuex from 'vuex';
 

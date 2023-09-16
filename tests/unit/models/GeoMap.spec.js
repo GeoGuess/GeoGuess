@@ -16,8 +16,8 @@ vi.mock('@/plugins/IndexedDBService', () => {
         },
     };
 });
-import { GeoMap, GeoMapCustom, GeoMapOSM } from '/src/models/GeoMap.js';
-import IndexedDBService from '/src/plugins/IndexedDBService';
+import { GeoMap, GeoMapCustom, GeoMapOSM } from '@/models/GeoMap.js';
+import IndexedDBService from '@/plugins/IndexedDBService';
 describe('GeoMap.js', () => {
     it('GeoMap nameLocate', () => {
         let gMap = new GeoMap();
