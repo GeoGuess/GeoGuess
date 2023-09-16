@@ -88,8 +88,8 @@
     </div>
 </template>
 <script>
-import About from '../../components/page/About.vue';
-import { languages, RTL_LANGUAGES } from '../../lang';
+import About from '@/components/page/About.vue';
+import { languages, RTL_LANGUAGES } from '@/lang';
 import { mapActions, mapState } from 'vuex';
 import HeaderAlert from './HeaderAlert.vue';
 

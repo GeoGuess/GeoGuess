@@ -1,8 +1,8 @@
-import HistoryTable from '/src/components/history/HistoryTable.vue';
-import homeStore from '/src/store/modules/home.store';
+import HistoryTable from '@/components/history/HistoryTable.vue';
+import homeStore from '@/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import * as dependencyUtils from '/src/utils';
+import * as dependencyUtils from '@/utils';
 import appInit from '../../testutils/appInit';
 import { csv, item } from './mock/example.js';
 

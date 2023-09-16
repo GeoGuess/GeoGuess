@@ -1,11 +1,11 @@
-import HistoryPage from './pages/HistoryPage.vue';
-import Home from './pages/Home.vue';
-import MedalsPage from './pages/MedalsPage.vue';
+import HistoryPage from '@/pages/HistoryPage.vue';
+import Home from '@/pages/Home.vue';
+import MedalsPage from '@/pages/MedalsPage.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
-import { GAME_MODE } from './constants';
+import { GAME_MODE } from '@/constants';
 
-const StreetView = () => import('./pages/StreetView.vue');
+const StreetView = () => import('@/pages/StreetView.vue');
 
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {

@@ -1,9 +1,9 @@
-import DialogCustomMap from '/src/components/home/DialogCustomMap.vue';
+import DialogCustomMap from '@/components/home/DialogCustomMap.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
 
 import Vuex from 'vuex';
-import homeStore from '/src/store/modules/home.store';
+import homeStore from '@/store/modules/home.store';
 
 const args = appInit(createLocalVue());
 describe('DialogCustomMap.vue', () => {

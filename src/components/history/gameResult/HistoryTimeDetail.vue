@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { getCountdownText } from '../../../utils';
+import { getCountdownText } from '@/utils';
 export default {
     props: {
         rounds: {

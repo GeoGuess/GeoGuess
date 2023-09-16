@@ -149,11 +149,11 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
-import { validURL } from '../../utils';
-import { download, isGeoJSONValid } from '../../utils';
-import { HOME_SET_NAME_GEOJSON } from '../../store/mutation-types';
-import { GeoMapCustom } from '../../models/GeoMap';
-import SaveButton from '../../components/shared/SaveButton.vue';
+import { validURL } from '@/utils';
+import { download, isGeoJSONValid } from '@/utils';
+import { HOME_SET_NAME_GEOJSON } from '@/store/mutation-types';
+import { GeoMapCustom } from '@/models/GeoMap';
+import SaveButton from '@/components/shared/SaveButton.vue';
 
 export default {
     name: 'DialogCustomMap',

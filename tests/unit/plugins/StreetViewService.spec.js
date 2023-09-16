@@ -1,4 +1,4 @@
-import StreetViewService from '/src/plugins/StreetViewService';
+import StreetViewService from '@/plugins/StreetViewService';
 
 class GoogleMockService {
     constructor(...args) {

@@ -306,12 +306,12 @@
     </v-card>
 </template>
 <script>
-import TimePicker from '../../../components/shared/TimePicker.vue';
-import { GAME_MODE, SCORE_MODE } from '../../../constants';
+import TimePicker from '@/components/shared/TimePicker.vue';
+import { GAME_MODE, SCORE_MODE } from '@/constants';
 import CardRoomMixin from './mixins/CardRoomMixin';
 import { mapActions, mapGetters, mapState, mapMutations } from 'vuex';
 import bbox from '@turf/bbox';
-import { SETTINGS_SET_GAME_SETTINGS } from '../../../store/mutation-types.js';
+import { SETTINGS_SET_GAME_SETTINGS } from '@/store/mutation-types.js';
 
 export default {
     components: {

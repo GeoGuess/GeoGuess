@@ -175,14 +175,14 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import DialogSummary from '../components/DialogSummary.vue';
-import DetailsMap from '../components/game/DetailsMap.vue';
-import Map from '../components/map/Map.vue';
-import MapAreas from '../components/map/MapAreas.vue';
-import { GAME_MODE } from '../constants';
-import { getSelectedPos } from '../utils';
-import { getScore } from '../utils/game/score';
-import Leaderboard from '../components/game/Leaderboard.vue';
+import DialogSummary from '@/components/DialogSummary.vue';
+import DetailsMap from '@/components/game/DetailsMap.vue';
+import Map from '@/components/map/Map.vue';
+import MapAreas from '@/components/map/MapAreas.vue';
+import { GAME_MODE } from '@/constants';
+import { getSelectedPos } from '@/utils';
+import { getScore } from '@/utils/game/score';
+import Leaderboard from '@/components/game/Leaderboard.vue';
 
 export default {
     components: {

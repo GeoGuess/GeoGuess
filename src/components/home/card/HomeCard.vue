@@ -62,10 +62,10 @@
 </template>
 
 <script>
-import HomeCardDialog from '../../../components/home/card/HomeCardDialog.vue';
+import HomeCardDialog from '@/components/home/card/HomeCardDialog.vue';
 import { mapActions, mapGetters } from 'vuex';
-import { GeoMapType } from '../../../models/GeoMap';
-import { getMedals } from '../../../utils/game/medals';
+import { GeoMapType } from '@/models/GeoMap';
+import { getMedals } from '@/utils/game/medals';
 
 export default {
     name: 'HomeCard',

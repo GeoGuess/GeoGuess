@@ -1,16 +1,7 @@
-import axios from '../../plugins/axios';
-import {
-    getGeoJsonFromUrl,
-    getLocateString,
-    isGeoJSONValid,
-} from '../../utils';
+import axios from '@/plugins/axios';
+import { getGeoJsonFromUrl, getLocateString, isGeoJSONValid } from '@/utils';
 import i18n from '../../lang';
-import {
-    GeoMap,
-    GeoMapCustom,
-    GeoMapOSM,
-    GeoMapType,
-} from '../../models/GeoMap';
+import { GeoMap, GeoMapCustom, GeoMapOSM, GeoMapType } from '@/models/GeoMap';
 import IndexedDBService from '../../plugins/IndexedDBService';
 import * as MutationTypes from '../mutation-types';
 

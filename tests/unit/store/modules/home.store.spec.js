@@ -1,4 +1,4 @@
-vi.mock('/src/plugins/axios', () => {
+vi.mock('@/plugins/axios', () => {
     const responseTls = {
         geometry: {
             coordinates: [1.4455249, 43.5271458],

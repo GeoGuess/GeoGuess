@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import CardRoomName from '../../components/dialogroom/card/CardRoomName.vue';
-import CardRoomSettings from '../../components/dialogroom/card/CardRoomSettings.vue';
-import CardRoomPlayerName from '../../components/dialogroom/card/CardRoomPlayerName.vue';
+import CardRoomName from '@/components/dialogroom/card/CardRoomName.vue';
+import CardRoomSettings from '@/components/dialogroom/card/CardRoomSettings.vue';
+import CardRoomPlayerName from '@/components/dialogroom/card/CardRoomPlayerName.vue';
 import { mapState, mapActions } from 'vuex';
 import CardRoomMap from './card/CardRoomMap.vue';
 

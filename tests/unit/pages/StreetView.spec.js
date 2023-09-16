@@ -1,4 +1,4 @@
-import StreetView from '/src/pages/StreetView.vue';
+import StreetView from '@/pages/StreetView.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 import appInit from '../testutils/appInit';

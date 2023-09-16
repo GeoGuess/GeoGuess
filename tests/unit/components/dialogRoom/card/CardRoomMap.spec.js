@@ -1,4 +1,4 @@
-vi.mock('/src/plugins/axios', () => {
+vi.mock('@/plugins/axios', () => {
     const responseTls = {
         features: [
             {
@@ -69,9 +69,9 @@ vi.mock('/src/plugins/axios', () => {
         },
     };
 });
-import CardRoomMap from '/src/components/dialogroom/card/CardRoomMap.vue';
-import axios from '/src/plugins/axios';
-import homeStore from '/src/store/modules/home.store';
+import CardRoomMap from '@/components/dialogroom/card/CardRoomMap.vue';
+import axios from '@/plugins/axios';
+import homeStore from '@/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import VueAxios from 'vue-axios/dist/vue-axios.common.min';
 import Vuex from 'vuex';

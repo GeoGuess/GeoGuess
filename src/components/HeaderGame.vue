@@ -64,10 +64,10 @@
 </template>
 
 <script>
-import { getCountdownText } from '../utils';
-import { GAME_MODE } from '../constants';
+import { getCountdownText } from '@/utils';
+import { GAME_MODE } from '@/constants';
 import { mapState } from 'vuex';
-import DialogMessage from '../components/DialogMessage.vue';
+import DialogMessage from '@/components/DialogMessage.vue';
 
 export default {
     components: {

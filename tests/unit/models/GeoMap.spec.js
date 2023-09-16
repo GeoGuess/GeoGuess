@@ -1,4 +1,4 @@
-vi.mock('/src/plugins/IndexedDBService', () => {
+vi.mock('@/plugins/IndexedDBService', () => {
     let list = [];
     return {
         default: {

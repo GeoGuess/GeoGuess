@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { validURL } from '../../utils';
+import { validURL } from '@/utils';
 export default {
     name: 'DetailsMap',
     props: ['properties'],

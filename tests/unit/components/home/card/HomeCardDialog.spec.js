@@ -1,7 +1,7 @@
-import HomeCardDialog from '/src/components/home/card/HomeCardDialog.vue';
+import HomeCardDialog from '@/components/home/card/HomeCardDialog.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import settingsStore from '/src/store/modules/settings.store';
+import settingsStore from '@/store/modules/settings.store';
 import appInit from '../../../testutils/appInit';
 
 const args = appInit(createLocalVue());

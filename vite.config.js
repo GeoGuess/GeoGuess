@@ -13,7 +13,12 @@ export default defineConfig({
     test: {
         globals: true,
         environment: 'jsdom',
-        include: ['**/tests/unit/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+        include: ['tests/unit/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+    },
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, './src'),
+        },
     },
     plugins: [
         vue(),

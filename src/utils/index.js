@@ -1,8 +1,8 @@
-import axios from '../plugins/axios';
+import axios from '@/plugins/axios';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import distance from '@turf/distance';
 import { point } from '@turf/helpers';
-import { GAME_MODE } from '../constants';
+import { GAME_MODE } from '@/constants';
 
 /**
  * check in valid format url
