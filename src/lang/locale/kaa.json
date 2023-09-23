@@ -15,8 +15,8 @@
     },
     "customMap": "Arnawlı karta",
     "customMapDescriptions": {
-      "1": "You can limit random locations to cities, states, or countries with the search bar.",
-      "2": "In the multiplayer, the first player fixes the location.",
+      "1": "Qıdırıw paneli járdeminde tosınarlı jaylardı qala, shtat yamasa mámleket menen sheklewińiz múmkin.",
+      "2": "Kóp oyınshı jay birinshi oyınshı tárepinen belgilenedi.",
       "3": "Furthermore, you can make your custom map with ",
       "4": "fayl.",
       "5": "Insert the content of the GeoJson map with the button :",
@@ -134,12 +134,12 @@
     "singlePlayer": "Single Player",
     "withFriends": "Doslar menen",
     "invalidRoomName": "Invalid name. Please try another.",
-    "inProgress": "The first player is creating the room right now. Please wait and try again.",
-    "roomIsFull": "This room is already full. Please try another.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "inProgress": "Birinshi oyınshı házir xananı jaratıp atır. Ótinish, kútiń hám qaytaldan urınıń.",
+    "roomIsFull": "Bul bólme qashannan berli tolǵan. Ótinish, basqasın sınap kóriń.",
+    "alreadyStarted": "Bul xanada oyın qashannan berli baslanǵan. Ótinish, basqasın sınap kóriń."
   },
   "CardRoomName": {
-    "title": "Type a room name to create a new room or join a existing room"
+    "title": "Jańa bólme jaratıw yamasa ámeldegi xanaǵa qosıw ushın bólme atın kiritiń"
   },
   "CardRoomPlayerName": {
     "title": "Bólme:",
@@ -151,11 +151,11 @@
     "title": "Bólme kólemin ornatıw."
   },
   "CardRoomTime": {
-    "title": "Set a time limit.",
+    "title": "Waqıt shegarasın belgileń.",
     "infinite": "Sheksizlik"
   },
   "CardRoomMap": {
-    "title": "Define your map",
+    "title": "Kartańızdı anıqlań",
     "loadBtn": "Load MAP",
     "reset": "Qayta ornatıw",
     "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
@@ -166,8 +166,8 @@
     "includePhotopheres": "Include Photospheres",
     "timeAttackLabel": "TimeAttack",
     "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
-    "allowMove": "Allow Move",
-    "allowZoom": "Allow Zoom",
+    "allowMove": "Háreketke ruxsat beriń",
+    "allowZoom": "Masshtabǵa ruxsat beriń",
     "allowPan": "Allow Pan",
     "guessedLeaderboard": "Display whether players have guessed",
     "scoreLeaderboard": "Display score leaderboard",
