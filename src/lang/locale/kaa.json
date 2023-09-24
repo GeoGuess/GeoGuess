@@ -20,12 +20,12 @@
       "3": "Furthermore, you can make your custom map with ",
       "4": "fayl.",
       "5": "Insert the content of the GeoJson map with the button :",
-      "6": "Customs Map selection : "
+      "6": "Jeke kartanı tańlaw : "
     },
     "limitation": "SHEKLEWLER",
     "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
     "play": "Oynaw",
-    "streamerModeActivate": "Streamer mode activate",
+    "streamerModeActivate": "Streamer rejimi qosılǵan",
     "streamerModeDetails": "Bólme siltemeleri hám atları jasırılǵan",
     "mapSavedAlert": {
       "title": "Karta saqlandı 🎉",
@@ -65,10 +65,10 @@
     "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
   },
   "Maps": {
-    "makeGuess": "MAKE GUESS",
+    "makeGuess": "Shama etiń",
     "guess": "TABIW",
-    "nextRound": "NEXT ROUND",
-    "viewSummary": "VIEW SUMMARY",
+    "nextRound": "KEYINGI TUR",
+    "viewSummary": "Juwmaqtı kóriw",
     "exit": "Shıǵıw",
     "reset": "QAYTA ORNATÍW",
     "playAgain": "QAYTA OYNATÍW",
@@ -169,8 +169,8 @@
     "allowMove": "Háreketke ruxsat beriń",
     "allowZoom": "Masshtabǵa ruxsat beriń",
     "allowPan": "Allow Pan",
-    "guessedLeaderboard": "Display whether players have guessed",
-    "scoreLeaderboard": "Display score leaderboard",
+    "guessedLeaderboard": "Oyınshılar shama etken yamasa joq ekenligin kórsetiw",
+    "scoreLeaderboard": "Ballar kestesin kórsetiw",
     "countDownLabel": "CountDown (seconds)",
     "scoreModeLabel": "Ball formulası",
     "scoreModes": {
