@@ -102,11 +102,14 @@ describe('CardRoomMap.vue', () => {
         });
         await wrapper.setData({ search: 'Toulouse' });
 
+        await wrapper.vm.$nextTick();
+        expect(wrapper.vm.axios.get).toBeCalledWith(
+            'https://photon.komoot.io/api/?q=Toulouse'
+        );
+        await wrapper.vm.$nextTick();
         expect(wrapper.exists('#search-input'));
         await wrapper.vm.$nextTick();
         expect(wrapper.vm.search).toEqual('Toulouse');
-        const spy = vi.spyOn(wrapper.vm.axios, 'get');
-        expect(spy).toBeCalledWith('https://photon.komoot.io/api/?q=Toulouse');
         await wrapper.vm.$nextTick();
         expect(wrapper.vm.entries).toHaveLength(2);
         expect(wrapper.vm.items).toHaveLength(2);
