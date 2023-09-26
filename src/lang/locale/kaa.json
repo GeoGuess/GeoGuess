@@ -48,7 +48,7 @@
     "Sections": {
       "areasTitle": "Maydanlar",
       "mapsTitle": "Kartalar",
-      "pleaseSelectLabel": "You seems lost, please select a type or you can ",
+      "pleaseSelectLabel": "Joǵalǵanǵa uqsaysiz, túrin saylań yamasa múmkin ",
       "barrelRoll": "Joqarıǵa"
     }
   },
@@ -61,8 +61,8 @@
     "redirectToHomePage": "Bas betke jóneltirilip atır...",
     "exitGame": "Siz oyınnan shıǵıwǵa májbúrsiz. 5 sekunttan keyin bas betke jóneltirilesiz...",
     "waitForOtherPlayersToFinish": "Basqa oyınshılar oyındı tamamlawın kútiń...",
-    "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+    "confirmExit": "Haqıyqattan da ámeldegi oyınnan ketajaqsızba? Bul oyındı toqtatadı!",
+    "countdownAlert": "Artqa esaplaw baslanadı : {count} sekund qaldı| Artqa esaplaw baslandı : {count} sekund qaldı"
   },
   "Maps": {
     "makeGuess": "Shama etiń",
@@ -77,7 +77,7 @@
       "Points": "Ballar"
     },
     "leaderboard": {
-      "notGuessed": "Not Guessed",
+      "notGuessed": "Shama etilmegen",
       "guessed": "Shama etilgen"
     }
   },
@@ -92,12 +92,12 @@
     "round": "ROUND",
     "distance": "ARALIQ",
     "kmaway": "{value} km uzaqlıqta",
-    "score": "SCORE"
+    "score": "Sanaw"
   },
   "next": "KEYINGISI",
   "cancel": "BIYKARLAW",
   "DialogCustomMap": {
-    "title": "Custom Map",
+    "title": "Arnawlı karta",
     "invalid": "Invalid GeoJSON",
     "text": "Tekst",
     "url": "Silteme",
@@ -145,7 +145,7 @@
     "title": "Bólme:",
     "input": "Oyınshınıń atın jazıń.",
     "anonymousPlayerName": "Anomim 🕵",
-    "players": "1 player | {count} players"
+    "players": "1 oyınshı| {count} oyınshı"
   },
   "CardRoomSize": {
     "title": "Bólme kólemin ornatıw."
@@ -156,16 +156,16 @@
   },
   "CardRoomMap": {
     "title": "Kartańızdı anıqlań",
-    "loadBtn": "Load MAP",
+    "loadBtn": "Kartanı júklep alıw",
     "reset": "Qayta ornatıw",
     "cantPlayGeoJson": "Jaramsız GeoJSON, sizde 5 ten artıq pozitsiya bolıwı kerek."
   },
   "CardRoomSettings": {
     "title": "Oyın sazlawları",
     "modeLabel": "Oyın rejimin tańlań",
-    "includePhotopheres": "Include Photospheres",
-    "timeAttackLabel": "TimeAttack",
-    "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
+    "includePhotopheres": "Foto ramkalardı qosıw",
+    "timeAttackLabel": "Hújim waqıtı",
+    "timeattackInfos": "Hújim waqıtı rejiminde tek mámleketti birinshi bolıp shama etken oyınshı ball aladı. Tezirek bolıń hám jeńis qazanıń!",
     "allowMove": "Háreketke ruxsat beriń",
     "allowZoom": "Masshtabǵa ruxsat beriń",
     "allowPan": "Allow Pan",
