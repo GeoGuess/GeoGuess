@@ -49,18 +49,18 @@
       "areasTitle": "Maydanlar",
       "mapsTitle": "Kartalar",
       "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-      "barrelRoll": "do a barrel roll"
+      "barrelRoll": "Joqarıǵa"
     }
   },
   "StreetView": {
     "nearby": {
-      "title": "Nearby Position",
-      "message": "Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉"
+      "title": "Jaqın - átirapdaǵı jaylasıw",
+      "message": "Ókiniw menen aytamız, biz belgilengen orında tosınarlı jaydı tapa almadıq. Biraq, biz jaqın orında taptıq 😉"
     },
-    "waitForOtherPlayers": "Waiting for other players...",
-    "redirectToHomePage": "Redirecting to Home Page...",
-    "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
-    "waitForOtherPlayersToFinish": "Waiting for other players to finish the game...",
+    "waitForOtherPlayers": "Basqa oyınshılardı kútemen...",
+    "redirectToHomePage": "Bas betke jóneltirilip atır...",
+    "exitGame": "Siz oyınnan shıǵıwǵa májbúrsiz. 5 sekunttan keyin bas betke jóneltirilesiz...",
+    "waitForOtherPlayersToFinish": "Basqa oyınshılar oyındı tamamlawın kútiń...",
     "confirmExit": "Are you sure to leave the current game? This will abort the game!",
     "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
   },
@@ -74,11 +74,11 @@
     "playAgain": "QAYTA OYNATÍW",
     "infoWindow": {
       "Distance": "Aralıq",
-      "Points": "Points"
+      "Points": "Ballar"
     },
     "leaderboard": {
       "notGuessed": "Not Guessed",
-      "guessed": "Guessed"
+      "guessed": "Shama etilgen"
     }
   },
   "Header": {
@@ -120,8 +120,8 @@
     "mapName": "Karta ataması",
     "time": "Waqıt",
     "distance": "Aralıq",
-    "points": "Points",
-    "rank": "Rank",
+    "points": "Ballar",
+    "rank": "Dáreje",
     "actions": "Háreketler",
     "search": "Izlew",
     "exportGeoSave": "GeoSaveti eksport qılıw",
@@ -131,9 +131,9 @@
     "nbRound": "Nb Rounds"
   },
   "DialogRoom": {
-    "singlePlayer": "Single Player",
+    "singlePlayer": "Birden-bir oyınshı",
     "withFriends": "Doslar menen",
-    "invalidRoomName": "Invalid name. Please try another.",
+    "invalidRoomName": "Atı nadurıs. Ótinish, basqasın sınap kóriń.",
     "inProgress": "Birinshi oyınshı házir xananı jaratıp atır. Ótinish, kútiń hám qaytaldan urınıń.",
     "roomIsFull": "Bul bólme qashannan berli tolǵan. Ótinish, basqasın sınap kóriń.",
     "alreadyStarted": "Bul xanada oyın qashannan berli baslanǵan. Ótinish, basqasın sınap kóriń."
@@ -158,7 +158,7 @@
     "title": "Kartańızdı anıqlań",
     "loadBtn": "Load MAP",
     "reset": "Qayta ornatıw",
-    "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+    "cantPlayGeoJson": "Jaramsız GeoJSON, sizde 5 ten artıq pozitsiya bolıwı kerek."
   },
   "CardRoomSettings": {
     "title": "Oyın sazlawları",
