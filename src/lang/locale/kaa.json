@@ -89,7 +89,7 @@
   },
   "HeaderGame": {
     "room": "BÓLME",
-    "round": "ROUND",
+    "round": "Tur",
     "distance": "ARALIQ",
     "kmaway": "{value} km uzaqlıqta",
     "score": "Sanaw"
@@ -98,7 +98,7 @@
   "cancel": "BIYKARLAW",
   "DialogCustomMap": {
     "title": "Arnawlı karta",
-    "invalid": "Invalid GeoJSON",
+    "invalid": "Jaramsız GeoJSON",
     "text": "Tekst",
     "url": "Silteme",
     "file": "Fayl",
@@ -128,7 +128,7 @@
     "importGeoSave": "GeoSaveti import qılıw",
     "exportCSV": "CSVdi export qılıw",
     "total": "Jámi",
-    "nbRound": "Nb Rounds"
+    "nbRound": "Nb raundları"
   },
   "DialogRoom": {
     "singlePlayer": "Birden-bir oyınshı",
@@ -168,10 +168,10 @@
     "timeattackInfos": "Hújim waqıtı rejiminde tek mámleketti birinshi bolıp shama etken oyınshı ball aladı. Tezirek bolıń hám jeńis qazanıń!",
     "allowMove": "Háreketke ruxsat beriń",
     "allowZoom": "Masshtabǵa ruxsat beriń",
-    "allowPan": "Allow Pan",
+    "allowPan": "Pan-ǵa ruxsat beriń",
     "guessedLeaderboard": "Oyınshılar shama etken yamasa joq ekenligin kórsetiw",
     "scoreLeaderboard": "Ballar kestesin kórsetiw",
-    "countDownLabel": "CountDown (seconds)",
+    "countDownLabel": "Artqa esaplaw (sekundlar)",
     "scoreModeLabel": "Ball formulası",
     "scoreModes": {
       "normal": "ádettegi",
@@ -179,7 +179,7 @@
     },
     "selectAreas": "Maydanlardı tańlań",
     "moreSettings": "Kóbirek sazlawlar",
-    "optimiseStreetView": "StreetView Optimize (only official)",
+    "optimiseStreetView": "Streetview optimallastırıw (tek rásmiy)",
     "nbRound": "Raundlar sanı"
   },
   "CardRoomDifficulty": {
