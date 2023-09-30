@@ -10,7 +10,7 @@
       "enterCity": "Qala, shtat hám mámleketti kirgiziń"
     },
     "aboutDescriptions": {
-      "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
+      "1": "Geoguess - bul reklamasız biypul hám erinshek geoguess oyını. Oyınshılar bes turda oyınshı tosınarlı jaylardı qanshellilik jaqın shama etiwleri múmkinligi menen básekilesedi. Siz esaptı Facebook yamasa Twitter sıyaqlı social tarmaqlar arqalı basqa adamlar menen bólisiwińiz múmkin. Doslarıńız menen beske shekem dosıńız menen kóp oyınshı oyınların oynawıńız múmkin. Birinshi oyınshı xananı jaratadı hám bólme kólemin belgileydi. Basqa oyınshılar birinshi jaratılǵan oyınshı menen birdey bólme atınıń jazadı hám oyın baslanadı.",
       "2": "Bul oyın forked edi "
     },
     "customMap": "Arnawlı karta",
@@ -23,7 +23,7 @@
       "6": "Jeke kartanı tańlaw : "
     },
     "limitation": "SHEKLEWLER",
-    "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
+    "limitationDescription": "Házirde men kúnine kvotalar ornatıp atırman, sol sebepli bul oyındı ótkeriw bahası júdá joqarı bolmawi kerek. Eger karta júklenbese, bul sol kúni kvota asıp ketkenligin ańlatadı. Ol Tınısh okeanı waqtı menen yarım túnde tiklenedi. Qolaysızlıqlar ushın keshirim so'raymız. Bul oyın ashıq derek bolıp, siz óz oyın serverińizdi jaratıwıńız hám bul oyındı sheksiz oynawıńız múmkin.",
     "play": "Oynaw",
     "streamerModeActivate": "Streamer rejimi qosılǵan",
     "streamerModeDetails": "Bólme siltemeleri hám atları jasırılǵan",
