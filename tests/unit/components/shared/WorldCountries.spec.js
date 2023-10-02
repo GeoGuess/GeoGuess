@@ -8,24 +8,11 @@ const data = {
     countries:{'SD':'SD'}
 };
 describe('WorldCountries.vue', () => {
-    let store;
-    let wrapper
-    beforeAll(() => {
-        store = new Vuex.Store({
-            modules: {
-                homeStore:{
-                    getters:{
-                        getMaxScoreMap: () => () => 0,
-                    }
-                }
-            },
-        });
-    });
+    let wrapper;
 
     beforeEach(()=>{
         wrapper = shallowMount(WorldCountries, {
             ...args,
-            store,
             propsData: {
                 ...data,
             },
