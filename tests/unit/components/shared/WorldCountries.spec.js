@@ -1,7 +1,6 @@
 import WorldCountries from '@/components/shared/WorldCountries.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
-import Vuex from 'vuex';
 
 const args = appInit(createLocalVue());
 const data = {
