@@ -74,9 +74,3 @@ VueWrapper {
   "isFunctionalComponent": undefined,
 }
 `;
-
-exports[`DialogRoom.vue render 1`] = `
-<v-dialog-stub contentclass="dialog-room" opendelay="0" closedelay="0" openonclick="true" maxwidth="800" origin="center center" persistent="true" retainfocus="true" transition="dialog-transition">
-  <settingsmap-stub single-player="true" current-component="settingsMap" room-name=""></settingsmap-stub>
-</v-dialog-stub>
-`;

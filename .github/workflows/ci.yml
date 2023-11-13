@@ -60,7 +60,7 @@ jobs:
       run: NODE_ENV=production npm run lint -- --no-fix
 
     - name: Run unit tests
-      run: npm run test:unit
+      run: npm run test:unit -- run --coverage --reporter json
 
     - name: Code coverage
       if:  matrix.os == 'ubuntu-latest'

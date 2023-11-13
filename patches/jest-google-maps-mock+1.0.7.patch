@@ -6,7 +6,7 @@ index 7501b36..8e0e627 100644
  var createMockFuncsFromArray = function createMockFuncsFromArray(instance) {
    var names = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
    names.forEach(function (name) {
--    instance[name] = jest.fn().mockName(name);
+-    instance[name] = vi.fn().mockName(name);
 +    instance[name] = vi.fn().mockName(name);
    });
  };
@@ -15,7 +15,7 @@ index 7501b36..8e0e627 100644
    var createMVCObject = function createMVCObject(instance) {
      var listeners = {};
      instance.listeners = listeners;
--    instance.addListener = jest.fn(function (event, fn) {
+-    instance.addListener = vi.fn(function (event, fn) {
 +    instance.addListener = vi.fn(function (event, fn) {
        listeners[event] = listeners[event] || [];
        listeners[event].push(fn);
@@ -24,12 +24,12 @@ index 7501b36..8e0e627 100644
        Lo: 3,
        Go: 4
      },
--    BicyclingLayer: jest.fn().mockImplementation(function () {
+-    BicyclingLayer: vi.fn().mockImplementation(function () {
 +    BicyclingLayer: vi.fn().mockImplementation(function () {
        createMVCObject(this);
        createMockFuncsFromArray(this, ['setMap']);
      }),
--    Circle: jest.fn().mockImplementation(function (opts) {
+-    Circle: vi.fn().mockImplementation(function (opts) {
 +    Circle: vi.fn().mockImplementation(function (opts) {
        this.opts = opts;
        createMVCObject(this);
@@ -38,13 +38,13 @@ index 7501b36..8e0e627 100644
        BOTTOM_RIGHT: 12,
        CENTER: 13
      },
--    Data: jest.fn().mockImplementation(function (options) {
+-    Data: vi.fn().mockImplementation(function (options) {
 +    Data: vi.fn().mockImplementation(function (options) {
        this.options = options;
        createMVCObject(this);
        createMockFuncsFromArray(this, ['setControlPosition', 'setControls', 'setDrawingMode', 'setMap', 'setStyle']);
      }),
--    DirectionsRenderer: jest.fn().mockImplementation(function (opts) {
+-    DirectionsRenderer: vi.fn().mockImplementation(function (opts) {
 +    DirectionsRenderer: vi.fn().mockImplementation(function (opts) {
        this.opts = opts;
        createMVCObject(this);
@@ -53,7 +53,7 @@ index 7501b36..8e0e627 100644
        REQUEST_DENIED: 'REQUEST_DENIED',
        UNKNOWN_ERROR: 'UNKNOWN_ERROR'
      },
--    FusionTablesLayer: jest.fn().mockImplementation(function (options) {
+-    FusionTablesLayer: vi.fn().mockImplementation(function (options) {
 +    FusionTablesLayer: vi.fn().mockImplementation(function (options) {
        this.options = options;
        createMVCObject(this);
@@ -62,17 +62,17 @@ index 7501b36..8e0e627 100644
      LatLng: function LatLng() {},
      LatLngBounds: function LatLngBounds() {},
      MVCArray: function MVCArray() {},
--    MVCObject: jest.fn().mockImplementation(function () {
+-    MVCObject: vi.fn().mockImplementation(function () {
 +    MVCObject: vi.fn().mockImplementation(function () {
        createMVCObject(this);
      }),
--    Map: jest.fn().mockImplementation(function (mapDiv, opts) {
+-    Map: vi.fn().mockImplementation(function (mapDiv, opts) {
 +    Map: vi.fn().mockImplementation(function (mapDiv, opts) {
        this.mapDiv = mapDiv;
        this.opts = opts;
        createMVCObject(this);
        createMockFuncsFromArray(this, ['setCenter', 'setClickableIcons', 'setHeading', 'setMapTypeId', 'setOptions', 'setStreetView', 'setTilt', 'getZoom', 'setZoom', 'fitBounds', 'getBounds', 'panToBounds']);
--      this.getDiv = jest.fn().mockImplementation(function () {
+-      this.getDiv = vi.fn().mockImplementation(function () {
 +      this.getDiv = vi.fn().mockImplementation(function () {
          return this.mapDiv;
        });
@@ -81,7 +81,7 @@ index 7501b36..8e0e627 100644
        TERRAIN: 'terrain'
      },
      MapTypeRegistry: function MapTypeRegistry() {},
--    Marker: jest.fn().mockImplementation(function (opts) {
+-    Marker: vi.fn().mockImplementation(function (opts) {
 +    Marker: vi.fn().mockImplementation(function (opts) {
        this.opts = opts;
        createMVCObject(this);
@@ -90,13 +90,13 @@ index 7501b36..8e0e627 100644
      },
      OverlayView: function OverlayView() {},
      Point: function Point() {},
--    Polygon: jest.fn().mockImplementation(function (opts) {
+-    Polygon: vi.fn().mockImplementation(function (opts) {
 +    Polygon: vi.fn().mockImplementation(function (opts) {
        this.opts = opts;
        createMVCObject(this);
        createMockFuncsFromArray(this, ['setDraggable', 'setEditable', 'setMap', 'setOptions', 'setPath', 'setPaths', 'setVisible']);
      }),
--    Polyline: jest.fn().mockImplementation(function (opts) {
+-    Polyline: vi.fn().mockImplementation(function (opts) {
 +    Polyline: vi.fn().mockImplementation(function (opts) {
        this.opts = opts;
        createMVCObject(this);
@@ -105,7 +105,7 @@ index 7501b36..8e0e627 100644
        FORWARD_CLOSED_ARROW: 1,
        FORWARD_OPEN_ARROW: 2
      },
--    TrafficLayer: jest.fn().mockImplementation(function (opts) {
+-    TrafficLayer: vi.fn().mockImplementation(function (opts) {
 +    TrafficLayer: vi.fn().mockImplementation(function (opts) {
        this.opts = opts;
        createMVCObject(this);
@@ -114,7 +114,7 @@ index 7501b36..8e0e627 100644
        OPTIMISTIC: 'optimistic',
        PESSIMISTIC: 'pessimistic'
      },
--    TransitLayer: jest.fn().mockImplementation(function () {
+-    TransitLayer: vi.fn().mockImplementation(function () {
 +    TransitLayer: vi.fn().mockImplementation(function () {
        createMVCObject(this);
        createMockFuncsFromArray(this, ['setMap']);
@@ -123,17 +123,17 @@ index 7501b36..8e0e627 100644
      },
      __gjsload__: function __gjsload__() {},
      event: {
--      clearInstanceListeners: jest.fn().mockName('clearInstanceListeners')
+-      clearInstanceListeners: vi.fn().mockName('clearInstanceListeners')
 +      clearInstanceListeners: vi.fn().mockName('clearInstanceListeners')
      }
    };
  
    if (libraries.includes('places')) {
      maps.places = {
--      AutocompleteService: jest.fn(function () {
+-      AutocompleteService: vi.fn(function () {
 +      AutocompleteService: vi.fn(function () {
          return {
--          getPlacePredictions: jest.fn()
+-          getPlacePredictions: vi.fn()
 +          getPlacePredictions: vi.fn()
          };
        }),

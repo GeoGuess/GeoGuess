@@ -1,5 +1,5 @@
 import HomeCard from '@/components/home/card/HomeCard.vue';
-import { GeoMapCustom } from '@/models/GeoMap';
+import { GeoMapType } from '@/models/GeoMap';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../../testutils/appInit';
 import Vuex from 'vuex';
@@ -47,8 +47,11 @@ describe('HomeCard.vue', () => {
     });
 
     it('deleteMap', () => {
-        const map = new GeoMapCustom();
-        const spy = vi.spyOn(map, 'delete');
+        let launch = false;
+        const map = {
+            type: GeoMapType.Custom,
+            delete: () => launch = true,
+        };
         const wrapper = shallowMount(HomeCard, {
             ...args,
             store,
@@ -60,6 +63,6 @@ describe('HomeCard.vue', () => {
 
         wrapper.vm.deleteMap();
 
-        expect(spy).toBeCalled();
+        expect(launch).toEqual(true);
     });
 });

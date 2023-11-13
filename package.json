@@ -47,6 +47,7 @@
   "devDependencies": {
     "@stryker-mutator/core": "^7.1.1",
     "@stryker-mutator/vitest-runner": "^7.1.1",
+    "@vitest/coverage-v8": "^0.34.6",
     "@vue/test-utils": "^1.1.2",
     "cross-env": "^7.0.3",
     "cypress": "^13.2.0",
@@ -54,6 +55,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vitest": "^0.3.9",
     "eslint-plugin-vue": "^8.7.1",
     "prettier": "3.0.3",
     "react-is": "^18.2.0",

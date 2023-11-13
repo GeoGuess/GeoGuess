@@ -20,7 +20,7 @@ module.exports = {
         ecmaVersion: 2020,
         sourceType: 'module',
     },
-    plugins: ['vue', 'prettier'],
+    plugins: ['vue', 'prettier', 'vitest'],
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
