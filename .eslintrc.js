@@ -28,4 +28,14 @@ module.exports = {
         'vue/multi-word-component-names': 'off',
         'vue/valid-v-slot': 'off',
     },
+    overrides: [
+        {
+          "files": [
+            "**/*.spec.js"
+          ],
+          "env": {
+            "jest": true
+          }
+        }
+    ]
 };
