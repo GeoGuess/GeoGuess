@@ -242,6 +242,248 @@ VueWrapper {
 }
 `;
 
+exports[`HeaderGame.vue > methods startTimer startedAt 1`] = `
+VueWrapper {
+  "_emitted": {
+    "hook:beforeCreate": [
+      [],
+    ],
+    "hook:beforeMount": [
+      [],
+    ],
+    "hook:created": [
+      [],
+    ],
+    "hook:mounted": [
+      [],
+    ],
+    "hook:renderTracked": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+    ],
+    "hook:renderTriggered": [
+      [],
+    ],
+  },
+  "_emittedByOrder": [
+    {
+      "args": [],
+      "name": "hook:beforeCreate",
+    },
+    {
+      "args": [],
+      "name": "hook:created",
+    },
+    {
+      "args": [],
+      "name": "hook:beforeMount",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:mounted",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTriggered",
+    },
+  ],
+  "isFunctionalComponent": undefined,
+}
+`;
+
 exports[`HeaderGame.vue > mounted 1`] = `
 VueWrapper {
   "_emitted": {
