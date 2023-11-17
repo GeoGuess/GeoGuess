@@ -1,22 +1,23 @@
-import MapAreas from '@/components/map/MapAreas';
+import MapAreas from '@/components/map/MapAreas.vue';
 import { createLocalVue, mount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
 import Vuex from 'vuex';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 import areaStore from '@/store/modules/area.store';
+import { describe, beforeEach, it, vi, expect } from 'vitest';
 
 const args = appInit(createLocalVue());
 global.google = {
     maps: {
         ...createGoogleMapsMock(),
-        InfoWindow: jest.fn().mockImplementation(function () {
+        InfoWindow: vi.fn().mockImplementation(function () {
             return {
-                open: jest.fn(),
+                open: vi.fn(),
             };
         }),
-        Polyline: jest.fn().mockImplementation(function () {
+        Polyline: vi.fn().mockImplementation(function () {
             return {
-                setMap: jest.fn(),
+                setMap: vi.fn(),
             };
         }),
     },
@@ -29,7 +30,7 @@ describe('MapAreas.vue', () => {
                 areaStore: {
                     getters: areaStore.getters,
                     actions: {
-                        loadAreas: jest.fn(),
+                        loadAreas: vi.fn(),
                     },
                 },
             },
@@ -69,15 +70,15 @@ describe('MapAreas.vue', () => {
         expect(wrapper.vm.infoWindowDatas).toHaveLength(0);
         wrapper.vm.setInfoWindow('Mickey', 10, 5000, false, 'CA');
         expect(wrapper.vm.infoWindowDatas).toHaveLength(1);
-        expect(wrapper.vm.infoWindowDatas[0].playerName).toEqual('Mickey');
-        expect(wrapper.vm.infoWindowDatas[0].area).toEqual('CA');
+        expect(wrapper.vm.infoWindowDatas[0].playerName).toBe('Mickey');
+        expect(wrapper.vm.infoWindowDatas[0].area).toBe('CA');
 
         wrapper.vm.removeMarkers();
         expect(wrapper.vm.markers).toHaveLength(0);
         expect(wrapper.vm.infoWindowDatas).toHaveLength(0);
 
-        expect(wrapper.vm.allowSelect).toEqual(true);
+        expect(wrapper.vm.allowSelect).toBe(true);
         wrapper.vm.removeListener();
-        expect(wrapper.vm.allowSelect).toEqual(false);
+        expect(wrapper.vm.allowSelect).toBe(false);
     });
 });

@@ -63,7 +63,12 @@ export default {
             setGameSettings: SETTINGS_SET_GAME_SETTINGS,
         }),
         ...mapActions('settingsStore', ['openDialogRoom']),
-        ...mapActions(['loadGeoJsonFromUrl', 'setGeoJson', 'setMapLoaded', 'loadMap']),
+        ...mapActions([
+            'loadGeoJsonFromUrl',
+            'setGeoJson',
+            'setMapLoaded',
+            'loadMap',
+        ]),
         setMap() {
             if (this.type === 'area') {
                 this.loadGeoJsonFromUrl(this.data.data.urlArea);

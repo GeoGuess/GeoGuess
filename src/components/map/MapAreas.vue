@@ -36,7 +36,9 @@
                     streetViewControl: false,
                     draggableCursor: 'crosshair',
                     clickableIcons: false,
-                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+                    styles: $vuetify.theme.dark
+                        ? $vuetify.theme.themes.dark.gmap
+                        : $vuetify.theme.themes.light.gmap,
                 }"
             />
         </div>
@@ -55,7 +57,7 @@
     </div>
 </template>
 <script type="text/javascript">
-import FlagIcon from '@/components/shared/FlagIcon';
+import FlagIcon from '@/components/shared/FlagIcon.vue';
 import { mapActions, mapGetters } from 'vuex';
 import MapMixin from './mixins/MapMixin';
 

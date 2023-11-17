@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Header from '@/components/page/Header';
-import Footer from '@/components/page/Footer';
+import Header from '@/components/page/Header.vue';
+import Footer from '@/components/page/Footer.vue';
 export default {
     components: {
         Header,
@@ -45,4 +45,3 @@ export default {
     padding: 2%;
 }
 </style>
-

@@ -29,7 +29,7 @@
                             />
 
                             <SaveButton
-                                class="ml-2 mt-2 "
+                                class="ml-2 mt-2"
                                 color="dark"
                                 :dark="!isSaveAllowed"
                                 @click="saveMap"
@@ -63,7 +63,9 @@
                                 style="width: 100%; height: 530px"
                                 :options="{
                                     gestureHandling: 'greedy',
-                                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+                                    styles: $vuetify.theme.dark
+                                        ? $vuetify.theme.themes.dark.gmap
+                                        : $vuetify.theme.themes.light.gmap,
                                 }"
                             />
                             <v-row>
@@ -134,7 +136,9 @@
             </v-card-text>
             <v-card-actions>
                 <div class="flex-grow-1" />
-                <v-btn @click="clean" color="error"> {{ $t('DialogCustomMap.Clean') }} </v-btn>
+                <v-btn @click="clean" color="error">
+                    {{ $t('DialogCustomMap.Clean') }}
+                </v-btn>
                 <v-btn dark color="primary" @click="$emit('change-visibility')">
                     {{ $t('DialogCustomMap.OK') }}
                 </v-btn>
@@ -146,10 +150,10 @@
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
 import { validURL } from '@/utils';
-import { download, isGeoJSONValid } from '../../utils';
-import { HOME_SET_NAME_GEOJSON } from '../../store/mutation-types';
-import { GeoMapCustom } from '../../models/GeoMap';
-import SaveButton from '@/components/shared/SaveButton';
+import { download, isGeoJSONValid } from '@/utils';
+import { HOME_SET_NAME_GEOJSON } from '@/store/mutation-types';
+import { GeoMapCustom } from '@/models/GeoMap';
+import SaveButton from '@/components/shared/SaveButton.vue';
 
 export default {
     name: 'DialogCustomMap',
@@ -313,7 +317,8 @@ export default {
             this.$nextTick(() => {
                 if (this.$refs.mapRef)
                     this.$refs.mapRef.$mapPromise.then((map) => {
-                        const streetViewLayer = new google.maps.StreetViewCoverageLayer();
+                        const streetViewLayer =
+                            new google.maps.StreetViewCoverageLayer();
                         streetViewLayer.setMap(map);
                         let data = new google.maps.Data({
                             map: map,

@@ -14,9 +14,9 @@ export const AREA_MODE = {
 };
 
 export const STROKE_COLORS = [
-   '#b71c1c',
-   '#33691e',
-   '#f57f17',
-   '#880e4f',
-   '#01579b',   
+    '#b71c1c',
+    '#33691e',
+    '#f57f17',
+    '#880e4f',
+    '#01579b',
 ];

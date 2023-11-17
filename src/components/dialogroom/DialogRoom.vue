@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import CardRoomName from '@/components/dialogroom/card/CardRoomName';
-import CardRoomSettings from '@/components/dialogroom/card/CardRoomSettings';
-import CardRoomPlayerName from '@/components/dialogroom/card/CardRoomPlayerName';
+import CardRoomName from '@/components/dialogroom/card/CardRoomName.vue';
+import CardRoomSettings from '@/components/dialogroom/card/CardRoomSettings.vue';
+import CardRoomPlayerName from '@/components/dialogroom/card/CardRoomPlayerName.vue';
 import { mapState, mapActions } from 'vuex';
 import CardRoomMap from './card/CardRoomMap.vue';
 
@@ -60,7 +60,7 @@ export default {
 <style lang="scss">
 .dialog-room {
     .v-card__actions {
-        gap: .5rem;
+        gap: 0.5rem;
         padding: 1rem;
     }
 }

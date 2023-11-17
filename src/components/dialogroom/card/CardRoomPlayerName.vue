@@ -95,14 +95,14 @@ export default {
         },
         canNext() {
             return !this.players.some((name) => name === '');
-        }
+        },
     },
     methods: {
         ...mapActions('settingsStore', ['startGame', 'setPlayerName']),
         copy() {
             this.$copyText(this.roomUrl, this.$refs.roomUrl);
         },
-    }
+    },
 };
 </script>
 

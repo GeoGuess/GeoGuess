@@ -8,7 +8,16 @@
                 :dismissible="true"
                 @close="scoreboard = false"
             />
-            <v-btn dark icon @click="scoreboard = true" v-if="$vuetify.breakpoint.mobile && guessString && leaderboardShown">
+            <v-btn
+                dark
+                icon
+                @click="scoreboard = true"
+                v-if="
+                    $vuetify.breakpoint.mobile &&
+                    guessString &&
+                    leaderboardShown
+                "
+            >
                 <v-icon>mdi-scoreboard-outline</v-icon>
             </v-btn>
             <div v-if="remainingTime != null && remainingTime > 0">
@@ -56,7 +65,7 @@
 
 <script>
 import { getCountdownText } from '@/utils';
-import { GAME_MODE } from '../constants';
+import { GAME_MODE } from '@/constants';
 import { mapState } from 'vuex';
 import DialogMessage from '@/components/DialogMessage.vue';
 
@@ -72,7 +81,7 @@ export default {
         'roomName',
         'nbRound',
         'guessString',
-        'leaderboardShown'
+        'leaderboardShown',
     ],
     data() {
         return {

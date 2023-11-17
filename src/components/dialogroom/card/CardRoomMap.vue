@@ -41,7 +41,9 @@
                     mapTypeControl: false,
                     fullscreenControl: false,
                     gestureHandling: 'greedy',
-                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+                    styles: $vuetify.theme.dark
+                        ? $vuetify.theme.themes.dark.gmap
+                        : $vuetify.theme.themes.light.gmap,
                 }"
             />
             <v-row justify="space-around">
@@ -93,7 +95,7 @@ export default {
         };
     },
     computed: {
-        ...mapGetters([ 'geoJson']),
+        ...mapGetters(['geoJson']),
         ...mapState({
             loadingGeoJson: (state) => state.homeStore.loadingGeoJson,
         }),
@@ -101,14 +103,16 @@ export default {
             return this.entries.map((entry) => entry.properties.name);
         },
         // If map have enough point, return false
-        canPlayGeoJSON(){
+        canPlayGeoJSON() {
             return !(
                 this.geoJson &&
                 Array.isArray(this.geoJson.features) &&
                 this.geoJson.features.length < 5 &&
-                this.geoJson.features.every(feature => feature.geometry.type === 'Point')
+                this.geoJson.features.every(
+                    (feature) => feature.geometry.type === 'Point'
+                )
             );
-        }
+        },
     },
     watch: {
         search(val) {

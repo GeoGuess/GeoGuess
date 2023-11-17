@@ -7,7 +7,6 @@
         dark
         class="mt-2 mr-2"
         v-if="guessString && !$vuetify.breakpoint.mobile && leaderboardShown"
-
     >
         {{ guessString }}
     </v-alert>
@@ -15,8 +14,8 @@
 
 <script>
 export default {
-    name: "Leaderboard",
-    props: ["guessString", "leaderboardShown"]
+    name: 'Leaderboard',
+    props: ['guessString', 'leaderboardShown'],
 };
 </script>
 

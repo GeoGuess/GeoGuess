@@ -1,9 +1,39 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Home.vue test mounted 1`] = `
-<contentpage-stub>
-  <div class="content">
-    <historytable-stub></historytable-stub>
-  </div>
-</contentpage-stub>
+exports[`Home.vue > test mounted 1`] = `
+VueWrapper {
+  "_emitted": {
+    "hook:beforeCreate": [
+      [],
+    ],
+    "hook:beforeMount": [
+      [],
+    ],
+    "hook:created": [
+      [],
+    ],
+    "hook:mounted": [
+      [],
+    ],
+  },
+  "_emittedByOrder": [
+    {
+      "args": [],
+      "name": "hook:beforeCreate",
+    },
+    {
+      "args": [],
+      "name": "hook:created",
+    },
+    {
+      "args": [],
+      "name": "hook:beforeMount",
+    },
+    {
+      "args": [],
+      "name": "hook:mounted",
+    },
+  ],
+  "isFunctionalComponent": undefined,
+}
 `;

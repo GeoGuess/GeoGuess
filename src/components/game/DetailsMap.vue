@@ -2,8 +2,8 @@
     <div
         v-if="
             properties &&
-                typeof properties === 'object' &&
-                (properties.title || properties.description)
+            typeof properties === 'object' &&
+            (properties.title || properties.description)
         "
         class="details-map_container"
     >
@@ -18,8 +18,9 @@
             :href="properties.link"
             target="_blank"
             class="details-map_link"
-        ><v-icon color="darkGreen">mdi-alert-circle</v-icon>
-            {{ $t('DetailsMap.moreInfo') }}</a>
+            ><v-icon color="darkGreen">mdi-alert-circle</v-icon>
+            {{ $t('DetailsMap.moreInfo') }}</a
+        >
     </div>
 </template>
 

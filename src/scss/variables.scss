@@ -1,57 +1,54 @@
-
 html {
     scroll-behavior: smooth;
 }
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--v-background-base) var(--v-scrollbar-base);
-  }
-
-
-*::-webkit-scrollbar-track
-{
-	background-color: var(--v-background-base);
 }
 
-*::-webkit-scrollbar
-{
-	width: 10px;
+*::-webkit-scrollbar-track {
     background-color: var(--v-background-base);
 }
 
-*::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	background-color: var(--v-scrollbar-base);
+*::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--v-background-base);
 }
-  .v-application {
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--v-scrollbar-base);
+}
+.v-application {
     .v-card {
         background-color: var(--v-card-base) !important;
     }
 }
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
-.v-application, .v-application--wrap{
-  min-height: 100%;
+.v-application,
+.v-application--wrap {
+    min-height: 100%;
 }
 
 .close-btn {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  color: black;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: black;
 }
 
 .v-btn--text {
-  margin: 0 8px;
+    margin: 0 8px;
 }
 
-.blur{
-  filter: blur(4px);
+.blur {
+    filter: blur(4px);
 }
 
 .v-card,
