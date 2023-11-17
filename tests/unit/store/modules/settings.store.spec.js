@@ -1,15 +1,16 @@
-vi.mock('@/lang', () => {
-    return {
-        t: (k) => k,
-    };
-});
-
 import { GAME_MODE } from '@/constants.js';
 import * as MutationTypes from '@/store/mutation-types.js';
 import {
     default as settingsStore,
     GameSettings,
 } from '@/store/modules/settings.store.js';
+import { vi, describe, it, expect } from 'vitest';
+
+vi.mock('@/lang', () => {
+    return {
+        t: (k) => k,
+    };
+});
 
 describe('settingsStore.js', () => {
     it('SETTINGS_SET_GAME_SETTINGS', () => {
@@ -20,21 +21,21 @@ describe('settingsStore.js', () => {
             { allPanorama: true }
         );
         expect(state.gameSettings.allPanorama).toBeTruthy();
-        expect(state.gameSettings.modeSelected).toEqual('classic');
+        expect(state.gameSettings.modeSelected).toBe('classic');
 
         settingsStore.mutations[MutationTypes.SETTINGS_SET_GAME_SETTINGS](
             state,
             { areaParams: { title: '111' } }
         );
-        expect(state.gameSettings.areaParams.title).toEqual('111');
-        expect(state.gameSettings.modeSelected).toEqual(GAME_MODE.CUSTOM_AREA);
+        expect(state.gameSettings.areaParams.title).toBe('111');
+        expect(state.gameSettings.modeSelected).toBe(GAME_MODE.CUSTOM_AREA);
 
         settingsStore.mutations[MutationTypes.SETTINGS_SET_GAME_SETTINGS](
             state,
             { modeSelected: 'country' }
         );
         expect(state.gameSettings.areaParams).toBeNull();
-        expect(state.gameSettings.modeSelected).toEqual('country');
+        expect(state.gameSettings.modeSelected).toBe('country');
         expect(state.gameSettings.optimiseStreetView).toBeTruthy();
     });
 

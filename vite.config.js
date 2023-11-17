@@ -5,10 +5,6 @@ import eslintPlugin from 'vite-plugin-eslint';
 import Components from 'unplugin-vue-components/vite';
 import path from 'path';
 
-const resolve = (file) => {
-    return path.resolve(__dirname, file);
-};
-
 export default defineConfig({
     test: {
         globals: true,

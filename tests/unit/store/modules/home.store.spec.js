@@ -70,6 +70,7 @@ import axios from '@/plugins/axios.js';
 import { GeoMapCustom } from '@/models/GeoMap.js';
 import * as MutationTypes from '@/store/mutation-types.js';
 import { default as homeStore } from '@/store/modules/home.store.js';
+import { describe, vi, expect, it } from 'vitest';
 
 describe('homeStore.js', () => {
     //
@@ -83,7 +84,7 @@ describe('homeStore.js', () => {
         };
         homeStore.mutations[MutationTypes.HOME_SET_GEOJSON](state, geojson);
 
-        expect(state.map.geojson).toEqual(geojson);
+        expect(state.map.geojson).toBe(geojson);
 
         expect(state.listMaps).toHaveLength(0);
         homeStore.mutations[MutationTypes.HOME_SET_LISTS](state, {
@@ -107,7 +108,7 @@ describe('homeStore.js', () => {
             },
             type: 'Feature',
         };
-        expect(homeStore.getters.isValidGeoJson({ map })).toEqual(true);
+        expect(homeStore.getters.isValidGeoJson({ map })).toBe(true);
     });
     it('isValidGeoJson expect features', () => {
         const map = new GeoMapCustom();
@@ -116,7 +117,7 @@ describe('homeStore.js', () => {
             type: 'FeatureCollection',
         };
 
-        expect(homeStore.getters.isValidGeoJson({ map })).toEqual(false);
+        expect(homeStore.getters.isValidGeoJson({ map })).toBe(false);
     });
     it('isValidGeoJson expect not Circle', () => {
         const map = new GeoMapCustom();
@@ -134,7 +135,7 @@ describe('homeStore.js', () => {
             ],
         };
 
-        expect(homeStore.getters.isValidGeoJson({ map })).toEqual(false);
+        expect(homeStore.getters.isValidGeoJson({ map })).toBe(false);
     });
     it('isValidGeoJson true', () => {
         const map = new GeoMapCustom();
@@ -152,16 +153,16 @@ describe('homeStore.js', () => {
             ],
         };
         const state = { map };
-        expect(homeStore.getters.isValidGeoJson(state)).toEqual(true);
+        expect(homeStore.getters.isValidGeoJson(state)).toBe(true);
         const obj = homeStore.getters.geoJson(state);
-        expect(obj.type).toEqual('FeatureCollection');
+        expect(obj.type).toBe('FeatureCollection');
         expect(obj.features).toHaveLength(1);
         expect(obj).toMatchSnapshot();
         const objString = homeStore.getters.geoJsonString(state);
         expect(objString).toContain('FeatureCollection');
         expect(objString).toMatchSnapshot();
 
-        expect(homeStore.getters.geoJsonString({})).toEqual('');
+        expect(homeStore.getters.geoJsonString({})).toBe('');
     });
 
     it('getMaxScoreMap should return max score for map id 1', () => {
@@ -194,7 +195,7 @@ describe('homeStore.js', () => {
 
         expect(
             homeStore.getters.getMaxScoreMap(state)({ id: 1, type: 'default' })
-        ).toEqual(102);
+        ).toBe(102);
     });
 
     it('getMaxScoreOsm should return max score for osm 123', () => {
@@ -244,7 +245,7 @@ describe('homeStore.js', () => {
                 osmType: 'relation',
                 type: 'osm',
             })
-        ).toEqual(102);
+        ).toBe(102);
     });
 
     //
@@ -352,6 +353,6 @@ describe('homeStore.js', () => {
             expect.anything()
         );
         // expect(homeStore.state.history).toHaveLength(1);
-        // expect(homeStore.state.history[0].score).toEqual(2488978);
+        // expect(homeStore.state.history[0].score).toBe(2488978);
     });
 });

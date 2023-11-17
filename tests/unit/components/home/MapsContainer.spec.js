@@ -3,6 +3,7 @@ import homeStore from '@/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import appInit from '../../testutils/appInit';
+import { describe, beforeEach, it, expect, vi } from 'vitest';
 
 const args = appInit(createLocalVue(), false);
 describe('MapsContainer', () => {

@@ -3,6 +3,7 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import homeStore from '@/store/modules/home.store';
 import appInit from '../../testutils/appInit';
+import { describe, beforeEach, expect, it } from 'vitest';
 
 const args = appInit(createLocalVue());
 let store;

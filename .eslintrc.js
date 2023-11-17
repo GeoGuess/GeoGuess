@@ -30,12 +30,8 @@ module.exports = {
     },
     overrides: [
         {
-          "files": [
-            "**/*.spec.js"
-          ],
-          "env": {
-            "jest": true
-          }
-        }
-    ]
+            files: ['**/*.spec.js'],
+            extends: ['plugin:vitest/recommended'],
+        },
+    ],
 };

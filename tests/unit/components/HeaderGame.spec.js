@@ -1,6 +1,7 @@
 import HeaderGame from '@/components/HeaderGame.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../testutils/appInit';
+import { describe, it, expect, vi } from 'vitest';
 
 const args = appInit(createLocalVue());
 
@@ -17,7 +18,7 @@ describe('HeaderGame.vue', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('methods', () => {
+    it('methods startTimer startedAt', () => {
         window.setInterval = (func) => {
             func();
         };
@@ -33,12 +34,12 @@ describe('HeaderGame.vue', () => {
         expect(wrapper.vm.startedAt.getTime()).toBeLessThanOrEqual(
             new Date().getTime()
         );
-        expect(wrapper.vm.timerText).toEqual('00:00');
+        expect(wrapper.vm.timerText).toBe('00:00');
 
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('methods', (done) => {
+    it('methods startTimer called', (done) => {
         const spy = vi.fn();
         const wrapper = shallowMount(HeaderGame, {
             ...args,

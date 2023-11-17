@@ -1,6 +1,7 @@
 import Home from '@/pages/Home.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../testutils/appInit';
+import { describe, vi, it, expect } from 'vitest';
 
 const args = appInit(createLocalVue(), false);
 const $router = {
@@ -8,7 +9,7 @@ const $router = {
 };
 
 describe('Home.vue', () => {
-    it('test mounted', () => {
+    it('test that route doesnt change on mounted', () => {
         shallowMount(Home, {
             ...args,
             mocks: {
@@ -20,7 +21,7 @@ describe('Home.vue', () => {
         });
         expect($router.push).not.toBeCalled();
     });
-    it('test mounted', () => {
+    it('test route change with route params', () => {
         const partyParams =
             'MjAwMCwzMDAsMzkuOTgyOTgxMzM0MTE0MDIsMjMuNjE4NDQ1MjIxOTg0OTgsNzAuMDAxNDM5OTEwOTEwNDUsMTkuNTYwMjI5NzM3Njk5MTcsNTguNDEyNzQ4MTQ2ODQ3MzIsNi45MTI3OTk3MzYzODg2NjYsNjIuMzQxODY2Njg2NDkxNTQsLTYuMjYxNDk1MTQyNDk0MjI2LDY3LjA5OTY2MzkwODQ4Mzc2LDE5LjUxMjI4NDk3NTUwODY0';
 

@@ -2,6 +2,8 @@ import App from '@/App.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from './testutils/appInit';
 import { JSDOM } from 'jsdom';
+import { describe, expect, it, vi } from 'vitest';
+
 const dom = new JSDOM();
 global.window = dom.window;
 global.document = dom.window.document;
@@ -29,8 +31,8 @@ describe('App.vue', () => {
 
         wrapper.vm.setUpdate(event);
 
-        expect(wrapper.vm.updateAvailable).toEqual(true);
-        expect(wrapper.vm.registration).toEqual(event.detail);
+        expect(wrapper.vm.updateAvailable).toBe(true);
+        expect(wrapper.vm.registration).toBe(event.detail);
     });
 
     it('methods: refreshApp should do nothing', () => {
@@ -41,7 +43,7 @@ describe('App.vue', () => {
 
         wrapper.vm.refreshApp();
 
-        expect(wrapper.vm.updateAvailable).toEqual(false);
+        expect(wrapper.vm.updateAvailable).toBe(false);
     });
 
     it('methods: refreshApp should postMessage SKIP_WAITING', () => {
@@ -56,7 +58,7 @@ describe('App.vue', () => {
 
         wrapper.vm.refreshApp();
 
-        expect(wrapper.vm.updateAvailable).toEqual(false);
+        expect(wrapper.vm.updateAvailable).toBe(false);
         expect(
             wrapper.vm.registration.waiting.postMessage
         ).toHaveBeenCalledWith({ type: 'SKIP_WAITING' });

@@ -3,6 +3,7 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import settingsStore from '@/store/modules/settings.store';
 import appInit from '../../../testutils/appInit';
+import { describe, beforeEach, it, vi, expect } from 'vitest';
 
 const args = appInit(createLocalVue());
 
@@ -58,14 +59,14 @@ describe('HomeCardDialog.vue', () => {
         wrapper.setData({ visible: true });
         wrapper.vm.onClickSinglePlayer();
 
-        expect(wrapper.vm.visible).toEqual(false);
+        expect(wrapper.vm.visible).toBe(false);
         expect(actions.openDialogRoom).toBeCalled();
         expect(loadMap).toBeCalledWith(expect.anything(), map);
 
         wrapper.setData({ visible: true });
         wrapper.vm.onClickMultiPlayer();
 
-        expect(wrapper.vm.visible).toEqual(false);
+        expect(wrapper.vm.visible).toBe(false);
 
         expect(actions.openDialogRoom).toBeCalled();
 

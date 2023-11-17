@@ -1,6 +1,7 @@
 import DialogCustomMap from '@/components/home/DialogCustomMap.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import Vuex from 'vuex';
 import homeStore from '@/store/modules/home.store';
@@ -32,7 +33,7 @@ describe('DialogCustomMap.vue', () => {
             'sdsd'
         );
 
-        expect(wrapper.vm.checkIfStringGeoJsonValid('')).toEqual(false);
+        expect(wrapper.vm.checkIfStringGeoJsonValid('')).toBe(false);
     });
 
     it('watch', async () => {

@@ -3,6 +3,7 @@ import { GeoMapType } from '@/models/GeoMap';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../../testutils/appInit';
 import Vuex from 'vuex';
+import { describe, beforeAll, it, expect } from 'vitest';
 
 const args = appInit(createLocalVue());
 const data = {
@@ -50,7 +51,7 @@ describe('HomeCard.vue', () => {
         let launch = false;
         const map = {
             type: GeoMapType.Custom,
-            delete: () => launch = true,
+            delete: () => (launch = true),
         };
         const wrapper = shallowMount(HomeCard, {
             ...args,
@@ -63,6 +64,6 @@ describe('HomeCard.vue', () => {
 
         wrapper.vm.deleteMap();
 
-        expect(launch).toEqual(true);
+        expect(launch).toBe(true);
     });
 });

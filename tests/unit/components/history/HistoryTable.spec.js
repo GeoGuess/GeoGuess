@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 import * as dependencyUtils from '@/utils';
 import appInit from '../../testutils/appInit';
 import { csv, item } from './mock/example.js';
+import { describe, vi, expect, it, beforeEach } from 'vitest';
 
 const args = appInit(createLocalVue());
 Object.defineProperty(Array.prototype, 'flat', {
@@ -80,19 +81,21 @@ describe('HistoryTable.vue', () => {
                 rank: 1,
             },
         ];
-        expect(wrapper.vm.customSort([], ['dateString'], [true])).toEqual([]);
+        expect(wrapper.vm.customSort([], ['dateString'], [true])).toStrictEqual(
+            []
+        );
         const filter1 = wrapper.vm.customSort(items, ['dateString'], [true]);
-        expect(filter1[0].id).toEqual('3');
-        expect(filter1[2].id).toEqual('2');
+        expect(filter1[0].id).toBe('3');
+        expect(filter1[2].id).toBe('2');
         const filter2 = wrapper.vm.customSort(items, ['dateString'], [false]);
-        expect(filter2[0].id).toEqual('2');
-        expect(filter1[2].id).toEqual('3');
+        expect(filter2[0].id).toBe('2');
+        expect(filter1[2].id).toBe('3');
 
         const filter3 = wrapper.vm.customSort(items, ['timeString'], [true]);
-        expect(filter3[0].id).toEqual('2');
+        expect(filter3[0].id).toBe('2');
 
         const filter4 = wrapper.vm.customSort(items, ['timeString'], [false]);
-        expect(filter4[0].id).toEqual('3');
+        expect(filter4[0].id).toBe('3');
     });
 
     it('test share method', () => {
@@ -100,11 +103,11 @@ describe('HistoryTable.vue', () => {
 
         wrapper.vm.share(item);
 
-        expect(wrapper.vm.url).toEqual(
+        expect(wrapper.vm.url).toBe(
             'http://localhost:3000/game/LDAsNDYuMzI0OTI0MDQ3OTI1NDEsLTc0LjIxMjgxMjE2NjYyMDQsMTYuNDU2MTA0MjMzODIwNjMsMTA3LjU5Nzg1NDgyMDAwNTgsLTguNDc3NDc0NjU2ODMwNDksLTcwLjE0OTM0NjM4ODM0NzY1LDU4LjUxNTE4NDg1NTE2NDY3LC02LjI2MDQ3NTQyMDgxNDYxMyw0Mi4wNDU4MjMwODA0MTE4NiwtMTAxLjA0OTYxNTMwMjUwODQ='
         );
 
-        expect(wrapper.vm.dialog).toEqual(true);
+        expect(wrapper.vm.dialog).toBe(true);
     });
 
     it('test exportCsv method', () => {

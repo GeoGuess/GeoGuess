@@ -1,3 +1,4 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 vi.mock('@/plugins/axios', () => {
     const responseTls = {
         features: [
@@ -107,12 +108,12 @@ describe('CardRoomMap.vue', () => {
             'https://photon.komoot.io/api/?q=Toulouse'
         );
         await wrapper.vm.$nextTick();
-        expect(wrapper.exists('#search-input'));
+        expect(wrapper.find('#search-input').exists()).toBe(true);
         await wrapper.vm.$nextTick();
-        expect(wrapper.vm.search).toEqual('Toulouse');
+        expect(wrapper.vm.search).toBe('Toulouse');
         await wrapper.vm.$nextTick();
         expect(wrapper.vm.entries).toHaveLength(2);
         expect(wrapper.vm.items).toHaveLength(2);
-        expect(wrapper.vm.items[0]).toEqual('Toulouse');
+        expect(wrapper.vm.items[0]).toBe('Toulouse');
     });
 });

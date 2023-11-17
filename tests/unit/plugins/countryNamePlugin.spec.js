@@ -1,5 +1,6 @@
 import { createLocalVue } from '@vue/test-utils';
 import countryNamePlugin from '/src/plugins/countryNamePlugin';
+import { describe, it, expect } from 'vitest';
 
 describe('countryNamePlugin.js', () => {
     const factory = () => {
@@ -13,7 +14,7 @@ describe('countryNamePlugin.js', () => {
         Vue.prototype.i18n = {
             locale: 'fr',
         };
-        expect(Vue.prototype.$countryNameLocale('TN')).toEqual('Tunisie');
+        expect(Vue.prototype.$countryNameLocale('TN')).toBe('Tunisie');
     });
 
     it('$countryNameLocale should return Tunisia if it', () => {
@@ -22,6 +23,6 @@ describe('countryNamePlugin.js', () => {
         Vue.prototype.i18n = {
             locale: 'it',
         };
-        expect(Vue.prototype.$countryNameLocale('TN')).toEqual('Tunisia');
+        expect(Vue.prototype.$countryNameLocale('TN')).toBe('Tunisia');
     });
 });

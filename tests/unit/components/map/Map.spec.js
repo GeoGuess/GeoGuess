@@ -2,6 +2,7 @@ import Map from '@/components/map/Map.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
 import createGoogleMapsMock from 'jest-google-maps-mock';
+import { describe, vi, expect, it } from 'vitest';
 
 const args = appInit(createLocalVue());
 global.google = {

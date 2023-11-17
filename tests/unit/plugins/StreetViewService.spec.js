@@ -1,4 +1,5 @@
 import StreetViewService from '@/plugins/StreetViewService';
+import { describe, it, expect, vi } from 'vitest';
 
 class GoogleMockService {
     constructor(...args) {
@@ -27,7 +28,7 @@ describe('StreetViewService', () => {
             { mode: 'country' }
         );
         expect(streetviewServiceObj.settingsPanorama.allPanorama).toBeTruthy();
-        expect(streetviewServiceObj.settingsGame.mode).toEqual('country');
+        expect(streetviewServiceObj.settingsGame.mode).toBe('country');
     });
 
     it('getStreetView: should return roundPredefined', () => {
@@ -45,8 +46,8 @@ describe('StreetViewService', () => {
         const spy = vi.spyOn(streetviewServiceObj.service, 'getPanorama');
         streetviewServiceObj.getStreetView(2);
 
-        expect(spy.mock.calls[0][0].location.args).toEqual([2, 3]);
-        expect(spy.mock.calls[0][0].source).toEqual('default');
+        expect(spy.mock.calls[0][0].location.args).toStrictEqual([2, 3]);
+        expect(spy.mock.calls[0][0].source).toBe('default');
     });
 
     it('_getResponseStreetViewService: should return panorama', async () => {
@@ -64,7 +65,7 @@ describe('StreetViewService', () => {
             }
         );
 
-        expect(res.panorama).toEqual({ id: '121' });
+        expect(res.panorama).toStrictEqual({ id: '121' });
         expect(res.area).toBeUndefined();
         expect(res.roundInfo).toBeNull();
         expect(res.warning).toBeFalsy();
@@ -144,10 +145,10 @@ describe('StreetViewService', () => {
         );
 
         const res = streetviewServiceObj.getRandomLatLng();
-        expect(res.properties).toEqual({
+        expect(res.properties).toStrictEqual({
             title: 'hello',
         });
-        expect(res.position.args).toEqual([1, 0]);
+        expect(res.position.args).toStrictEqual([1, 0]);
         expect(res.radius).toBeDefined();
     });
 });

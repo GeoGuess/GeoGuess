@@ -2,6 +2,7 @@ import StreetView from '@/pages/StreetView.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 import appInit from '../testutils/appInit';
+import { describe, it, vi, expect } from 'vitest';
 
 const args = appInit(createLocalVue());
 global.google = {
@@ -22,14 +23,14 @@ describe('StreetView.vue', () => {
         const wrapper = shallowMount(StreetView, args);
         wrapper.vm.startTimer = vi.fn();
 
-        expect(wrapper.vm.isVisibleCountdownAlert).toEqual(false);
+        expect(wrapper.vm.isVisibleCountdownAlert).toBe(false);
 
         const endDate = new Date();
         endDate.setSeconds(endDate.getSeconds() + 15);
         wrapper.vm.initTimer(15, true);
 
-        expect(wrapper.vm.timeCountdown).toEqual(15);
-        expect(wrapper.vm.isVisibleCountdownAlert).toEqual(true);
+        expect(wrapper.vm.timeCountdown).toBe(15);
+        expect(wrapper.vm.isVisibleCountdownAlert).toBe(true);
         expect(wrapper.vm.endTime.getTime()).toBeGreaterThanOrEqual(
             endDate.getTime()
         );
@@ -44,21 +45,21 @@ describe('StreetView.vue', () => {
             endTime: new Date(new Date().getTime() + 1000000),
         });
 
-        expect(wrapper.vm.isVisibleCountdownAlert).toEqual(false);
+        expect(wrapper.vm.isVisibleCountdownAlert).toBe(false);
 
         const endDate = new Date();
         endDate.setSeconds(endDate.getSeconds() + 15);
         wrapper.vm.initTimer(15, true);
 
-        expect(wrapper.vm.timeCountdown).toEqual(15);
-        expect(wrapper.vm.isVisibleCountdownAlert).toEqual(true);
+        expect(wrapper.vm.timeCountdown).toBe(15);
+        expect(wrapper.vm.isVisibleCountdownAlert).toBe(true);
         expect(wrapper.vm.endTime.getTime()).toBeGreaterThanOrEqual(
             endDate.getTime()
         );
         expect(wrapper.vm.startTimer).not.toBeCalled();
     });
 
-    it('methods startTimer hasTimerStarted', () => {
+    it('methods setOptions', () => {
         const wrapper = shallowMount(StreetView, {
             ...args,
             propsData: {

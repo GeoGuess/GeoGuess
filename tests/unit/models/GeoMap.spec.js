@@ -1,3 +1,7 @@
+import { describe, vi, it, expect } from 'vitest';
+import { GeoMap, GeoMapCustom, GeoMapOSM } from '@/models/GeoMap.js';
+import IndexedDBService from '@/plugins/IndexedDBService';
+
 vi.mock('@/plugins/IndexedDBService', () => {
     let list = [];
     return {
@@ -16,38 +20,36 @@ vi.mock('@/plugins/IndexedDBService', () => {
         },
     };
 });
-import { GeoMap, GeoMapCustom, GeoMapOSM } from '@/models/GeoMap.js';
-import IndexedDBService from '@/plugins/IndexedDBService';
 describe('GeoMap.js', () => {
     it('GeoMap nameLocate', () => {
         let gMap = new GeoMap();
 
-        expect(gMap.nameLocate).toEqual('');
+        expect(gMap.nameLocate).toBe('');
         gMap.name = 'na';
-        expect(gMap.nameLocate).toEqual('na');
+        expect(gMap.nameLocate).toBe('na');
 
         gMap.name = {
             en: 'na en',
         };
-        expect(gMap.nameLocate).toEqual('na en');
+        expect(gMap.nameLocate).toBe('na en');
     });
     it('GeoMap descriptionLocate', () => {
         let gMap = new GeoMap();
 
-        expect(gMap.descriptionLocate).toEqual('');
+        expect(gMap.descriptionLocate).toBe('');
         gMap.description = 'na';
-        expect(gMap.descriptionLocate).toEqual('na');
+        expect(gMap.descriptionLocate).toBe('na');
 
         gMap.description = {
             en: 'na en',
         };
-        expect(gMap.descriptionLocate).toEqual('na en');
+        expect(gMap.descriptionLocate).toBe('na en');
     });
 
     it('GeoMap details should return object', () => {
         let gMap = new GeoMap();
 
-        expect(gMap.details).toEqual({
+        expect(gMap.details).toStrictEqual({
             id: undefined,
             type: 'default',
             name: '',
@@ -58,22 +60,22 @@ describe('GeoMap.js', () => {
         let gMapCustom = new GeoMapCustom();
         gMapCustom.name = 'Map 1 ';
         await gMapCustom.save();
-        expect(IndexedDBService.list[0].m).toEqual('addMap');
-        expect(IndexedDBService.list[0].v.name).toEqual('Map 1 ');
+        expect(IndexedDBService.list[0].m).toBe('addMap');
+        expect(IndexedDBService.list[0].v.name).toBe('Map 1 ');
 
         gMapCustom.name = 'a';
         await gMapCustom.save();
-        expect(IndexedDBService.list[1].m).toEqual('updateMap');
-        expect(IndexedDBService.list[1].v.name).toEqual('a');
+        expect(IndexedDBService.list[1].m).toBe('updateMap');
+        expect(IndexedDBService.list[1].v.name).toBe('a');
 
         await gMapCustom.delete();
-        expect(IndexedDBService.list[2].m).toEqual('deleteMap');
+        expect(IndexedDBService.list[2].m).toBe('deleteMap');
     });
 
-    it('GeoMapOSM should crea', () => {
+    it('GeoMapOSM should create', () => {
         let gMap = new GeoMapOSM('Map', 123, 'relation', {});
 
-        expect(gMap.details).toEqual({
+        expect(gMap.details).toStrictEqual({
             type: 'osm',
             osmType: 'relation',
             osmId: 123,
