@@ -35,7 +35,7 @@
     "vuex": "^3.6.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.10",
+    "@babel/core": "^7.23.5",
     "@stryker-mutator/core": "^6.2.3",
     "@stryker-mutator/jest-runner": "^6.4.0",
     "@vue/cli-plugin-babel": "~5.0.8",
