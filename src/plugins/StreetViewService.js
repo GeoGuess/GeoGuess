@@ -6,7 +6,7 @@ import { AREA_MODE, GAME_MODE } from '../constants';
 import {
     getAreaCodeNameFromLatLng,
     getMaxDistanceBbox,
-    isInGeoJSON
+    isInGeoJSON,
 } from '../utils';
 
 class StreetViewService {
@@ -32,12 +32,14 @@ class StreetViewService {
             position = new google.maps.LatLng(positions[0], positions[1]);
         } else {
             let randomPos;
-            do{
+            do {
                 randomPos = this.getRandomLatLng();
-            } while(this.alreadyVisited.includes(randomPos.position.toString()));
+            } while (
+                this.alreadyVisited.includes(randomPos.position.toString())
+            );
 
             this.alreadyVisited.push(randomPos.position.toString());
-            
+
             radius = randomPos.radius;
             position = randomPos.position;
             randomFeatureProperties = randomPos.properties;
@@ -82,7 +84,8 @@ class StreetViewService {
         cptNotFoundLocation,
         randomFeatureProperties
     ) {
-        let isInGeoJSONResult, isVisibleDialog = false;
+        let isInGeoJSONResult,
+            isVisibleDialog = false;
         if (this.placeGeoJson != null) {
             isInGeoJSONResult = isInGeoJSON(
                 turfModel.point([
@@ -100,12 +103,12 @@ class StreetViewService {
                 isVisibleDialog = true;
             }
             let areaCode;
-            try{
+            try {
                 areaCode = await this._getAreaCode(data);
-            }catch(err){
+            } catch (err) {
                 return this.getStreetView(round);
             }
-            
+
             return {
                 panorama: data,
                 roundInfo: randomFeatureProperties || null,
@@ -114,14 +117,13 @@ class StreetViewService {
             };
         }
     }
-    
 
     getRandomLatLng() {
         if (this.placeGeoJson != null) {
             let position,
                 radius,
                 properties = null;
-            if (this.placeGeoJson.type === 'FeatureCollection') {  
+            if (this.placeGeoJson.type === 'FeatureCollection') {
                 let randInt = Math.floor(
                     Math.random() * this.placeGeoJson.features.length
                 );
@@ -160,17 +162,15 @@ class StreetViewService {
 
     _checkStreetView(data) {
         return !(
-            this.settingsPanorama.optimiseStreetView && 
-                (
-                    !/^\xA9 (?:\d+ )?Google$/.test(data.copyright) ||
-                    !data.imageDate ||
-                    data.links.length < 2 ||
-                    (Array.isArray(data.g) && data.g.length !== 0)
-                )
+            this.settingsPanorama.optimiseStreetView &&
+            (!/^\xA9 (?:\d+ )?Google$/.test(data.copyright) ||
+                !data.imageDate ||
+                data.links.length < 2 ||
+                (Array.isArray(data.g) && data.g.length !== 0))
         );
     }
 
-    async _getAreaCode(data){
+    async _getAreaCode(data) {
         if (
             [GAME_MODE.COUNTRY, GAME_MODE.CUSTOM_AREA].includes(
                 this.settingsGame.mode
@@ -211,6 +211,5 @@ class StreetViewService {
         }
     }
 }
-
 
 export default StreetViewService;
