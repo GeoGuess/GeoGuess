@@ -18,14 +18,18 @@
                 <v-overlay :value="!isReady && multiplayer" opacity="1" />
                 <div id="street-view" ref="streetView" />
 
-
                 <div id="game-interface__overlay">
                     <v-tooltip top>
                         <template v-slot:activator="{ on, attrs }">
-                            <v-btn class="resetBtn" rounded dark fab
-                                   v-bind="attrs"
-                                   v-on="on"
-                                   @click="resetLocation" >
+                            <v-btn
+                                class="resetBtn"
+                                rounded
+                                dark
+                                fab
+                                v-bind="attrs"
+                                v-on="on"
+                                @click="resetLocation"
+                            >
                                 <v-icon>mdi-crosshairs-gps</v-icon>
                             </v-btn>
                         </template>
@@ -117,23 +121,20 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import HeaderGame from '@/components/HeaderGame';
-import Maps from '@/components/Maps';
-import DialogMessage from '@/components/DialogMessage';
-
+import HeaderGame from '@/components/HeaderGame.vue';
+import Maps from '@/components/Maps.vue';
+import DialogMessage from '@/components/DialogMessage.vue';
 
 import StreetViewService from '@/plugins/StreetViewService';
 
-import {
-    getRandomArea,
-} from '../utils';
+import { getRandomArea } from '@/utils';
 
-import { GAME_MODE, SCORE_MODE } from '../constants';
+import { GAME_MODE, SCORE_MODE } from '@/constants';
 
-import {mapActions, mapGetters, mapState} from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 
-import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
-import Leaderboard from "@/components/game/Leaderboard.vue";
+import ConfirmExitMixin from '@/mixins/ConfirmExitMixin.js';
+import Leaderboard from '@/components/game/Leaderboard.vue';
 
 export default {
     components: {
@@ -220,10 +221,10 @@ export default {
         areaParams: {
             type: Object,
         },
-        mapDetails:{
+        mapDetails: {
             type: Object,
             required: false,
-            default: undefined
+            default: undefined,
         },
         nbRoundSelected: {
             type: Number,
@@ -274,31 +275,43 @@ export default {
             streetViewService: null,
             leaderboard: [],
             leaderboardShown: this.guessedLeaderboard || this.scoreLeaderboard,
-            printMapFull: false
+            printMapFull: false,
         };
     },
     computed: {
-      ...mapGetters(['areasJson']),
-      ...mapState('settingsStore', [
-        'players',
-      ]),
-      guessString() {
-        if(!this.leaderboardShown) return "";
-        if(this.scoreLeaderboard) {
-          return Object.entries(this.leaderboard)
-            .sort(([, a], [, b]) => b.score - a.score)
-            .map(([, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")} / ${player.scoreHeader || 0}`)
-            .join('\n');
-        } else {
-          return Object.entries(this.leaderboard)
-            .sort(([, a], [, b]) => b.guessed - a.guessed)
-            .map(([, player]) => `${player.name}: ${player.guessed ? this.$t("Maps.leaderboard.guessed") : this.$t("Maps.leaderboard.notGuessed")}`)
-            .join('\n');
-        }
-      },
-      countdownPercentage() {
-          return (this.remainingTime * 100) / this.timeCountdown;
-      }
+        ...mapGetters(['areasJson']),
+        ...mapState('settingsStore', ['players']),
+        guessString() {
+            if (!this.leaderboardShown) return '';
+            if (this.scoreLeaderboard) {
+                return Object.entries(this.leaderboard)
+                    .sort(([, a], [, b]) => b.score - a.score)
+                    .map(
+                        ([, player]) =>
+                            `${player.name}: ${
+                                player.guessed
+                                    ? this.$t('Maps.leaderboard.guessed')
+                                    : this.$t('Maps.leaderboard.notGuessed')
+                            } / ${player.scoreHeader || 0}`
+                    )
+                    .join('\n');
+            } else {
+                return Object.entries(this.leaderboard)
+                    .sort(([, a], [, b]) => b.guessed - a.guessed)
+                    .map(
+                        ([, player]) =>
+                            `${player.name}: ${
+                                player.guessed
+                                    ? this.$t('Maps.leaderboard.guessed')
+                                    : this.$t('Maps.leaderboard.notGuessed')
+                            }`
+                    )
+                    .join('\n');
+            }
+        },
+        countdownPercentage() {
+            return (this.remainingTime * 100) / this.timeCountdown;
+        },
     },
     async mounted() {
         if (
@@ -316,8 +329,15 @@ export default {
 
         if (!this.streetViewService) {
             this.streetViewService = new StreetViewService(
-                { allPanorama: this.allPanorama, optimiseStreetView: this.optimiseStreetView },
-                { mode: this.mode, areaParams: this.areaParams, areasJson: this.areasJson },
+                {
+                    allPanorama: this.allPanorama,
+                    optimiseStreetView: this.optimiseStreetView,
+                },
+                {
+                    mode: this.mode,
+                    areaParams: this.areaParams,
+                    areasJson: this.areasJson,
+                },
                 this.placeGeoJson,
                 this.roundsPredefined
             );
@@ -350,26 +370,34 @@ export default {
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
                     // Leaderboard
-                    if(this.scoreLeaderboard) {
-                        this.leaderboard = Object.entries(snapshot.val().playerName).map((player) => {
+                    if (this.scoreLeaderboard) {
+                        this.leaderboard = Object.entries(
+                            snapshot.val().playerName
+                        ).map((player) => {
                             return {
-                                scoreHeader: this.leaderboard.find((entity) => entity.id === player[0])?.scoreHeader || 0,
-                                score: snapshot.val()?.finalPoints?.[player[0]] || 0,
+                                scoreHeader:
+                                    this.leaderboard.find(
+                                        (entity) => entity.id === player[0]
+                                    )?.scoreHeader || 0,
+                                score:
+                                    snapshot.val()?.finalPoints?.[player[0]] ||
+                                    0,
                                 name: player[1],
                                 id: player[0],
                                 guessed: !!snapshot.val()?.guess?.[player[0]],
                             };
                         });
-                    } else if(this.guessedLeaderboard) {
-                      this.leaderboard = Object.entries(snapshot.val().playerName).map((player) => {
-                        return {
-                          name: player[1],
-                          guessed: !!snapshot.val()?.guess?.[player[0]],
-                          id: player[0],
-                        };
-                      });
+                    } else if (this.guessedLeaderboard) {
+                        this.leaderboard = Object.entries(
+                            snapshot.val().playerName
+                        ).map((player) => {
+                            return {
+                                name: player[1],
+                                guessed: !!snapshot.val()?.guess?.[player[0]],
+                                id: player[0],
+                            };
+                        });
                     }
-
 
                     // Put the player into the current round node if the player is not put yet
                     if (
@@ -492,7 +520,8 @@ export default {
     methods: {
         ...mapActions(['loadAreas']),
         async loadStreetView() {
-            let {panorama, roundInfo, warning, area} = await this.streetViewService.getStreetView(this.round);
+            let { panorama, roundInfo, warning, area } =
+                await this.streetViewService.getStreetView(this.round);
             this.randomLatLng = panorama.location.latLng;
             this.randomFeatureProperties = roundInfo;
             this.area = area;
@@ -500,15 +529,13 @@ export default {
 
             if (this.multiplayer) {
                 // Put the streetview's location into firebase
-                this.room
-                    .child('streetView/round' + this.round)
-                    .set({
-                        latitude: this.randomLatLng.lat(),
-                        longitude: this.randomLatLng.lng(),
-                        roundInfo: roundInfo,
-                        ...(area && {area}),
-                        warning,
-                 });
+                this.room.child('streetView/round' + this.round).set({
+                    latitude: this.randomLatLng.lat(),
+                    longitude: this.randomLatLng.lng(),
+                    roundInfo: roundInfo,
+                    ...(area && { area }),
+                    warning,
+                });
             }
         },
         resetLocation() {
@@ -572,7 +599,7 @@ export default {
                 }
             }, 50);
 
-            if(data && data.location)
+            if (data && data.location)
                 this.panorama.setPano(data.location.pano);
             this.panorama.setPov({
                 heading: 270,
@@ -624,7 +651,8 @@ export default {
                         } else {
                             // Set a random location if the player didn't select a location in time
                             this.$refs.mapContainer.selectRandomLocation(
-                                this.streetViewService.getRandomLatLng().position
+                                this.streetViewService.getRandomLatLng()
+                                    .position
                             );
                         }
                     }
@@ -664,7 +692,7 @@ export default {
 
             // Leaderboard
             for (let player of Object.entries(this.leaderboard)) {
-              player[1].scoreHeader = player[1].score;
+                player[1].scoreHeader = player[1].score;
             }
         },
         async goToNextRound(playAgain = false) {
@@ -783,7 +811,7 @@ export default {
         top: 0;
         right: 0;
         display: flex;
-        .resetBtn{
+        .resetBtn {
             position: absolute;
             bottom: 22px;
             right: 70px;

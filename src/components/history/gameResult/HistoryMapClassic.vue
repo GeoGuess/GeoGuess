@@ -4,7 +4,9 @@
         :options="{
             mapTypeControl: false,
             gestureHandling: 'greedy',
-            styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+            styles: $vuetify.theme.dark
+                ? $vuetify.theme.themes.dark.gmap
+                : $vuetify.theme.themes.light.gmap,
         }"
         :zoom="0"
         map-type-id="roadmap"
@@ -18,11 +20,14 @@
                 <GmapInfoWindow :options="infoOptions" :position="r.guess">
                     <p>
                         <b>{{ $t('Maps.infoWindow.Distance') }}: </b>
-                        {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.distance / 1000)  }}
+                        {{
+                            new Intl.NumberFormat($i18n.locale, {
+                                style: 'unit',
+                                unit: 'kilometer',
+                            }).format(r.distance / 1000)
+                        }}
                         <br />
-                        <b>
-                            {{ $t('Maps.infoWindow.Points') }}:
-                        </b>
+                        <b> {{ $t('Maps.infoWindow.Points') }}: </b>
                         {{ r.points }}
                     </p>
                 </GmapInfoWindow>
@@ -83,11 +88,15 @@
                         <p>
                             <b>{{ player }}</b
                             ><br />
-                            <b>{{ $t('Maps.infoWindow.Distance') }} : </b >
-                            {{ new Intl.NumberFormat($i18n.locale, { style: "unit", unit:"kilometer" }).format(r.players[player].distance / 1000)  }} <br />
-                            <b>
-                                {{ $t('Maps.infoWindow.Points') }}:
-                            </b>
+                            <b>{{ $t('Maps.infoWindow.Distance') }} : </b>
+                            {{
+                                new Intl.NumberFormat($i18n.locale, {
+                                    style: 'unit',
+                                    unit: 'kilometer',
+                                }).format(r.players[player].distance / 1000)
+                            }}
+                            <br />
+                            <b> {{ $t('Maps.infoWindow.Points') }}: </b>
                             {{ r.players[player].points }}
                         </p>
                     </GmapInfoWindow>
@@ -143,7 +152,7 @@ export default {
             icon: {
                 url: window.location.origin + '/img/icons/favicon-16x16.png',
                 anchor: { x: 8, y: 8 },
-            }
+            },
         };
     },
 };
@@ -151,6 +160,6 @@ export default {
 
 <style>
 .gm-style-iw {
-  color: black;
+    color: black;
 }
 </style>

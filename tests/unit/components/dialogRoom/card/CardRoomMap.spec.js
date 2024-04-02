@@ -1,4 +1,5 @@
-jest.mock('@/plugins/axios', () => {
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+vi.mock('@/plugins/axios', () => {
     const responseTls = {
         features: [
             {
@@ -58,16 +59,18 @@ jest.mock('@/plugins/axios', () => {
     };
 
     return {
-        get: jest.fn(() =>
-            Promise.resolve({
-                status: 200,
-                data: responseTls,
-            })
-        ),
-        post: jest.fn(),
+        default: {
+            get: vi.fn(() =>
+                Promise.resolve({
+                    status: 200,
+                    data: responseTls,
+                })
+            ),
+            post: vi.fn(),
+        },
     };
 });
-import CardRoomMap from '@/components/dialogroom/card/CardRoomMap';
+import CardRoomMap from '@/components/dialogroom/card/CardRoomMap.vue';
 import axios from '@/plugins/axios';
 import homeStore from '@/store/modules/home.store';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
@@ -89,28 +92,28 @@ describe('CardRoomMap.vue', () => {
             },
         });
     });
-  
+
     it('test search Input', async () => {
         args.localVue.use(VueAxios, axios);
-        const wrapper = shallowMount(CardRoomMap, { 
+        const wrapper = shallowMount(CardRoomMap, {
             ...args,
-             store,
-              axios,
-              localVue: args.localVue,
-         });
+            store,
+            axios,
+            localVue: args.localVue,
+        });
         await wrapper.setData({ search: 'Toulouse' });
 
-        expect(wrapper.exists('#search-input'));
         await wrapper.vm.$nextTick();
-        expect(wrapper.vm.search).toEqual('Toulouse');
-        const spy = jest.spyOn(wrapper.vm.axios,'get');
-        expect(spy).toBeCalledWith(
+        expect(wrapper.vm.axios.get).toBeCalledWith(
             'https://photon.komoot.io/api/?q=Toulouse'
         );
         await wrapper.vm.$nextTick();
+        expect(wrapper.find('#search-input').exists()).toBe(true);
+        await wrapper.vm.$nextTick();
+        expect(wrapper.vm.search).toBe('Toulouse');
+        await wrapper.vm.$nextTick();
         expect(wrapper.vm.entries).toHaveLength(2);
         expect(wrapper.vm.items).toHaveLength(2);
-        expect(wrapper.vm.items[0]).toEqual('Toulouse');
-        
+        expect(wrapper.vm.items[0]).toBe('Toulouse');
     });
 });

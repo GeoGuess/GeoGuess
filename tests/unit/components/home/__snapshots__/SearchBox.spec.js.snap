@@ -1,22 +1,183 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SearchBox.vue render 1`] = `
-<div class="search-box">
-  <h2>0 visited places</h2>
-  <div class="search-box__btns">
-    <v-btn-stub color="primary" rounded="true" tag="button" activeclass="" large="true" type="button" class="search-box__btns__btn">
-      Single Player
-    </v-btn-stub>
-    <v-btn-stub color="secondary" rounded="true" tag="button" activeclass="" large="true" type="button" class="search-box__btns__btn">
-      With Friends
-    </v-btn-stub>
-    <dialogroom-stub></dialogroom-stub>
-  </div>
-  <div class="search-box__mapmenu">
-    <v-btn-stub color="primary" height="50" tag="button" activeclass="" text="true" type="button" class="btn-customs">
-      <v-icon-stub>mdi-map-plus</v-icon-stub> Create Map
-    </v-btn-stub>
-    <dialogcustommap-stub></dialogcustommap-stub>
-  </div>
-</div>
+exports[`SearchBox.vue > render 1`] = `
+VueWrapper {
+  "_emitted": {
+    "hook:beforeCreate": [
+      [],
+    ],
+    "hook:beforeMount": [
+      [],
+    ],
+    "hook:created": [
+      [],
+    ],
+    "hook:mounted": [
+      [],
+    ],
+    "hook:renderTracked": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+    ],
+    "hook:renderTriggered": [
+      [],
+    ],
+  },
+  "_emittedByOrder": [
+    {
+      "args": [],
+      "name": "hook:beforeCreate",
+    },
+    {
+      "args": [],
+      "name": "hook:created",
+    },
+    {
+      "args": [],
+      "name": "hook:beforeMount",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTracked",
+    },
+    {
+      "args": [],
+      "name": "hook:renderTriggered",
+    },
+    {
+      "args": [],
+      "name": "hook:mounted",
+    },
+  ],
+  "isFunctionalComponent": undefined,
+}
 `;
