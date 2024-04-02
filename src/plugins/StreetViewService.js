@@ -148,7 +148,7 @@ class StreetViewService {
         }
 
         // Generate a random latitude and longitude
-        const lat = Math.random() * 170 - 85;
+        const lat = (Math.acos(Math.random() * 1.99 - 0.995) * 57.2958) - 90;
         const lng = Math.random() * 360 - 180;
 
         return {
