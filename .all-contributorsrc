@@ -247,6 +247,15 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "zhudotexe",
+      "name": "Andrew Zhu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8866981?v=4",
+      "profile": "https://zhu.codes",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
