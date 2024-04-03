@@ -6,26 +6,26 @@
     "about": "JOBA HAQQINDA",
     "createMap": "Kartanı jaratıw",
     "searchBar": {
-      "customLoaded": "Custom map has been loaded",
+      "customLoaded": "Arnawlı karta júklendi",
       "enterCity": "Qala, shtat hám mámleketti kirgiziń"
     },
     "aboutDescriptions": {
-      "1": "Geoguess is a free and lazy geoguess game with no ads.                  Players compete how close the player can guess random locations in five rounds.                 You can share the score with other people via social media like Facebook or Twitter.                 You can play multiplayer games with your friends up to five friends.                  The first player creates a room and decides the room size. Other players type the same room name as the first player created and the game will start.",
-      "2": "This game was forked from "
+      "1": "Geoguess - bul reklamasız biypul hám erinshek geoguess oyını. Oyınshılar bes turda oyınshı tosınarlı jaylardı qanshellilik jaqın shama etiwleri múmkinligi menen básekilesedi. Siz esaptı Facebook yamasa Twitter sıyaqlı social tarmaqlar arqalı basqa adamlar menen bólisiwińiz múmkin. Doslarıńız menen beske shekem dosıńız menen kóp oyınshı oyınların oynawıńız múmkin. Birinshi oyınshı xananı jaratadı hám bólme kólemin belgileydi. Basqa oyınshılar birinshi jaratılǵan oyınshı menen birdey bólme atınıń jazadı hám oyın baslanadı.",
+      "2": "Bul oyın forked edi "
     },
-    "customMap": "CUSTOMS MAP",
+    "customMap": "Arnawlı karta",
     "customMapDescriptions": {
-      "1": "You can limit random locations to cities, states, or countries with the search bar.",
-      "2": "In the multiplayer, the first player fixes the location.",
-      "3": "Furthermore, you can make your custom map with ",
+      "1": "Qıdırıw paneli járdeminde tosınarlı jaylardı qala, shtat yamasa mámleket menen sheklewińiz múmkin.",
+      "2": "Kóp oyınshı jay birinshi oyınshı tárepinen belgilenedi.",
+      "3": "Bunnan tısqarı, siz ózińizdiń jeke kartańızdı jaratılıwıńız múmkin ",
       "4": "fayl.",
-      "5": "Insert the content of the GeoJson map with the button :",
-      "6": "Customs Map selection : "
+      "5": "GeoJson kartası quramın tuyme menen kiritiń:",
+      "6": "Jeke kartanı tańlaw : "
     },
     "limitation": "SHEKLEWLER",
-    "limitationDescription": "Currently I set quotas per day so the cost to run this game can't get too high.             If the map doesn't load, it means the quota has been exceeded on the day.             It will reset at midnight Pacific Time. Sorry for the inconvenience.             This game is open source so you can build your own game server and play this game unlimitedly.",
+    "limitationDescription": "Házirde men kúnine kvotalar ornatıp atırman, sol sebepli bul oyındı ótkeriw bahası júdá joqarı bolmawi kerek. Eger karta júklenbese, bul sol kúni kvota asıp ketkenligin ańlatadı. Ol Tınısh okeanı waqtı menen yarım túnde tiklenedi. Qolaysızlıqlar ushın keshirim so'raymız. Bul oyın ashıq derek bolıp, siz óz oyın serverińizdi jaratıwıńız hám bul oyındı sheksiz oynawıńız múmkin.",
     "play": "Oynaw",
-    "streamerModeActivate": "Streamer mode activate",
+    "streamerModeActivate": "Streamer rejimi qosılǵan",
     "streamerModeDetails": "Bólme siltemeleri hám atları jasırılǵan",
     "mapSavedAlert": {
       "title": "Karta saqlandı 🎉",
@@ -48,37 +48,37 @@
     "Sections": {
       "areasTitle": "Maydanlar",
       "mapsTitle": "Kartalar",
-      "pleaseSelectLabel": "You seems lost, please select a type or you can ",
-      "barrelRoll": "do a barrel roll"
+      "pleaseSelectLabel": "Joǵalǵanǵa uqsaysiz, túrin saylań yamasa múmkin ",
+      "barrelRoll": "Joqarıǵa"
     }
   },
   "StreetView": {
     "nearby": {
-      "title": "Nearby Position",
-      "message": "Unfortunately, we were unable to find a random position in the defined location. However, we have found one nearby 😉"
+      "title": "Jaqın - átirapdaǵı jaylasıw",
+      "message": "Ókiniw menen aytamız, biz belgilengen orında tosınarlı jaydı tapa almadıq. Biraq, biz jaqın orında taptıq 😉"
     },
-    "waitForOtherPlayers": "Waiting for other players...",
-    "redirectToHomePage": "Redirecting to Home Page...",
-    "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
-    "waitForOtherPlayersToFinish": "Waiting for other players to finish the game...",
-    "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+    "waitForOtherPlayers": "Basqa oyınshılardı kútemen...",
+    "redirectToHomePage": "Bas betke jóneltirilip atır...",
+    "exitGame": "Siz oyınnan shıǵıwǵa májbúrsiz. 5 sekunttan keyin bas betke jóneltirilesiz...",
+    "waitForOtherPlayersToFinish": "Basqa oyınshılar oyındı tamamlawın kútiń...",
+    "confirmExit": "Haqıyqattan da ámeldegi oyınnan ketajaqsızba? Bul oyındı toqtatadı!",
+    "countdownAlert": "Artqa esaplaw baslanadı : {count} sekund qaldı| Artqa esaplaw baslandı : {count} sekund qaldı"
   },
   "Maps": {
-    "makeGuess": "MAKE GUESS",
+    "makeGuess": "Shama etiń",
     "guess": "TABIW",
-    "nextRound": "NEXT ROUND",
-    "viewSummary": "VIEW SUMMARY",
+    "nextRound": "KEYINGI TUR",
+    "viewSummary": "Juwmaqtı kóriw",
     "exit": "Shıǵıw",
     "reset": "QAYTA ORNATÍW",
     "playAgain": "QAYTA OYNATÍW",
     "infoWindow": {
       "Distance": "Aralıq",
-      "Points": "Points"
+      "Points": "Ballar"
     },
     "leaderboard": {
-      "notGuessed": "Not Guessed",
-      "guessed": "Guessed"
+      "notGuessed": "Shama etilmegen",
+      "guessed": "Shama etilgen"
     }
   },
   "Header": {
@@ -89,16 +89,16 @@
   },
   "HeaderGame": {
     "room": "BÓLME",
-    "round": "ROUND",
+    "round": "Tur",
     "distance": "ARALIQ",
     "kmaway": "{value} km uzaqlıqta",
-    "score": "SCORE"
+    "score": "Sanaw"
   },
   "next": "KEYINGISI",
   "cancel": "BIYKARLAW",
   "DialogCustomMap": {
-    "title": "Custom Map",
-    "invalid": "Invalid GeoJSON",
+    "title": "Arnawlı karta",
+    "invalid": "Jaramsız GeoJSON",
     "text": "Tekst",
     "url": "Silteme",
     "file": "Fayl",
@@ -120,58 +120,58 @@
     "mapName": "Karta ataması",
     "time": "Waqıt",
     "distance": "Aralıq",
-    "points": "Points",
-    "rank": "Rank",
+    "points": "Ballar",
+    "rank": "Dáreje",
     "actions": "Háreketler",
     "search": "Izlew",
     "exportGeoSave": "GeoSaveti eksport qılıw",
     "importGeoSave": "GeoSaveti import qılıw",
     "exportCSV": "CSVdi export qılıw",
     "total": "Jámi",
-    "nbRound": "Nb Rounds"
+    "nbRound": "Nb raundları"
   },
   "DialogRoom": {
-    "singlePlayer": "Single Player",
+    "singlePlayer": "Birden-bir oyınshı",
     "withFriends": "Doslar menen",
-    "invalidRoomName": "Invalid name. Please try another.",
-    "inProgress": "The first player is creating the room right now. Please wait and try again.",
-    "roomIsFull": "This room is already full. Please try another.",
-    "alreadyStarted": "This room has already started.  Please try another."
+    "invalidRoomName": "Atı nadurıs. Ótinish, basqasın sınap kóriń.",
+    "inProgress": "Birinshi oyınshı házir xananı jaratıp atır. Ótinish, kútiń hám qaytaldan urınıń.",
+    "roomIsFull": "Bul bólme qashannan berli tolǵan. Ótinish, basqasın sınap kóriń.",
+    "alreadyStarted": "Bul xanada oyın qashannan berli baslanǵan. Ótinish, basqasın sınap kóriń."
   },
   "CardRoomName": {
-    "title": "Type a room name to create a new room or join a existing room"
+    "title": "Jańa bólme jaratıw yamasa ámeldegi xanaǵa qosıw ushın bólme atın kiritiń"
   },
   "CardRoomPlayerName": {
     "title": "Bólme:",
     "input": "Oyınshınıń atın jazıń.",
     "anonymousPlayerName": "Anomim 🕵",
-    "players": "1 player | {count} players"
+    "players": "1 oyınshı| {count} oyınshı"
   },
   "CardRoomSize": {
     "title": "Bólme kólemin ornatıw."
   },
   "CardRoomTime": {
-    "title": "Set a time limit.",
+    "title": "Waqıt shegarasın belgileń.",
     "infinite": "Sheksizlik"
   },
   "CardRoomMap": {
-    "title": "Define your map",
-    "loadBtn": "Load MAP",
+    "title": "Kartańızdı anıqlań",
+    "loadBtn": "Kartanı júklep alıw",
     "reset": "Qayta ornatıw",
-    "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+    "cantPlayGeoJson": "Jaramsız GeoJSON, sizde 5 ten artıq pozitsiya bolıwı kerek."
   },
   "CardRoomSettings": {
     "title": "Oyın sazlawları",
     "modeLabel": "Oyın rejimin tańlań",
-    "includePhotopheres": "Include Photospheres",
-    "timeAttackLabel": "TimeAttack",
-    "timeattackInfos": "In TimeAttack mode, only the player who guesses the country first gets the point. Be quick and win!",
-    "allowMove": "Allow Move",
-    "allowZoom": "Allow Zoom",
-    "allowPan": "Allow Pan",
-    "guessedLeaderboard": "Display whether players have guessed",
-    "scoreLeaderboard": "Display score leaderboard",
-    "countDownLabel": "CountDown (seconds)",
+    "includePhotopheres": "Foto ramkalardı qosıw",
+    "timeAttackLabel": "Hújim waqıtı",
+    "timeattackInfos": "Hújim waqıtı rejiminde tek mámleketti birinshi bolıp shama etken oyınshı ball aladı. Tezirek bolıń hám jeńis qazanıń!",
+    "allowMove": "Háreketke ruxsat beriń",
+    "allowZoom": "Masshtabǵa ruxsat beriń",
+    "allowPan": "Pan-ǵa ruxsat beriń",
+    "guessedLeaderboard": "Oyınshılar shama etken yamasa joq ekenligin kórsetiw",
+    "scoreLeaderboard": "Ballar kestesin kórsetiw",
+    "countDownLabel": "Artqa esaplaw (sekundlar)",
     "scoreModeLabel": "Ball formulası",
     "scoreModes": {
       "normal": "ádettegi",
@@ -179,7 +179,7 @@
     },
     "selectAreas": "Maydanlardı tańlań",
     "moreSettings": "Kóbirek sazlawlar",
-    "optimiseStreetView": "StreetView Optimize (only official)",
+    "optimiseStreetView": "Streetview optimallastırıw (tek rásmiy)",
     "nbRound": "Raundlar sanı"
   },
   "CardRoomDifficulty": {
