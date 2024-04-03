@@ -23,7 +23,7 @@ jobs:
                   git config --global core.autocrlf false
                   git config --global core.eol lf
             - uses: actions/checkout@v4
-            - uses: actions/cache@v3.3.1
+            - uses: actions/cache@v4.0.2
               id: cache
               with:
                   path: ~/.npm
@@ -38,7 +38,7 @@ jobs:
 
 
             - name: Upload artifact
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                   name: Reports
                   path: reports
