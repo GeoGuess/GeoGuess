@@ -41,7 +41,7 @@
     "vue-i18n": "^8.28.2",
     "vue-i18n-bridge": "^9.2.2",
     "vue-router": "^3.6.5",
-    "vuetify": "^2.6.12",
+    "vuetify": "^2.7.2",
     "vuex": "^3.6.0"
   },
   "devDependencies": {
@@ -57,7 +57,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-vitest": "^0.3.9",
     "eslint-plugin-vue": "^8.7.1",
-    "prettier": "3.1.0",
+    "prettier": "3.2.5",
     "react-is": "^18.2.0",
     "sass": "1.32",
     "vitest": "^0.34.6",
