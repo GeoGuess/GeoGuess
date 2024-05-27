@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-27-orange.svg)](#-contribution)
+[![All Contributors](https://img.shields.io/badge/all_contributors-28-orange.svg)](#-contribution)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 ![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
@@ -93,6 +93,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="http://electrics01.com"><img src="https://avatars.githubusercontent.com/u/103579308?v=4?s=100" width="100px;" alt="ElectricS01"/><br /><sub><b>ElectricS01</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/pulls?q=is%3Apr+reviewed-by%3AElectricS01" title="Reviewed Pull Requests">👀</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/NitinRamnani"><img src="https://avatars.githubusercontent.com/u/16476523?v=4?s=100" width="100px;" alt="Nitin Ramnani"/><br /><sub><b>Nitin Ramnani</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=NitinRamnani" title="Tests">⚠️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://zhu.codes"><img src="https://avatars.githubusercontent.com/u/8866981?v=4?s=100" width="100px;" alt="Andrew Zhu"/><br /><sub><b>Andrew Zhu</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=zhudotexe" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/HelloJowet"><img src="https://avatars.githubusercontent.com/u/53214867?v=4?s=100" width="100px;" alt="Jonas Frei"/><br /><sub><b>Jonas Frei</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=HelloJowet" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
