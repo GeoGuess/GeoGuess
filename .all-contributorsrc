@@ -256,6 +256,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "HelloJowet",
+      "name": "Jonas Frei",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53214867?v=4",
+      "profile": "https://github.com/HelloJowet",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
