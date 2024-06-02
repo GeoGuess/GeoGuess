@@ -23,7 +23,7 @@ export const translations = loadTranslations();
 
 Vue.use(VueI18n);
 
-export const RTL_LANGUAGES = ['he'];
+export const RTL_LANGUAGES = ['ar', 'he'];
 
 export const languages = Object.keys(translations).map((translation) => ({
     text: (new Intl.DisplayNames([translation], { type: 'language' })).of(translation),
