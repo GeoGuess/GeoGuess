@@ -1,14 +1,15 @@
 import Header from '@/components/page/Header.vue';
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
-import homeStore from '@/store/modules/home.store';
-import * as MutationTypes from '@/store/mutation-types';
+import homeStore from '@/store/modules/home.store.js';
+import * as MutationTypes from '@/store/mutation-types.js';
 import appInit from '../../testutils/appInit';
 import Vuex from 'vuex';
+import { describe, beforeEach, expect, it, vi } from 'vitest';
 
 const args = appInit(createLocalVue());
 
 describe('Header.vue', () => {
-    const setStreamerModeStore = jest.fn();
+    const setStreamerModeStore = vi.fn();
     let store;
     beforeEach(() => {
         store = new Vuex.Store({
@@ -18,7 +19,8 @@ describe('Header.vue', () => {
                     getters: homeStore.getters,
                     actions: homeStore.actions,
                     mutations: {
-                        [MutationTypes.HOME_SET_STREAMER_MODE]: setStreamerModeStore,
+                        [MutationTypes.HOME_SET_STREAMER_MODE]:
+                            setStreamerModeStore,
                     },
                 },
             },
@@ -31,9 +33,9 @@ describe('Header.vue', () => {
         });
 
         const aboutBtn = wrapper.find('#aboutBtn');
-        expect(wrapper.vm.aboutDialog).toEqual(false);
+        expect(wrapper.vm.aboutDialog).toBe(false);
         aboutBtn.trigger('click');
-        expect(wrapper.vm.aboutDialog).toEqual(true);
+        expect(wrapper.vm.aboutDialog).toBe(true);
     });
 
     it('switchLanguage method', () => {
@@ -41,9 +43,8 @@ describe('Header.vue', () => {
             ...args,
             store,
         });
-        expect(localStorage.getItem('language')).toEqual('en');
+        expect(localStorage.getItem('language')).toBe('en');
         wrapper.vm.switchLanguage('fr');
-        expect(localStorage.getItem('language')).toEqual('fr');
+        expect(localStorage.getItem('language')).toBe('fr');
     });
-
 });

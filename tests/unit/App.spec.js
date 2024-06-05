@@ -1,68 +1,66 @@
-
-
-import App from '@/App';
+import App from '@/App.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from './testutils/appInit';
-import { JSDOM } from "jsdom";
+import { JSDOM } from 'jsdom';
+import { describe, expect, it, vi } from 'vitest';
+
 const dom = new JSDOM();
 global.window = dom.window;
 global.document = dom.window.document;
 
-global.document.addEventListener = jest.fn();
-global.navigator.serviceWorker = {addEventListener: jest.fn()};
+global.document.addEventListener = vi.fn();
+global.navigator.serviceWorker = { addEventListener: vi.fn() };
 const args = appInit(createLocalVue());
 
 const factory = () => {
-	return shallowMount(App, {
-		...args,
-	});
+    return shallowMount(App, {
+        ...args,
+    });
 };
 
-
 describe('App.vue', () => {
+    it('methods: setUpdate should set update datas', () => {
+        const wrapper = factory();
+        const event = {
+            detail: {
+                waiting: {
+                    postMessage: vi.fn(),
+                },
+            },
+        };
 
+        wrapper.vm.setUpdate(event);
 
-	it('methods: setUpdate should set update datas', () => {
-		const wrapper = factory();
-		const event = {
-			detail: { waiting: {
-				postMessage: jest.fn(),
-			}}
-		};
+        expect(wrapper.vm.updateAvailable).toBe(true);
+        expect(wrapper.vm.registration).toBe(event.detail);
+    });
 
-		wrapper.vm.setUpdate(event);
+    it('methods: refreshApp should do nothing', () => {
+        const wrapper = factory();
+        wrapper.setData({
+            registration: {},
+        });
 
-		expect(wrapper.vm.updateAvailable).toEqual(true);
-		expect(wrapper.vm.registration).toEqual(event.detail);
-	});
+        wrapper.vm.refreshApp();
 
-	it('methods: refreshApp should do nothing', () => {
-		const wrapper = factory();
-		wrapper.setData({
-			registration: { }
-		});
+        expect(wrapper.vm.updateAvailable).toBe(false);
+    });
 
+    it('methods: refreshApp should postMessage SKIP_WAITING', () => {
+        const wrapper = factory();
+        wrapper.setData({
+            registration: {
+                waiting: {
+                    postMessage: vi.fn(),
+                },
+            },
+        });
 
-		wrapper.vm.refreshApp();
+        wrapper.vm.refreshApp();
 
-		expect(wrapper.vm.updateAvailable).toEqual(false);	
-	
-	});
-
-	it('methods: refreshApp should postMessage SKIP_WAITING', () => {
-		const wrapper = factory();
-		wrapper.setData({
-			registration: {
-				waiting: {
-					postMessage: jest.fn(),
-				}
-			}
-		});
-
-		wrapper.vm.refreshApp();
-
-		expect(wrapper.vm.updateAvailable).toEqual(false);
-		expect(wrapper.vm.registration.waiting.postMessage).toHaveBeenCalledWith({type:'SKIP_WAITING'});
-	});
-	
+        expect(wrapper.vm.updateAvailable).toBe(false);
+        expect(
+            wrapper.vm.registration.waiting.postMessage
+        ).toHaveBeenCalledWith({ type: 'SKIP_WAITING' });
+    });
 });

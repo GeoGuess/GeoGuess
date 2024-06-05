@@ -1,20 +1,21 @@
-import Map from '@/components/map/Map';
+import Map from '@/components/map/Map.vue';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from '../../testutils/appInit';
 import createGoogleMapsMock from 'jest-google-maps-mock';
+import { describe, vi, expect, it } from 'vitest';
 
 const args = appInit(createLocalVue());
 global.google = {
     maps: {
         ...createGoogleMapsMock(),
-        InfoWindow: jest.fn().mockImplementation(function () {
+        InfoWindow: vi.fn().mockImplementation(function () {
             return {
-                open: jest.fn(),
+                open: vi.fn(),
             };
         }),
-        Polyline: jest.fn().mockImplementation(function () {
+        Polyline: vi.fn().mockImplementation(function () {
             return {
-                setMap: jest.fn(),
+                setMap: vi.fn(),
             };
         }),
     },

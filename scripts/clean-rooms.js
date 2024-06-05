@@ -41,6 +41,7 @@ db.ref('/')
                 const difference = currentDate - createdAt;
 
                 if (difference > 86400000) {
+                    // eslint-disable-next-line no-console
                     console.log('delete : ' + childSnapshot.key);
                     childSnapshot.ref.remove();
                 }
@@ -53,6 +54,7 @@ db.ref('/')
         process.exit(0);
     })
     .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
         process.exit(1);
     });

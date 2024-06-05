@@ -2,10 +2,15 @@
     <div>
         <v-app-bar class="header" height="100">
             <router-link to="/">
-                <img class="header__logo" src="@/assets/geoguessLogo.png" />
+                <img
+                    class="header__logo"
+                    src="/src/assets/geoguessLogo.png"
+                    alt="logo"
+                />
                 <img
                     class="header__logo-min"
-                    src="@/../public/img/icons/android-icon-72x72.png"
+                    src="/img/icons/android-icon-72x72.png"
+                    alt="logo"
                 />
             </router-link>
 
@@ -51,7 +56,12 @@
                     </v-menu>
                     <v-btn icon @click="changeTheme(!darkTheme)">
                         <v-icon size="30">
-                            {{ darkTheme ? 'mdi-white-balance-sunny' : 'mdi-weather-night' }} }}
+                            {{
+                                darkTheme
+                                    ? 'mdi-white-balance-sunny'
+                                    : 'mdi-weather-night'
+                            }}
+                            }}
                         </v-icon>
                     </v-btn>
                 </div>
@@ -78,8 +88,8 @@
     </div>
 </template>
 <script>
-import About from '@/components/page/About';
-import { languages, RTL_LANGUAGES } from '../../lang';
+import About from '@/components/page/About.vue';
+import { languages, RTL_LANGUAGES } from '@/lang';
 import { mapActions, mapState } from 'vuex';
 import HeaderAlert from './HeaderAlert.vue';
 
@@ -100,11 +110,11 @@ export default {
             streamerMode: (state) => state.homeStore.streamerMode,
         }),
         demoMode() {
-            return !!process.env.VUE_APP_DEMO_MODE;
+            return !!import.meta.env.VITE_APP_DEMO_MODE;
         },
         darkTheme() {
-          return this.$vuetify.theme.dark;
-        }
+            return this.$vuetify.theme.dark;
+        },
     },
     methods: {
         ...mapActions(['setStreamerMode']),
@@ -121,9 +131,9 @@ export default {
             localStorage.setItem('language', language);
         },
         changeTheme(dark) {
-          this.$vuetify.theme.dark = dark;
-          localStorage.setItem('darkTheme', dark);
-        }
+            this.$vuetify.theme.dark = dark;
+            localStorage.setItem('darkTheme', dark);
+        },
     },
 };
 </script>
@@ -135,19 +145,19 @@ export default {
     .header__nav,
     .header__nav__btns {
         display: flex;
-        align-items: center;        
+        align-items: center;
         & > div {
             margin: 0 1.5rem;
         }
     }
-    .theme--light .header__nav__btns .v-btn{
+    .theme--light .header__nav__btns .v-btn {
         color: rgba(0, 0, 0, 0.87);
         margin: 0.25rem;
     }
-    .theme--dark .header__nav__btns .v-btn{
+    .theme--dark .header__nav__btns .v-btn {
         color: rgba(196, 110, 110, 0.87);
         margin: 0.25rem;
-     }
+    }
     .v-btn {
         a {
             text-decoration: none;
@@ -163,7 +173,7 @@ export default {
         display: none;
     }
     .header__nav-icon {
-       display: none;
+        display: none;
     }
 }
 
@@ -181,10 +191,10 @@ export default {
             }
             position: absolute;
             top: 6.2rem;
-            right: 0rem;
+            right: 0;
             background: var(--v-header-base);
             padding: 1rem;
-            box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%);
+            box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%);
             border-bottom-left-radius: 0.3125rem;
             border-bottom-right-radius: 0.3125rem;
             max-width: 100%;

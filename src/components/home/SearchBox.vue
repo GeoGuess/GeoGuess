@@ -42,9 +42,10 @@
     </div>
 </template>
 <script>
-import DialogCustomMap from '@/components/home/DialogCustomMap';
-import DialogRoom from '@/components/dialogroom/DialogRoom';
+import DialogCustomMap from '@/components/home/DialogCustomMap.vue';
+import DialogRoom from '@/components/dialogroom/DialogRoom.vue';
 import { mapActions, mapGetters } from 'vuex';
+
 export default {
     components: {
         DialogRoom,
@@ -58,23 +59,20 @@ export default {
             dialogCustom: this.dialogCustomOpen,
         };
     },
-
     computed: {
         ...mapGetters(['nbPlaceVisits']),
     },
-
     watch: {
         dialogCustomOpen(v) {
             this.dialogCustom = v;
         },
     },
-
     mounted() {
         this.loadHistory();
     },
     methods: {
+        ...mapActions('settingsStore', ['openDialogRoom']), // map with settingsStore to make openDialogRoom work
         ...mapActions(['loadHistory']),
-        ...mapActions('settingsStore', ['openDialogRoom']),
         openDialog(isSinglePlayer) {
             this.openDialogRoom(isSinglePlayer);
         },
