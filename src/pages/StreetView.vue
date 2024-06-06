@@ -78,7 +78,7 @@
         />
         <div class="alert-container">
             <Leaderboard
-                :guess-string="guessString"
+                :leaderboard="leaderboard"
                 :leaderboard-shown="leaderboardShown"
                 v-if="!printMapFull"
             ></Leaderboard>

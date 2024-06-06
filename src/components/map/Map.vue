@@ -65,15 +65,13 @@ export default {
             this.markers.push(marker);
         },
         removeMarkers() {
-            for (var i = 0; i < this.markers.length; i++) {
-                this.markers[i].setMap(null);
+            for (const element of this.markers) {
+                element.setMap(null);
             }
             this.markers = [];
         },
         setInfoWindow(playerName, distance, points, endGame = false) {
             let dataToDisplay = '';
-            if (playerName !== null)
-                dataToDisplay += '<b>' + playerName + '</b>' + ' : <br/>';
 
             if (distance < 1000) {
                 dataToDisplay +=
@@ -96,7 +94,9 @@ export default {
                 points;
 
             const infoWindow = new google.maps.InfoWindow({
-                content: dataToDisplay,
+                headerContent: playerName,
+                headerDisabled: !playerName,
+                content: `<div>${dataToDisplay}</div>`,
             });
             infoWindow.open(
                 this.map,
@@ -127,8 +127,8 @@ export default {
             this.polylines.push(polyline);
         },
         removePolylines() {
-            for (let i = 0; i < this.polylines.length; i++) {
-                this.polylines[i].setMap(null);
+            for (const element of this.polylines) {
+                element.setMap(null);
             }
         },
         startNextRound() {
@@ -152,9 +152,9 @@ export default {
         fitBounds() {
             const bounds = new google.maps.LatLngBounds();
 
-            for (let i = 0; i < this.markers.length; i++) {
-                if (this.markers[i].getVisible()) {
-                    bounds.extend(this.markers[i].getPosition());
+            for (const element of this.markers) {
+                if (element.getVisible()) {
+                    bounds.extend(element.getPosition());
                 }
             }
 

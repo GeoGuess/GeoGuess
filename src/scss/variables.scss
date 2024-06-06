@@ -2,10 +2,6 @@
 html {
     scroll-behavior: smooth;
 }
-* {
-    scrollbar-width: thin;
-    scrollbar-color: var(--v-background-base) var(--v-scrollbar-base);
-  }
 
 
 *::-webkit-scrollbar-track
