@@ -36,7 +36,7 @@ Cypress.Commands.add('addPlayer', (id, playerNumber, playerName) => {
 });
 
 Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
-    cy.intercept('GET', '/search/*').as('getGeoJson');
+    cy.intercept('GET', '/search?*').as('getGeoJson');
     cy.visit('/', {
         onBeforeLoad: (win) => {
             Object.defineProperty(win.navigator, 'language', {

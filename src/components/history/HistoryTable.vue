@@ -221,7 +221,7 @@ export default {
                 timeString:
                     g.timeLimitation === 0
                         ? this.$t('CardRoomTime.infinite')
-                        : g.timeLimitation / 60,
+                        : g.timeLimitation,
                 mapName: g.mapDetails ? g.mapDetails.name : '',
             }));
         },

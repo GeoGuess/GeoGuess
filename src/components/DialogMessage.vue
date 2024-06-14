@@ -20,7 +20,7 @@
             </v-card-title>
             <v-card-text>
                 <v-container>
-                    <slot name="content">
+                    <slot>
                         <span>{{ dialogText }}</span>
                     </slot>
                 </v-container>

@@ -16,6 +16,7 @@
                     :placeholder="$t('Home.searchBar.enterCity')"
                     background-color="secondary"
                     dark
+                    color="white"
                     rounded
                     height="15"
                     full-width
@@ -23,7 +24,7 @@
                 />
                 <v-btn
                     @click="loadPlaceGeoJSON(place)"
-                    color="dark"
+                    color="secondary"
                     dark
                     id="loadBtn"
                     :loading="loadingGeoJson"
@@ -41,7 +42,7 @@
                     mapTypeControl: false,
                     fullscreenControl: false,
                     gestureHandling: 'greedy',
-                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap
                 }"
             />
             <v-row justify="space-around">

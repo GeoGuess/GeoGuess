@@ -28,7 +28,6 @@
                 <Leaderboard
                     v-if="guessString && !$vuetify.breakpoint.mobile && leaderboardShown"
                     :leaderboard-shown="leaderboardShown"
-                    :guess-string="guessString"
                 ></Leaderboard>
             </div>
             <DetailsMap
@@ -215,8 +214,6 @@ export default {
         'areasGeoJsonUrl',
         'pathKey',
         'mapDetails',
-        'scoreLeaderboard',
-        'guessedLeaderboard',
         'leaderboardShown',
         'guessString'
     ],
