@@ -17,7 +17,7 @@
     "@turf/bbox": "^6.5.0",
     "@turf/boolean-point-in-polygon": "^6.5.0",
     "@turf/distance": "^6.5.0",
-    "@turf/helpers": "^6.1.4",
+    "@turf/helpers": "^7.0.0",
     "axios": "^0.21.4",
     "axios-cache-adapter": "^2.7.3",
     "core-js": "^3.8.3",
