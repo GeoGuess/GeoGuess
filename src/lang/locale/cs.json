@@ -62,7 +62,8 @@
     "exitGame": "Byl jsi přinucen ukončit hru (jeden z hráčů pravděpodovně odešel). Za 5 sekund přesměruji na úvodní stranu...",
     "waitForOtherPlayersToFinish": "Počkej prosím, až ostatní hráči dokončí hru...",
     "confirmExit": "Opravdu chceš opustit aktuální hru? Ukončíš tím hru pro všechny hráče!",
-    "countdownAlert": "Odpočítávání začalo: zbývá {count} sekund | Odpočítávání začalo: zbývá {count} sekund"
+    "countdownAlert": "Odpočítávání začalo: zbývá {count} sekund | Odpočítávání začalo: zbývá {count} sekund",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "HÁDEJ POLOHU",
