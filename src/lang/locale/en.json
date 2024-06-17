@@ -62,7 +62,8 @@
     "exitGame": "You are forced to exit the game. Redirecting to home page after 5 seconds...",
     "waitForOtherPlayersToFinish": "Waiting for other players to finish the game...",
     "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "MAKE GUESS",
@@ -169,8 +170,8 @@
     "allowMove": "Allow Move",
     "allowZoom": "Allow Zoom",
     "allowPan": "Allow Pan",
-    "guessedLeaderboard" : "Display whether players have guessed",
-    "scoreLeaderboard" : "Display score leaderboard",
+    "guessedLeaderboard": "Display whether players have guessed",
+    "scoreLeaderboard": "Display score leaderboard",
     "countDownLabel": "CountDown (seconds)",
     "scoreModeLabel": "Score formula",
     "scoreModes": {

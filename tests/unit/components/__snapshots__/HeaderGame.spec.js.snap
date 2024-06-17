@@ -3,8 +3,6 @@
 exports[`HeaderGame.vue methods 1`] = `
 <div>
   <v-app-bar-stub color="grey darken-4" tag="header" extensionheight="48" src="" value="true" class="header-game">
-    <dialogmessage-stub dismissible="true" dialogtitle="Leaderboard"></dialogmessage-stub>
-    <!---->
     <div><span id="countdown-text"></span></div>
     <!---->
     <div class="flex-grow-1"></div>
@@ -13,6 +11,7 @@ exports[`HeaderGame.vue methods 1`] = `
             </span></div>
     <div class="round-score-container"><span class="sub-text">DISTANCE: </span> <span class="main-text">NaN km away</span></div>
     <div class="round-points-container"><span class="sub-text">SCORE: </span> <span class="main-text"></span></div>
+    <!---->
   </v-app-bar-stub>
 </div>
 `;
@@ -20,8 +19,6 @@ exports[`HeaderGame.vue methods 1`] = `
 exports[`HeaderGame.vue mounted 1`] = `
 <div>
   <v-app-bar-stub color="grey darken-4" tag="header" extensionheight="48" src="" value="true" class="header-game">
-    <dialogmessage-stub dismissible="true" dialogtitle="Leaderboard"></dialogmessage-stub>
-    <!---->
     <div><span id="countdown-text">01:00</span></div>
     <!---->
     <div class="flex-grow-1"></div>
@@ -30,6 +27,7 @@ exports[`HeaderGame.vue mounted 1`] = `
             </span></div>
     <div class="round-score-container"><span class="sub-text">DISTANCE: </span> <span class="main-text">NaN km away</span></div>
     <div class="round-points-container"><span class="sub-text">SCORE: </span> <span class="main-text"></span></div>
+    <!---->
   </v-app-bar-stub>
 </div>
 `;

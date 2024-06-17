@@ -30,7 +30,7 @@
 
                             <SaveButton
                                 class="ml-2 mt-2 "
-                                color="dark"
+                                color="secondary"
                                 :dark="!isSaveAllowed"
                                 @click="saveMap"
                                 :disabled="isSaveAllowed"
@@ -63,7 +63,7 @@
                                 style="width: 100%; height: 530px"
                                 :options="{
                                     gestureHandling: 'greedy',
-                                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap,
+                                    styles: $vuetify.theme.dark ? $vuetify.theme.themes.dark.gmap : $vuetify.theme.themes.light.gmap
                                 }"
                             />
                             <v-row>

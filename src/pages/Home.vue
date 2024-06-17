@@ -7,6 +7,7 @@
                         <img
                             class="home-page__traveler-img"
                             src="../assets/home/traveller.svg"
+                            alt="traveler img"
                         />
                     </div>
                     <v-layout class="home-page__main__content">
