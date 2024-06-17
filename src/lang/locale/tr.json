@@ -62,7 +62,8 @@
     "exitGame": "Oyundan çıkılmak zorunda kalındı. 5 saniye içinde ana sayfaya yönlendiriliyor...",
     "waitForOtherPlayersToFinish": "Diğer oyuncuların oyunu bitirmesi bekleniyor...",
     "confirmExit": "Şu anki oyundan çıkmak istediğine emin misin? Bu oyunu iptal edecek!",
-    "countdownAlert": "Geri sayım başladı : {count} saniye kaldı | Geri sayım başladı : {count} saniye kaldı"
+    "countdownAlert": "Geri sayım başladı : {count} saniye kaldı | Geri sayım başladı : {count} saniye kaldı",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "TAHMİN ET",
