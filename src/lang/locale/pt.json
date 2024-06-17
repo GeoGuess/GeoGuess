@@ -62,7 +62,8 @@
     "exitGame": "Você foi obrigado a sair da partida. Redirecionando para a página inicial em 5 segundos...",
     "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida...",
     "confirmExit": "Tem certeza que quer sair da partida atual? Isso cancelará a partida!",
-    "countdownAlert": "Contagem regressiva iniciada: {count} segundos restantes | Contagem regressiva iniciada: {count} segundos restantes"
+    "countdownAlert": "Contagem regressiva iniciada: {count} segundos restantes | Contagem regressiva iniciada: {count} segundos restantes",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "TENTAR ADIVINHAR",
