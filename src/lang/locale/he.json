@@ -62,7 +62,8 @@
     "exitGame": "נאלצתם לצאת מהמשחק. תופנו לדף הבית בעוד 5 שניות...",
     "waitForOtherPlayersToFinish": "מחכים לשאר השחקנים לסיים את המשחק...",
     "confirmExit": "אתם בטוחים שתרצו לצאת מהמשחק?",
-    "countdownAlert": "הספירה לאחור החלה: נותרו {count} שניות | הספירה לאחור החלה: נותרו {count} שניות "
+    "countdownAlert": "הספירה לאחור החלה: נותרו {count} שניות | הספירה לאחור החלה: נותרו {count} שניות ",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "נחשו",
