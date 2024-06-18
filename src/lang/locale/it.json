@@ -62,7 +62,8 @@
     "exitGame": "Sei stato costretto a uscire dal gioco. Reindirizzamento alla pagina iniziale in 5 secondi...",
     "waitForOtherPlayersToFinish": "In attesa che gli altri giocatori finiscano il turno...",
     "confirmExit": "Sei sicuro di voler lasciare la partita in corso? Questo interromperà il gioco!",
-    "countdownAlert": "Conto alla rovescia iniziato: {count} secondo rimanente | Conto alla rovescia iniziato: {count} secondi rimanenti"
+    "countdownAlert": "Conto alla rovescia iniziato: {count} secondo rimanente | Conto alla rovescia iniziato: {count} secondi rimanenti",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "INDOVINA",

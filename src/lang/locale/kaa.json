@@ -62,7 +62,8 @@
     "exitGame": "Siz oyınnan shıǵıwǵa májbúrsiz. 5 sekunttan keyin bas betke jóneltirilesiz...",
     "waitForOtherPlayersToFinish": "Basqa oyınshılar oyındı tamamlawın kútiń...",
     "confirmExit": "Haqıyqattan da ámeldegi oyınnan ketajaqsızba? Bul oyındı toqtatadı!",
-    "countdownAlert": "Artqa esaplaw baslanadı : {count} sekund qaldı| Artqa esaplaw baslandı : {count} sekund qaldı"
+    "countdownAlert": "Artqa esaplaw baslanadı : {count} sekund qaldı| Artqa esaplaw baslandı : {count} sekund qaldı",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "Shama etiń",

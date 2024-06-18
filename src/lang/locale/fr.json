@@ -62,7 +62,8 @@
     "exitGame": "Vous êtes forcé de quitter le jeu. Redirection vers la page d'accueil dans 5 secondes...",
     "waitForOtherPlayersToFinish": "En attente des autres joueurs pour finir la partie...",
     "confirmExit": "Êtes-vous sûr de vouloir quitter la partie en cours ? Cela annulera la partie !",
-    "countdownAlert": "Compte à rebours lancé : {count} seconde restante | Compte à rebours lancé : {count} secondes restantes"
+    "countdownAlert": "Compte à rebours lancé : {count} seconde restante | Compte à rebours lancé : {count} secondes restantes",
+    "leaderboard": "Classement"
   },
   "Maps": {
     "makeGuess": "FAIRE UN CHOIX",

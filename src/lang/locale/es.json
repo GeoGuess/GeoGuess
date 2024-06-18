@@ -62,7 +62,8 @@
     "exitGame": "Estás obligado a salir del juego. Redireccionando a la página de inicio después de 5 segundos...",
     "waitForOtherPlayersToFinish": "Esperando a que otros jugadores terminen la partida...",
     "confirmExit": "¿Estás seguro de abandonar la partida actual? ¡Esto anulará la partida!",
-    "countdownAlert": "Cuenta atrás iniciada: {count} segundo restante | Cuenta atrás iniciada: {count} segundos restantes"
+    "countdownAlert": "Cuenta atrás iniciada: {count} segundo restante | Cuenta atrás iniciada: {count} segundos restantes",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "ADIVINAR",

@@ -62,7 +62,8 @@
     "exitGame": "أنت مجبر على الخروج من اللعبة. إعادة التوجيه إلى الصفحة الرئيسية بعد 5 ثوان...",
     "waitForOtherPlayersToFinish": "في انتظار اللاعبين الآخرين لإنهاء اللعبة...",
     "confirmExit": "هل أنت متأكد من ترك اللعبة الحالية؟ سيؤدي هذا إلى إلغاء اللعبة!",
-    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+    "countdownAlert": "بدأ العد التنازلي: {count} ثانية متبقية | بدأ العد التنازلي: {count} ثوانٍ متبقية",
+    "leaderboard": "المتصدرون"
   },
   "Maps": {
     "makeGuess": "ادارة الضوضاء",
@@ -191,7 +192,7 @@
   "DialogSummary": {
     "summaryMsgSinglePoints": "نتيجتك هي <strong>{points}</strong> نقاط! ",
     "summaryMsgSingleDistance": "أنت على بعد <strong>{distance}</strong> كم!",
-    "summaryMsgMultiPoints": "<strong>{playerName}</strong> score is <strong>{points}</strong> ! ",
+    "summaryMsgMultiPoints": "<strong>{playerName}</strong> نتيجته <strong>{points}</strong> ! ",
     "summaryMsgMultiDistance": "(<strong>{distance}</strong> كم)",
     "viewDetails": "عرض التفاصيل"
   },
