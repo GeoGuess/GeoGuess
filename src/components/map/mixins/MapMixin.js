@@ -13,7 +13,7 @@ export const MapMixin = {
                     this.map.fitBounds({
                         east: this.bbox[2],
                         north: this.bbox[3],
-                        south: this.bbox[1],
+                        south: Math.max(this.bbox[1], -89),
                         west: this.bbox[0],
                     });
                 } else {
