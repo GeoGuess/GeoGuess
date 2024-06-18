@@ -26,8 +26,8 @@
         <div class="container-map_details">
             <div class="alert-container">
                 <Leaderboard
+                    v-if="guessString && !$vuetify.breakpoint.mobile && leaderboardShown"
                     :leaderboard-shown="leaderboardShown"
-                    :guess-string="guessString"
                 ></Leaderboard>
             </div>
             <DetailsMap
@@ -214,8 +214,6 @@ export default {
         'areasGeoJsonUrl',
         'pathKey',
         'mapDetails',
-        'scoreLeaderboard',
-        'guessedLeaderboard',
         'leaderboardShown',
         'guessString'
     ],
@@ -252,11 +250,7 @@ export default {
             if (this.playerNumber == 1 || !this.room) {
                 return true;
             } else {
-                if (this.isNextStreetViewReady) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return this.isNextStreetViewReady;            
             }
         },
     },
@@ -614,7 +608,6 @@ export default {
     opacity: 0.7;
     width: var(--width);
     height: var(--height);
-    z-index: 3;
     --aspect-ratio: 1.25;
     --inactive-width: 16vw;
     --active-width: 30vw;

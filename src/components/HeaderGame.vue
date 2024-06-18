@@ -1,16 +1,6 @@
 <template>
     <div>
         <v-app-bar class="header-game" color="grey darken-4">
-            <DialogMessage
-                :dialog-message="scoreboard"
-                dialog-title="Leaderboard"
-                :dialog-text="guessString"
-                :dismissible="true"
-                @close="scoreboard = false"
-            />
-            <v-btn dark icon @click="scoreboard = true" v-if="$vuetify.breakpoint.mobile && guessString && leaderboardShown">
-                <v-icon>mdi-scoreboard-outline</v-icon>
-            </v-btn>
             <div v-if="remainingTime != null && remainingTime > 0">
                 <span id="countdown-text">{{ countdownText }}</span>
             </div>
@@ -50,6 +40,22 @@
 
                 <span class="main-text">{{ points }}</span>
             </div>
+            <v-tooltip bottom v-if="roomName && leaderboardEnabled">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn 
+                        dark elevation fab small 
+                        class="ml-3"
+                        v-bind="attrs"
+                        v-on="on"
+                        @click="toggleLeaderboard" 
+                    >
+              
+                        <v-icon>mdi-scoreboard-outline</v-icon>
+                    </v-btn>
+            
+                </template>
+                <span>{{ $t('StreetView.leaderboard') }}</span>
+            </v-tooltip>
         </v-app-bar>
     </div>
 </template>
@@ -58,12 +64,8 @@
 import { getCountdownText } from '@/utils';
 import { GAME_MODE } from '../constants';
 import { mapState } from 'vuex';
-import DialogMessage from '@/components/DialogMessage.vue';
 
 export default {
-    components: {
-        DialogMessage,
-    },
     props: [
         'distance',
         'points',
@@ -71,12 +73,11 @@ export default {
         'remainingTime',
         'roomName',
         'nbRound',
-        'guessString',
-        'leaderboardShown'
+        'mode',
+        'leaderboardEnabled'
     ],
     data() {
         return {
-            scoreboard: false,
             startedAt: null,
             timerText: '',
             intervalFunction: null,
@@ -115,6 +116,9 @@ export default {
             if (this.intervalFunction) {
                 clearInterval(this.intervalFunction);
             }
+        },
+        toggleLeaderboard() {
+            this.$emit('toggleLeaderboard');
         },
     },
 };
