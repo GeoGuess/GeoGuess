@@ -15,7 +15,12 @@
             />
 
             <div id="game-interface">
-                <v-overlay :value="!isReady && multiplayer" opacity="1" />
+                <v-overlay :value="!isReady" opacity="0.5" >
+                    <v-progress-circular
+                        indeterminate
+                        size="64"
+                    ></v-progress-circular>
+                </v-overlay>
                 <div id="street-view" ref="streetView" />
 
 
@@ -320,13 +325,14 @@ export default {
         if (!this.multiplayer) {
             await this.loadStreetView();
             this.$refs.mapContainer.startNextRound();
-
+            
             if (this.timeLimitation != 0) {
                 if (!this.hasTimerStarted) {
                     this.initTimer(this.timeLimitation);
                     this.hasTimerStarted = true;
                 }
             }
+            this.isReady = true;
         } else {
             // Set a room name if it's null to detect when the user refresh the page
             if (!this.roomName) {
@@ -504,6 +510,7 @@ export default {
                         warning,
                  });
             }
+            this.isReady = true;
         },
         resetLocation() {
             const service = new google.maps.StreetViewService();
@@ -669,6 +676,7 @@ export default {
                 this.score = 0;
                 this.points = 0;
             }
+            this.isReady = false;
 
             // Reset
             this.randomLatLng = null;
@@ -699,6 +707,7 @@ export default {
                     .set(this.round);
             }
             this.$refs.mapContainer.startNextRound();
+            this.isReady = true;
         },
         exitGame() {
             // Disable the listener and force the players to exit the game

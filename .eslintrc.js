@@ -28,6 +28,7 @@ module.exports = {
         'vue/html-indent': ['warn', 4],        
         "vue/multi-word-component-names": 'off',
         'vue/valid-v-slot': 'off',
+        'vue/no-reserved-component-names': 'off',
     },
     overrides: [
         {
