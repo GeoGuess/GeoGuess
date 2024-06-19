@@ -18,6 +18,11 @@ window.google = {
         LatLng: GoogleMockService,
         StreetViewStatus: {
             OK: 200
+        },
+        StreetViewSource: {
+            DEFAULT: 'default',
+            OUTDOOR: 'outdoor',
+            GOOGLE: 'google'
         }
     }
 };
@@ -47,8 +52,11 @@ describe('StreetViewService', ()=>{
         const spy = jest.spyOn(streetviewServiceObj.service, 'getPanorama');
         streetviewServiceObj.getStreetView(2);
 
-        expect(spy.mock.calls[0][0].location.args).toEqual([2,3]);
-        expect(spy.mock.calls[0][0].source).toEqual('default');
+        expect(spy).toHaveBeenCalledWith(
+            {"location": {"args": [2, 3]}, "preference": "nearest", "radius": 50, "sources": ["default", "outdoor", "google"]},
+            expect.any(Function)
+        );
+
     });
 
     it('_getResponseStreetViewService: should return panorama', async () => {
@@ -107,8 +115,7 @@ describe('StreetViewService', ()=>{
         const res = streetviewServiceObj._checkStreetView({
             imageDate: new Date(),
             links: ['0','1'],
-            g: [],
-            copyright: 'TOTO'
+            g: [0],
         });
 
         expect(res).toBeFalsy();
