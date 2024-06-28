@@ -49,9 +49,9 @@ class StreetViewService {
                     location: position,
                     preference: 'nearest',
                     radius,
-                    source: this.settingsPanorama.allPanorama
-                        ? 'default'
-                        : 'outdoor',
+                    sources: this.settingsPanorama.allPanorama
+                        ? [google.maps.StreetViewSource.DEFAULT, google.maps.StreetViewSource.OUTDOOR, google.maps.StreetViewSource.GOOGLE]
+                        : [google.maps.StreetViewSource.GOOGLE],
                 },
                 async (data, status) => {
                     if (
@@ -132,11 +132,11 @@ class StreetViewService {
                     position = feature.geometry.coordinates;
                     radius = 50;
                 } else {
-                    radius = getMaxDistanceBbox(bbox(feature)) * 100;
+                    radius = getMaxDistanceBbox(bbox(feature)) * 10;
                     position = randomPositionInPolygon(feature);
                 }
             } else {
-                radius = getMaxDistanceBbox(bbox(this.placeGeoJson)) * 100;
+                radius = getMaxDistanceBbox(bbox(this.placeGeoJson)) * 10;
                 position = randomPositionInPolygon(this.placeGeoJson);
             }
 
@@ -162,7 +162,6 @@ class StreetViewService {
         return !(
             this.settingsPanorama.optimiseStreetView && 
                 (
-                    !/^\xA9 (?:\d+ )?Google$/.test(data.copyright) ||
                     !data.imageDate ||
                     data.links.length < 2 ||
                     (Array.isArray(data.g) && data.g.length !== 0)

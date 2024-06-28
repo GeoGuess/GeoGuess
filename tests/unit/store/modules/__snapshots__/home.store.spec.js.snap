@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`homeStore.js isValidGeoJson true 1`] = `
-Object {
-  "features": Array [
-    Object {
-      "geometry": Object {
-        "coordinates": Array [
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
           1.4442469,
           43.6044622,
         ],
@@ -20,36 +20,36 @@ Object {
 
 exports[`homeStore.js isValidGeoJson true 2`] = `
 "{
-  \\"type\\": \\"FeatureCollection\\",
-  \\"features\\": [
+  "type": "FeatureCollection",
+  "features": [
     {
-      \\"geometry\\": {
-        \\"coordinates\\": [
+      "geometry": {
+        "coordinates": [
           1.4442469,
           43.6044622
         ],
-        \\"type\\": \\"Point\\"
+        "type": "Point"
       },
-      \\"type\\": \\"Feature\\"
+      "type": "Feature"
     }
   ]
 }"
 `;
 
 exports[`homeStore.js mutations 1`] = `
-Object {
-  "customsMaps": Array [],
+{
+  "customsMaps": [],
   "errorMessage": null,
-  "history": Array [],
+  "history": [],
   "listAreas": undefined,
-  "listMaps": Array [
-    Object {
+  "listMaps": [
+    {
       "name": "Hello",
     },
   ],
   "loadingGeoJson": false,
   "map": GeoMapCustom {
-    "geojson": Object {
+    "geojson": {
       "type": "Point",
     },
     "id": undefined,

@@ -149,8 +149,7 @@ export default {
                 const url =
                     osmId ?
                         `https://nominatim.openstreetmap.org/lookup?osm_ids=R${osmId}&format=geojson&polygon_geojson=1&accept-language=en`
-                    : `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(place.toLowerCase())}&format=geojson&limit=1&polygon_geojson=1`;
-                    // TODO : add &accept-language=en 
+                    : `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(place.toLowerCase())}&format=geojson&limit=1&polygon_geojson=1&&polygon_threshold=0.001&accept-language=en`;
                 return axios
                     .get(url)
                     .then((res) => {

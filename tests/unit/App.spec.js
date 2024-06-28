@@ -3,10 +3,6 @@
 import App from '@/App';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import appInit from './testutils/appInit';
-import { JSDOM } from "jsdom";
-const dom = new JSDOM();
-global.window = dom.window;
-global.document = dom.window.document;
 
 global.document.addEventListener = jest.fn();
 global.navigator.serviceWorker = {addEventListener: jest.fn()};

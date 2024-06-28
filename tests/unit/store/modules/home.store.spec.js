@@ -34,9 +34,10 @@ jest.mock('@/plugins/axios', () => {
                 case 'https://listmaps.gejson':
                     data = { maps: [], areas: [] };
                     break;
-                case 'https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1':
-                    data = reponseNte;
-                    break;
+            }   
+
+            if(url.startsWith('https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1')){
+                data = reponseNte;
             }
 
             return Promise.resolve({
@@ -231,9 +232,7 @@ describe('homeStore.js', () => {
             { commit: jest.fn(), state: { loadingGeoJson: true } },
             'Nantes'
         );
-        expect(axios.get).not.toBeCalledWith(
-            `https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1`
-        );
+        expect(axios.get).not.toBeCalled();
     });
 
     it('loadPlaceGeoJSON: should commit GeoJSON', async () => {
@@ -243,7 +242,7 @@ describe('homeStore.js', () => {
             'Nantes'
         );
         expect(axios.get).toBeCalledWith(
-            `https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1`
+            expect.stringContaining('https://nominatim.openstreetmap.org/search?q=nantes&format=geojson&limit=1&polygon_geojson=1')
         );
 
         expect(commit).toBeCalledWith(
