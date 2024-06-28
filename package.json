@@ -1,6 +1,6 @@
 {
   "name": "geoguess",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "GeoGuess is an open-source geography game with Google Map StreetView.",
   "author": "Bilel Jegham and others",
   "scripts": {
