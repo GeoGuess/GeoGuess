@@ -62,7 +62,8 @@
     "exitGame": "ゲームを強制終了しました。5秒後にリダイレクトします...",
     "waitForOtherPlayersToFinish": "他のプレーヤーが終了するのを待っています...",
     "confirmExit": "Are you sure to leave the current game? This will abort the game!",
-    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining"
+    "countdownAlert": "Countdown started : {count} second remaining | Countdown started : {count} seconds remaining",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "推測する",

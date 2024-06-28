@@ -6,8 +6,7 @@
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-28-orange.svg)](#-contribution)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
-
-![CI](https://github.com/GeoGuess/Geoguess/workflows/CI/badge.svg)
+[![CI](https://github.com/GeoGuess/GeoGuess/actions/workflows/ci.yml/badge.svg)](https://github.com/GeoGuess/GeoGuess/actions/workflows/ci.yml)
 [![DeepScan grade](https://deepscan.io/api/teams/6533/projects/15869/branches/324468/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=6533&pid=15869&bid=324468)
 [![codecov](https://codecov.io/gh/GeoGuess/Geoguess/branch/master/graph/badge.svg?token=J94E3GE4SL)](https://codecov.io/gh/GeoGuess/Geoguess)
 [![Crowdin](https://badges.crowdin.net/geoguess/localized.svg)](https://translate.geoguess.games/project/geoguess)

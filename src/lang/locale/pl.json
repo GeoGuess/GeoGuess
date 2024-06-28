@@ -62,7 +62,8 @@
     "exitGame": "Jesteś zmuszony do opuszczenia gry. Przekierowuje do strony głównej za 5 sekund...",
     "waitForOtherPlayersToFinish": "Oczekiwanie na pozostałych graczy do skończenia gry...",
     "confirmExit": "Jesteś pewny, że chcesz opuścić bieżącą grę? To przerwie grę!",
-    "countdownAlert": "Odliczanie rozpoczęte : pozostało {count} sekund | Odliczanie rozpoczęte : pozostało {count} sekund"
+    "countdownAlert": "Odliczanie rozpoczęte : pozostało {count} sekund | Odliczanie rozpoczęte : pozostało {count} sekund",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "ZGADNIJ",

@@ -62,7 +62,8 @@
     "exitGame": "你被强制退出游戏。5秒后重定向到主页...",
     "waitForOtherPlayersToFinish": "等待其他玩家完成游戏...",
     "confirmExit": "你确定要离开当前游戏吗？这将中止游戏!",
-    "countdownAlert": "倒计时开始：剩余 {count} 秒 | 倒计时开始：剩余 {count} 秒"
+    "countdownAlert": "倒计时开始：剩余 {count} 秒 | 倒计时开始：剩余 {count} 秒",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "作出猜测",

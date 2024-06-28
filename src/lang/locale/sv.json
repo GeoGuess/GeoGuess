@@ -62,7 +62,8 @@
     "exitGame": "Du har tvingats avbryta spelet. Omdirigerar till startsidan om 5 sekunder...",
     "waitForOtherPlayersToFinish": "Väntar på andra spelare att slutföra spelet...",
     "confirmExit": "Är du säker på att du vill lämna det nuvarande spelet? Detta kommer att avbryta spelet!",
-    "countdownAlert": "Nedräkning startad: {count} sekunder kvar | Nedräkning startad: {count} sekunder kvar"
+    "countdownAlert": "Nedräkning startad: {count} sekunder kvar | Nedräkning startad: {count} sekunder kvar",
+    "leaderboard": "Leaderboard"
   },
   "Maps": {
     "makeGuess": "GISSA",
