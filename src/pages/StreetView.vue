@@ -15,7 +15,7 @@
             />
 
             <div id="game-interface">
-                <v-overlay :value="!isReady" opacity="0.5" >
+                <v-overlay :value="!isReady && !multiplayer" opacity="0.5" >
                     <v-progress-circular
                         indeterminate
                         size="64"
@@ -43,7 +43,7 @@
                         :room-name="roomName"
                         :player-number="playerNumber"
                         :player-name="playerName"
-                        :is-ready="isReady"
+                        :is-ready="!!randomLatLng"
                         :round="round"
                         :score="score"
                         :points="points"
@@ -79,13 +79,13 @@
         />
         <div class="alert-container">
             <Leaderboard
-                :leaderboard="leaderboard"
-                v-model="leaderboardShown"
                 v-if="!$vuetify.breakpoint.mobile && roomName && !printMapFull"
+                v-model="leaderboardShown"
+                :leaderboard="leaderboard"
             ></Leaderboard>
 
             <DialogMessage
-                v-if="$vuetify.breakpoint.mobile && roomName"
+                v-if="$vuetify.breakpoint.mobile && roomName && !printMapFull"
                 dialog-title="Leaderboard"
                 :dismissible="true"
                 :dialogMessage="leaderboardShown"
@@ -424,6 +424,7 @@ export default {
                         }
                     }
 
+                    
                     // Enable guess button when every players are put into the current round's node
                     if (
                         snapshot.child('round' + this.round).numChildren() ===
@@ -510,7 +511,7 @@ export default {
                         warning,
                  });
             }
-            this.isReady = true;
+            
         },
         resetLocation() {
             const service = new google.maps.StreetViewService();
@@ -519,7 +520,9 @@ export default {
                     location: this.randomLatLng,
                     preference: 'nearest',
                     radius: 50,
-                    source: this.allPanorama ? 'default' : 'outdoor',
+                    sources: this.allPanorama
+                        ? [google.maps.StreetViewSource.DEFAULT, google.maps.StreetViewSource.OUTDOOR, google.maps.StreetViewSource.GOOGLE]
+                        : [google.maps.StreetViewSource.GOOGLE],
                 },
                 this.setPosition
             );
@@ -579,7 +582,6 @@ export default {
                 heading: 270,
                 pitch: 0,
             });
-
             this.panorama.setZoom(0);
         },
         initTimer(time, printAlert) {
@@ -700,6 +702,7 @@ export default {
                 if (!this.multiplayer && this.timeLimitation != 0) {
                     this.initTimer(this.timeLimitation);
                 }
+
             } else {
                 // Trigger listener and load the next streetview
                 this.room
@@ -707,7 +710,8 @@ export default {
                     .set(this.round);
             }
             this.$refs.mapContainer.startNextRound();
-            this.isReady = true;
+
+            this.isReady = !this.multiplayer;
         },
         exitGame() {
             // Disable the listener and force the players to exit the game

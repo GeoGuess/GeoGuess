@@ -5,7 +5,7 @@
         "start": "node clean-rooms.js"
     },
     "dependencies": {
-        "firebase-admin": "^11.4.1",
+        "firebase-admin": "^12.2.0",
         "yargs": "^16.2.0"
     },
     "bin": {
@@ -18,5 +18,5 @@
         "type": "git",
         "url": "git+https://github.com/GeoGuess/GeoGuess.git"
     },
-    "version": "0.0.2"
+    "version": "0.1.0"
 }
