@@ -63,7 +63,7 @@
     "waitForOtherPlayersToFinish": "Warte auf weitere Spieler, um das Spiel zu beenden...",
     "confirmExit": "Bist du sicher, dass du das aktuelle Spiel verlassen möchtest? Das Spiel wird dadurch abgebrochen!",
     "countdownAlert": "Countdown gestartet: {count} Sekunde verbleibend | Countdown gestartet: {count} Sekunden verbleibend",
-    "leaderboard": "Leaderboard"
+    "leaderboard": "Bestenliste"
   },
   "Maps": {
     "makeGuess": "TIPP ABGEBEN",
@@ -78,8 +78,8 @@
       "Points": "Punkte"
     },
     "leaderboard": {
-      "notGuessed": "Not Guessed",
-      "guessed": "Guessed"
+      "notGuessed": "Nicht erraten",
+      "guessed": "Erraten"
     }
   },
   "Header": {
@@ -170,8 +170,8 @@
     "allowMove": "Bewegen zulassen",
     "allowZoom": "Zoomen zulassen",
     "allowPan": "Schwenken zulassen",
-    "guessedLeaderboard": "Display whether players have guessed",
-    "scoreLeaderboard": "Display score leaderboard",
+    "guessedLeaderboard": "Anzeigen, ob Spieler bereits einen Tipp abgegeben haben",
+    "scoreLeaderboard": "Bestenliste anzeigen",
     "countDownLabel": "Countdown (Sekunden)",
     "scoreModeLabel": "Punkteberechnung",
     "scoreModes": {
