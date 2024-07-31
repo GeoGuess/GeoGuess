@@ -137,7 +137,7 @@
     "invalidRoomName": "Ungültiger Name. Bitte versuche einen anderen.",
     "inProgress": "Der erste Spieler erstellt den Raum. Bitte warte und versuche es erneut.",
     "roomIsFull": "Dieser Raum ist bereits voll. Versuche einen anderen.",
-    "alreadyStarted": "Dieser Raum hat bereits begonnen. Bitte versuche einen anderen."
+    "alreadyStarted": "Ein Spiel mit diesem Namen läuft bereits. Bitte wähle einen anderen Namen."
   },
   "CardRoomName": {
     "title": "Gebe einen Raumnamen ein, um einen neuen Raum zu erstellen, oder einem bereits existierenden Raum beizutreten"
@@ -158,7 +158,7 @@
   "CardRoomMap": {
     "title": "Gestalte deine Karte",
     "loadBtn": "Karte laden",
-    "reset": "Reset",
+    "reset": "Zurücksetzen",
     "cantPlayGeoJson": "Ungültiges GeoJSON, du musst mehr als 5 Positionen haben."
   },
   "CardRoomSettings": {
