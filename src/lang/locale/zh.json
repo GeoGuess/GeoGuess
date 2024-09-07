@@ -63,7 +63,7 @@
     "waitForOtherPlayersToFinish": "等待其他玩家完成游戏...",
     "confirmExit": "你确定要离开当前游戏吗？这将中止游戏!",
     "countdownAlert": "倒计时开始：剩余 {count} 秒 | 倒计时开始：剩余 {count} 秒",
-    "leaderboard": "Leaderboard"
+    "leaderboard": "排行榜"
   },
   "Maps": {
     "makeGuess": "作出猜测",
@@ -78,8 +78,8 @@
       "Points": "分数"
     },
     "leaderboard": {
-      "notGuessed": "Not Guessed",
-      "guessed": "Guessed"
+      "notGuessed": "未猜测",
+      "guessed": "已猜测"
     }
   },
   "Header": {
@@ -170,8 +170,8 @@
     "allowMove": "允许移动",
     "allowZoom": "允许放大",
     "allowPan": "允许环顾四周",
-    "guessedLeaderboard": "Display whether players have guessed",
-    "scoreLeaderboard": "Display score leaderboard",
+    "guessedLeaderboard": "显示玩家是否已猜测",
+    "scoreLeaderboard": "显示分数排行榜",
     "countDownLabel": "倒计时 (秒)",
     "scoreModeLabel": "得分公式",
     "scoreModes": {
