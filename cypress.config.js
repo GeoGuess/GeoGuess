@@ -16,6 +16,6 @@ module.exports = defineConfig({
     supportFile: 'tests/e2e/support/index.js',
   },
   retries: {
-    runMode: 1,
+    runMode: 2,
   }
 });
