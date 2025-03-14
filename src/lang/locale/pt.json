@@ -2,9 +2,9 @@
   "Home": {
     "placeVisited": "0 locais visitados | 1 local visitado | {count} lugares visitados",
     "historyBtn": "HISTÓRICO",
-    "medalsBtn": "MEDALS",
+    "medalsBtn": "MEDALHAS",
     "about": "SOBRE",
-    "createMap": "Create Map",
+    "createMap": "Criar Mapas",
     "searchBar": {
       "customLoaded": "O mapa personalizado foi carregado",
       "enterCity": "Insira uma cidade, estado ou país"
@@ -28,16 +28,16 @@
     "streamerModeActivate": "Modo streamer ativado",
     "streamerModeDetails": "URLs e nomes de salas estão ocultos",
     "mapSavedAlert": {
-      "title": "Map saved 🎉",
-      "subtitle": "You will find it in your map lists"
+      "title": "Mapa salvo 🎉",
+      "subtitle": "Você o encontrará nas suas listas de mapas"
     },
     "HomeCard": {
-      "edit": "Edit",
-      "delete": "Delete",
+      "edit": "Editar",
+      "delete": "Deletar",
       "medal": {
-        "platinum": "Platinum",
-        "gold": "Gold",
-        "silver": "Silver",
+        "platinum": "Platina",
+        "gold": "Ouro",
+        "silver": "Prata",
         "bronze": "Bronze"
       }
     },
@@ -63,7 +63,7 @@
     "waitForOtherPlayersToFinish": "Esperando os outros jogadores terminarem a partida...",
     "confirmExit": "Tem certeza que quer sair da partida atual? Isso cancelará a partida!",
     "countdownAlert": "Contagem regressiva iniciada: {count} segundos restantes | Contagem regressiva iniciada: {count} segundos restantes",
-    "leaderboard": "Leaderboard"
+    "leaderboard": "Classificação"
   },
   "Maps": {
     "makeGuess": "TENTAR ADIVINHAR",
@@ -78,8 +78,8 @@
       "Points": "Pontos"
     },
     "leaderboard": {
-      "notGuessed": "Not Guessed",
-      "guessed": "Guessed"
+      "notGuessed": "Não Adivinhado",
+      "guessed": "Adivinhado"
     }
   },
   "Header": {
@@ -108,17 +108,17 @@
     "OK": "OK",
     "download": "Baixar GeoJSON",
     "Clean": "Clean",
-    "save": "save",
+    "save": "salvar",
     "inputName": {
-      "label": "Map Name",
-      "placeholder": "My favorite place"
+      "label": "Nome do Mapa",
+      "placeholder": "Meu local favorito"
     }
   },
   "History": {
     "title": "Histórico",
     "date": "Data",
     "mode": "Modo",
-    "mapName": "Map Name",
+    "mapName": "Nome do Mapa",
     "time": "Tempo",
     "distance": "Distância",
     "points": "Pontos",
@@ -156,10 +156,10 @@
     "infinite": "Infinito"
   },
   "CardRoomMap": {
-    "title": "Define your map",
-    "loadBtn": "Load MAP",
-    "reset": "Reset",
-    "cantPlayGeoJson": "Invalid GeoJSON, you need to have more than 5 positions."
+    "title": "Definir seu mapa",
+    "loadBtn": "Carregar MAPA",
+    "reset": "Reiniciar",
+    "cantPlayGeoJson": "GeoJSON Inválido, você precisa ter mais do que 5 posições."
   },
   "CardRoomSettings": {
     "title": "Configurações da partida",
@@ -170,8 +170,8 @@
     "allowMove": "Permitir movimento",
     "allowZoom": "Permitir Zoom",
     "allowPan": "Permitir Visão Panorâmica",
-    "guessedLeaderboard": "Display whether players have guessed",
-    "scoreLeaderboard": "Display score leaderboard",
+    "guessedLeaderboard": "Exibir se os jogadores já adivinharam",
+    "scoreLeaderboard": "Exibir o placar de classificação",
     "countDownLabel": "Contagem regressiva (segundos)",
     "scoreModeLabel": "Fórmula de pontuação",
     "scoreModes": {
@@ -180,8 +180,8 @@
     },
     "selectAreas": "Select Areas",
     "moreSettings": "More settings",
-    "optimiseStreetView": "StreetView Optimize (only official)",
-    "nbRound": "Number of rounds"
+    "optimiseStreetView": "Otimizar o StreetView (somente oficial)",
+    "nbRound": "Numero de rodadas"
   },
   "CardRoomDifficulty": {
     "title": "Defina a dificuldade.",
@@ -217,7 +217,7 @@
   "yes": "Sim",
   "no": "Não",
   "AlertUpdate": {
-    "label": "A new version is available. Click on the button to obtain it.",
-    "btn": "Update"
+    "label": "Uma nova versão está disponível. Clique no botão para obtê-lá.",
+    "btn": "Atualizar"
   }
 }
