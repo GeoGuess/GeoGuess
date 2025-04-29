@@ -265,6 +265,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "szczeles",
+      "name": "Mariusz Strzelecki",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4659069?v=4",
+      "profile": "https://github.com/szczeles",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
