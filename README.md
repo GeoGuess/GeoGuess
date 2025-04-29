@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/GeoGuess/GeoGuess)](https://github.com/GeoGuess/Geoguess/releases) 
 [![GitHub](https://img.shields.io/github/license/BilelJegham/Geoguess-2)](https://github.com/GeoGuess/Geoguess/blob/master/LICENSE) 
 [![Discord](https://img.shields.io/discord/758443244387303435?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF)](https://discord.gg/9GXm6RT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-28-orange.svg)](#-contribution)
+[![All Contributors](https://img.shields.io/badge/all_contributors-29-orange.svg)](#-contribution)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 [![CI](https://github.com/GeoGuess/GeoGuess/actions/workflows/ci.yml/badge.svg)](https://github.com/GeoGuess/GeoGuess/actions/workflows/ci.yml)
 [![DeepScan grade](https://deepscan.io/api/teams/6533/projects/15869/branches/324468/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=6533&pid=15869&bid=324468)
@@ -93,6 +93,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/NitinRamnani"><img src="https://avatars.githubusercontent.com/u/16476523?v=4?s=100" width="100px;" alt="Nitin Ramnani"/><br /><sub><b>Nitin Ramnani</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=NitinRamnani" title="Tests">⚠️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://zhu.codes"><img src="https://avatars.githubusercontent.com/u/8866981?v=4?s=100" width="100px;" alt="Andrew Zhu"/><br /><sub><b>Andrew Zhu</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=zhudotexe" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/HelloJowet"><img src="https://avatars.githubusercontent.com/u/53214867?v=4?s=100" width="100px;" alt="Jonas Frei"/><br /><sub><b>Jonas Frei</b></sub></a><br /><a href="https://github.com/GeoGuess/GeoGuess/commits?author=HelloJowet" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/szczeles"><img src="https://avatars.githubusercontent.com/u/4659069?v=4?s=100" width="100px;" alt="Mariusz Strzelecki"/><br /><sub><b>Mariusz Strzelecki</b></sub></a><br /><a href="#translation-szczeles" title="Translation">🌍</a></td>
     </tr>
   </tbody>
 </table>
