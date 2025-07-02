@@ -49,7 +49,7 @@ export async function getGeoJsonFromUrl(url) {
 
 function formatUrlGeoJSON(url){
     // if gist url get raw
-    if (/^(https?:\/\/)?gist.github.com\//.test(url)) {
+    if (/^(https?:\/\/)?gist\.github\.com\//.test(url)) {
         let urlSplit = url.split('/');
         if (
             urlSplit.length > 3 &&
