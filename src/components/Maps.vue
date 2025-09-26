@@ -172,8 +172,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { ref, onValue, set, remove, onDisconnect, update } from 'firebase/database';
 
 import DialogSummary from '@/components/DialogSummary';
 import DetailsMap from '@/components/game/DetailsMap';
@@ -272,21 +271,23 @@ export default {
         let size = 0;
 
         if (this.roomName) {
-            this.room = firebase.database().ref(this.roomName);
+            this.room = ref(this.$database, this.roomName);
 
-            this.room.on('value', (snapshot) => {
+            onValue(this.room, (snapshot) => {
                 if (snapshot.hasChild('active')) {
                     size = snapshot.child('size').val();
                     if (size === 1) {
-                        this.room.onDisconnect().remove();
+                        onDisconnect(this.room).remove();
                     } else {
-                        this.room.onDisconnect().update({ size: size - 1 });
+                        onDisconnect(this.room).update({ size: size - 1 });
                     }
+                    const guessSnapshot = snapshot.child('guess');
+                    const guessCount = guessSnapshot.exists() ? Object.keys(guessSnapshot.val() || {}).length : 0;
                     if (
                         // If Time Attack and 1st true guess finish round
                         (this.timeAttack &&
                             this.countdown === 0 &&
-                            snapshot.child('guess').numChildren() >= 1 &&
+                            guessCount >= 1 &&
                             snapshot
                                 .child('guess')
                                 .forEach(
@@ -294,7 +295,7 @@ export default {
                                         guess.child('area').val() === this.area
                                 )) ||
                         // Allow players to move on to the next round when every players guess locations
-                        snapshot.child('guess').numChildren() === size
+                        guessCount === size
                     ) {
                         this.game.timeLimitation = this.timeLimitation;
                         this.isNextStreetViewReady = false;
@@ -368,7 +369,8 @@ export default {
 
                         this.printMapFull = true;
                         // Remove guess node every time the round is done
-                        this.room.child('guess').remove();
+                        const guessRef = ref(this.$database, `${this.roomName}/guess`);
+                        remove(guessRef);
 
                         if (this.round >= this.nbRound) {
                             // Show summary button
@@ -405,9 +407,10 @@ export default {
                     }
 
                     // Allow other players to move on to the next round when the next street view is set
+                    const streetViewSnapshot = snapshot.child('streetView');
+                    const streetViewCount = streetViewSnapshot.exists() ? Object.keys(streetViewSnapshot.val() || {}).length : 0;
                     if (
-                        snapshot.child('streetView').numChildren() ==
-                        this.round + 1
+                        streetViewCount == this.round + 1
                     ) {
                         this.isNextStreetViewReady = true;
                     }
@@ -416,7 +419,7 @@ export default {
                         !this.countdownStarted &&
                         !this.printMapFull &&
                         this.countdown > 0 &&
-                        snapshot.child('guess').numChildren() >= 1
+                        guessCount >= 1
                     ) {
                         this.$parent.initTimer(this.countdown, true);
 
@@ -450,9 +453,8 @@ export default {
             if (this.room) {
                 // Save the selected location into database
                 // So that it uses for putting the markers and polylines
-                this.room
-                    .child('guess/player' + this.playerNumber)
-                    .set(getSelectedPos(this.selectedPos, this.mode));
+                const guessRef = ref(this.$database, `${this.roomName}/guess/player${this.playerNumber}`);
+                set(guessRef, getSelectedPos(this.selectedPos, this.mode));
             } else {
                 // Put the marker on the random location
                 this.$refs.map.putMarker(this.randomLatLng, true);
@@ -525,14 +527,13 @@ export default {
             }
             // Save the distance into firebase
             if (this.room) {
-                this.room
-                    .child('round' + this.round + '/player' + this.playerNumber)
-                    .set({
-                        ...getSelectedPos(this.selectedPos, this.mode),
-                        distance: this.distance,
-                        points: this.point,
-                        timePassed,
-                    });
+                const roundRef = ref(this.$database, `${this.roomName}/round${this.round}/player${this.playerNumber}`);
+                set(roundRef, {
+                    ...getSelectedPos(this.selectedPos, this.mode),
+                    distance: this.distance,
+                    points: this.point,
+                    timePassed,
+                });
             } else {
                 this.game.rounds.push({
                     guess: this.selectedPos,
@@ -579,10 +580,10 @@ export default {
         },
         finishGame() {
             this.dialogSummary = false;
-            if (this.room)
-                this.room
-                    .child('isGameDone/player' + this.playerNumber)
-                    .set(true);
+            if (this.room) {
+                const gameRef = ref(this.$database, `${this.roomName}/isGameDone/player${this.playerNumber}`);
+                set(gameRef, true);
+            }
             this.$emit('finishGame');
         },
     }
