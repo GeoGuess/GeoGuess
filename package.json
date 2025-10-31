@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
-    "@stryker-mutator/core": "^6.2.3",
-    "@stryker-mutator/jest-runner": "^7.0.0",
+    "@stryker-mutator/core": "^9.2.0",
+    "@stryker-mutator/jest-runner": "^9.2.0",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.9",
     "@vue/cli-plugin-pwa": "~5.0.8",
