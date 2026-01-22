@@ -1,11 +1,14 @@
 import bbox from '@turf/bbox';
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { ref, update, set, remove, onValue, off, serverTimestamp, onDisconnect } from 'firebase/database';
 import { GAME_MODE, SCORE_MODE } from '../../constants';
 import i18n from '../../lang';
 import router from '../../router';
 import { getMaxDistanceBbox } from '../../utils';
 import * as MutationTypes from '../mutation-types';
+import Vue from 'vue';
+
+// Helper function to get database instance
+const getDatabase = () => Vue.prototype.$database;
 
 export class GameSettings {
     constructor(
@@ -63,7 +66,8 @@ export default {
     }),
     mutations: {
         [MutationTypes.SETTINGS_SET_ROOM](state, roomName) {
-            state.room = firebase.database().ref(roomName);
+            const database = getDatabase();
+            state.room = ref(database, roomName);
             state.roomName = roomName;
             // Open Modal
             if (!state.isOpenDialogRoom) {
@@ -71,18 +75,17 @@ export default {
                 state.isOpenDialogRoom = true;
             }
 
-            state.room.once('value', (snapshot) => {
+            onValue(state.room, (snapshot) => {
                 if (snapshot.child('started').val()) {
                     state.roomErrorMessage = i18n.t(
                         'DialogRoom.alreadyStarted'
                     );
-                    state.room.off();
+                    off(state.room);
                     return;
                 }
 
-                const numberOfPlayers = snapshot
-                    .child('playerName')
-                    .numChildren();
+                const playerNameSnapshot = snapshot.child('playerName');
+                const numberOfPlayers = playerNameSnapshot.exists() ? Object.keys(playerNameSnapshot.val() || {}).length : 0;
                 const playerNumber = numberOfPlayers + 1;
 
                 state.playerNumber = playerNumber;
@@ -90,43 +93,38 @@ export default {
                                 'CardRoomPlayerName.anonymousPlayerName'
                             ) + playerNumber : state.name;
 
-                state.room.child('playerName/player'+playerNumber).onDisconnect().remove();
-
+                const database = getDatabase();
+                const playerRef = ref(database, `${roomName}/playerName/player${playerNumber}`);
+                onDisconnect(playerRef).remove();
 
                 if (numberOfPlayers === 0) {
                     // Put the tentative player's name into the room node
                     // So that other player can't enter as the first player while the player decide the name and room size
-                    state.room.child('playerName').update(
-                        {
-                            player1: name,
-                        },
-                        (error) => {
-                            if (!error) {
-                                // Put the timestamp the room is created so the expired rooms can be removed by cloud function
-                                state.room.update({
-                                    createdAt:
-                                        firebase.database.ServerValue.TIMESTAMP,
-                                });
-                                state.loadRoom = false;
-                                state.currentComponent = 'settingsMap';
-                            }
-                        }
-                    );
+                    const playerNameRef = ref(database, `${roomName}/playerName`);
+                    update(playerNameRef, {
+                        player1: name,
+                    }).then(() => {
+                        // Put the timestamp the room is created so the expired rooms can be removed by cloud function
+                        update(state.room, {
+                            createdAt: serverTimestamp(),
+                        });
+                        state.loadRoom = false;
+                        state.currentComponent = 'settingsMap';
+                    }).catch(() => {
+                        // Error updating player name
+                    });
                 } else {
                     // Put other player's tentative name
-                    state.room
-                        .child('playerName/player' + playerNumber)
-                        .set(
-                            name,
-                            (error) => {
-                                if (!error) {
-                                    state.loadRoom = false;
-                                    state.currentComponent = 'playerName';
-                                }
-                            }
-                        );
+                    const database = getDatabase();
+                    const playerRef = ref(database, `${roomName}/playerName/player${playerNumber}`);
+                    set(playerRef, name).then(() => {
+                        state.loadRoom = false;
+                        state.currentComponent = 'playerName';
+                    }).catch(() => {
+                        // Error setting player name
+                    });
                 }
-            });
+            }, { onlyOnce: true });
         },
         [MutationTypes.SETTINGS_SET_ROOM_ERROR](state, error) {
             state.roomErrorMessage = error;
@@ -165,9 +163,9 @@ export default {
             state.invalidName = state.players.includes(playerName);
             if (!state.invalidName) {
                 state.name = playerName;
-                state.room
-                    .child('playerName/player' + state.playerNumber)
-                    .set(playerName);
+                const database = getDatabase();
+                const playerRef = ref(database, `${state.roomName}/playerName/player${state.playerNumber}`);
+                set(playerRef, playerName);
             }
         },
         [MutationTypes.SETTINGS_SET_PLAYERS](state, players) {
@@ -195,16 +193,16 @@ export default {
 
             // Remove the room
             if (state.room != null) {
-                state.room.off();
+                off(state.room);
                 if (cleanRoom) {
                     if (state.playerNumber === 1) {
                         // Remove the entire node if the player is the first player
-                        state.room.remove();
+                        remove(state.room);
                     } else {
                         // Remove only the player's name node if the player isn't the first player
-                        state.room
-                            .child('playerName/player' + this.playerNumber)
-                            .remove();
+                        const database = getDatabase();
+                        const playerRef = ref(database, `${state.roomName}/playerName/player${state.playerNumber}`);
+                        remove(playerRef);
                     }
                 }
             }
@@ -228,7 +226,7 @@ export default {
                 commit(MutationTypes.SETTINGS_SET_ROOM, roomName);
             }
 
-            state.room.on('value', (snapshot) => {
+            onValue(state.room, (snapshot) => {
                 if (snapshot.child('playerName').exists())
                     state.players = Object.values(
                         snapshot.child('playerName').val()
@@ -267,22 +265,19 @@ export default {
                 });
                 dispatch('closeDialogRoom');
             } else {
-                state.room.update(
-                    {
-                        ...state.gameSettings,
-                        timeLimitation: state.gameSettings.time,
-                        difficulty,
-                        ...(bboxObj && { bboxObj: bboxObj }),
-                    },
-                    (error) => {
-                        if (!error) {
-                            commit(
-                                MutationTypes.SETTINGS_SET_STEP_DIALOG_ROOM,
-                                'playerName'
-                            );
-                        }
-                    }
-                );
+                update(state.room, {
+                    ...state.gameSettings,
+                    timeLimitation: state.gameSettings.time,
+                    difficulty,
+                    ...(bboxObj && { bboxObj: bboxObj }),
+                }).then(() => {
+                    commit(
+                        MutationTypes.SETTINGS_SET_STEP_DIALOG_ROOM,
+                        'playerName'
+                    );
+                }).catch(() => {
+                    // Error updating room settings
+                });
             }
         },
         setPlayerName({ commit }, playerName) {
@@ -299,13 +294,13 @@ export default {
                     bboxObj: state.bboxObj,
                 };
                 // Set flag started
-                state.room.update({
+                update(state.room, {
                     size: state.players.length,
                     started: true,
                 });
                 dispatch('startGameMultiplayer', gameParams);
             } else {
-                state.room.once('value', (snapshot) => {
+                onValue(state.room, (snapshot) => {
                     gameParams = {
                         difficulty: snapshot.child('difficulty').val(),
                         bboxObj: snapshot.child('bboxObj').val(),
@@ -326,7 +321,7 @@ export default {
                         guessedLeaderboard: snapshot.child('guessedLeaderboard').val(),
                     };
                     dispatch('startGameMultiplayer', gameParams);
-                });
+                }, { onlyOnce: true });
             }
         },
         startGameMultiplayer({ state, rootState, dispatch }, gameParams) {
