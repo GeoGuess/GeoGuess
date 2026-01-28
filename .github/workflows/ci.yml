@@ -88,7 +88,7 @@ jobs:
         browsers: [chrome]
     steps:
       - uses: actions/checkout@v6
-      - uses: cypress-io/github-action@v6
+      - uses: cypress-io/github-action@v7
         with:
           start: npm run serve
           wait-on: 'http://localhost:8080'
@@ -127,7 +127,7 @@ jobs:
         browsers: [chrome]
     steps:
       - uses: actions/checkout@v6
-      - uses: cypress-io/github-action@v6
+      - uses: cypress-io/github-action@v7
         with:
           start: npm run serve
           wait-on: 'http://localhost:8080'
