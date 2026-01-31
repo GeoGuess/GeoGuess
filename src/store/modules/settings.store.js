@@ -1,6 +1,5 @@
 import bbox from '@turf/bbox';
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { getDatabase, ref, serverTimestamp } from 'firebase/database';
 import { GAME_MODE, SCORE_MODE } from '../../constants';
 import i18n from '../../lang';
 import router from '../../router';
@@ -63,7 +62,8 @@ export default {
     }),
     mutations: {
         [MutationTypes.SETTINGS_SET_ROOM](state, roomName) {
-            state.room = firebase.database().ref(roomName);
+            const db = getDatabase();
+            state.room = ref(db, roomName);
             state.roomName = roomName;
             // Open Modal
             if (!state.isOpenDialogRoom) {
@@ -104,8 +104,7 @@ export default {
                             if (!error) {
                                 // Put the timestamp the room is created so the expired rooms can be removed by cloud function
                                 state.room.update({
-                                    createdAt:
-                                        firebase.database.ServerValue.TIMESTAMP,
+                                    createdAt: serverTimestamp(),
                                 });
                                 state.loadRoom = false;
                                 state.currentComponent = 'settingsMap';

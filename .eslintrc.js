@@ -8,7 +8,7 @@ module.exports = {
         ...(process.env.NODE_ENV === 'production'
             ? ['eslint:recommended']
             : []),
-        'plugin:vue/essential',
+        'plugin:vue/vue3-essential',
     ],
     globals: {
         launchQueue: 'readonly',
@@ -19,6 +19,8 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
+        parser: '@babel/eslint-parser',
+        requireConfigFile: false,
     },
     plugins: ['vue', 'prettier'],
     rules: {

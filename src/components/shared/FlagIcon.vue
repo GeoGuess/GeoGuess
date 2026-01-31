@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import CountryFlag from 'vue-country-flag';
+import CountryFlag from 'vue-country-flag-next';
 export default {
     name: 'FlagIcon',
     components: {

@@ -10,7 +10,7 @@
                     id="search-input"
                     v-model="place"
                     :items="items"
-                    :search-input.sync="search"
+                    v-model:search-input="search"
                     :loading="isLoading"
                     autofocus
                     :placeholder="$t('Home.searchBar.enterCity')"
@@ -81,7 +81,7 @@
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
 import { SETTINGS_SET_STEP_DIALOG_ROOM } from '../../../store/mutation-types';
-import CardRoomMixin from './mixins/CardRoomMixin';
+import CardRoomMixin from './mixins/CardRoomMixin.js';
 export default {
     name: 'CardRoomMap',
     mixins: [CardRoomMixin],

@@ -57,7 +57,7 @@
 <script type="text/javascript">
 import FlagIcon from '@/components/shared/FlagIcon';
 import { mapActions, mapGetters } from 'vuex';
-import MapMixin from './mixins/MapMixin';
+import MapMixin from './mixins/MapMixin.js';
 
 export default {
     mixins: [MapMixin],
