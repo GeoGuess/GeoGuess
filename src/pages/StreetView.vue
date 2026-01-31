@@ -125,8 +125,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { getDatabase, ref, set, onValue, remove, off, child, get } from 'firebase/database';
 
 import HeaderGame from '@/components/HeaderGame';
 import Maps from '@/components/Maps';
@@ -339,14 +338,15 @@ export default {
                 this.exitGame();
             }
 
-            this.room = firebase.database().ref(this.roomName);
+            this.room = ref(getDatabase(), this.roomName);
 
             if (this.playerNumber === 1) {
                 await this.loadStreetView();
             }
 
-            this.room.child('active').set(true);
-            this.room.on('value', (snapshot) => {
+            const activeRef = ref(getDatabase(), `${this.roomName}/active`);
+            set(activeRef, true);
+            onValue(this.room, (snapshot) => {
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
                     // Leaderboard
@@ -377,10 +377,8 @@ export default {
                             .child('round' + this.round)
                             .hasChild('player' + this.playerNumber)
                     ) {
-                        this.room
-                            .child('round' + this.round)
-                            .child('player' + this.playerNumber)
-                            .set(0);
+                        const roundPlayerRef = ref(getDatabase(), `${this.roomName}/round${this.round}/player${this.playerNumber}`);
+                        set(roundPlayerRef, 0);
 
                         // Other players load the streetview the first player loaded earlier
                         if (this.playerNumber != 1) {
@@ -456,9 +454,9 @@ export default {
                         snapshot.child('isGameDone').numChildren() ==
                         snapshot.child('size').val()
                     ) {
-                        this.room.child('active').remove();
-                        this.room.off();
-                        this.room.remove();
+                        remove(activeRef);
+                        off(this.room);
+                        remove(this.room);
                     }
                 } else {
                     // Force the players to exit the game when 'Active' is removed
@@ -486,8 +484,9 @@ export default {
         if (this.room) {
             // Remove the room when the player refreshes the window
             // Remove the room when the player pressed the back button on browser
-            this.room.child('active').remove();
-            this.room.off();
+            const activeRef = ref(getDatabase(), `${this.roomName}/active`);
+            remove(activeRef);
+            off(this.room);
         }
     },
     methods: {
@@ -720,8 +719,8 @@ export default {
             this.dialogMessage = true;
             this.canExit = true;
             if (this.room) {
-                this.room.off();
-                this.room.remove();
+                off(this.room);
+                remove(this.room);
                 this.$router.push('/history');
             } else {
                 this.$router.push('/');

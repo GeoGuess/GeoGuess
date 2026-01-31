@@ -1,7 +1,7 @@
 import axios from '@/plugins/axios';
-import 'firebase/analytics';
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import { getDatabase } from 'firebase/database';
 import * as GmapVue from 'gmap-vue';
 import Vue from 'vue';
 import VueAxios from 'vue-axios';
@@ -66,8 +66,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-if (firebaseConfig.measurementId) firebase.analytics();
+const firebaseApp = initializeApp(firebaseConfig);
+const database = getDatabase(firebaseApp);
+if (firebaseConfig.measurementId) getAnalytics(firebaseApp);
+
+// Export for use in other modules
+export { firebaseApp, database };
 
 new Vue({
     vuetify: vuetify(i18n),

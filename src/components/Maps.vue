@@ -172,8 +172,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { getDatabase, ref, onValue, remove, update, onDisconnect } from 'firebase/database';
 
 import DialogSummary from '@/components/DialogSummary';
 import DetailsMap from '@/components/game/DetailsMap';
@@ -272,15 +271,15 @@ export default {
         let size = 0;
 
         if (this.roomName) {
-            this.room = firebase.database().ref(this.roomName);
+            this.room = ref(getDatabase(), this.roomName);
 
-            this.room.on('value', (snapshot) => {
+            onValue(this.room, (snapshot) => {
                 if (snapshot.hasChild('active')) {
                     size = snapshot.child('size').val();
                     if (size === 1) {
-                        this.room.onDisconnect().remove();
+                        onDisconnect(this.room).remove();
                     } else {
-                        this.room.onDisconnect().update({ size: size - 1 });
+                        onDisconnect(this.room).update({ size: size - 1 });
                     }
                     if (
                         // If Time Attack and 1st true guess finish round
@@ -368,7 +367,8 @@ export default {
 
                         this.printMapFull = true;
                         // Remove guess node every time the round is done
-                        this.room.child('guess').remove();
+                        const guessRef = ref(getDatabase(), `${this.roomName}/guess`);
+                        remove(guessRef);
 
                         if (this.round >= this.nbRound) {
                             // Show summary button
