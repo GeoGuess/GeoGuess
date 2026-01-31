@@ -1,8 +1,8 @@
 
 export default {
-    install(Vue) {
-        Vue.prototype.$countryNameLocale = (isoA2) => {
-            return new Intl.DisplayNames([Vue.prototype.i18n.locale], { type: 'region' }).of(isoA2);
+    install(app) {
+        app.config.globalProperties.$countryNameLocale = (isoA2) => {
+            return new Intl.DisplayNames([app.config.globalProperties.$i18n.global.locale.value], { type: 'region' }).of(isoA2);
         };
     },
 };
