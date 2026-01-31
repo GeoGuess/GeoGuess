@@ -6,6 +6,7 @@ import { getAnalytics } from 'firebase/analytics';
 import { getDatabase } from 'firebase/database';
 import App from './App.vue';
 import i18n from './lang';
+import ClipboardPlugin from './plugins/clipboardPlugin';
 import CountryNamePlugin from './plugins/countryNamePlugin';
 import vuetify from './plugins/vuetify';
 import './registerServiceWorker';
@@ -74,6 +75,7 @@ app.use(i18n);
 app.use(router);
 app.use(store);
 app.use(vuetify(i18n));
+app.use(ClipboardPlugin);
 app.use(CountryNamePlugin);
 
 app.mount('#app');

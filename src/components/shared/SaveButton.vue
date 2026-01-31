@@ -11,12 +11,24 @@
     </v-btn>
 </template>
 
-<script lang="js">
-import { VBtn } from 'vuetify/lib';
+<script>
+import { VBtn } from 'vuetify/components';
 
 export default {
     name: 'SaveButton',
-    extends: VBtn,
+    components: {
+        VBtn,
+    },
+    props: {
+        color: {
+            type: String,
+            default: 'primary',
+        },
+        loading: {
+            type: Boolean,
+            default: false,
+        },
+    },
     data: () => ({
         success: false,
     }),

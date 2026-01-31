@@ -299,9 +299,9 @@
     </v-card>
 </template>
 <script>
-import TimePicker from '@/components/shared/TimePicker';
+import TimePicker from '@/components/shared/TimePicker.vue';
 import { GAME_MODE, SCORE_MODE } from '../../../constants';
-import CardRoomMixin from './mixins/CardRoomMixin';
+import CardRoomMixin from './mixins/CardRoomMixin.js';
 import { mapActions, mapGetters, mapState, mapMutations } from 'vuex';
 import bbox from '@turf/bbox';
 import { SETTINGS_SET_GAME_SETTINGS } from '@/store/mutation-types';

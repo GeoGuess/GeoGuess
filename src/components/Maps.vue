@@ -175,10 +175,10 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import DialogSummary from '@/components/DialogSummary';
-import DetailsMap from '@/components/game/DetailsMap';
-import Map from '@/components/map/Map';
-import MapAreas from '@/components/map/MapAreas';
+import DialogSummary from '@/components/DialogSummary.vue';
+import DetailsMap from '@/components/game/DetailsMap.vue';
+import Map from '@/components/map/Map.vue';
+import MapAreas from '@/components/map/MapAreas.vue';
 import { GAME_MODE } from '../constants';
 import { getSelectedPos } from '../utils';
 import { getScore } from '../utils/game/score';

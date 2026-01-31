@@ -76,7 +76,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import CardRoomMixin from './mixins/CardRoomMixin';
+import CardRoomMixin from './mixins/CardRoomMixin.js';
 export default {
     mixins: [CardRoomMixin],
     computed: {
