@@ -38,6 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.28.6",
     "@babel/eslint-parser": "^7.25.9",
+    "@babel/preset-env": "^7.28.6",
     "@stryker-mutator/core": "^9.2.0",
     "@stryker-mutator/jest-runner": "^9.4.0",
     "@vitejs/plugin-vue": "^5.2.1",

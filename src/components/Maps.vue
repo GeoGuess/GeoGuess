@@ -172,8 +172,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { getDatabase, ref } from 'firebase/database';
 
 import DialogSummary from '@/components/DialogSummary.vue';
 import DetailsMap from '@/components/game/DetailsMap.vue';
@@ -272,7 +271,8 @@ export default {
         let size = 0;
 
         if (this.roomName) {
-            this.room = firebase.database().ref(this.roomName);
+            const db = getDatabase();
+            this.room = ref(db, this.roomName);
 
             this.room.on('value', (snapshot) => {
                 if (snapshot.hasChild('active')) {

@@ -10,7 +10,7 @@
                     id="search-input"
                     v-model="place"
                     :items="items"
-                    :search-input.sync="search"
+                    v-model:search-input="search"
                     :loading="isLoading"
                     autofocus
                     :placeholder="$t('Home.searchBar.enterCity')"
