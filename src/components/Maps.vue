@@ -172,7 +172,7 @@
 </template>
 
 <script>
-import { getDatabase, ref, onValue, remove, update, onDisconnect } from 'firebase/database';
+import { getDatabase, ref, onValue, remove, onDisconnect } from 'firebase/database';
 
 import DialogSummary from '@/components/DialogSummary';
 import DetailsMap from '@/components/game/DetailsMap';

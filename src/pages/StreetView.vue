@@ -125,7 +125,7 @@
 </template>
 
 <script>
-import { getDatabase, ref, set, onValue, remove, off, child, get } from 'firebase/database';
+import { getDatabase, ref, set, onValue, remove, off } from 'firebase/database';
 
 import HeaderGame from '@/components/HeaderGame';
 import Maps from '@/components/Maps';
