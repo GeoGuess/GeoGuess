@@ -202,7 +202,7 @@ export default {
                     } else {
                         // Remove only the player's name node if the player isn't the first player
                         const database = getDatabase();
-                        const playerRef = ref(database, `${state.roomName}/playerName/player${this.playerNumber}`);
+                        const playerRef = ref(database, `${state.roomName}/playerName/player${state.playerNumber}`);
                         remove(playerRef);
                     }
                 }
