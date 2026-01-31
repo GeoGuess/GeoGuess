@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import HomeCardDialog from '@/components/home/card/HomeCardDialog.vue';
+import HomeCardDialog from '@/components/home/card/HomeCardDialog';
 import { mapActions, mapGetters } from 'vuex';
 import { GeoMapType } from '../../../models/GeoMap';
 import { getMedals } from '@/utils/game/medals';

@@ -42,8 +42,8 @@
     </div>
 </template>
 <script>
-import DialogCustomMap from '@/components/home/DialogCustomMap.vue';
-import DialogRoom from '@/components/dialogroom/DialogRoom.vue';
+import DialogCustomMap from '@/components/home/DialogCustomMap';
+import DialogRoom from '@/components/dialogroom/DialogRoom';
 import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {

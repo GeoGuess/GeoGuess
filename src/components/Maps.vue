@@ -174,10 +174,10 @@
 <script>
 import { getDatabase, ref } from 'firebase/database';
 
-import DialogSummary from '@/components/DialogSummary.vue';
-import DetailsMap from '@/components/game/DetailsMap.vue';
-import Map from '@/components/map/Map.vue';
-import MapAreas from '@/components/map/MapAreas.vue';
+import DialogSummary from '@/components/DialogSummary';
+import DetailsMap from '@/components/game/DetailsMap';
+import Map from '@/components/map/Map';
+import MapAreas from '@/components/map/MapAreas';
 import { GAME_MODE } from '../constants';
 import { getSelectedPos } from '../utils';
 import { getScore } from '../utils/game/score';

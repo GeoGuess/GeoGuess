@@ -127,9 +127,9 @@
 <script>
 import { getDatabase, ref } from 'firebase/database';
 
-import HeaderGame from '@/components/HeaderGame.vue';
-import Maps from '@/components/Maps.vue';
-import DialogMessage from '@/components/DialogMessage.vue';
+import HeaderGame from '@/components/HeaderGame';
+import Maps from '@/components/Maps';
+import DialogMessage from '@/components/DialogMessage';
 
 
 import StreetViewService from '@/plugins/StreetViewService';

@@ -1,10 +1,10 @@
-import HistoryPage from '@/pages/HistoryPage.vue';
-import Home from '@/pages/Home.vue';
-import MedalsPage from '@/pages/MedalsPage.vue';
+import HistoryPage from '@/pages/HistoryPage';
+import Home from '@/pages/Home';
+import MedalsPage from '@/pages/MedalsPage';
 import { createRouter, createWebHistory } from 'vue-router';
 import { GAME_MODE } from './constants';
 
-const StreetView = () => import('@/pages/StreetView.vue');
+const StreetView = () => import('@/pages/StreetView');
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),

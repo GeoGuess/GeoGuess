@@ -61,9 +61,9 @@
 </template>
 
 <script>
-import ContentPage from '@/components/page/ContentPage.vue';
+import ContentPage from '@/components/page/ContentPage';
 import { mapActions, mapGetters } from 'vuex';
-import FlagIcon from '@/components/shared/FlagIcon.vue';
+import FlagIcon from '@/components/shared/FlagIcon';
 import { getMedals, COUNTRIES_MEDALS_DATA } from '@/utils/game/medals';
 
 export default {
@@ -71,7 +71,7 @@ export default {
     components: {
         ContentPage,
         FlagIcon,
-        WorldCountries: () => import('@/components/shared/WorldCountries.vue'),
+        WorldCountries: () => import('@/components/shared/WorldCountries'),
     },
     data(){
           return {

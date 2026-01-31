@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Header from '@/components/page/Header.vue';
-import Footer from '@/components/page/Footer.vue';
+import Header from '@/components/page/Header';
+import Footer from '@/components/page/Footer';
 export default {
     components: {
         Header,

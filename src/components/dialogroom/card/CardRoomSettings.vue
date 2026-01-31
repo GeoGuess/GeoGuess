@@ -299,7 +299,7 @@
     </v-card>
 </template>
 <script>
-import TimePicker from '@/components/shared/TimePicker.vue';
+import TimePicker from '@/components/shared/TimePicker';
 import { GAME_MODE, SCORE_MODE } from '../../../constants';
 import CardRoomMixin from './mixins/CardRoomMixin.js';
 import { mapActions, mapGetters, mapState, mapMutations } from 'vuex';

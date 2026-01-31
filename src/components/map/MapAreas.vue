@@ -55,7 +55,7 @@
     </div>
 </template>
 <script type="text/javascript">
-import FlagIcon from '@/components/shared/FlagIcon.vue';
+import FlagIcon from '@/components/shared/FlagIcon';
 import { mapActions, mapGetters } from 'vuex';
 import MapMixin from './mixins/MapMixin.js';
 

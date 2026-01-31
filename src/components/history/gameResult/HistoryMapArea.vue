@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import FlagIcon from '@/components/shared/FlagIcon.vue';
+import FlagIcon from '@/components/shared/FlagIcon';
 import { STROKE_COLORS } from '../../../constants';
 export default {
     name: 'HistoryMapArea',

@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import ContentPage from '@/components/page/ContentPage.vue';
-import HistoryTable from '@/components/history/HistoryTable.vue';
+import ContentPage from '@/components/page/ContentPage';
+import HistoryTable from '@/components/history/HistoryTable';
 export default {
     name: 'HistoryPage',
     components: {
