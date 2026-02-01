@@ -125,8 +125,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { getDatabase, ref } from 'firebase/database';
 
 import HeaderGame from '@/components/HeaderGame';
 import Maps from '@/components/Maps';
@@ -143,7 +142,7 @@ import { GAME_MODE, SCORE_MODE } from '../constants';
 
 import {mapActions, mapGetters, mapState} from 'vuex';
 
-import ConfirmExitMixin from '@/mixins/ConfirmExitMixin';
+import ConfirmExitMixin from '@/mixins/ConfirmExitMixin.js';
 import Leaderboard from "@/components/game/Leaderboard.vue";
 import LeaderboardContent from '../components/game/LeaderboardContent.vue';
 
@@ -339,7 +338,8 @@ export default {
                 this.exitGame();
             }
 
-            this.room = firebase.database().ref(this.roomName);
+            const db = getDatabase();
+            this.room = ref(db, this.roomName);
 
             if (this.playerNumber === 1) {
                 await this.loadStreetView();
@@ -469,7 +469,7 @@ export default {
 
         this.$refs.header.startTimer();
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (document.querySelector('.widget-scene')) {
             document
                 .querySelector('.widget-scene')

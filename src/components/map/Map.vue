@@ -19,7 +19,7 @@
 </template>
 <script>
 import { STROKE_COLORS } from '../../constants';
-import MapMixin from './mixins/MapMixin';
+import MapMixin from './mixins/MapMixin.js';
 
 export default {
     name: 'Map',
