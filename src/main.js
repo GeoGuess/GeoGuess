@@ -63,6 +63,7 @@ const loader = new Loader({
 });
 
 loader.load().catch(err => {
+    // eslint-disable-next-line no-console
     console.error('Failed to load Google Maps:', err);
 });
 

@@ -8,31 +8,34 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, update, serverTimestamp } from 'firebase/database';
 
 const firebaseConfig = {
-    apiKey: Cypress.env('VUE_APP_FIREBASE_API_KEY'),
+    apiKey: Cypress.env('VITE_APP_FIREBASE_API_KEY'),
     authDomain:
-        Cypress.env('VUE_APP_FIREBASE_AUTH_DOMAIN') ||
-        Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') + '.firebaseapp.com',
+        Cypress.env('VITE_APP_FIREBASE_AUTH_DOMAIN') ||
+        Cypress.env('VITE_APP_FIREBASE_PROJECT_ID') + '.firebaseapp.com',
     databaseURL:
-        Cypress.env('VUE_APP_FIREBASE_DATABASE_URL') ||
+        Cypress.env('VITE_APP_FIREBASE_DATABASE_URL') ||
         'https://' +
-            Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') +
+            Cypress.env('VITE_APP_FIREBASE_PROJECT_ID') +
             '.firebaseio.com',
-    projectId: Cypress.env('VUE_APP_FIREBASE_PROJECT_ID'),
+    projectId: Cypress.env('VITE_APP_FIREBASE_PROJECT_ID'),
     storageBucket:
-        Cypress.env('VUE_APP_STORAGE_BUCKET') ||
-        Cypress.env('VUE_APP_FIREBASE_PROJECT_ID') + '.appspot.com',
-    messagingSenderId: Cypress.env('VUE_APP_FIREBASE_MESSAGING_SENDER_ID'),
-    appId: Cypress.env('VUE_APP_FIREBASE_APP_ID'),
-    measurementId: Cypress.env('VUE_APP_FIREBASE_MEASUREMENT_ID'),
+        Cypress.env('VITE_APP_STORAGE_BUCKET') ||
+        Cypress.env('VITE_APP_FIREBASE_PROJECT_ID') + '.appspot.com',
+    messagingSenderId: Cypress.env('VITE_APP_FIREBASE_MESSAGING_SENDER_ID'),
+    appId: Cypress.env('VITE_APP_FIREBASE_APP_ID'),
+    measurementId: Cypress.env('VITE_APP_FIREBASE_MEASUREMENT_ID'),
 };
-firebase.initializeApp(firebaseConfig);
+
+const firebaseApp = initializeApp(firebaseConfig);
+const database = getDatabase(firebaseApp);
+
 Cypress.Commands.add('addPlayer', (id, playerNumber, playerName) => {
-    const room = firebase.database().ref('cy' + id);
-    room.child('playerName/player' + playerNumber).set(playerName);
+    const roomRef = ref(database, 'cy' + id + '/playerName/player' + playerNumber);
+    update(roomRef, { [playerNumber]: playerName });
 });
 
 Cypress.Commands.add('startGame', (time, mode, place, multiplayer) => {
@@ -141,9 +144,9 @@ Cypress.Commands.add('finishRound', () => {
 });
 
 Cypress.Commands.add('createRoom', (id, time = 0, mode = 'classic') => {
-    const room = firebase.database().ref('cy' + id);
-    cy.log('created new room cypress', firebase.database.ServerValue.TIMESTAMP);
-    room.update({
+    const roomRef = ref(database, 'cy' + id);
+    cy.log('created new room cypress', serverTimestamp());
+    update(roomRef, {
         test: true,
         playerName: {
             player1: 'Toto',
@@ -152,7 +155,7 @@ Cypress.Commands.add('createRoom', (id, time = 0, mode = 'classic') => {
         difficulty: 2000,
         modeSelected: mode,
         size: 2,
-        createdAt: firebase.database.ServerValue.TIMESTAMP,
+        createdAt: serverTimestamp(),
         round1: {
             player1: 0,
         },
@@ -168,8 +171,8 @@ Cypress.Commands.add('createRoom', (id, time = 0, mode = 'classic') => {
 });
 
 Cypress.Commands.add('setPositionFirstPlayerFirebase', (id, nbround = 1) => {
-    const round = firebase.database().ref('cy' + id + '/round' + nbround);
-    round.update({
+    const roundRef = ref(database, 'cy' + id + '/round' + nbround);
+    update(roundRef, {
         player1: {
             distance: 13896482,
             latitude: -12.936520604248104,
@@ -177,9 +180,9 @@ Cypress.Commands.add('setPositionFirstPlayerFirebase', (id, nbround = 1) => {
             points: 5,
         },
     });
-    const guess = firebase.database().ref('cy' + id + '/guess');
-
-    guess.update({
+    
+    const guessRef = ref(database, 'cy' + id + '/guess');
+    update(guessRef, {
         player1: {
             latitude: -12.936520604248104,
             longitude: 161.80768899999998,

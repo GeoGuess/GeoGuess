@@ -17,6 +17,15 @@ module.exports = (on, config) => {
     //  watchOptions: {}
     // }))
 
-    config.env = process.env;
+    // Pass environment variables with VITE_ prefix to Cypress
+    config.env = {
+        ...config.env,
+        ...Object.keys(process.env)
+            .filter(key => key.startsWith('VITE_'))
+            .reduce((acc, key) => {
+                acc[key] = process.env[key];
+                return acc;
+            }, {})
+    };
     return config;
 };
