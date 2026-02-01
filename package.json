@@ -22,7 +22,7 @@
     "@turf/distance": "^7.3.3",
     "@turf/helpers": "^7.2.0",
     "axios": "^1.12.0",
-    "axios-cache-adapter": "^2.7.3",
+    "axios-cache-interceptor": "^1.11.4",
     "core-js": "^3.40.0",
     "firebase": "^10.14.1",
     "random-position-in-polygon": "^1.0.6",
@@ -63,7 +63,7 @@
     "sass-loader": "^16.0.4",
     "vite": "^6.0.7",
     "vite-plugin-vuetify": "^2.0.5",
-    "vitest": "^2.1.8"
+    "vitest": "^4.0.18"
   },
   "browserslist": [
     "> 1%",
