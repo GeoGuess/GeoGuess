@@ -49,7 +49,7 @@
     "babel-loader": "^10.1.1",
     "cross-env": "^10.1.0",
     "cypress": "^15.11.0",
-    "eslint": "^7.5.0",
+    "eslint": "^10.0.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-cypress": "^3.6.0",
     "eslint-plugin-prettier": "^4.2.1",
