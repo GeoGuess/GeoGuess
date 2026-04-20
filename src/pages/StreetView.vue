@@ -125,8 +125,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { ref, onValue, set, remove, off } from 'firebase/database';
 
 import HeaderGame from '@/components/HeaderGame';
 import Maps from '@/components/Maps';
@@ -339,14 +338,15 @@ export default {
                 this.exitGame();
             }
 
-            this.room = firebase.database().ref(this.roomName);
+            this.room = ref(this.$database, this.roomName);
 
             if (this.playerNumber === 1) {
                 await this.loadStreetView();
             }
 
-            this.room.child('active').set(true);
-            this.room.on('value', (snapshot) => {
+            const activeRef = ref(this.$database, `${this.roomName}/active`);
+            set(activeRef, true);
+            onValue(this.room, (snapshot) => {
                 // Check if the room is already removed
                 if (snapshot.hasChild('active')) {
                     // Leaderboard
@@ -377,10 +377,8 @@ export default {
                             .child('round' + this.round)
                             .hasChild('player' + this.playerNumber)
                     ) {
-                        this.room
-                            .child('round' + this.round)
-                            .child('player' + this.playerNumber)
-                            .set(0);
+                        const roundPlayerRef = ref(this.$database, `${this.roomName}/round${this.round}/player${this.playerNumber}`);
+                        set(roundPlayerRef, 0);
 
                         // Other players load the streetview the first player loaded earlier
                         if (this.playerNumber != 1) {
@@ -426,9 +424,10 @@ export default {
 
                     
                     // Enable guess button when every players are put into the current round's node
+                    const roundSnapshot = snapshot.child('round' + this.round);
+                    const roundPlayersCount = roundSnapshot.exists() ? Object.keys(roundSnapshot.val() || {}).length : 0;
                     if (
-                        snapshot.child('round' + this.round).numChildren() ===
-                            snapshot.child('size').val() &&
+                        roundPlayersCount === snapshot.child('size').val() &&
                         !this.isReady
                     ) {
                         // Close the dialog when everyone is ready
@@ -452,13 +451,15 @@ export default {
                     }
 
                     // Delete the room when everyone finished the game
+                    const isGameDoneSnapshot = snapshot.child('isGameDone');
+                    const gameFinishedCount = isGameDoneSnapshot.exists() ? Object.keys(isGameDoneSnapshot.val() || {}).length : 0;
                     if (
-                        snapshot.child('isGameDone').numChildren() ==
-                        snapshot.child('size').val()
+                        gameFinishedCount == snapshot.child('size').val()
                     ) {
-                        this.room.child('active').remove();
-                        this.room.off();
-                        this.room.remove();
+                        const activeRef = ref(this.$database, `${this.roomName}/active`);
+                        remove(activeRef);
+                        off(this.room);
+                        remove(this.room);
                     }
                 } else {
                     // Force the players to exit the game when 'Active' is removed
@@ -486,8 +487,9 @@ export default {
         if (this.room) {
             // Remove the room when the player refreshes the window
             // Remove the room when the player pressed the back button on browser
-            this.room.child('active').remove();
-            this.room.off();
+            const activeRef = ref(this.$database, `${this.roomName}/active`);
+            remove(activeRef);
+            off(this.room);
         }
     },
     methods: {
@@ -501,15 +503,14 @@ export default {
 
             if (this.multiplayer) {
                 // Put the streetview's location into firebase
-                this.room
-                    .child('streetView/round' + this.round)
-                    .set({
-                        latitude: this.randomLatLng.lat(),
-                        longitude: this.randomLatLng.lng(),
-                        roundInfo: roundInfo,
-                        ...(area && {area}),
-                        warning,
-                 });
+                const streetViewRef = ref(this.$database, `${this.roomName}/streetView/round${this.round}`);
+                set(streetViewRef, {
+                    latitude: this.randomLatLng.lat(),
+                    longitude: this.randomLatLng.lng(),
+                    roundInfo: roundInfo,
+                    ...(area && {area}),
+                    warning,
+                });
             }
             
         },
@@ -644,12 +645,10 @@ export default {
             this.points += points;
 
             if (this.multiplayer) {
-                this.room
-                    .child('finalScore/player' + this.playerNumber)
-                    .set(this.score);
-                this.room
-                    .child('finalPoints/player' + this.playerNumber)
-                    .set(this.points);
+                const finalScoreRef = ref(this.$database, `${this.roomName}/finalScore/player${this.playerNumber}`);
+                set(finalScoreRef, this.score);
+                const finalPointsRef = ref(this.$database, `${this.roomName}/finalPoints/player${this.playerNumber}`);
+                set(finalPointsRef, this.points);
 
                 // Wait for other players to guess locations
                 this.dialogTitle = this.$t('StreetView.waitForOtherPlayers');
@@ -705,9 +704,8 @@ export default {
 
             } else {
                 // Trigger listener and load the next streetview
-                this.room
-                    .child('trigger/player' + this.playerNumber)
-                    .set(this.round);
+                const triggerRef = ref(this.$database, `${this.roomName}/trigger/player${this.playerNumber}`);
+                set(triggerRef, this.round);
             }
             this.$refs.mapContainer.startNextRound();
 
